@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base1sModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRg10868' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRg10868">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+      <PropertyRef Name="_LineNo" />
+      <PropertyRef Name="_Active" />
+      <PropertyRef Name="_AccountDtRRef" />
+      <PropertyRef Name="_AccountCtRRef" />
+      <PropertyRef Name="_Fld10869RRef" />
+      <PropertyRef Name="_Fld10870DtRRef" />
+      <PropertyRef Name="_Fld10870CtRRef" />
+      <PropertyRef Name="_Fld11340DtRRef" />
+      <PropertyRef Name="_Fld11340CtRRef" />
+      <PropertyRef Name="_Fld10871" />
+      <PropertyRef Name="_Fld10873" />
+      <PropertyRef Name="_Fld10874" />
+      <PropertyRef Name="_Fld10875" />
+      <PropertyRef Name="_Fld10876RRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10871" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="_Fld10872Dt" Type="numeric" Precision="15" Scale="3" />
+    <Property Name="_Fld10872Ct" Type="numeric" Precision="15" Scale="3" />
+    <Property Name="_Fld10873" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="_Fld10874" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="_Fld10875" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Fld10876RRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRg10893' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRg10893">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+      <PropertyRef Name="_LineNo" />
+      <PropertyRef Name="_Active" />
+      <PropertyRef Name="_AccountDtRRef" />
+      <PropertyRef Name="_AccountCtRRef" />
+      <PropertyRef Name="_Fld10894RRef" />
+      <PropertyRef Name="_Fld11343DtRRef" />
+      <PropertyRef Name="_Fld11343CtRRef" />
+      <PropertyRef Name="_Fld10896" />
+      <PropertyRef Name="_Fld10899" />
+      <PropertyRef Name="_Fld10900" />
+      <PropertyRef Name="_Fld10901" />
+      <PropertyRef Name="_Fld10902RRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10895DtRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld10895CtRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld11343DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11343CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10896" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="_Fld10897Dt" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="_Fld10897Ct" Type="numeric" Precision="15" Scale="2" />
+    <Property Name="_Fld10898Dt" Type="numeric" Precision="15" Scale="3" />
+    <Property Name="_Fld10898Ct" Type="numeric" Precision="15" Scale="3" />
+    <Property Name="_Fld10899" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="_Fld10900" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="_Fld10901" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Fld10902RRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT010880' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgAT010880">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountRRef" />
+      <PropertyRef Name="_Fld10869RRef" />
+      <PropertyRef Name="_Fld10870RRef" />
+      <PropertyRef Name="_Fld11340RRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT010906' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgAT010906">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountRRef" />
+      <PropertyRef Name="_Fld10894RRef" />
+      <PropertyRef Name="_Fld11343RRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT110887' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgAT110887">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountRRef" />
+      <PropertyRef Name="_Fld10869RRef" />
+      <PropertyRef Name="_Fld10870RRef" />
+      <PropertyRef Name="_Fld11340RRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+    <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+    <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT110916' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgAT110916">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountRRef" />
+      <PropertyRef Name="_Fld10894RRef" />
+      <PropertyRef Name="_Fld11343RRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+    <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+    <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgCT10890' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgCT10890">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountDtRRef" />
+      <PropertyRef Name="_AccountCtRRef" />
+      <PropertyRef Name="_Fld10869RRef" />
+      <PropertyRef Name="_Fld10870DtRRef" />
+      <PropertyRef Name="_Fld10870CtRRef" />
+      <PropertyRef Name="_Fld11340DtRRef" />
+      <PropertyRef Name="_Fld11340CtRRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10870CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11340CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10872Dt" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Fld10872Ct" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgCT10919' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgCT10919">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_AccountDtRRef" />
+      <PropertyRef Name="_AccountCtRRef" />
+      <PropertyRef Name="_Fld10894RRef" />
+      <PropertyRef Name="_Fld11343DtRRef" />
+      <PropertyRef Name="_Fld11343CtRRef" />
+      <PropertyRef Name="_Splitter" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11343DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld11343CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10895DtRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld10895CtRRef" Type="binary" MaxLength="16" />
+    <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10897Dt" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10897Ct" Type="numeric" Precision="21" Scale="2" />
+    <Property Name="_Fld10898Dt" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Fld10898Ct" Type="numeric" Precision="21" Scale="3" />
+    <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgED10891' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgED10891">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+      <PropertyRef Name="_LineNo" />
+      <PropertyRef Name="_Correspond" />
+      <PropertyRef Name="_KindRRef" />
+      <PropertyRef Name="_Value_TYPE" />
+      <PropertyRef Name="_Value_RTRef" />
+      <PropertyRef Name="_Value_RRRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="_Correspond" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="_KindRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Value_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgED10920' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_AccRgED10920">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+      <PropertyRef Name="_LineNo" />
+      <PropertyRef Name="_Correspond" />
+      <PropertyRef Name="_KindRRef" />
+      <PropertyRef Name="_Value_TYPE" />
+      <PropertyRef Name="_Value_RTRef" />
+      <PropertyRef Name="_Value_RRRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="_Correspond" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="_KindRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Value_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._Seq10830' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_Seq10830">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._Seq10832' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_Seq10832">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_RecorderTRef" />
+      <PropertyRef Name="_RecorderRRef" />
+      <PropertyRef Name="_Fld10833RRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Fld10833RRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._SeqB10831' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_SeqB10831">
+    <Key>
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_Recorder_TYPE" />
+      <PropertyRef Name="_Recorder_RTRef" />
+      <PropertyRef Name="_Recorder_RRRef" />
+    </Key>
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_Recorder_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._SeqB10834' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="_SeqB10834">
+    <Key>
+      <PropertyRef Name="_Fld10833RRef" />
+      <PropertyRef Name="_Period" />
+      <PropertyRef Name="_Recorder_TYPE" />
+      <PropertyRef Name="_Recorder_RTRef" />
+      <PropertyRef Name="_Recorder_RRRef" />
+    </Key>
+    <Property Name="_Fld10833RRef" Type="binary" MaxLength="16" Nullable="false" />
+    <Property Name="_Period" Type="datetime" Nullable="false" />
+    <Property Name="_Recorder_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+    <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+    <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="base1sModelStoreContainer">
+    <EntitySet Name="_AccRg10868" EntityType="Self._AccRg10868" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRg10868].[_Period] AS [_Period], 
+    [_AccRg10868].[_RecorderTRef] AS [_RecorderTRef], 
+    [_AccRg10868].[_RecorderRRef] AS [_RecorderRRef], 
+    [_AccRg10868].[_LineNo] AS [_LineNo], 
+    [_AccRg10868].[_Active] AS [_Active], 
+    [_AccRg10868].[_AccountDtRRef] AS [_AccountDtRRef], 
+    [_AccRg10868].[_AccountCtRRef] AS [_AccountCtRRef], 
+    [_AccRg10868].[_Fld10869RRef] AS [_Fld10869RRef], 
+    [_AccRg10868].[_Fld10870DtRRef] AS [_Fld10870DtRRef], 
+    [_AccRg10868].[_Fld10870CtRRef] AS [_Fld10870CtRRef], 
+    [_AccRg10868].[_Fld11340DtRRef] AS [_Fld11340DtRRef], 
+    [_AccRg10868].[_Fld11340CtRRef] AS [_Fld11340CtRRef], 
+    [_AccRg10868].[_Fld10871] AS [_Fld10871], 
+    [_AccRg10868].[_Fld10872Dt] AS [_Fld10872Dt], 
+    [_AccRg10868].[_Fld10872Ct] AS [_Fld10872Ct], 
+    [_AccRg10868].[_Fld10873] AS [_Fld10873], 
+    [_AccRg10868].[_Fld10874] AS [_Fld10874], 
+    [_AccRg10868].[_Fld10875] AS [_Fld10875], 
+    [_AccRg10868].[_Fld10876RRef] AS [_Fld10876RRef]
+    FROM [dbo].[_AccRg10868] AS [_AccRg10868]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRg10893" EntityType="Self._AccRg10893" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRg10893].[_Period] AS [_Period], 
+    [_AccRg10893].[_RecorderTRef] AS [_RecorderTRef], 
+    [_AccRg10893].[_RecorderRRef] AS [_RecorderRRef], 
+    [_AccRg10893].[_LineNo] AS [_LineNo], 
+    [_AccRg10893].[_Active] AS [_Active], 
+    [_AccRg10893].[_AccountDtRRef] AS [_AccountDtRRef], 
+    [_AccRg10893].[_AccountCtRRef] AS [_AccountCtRRef], 
+    [_AccRg10893].[_Fld10894RRef] AS [_Fld10894RRef], 
+    [_AccRg10893].[_Fld10895DtRRef] AS [_Fld10895DtRRef], 
+    [_AccRg10893].[_Fld10895CtRRef] AS [_Fld10895CtRRef], 
+    [_AccRg10893].[_Fld11343DtRRef] AS [_Fld11343DtRRef], 
+    [_AccRg10893].[_Fld11343CtRRef] AS [_Fld11343CtRRef], 
+    [_AccRg10893].[_Fld10896] AS [_Fld10896], 
+    [_AccRg10893].[_Fld10897Dt] AS [_Fld10897Dt], 
+    [_AccRg10893].[_Fld10897Ct] AS [_Fld10897Ct], 
+    [_AccRg10893].[_Fld10898Dt] AS [_Fld10898Dt], 
+    [_AccRg10893].[_Fld10898Ct] AS [_Fld10898Ct], 
+    [_AccRg10893].[_Fld10899] AS [_Fld10899], 
+    [_AccRg10893].[_Fld10900] AS [_Fld10900], 
+    [_AccRg10893].[_Fld10901] AS [_Fld10901], 
+    [_AccRg10893].[_Fld10902RRef] AS [_Fld10902RRef]
+    FROM [dbo].[_AccRg10893] AS [_AccRg10893]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgAT010880" EntityType="Self._AccRgAT010880" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgAT010880].[_Period] AS [_Period], 
+    [_AccRgAT010880].[_AccountRRef] AS [_AccountRRef], 
+    [_AccRgAT010880].[_Fld10869RRef] AS [_Fld10869RRef], 
+    [_AccRgAT010880].[_Fld10870RRef] AS [_Fld10870RRef], 
+    [_AccRgAT010880].[_Fld11340RRef] AS [_Fld11340RRef], 
+    [_AccRgAT010880].[_Fld10871] AS [_Fld10871], 
+    [_AccRgAT010880].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+    [_AccRgAT010880].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+    [_AccRgAT010880].[_Turnover10883] AS [_Turnover10883], 
+    [_AccRgAT010880].[_Fld10872] AS [_Fld10872], 
+    [_AccRgAT010880].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+    [_AccRgAT010880].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+    [_AccRgAT010880].[_Turnover10886] AS [_Turnover10886], 
+    [_AccRgAT010880].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgAT010880] AS [_AccRgAT010880]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgAT010906" EntityType="Self._AccRgAT010906" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgAT010906].[_Period] AS [_Period], 
+    [_AccRgAT010906].[_AccountRRef] AS [_AccountRRef], 
+    [_AccRgAT010906].[_Fld10894RRef] AS [_Fld10894RRef], 
+    [_AccRgAT010906].[_Fld10895RRef] AS [_Fld10895RRef], 
+    [_AccRgAT010906].[_Fld11343RRef] AS [_Fld11343RRef], 
+    [_AccRgAT010906].[_Fld10896] AS [_Fld10896], 
+    [_AccRgAT010906].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+    [_AccRgAT010906].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+    [_AccRgAT010906].[_Turnover10909] AS [_Turnover10909], 
+    [_AccRgAT010906].[_Fld10897] AS [_Fld10897], 
+    [_AccRgAT010906].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+    [_AccRgAT010906].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+    [_AccRgAT010906].[_Turnover10912] AS [_Turnover10912], 
+    [_AccRgAT010906].[_Fld10898] AS [_Fld10898], 
+    [_AccRgAT010906].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+    [_AccRgAT010906].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+    [_AccRgAT010906].[_Turnover10915] AS [_Turnover10915], 
+    [_AccRgAT010906].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgAT010906] AS [_AccRgAT010906]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgAT110887" EntityType="Self._AccRgAT110887" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgAT110887].[_Period] AS [_Period], 
+    [_AccRgAT110887].[_AccountRRef] AS [_AccountRRef], 
+    [_AccRgAT110887].[_Fld10869RRef] AS [_Fld10869RRef], 
+    [_AccRgAT110887].[_Fld10870RRef] AS [_Fld10870RRef], 
+    [_AccRgAT110887].[_Fld11340RRef] AS [_Fld11340RRef], 
+    [_AccRgAT110887].[_Value1_TYPE] AS [_Value1_TYPE], 
+    [_AccRgAT110887].[_Value1_RTRef] AS [_Value1_RTRef], 
+    [_AccRgAT110887].[_Value1_RRRef] AS [_Value1_RRRef], 
+    [_AccRgAT110887].[_Fld10871] AS [_Fld10871], 
+    [_AccRgAT110887].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+    [_AccRgAT110887].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+    [_AccRgAT110887].[_Turnover10883] AS [_Turnover10883], 
+    [_AccRgAT110887].[_Fld10872] AS [_Fld10872], 
+    [_AccRgAT110887].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+    [_AccRgAT110887].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+    [_AccRgAT110887].[_Turnover10886] AS [_Turnover10886], 
+    [_AccRgAT110887].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgAT110887] AS [_AccRgAT110887]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgAT110916" EntityType="Self._AccRgAT110916" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgAT110916].[_Period] AS [_Period], 
+    [_AccRgAT110916].[_AccountRRef] AS [_AccountRRef], 
+    [_AccRgAT110916].[_Fld10894RRef] AS [_Fld10894RRef], 
+    [_AccRgAT110916].[_Fld10895RRef] AS [_Fld10895RRef], 
+    [_AccRgAT110916].[_Fld11343RRef] AS [_Fld11343RRef], 
+    [_AccRgAT110916].[_Value1_TYPE] AS [_Value1_TYPE], 
+    [_AccRgAT110916].[_Value1_RTRef] AS [_Value1_RTRef], 
+    [_AccRgAT110916].[_Value1_RRRef] AS [_Value1_RRRef], 
+    [_AccRgAT110916].[_Fld10896] AS [_Fld10896], 
+    [_AccRgAT110916].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+    [_AccRgAT110916].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+    [_AccRgAT110916].[_Turnover10909] AS [_Turnover10909], 
+    [_AccRgAT110916].[_Fld10897] AS [_Fld10897], 
+    [_AccRgAT110916].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+    [_AccRgAT110916].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+    [_AccRgAT110916].[_Turnover10912] AS [_Turnover10912], 
+    [_AccRgAT110916].[_Fld10898] AS [_Fld10898], 
+    [_AccRgAT110916].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+    [_AccRgAT110916].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+    [_AccRgAT110916].[_Turnover10915] AS [_Turnover10915], 
+    [_AccRgAT110916].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgAT110916] AS [_AccRgAT110916]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgCT10890" EntityType="Self._AccRgCT10890" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgCT10890].[_Period] AS [_Period], 
+    [_AccRgCT10890].[_AccountDtRRef] AS [_AccountDtRRef], 
+    [_AccRgCT10890].[_AccountCtRRef] AS [_AccountCtRRef], 
+    [_AccRgCT10890].[_Fld10869RRef] AS [_Fld10869RRef], 
+    [_AccRgCT10890].[_Fld10870DtRRef] AS [_Fld10870DtRRef], 
+    [_AccRgCT10890].[_Fld10870CtRRef] AS [_Fld10870CtRRef], 
+    [_AccRgCT10890].[_Fld11340DtRRef] AS [_Fld11340DtRRef], 
+    [_AccRgCT10890].[_Fld11340CtRRef] AS [_Fld11340CtRRef], 
+    [_AccRgCT10890].[_Fld10871] AS [_Fld10871], 
+    [_AccRgCT10890].[_Fld10872Dt] AS [_Fld10872Dt], 
+    [_AccRgCT10890].[_Fld10872Ct] AS [_Fld10872Ct], 
+    [_AccRgCT10890].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgCT10890] AS [_AccRgCT10890]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgCT10919" EntityType="Self._AccRgCT10919" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgCT10919].[_Period] AS [_Period], 
+    [_AccRgCT10919].[_AccountDtRRef] AS [_AccountDtRRef], 
+    [_AccRgCT10919].[_AccountCtRRef] AS [_AccountCtRRef], 
+    [_AccRgCT10919].[_Fld10894RRef] AS [_Fld10894RRef], 
+    [_AccRgCT10919].[_Fld11343DtRRef] AS [_Fld11343DtRRef], 
+    [_AccRgCT10919].[_Fld11343CtRRef] AS [_Fld11343CtRRef], 
+    [_AccRgCT10919].[_Fld10895DtRRef] AS [_Fld10895DtRRef], 
+    [_AccRgCT10919].[_Fld10895CtRRef] AS [_Fld10895CtRRef], 
+    [_AccRgCT10919].[_Fld10896] AS [_Fld10896], 
+    [_AccRgCT10919].[_Fld10897Dt] AS [_Fld10897Dt], 
+    [_AccRgCT10919].[_Fld10897Ct] AS [_Fld10897Ct], 
+    [_AccRgCT10919].[_Fld10898Dt] AS [_Fld10898Dt], 
+    [_AccRgCT10919].[_Fld10898Ct] AS [_Fld10898Ct], 
+    [_AccRgCT10919].[_Splitter] AS [_Splitter]
+    FROM [dbo].[_AccRgCT10919] AS [_AccRgCT10919]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgED10891" EntityType="Self._AccRgED10891" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgED10891].[_Period] AS [_Period], 
+    [_AccRgED10891].[_RecorderTRef] AS [_RecorderTRef], 
+    [_AccRgED10891].[_RecorderRRef] AS [_RecorderRRef], 
+    [_AccRgED10891].[_LineNo] AS [_LineNo], 
+    [_AccRgED10891].[_Correspond] AS [_Correspond], 
+    [_AccRgED10891].[_KindRRef] AS [_KindRRef], 
+    [_AccRgED10891].[_Value_TYPE] AS [_Value_TYPE], 
+    [_AccRgED10891].[_Value_RTRef] AS [_Value_RTRef], 
+    [_AccRgED10891].[_Value_RRRef] AS [_Value_RRRef]
+    FROM [dbo].[_AccRgED10891] AS [_AccRgED10891]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_AccRgED10920" EntityType="Self._AccRgED10920" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_AccRgED10920].[_Period] AS [_Period], 
+    [_AccRgED10920].[_RecorderTRef] AS [_RecorderTRef], 
+    [_AccRgED10920].[_RecorderRRef] AS [_RecorderRRef], 
+    [_AccRgED10920].[_LineNo] AS [_LineNo], 
+    [_AccRgED10920].[_Correspond] AS [_Correspond], 
+    [_AccRgED10920].[_KindRRef] AS [_KindRRef], 
+    [_AccRgED10920].[_Value_TYPE] AS [_Value_TYPE], 
+    [_AccRgED10920].[_Value_RTRef] AS [_Value_RTRef], 
+    [_AccRgED10920].[_Value_RRRef] AS [_Value_RRRef]
+    FROM [dbo].[_AccRgED10920] AS [_AccRgED10920]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_Seq10830" EntityType="Self._Seq10830" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_Seq10830].[_Period] AS [_Period], 
+    [_Seq10830].[_RecorderTRef] AS [_RecorderTRef], 
+    [_Seq10830].[_RecorderRRef] AS [_RecorderRRef]
+    FROM [dbo].[_Seq10830] AS [_Seq10830]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_Seq10832" EntityType="Self._Seq10832" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_Seq10832].[_Period] AS [_Period], 
+    [_Seq10832].[_RecorderTRef] AS [_RecorderTRef], 
+    [_Seq10832].[_RecorderRRef] AS [_RecorderRRef], 
+    [_Seq10832].[_Fld10833RRef] AS [_Fld10833RRef]
+    FROM [dbo].[_Seq10832] AS [_Seq10832]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_SeqB10831" EntityType="Self._SeqB10831" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_SeqB10831].[_Period] AS [_Period], 
+    [_SeqB10831].[_Recorder_TYPE] AS [_Recorder_TYPE], 
+    [_SeqB10831].[_Recorder_RTRef] AS [_Recorder_RTRef], 
+    [_SeqB10831].[_Recorder_RRRef] AS [_Recorder_RRRef]
+    FROM [dbo].[_SeqB10831] AS [_SeqB10831]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="_SeqB10834" EntityType="Self._SeqB10834" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [_SeqB10834].[_Fld10833RRef] AS [_Fld10833RRef], 
+    [_SeqB10834].[_Period] AS [_Period], 
+    [_SeqB10834].[_Recorder_TYPE] AS [_Recorder_TYPE], 
+    [_SeqB10834].[_Recorder_RTRef] AS [_Recorder_RTRef], 
+    [_SeqB10834].[_Recorder_RRRef] AS [_Recorder_RRRef]
+    FROM [dbo].[_SeqB10834] AS [_SeqB10834]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

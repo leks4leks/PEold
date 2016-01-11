@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="ProgressoExpert.Controls.ResBusines.RB_Balance"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1300"
+              d:DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ProgressoExpert;component/Themes/MDT.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ProgressoExpert;component/Themes/MDT.Rectangle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DropShadowEffect x:Key="z-depth4" BlurRadius="25" ShadowDepth="8" Direction="270" Color="#BBBBBB"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border Effect="{StaticResource z-depth4}" Margin="5">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+            <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Name="BalanceGrid" Visibility="Hidden" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="175"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle  Grid.Row="0" Grid.Column="0" Grid.RowSpan="10" Grid.ColumnSpan="6" Style="{StaticResource MDTRectangleWhite}"/>
+                        <Border BorderThickness="0,0,0,2" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6">
+                            <Rectangle  Style="{StaticResource MDTRectangleGray}"/>
+                        </Border>
+                        <Rectangle  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6"  Style="{StaticResource MDTRectangleGray}"/>
+                        <Rectangle  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6"  Style="{StaticResource MDTRectangleGray}"/>
+                        <Rectangle  Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"  Style="{StaticResource MDTRectangleBlue}"/>
+                        <Line Grid.Row="2" Fill="Black" StrokeThickness="10" Width="1100" Height="10"></Line>
+
+
+                        <TextBlock Text="Активы" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="Пассивы" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="Денежные средства" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Дебиторская задолженность"  Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Товар" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочие краткосрочные активы" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого краткосрочные активы" Grid.Row="6" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Оборудование" Grid.Row="7" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочий инвентарь"  Grid.Row="8" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого валюта баланса"  Grid.Row="9" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftBold}"/>
+
+                        <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="3" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="Долги перед Банком" Grid.Row="2" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Долги перед налоговой" Grid.Row="3" Grid.Column="3"   Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Долги перед поставщиками/покупателями" Grid.Row="4" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочие долги" Grid.Row="5" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого кредиторская задолженность" Grid.Row="6" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Собственный капитал"  Grid.Row="7" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="Итого валюта баланса" Grid.Row="9" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeftBold}"/>
+
+
+                        <TextBlock Text="{Binding StartDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="{Binding StartDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding BankrollStart}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding BankrollEnd}" Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsBanksStart}"  Grid.Row="2" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsBanksEnd}" Grid.Row="2" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding ReceivablesStart}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding ReceivablesEnd}" Grid.Row="3" Grid.Column="2"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsTaxAndOtherPaymentsBudgetStart}" Grid.Row="3" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsTaxAndOtherPaymentsBudgetEnd}" Grid.Row="3" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding InventoriesStart}"  Grid.Row="4" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding InventoriesEnd}"  Grid.Row="4" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsSupplierBuyersStart}" Grid.Row="4" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding DebtsSupplierBuyersEnd}"  Grid.Row="4" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding OtherCurrentAssetsStart}"  Grid.Row="5" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding OtherCurrentAssetsEnd}" Grid.Row="5" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding OtherDebtsStart}" Grid.Row="5" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding OtherDebtsEnd}"  Grid.Row="5" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding TotalCurrentAssetsStart}" Grid.Row="6" Grid.Column="1"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalCurrentAssetsEnd}"  Grid.Row="6" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalAccountsPayableStart}" Grid.Row="6" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalAccountsPayableEnd}"  Grid.Row="6" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding EquipmentStart}" Grid.Row="7" Grid.Column="1"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding EquipmentEnd}" Grid.Row="7" Grid.Column="2"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding OwnCapitalStart}" Grid.Row="7" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                        <TextBlock  Text="{Binding OwnCapitalEnd}" Grid.Row="7" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenterWhite}"/>
+
+                        <TextBlock  Text="{Binding OtherEquipmentStart}" Grid.Row="8" Grid.Column="1"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding OtherEquipmentEnd}"  Grid.Row="8" Grid.Column="2"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock  Text="{Binding TotalBalanceCurrencyStart}"  Grid.Row="9" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalBalanceCurrencyEnd}"  Grid.Row="9" Grid.Column="2"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalBalanceCurrencyStart}"  Grid.Row="9" Grid.Column="4"  Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="{Binding TotalBalanceCurrencyEnd}" Grid.Row="9" Grid.Column="5"  Style="{StaticResource MDTTextBlockCenter}"/>
+
+
+                    </Grid>
+                    <Grid Name="BalanceGridNoData" Visibility="Visible" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="175"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle  Grid.Row="0" Grid.Column="0" Grid.RowSpan="10" Grid.ColumnSpan="6" Style="{StaticResource MDTRectangleWhite}"/>
+                        <Border BorderThickness="0,0,0,2" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6">
+                            <Rectangle  Style="{StaticResource MDTRectangleGray}"/>
+                        </Border>
+                        <Rectangle  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6"  Style="{StaticResource MDTRectangleGray}"/>
+                        <Rectangle  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6"  Style="{StaticResource MDTRectangleGray}"/>
+                        <Rectangle  Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="3"  Style="{StaticResource MDTRectangleBlue}"/>
+                        <Line Grid.Row="2" Fill="Black" StrokeThickness="10" Width="1100" Height="10"></Line>
+
+
+                        <TextBlock Text="Активы" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="Пассивы" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
+
+                        <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="Денежные средства" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Дебиторская задолженность"  Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Товар" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочие краткосрочные активы" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого краткосрочные активы" Grid.Row="6" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Оборудование" Grid.Row="7" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочий инвентарь"  Grid.Row="8" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого валюта баланса"  Grid.Row="9" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftBold}"/>
+
+                        <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="3" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock  Text="Долги перед Банком" Grid.Row="2" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Долги перед налоговой" Grid.Row="3" Grid.Column="3"   Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Долги перед поставщиками/покупателями" Grid.Row="4" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прочие долги" Grid.Row="5" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итого кредиторская задолженность" Grid.Row="6" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Собственный капитал"  Grid.Row="7" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="Итого валюта баланса" Grid.Row="9" Grid.Column="3"  Style="{StaticResource MDTTextBlockLeftBold}"/>
+
+                    </Grid>
+                </Grid>            
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+
+</UserControl>

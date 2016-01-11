@@ -1,0 +1,2198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="base1sModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_Acc10">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="_Marked" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_IsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_ParentIDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Code" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="_OrderField" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="_Kind" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_OffBalance" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10860" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld11339RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10861" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10862" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Acc9">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="_Marked" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_IsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_ParentIDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="_OrderField" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="_Kind" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_OffBalance" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10855" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld11337" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10856" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._Acc9_ExtDim10857' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_Acc9_ExtDim10857">
+          <Key>
+            <PropertyRef Name="_Acc9_IDRRef" />
+            <PropertyRef Name="_KeyField" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_DimKindRRef" />
+            <PropertyRef Name="_DimIsMetadata" />
+            <PropertyRef Name="_TurnoverOnly" />
+            <PropertyRef Name="_Fld10858" />
+            <PropertyRef Name="_Fld11338" />
+          </Key>
+          <Property Name="_Acc9_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_KeyField" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="_DimKindRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_DimIsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_TurnoverOnly" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10858" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld11338" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccChngR10859' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccChngR10859">
+          <Key>
+            <PropertyRef Name="_NodeTRef" />
+            <PropertyRef Name="_NodeRRef" />
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_NodeTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_NodeRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccChngR10867' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccChngR10867">
+          <Key>
+            <PropertyRef Name="_NodeTRef" />
+            <PropertyRef Name="_NodeRRef" />
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_NodeTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_NodeRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRg10868' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRg10868">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Active" />
+            <PropertyRef Name="_AccountDtRRef" />
+            <PropertyRef Name="_AccountCtRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870DtRRef" />
+            <PropertyRef Name="_Fld10870CtRRef" />
+            <PropertyRef Name="_Fld11340DtRRef" />
+            <PropertyRef Name="_Fld11340CtRRef" />
+            <PropertyRef Name="_Fld10871" />
+            <PropertyRef Name="_Fld10873" />
+            <PropertyRef Name="_Fld10874" />
+            <PropertyRef Name="_Fld10875" />
+            <PropertyRef Name="_Fld10876RRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10871" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="_Fld10872Dt" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="_Fld10872Ct" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="_Fld10873" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="_Fld10874" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="_Fld10875" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10876RRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRg10893' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRg10893">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Active" />
+            <PropertyRef Name="_AccountDtRRef" />
+            <PropertyRef Name="_AccountCtRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343DtRRef" />
+            <PropertyRef Name="_Fld11343CtRRef" />
+            <PropertyRef Name="_Fld10896" />
+            <PropertyRef Name="_Fld10899" />
+            <PropertyRef Name="_Fld10900" />
+            <PropertyRef Name="_Fld10901" />
+            <PropertyRef Name="_Fld10902RRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895DtRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10895CtRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld11343DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11343CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10896" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="_Fld10897Dt" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="_Fld10897Ct" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="_Fld10898Dt" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="_Fld10898Ct" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="_Fld10899" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="_Fld10900" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="_Fld10901" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10902RRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT010880' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT010880">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870RRef" />
+            <PropertyRef Name="_Fld11340RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT010906' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT010906">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT110887' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT110887">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870RRef" />
+            <PropertyRef Name="_Fld11340RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT110916' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT110916">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT210888' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT210888">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870RRef" />
+            <PropertyRef Name="_Fld11340RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value2_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value2_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value2_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT210917' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT210917">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value2_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value2_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value2_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT310889' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT310889">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870RRef" />
+            <PropertyRef Name="_Fld11340RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value2_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value2_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value2_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value3_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value3_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value3_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10881" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10882" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10883" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10872" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10884" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10885" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgAT310918' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgAT310918">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343RRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld11343RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value1_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value1_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value1_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value2_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value2_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value2_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Value3_TYPE" Type="binary" MaxLength="1" />
+          <Property Name="_Value3_RTRef" Type="binary" MaxLength="4" />
+          <Property Name="_Value3_RRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10907" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10908" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10909" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverDt10910" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_TurnoverCt10911" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Turnover10912" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10898" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverDt10913" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_TurnoverCt10914" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgChngR10892' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgChngR10892">
+          <Key>
+            <PropertyRef Name="_NodeTRef" />
+            <PropertyRef Name="_NodeRRef" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+          </Key>
+          <Property Name="_NodeTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_NodeRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgChngR10921' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgChngR10921">
+          <Key>
+            <PropertyRef Name="_NodeTRef" />
+            <PropertyRef Name="_NodeRRef" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+          </Key>
+          <Property Name="_NodeTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_NodeRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgCT10890' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgCT10890">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountDtRRef" />
+            <PropertyRef Name="_AccountCtRRef" />
+            <PropertyRef Name="_Fld10869RRef" />
+            <PropertyRef Name="_Fld10870DtRRef" />
+            <PropertyRef Name="_Fld10870CtRRef" />
+            <PropertyRef Name="_Fld11340DtRRef" />
+            <PropertyRef Name="_Fld11340CtRRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10869RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10870CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11340CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10871" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10872Dt" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Fld10872Ct" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgCT10919' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgCT10919">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_AccountDtRRef" />
+            <PropertyRef Name="_AccountCtRRef" />
+            <PropertyRef Name="_Fld10894RRef" />
+            <PropertyRef Name="_Fld11343DtRRef" />
+            <PropertyRef Name="_Fld11343CtRRef" />
+            <PropertyRef Name="_Splitter" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_AccountDtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_AccountCtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10894RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11343DtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld11343CtRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10895DtRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10895CtRRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld10896" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897Dt" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10897Ct" Type="numeric" Precision="21" Scale="2" />
+          <Property Name="_Fld10898Dt" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Fld10898Ct" Type="numeric" Precision="21" Scale="3" />
+          <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgED10891' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgED10891">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Correspond" />
+            <PropertyRef Name="_KindRRef" />
+            <PropertyRef Name="_Value_TYPE" />
+            <PropertyRef Name="_Value_RTRef" />
+            <PropertyRef Name="_Value_RRRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Correspond" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_KindRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgED10920' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgED10920">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Correspond" />
+            <PropertyRef Name="_KindRRef" />
+            <PropertyRef Name="_Value_TYPE" />
+            <PropertyRef Name="_Value_RTRef" />
+            <PropertyRef Name="_Value_RRRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Correspond" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_KindRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Value_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._AccRgOpt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_AccRgOpt">
+          <Key>
+            <PropertyRef Name="_RegID" />
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_ActualPeriod" />
+            <PropertyRef Name="_Periodicity" />
+            <PropertyRef Name="_RepetitionFactor" />
+            <PropertyRef Name="_UseTotals" />
+            <PropertyRef Name="_MinPeriod" />
+            <PropertyRef Name="_UseSplitter" />
+          </Key>
+          <Property Name="_RegID" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_ActualPeriod" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Periodicity" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="_RepetitionFactor" Type="numeric" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="_UseTotals" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_MinPeriod" Type="datetime" Nullable="false" />
+          <Property Name="_UseSplitter" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._Seq10830' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_Seq10830">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._Seq10832' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_Seq10832">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_Fld10833RRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10833RRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._SeqB10831' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_SeqB10831">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_Recorder_TYPE" />
+            <PropertyRef Name="_Recorder_RTRef" />
+            <PropertyRef Name="_Recorder_RRRef" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_Recorder_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._SeqB10834' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_SeqB10834">
+          <Key>
+            <PropertyRef Name="_Fld10833RRef" />
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_Recorder_TYPE" />
+            <PropertyRef Name="_Recorder_RTRef" />
+            <PropertyRef Name="_Recorder_RRRef" />
+          </Key>
+          <Property Name="_Fld10833RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_Recorder_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'base1s.dbo._YearOffset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="_YearOffset">
+          <Key>
+            <PropertyRef Name="Offset" />
+          </Key>
+          <Property Name="Offset" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="base1sModelStoreContainer">
+          <EntitySet Name="_Acc10" EntityType="Self._Acc10" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Acc9" EntityType="Self._Acc9" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Acc9_ExtDim10857" EntityType="Self._Acc9_ExtDim10857" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_Acc9_ExtDim10857].[_Acc9_IDRRef] AS [_Acc9_IDRRef], 
+[_Acc9_ExtDim10857].[_KeyField] AS [_KeyField], 
+[_Acc9_ExtDim10857].[_LineNo] AS [_LineNo], 
+[_Acc9_ExtDim10857].[_DimKindRRef] AS [_DimKindRRef], 
+[_Acc9_ExtDim10857].[_DimIsMetadata] AS [_DimIsMetadata], 
+[_Acc9_ExtDim10857].[_TurnoverOnly] AS [_TurnoverOnly], 
+[_Acc9_ExtDim10857].[_Fld10858] AS [_Fld10858], 
+[_Acc9_ExtDim10857].[_Fld11338] AS [_Fld11338]
+FROM [dbo].[_Acc9_ExtDim10857] AS [_Acc9_ExtDim10857]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccChngR10859" EntityType="Self._AccChngR10859" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccChngR10859].[_NodeTRef] AS [_NodeTRef], 
+[_AccChngR10859].[_NodeRRef] AS [_NodeRRef], 
+[_AccChngR10859].[_MessageNo] AS [_MessageNo], 
+[_AccChngR10859].[_IDRRef] AS [_IDRRef]
+FROM [dbo].[_AccChngR10859] AS [_AccChngR10859]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccChngR10867" EntityType="Self._AccChngR10867" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccChngR10867].[_NodeTRef] AS [_NodeTRef], 
+[_AccChngR10867].[_NodeRRef] AS [_NodeRRef], 
+[_AccChngR10867].[_MessageNo] AS [_MessageNo], 
+[_AccChngR10867].[_IDRRef] AS [_IDRRef]
+FROM [dbo].[_AccChngR10867] AS [_AccChngR10867]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRg10868" EntityType="Self._AccRg10868" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRg10868].[_Period] AS [_Period], 
+[_AccRg10868].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRg10868].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccRg10868].[_LineNo] AS [_LineNo], 
+[_AccRg10868].[_Active] AS [_Active], 
+[_AccRg10868].[_AccountDtRRef] AS [_AccountDtRRef], 
+[_AccRg10868].[_AccountCtRRef] AS [_AccountCtRRef], 
+[_AccRg10868].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRg10868].[_Fld10870DtRRef] AS [_Fld10870DtRRef], 
+[_AccRg10868].[_Fld10870CtRRef] AS [_Fld10870CtRRef], 
+[_AccRg10868].[_Fld11340DtRRef] AS [_Fld11340DtRRef], 
+[_AccRg10868].[_Fld11340CtRRef] AS [_Fld11340CtRRef], 
+[_AccRg10868].[_Fld10871] AS [_Fld10871], 
+[_AccRg10868].[_Fld10872Dt] AS [_Fld10872Dt], 
+[_AccRg10868].[_Fld10872Ct] AS [_Fld10872Ct], 
+[_AccRg10868].[_Fld10873] AS [_Fld10873], 
+[_AccRg10868].[_Fld10874] AS [_Fld10874], 
+[_AccRg10868].[_Fld10875] AS [_Fld10875], 
+[_AccRg10868].[_Fld10876RRef] AS [_Fld10876RRef]
+FROM [dbo].[_AccRg10868] AS [_AccRg10868]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRg10893" EntityType="Self._AccRg10893" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRg10893].[_Period] AS [_Period], 
+[_AccRg10893].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRg10893].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccRg10893].[_LineNo] AS [_LineNo], 
+[_AccRg10893].[_Active] AS [_Active], 
+[_AccRg10893].[_AccountDtRRef] AS [_AccountDtRRef], 
+[_AccRg10893].[_AccountCtRRef] AS [_AccountCtRRef], 
+[_AccRg10893].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRg10893].[_Fld10895DtRRef] AS [_Fld10895DtRRef], 
+[_AccRg10893].[_Fld10895CtRRef] AS [_Fld10895CtRRef], 
+[_AccRg10893].[_Fld11343DtRRef] AS [_Fld11343DtRRef], 
+[_AccRg10893].[_Fld11343CtRRef] AS [_Fld11343CtRRef], 
+[_AccRg10893].[_Fld10896] AS [_Fld10896], 
+[_AccRg10893].[_Fld10897Dt] AS [_Fld10897Dt], 
+[_AccRg10893].[_Fld10897Ct] AS [_Fld10897Ct], 
+[_AccRg10893].[_Fld10898Dt] AS [_Fld10898Dt], 
+[_AccRg10893].[_Fld10898Ct] AS [_Fld10898Ct], 
+[_AccRg10893].[_Fld10899] AS [_Fld10899], 
+[_AccRg10893].[_Fld10900] AS [_Fld10900], 
+[_AccRg10893].[_Fld10901] AS [_Fld10901], 
+[_AccRg10893].[_Fld10902RRef] AS [_Fld10902RRef]
+FROM [dbo].[_AccRg10893] AS [_AccRg10893]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT010880" EntityType="Self._AccRgAT010880" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT010880].[_Period] AS [_Period], 
+[_AccRgAT010880].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT010880].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRgAT010880].[_Fld10870RRef] AS [_Fld10870RRef], 
+[_AccRgAT010880].[_Fld11340RRef] AS [_Fld11340RRef], 
+[_AccRgAT010880].[_Fld10871] AS [_Fld10871], 
+[_AccRgAT010880].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+[_AccRgAT010880].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+[_AccRgAT010880].[_Turnover10883] AS [_Turnover10883], 
+[_AccRgAT010880].[_Fld10872] AS [_Fld10872], 
+[_AccRgAT010880].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+[_AccRgAT010880].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+[_AccRgAT010880].[_Turnover10886] AS [_Turnover10886], 
+[_AccRgAT010880].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT010880] AS [_AccRgAT010880]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT010906" EntityType="Self._AccRgAT010906" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT010906].[_Period] AS [_Period], 
+[_AccRgAT010906].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT010906].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRgAT010906].[_Fld10895RRef] AS [_Fld10895RRef], 
+[_AccRgAT010906].[_Fld11343RRef] AS [_Fld11343RRef], 
+[_AccRgAT010906].[_Fld10896] AS [_Fld10896], 
+[_AccRgAT010906].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+[_AccRgAT010906].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+[_AccRgAT010906].[_Turnover10909] AS [_Turnover10909], 
+[_AccRgAT010906].[_Fld10897] AS [_Fld10897], 
+[_AccRgAT010906].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+[_AccRgAT010906].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+[_AccRgAT010906].[_Turnover10912] AS [_Turnover10912], 
+[_AccRgAT010906].[_Fld10898] AS [_Fld10898], 
+[_AccRgAT010906].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+[_AccRgAT010906].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+[_AccRgAT010906].[_Turnover10915] AS [_Turnover10915], 
+[_AccRgAT010906].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT010906] AS [_AccRgAT010906]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT110887" EntityType="Self._AccRgAT110887" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT110887].[_Period] AS [_Period], 
+[_AccRgAT110887].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT110887].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRgAT110887].[_Fld10870RRef] AS [_Fld10870RRef], 
+[_AccRgAT110887].[_Fld11340RRef] AS [_Fld11340RRef], 
+[_AccRgAT110887].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT110887].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT110887].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT110887].[_Fld10871] AS [_Fld10871], 
+[_AccRgAT110887].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+[_AccRgAT110887].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+[_AccRgAT110887].[_Turnover10883] AS [_Turnover10883], 
+[_AccRgAT110887].[_Fld10872] AS [_Fld10872], 
+[_AccRgAT110887].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+[_AccRgAT110887].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+[_AccRgAT110887].[_Turnover10886] AS [_Turnover10886], 
+[_AccRgAT110887].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT110887] AS [_AccRgAT110887]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT110916" EntityType="Self._AccRgAT110916" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT110916].[_Period] AS [_Period], 
+[_AccRgAT110916].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT110916].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRgAT110916].[_Fld10895RRef] AS [_Fld10895RRef], 
+[_AccRgAT110916].[_Fld11343RRef] AS [_Fld11343RRef], 
+[_AccRgAT110916].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT110916].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT110916].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT110916].[_Fld10896] AS [_Fld10896], 
+[_AccRgAT110916].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+[_AccRgAT110916].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+[_AccRgAT110916].[_Turnover10909] AS [_Turnover10909], 
+[_AccRgAT110916].[_Fld10897] AS [_Fld10897], 
+[_AccRgAT110916].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+[_AccRgAT110916].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+[_AccRgAT110916].[_Turnover10912] AS [_Turnover10912], 
+[_AccRgAT110916].[_Fld10898] AS [_Fld10898], 
+[_AccRgAT110916].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+[_AccRgAT110916].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+[_AccRgAT110916].[_Turnover10915] AS [_Turnover10915], 
+[_AccRgAT110916].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT110916] AS [_AccRgAT110916]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT210888" EntityType="Self._AccRgAT210888" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT210888].[_Period] AS [_Period], 
+[_AccRgAT210888].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT210888].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRgAT210888].[_Fld10870RRef] AS [_Fld10870RRef], 
+[_AccRgAT210888].[_Fld11340RRef] AS [_Fld11340RRef], 
+[_AccRgAT210888].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT210888].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT210888].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT210888].[_Value2_TYPE] AS [_Value2_TYPE], 
+[_AccRgAT210888].[_Value2_RTRef] AS [_Value2_RTRef], 
+[_AccRgAT210888].[_Value2_RRRef] AS [_Value2_RRRef], 
+[_AccRgAT210888].[_Fld10871] AS [_Fld10871], 
+[_AccRgAT210888].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+[_AccRgAT210888].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+[_AccRgAT210888].[_Turnover10883] AS [_Turnover10883], 
+[_AccRgAT210888].[_Fld10872] AS [_Fld10872], 
+[_AccRgAT210888].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+[_AccRgAT210888].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+[_AccRgAT210888].[_Turnover10886] AS [_Turnover10886], 
+[_AccRgAT210888].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT210888] AS [_AccRgAT210888]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT210917" EntityType="Self._AccRgAT210917" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT210917].[_Period] AS [_Period], 
+[_AccRgAT210917].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT210917].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRgAT210917].[_Fld10895RRef] AS [_Fld10895RRef], 
+[_AccRgAT210917].[_Fld11343RRef] AS [_Fld11343RRef], 
+[_AccRgAT210917].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT210917].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT210917].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT210917].[_Value2_TYPE] AS [_Value2_TYPE], 
+[_AccRgAT210917].[_Value2_RTRef] AS [_Value2_RTRef], 
+[_AccRgAT210917].[_Value2_RRRef] AS [_Value2_RRRef], 
+[_AccRgAT210917].[_Fld10896] AS [_Fld10896], 
+[_AccRgAT210917].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+[_AccRgAT210917].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+[_AccRgAT210917].[_Turnover10909] AS [_Turnover10909], 
+[_AccRgAT210917].[_Fld10897] AS [_Fld10897], 
+[_AccRgAT210917].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+[_AccRgAT210917].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+[_AccRgAT210917].[_Turnover10912] AS [_Turnover10912], 
+[_AccRgAT210917].[_Fld10898] AS [_Fld10898], 
+[_AccRgAT210917].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+[_AccRgAT210917].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+[_AccRgAT210917].[_Turnover10915] AS [_Turnover10915], 
+[_AccRgAT210917].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT210917] AS [_AccRgAT210917]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT310889" EntityType="Self._AccRgAT310889" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT310889].[_Period] AS [_Period], 
+[_AccRgAT310889].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT310889].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRgAT310889].[_Fld10870RRef] AS [_Fld10870RRef], 
+[_AccRgAT310889].[_Fld11340RRef] AS [_Fld11340RRef], 
+[_AccRgAT310889].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT310889].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT310889].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT310889].[_Value2_TYPE] AS [_Value2_TYPE], 
+[_AccRgAT310889].[_Value2_RTRef] AS [_Value2_RTRef], 
+[_AccRgAT310889].[_Value2_RRRef] AS [_Value2_RRRef], 
+[_AccRgAT310889].[_Value3_TYPE] AS [_Value3_TYPE], 
+[_AccRgAT310889].[_Value3_RTRef] AS [_Value3_RTRef], 
+[_AccRgAT310889].[_Value3_RRRef] AS [_Value3_RRRef], 
+[_AccRgAT310889].[_Fld10871] AS [_Fld10871], 
+[_AccRgAT310889].[_TurnoverDt10881] AS [_TurnoverDt10881], 
+[_AccRgAT310889].[_TurnoverCt10882] AS [_TurnoverCt10882], 
+[_AccRgAT310889].[_Turnover10883] AS [_Turnover10883], 
+[_AccRgAT310889].[_Fld10872] AS [_Fld10872], 
+[_AccRgAT310889].[_TurnoverDt10884] AS [_TurnoverDt10884], 
+[_AccRgAT310889].[_TurnoverCt10885] AS [_TurnoverCt10885], 
+[_AccRgAT310889].[_Turnover10886] AS [_Turnover10886], 
+[_AccRgAT310889].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT310889] AS [_AccRgAT310889]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgAT310918" EntityType="Self._AccRgAT310918" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgAT310918].[_Period] AS [_Period], 
+[_AccRgAT310918].[_AccountRRef] AS [_AccountRRef], 
+[_AccRgAT310918].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRgAT310918].[_Fld10895RRef] AS [_Fld10895RRef], 
+[_AccRgAT310918].[_Fld11343RRef] AS [_Fld11343RRef], 
+[_AccRgAT310918].[_Value1_TYPE] AS [_Value1_TYPE], 
+[_AccRgAT310918].[_Value1_RTRef] AS [_Value1_RTRef], 
+[_AccRgAT310918].[_Value1_RRRef] AS [_Value1_RRRef], 
+[_AccRgAT310918].[_Value2_TYPE] AS [_Value2_TYPE], 
+[_AccRgAT310918].[_Value2_RTRef] AS [_Value2_RTRef], 
+[_AccRgAT310918].[_Value2_RRRef] AS [_Value2_RRRef], 
+[_AccRgAT310918].[_Value3_TYPE] AS [_Value3_TYPE], 
+[_AccRgAT310918].[_Value3_RTRef] AS [_Value3_RTRef], 
+[_AccRgAT310918].[_Value3_RRRef] AS [_Value3_RRRef], 
+[_AccRgAT310918].[_Fld10896] AS [_Fld10896], 
+[_AccRgAT310918].[_TurnoverDt10907] AS [_TurnoverDt10907], 
+[_AccRgAT310918].[_TurnoverCt10908] AS [_TurnoverCt10908], 
+[_AccRgAT310918].[_Turnover10909] AS [_Turnover10909], 
+[_AccRgAT310918].[_Fld10897] AS [_Fld10897], 
+[_AccRgAT310918].[_TurnoverDt10910] AS [_TurnoverDt10910], 
+[_AccRgAT310918].[_TurnoverCt10911] AS [_TurnoverCt10911], 
+[_AccRgAT310918].[_Turnover10912] AS [_Turnover10912], 
+[_AccRgAT310918].[_Fld10898] AS [_Fld10898], 
+[_AccRgAT310918].[_TurnoverDt10913] AS [_TurnoverDt10913], 
+[_AccRgAT310918].[_TurnoverCt10914] AS [_TurnoverCt10914], 
+[_AccRgAT310918].[_Turnover10915] AS [_Turnover10915], 
+[_AccRgAT310918].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgAT310918] AS [_AccRgAT310918]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgChngR10892" EntityType="Self._AccRgChngR10892" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgChngR10892].[_NodeTRef] AS [_NodeTRef], 
+[_AccRgChngR10892].[_NodeRRef] AS [_NodeRRef], 
+[_AccRgChngR10892].[_MessageNo] AS [_MessageNo], 
+[_AccRgChngR10892].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRgChngR10892].[_RecorderRRef] AS [_RecorderRRef]
+FROM [dbo].[_AccRgChngR10892] AS [_AccRgChngR10892]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgChngR10921" EntityType="Self._AccRgChngR10921" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgChngR10921].[_NodeTRef] AS [_NodeTRef], 
+[_AccRgChngR10921].[_NodeRRef] AS [_NodeRRef], 
+[_AccRgChngR10921].[_MessageNo] AS [_MessageNo], 
+[_AccRgChngR10921].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRgChngR10921].[_RecorderRRef] AS [_RecorderRRef]
+FROM [dbo].[_AccRgChngR10921] AS [_AccRgChngR10921]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgCT10890" EntityType="Self._AccRgCT10890" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgCT10890].[_Period] AS [_Period], 
+[_AccRgCT10890].[_AccountDtRRef] AS [_AccountDtRRef], 
+[_AccRgCT10890].[_AccountCtRRef] AS [_AccountCtRRef], 
+[_AccRgCT10890].[_Fld10869RRef] AS [_Fld10869RRef], 
+[_AccRgCT10890].[_Fld10870DtRRef] AS [_Fld10870DtRRef], 
+[_AccRgCT10890].[_Fld10870CtRRef] AS [_Fld10870CtRRef], 
+[_AccRgCT10890].[_Fld11340DtRRef] AS [_Fld11340DtRRef], 
+[_AccRgCT10890].[_Fld11340CtRRef] AS [_Fld11340CtRRef], 
+[_AccRgCT10890].[_Fld10871] AS [_Fld10871], 
+[_AccRgCT10890].[_Fld10872Dt] AS [_Fld10872Dt], 
+[_AccRgCT10890].[_Fld10872Ct] AS [_Fld10872Ct], 
+[_AccRgCT10890].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgCT10890] AS [_AccRgCT10890]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgCT10919" EntityType="Self._AccRgCT10919" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgCT10919].[_Period] AS [_Period], 
+[_AccRgCT10919].[_AccountDtRRef] AS [_AccountDtRRef], 
+[_AccRgCT10919].[_AccountCtRRef] AS [_AccountCtRRef], 
+[_AccRgCT10919].[_Fld10894RRef] AS [_Fld10894RRef], 
+[_AccRgCT10919].[_Fld11343DtRRef] AS [_Fld11343DtRRef], 
+[_AccRgCT10919].[_Fld11343CtRRef] AS [_Fld11343CtRRef], 
+[_AccRgCT10919].[_Fld10895DtRRef] AS [_Fld10895DtRRef], 
+[_AccRgCT10919].[_Fld10895CtRRef] AS [_Fld10895CtRRef], 
+[_AccRgCT10919].[_Fld10896] AS [_Fld10896], 
+[_AccRgCT10919].[_Fld10897Dt] AS [_Fld10897Dt], 
+[_AccRgCT10919].[_Fld10897Ct] AS [_Fld10897Ct], 
+[_AccRgCT10919].[_Fld10898Dt] AS [_Fld10898Dt], 
+[_AccRgCT10919].[_Fld10898Ct] AS [_Fld10898Ct], 
+[_AccRgCT10919].[_Splitter] AS [_Splitter]
+FROM [dbo].[_AccRgCT10919] AS [_AccRgCT10919]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgED10891" EntityType="Self._AccRgED10891" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgED10891].[_Period] AS [_Period], 
+[_AccRgED10891].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRgED10891].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccRgED10891].[_LineNo] AS [_LineNo], 
+[_AccRgED10891].[_Correspond] AS [_Correspond], 
+[_AccRgED10891].[_KindRRef] AS [_KindRRef], 
+[_AccRgED10891].[_Value_TYPE] AS [_Value_TYPE], 
+[_AccRgED10891].[_Value_RTRef] AS [_Value_RTRef], 
+[_AccRgED10891].[_Value_RRRef] AS [_Value_RRRef]
+FROM [dbo].[_AccRgED10891] AS [_AccRgED10891]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgED10920" EntityType="Self._AccRgED10920" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgED10920].[_Period] AS [_Period], 
+[_AccRgED10920].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccRgED10920].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccRgED10920].[_LineNo] AS [_LineNo], 
+[_AccRgED10920].[_Correspond] AS [_Correspond], 
+[_AccRgED10920].[_KindRRef] AS [_KindRRef], 
+[_AccRgED10920].[_Value_TYPE] AS [_Value_TYPE], 
+[_AccRgED10920].[_Value_RTRef] AS [_Value_RTRef], 
+[_AccRgED10920].[_Value_RRRef] AS [_Value_RRRef]
+FROM [dbo].[_AccRgED10920] AS [_AccRgED10920]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccRgOpt" EntityType="Self._AccRgOpt" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccRgOpt].[_RegID] AS [_RegID], 
+[_AccRgOpt].[_Period] AS [_Period], 
+[_AccRgOpt].[_ActualPeriod] AS [_ActualPeriod], 
+[_AccRgOpt].[_Periodicity] AS [_Periodicity], 
+[_AccRgOpt].[_RepetitionFactor] AS [_RepetitionFactor], 
+[_AccRgOpt].[_UseTotals] AS [_UseTotals], 
+[_AccRgOpt].[_MinPeriod] AS [_MinPeriod], 
+[_AccRgOpt].[_UseSplitter] AS [_UseSplitter]
+FROM [dbo].[_AccRgOpt] AS [_AccRgOpt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_Seq10830" EntityType="Self._Seq10830" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_Seq10830].[_Period] AS [_Period], 
+[_Seq10830].[_RecorderTRef] AS [_RecorderTRef], 
+[_Seq10830].[_RecorderRRef] AS [_RecorderRRef]
+FROM [dbo].[_Seq10830] AS [_Seq10830]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_Seq10832" EntityType="Self._Seq10832" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_Seq10832].[_Period] AS [_Period], 
+[_Seq10832].[_RecorderTRef] AS [_RecorderTRef], 
+[_Seq10832].[_RecorderRRef] AS [_RecorderRRef], 
+[_Seq10832].[_Fld10833RRef] AS [_Fld10833RRef]
+FROM [dbo].[_Seq10832] AS [_Seq10832]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_SeqB10831" EntityType="Self._SeqB10831" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_SeqB10831].[_Period] AS [_Period], 
+[_SeqB10831].[_Recorder_TYPE] AS [_Recorder_TYPE], 
+[_SeqB10831].[_Recorder_RTRef] AS [_Recorder_RTRef], 
+[_SeqB10831].[_Recorder_RRRef] AS [_Recorder_RRRef]
+FROM [dbo].[_SeqB10831] AS [_SeqB10831]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_SeqB10834" EntityType="Self._SeqB10834" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_SeqB10834].[_Fld10833RRef] AS [_Fld10833RRef], 
+[_SeqB10834].[_Period] AS [_Period], 
+[_SeqB10834].[_Recorder_TYPE] AS [_Recorder_TYPE], 
+[_SeqB10834].[_Recorder_RTRef] AS [_Recorder_RTRef], 
+[_SeqB10834].[_Recorder_RRRef] AS [_Recorder_RRRef]
+FROM [dbo].[_SeqB10834] AS [_SeqB10834]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_YearOffset" EntityType="Self._YearOffset" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_YearOffset].[Offset] AS [Offset]
+FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="base1sModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_Acc10">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="C_Marked" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_IsMetadata" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_ParentIDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Code" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Description" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_OrderField" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Kind" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="C_OffBalance" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10860" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11339RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10861" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10862" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Acc9">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="C_Marked" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_IsMetadata" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_ParentIDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_OrderField" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Kind" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="C_OffBalance" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10855" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11337" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10856" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Acc9_ExtDim10857">
+          <Key>
+            <PropertyRef Name="C_Acc9_IDRRef" />
+            <PropertyRef Name="C_KeyField" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_DimKindRRef" />
+            <PropertyRef Name="C_DimIsMetadata" />
+            <PropertyRef Name="C_TurnoverOnly" />
+            <PropertyRef Name="C_Fld10858" />
+            <PropertyRef Name="C_Fld11338" />
+          </Key>
+          <Property Name="C_Acc9_IDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_KeyField" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_LineNo" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="C_DimKindRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_DimIsMetadata" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_TurnoverOnly" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10858" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11338" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccChngR10859">
+          <Key>
+            <PropertyRef Name="C_NodeTRef" />
+            <PropertyRef Name="C_NodeRRef" />
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_NodeTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_NodeRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_MessageNo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="C_IDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccChngR10867">
+          <Key>
+            <PropertyRef Name="C_NodeTRef" />
+            <PropertyRef Name="C_NodeRRef" />
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_NodeTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_NodeRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_MessageNo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="C_IDRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRg10868">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Active" />
+            <PropertyRef Name="C_AccountDtRRef" />
+            <PropertyRef Name="C_AccountCtRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870DtRRef" />
+            <PropertyRef Name="C_Fld10870CtRRef" />
+            <PropertyRef Name="C_Fld11340DtRRef" />
+            <PropertyRef Name="C_Fld11340CtRRef" />
+            <PropertyRef Name="C_Fld10871" />
+            <PropertyRef Name="C_Fld10873" />
+            <PropertyRef Name="C_Fld10874" />
+            <PropertyRef Name="C_Fld10875" />
+            <PropertyRef Name="C_Fld10876RRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="C_Active" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="C_Fld10872Dt" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="C_Fld10872Ct" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="C_Fld10873" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Fld10874" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Fld10875" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10876RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRg10893">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Active" />
+            <PropertyRef Name="C_AccountDtRRef" />
+            <PropertyRef Name="C_AccountCtRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343DtRRef" />
+            <PropertyRef Name="C_Fld11343CtRRef" />
+            <PropertyRef Name="C_Fld10896" />
+            <PropertyRef Name="C_Fld10899" />
+            <PropertyRef Name="C_Fld10900" />
+            <PropertyRef Name="C_Fld10901" />
+            <PropertyRef Name="C_Fld10902RRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="C_Active" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895DtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10895CtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld11343DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11343CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="C_Fld10897Dt" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="C_Fld10897Ct" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="C_Fld10898Dt" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="C_Fld10898Ct" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="C_Fld10899" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Fld10900" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C_Fld10901" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10902RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT010880">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870RRef" />
+            <PropertyRef Name="C_Fld11340RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT010906">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT110887">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870RRef" />
+            <PropertyRef Name="C_Fld11340RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT110916">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT210888">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870RRef" />
+            <PropertyRef Name="C_Fld11340RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value2_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value2_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value2_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT210917">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value2_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value2_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value2_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT310889">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870RRef" />
+            <PropertyRef Name="C_Fld11340RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value2_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value2_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value2_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value3_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value3_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value3_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgAT310918">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343RRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value2_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value2_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value2_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Value3_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Value3_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Value3_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgChngR10892">
+          <Key>
+            <PropertyRef Name="C_NodeTRef" />
+            <PropertyRef Name="C_NodeRRef" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+          </Key>
+          <Property Name="C_NodeTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_NodeRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_MessageNo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgChngR10921">
+          <Key>
+            <PropertyRef Name="C_NodeTRef" />
+            <PropertyRef Name="C_NodeRRef" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+          </Key>
+          <Property Name="C_NodeTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_NodeRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_MessageNo" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgCT10890">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountDtRRef" />
+            <PropertyRef Name="C_AccountCtRRef" />
+            <PropertyRef Name="C_Fld10869RRef" />
+            <PropertyRef Name="C_Fld10870DtRRef" />
+            <PropertyRef Name="C_Fld10870CtRRef" />
+            <PropertyRef Name="C_Fld11340DtRRef" />
+            <PropertyRef Name="C_Fld11340CtRRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10870CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11340CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10872Dt" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Fld10872Ct" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgCT10919">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_AccountDtRRef" />
+            <PropertyRef Name="C_AccountCtRRef" />
+            <PropertyRef Name="C_Fld10894RRef" />
+            <PropertyRef Name="C_Fld11343DtRRef" />
+            <PropertyRef Name="C_Fld11343CtRRef" />
+            <PropertyRef Name="C_Splitter" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11343DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld11343CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10895DtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10895CtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897Dt" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10897Ct" Type="Decimal" Precision="21" Scale="2" />
+          <Property Name="C_Fld10898Dt" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Fld10898Ct" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgED10891">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Correspond" />
+            <PropertyRef Name="C_KindRRef" />
+            <PropertyRef Name="C_Value_TYPE" />
+            <PropertyRef Name="C_Value_RTRef" />
+            <PropertyRef Name="C_Value_RRRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="C_Correspond" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="C_KindRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgED10920">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Correspond" />
+            <PropertyRef Name="C_KindRRef" />
+            <PropertyRef Name="C_Value_TYPE" />
+            <PropertyRef Name="C_Value_RTRef" />
+            <PropertyRef Name="C_Value_RRRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="C_Correspond" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="C_KindRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_Value_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_AccRgOpt">
+          <Key>
+            <PropertyRef Name="C_RegID" />
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_ActualPeriod" />
+            <PropertyRef Name="C_Periodicity" />
+            <PropertyRef Name="C_RepetitionFactor" />
+            <PropertyRef Name="C_UseTotals" />
+            <PropertyRef Name="C_MinPeriod" />
+            <PropertyRef Name="C_UseSplitter" />
+          </Key>
+          <Property Name="C_RegID" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_ActualPeriod" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Periodicity" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="C_RepetitionFactor" Type="Decimal" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="C_UseTotals" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="C_MinPeriod" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UseSplitter" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Seq10830">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Seq10832">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_Fld10833RRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Fld10833RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_SeqB10831">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_Recorder_TYPE" />
+            <PropertyRef Name="C_Recorder_RTRef" />
+            <PropertyRef Name="C_Recorder_RRRef" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Recorder_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Recorder_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_Recorder_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_SeqB10834">
+          <Key>
+            <PropertyRef Name="C_Fld10833RRef" />
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_Recorder_TYPE" />
+            <PropertyRef Name="C_Recorder_RTRef" />
+            <PropertyRef Name="C_Recorder_RRRef" />
+          </Key>
+          <Property Name="C_Fld10833RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Recorder_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="C_Recorder_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+          <Property Name="C_Recorder_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_YearOffset">
+          <Key>
+            <PropertyRef Name="Offset" />
+          </Key>
+          <Property Name="Offset" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_Acc10" EntityType="Self.C_Acc10" />
+          <EntitySet Name="C_Acc9" EntityType="Self.C_Acc9" />
+          <EntitySet Name="C_Acc9_ExtDim10857" EntityType="Self.C_Acc9_ExtDim10857" />
+          <EntitySet Name="C_AccChngR10859" EntityType="Self.C_AccChngR10859" />
+          <EntitySet Name="C_AccChngR10867" EntityType="Self.C_AccChngR10867" />
+          <EntitySet Name="C_AccRg10868" EntityType="Self.C_AccRg10868" />
+          <EntitySet Name="C_AccRg10893" EntityType="Self.C_AccRg10893" />
+          <EntitySet Name="C_AccRgAT010880" EntityType="Self.C_AccRgAT010880" />
+          <EntitySet Name="C_AccRgAT010906" EntityType="Self.C_AccRgAT010906" />
+          <EntitySet Name="C_AccRgAT110887" EntityType="Self.C_AccRgAT110887" />
+          <EntitySet Name="C_AccRgAT110916" EntityType="Self.C_AccRgAT110916" />
+          <EntitySet Name="C_AccRgAT210888" EntityType="Self.C_AccRgAT210888" />
+          <EntitySet Name="C_AccRgAT210917" EntityType="Self.C_AccRgAT210917" />
+          <EntitySet Name="C_AccRgAT310889" EntityType="Self.C_AccRgAT310889" />
+          <EntitySet Name="C_AccRgAT310918" EntityType="Self.C_AccRgAT310918" />
+          <EntitySet Name="C_AccRgChngR10892" EntityType="Self.C_AccRgChngR10892" />
+          <EntitySet Name="C_AccRgChngR10921" EntityType="Self.C_AccRgChngR10921" />
+          <EntitySet Name="C_AccRgCT10890" EntityType="Self.C_AccRgCT10890" />
+          <EntitySet Name="C_AccRgCT10919" EntityType="Self.C_AccRgCT10919" />
+          <EntitySet Name="C_AccRgED10891" EntityType="Self.C_AccRgED10891" />
+          <EntitySet Name="C_AccRgED10920" EntityType="Self.C_AccRgED10920" />
+          <EntitySet Name="C_AccRgOpt" EntityType="Self.C_AccRgOpt" />
+          <EntitySet Name="C_Seq10830" EntityType="Self.C_Seq10830" />
+          <EntitySet Name="C_Seq10832" EntityType="Self.C_Seq10832" />
+          <EntitySet Name="C_SeqB10831" EntityType="Self.C_SeqB10831" />
+          <EntitySet Name="C_SeqB10834" EntityType="Self.C_SeqB10834" />
+          <EntitySet Name="C_YearOffset" EntityType="Self.C_YearOffset" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="base1sModelStoreContainer" CdmEntityContainer="dbEntities">
+          <EntitySetMapping Name="C_Acc10">
+            <EntityTypeMapping TypeName="base1sModel.C_Acc10">
+              <MappingFragment StoreEntitySet="_Acc10">
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+                <ScalarProperty Name="C_Version" ColumnName="_Version" />
+                <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+                <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+                <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+                <ScalarProperty Name="C_Code" ColumnName="_Code" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_OrderField" ColumnName="_OrderField" />
+                <ScalarProperty Name="C_Kind" ColumnName="_Kind" />
+                <ScalarProperty Name="C_OffBalance" ColumnName="_OffBalance" />
+                <ScalarProperty Name="C_Fld10860" ColumnName="_Fld10860" />
+                <ScalarProperty Name="C_Fld11339RRef" ColumnName="_Fld11339RRef" />
+                <ScalarProperty Name="C_Fld10861" ColumnName="_Fld10861" />
+                <ScalarProperty Name="C_Fld10862" ColumnName="_Fld10862" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Acc9">
+            <EntityTypeMapping TypeName="base1sModel.C_Acc9">
+              <MappingFragment StoreEntitySet="_Acc9">
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+                <ScalarProperty Name="C_Version" ColumnName="_Version" />
+                <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+                <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+                <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+                <ScalarProperty Name="C_Code" ColumnName="_Code" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_OrderField" ColumnName="_OrderField" />
+                <ScalarProperty Name="C_Kind" ColumnName="_Kind" />
+                <ScalarProperty Name="C_OffBalance" ColumnName="_OffBalance" />
+                <ScalarProperty Name="C_Fld10855" ColumnName="_Fld10855" />
+                <ScalarProperty Name="C_Fld11337" ColumnName="_Fld11337" />
+                <ScalarProperty Name="C_Fld10856" ColumnName="_Fld10856" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Acc9_ExtDim10857">
+            <EntityTypeMapping TypeName="base1sModel.C_Acc9_ExtDim10857">
+              <MappingFragment StoreEntitySet="_Acc9_ExtDim10857">
+                <ScalarProperty Name="C_Acc9_IDRRef" ColumnName="_Acc9_IDRRef" />
+                <ScalarProperty Name="C_KeyField" ColumnName="_KeyField" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_DimKindRRef" ColumnName="_DimKindRRef" />
+                <ScalarProperty Name="C_DimIsMetadata" ColumnName="_DimIsMetadata" />
+                <ScalarProperty Name="C_TurnoverOnly" ColumnName="_TurnoverOnly" />
+                <ScalarProperty Name="C_Fld10858" ColumnName="_Fld10858" />
+                <ScalarProperty Name="C_Fld11338" ColumnName="_Fld11338" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccChngR10859">
+            <EntityTypeMapping TypeName="base1sModel.C_AccChngR10859">
+              <MappingFragment StoreEntitySet="_AccChngR10859">
+                <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+                <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+                <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccChngR10867">
+            <EntityTypeMapping TypeName="base1sModel.C_AccChngR10867">
+              <MappingFragment StoreEntitySet="_AccChngR10867">
+                <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+                <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+                <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRg10868">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRg10868">
+              <MappingFragment StoreEntitySet="_AccRg10868">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_Active" ColumnName="_Active" />
+                <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+                <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870DtRRef" ColumnName="_Fld10870DtRRef" />
+                <ScalarProperty Name="C_Fld10870CtRRef" ColumnName="_Fld10870CtRRef" />
+                <ScalarProperty Name="C_Fld11340DtRRef" ColumnName="_Fld11340DtRRef" />
+                <ScalarProperty Name="C_Fld11340CtRRef" ColumnName="_Fld11340CtRRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_Fld10872Dt" ColumnName="_Fld10872Dt" />
+                <ScalarProperty Name="C_Fld10872Ct" ColumnName="_Fld10872Ct" />
+                <ScalarProperty Name="C_Fld10873" ColumnName="_Fld10873" />
+                <ScalarProperty Name="C_Fld10874" ColumnName="_Fld10874" />
+                <ScalarProperty Name="C_Fld10875" ColumnName="_Fld10875" />
+                <ScalarProperty Name="C_Fld10876RRef" ColumnName="_Fld10876RRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRg10893">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRg10893">
+              <MappingFragment StoreEntitySet="_AccRg10893">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_Active" ColumnName="_Active" />
+                <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+                <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld10895DtRRef" ColumnName="_Fld10895DtRRef" />
+                <ScalarProperty Name="C_Fld10895CtRRef" ColumnName="_Fld10895CtRRef" />
+                <ScalarProperty Name="C_Fld11343DtRRef" ColumnName="_Fld11343DtRRef" />
+                <ScalarProperty Name="C_Fld11343CtRRef" ColumnName="_Fld11343CtRRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_Fld10897Dt" ColumnName="_Fld10897Dt" />
+                <ScalarProperty Name="C_Fld10897Ct" ColumnName="_Fld10897Ct" />
+                <ScalarProperty Name="C_Fld10898Dt" ColumnName="_Fld10898Dt" />
+                <ScalarProperty Name="C_Fld10898Ct" ColumnName="_Fld10898Ct" />
+                <ScalarProperty Name="C_Fld10899" ColumnName="_Fld10899" />
+                <ScalarProperty Name="C_Fld10900" ColumnName="_Fld10900" />
+                <ScalarProperty Name="C_Fld10901" ColumnName="_Fld10901" />
+                <ScalarProperty Name="C_Fld10902RRef" ColumnName="_Fld10902RRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT010880">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT010880">
+              <MappingFragment StoreEntitySet="_AccRgAT010880">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+                <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+                <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+                <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+                <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+                <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+                <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+                <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT010906">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT010906">
+              <MappingFragment StoreEntitySet="_AccRgAT010906">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+                <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+                <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+                <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+                <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+                <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+                <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+                <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+                <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+                <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+                <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+                <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT110887">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT110887">
+              <MappingFragment StoreEntitySet="_AccRgAT110887">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+                <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+                <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+                <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+                <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+                <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+                <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+                <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT110916">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT110916">
+              <MappingFragment StoreEntitySet="_AccRgAT110916">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+                <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+                <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+                <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+                <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+                <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+                <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+                <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+                <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+                <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+                <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+                <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT210888">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT210888">
+              <MappingFragment StoreEntitySet="_AccRgAT210888">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+                <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+                <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+                <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+                <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+                <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+                <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+                <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+                <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+                <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT210917">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT210917">
+              <MappingFragment StoreEntitySet="_AccRgAT210917">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+                <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+                <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+                <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+                <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+                <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+                <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+                <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+                <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+                <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+                <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+                <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+                <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+                <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT310889">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT310889">
+              <MappingFragment StoreEntitySet="_AccRgAT310889">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+                <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+                <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+                <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+                <ScalarProperty Name="C_Value3_TYPE" ColumnName="_Value3_TYPE" />
+                <ScalarProperty Name="C_Value3_RTRef" ColumnName="_Value3_RTRef" />
+                <ScalarProperty Name="C_Value3_RRRef" ColumnName="_Value3_RRRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+                <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+                <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+                <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+                <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+                <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+                <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgAT310918">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgAT310918">
+              <MappingFragment StoreEntitySet="_AccRgAT310918">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+                <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+                <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+                <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+                <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+                <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+                <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+                <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+                <ScalarProperty Name="C_Value3_TYPE" ColumnName="_Value3_TYPE" />
+                <ScalarProperty Name="C_Value3_RTRef" ColumnName="_Value3_RTRef" />
+                <ScalarProperty Name="C_Value3_RRRef" ColumnName="_Value3_RRRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+                <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+                <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+                <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+                <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+                <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+                <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+                <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+                <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+                <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+                <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgChngR10892">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgChngR10892">
+              <MappingFragment StoreEntitySet="_AccRgChngR10892">
+                <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+                <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+                <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgChngR10921">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgChngR10921">
+              <MappingFragment StoreEntitySet="_AccRgChngR10921">
+                <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+                <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+                <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgCT10890">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgCT10890">
+              <MappingFragment StoreEntitySet="_AccRgCT10890">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+                <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+                <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+                <ScalarProperty Name="C_Fld10870DtRRef" ColumnName="_Fld10870DtRRef" />
+                <ScalarProperty Name="C_Fld10870CtRRef" ColumnName="_Fld10870CtRRef" />
+                <ScalarProperty Name="C_Fld11340DtRRef" ColumnName="_Fld11340DtRRef" />
+                <ScalarProperty Name="C_Fld11340CtRRef" ColumnName="_Fld11340CtRRef" />
+                <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+                <ScalarProperty Name="C_Fld10872Dt" ColumnName="_Fld10872Dt" />
+                <ScalarProperty Name="C_Fld10872Ct" ColumnName="_Fld10872Ct" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgCT10919">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgCT10919">
+              <MappingFragment StoreEntitySet="_AccRgCT10919">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+                <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+                <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+                <ScalarProperty Name="C_Fld11343DtRRef" ColumnName="_Fld11343DtRRef" />
+                <ScalarProperty Name="C_Fld11343CtRRef" ColumnName="_Fld11343CtRRef" />
+                <ScalarProperty Name="C_Fld10895DtRRef" ColumnName="_Fld10895DtRRef" />
+                <ScalarProperty Name="C_Fld10895CtRRef" ColumnName="_Fld10895CtRRef" />
+                <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+                <ScalarProperty Name="C_Fld10897Dt" ColumnName="_Fld10897Dt" />
+                <ScalarProperty Name="C_Fld10897Ct" ColumnName="_Fld10897Ct" />
+                <ScalarProperty Name="C_Fld10898Dt" ColumnName="_Fld10898Dt" />
+                <ScalarProperty Name="C_Fld10898Ct" ColumnName="_Fld10898Ct" />
+                <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgED10891">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgED10891">
+              <MappingFragment StoreEntitySet="_AccRgED10891">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_Correspond" ColumnName="_Correspond" />
+                <ScalarProperty Name="C_KindRRef" ColumnName="_KindRRef" />
+                <ScalarProperty Name="C_Value_TYPE" ColumnName="_Value_TYPE" />
+                <ScalarProperty Name="C_Value_RTRef" ColumnName="_Value_RTRef" />
+                <ScalarProperty Name="C_Value_RRRef" ColumnName="_Value_RRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgED10920">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgED10920">
+              <MappingFragment StoreEntitySet="_AccRgED10920">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_Correspond" ColumnName="_Correspond" />
+                <ScalarProperty Name="C_KindRRef" ColumnName="_KindRRef" />
+                <ScalarProperty Name="C_Value_TYPE" ColumnName="_Value_TYPE" />
+                <ScalarProperty Name="C_Value_RTRef" ColumnName="_Value_RTRef" />
+                <ScalarProperty Name="C_Value_RRRef" ColumnName="_Value_RRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccRgOpt">
+            <EntityTypeMapping TypeName="base1sModel.C_AccRgOpt">
+              <MappingFragment StoreEntitySet="_AccRgOpt">
+                <ScalarProperty Name="C_RegID" ColumnName="_RegID" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_ActualPeriod" ColumnName="_ActualPeriod" />
+                <ScalarProperty Name="C_Periodicity" ColumnName="_Periodicity" />
+                <ScalarProperty Name="C_RepetitionFactor" ColumnName="_RepetitionFactor" />
+                <ScalarProperty Name="C_UseTotals" ColumnName="_UseTotals" />
+                <ScalarProperty Name="C_MinPeriod" ColumnName="_MinPeriod" />
+                <ScalarProperty Name="C_UseSplitter" ColumnName="_UseSplitter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Seq10830">
+            <EntityTypeMapping TypeName="base1sModel.C_Seq10830">
+              <MappingFragment StoreEntitySet="_Seq10830">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Seq10832">
+            <EntityTypeMapping TypeName="base1sModel.C_Seq10832">
+              <MappingFragment StoreEntitySet="_Seq10832">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_Fld10833RRef" ColumnName="_Fld10833RRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_SeqB10831">
+            <EntityTypeMapping TypeName="base1sModel.C_SeqB10831">
+              <MappingFragment StoreEntitySet="_SeqB10831">
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_Recorder_TYPE" ColumnName="_Recorder_TYPE" />
+                <ScalarProperty Name="C_Recorder_RTRef" ColumnName="_Recorder_RTRef" />
+                <ScalarProperty Name="C_Recorder_RRRef" ColumnName="_Recorder_RRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_SeqB10834">
+            <EntityTypeMapping TypeName="base1sModel.C_SeqB10834">
+              <MappingFragment StoreEntitySet="_SeqB10834">
+                <ScalarProperty Name="C_Fld10833RRef" ColumnName="_Fld10833RRef" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+                <ScalarProperty Name="C_Recorder_TYPE" ColumnName="_Recorder_TYPE" />
+                <ScalarProperty Name="C_Recorder_RTRef" ColumnName="_Recorder_RTRef" />
+                <ScalarProperty Name="C_Recorder_RRRef" ColumnName="_Recorder_RRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_YearOffset">
+            <EntityTypeMapping TypeName="base1sModel.C_YearOffset">
+              <MappingFragment StoreEntitySet="_YearOffset">
+                <ScalarProperty Name="Offset" ColumnName="Offset" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

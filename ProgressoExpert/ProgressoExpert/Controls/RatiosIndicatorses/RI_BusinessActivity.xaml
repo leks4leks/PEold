@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="ProgressoExpert.Controls.RatiosIndicatorses.RI_BusinessActivity"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ProgressoExpert;component/Themes/MDT.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/ProgressoExpert;component/Themes/MDT.Rectangle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DropShadowEffect x:Key="z-depth4" BlurRadius="25" ShadowDepth="8" Direction="270" Color="#BBBBBB"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border Effect="{StaticResource z-depth4}" Margin="5">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid  Name="BusinessActivityGrid" Visibility="Hidden" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="450" />
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle  Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource MDTRectangleWhite}"/>
+                    <Rectangle  Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource MDTRectangleGreen}"/>
+                    <Rectangle  Grid.Row="0" Grid.Column="2" Grid.RowSpan="6" Style="{StaticResource MDTRectangleBlue}"/>
+
+                    <TextBlock  Text="Коэффициент оборачиваемости запасов (кол-во раз в мес.)" Grid.Row="0" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Скорость товарооборота, дни" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Коэффициент оборачиваемости ДЗ (кол-во раз в мес.)" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Срок оборота дебиторской задолженности, дни" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Коэффициент оборачиваемости КЗ (кол-во раз в мес.)" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Срок оборота  кредиторской задолженности, дни" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+
+                    <TextBlock  Text="0,5"   Grid.Row="0" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="60"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="2"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="15"  Grid.Row="3" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="0,33"  Grid.Row="4" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="90"   Grid.Row="5" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+
+                    <TextBlock  Text=" 0,14"  Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text=" 207,36"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text=" 1,30"  Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text=" 30,65"  Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="1,26"  Grid.Row="4" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="23,79"  Grid.Row="5" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+
+                </Grid>
+                <Grid  Name="nodataBusinessActivityGrid" Visibility="Visible" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="450" />
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle  Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Style="{StaticResource MDTRectangleWhite}"/>
+                    <Rectangle  Grid.Row="0" Grid.Column="1" Grid.RowSpan="6" Style="{StaticResource MDTRectangleGreen}"/>
+                    <Rectangle  Grid.Row="0" Grid.Column="2" Grid.RowSpan="6" Style="{StaticResource MDTRectangleBlue}"/>
+
+                    <TextBlock  Text="Коэффициент оборачиваемости запасов (кол-во раз в мес.)" Grid.Row="0" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Скорость товарооборота, дни" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Коэффициент оборачиваемости ДЗ (кол-во раз в мес.)" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Срок оборота дебиторской задолженности, дни" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Коэффициент оборачиваемости КЗ (кол-во раз в мес.)" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Срок оборота  кредиторской задолженности, дни" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+
+
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

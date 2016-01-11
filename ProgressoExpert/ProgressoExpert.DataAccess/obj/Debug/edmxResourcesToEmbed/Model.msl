@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="base1sModelStoreContainer" CdmEntityContainer="dbEntities">
+    <EntitySetMapping Name="C_Acc10">
+      <EntityTypeMapping TypeName="base1sModel.C_Acc10">
+        <MappingFragment StoreEntitySet="_Acc10">
+          <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+          <ScalarProperty Name="C_Version" ColumnName="_Version" />
+          <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+          <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+          <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+          <ScalarProperty Name="C_Code" ColumnName="_Code" />
+          <ScalarProperty Name="C_Description" ColumnName="_Description" />
+          <ScalarProperty Name="C_OrderField" ColumnName="_OrderField" />
+          <ScalarProperty Name="C_Kind" ColumnName="_Kind" />
+          <ScalarProperty Name="C_OffBalance" ColumnName="_OffBalance" />
+          <ScalarProperty Name="C_Fld10860" ColumnName="_Fld10860" />
+          <ScalarProperty Name="C_Fld11339RRef" ColumnName="_Fld11339RRef" />
+          <ScalarProperty Name="C_Fld10861" ColumnName="_Fld10861" />
+          <ScalarProperty Name="C_Fld10862" ColumnName="_Fld10862" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Acc9">
+      <EntityTypeMapping TypeName="base1sModel.C_Acc9">
+        <MappingFragment StoreEntitySet="_Acc9">
+          <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+          <ScalarProperty Name="C_Version" ColumnName="_Version" />
+          <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+          <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+          <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+          <ScalarProperty Name="C_Code" ColumnName="_Code" />
+          <ScalarProperty Name="C_Description" ColumnName="_Description" />
+          <ScalarProperty Name="C_OrderField" ColumnName="_OrderField" />
+          <ScalarProperty Name="C_Kind" ColumnName="_Kind" />
+          <ScalarProperty Name="C_OffBalance" ColumnName="_OffBalance" />
+          <ScalarProperty Name="C_Fld10855" ColumnName="_Fld10855" />
+          <ScalarProperty Name="C_Fld11337" ColumnName="_Fld11337" />
+          <ScalarProperty Name="C_Fld10856" ColumnName="_Fld10856" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Acc9_ExtDim10857">
+      <EntityTypeMapping TypeName="base1sModel.C_Acc9_ExtDim10857">
+        <MappingFragment StoreEntitySet="_Acc9_ExtDim10857">
+          <ScalarProperty Name="C_Acc9_IDRRef" ColumnName="_Acc9_IDRRef" />
+          <ScalarProperty Name="C_KeyField" ColumnName="_KeyField" />
+          <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+          <ScalarProperty Name="C_DimKindRRef" ColumnName="_DimKindRRef" />
+          <ScalarProperty Name="C_DimIsMetadata" ColumnName="_DimIsMetadata" />
+          <ScalarProperty Name="C_TurnoverOnly" ColumnName="_TurnoverOnly" />
+          <ScalarProperty Name="C_Fld10858" ColumnName="_Fld10858" />
+          <ScalarProperty Name="C_Fld11338" ColumnName="_Fld11338" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccChngR10859">
+      <EntityTypeMapping TypeName="base1sModel.C_AccChngR10859">
+        <MappingFragment StoreEntitySet="_AccChngR10859">
+          <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+          <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+          <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+          <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccChngR10867">
+      <EntityTypeMapping TypeName="base1sModel.C_AccChngR10867">
+        <MappingFragment StoreEntitySet="_AccChngR10867">
+          <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+          <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+          <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+          <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRg10868">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRg10868">
+        <MappingFragment StoreEntitySet="_AccRg10868">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+          <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+          <ScalarProperty Name="C_Active" ColumnName="_Active" />
+          <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+          <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870DtRRef" ColumnName="_Fld10870DtRRef" />
+          <ScalarProperty Name="C_Fld10870CtRRef" ColumnName="_Fld10870CtRRef" />
+          <ScalarProperty Name="C_Fld11340DtRRef" ColumnName="_Fld11340DtRRef" />
+          <ScalarProperty Name="C_Fld11340CtRRef" ColumnName="_Fld11340CtRRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_Fld10872Dt" ColumnName="_Fld10872Dt" />
+          <ScalarProperty Name="C_Fld10872Ct" ColumnName="_Fld10872Ct" />
+          <ScalarProperty Name="C_Fld10873" ColumnName="_Fld10873" />
+          <ScalarProperty Name="C_Fld10874" ColumnName="_Fld10874" />
+          <ScalarProperty Name="C_Fld10875" ColumnName="_Fld10875" />
+          <ScalarProperty Name="C_Fld10876RRef" ColumnName="_Fld10876RRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRg10893">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRg10893">
+        <MappingFragment StoreEntitySet="_AccRg10893">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+          <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+          <ScalarProperty Name="C_Active" ColumnName="_Active" />
+          <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+          <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld10895DtRRef" ColumnName="_Fld10895DtRRef" />
+          <ScalarProperty Name="C_Fld10895CtRRef" ColumnName="_Fld10895CtRRef" />
+          <ScalarProperty Name="C_Fld11343DtRRef" ColumnName="_Fld11343DtRRef" />
+          <ScalarProperty Name="C_Fld11343CtRRef" ColumnName="_Fld11343CtRRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_Fld10897Dt" ColumnName="_Fld10897Dt" />
+          <ScalarProperty Name="C_Fld10897Ct" ColumnName="_Fld10897Ct" />
+          <ScalarProperty Name="C_Fld10898Dt" ColumnName="_Fld10898Dt" />
+          <ScalarProperty Name="C_Fld10898Ct" ColumnName="_Fld10898Ct" />
+          <ScalarProperty Name="C_Fld10899" ColumnName="_Fld10899" />
+          <ScalarProperty Name="C_Fld10900" ColumnName="_Fld10900" />
+          <ScalarProperty Name="C_Fld10901" ColumnName="_Fld10901" />
+          <ScalarProperty Name="C_Fld10902RRef" ColumnName="_Fld10902RRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT010880">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT010880">
+        <MappingFragment StoreEntitySet="_AccRgAT010880">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+          <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+          <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+          <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+          <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+          <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+          <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+          <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT010906">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT010906">
+        <MappingFragment StoreEntitySet="_AccRgAT010906">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+          <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+          <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+          <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+          <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+          <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+          <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+          <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+          <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+          <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+          <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+          <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT110887">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT110887">
+        <MappingFragment StoreEntitySet="_AccRgAT110887">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+          <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+          <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+          <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+          <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+          <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+          <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+          <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT110916">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT110916">
+        <MappingFragment StoreEntitySet="_AccRgAT110916">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+          <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+          <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+          <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+          <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+          <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+          <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+          <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+          <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+          <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+          <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+          <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT210888">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT210888">
+        <MappingFragment StoreEntitySet="_AccRgAT210888">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+          <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+          <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+          <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+          <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+          <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+          <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+          <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+          <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+          <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT210917">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT210917">
+        <MappingFragment StoreEntitySet="_AccRgAT210917">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+          <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+          <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+          <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+          <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+          <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+          <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+          <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+          <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+          <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+          <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+          <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+          <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+          <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT310889">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT310889">
+        <MappingFragment StoreEntitySet="_AccRgAT310889">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870RRef" ColumnName="_Fld10870RRef" />
+          <ScalarProperty Name="C_Fld11340RRef" ColumnName="_Fld11340RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+          <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+          <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+          <ScalarProperty Name="C_Value3_TYPE" ColumnName="_Value3_TYPE" />
+          <ScalarProperty Name="C_Value3_RTRef" ColumnName="_Value3_RTRef" />
+          <ScalarProperty Name="C_Value3_RRRef" ColumnName="_Value3_RRRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_TurnoverDt10881" ColumnName="_TurnoverDt10881" />
+          <ScalarProperty Name="C_TurnoverCt10882" ColumnName="_TurnoverCt10882" />
+          <ScalarProperty Name="C_Turnover10883" ColumnName="_Turnover10883" />
+          <ScalarProperty Name="C_Fld10872" ColumnName="_Fld10872" />
+          <ScalarProperty Name="C_TurnoverDt10884" ColumnName="_TurnoverDt10884" />
+          <ScalarProperty Name="C_TurnoverCt10885" ColumnName="_TurnoverCt10885" />
+          <ScalarProperty Name="C_Turnover10886" ColumnName="_Turnover10886" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgAT310918">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgAT310918">
+        <MappingFragment StoreEntitySet="_AccRgAT310918">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountRRef" ColumnName="_AccountRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld10895RRef" ColumnName="_Fld10895RRef" />
+          <ScalarProperty Name="C_Fld11343RRef" ColumnName="_Fld11343RRef" />
+          <ScalarProperty Name="C_Value1_TYPE" ColumnName="_Value1_TYPE" />
+          <ScalarProperty Name="C_Value1_RTRef" ColumnName="_Value1_RTRef" />
+          <ScalarProperty Name="C_Value1_RRRef" ColumnName="_Value1_RRRef" />
+          <ScalarProperty Name="C_Value2_TYPE" ColumnName="_Value2_TYPE" />
+          <ScalarProperty Name="C_Value2_RTRef" ColumnName="_Value2_RTRef" />
+          <ScalarProperty Name="C_Value2_RRRef" ColumnName="_Value2_RRRef" />
+          <ScalarProperty Name="C_Value3_TYPE" ColumnName="_Value3_TYPE" />
+          <ScalarProperty Name="C_Value3_RTRef" ColumnName="_Value3_RTRef" />
+          <ScalarProperty Name="C_Value3_RRRef" ColumnName="_Value3_RRRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_TurnoverDt10907" ColumnName="_TurnoverDt10907" />
+          <ScalarProperty Name="C_TurnoverCt10908" ColumnName="_TurnoverCt10908" />
+          <ScalarProperty Name="C_Turnover10909" ColumnName="_Turnover10909" />
+          <ScalarProperty Name="C_Fld10897" ColumnName="_Fld10897" />
+          <ScalarProperty Name="C_TurnoverDt10910" ColumnName="_TurnoverDt10910" />
+          <ScalarProperty Name="C_TurnoverCt10911" ColumnName="_TurnoverCt10911" />
+          <ScalarProperty Name="C_Turnover10912" ColumnName="_Turnover10912" />
+          <ScalarProperty Name="C_Fld10898" ColumnName="_Fld10898" />
+          <ScalarProperty Name="C_TurnoverDt10913" ColumnName="_TurnoverDt10913" />
+          <ScalarProperty Name="C_TurnoverCt10914" ColumnName="_TurnoverCt10914" />
+          <ScalarProperty Name="C_Turnover10915" ColumnName="_Turnover10915" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgChngR10892">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgChngR10892">
+        <MappingFragment StoreEntitySet="_AccRgChngR10892">
+          <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+          <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+          <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgChngR10921">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgChngR10921">
+        <MappingFragment StoreEntitySet="_AccRgChngR10921">
+          <ScalarProperty Name="C_NodeTRef" ColumnName="_NodeTRef" />
+          <ScalarProperty Name="C_NodeRRef" ColumnName="_NodeRRef" />
+          <ScalarProperty Name="C_MessageNo" ColumnName="_MessageNo" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgCT10890">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgCT10890">
+        <MappingFragment StoreEntitySet="_AccRgCT10890">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+          <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+          <ScalarProperty Name="C_Fld10869RRef" ColumnName="_Fld10869RRef" />
+          <ScalarProperty Name="C_Fld10870DtRRef" ColumnName="_Fld10870DtRRef" />
+          <ScalarProperty Name="C_Fld10870CtRRef" ColumnName="_Fld10870CtRRef" />
+          <ScalarProperty Name="C_Fld11340DtRRef" ColumnName="_Fld11340DtRRef" />
+          <ScalarProperty Name="C_Fld11340CtRRef" ColumnName="_Fld11340CtRRef" />
+          <ScalarProperty Name="C_Fld10871" ColumnName="_Fld10871" />
+          <ScalarProperty Name="C_Fld10872Dt" ColumnName="_Fld10872Dt" />
+          <ScalarProperty Name="C_Fld10872Ct" ColumnName="_Fld10872Ct" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgCT10919">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgCT10919">
+        <MappingFragment StoreEntitySet="_AccRgCT10919">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_AccountDtRRef" ColumnName="_AccountDtRRef" />
+          <ScalarProperty Name="C_AccountCtRRef" ColumnName="_AccountCtRRef" />
+          <ScalarProperty Name="C_Fld10894RRef" ColumnName="_Fld10894RRef" />
+          <ScalarProperty Name="C_Fld11343DtRRef" ColumnName="_Fld11343DtRRef" />
+          <ScalarProperty Name="C_Fld11343CtRRef" ColumnName="_Fld11343CtRRef" />
+          <ScalarProperty Name="C_Fld10895DtRRef" ColumnName="_Fld10895DtRRef" />
+          <ScalarProperty Name="C_Fld10895CtRRef" ColumnName="_Fld10895CtRRef" />
+          <ScalarProperty Name="C_Fld10896" ColumnName="_Fld10896" />
+          <ScalarProperty Name="C_Fld10897Dt" ColumnName="_Fld10897Dt" />
+          <ScalarProperty Name="C_Fld10897Ct" ColumnName="_Fld10897Ct" />
+          <ScalarProperty Name="C_Fld10898Dt" ColumnName="_Fld10898Dt" />
+          <ScalarProperty Name="C_Fld10898Ct" ColumnName="_Fld10898Ct" />
+          <ScalarProperty Name="C_Splitter" ColumnName="_Splitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgED10891">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgED10891">
+        <MappingFragment StoreEntitySet="_AccRgED10891">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+          <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+          <ScalarProperty Name="C_Correspond" ColumnName="_Correspond" />
+          <ScalarProperty Name="C_KindRRef" ColumnName="_KindRRef" />
+          <ScalarProperty Name="C_Value_TYPE" ColumnName="_Value_TYPE" />
+          <ScalarProperty Name="C_Value_RTRef" ColumnName="_Value_RTRef" />
+          <ScalarProperty Name="C_Value_RRRef" ColumnName="_Value_RRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgED10920">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgED10920">
+        <MappingFragment StoreEntitySet="_AccRgED10920">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+          <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+          <ScalarProperty Name="C_Correspond" ColumnName="_Correspond" />
+          <ScalarProperty Name="C_KindRRef" ColumnName="_KindRRef" />
+          <ScalarProperty Name="C_Value_TYPE" ColumnName="_Value_TYPE" />
+          <ScalarProperty Name="C_Value_RTRef" ColumnName="_Value_RTRef" />
+          <ScalarProperty Name="C_Value_RRRef" ColumnName="_Value_RRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_AccRgOpt">
+      <EntityTypeMapping TypeName="base1sModel.C_AccRgOpt">
+        <MappingFragment StoreEntitySet="_AccRgOpt">
+          <ScalarProperty Name="C_RegID" ColumnName="_RegID" />
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_ActualPeriod" ColumnName="_ActualPeriod" />
+          <ScalarProperty Name="C_Periodicity" ColumnName="_Periodicity" />
+          <ScalarProperty Name="C_RepetitionFactor" ColumnName="_RepetitionFactor" />
+          <ScalarProperty Name="C_UseTotals" ColumnName="_UseTotals" />
+          <ScalarProperty Name="C_MinPeriod" ColumnName="_MinPeriod" />
+          <ScalarProperty Name="C_UseSplitter" ColumnName="_UseSplitter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Seq10830">
+      <EntityTypeMapping TypeName="base1sModel.C_Seq10830">
+        <MappingFragment StoreEntitySet="_Seq10830">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_Seq10832">
+      <EntityTypeMapping TypeName="base1sModel.C_Seq10832">
+        <MappingFragment StoreEntitySet="_Seq10832">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+          <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+          <ScalarProperty Name="C_Fld10833RRef" ColumnName="_Fld10833RRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_SeqB10831">
+      <EntityTypeMapping TypeName="base1sModel.C_SeqB10831">
+        <MappingFragment StoreEntitySet="_SeqB10831">
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_Recorder_TYPE" ColumnName="_Recorder_TYPE" />
+          <ScalarProperty Name="C_Recorder_RTRef" ColumnName="_Recorder_RTRef" />
+          <ScalarProperty Name="C_Recorder_RRRef" ColumnName="_Recorder_RRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_SeqB10834">
+      <EntityTypeMapping TypeName="base1sModel.C_SeqB10834">
+        <MappingFragment StoreEntitySet="_SeqB10834">
+          <ScalarProperty Name="C_Fld10833RRef" ColumnName="_Fld10833RRef" />
+          <ScalarProperty Name="C_Period" ColumnName="_Period" />
+          <ScalarProperty Name="C_Recorder_TYPE" ColumnName="_Recorder_TYPE" />
+          <ScalarProperty Name="C_Recorder_RTRef" ColumnName="_Recorder_RTRef" />
+          <ScalarProperty Name="C_Recorder_RRRef" ColumnName="_Recorder_RRRef" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C_YearOffset">
+      <EntityTypeMapping TypeName="base1sModel.C_YearOffset">
+        <MappingFragment StoreEntitySet="_YearOffset">
+          <ScalarProperty Name="Offset" ColumnName="Offset" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

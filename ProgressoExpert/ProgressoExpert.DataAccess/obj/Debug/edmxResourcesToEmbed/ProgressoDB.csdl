@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="base1sModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C_AccRg10868">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+      <PropertyRef Name="C_LineNo" />
+      <PropertyRef Name="C_Active" />
+      <PropertyRef Name="C_AccountDtRRef" />
+      <PropertyRef Name="C_AccountCtRRef" />
+      <PropertyRef Name="C_Fld10869RRef" />
+      <PropertyRef Name="C_Fld10870DtRRef" />
+      <PropertyRef Name="C_Fld10870CtRRef" />
+      <PropertyRef Name="C_Fld11340DtRRef" />
+      <PropertyRef Name="C_Fld11340CtRRef" />
+      <PropertyRef Name="C_Fld10871" />
+      <PropertyRef Name="C_Fld10873" />
+      <PropertyRef Name="C_Fld10874" />
+      <PropertyRef Name="C_Fld10875" />
+      <PropertyRef Name="C_Fld10876RRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="C_Active" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10871" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="C_Fld10872Dt" Type="Decimal" Precision="15" Scale="3" />
+    <Property Name="C_Fld10872Ct" Type="Decimal" Precision="15" Scale="3" />
+    <Property Name="C_Fld10873" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Fld10874" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Fld10875" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10876RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRg10893">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+      <PropertyRef Name="C_LineNo" />
+      <PropertyRef Name="C_Active" />
+      <PropertyRef Name="C_AccountDtRRef" />
+      <PropertyRef Name="C_AccountCtRRef" />
+      <PropertyRef Name="C_Fld10894RRef" />
+      <PropertyRef Name="C_Fld11343DtRRef" />
+      <PropertyRef Name="C_Fld11343CtRRef" />
+      <PropertyRef Name="C_Fld10896" />
+      <PropertyRef Name="C_Fld10899" />
+      <PropertyRef Name="C_Fld10900" />
+      <PropertyRef Name="C_Fld10901" />
+      <PropertyRef Name="C_Fld10902RRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="C_Active" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10895DtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld10895CtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld11343DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11343CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10896" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="C_Fld10897Dt" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="C_Fld10897Ct" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="C_Fld10898Dt" Type="Decimal" Precision="15" Scale="3" />
+    <Property Name="C_Fld10898Ct" Type="Decimal" Precision="15" Scale="3" />
+    <Property Name="C_Fld10899" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Fld10900" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="C_Fld10901" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10902RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgAT010880">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountRRef" />
+      <PropertyRef Name="C_Fld10869RRef" />
+      <PropertyRef Name="C_Fld10870RRef" />
+      <PropertyRef Name="C_Fld11340RRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgAT010906">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountRRef" />
+      <PropertyRef Name="C_Fld10894RRef" />
+      <PropertyRef Name="C_Fld11343RRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgAT110887">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountRRef" />
+      <PropertyRef Name="C_Fld10869RRef" />
+      <PropertyRef Name="C_Fld10870RRef" />
+      <PropertyRef Name="C_Fld11340RRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+    <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+    <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10881" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10882" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10883" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10872" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverDt10884" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverCt10885" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Turnover10886" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgAT110916">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountRRef" />
+      <PropertyRef Name="C_Fld10894RRef" />
+      <PropertyRef Name="C_Fld11343RRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10895RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld11343RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value1_TYPE" Type="Binary" MaxLength="1" FixedLength="true" />
+    <Property Name="C_Value1_RTRef" Type="Binary" MaxLength="4" FixedLength="true" />
+    <Property Name="C_Value1_RRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10907" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10908" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10909" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10897" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverDt10910" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_TurnoverCt10911" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Turnover10912" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10898" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverDt10913" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_TurnoverCt10914" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Turnover10915" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgCT10890">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountDtRRef" />
+      <PropertyRef Name="C_AccountCtRRef" />
+      <PropertyRef Name="C_Fld10869RRef" />
+      <PropertyRef Name="C_Fld10870DtRRef" />
+      <PropertyRef Name="C_Fld10870CtRRef" />
+      <PropertyRef Name="C_Fld11340DtRRef" />
+      <PropertyRef Name="C_Fld11340CtRRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10869RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10870CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11340CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10871" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10872Dt" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Fld10872Ct" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgCT10919">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_AccountDtRRef" />
+      <PropertyRef Name="C_AccountCtRRef" />
+      <PropertyRef Name="C_Fld10894RRef" />
+      <PropertyRef Name="C_Fld11343DtRRef" />
+      <PropertyRef Name="C_Fld11343CtRRef" />
+      <PropertyRef Name="C_Splitter" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_AccountDtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_AccountCtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10894RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11343DtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld11343CtRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10895DtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld10895CtRRef" Type="Binary" MaxLength="16" FixedLength="true" />
+    <Property Name="C_Fld10896" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10897Dt" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10897Ct" Type="Decimal" Precision="21" Scale="2" />
+    <Property Name="C_Fld10898Dt" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Fld10898Ct" Type="Decimal" Precision="21" Scale="3" />
+    <Property Name="C_Splitter" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgED10891">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+      <PropertyRef Name="C_LineNo" />
+      <PropertyRef Name="C_Correspond" />
+      <PropertyRef Name="C_KindRRef" />
+      <PropertyRef Name="C_Value_TYPE" />
+      <PropertyRef Name="C_Value_RTRef" />
+      <PropertyRef Name="C_Value_RRRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="C_Correspond" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="C_KindRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_AccRgED10920">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+      <PropertyRef Name="C_LineNo" />
+      <PropertyRef Name="C_Correspond" />
+      <PropertyRef Name="C_KindRRef" />
+      <PropertyRef Name="C_Value_TYPE" />
+      <PropertyRef Name="C_Value_RTRef" />
+      <PropertyRef Name="C_Value_RRRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_LineNo" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="C_Correspond" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="C_KindRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_Value_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_Seq10830">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_Seq10832">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_RecorderTRef" />
+      <PropertyRef Name="C_RecorderRRef" />
+      <PropertyRef Name="C_Fld10833RRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_RecorderTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_RecorderRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Fld10833RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_SeqB10831">
+    <Key>
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_Recorder_TYPE" />
+      <PropertyRef Name="C_Recorder_RTRef" />
+      <PropertyRef Name="C_Recorder_RRRef" />
+    </Key>
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_Recorder_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Recorder_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_Recorder_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="C_SeqB10834">
+    <Key>
+      <PropertyRef Name="C_Fld10833RRef" />
+      <PropertyRef Name="C_Period" />
+      <PropertyRef Name="C_Recorder_TYPE" />
+      <PropertyRef Name="C_Recorder_RTRef" />
+      <PropertyRef Name="C_Recorder_RRRef" />
+    </Key>
+    <Property Name="C_Fld10833RRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+    <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="C_Recorder_TYPE" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+    <Property Name="C_Recorder_RTRef" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
+    <Property Name="C_Recorder_RRRef" Type="Binary" MaxLength="16" FixedLength="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="base1sEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C_AccRg10868" EntityType="Self.C_AccRg10868" />
+    <EntitySet Name="C_AccRg10893" EntityType="Self.C_AccRg10893" />
+    <EntitySet Name="C_AccRgAT010880" EntityType="Self.C_AccRgAT010880" />
+    <EntitySet Name="C_AccRgAT010906" EntityType="Self.C_AccRgAT010906" />
+    <EntitySet Name="C_AccRgAT110887" EntityType="Self.C_AccRgAT110887" />
+    <EntitySet Name="C_AccRgAT110916" EntityType="Self.C_AccRgAT110916" />
+    <EntitySet Name="C_AccRgCT10890" EntityType="Self.C_AccRgCT10890" />
+    <EntitySet Name="C_AccRgCT10919" EntityType="Self.C_AccRgCT10919" />
+    <EntitySet Name="C_AccRgED10891" EntityType="Self.C_AccRgED10891" />
+    <EntitySet Name="C_AccRgED10920" EntityType="Self.C_AccRgED10920" />
+    <EntitySet Name="C_Seq10830" EntityType="Self.C_Seq10830" />
+    <EntitySet Name="C_Seq10832" EntityType="Self.C_Seq10832" />
+    <EntitySet Name="C_SeqB10831" EntityType="Self.C_SeqB10831" />
+    <EntitySet Name="C_SeqB10834" EntityType="Self.C_SeqB10834" />
+  </EntityContainer>
+</Schema>

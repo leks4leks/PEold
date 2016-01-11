@@ -1,0 +1,72 @@
+﻿using ProgressoExpert.DataAccess;
+using ProgressoExpert.Models.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProgressoExpert.Process
+{
+    public class ProcessesEngine
+    {
+        public static MainModel GetResult(DateTime startDate, DateTime endDate)
+        {
+            var model = new MainModel();
+            model.StartDate = startDate;
+            model.EndDate = endDate;
+
+            model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
+            model.StartTranz = MainAccessor.GetAllTrans(startDate, null, model.TimeSpan);// Вытащим сразу все транзакции, отдельным запросом
+            model.EndTranz = MainAccessor.GetAllTrans(startDate, endDate, model.TimeSpan);
+            model.Scores = MainAccessor.GetAllScores();// и счета
+
+            model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
+            model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model);//Отчет о прибылях и убытках
+
+            model.RatiosIndicatorsResult = CalculateRatiosIndicators(model.BusinessResults);
+
+            return model;
+        }
+
+        private static RatiosIndicatorsResult CalculateRatiosIndicators(BusinessResults businessResults)
+        {
+            var model = new RatiosIndicatorsResult();
+
+            #region Ликвидность
+
+            model.AbsoluteLiquidityRatio = Math.Round((businessResults.BankrollEnd / businessResults.DebtsBanksEnd), 2);
+            model.QuickLiquidityRatio = Math.Round(((businessResults.BankrollEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2);
+            model.CurrentLiquidityRatio = Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2);
+
+            #endregion
+
+            #region Показатели деловой активности
+
+            model.InventoryTurnoverRatio = 0;
+            model.RateOfTurnover = 0;
+            model.AccountsReceivableTurnoverRatio = 0;
+            model.TermOfReceivablesTurnover = 0;
+            model.AccountsPayableTurnoverRatio = 0;
+            model.TermOfPayablesTurnover = 0;
+
+            #endregion
+
+            #region Показатели финансовой устойчивости
+
+            model.CoefficientOfAutonomy = Math.Round(businessResults.OwnCapitalEnd / businessResults.TotalBalanceCurrencyEnd ,2);
+            model.CoefficientOfFinancialDependence = Math.Round(businessResults.TotalAccountsPayableEnd / businessResults.OwnCapitalEnd,2);
+
+            #endregion
+
+            #region Показатели рентабельности
+
+            model.CoefficientOfProfabilityPrimaryActivity = 0;
+            model.CoefficientOfGrossMargin = 0;
+
+            #endregion
+
+            return model;
+        }
+    }
+}
