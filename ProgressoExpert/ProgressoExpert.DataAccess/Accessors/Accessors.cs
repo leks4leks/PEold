@@ -453,74 +453,74 @@ namespace ProgressoExpert.DataAccess
                 }
 
                 #region Расчитаем среднюю и общую сумму по каждой строке
-                model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum(), 2));// общее
+                model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.IncomeSale.Add(Math.Round(model.IncomeSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.IncomeSale.Add(Math.Round(model.IncomeSale.Take(monthCounter).Sum(), 2));// общее
+                model.IncomeSale.Add(Math.Round(model.IncomeSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.IncomeService.Add(Math.Round(model.IncomeService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.IncomeService.Add(Math.Round(model.IncomeService.Take(monthCounter).Sum(), 2));// общее
+                model.IncomeService.Add(Math.Round(model.IncomeService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum(), 2));// общее
+                model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.CostPriceSale.Add(Math.Round(model.CostPriceSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.CostPriceSale.Add(Math.Round(model.CostPriceSale.Take(monthCounter).Sum(), 2));// общее
+                model.CostPriceSale.Add(Math.Round(model.CostPriceSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.CostPriceService.Add(Math.Round(model.CostPriceService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.CostPriceService.Add(Math.Round(model.CostPriceService.Take(monthCounter).Sum(), 2));// общее
+                model.CostPriceService.Add(Math.Round(model.CostPriceService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.GrossProfitSale.Add(Math.Round(model.GrossProfitSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.GrossProfitSale.Add(Math.Round(model.GrossProfitSale.Take(monthCounter).Sum(), 2));// общее
+                model.GrossProfitSale.Add(Math.Round(model.GrossProfitSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.GrossProfitService.Add(Math.Round(model.GrossProfitService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.GrossProfitService.Add(Math.Round(model.GrossProfitService.Take(monthCounter).Sum(), 2));// общее
-                
-                model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                model.GrossProfitService.Add(Math.Round(model.GrossProfitService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+
                 model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum(), 2));// общее
+                model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum(), 2));// общее
+                model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.SalaryAdmPer.Add(Math.Round(model.SalaryAdmPer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.SalaryAdmPer.Add(Math.Round(model.SalaryAdmPer.Take(monthCounter).Sum(), 2));// общее
+                model.SalaryAdmPer.Add(Math.Round(model.SalaryAdmPer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.SalarySalesDepartment.Add(Math.Round(model.SalarySalesDepartment.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.SalarySalesDepartment.Add(Math.Round(model.SalarySalesDepartment.Take(monthCounter).Sum(), 2));// общее
+                model.SalarySalesDepartment.Add(Math.Round(model.SalarySalesDepartment.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.SalaryServicePer.Add(Math.Round(model.SalaryServicePer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.SalaryServicePer.Add(Math.Round(model.SalaryServicePer.Take(monthCounter).Sum(), 2));// общее
+                model.SalaryServicePer.Add(Math.Round(model.SalaryServicePer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.BonusesSalesManagerSellers.Add(Math.Round(model.BonusesSalesManagerSellers.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.BonusesSalesManagerSellers.Add(Math.Round(model.BonusesSalesManagerSellers.Take(monthCounter).Sum(), 2));// общее
+                model.BonusesSalesManagerSellers.Add(Math.Round(model.BonusesSalesManagerSellers.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.RentOfficeWarehouse.Add(Math.Round(model.RentOfficeWarehouse.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.RentOfficeWarehouse.Add(Math.Round(model.RentOfficeWarehouse.Take(monthCounter).Sum(), 2));// общее
+                model.RentOfficeWarehouse.Add(Math.Round(model.RentOfficeWarehouse.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.DistributionСosts.Add(Math.Round(model.DistributionСosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.DistributionСosts.Add(Math.Round(model.DistributionСosts.Take(monthCounter).Sum(), 2));// общее
+                model.DistributionСosts.Add(Math.Round(model.DistributionСosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.OtherAdministrativeExpenses.Add(Math.Round(model.OtherAdministrativeExpenses.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.OtherAdministrativeExpenses.Add(Math.Round(model.OtherAdministrativeExpenses.Take(monthCounter).Sum(), 2));// общее
+                model.OtherAdministrativeExpenses.Add(Math.Round(model.OtherAdministrativeExpenses.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.BankInterest.Add(Math.Round(model.BankInterest.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.BankInterest.Add(Math.Round(model.BankInterest.Take(monthCounter).Sum(), 2));// общее
+                model.BankInterest.Add(Math.Round(model.BankInterest.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum(), 2));// общее
+                model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum(), 2));// общее
+                model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.Ebitda.Add(Math.Round(model.Ebitda.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.Ebitda.Add(Math.Round(model.Ebitda.Take(monthCounter).Sum(), 2));// общее
+                model.Ebitda.Add(Math.Round(model.Ebitda.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum(), 2));// общее
+                model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
-                model.ProfitAfterTaxation.Add(Math.Round(model.ProfitAfterTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 model.ProfitAfterTaxation.Add(Math.Round(model.ProfitAfterTaxation.Take(monthCounter).Sum(), 2));// общее
+                model.ProfitAfterTaxation.Add(Math.Round(model.ProfitAfterTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
                 #endregion
 
                 return model;
