@@ -220,7 +220,7 @@ namespace ProgressoExpert
             #region Заполнение
             for (int scoreNum = 0; scoreNum < (int)ProfitAndLossNumUI.Total; scoreNum++)
             {
-                for (int j = 0; j < monthCount - 2; j++)
+                for (int j = 0; j < monthCount; j++)
                 {
                     ResBusiness.RB_ProfitLossReport.GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition());
                     TextBlock textBlock = new TextBlock();
@@ -228,7 +228,7 @@ namespace ProgressoExpert
                     {
                         #region Запишем суммы в модель
                         case (int)ProfitAndLossNumUI.Income://доход
-                            textBlock = CreateAndFillTextBlock((model.IncomeSale[j] + model.IncomeService[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.TotalIncome[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.IncomeSale:
                             textBlock = CreateAndFillTextBlock(model.IncomeSale[j].ToString(), scoreNum, j, true, ref monthCount);
@@ -237,7 +237,7 @@ namespace ProgressoExpert
                             textBlock = CreateAndFillTextBlock(model.IncomeService[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.CostPrice://Себестоимость
-                            textBlock = CreateAndFillTextBlock((model.CostPriceSale[j] + model.CostPriceService[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.TotalCostPrice[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.CostPriceSale:
                             textBlock = CreateAndFillTextBlock(model.CostPriceSale[j].ToString(), scoreNum, j, true, ref monthCount);
@@ -246,18 +246,16 @@ namespace ProgressoExpert
                             textBlock = CreateAndFillTextBlock(model.CostPriceService[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.GrossProfit://Валовая прибыль
-                            textBlock = CreateAndFillTextBlock(((model.IncomeSale[j] - model.CostPriceSale[j]) + (model.IncomeService[j] - model.CostPriceService[j])).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.GrossProfit[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.GrossProfitSale:
-                            textBlock = CreateAndFillTextBlock((model.IncomeSale[j] - model.CostPriceSale[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.GrossProfitSale[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.GrossProfitService:
-                            textBlock = CreateAndFillTextBlock((model.IncomeService[j] - model.CostPriceService[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.GrossProfitService[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.Costs://Расходы 
-                            textBlock = CreateAndFillTextBlock((model.SalaryAdmPer[j] + model.SalarySalesDepartment[j] + model.SalaryServicePer[j] + model.BonusesSalesManagerSellers[j]
-                                                                + model.RentOfficeWarehouse[j] + model.DistributionСosts[j] + model.OtherAdministrativeExpenses[j])
-                                                              .ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.Costs[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.SalaryAdmPer:
                             textBlock = CreateAndFillTextBlock(model.SalaryAdmPer[j].ToString(), scoreNum, j, true, ref monthCount);
@@ -281,11 +279,7 @@ namespace ProgressoExpert
                             textBlock = CreateAndFillTextBlock(model.OtherAdministrativeExpenses[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.Ebitda:
-                            textBlock = CreateAndFillTextBlock((
-                                                                ((model.IncomeSale[j] - model.CostPriceSale[j]) + (model.IncomeService[j] - model.CostPriceService[j])) -
-                                                                (model.SalaryAdmPer[j] + model.SalarySalesDepartment[j] + model.SalaryServicePer[j] + model.BonusesSalesManagerSellers[j]
-                                                                + model.RentOfficeWarehouse[j] + model.DistributionСosts[j] + model.OtherAdministrativeExpenses[j])
-                                                               ).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.Ebitda[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.BankInterest:
                             textBlock = CreateAndFillTextBlock(model.BankInterest[j].ToString(), scoreNum, j, true, ref monthCount);
@@ -294,24 +288,13 @@ namespace ProgressoExpert
                             textBlock = CreateAndFillTextBlock(model.Depreciation[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.ProfitBeforeTaxation:
-                            textBlock = CreateAndFillTextBlock((((model.IncomeSale[j] - model.CostPriceSale[j]) + (model.IncomeService[j] - model.CostPriceService[j])) 
-                                                                - (model.SalaryAdmPer[j] + model.SalarySalesDepartment[j] + model.SalaryServicePer[j] + model.BonusesSalesManagerSellers[j]
-                                                                   + model.RentOfficeWarehouse[j] + model.DistributionСosts[j] + model.OtherAdministrativeExpenses[j])
-                                                                - model.BankInterest[j]
-                                                                - model.Depreciation[j]
-                                                                ).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.ProfitBeforeTaxation[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.KPN20:
                             textBlock = CreateAndFillTextBlock(model.KPN20[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.ProfitAfterTaxation:
-                            textBlock = CreateAndFillTextBlock((((model.IncomeSale[j] - model.CostPriceSale[j]) + (model.IncomeService[j] - model.CostPriceService[j]))
-                                                                - (model.SalaryAdmPer[j] + model.SalarySalesDepartment[j] + model.SalaryServicePer[j] + model.BonusesSalesManagerSellers[j]
-                                                                   + model.RentOfficeWarehouse[j] + model.DistributionСosts[j] + model.OtherAdministrativeExpenses[j])
-                                                                - model.BankInterest[j]
-                                                                - model.Depreciation[j]
-                                                                - model.KPN20[j]
-                                                                ).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((model.ProfitAfterTaxation[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         #endregion
                     }
