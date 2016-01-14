@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const\ProcessesEngineConsts.cs" />
     <Compile Include="Enums\Month.cs" />
     <Compile Include="Enums\ProfitAndLossNumUI.cs" />
     <Compile Include="Enums\ProfitAndLossNumServer.cs" />

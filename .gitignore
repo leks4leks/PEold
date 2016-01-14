@@ -41,3 +41,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Progresso
+
+/ProgressoExpert/ProgressoExpert/bin
+/ProgressoExpert/ProgressoExpert.Common/bin
+/ProgressoExpert/ProgressoExpert.DataAccess/bin
+/ProgressoExpert/ProgressoExpert.Models/bin
+/ProgressoExpert/ProgressoExpert.Process/bin
+/ProgressoExpert/ProgressoExpert.Common/obj
+/ProgressoExpert/ProgressoExpert.DataAccess/obj
+/ProgressoExpert/ProgressoExpert.Models/obj
+/ProgressoExpert/ProgressoExpert.Process/obj
+/ProgressoExpert/ProgressoExpert/obj
