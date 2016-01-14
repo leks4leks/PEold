@@ -25,14 +25,16 @@ namespace ProgressoExpert.Process
             model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model);//Отчет о прибылях и убытках
 
-            model.RatiosIndicatorsResult = CalculateRatiosIndicators(model.BusinessResults, model.ReportProfitAndLoss);
+            model.RatiosIndicatorsResult = CalculateRatiosIndicators(endDate, model.BusinessResults, model.ReportProfitAndLoss);
 
             return model;
         }
 
-        private static RatiosIndicatorsResult CalculateRatiosIndicators(BusinessResults businessResults, ReportProfitAndLoss reportProfitAndLoss)
+        private static RatiosIndicatorsResult CalculateRatiosIndicators(DateTime endDate, BusinessResults businessResults, ReportProfitAndLoss reportProfitAndLoss)
         {
             var model = new RatiosIndicatorsResult();
+
+            model.EndDate = endDate;
 
             #region Ликвидность
 
@@ -45,11 +47,17 @@ namespace ProgressoExpert.Process
             #region Показатели деловой активности
 
             model.InventoryTurnoverRatio = Math.Round(reportProfitAndLoss.TotalCostPrice.Last() / businessResults.InventoriesEnd, 2);
-            model.RateOfTurnover = Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2);
+            model.RateOfTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0 
+                ? Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
+                : 0;
             model.AccountsReceivableTurnoverRatio = Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2);
-            model.TermOfReceivablesTurnover = Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2);
+            model.TermOfReceivablesTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0
+                ? Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
+                : 0;
             model.AccountsPayableTurnoverRatio = Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2);
-            model.TermOfPayablesTurnover = Math.Round(businessResults.DebtsSupplierBuyersEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalIncome.Last(), 2);
+            model.TermOfPayablesTurnover = reportProfitAndLoss.TotalIncome.Last() != 0
+                ? Math.Round(businessResults.DebtsSupplierBuyersEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalIncome.Last(), 2)
+                : 0;
 
             #endregion
 
@@ -63,7 +71,9 @@ namespace ProgressoExpert.Process
             #region Показатели рентабельности
 
             model.CoefficientOfProfabilityPrimaryActivity = Math.Round(reportProfitAndLoss.Ebitda.Last() / reportProfitAndLoss.TotalIncome.Last(), 2);
-            model.CoefficientOfGrossMargin = Math.Round(reportProfitAndLoss.GrossProfit.Last() / reportProfitAndLoss.TotalIncome.Last(), 2);
+            model.CoefficientOfGrossMargin = reportProfitAndLoss.TotalIncome.Last() != 0
+                ? Math.Round(reportProfitAndLoss.GrossProfit.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
+                : 0;
 
             #endregion
 

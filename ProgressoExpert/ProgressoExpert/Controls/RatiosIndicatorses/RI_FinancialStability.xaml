@@ -39,10 +39,10 @@
                     <TextBlock  Text="Коэффициент финансовой зависимости (коэффициент СК №1)"  Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
 
                     <TextBlock  Text=">=0,3"   Grid.Row="0" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" меньше 2"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="меньше 2"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
-                    <TextBlock  Text=" 0,68" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" 0,47"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoefficientOfAutonomy}" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoefficientOfFinancialDependence}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
 
                 </Grid>

@@ -41,8 +41,8 @@
                     <TextBlock  Text=">=8"  Grid.Row="0" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                     <TextBlock  Text=">=25%" Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
-                    <TextBlock  Text=" 3%" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" 24%"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoefficientOfProfabilityPrimaryActivity}" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoefficientOfGrossMargin}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
                 </Grid>
                 <Grid  Name="nodataProfitabilityRatiosGrid" Visibility="Visible" Grid.Row="0">

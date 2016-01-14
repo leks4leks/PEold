@@ -9,6 +9,16 @@ namespace ProgressoExpert.Models.Models
 {
     public class RatiosIndicatorsResult: BaseViewModel
     {
+        /// <summary>
+        /// Конечная дата
+        /// </summary>
+        public DateTime EndDate
+        {
+            get { return _endDate; }
+            set { SetValue(ref _endDate, value, "EndDate"); }
+        }
+        private DateTime _endDate;
+
         #region Ликвидность
 
         /// <summary>

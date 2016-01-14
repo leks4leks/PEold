@@ -53,12 +53,12 @@
                     <TextBlock  Text="0,33"  Grid.Row="4" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                     <TextBlock  Text="90"   Grid.Row="5" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
-                    <TextBlock  Text=" 0,14"  Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" 207,36"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" 1,30"  Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text=" 30,65"  Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text="1,26"  Grid.Row="4" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text="23,79"  Grid.Row="5" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding InventoryTurnoverRatio}"  Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding RateOfTurnover}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding AccountsReceivableTurnoverRatio}"  Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding TermOfReceivablesTurnover}"  Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding AccountsPayableTurnoverRatio}"  Grid.Row="4" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding TermOfPayablesTurnover}"  Grid.Row="5" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
                 </Grid>
                 <Grid  Name="nodataBusinessActivityGrid" Visibility="Visible" Grid.Row="0">

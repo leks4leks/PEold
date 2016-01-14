@@ -86,6 +86,8 @@ namespace ProgressoExpert
             vm.EndDate = (DateTime)endDate.SelectedDate;
 
             ResBusiness.RB_Balance.DataContext = vm.BusinessResults;
+            RatiosIndicators.RI_BusinessActivity.DataContext = RatiosIndicators.RI_FinancialStability.DataContext
+                = RatiosIndicators.RI_Liquidity.DataContext = RatiosIndicators.RI_ProfitabilityRatios.DataContext = vm.RatiosIndicatorsResult;
 
             CreateAndFillReportProfitAndLosses(vm);
 
