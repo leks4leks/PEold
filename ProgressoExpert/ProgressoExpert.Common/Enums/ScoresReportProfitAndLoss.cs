@@ -48,7 +48,7 @@ namespace ProgressoExpert.Common.Enums
         /// <summary>
         /// 5. Себестоимость - продажи 7011
         /// </summary>
-        СostPriceSale1 = 7011,
+        СostPriceSale1 = 7010,
 
         /// <summary>
         /// 5. Себестоимость - продажи 7012

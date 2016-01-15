@@ -70,7 +70,9 @@ namespace ProgressoExpert.Process
 
             #region Показатели рентабельности
 
-            model.CoefficientOfProfabilityPrimaryActivity = Math.Round(reportProfitAndLoss.Ebitda.Last() / reportProfitAndLoss.TotalIncome.Last(), 2);
+            model.CoefficientOfProfabilityPrimaryActivity = reportProfitAndLoss.TotalIncome.Last() != 0
+                ? Math.Round(reportProfitAndLoss.Ebitda.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
+                : 0;
             model.CoefficientOfGrossMargin = reportProfitAndLoss.TotalIncome.Last() != 0
                 ? Math.Round(reportProfitAndLoss.GrossProfit.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
                 : 0;

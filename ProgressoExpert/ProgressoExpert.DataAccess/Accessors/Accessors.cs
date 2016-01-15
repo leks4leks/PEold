@@ -3,6 +3,7 @@ using ProgressoExpert.DataAccess.Entities;
 using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -390,46 +391,46 @@ namespace ProgressoExpert.DataAccess
                         {
                             #region Запишем суммы в модель
                             case (int)ProfitAndLossNumServer.IncomeSale:
-                                model.IncomeSale.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));;
+                                model.IncomeSale.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum(), 2));;
                                 break;
                             case (int)ProfitAndLossNumServer.IncomeService:
-                                model.IncomeService.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.IncomeService.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.CostPriceSale:
-                                model.CostPriceSale.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.CostPriceSale.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.CostPriceService:
-                                model.CostPriceService.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.CostPriceService.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.SalaryAdmPer:
-                                model.SalaryAdmPer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.SalaryAdmPer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.SalarySalesDepartment:
-                                model.SalarySalesDepartment.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.SalarySalesDepartment.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.SalaryServicePer:
-                                model.SalaryServicePer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.SalaryServicePer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.BonusesSalesManagerSellers:
-                                model.BonusesSalesManagerSellers.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.BonusesSalesManagerSellers.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.RentOfficeWarehouse:
-                                model.RentOfficeWarehouse.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.RentOfficeWarehouse.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.DistributionСosts:
-                                model.DistributionСosts.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.DistributionСosts.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.OtherAdministrativeExpenses:
-                                model.OtherAdministrativeExpenses.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.OtherAdministrativeExpenses.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.BankInterest:
-                                model.BankInterest.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.BankInterest.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.Depreciation:
-                                model.Depreciation.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.Depreciation.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.KPN20:
-                                model.KPN20.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() - ourCrt.Select(_ => _.Money).Sum(), 2));
+                                model.KPN20.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             #endregion
                         }                        
@@ -709,6 +710,10 @@ namespace ProgressoExpert.DataAccess
 #if DEBUG
              var start = _ourDbtSt.Select(_ => _.Money).Sum();
              var end = _ourCrtSt.Select(_ => _.Money).Sum();
+             foreach (var item in _ourCrtSt)
+             {
+                 Debug.Print("Value: " + item.Money);
+             }
 
              var total = start - end;
 #endif
