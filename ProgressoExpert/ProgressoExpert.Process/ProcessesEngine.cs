@@ -18,12 +18,12 @@ namespace ProgressoExpert.Process
             model.EndDate = endDate;
 
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
-            model.StartTranz = MainAccessor.GetAllTrans(startDate, null, model.TimeSpan);// Вытащим сразу все транзакции, отдельным запросом
+            model.StartTranz = MainAccessor.GetAllTrans(startDate, null, model.TimeSpan); // Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(startDate, endDate, model.TimeSpan);
             model.Scores = MainAccessor.GetAllScores();// и счета
 
             model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
-            model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model);//Отчет о прибылях и убытках
+            model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
 
             model.RatiosIndicatorsResult = CalculateRatiosIndicators(endDate, model.BusinessResults, model.ReportProfitAndLoss);
 
@@ -38,23 +38,35 @@ namespace ProgressoExpert.Process
 
             #region Ликвидность
 
-            model.AbsoluteLiquidityRatio = Math.Round((businessResults.BankrollEnd / businessResults.DebtsBanksEnd), 2);
-            model.QuickLiquidityRatio = Math.Round(((businessResults.BankrollEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2);
-            model.CurrentLiquidityRatio = Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2);
+            model.AbsoluteLiquidityRatio = businessResults.DebtsBanksEnd != 0
+                ? Math.Round((businessResults.BankrollEnd / businessResults.DebtsBanksEnd), 2)
+                : 0;
+            model.QuickLiquidityRatio = businessResults.DebtsBanksEnd != 0
+                ? Math.Round(((businessResults.BankrollEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2)
+                : 0;
+            model.CurrentLiquidityRatio = businessResults.DebtsBanksEnd != 0
+                ? Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2)
+                : 0;
 
             #endregion
 
             #region Показатели деловой активности
 
-            model.InventoryTurnoverRatio = Math.Round(reportProfitAndLoss.TotalCostPrice.Last() / businessResults.InventoriesEnd, 2);
+            model.InventoryTurnoverRatio = businessResults.InventoriesEnd != 0
+                ? Math.Round(reportProfitAndLoss.TotalCostPrice.Last() / businessResults.InventoriesEnd, 2)
+                : 0;
             model.RateOfTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0 
                 ? Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
                 : 0;
-            model.AccountsReceivableTurnoverRatio = Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2);
+            model.AccountsReceivableTurnoverRatio = businessResults.ReceivablesEnd != 0
+                ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2)
+                : 0;
             model.TermOfReceivablesTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0
                 ? Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
                 : 0;
-            model.AccountsPayableTurnoverRatio = Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2);
+            model.AccountsPayableTurnoverRatio = businessResults.DebtsSupplierBuyersEnd != 0
+                ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2)
+                : 0;
             model.TermOfPayablesTurnover = reportProfitAndLoss.TotalIncome.Last() != 0
                 ? Math.Round(businessResults.DebtsSupplierBuyersEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalIncome.Last(), 2)
                 : 0;
@@ -63,8 +75,12 @@ namespace ProgressoExpert.Process
 
             #region Показатели финансовой устойчивости
 
-            model.CoefficientOfAutonomy = Math.Round(businessResults.OwnCapitalEnd / businessResults.TotalBalanceCurrencyEnd, 2);
-            model.CoefficientOfFinancialDependence = Math.Round(businessResults.TotalAccountsPayableEnd / businessResults.OwnCapitalEnd, 2);
+            model.CoefficientOfAutonomy = businessResults.TotalBalanceCurrencyEnd != 0
+                ? Math.Round(businessResults.OwnCapitalEnd / businessResults.TotalBalanceCurrencyEnd, 2)
+                : 0;
+            model.CoefficientOfFinancialDependence = businessResults.OwnCapitalEnd != 0
+                ? Math.Round(businessResults.TotalAccountsPayableEnd / businessResults.OwnCapitalEnd, 2)
+                : 0;
 
             #endregion
 
