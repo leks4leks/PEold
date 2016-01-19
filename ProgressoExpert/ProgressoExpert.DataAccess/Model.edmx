@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="base1sModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="base1sModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="_Acc10">
           <Key>
             <PropertyRef Name="_IDRRef" />
@@ -584,6 +584,23 @@ warning 6002: The table/view 'base1s.dbo._AccRgOpt' does not have a primary key 
           <Property Name="_MinPeriod" Type="datetime" Nullable="false" />
           <Property Name="_UseSplitter" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
+        <EntityType Name="_Reference114">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="_Marked" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_IsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_ParentIDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Folder" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Code" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="_Fld1337" Type="binary" MaxLength="1" />
+          <Property Name="_Fld1338RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld1339RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld1340RRef" Type="binary" MaxLength="16" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'base1s.dbo._Seq10830' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="_Seq10830">
@@ -651,6 +668,7 @@ warning 6002: The table/view 'base1s.dbo._YearOffset' does not have a primary ke
         <EntityContainer Name="base1sModelStoreContainer">
           <EntitySet Name="_Acc10" EntityType="Self._Acc10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_Acc9" EntityType="Self._Acc9" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Reference114" EntityType="Self._Reference114" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_Acc9_ExtDim10857" EntityType="Self._Acc9_ExtDim10857" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [_Acc9_ExtDim10857].[_Acc9_IDRRef] AS [_Acc9_IDRRef], 
@@ -1051,8 +1069,7 @@ FROM [dbo].[_SeqB10834] AS [_SeqB10834]</DefiningQuery>
 FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="base1sModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1677,7 +1694,25 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           <EntitySet Name="C_SeqB10831" EntityType="Self.C_SeqB10831" />
           <EntitySet Name="C_SeqB10834" EntityType="Self.C_SeqB10834" />
           <EntitySet Name="C_YearOffset" EntityType="Self.C_YearOffset" />
+          <EntitySet Name="C_Reference114" EntityType="base1sModel.C_Reference114" />
         </EntityContainer>
+        <EntityType Name="C_Reference114">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="C_Marked" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_IsMetadata" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_ParentIDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Folder" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Code" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="C_Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Fld1337" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld1338RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld1339RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld1340RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2169,6 +2204,24 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
             <EntityTypeMapping TypeName="base1sModel.C_YearOffset">
               <MappingFragment StoreEntitySet="_YearOffset">
                 <ScalarProperty Name="Offset" ColumnName="Offset" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Reference114">
+            <EntityTypeMapping TypeName="base1sModel.C_Reference114">
+              <MappingFragment StoreEntitySet="_Reference114">
+                <ScalarProperty Name="C_Fld1340RRef" ColumnName="_Fld1340RRef" />
+                <ScalarProperty Name="C_Fld1339RRef" ColumnName="_Fld1339RRef" />
+                <ScalarProperty Name="C_Fld1338RRef" ColumnName="_Fld1338RRef" />
+                <ScalarProperty Name="C_Fld1337" ColumnName="_Fld1337" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_Code" ColumnName="_Code" />
+                <ScalarProperty Name="C_Folder" ColumnName="_Folder" />
+                <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+                <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+                <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+                <ScalarProperty Name="C_Version" ColumnName="_Version" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

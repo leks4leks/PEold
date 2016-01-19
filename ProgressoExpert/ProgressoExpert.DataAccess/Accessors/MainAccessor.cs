@@ -69,6 +69,19 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
+        public static List<RefGroupsEnt> GetAllGroups()
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                return (from cref in db.C_Reference114 // выгрузим все, чтобы 1000 раз не лезть в БД
+                        select new RefGroupsEnt
+                        {
+                            Name = cref.C_Description,
+                            Id = cref.C_IDRRef
+                        }).ToList();
+            }
+        }
+
         public static int GetTimeSpan()
         {
             using (dbEntities db = new dbEntities())

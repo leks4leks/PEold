@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\RefGroupsEnt.cs" />
     <Compile Include="Entities\ScoreEnt.cs" />
     <Compile Include="Entities\TranzEnt.cs" />
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />

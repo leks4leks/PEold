@@ -32,6 +32,13 @@ namespace ProgressoExpert.Models.Models
         }
         private List<ScoreEnt> _scores;
 
+        public List<RefGroupsEnt> RegGroups
+        {
+            get { return _regGroups; }
+            set { SetValue(ref _regGroups, value, "RegGroups"); }
+        }
+        private List<ScoreEnt> _scores;
+
         public int TimeSpan
         {
             get { return _timeSpan; }

@@ -52,5 +52,6 @@ namespace ProgressoExpert.DataAccess
         public DbSet<C_SeqB10831> C_SeqB10831 { get; set; }
         public DbSet<C_SeqB10834> C_SeqB10834 { get; set; }
         public DbSet<C_YearOffset> C_YearOffset { get; set; }
+        public DbSet<C_Reference114> C_Reference114 { get; set; }
     }
 }

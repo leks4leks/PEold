@@ -21,6 +21,7 @@ namespace ProgressoExpert.Process
             model.StartTranz = MainAccessor.GetAllTrans(startDate, null, model.TimeSpan);// Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(startDate, endDate, model.TimeSpan);
             model.Scores = MainAccessor.GetAllScores();// и счета
+            model.RegGroups = MainAccessor.GetAllGroups();// группы
 
             model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model);//Отчет о прибылях и убытках
