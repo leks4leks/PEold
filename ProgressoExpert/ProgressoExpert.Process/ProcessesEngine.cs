@@ -37,64 +37,64 @@ namespace ProgressoExpert.Process
 
             model.EndDate = endDate;
 
-            #region Ликвидность
+            //#region Ликвидность
 
-            model.AbsoluteLiquidityRatio = businessResults.DebtsBanksEnd != 0
-                ? Math.Round((businessResults.BankrollEnd / businessResults.DebtsBanksEnd), 2)
-                : 0;
-            model.QuickLiquidityRatio = businessResults.DebtsBanksEnd != 0
-                ? Math.Round(((businessResults.BankrollEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2)
-                : 0;
-            model.CurrentLiquidityRatio = businessResults.DebtsBanksEnd != 0
-                ? Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2)
-                : 0;
+            //model.AbsoluteLiquidityRatio = businessResults.DebtsBanksEnd != 0
+            //    ? Math.Round((businessResults.CashInCashBoxEnd / businessResults.DebtsBanksEnd), 2)
+            //    : 0;
+            //model.QuickLiquidityRatio = businessResults.DebtsBanksEnd != 0
+            //    ? Math.Round(((businessResults.CashInCashBoxEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2)
+            //    : 0;
+            //model.CurrentLiquidityRatio = businessResults.DebtsBanksEnd != 0
+            //    ? Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2)
+            //    : 0;
 
-            #endregion
+            //#endregion
 
-            #region Показатели деловой активности
+            //#region Показатели деловой активности
 
-            model.InventoryTurnoverRatio = businessResults.InventoriesEnd != 0
-                ? Math.Round(reportProfitAndLoss.TotalCostPrice.Last() / businessResults.InventoriesEnd, 2)
-                : 0;
-            model.RateOfTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0 
-                ? Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
-                : 0;
-            model.AccountsReceivableTurnoverRatio = businessResults.ReceivablesEnd != 0
-                ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2)
-                : 0;
-            model.TermOfReceivablesTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0
-                ? Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
-                : 0;
-            model.AccountsPayableTurnoverRatio = businessResults.DebtsSupplierBuyersEnd != 0
-                ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2)
-                : 0;
-            model.TermOfPayablesTurnover = reportProfitAndLoss.TotalIncome.Last() != 0
-                ? Math.Round(businessResults.DebtsSupplierBuyersEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalIncome.Last(), 2)
-                : 0;
+            //model.InventoryTurnoverRatio = businessResults.InventoriesEnd != 0
+            //    ? Math.Round(reportProfitAndLoss.TotalCostPrice.Last() / businessResults.InventoriesEnd, 2)
+            //    : 0;
+            //model.RateOfTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0 
+            //    ? Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
+            //    : 0;
+            //model.AccountsReceivableTurnoverRatio = businessResults.ReceivablesEnd != 0
+            //    ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2)
+            //    : 0;
+            //model.TermOfReceivablesTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0
+            //    ? Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
+            //    : 0;
+            //model.AccountsPayableTurnoverRatio = businessResults.DebtsSupplierBuyersEnd != 0
+            //    ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2)
+            //    : 0;
+            //model.TermOfPayablesTurnover = reportProfitAndLoss.TotalIncome.Last() != 0
+            //    ? Math.Round(businessResults.DebtsSupplierBuyersEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalIncome.Last(), 2)
+            //    : 0;
 
-            #endregion
+            //#endregion
 
-            #region Показатели финансовой устойчивости
+            //#region Показатели финансовой устойчивости
 
-            model.CoefficientOfAutonomy = businessResults.TotalBalanceCurrencyEnd != 0
-                ? Math.Round(businessResults.OwnCapitalEnd / businessResults.TotalBalanceCurrencyEnd, 2)
-                : 0;
-            model.CoefficientOfFinancialDependence = businessResults.OwnCapitalEnd != 0
-                ? Math.Round(businessResults.TotalAccountsPayableEnd / businessResults.OwnCapitalEnd, 2)
-                : 0;
+            //model.CoefficientOfAutonomy = businessResults.TotalBalanceCurrencyEnd != 0
+            //    ? Math.Round(businessResults.OwnCapitalEnd / businessResults.TotalBalanceCurrencyEnd, 2)
+            //    : 0;
+            //model.CoefficientOfFinancialDependence = businessResults.OwnCapitalEnd != 0
+            //    ? Math.Round(businessResults.TotalAccountsPayableEnd / businessResults.OwnCapitalEnd, 2)
+            //    : 0;
 
-            #endregion
+            //#endregion
 
-            #region Показатели рентабельности
+            //#region Показатели рентабельности
 
-            model.CoefficientOfProfabilityPrimaryActivity = reportProfitAndLoss.TotalIncome.Last() != 0
-                ? Math.Round(reportProfitAndLoss.Ebitda.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
-                : 0;
-            model.CoefficientOfGrossMargin = reportProfitAndLoss.TotalIncome.Last() != 0
-                ? Math.Round(reportProfitAndLoss.GrossProfit.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
-                : 0;
+            //model.CoefficientOfProfabilityPrimaryActivity = reportProfitAndLoss.TotalIncome.Last() != 0
+            //    ? Math.Round(reportProfitAndLoss.Ebitda.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
+            //    : 0;
+            //model.CoefficientOfGrossMargin = reportProfitAndLoss.TotalIncome.Last() != 0
+            //    ? Math.Round(reportProfitAndLoss.GrossProfit.Last() / reportProfitAndLoss.TotalIncome.Last(), 2)
+            //    : 0;
 
-            #endregion
+            //#endregion
 
             return model;
         }

@@ -12,195 +12,405 @@ namespace ProgressoExpert.DataAccess
 {
     public class Accessors
     {
+        private static List<ScoreEnt> scores = null;
+        private static List<TranzEnt> Start = null;
+        private static List<TranzEnt> End = null;
+
+        private static List<ScoreEnt> ourScr = null;
+
+        private static List<TranzEnt> ourDbtSt; // Это уже транзакции связанные с нашим счетом на начало
+        private static List<TranzEnt> ourDbtEnd; // Это уже транзакции связанные с нашим счетом на конец (мы не будем считать на конец периода заного, почтитаем между датами, и сложем)
+        private static List<TranzEnt> ourCrtSt;
+        private static List<TranzEnt> ourCrtEnd;
+
         public static BusinessResults GetBusinessResults(MainModel mainModel)
         {
             BusinessResults model = new BusinessResults();
             using (dbEntities db = new dbEntities())
             {
-                var scores = mainModel.Scores;
-                var Start = mainModel.StartTranz;
-                var End = mainModel.EndTranz;
+                scores = mainModel.Scores;
+                Start = mainModel.StartTranz;
+                End = mainModel.EndTranz;
 
-                List<TranzEnt> ourDbtSt; // Это уже транзакции связанные с нашим счетом на начало
-                List<TranzEnt> ourDbtEnd; // Это уже транзакции связанные с нашим счетом на конец (мы не будем считать на конец периода заного, почтитаем между датами, и сложем)
-                List<TranzEnt> ourCrtSt;
-                List<TranzEnt> ourCrtEnd;
+                ourScr = new List<ScoreEnt>(); // Вытащим ID интересующих нас счетов нас счетов
 
-                var ourScr = new List<ScoreEnt>(); // Вытащим ID интересующих нас счетов нас счетов
+                decimal _outStart = 0;
+                decimal _outEnd = 0;
 
-                #region Денежные средства
-                ourScr = GetOurScore((long)ScoresForBusinessResults.Cash, scores);
+                #region Краткосрочные активы
 
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+                #region Денежные средства в кассе
 
-                model= new BusinessResults();
-                model.BankrollStart = CalculateStart(ourDbtSt, ourCrtSt);
-                model.BankrollEnd = CalculateEnd(model.BankrollStart, ourDbtEnd, ourCrtEnd);
+                Calculate(out _outStart, out _outEnd, 
+                    (int)ScoresForBusinessResults.CashInCashBox1,
+                    (int)ScoresForBusinessResults.CashInCashBox2);
+                model.CashInCashBoxStart = _outStart;
+                model.CashInCashBoxEnd = _outEnd;
+
                 #endregion
 
-                #region Дебиторская задолженность (Краткосрочная Дебиторская задолженность + Долгосрочная Дебиторская задолженность)
+                #region Денежные средства на рассчетном счете
 
-                // Краткосрочная Дебиторская задолженность
-                ourScr = GetOurScore((long)ScoresForBusinessResults.ShortTermReceivables, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.CasnInCheckingAccount1,
+                    (int)ScoresForBusinessResults.CasnInCheckingAccount2);
+                model.CasnInCheckingAccountStart = _outStart;
+                model.CasnInCheckingAccountEnd = _outEnd;
 
-                var _shortTermReceivablesStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _shortTermReceivablesEnd = CalculateEnd(_shortTermReceivablesStart, ourDbtEnd, ourCrtEnd);
+                #endregion
 
-                // Долгосрочная Дебиторская задолженность 
-                ourScr = GetOurScore((long)ScoresForBusinessResults.LongTermReceivables, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+                #region Депозиты
 
-                var _longTermReceivablesStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _longTermReceivablesEnd = CalculateEnd(_longTermReceivablesStart, ourDbtEnd, ourCrtEnd);
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.Deposits);
+                model.DepositsStart = _outStart;
+                model.DepositsEnd = _outEnd;
 
-                // Итого
-                model.ReceivablesStart = _shortTermReceivablesStart + _longTermReceivablesStart;
-                model.ReceivablesEnd = _shortTermReceivablesEnd + _longTermReceivablesEnd;
+                #endregion
+
+                #region Дебиторская задолженность
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.Receivables);
+                model.ReceivablesStart = _outStart;
+                model.ReceivablesEnd = _outEnd;
+
+                #endregion
+
+                #region Сырье и материалы
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.RawAndMaterials);
+                model.RawAndMaterialsStart = _outStart;
+                model.RawAndMaterialsEnd = _outEnd;
+
                 #endregion
 
                 #region Товары
-                ourScr = GetOurScore((long)ScoresForBusinessResults.Inventories, scores);
 
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.Goods1,
+                    (int)ScoresForBusinessResults.Goods2);
+                model.GoodsStart = _outStart;
+                model.GoodsEnd = _outEnd;
 
-                model.InventoriesStart = CalculateStart(ourDbtSt, ourCrtSt);
-                model.InventoriesEnd = CalculateEnd(model.InventoriesStart, ourDbtEnd, ourCrtEnd);
+                #endregion
+
+                #region Незавершенное производство
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.UnfinishedProduction);
+                model.UnfinishedProductionStart = _outStart;
+                model.UnfinishedProductionEnd = _outEnd;
+
                 #endregion
 
                 #region Прочие краткосрочные активы
-                ourScr = GetOurScore((long)ScoresForBusinessResults.OtherCurrentAssets, scores);
 
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                model.OtherCurrentAssetsStart = CalculateStart(ourDbtSt, ourCrtSt);
-                model.OtherCurrentAssetsEnd = CalculateEnd(model.OtherCurrentAssetsStart, ourDbtEnd, ourCrtEnd);
-                #endregion
-
-                #region Итого краткосрочные активы
-
-                model.CalculateTotalCurrentAssetsStartEnd();
-
-                #endregion
-
-                #region Оборудование (Основные средства)
-                ourScr = GetOurScore((long)ScoresForBusinessResults.FixedAssets, scores);
-
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                model.EquipmentStart = CalculateStart(ourDbtSt, ourCrtSt);
-                model.EquipmentEnd = CalculateEnd(model.EquipmentStart, ourDbtEnd, ourCrtEnd);
-                #endregion
-
-                #region Прочий инвентарь (Прочие долгосрочные активы + Инвестиции)
-
-                // Прочие долгосрочные активы
-                ourScr = GetOurScore((long)ScoresForBusinessResults.OtherLongTermReceivables, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _otherLongTermReceivablesStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _otherLongTermReceivablesEnd = CalculateEnd(_otherLongTermReceivablesStart, ourDbtEnd, ourCrtEnd);
-
-                // Инвестиции 
-                ourScr = GetOurScore((long)ScoresForBusinessResults.Investments, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _investmentsStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _investmentsEnd = CalculateEnd(_investmentsStart, ourDbtEnd, ourCrtEnd);
-
-                // Итого
-                model.OtherEquipmentStart = _otherLongTermReceivablesStart + _investmentsStart;
-                model.OtherEquipmentEnd = _otherLongTermReceivablesEnd + _investmentsEnd;
-                #endregion
-
-                #region Итого валюта баланса
-
-                model.CalculateTotalBalanceCurrencyStartEnd();
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets1,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets2,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets3,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets4,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets5,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets6,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets7,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets8,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets9,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets10,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets11,
+                    (int)ScoresForBusinessResults.OtherCurrentAssets12);
+                model.OtherCurrentAssetsStart = _outStart;
+                model.OtherCurrentAssetsEnd = _outEnd;
 
                 #endregion
 
-                #region Долги перед Банком (Краткосрочные Долги перед Банком + Долгосрочные Долги перед Банком)
+                #region Налоговые активы
 
-                //Краткосрочные Долги перед Банком
-                ourScr = GetOurScore((long)ScoresForBusinessResults.ShortTermDebtsBanks, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _shortTermDebtsBanksStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _shortTermDebtsBanksEnd = CalculateEnd(_shortTermDebtsBanksStart, ourDbtEnd, ourCrtEnd);
-
-                // Долгосрочные Долги перед Банком
-                ourScr = GetOurScore((long)ScoresForBusinessResults.LongTermDebtsBanks, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _longTermDebtsBanksStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _longTermDebtsBanksEnd = CalculateEnd(_longTermDebtsBanksStart, ourDbtEnd, ourCrtEnd);
-
-                // Итого
-                model.DebtsBanksStart = _shortTermDebtsBanksStart + _longTermDebtsBanksStart;
-                model.DebtsBanksEnd = _shortTermDebtsBanksEnd + _longTermDebtsBanksEnd;
-                #endregion
-
-                #region Долги перед налоговой
-                ourScr = GetOurScore((long)ScoresForBusinessResults.DebtsTaxAndOtherPaymentsBudget, scores);
-
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                model.DebtsTaxAndOtherPaymentsBudgetStart = CalculateStart(ourDbtSt, ourCrtSt);
-                model.DebtsTaxAndOtherPaymentsBudgetEnd = CalculateEnd(model.DebtsTaxAndOtherPaymentsBudgetStart, ourDbtEnd, ourCrtEnd);
-                #endregion
-
-                #region Долги перед поставщиками/покупателями (Краткосрочные Долги перед поставщиками/покупателями + Долгосрочные Долги перед поставщиками/покупателями)
-
-                // Краткосрочные Долги перед поставщиками/покупателями
-                ourScr = GetOurScore((long)ScoresForBusinessResults.ShortTermDebtsSupplierBuyers, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _shortTermDebtsSupplierBuyersStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _shortTermDebtsSupplierBuyersEnd = CalculateEnd(_shortTermDebtsSupplierBuyersStart, ourDbtEnd, ourCrtEnd);
-
-                // Долгосрочные Долги перед поставщиками/покупателями
-                ourScr = GetOurScore((long)ScoresForBusinessResults.LongTermDebtSuppliersBuyers, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _longTermDebtsSupplierBuyersStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _longTermDebtsSupplierBuyersEnd = CalculateEnd(_longTermDebtsSupplierBuyersStart, ourDbtEnd, ourCrtEnd);
-
-                // Итого
-                model.DebtsSupplierBuyersStart = _shortTermDebtsSupplierBuyersStart + _longTermDebtsSupplierBuyersStart;
-                model.DebtsSupplierBuyersEnd = _shortTermDebtsSupplierBuyersEnd + _longTermDebtsSupplierBuyersEnd;
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.TaxAssets);
+                model.TaxAssetsStart = _outStart;
+                model.TaxAssetsEnd = _outEnd;
 
                 #endregion
 
-                #region Прочие долги (Прочие долги + прочие долгосрочные долги)
+                #region Краткосрочные активы
 
-                // Прочие долги
-                ourScr = GetOurScore((long)ScoresForBusinessResults.OtherDebts, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+                model.CalculateShortTermAssets();
 
-                var _otherDebtsStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _otherDebtsEnd = CalculateEnd(_otherDebtsStart, ourDbtEnd, ourCrtEnd);
-
-                // Прочие долгосрочные долги
-                ourScr = GetOurScore((long)ScoresForBusinessResults.OtherLongTermDebt, scores);
-                GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-
-                var _otherLongDebtsStart = CalculateStart(ourDbtSt, ourCrtSt);
-                var _otherLongDebtsEnd = CalculateEnd(_otherLongDebtsStart, ourDbtEnd, ourCrtEnd);
-
-                // Итого
-                model.OtherDebtsStart = _otherDebtsStart + _otherLongDebtsStart;
-                model.OtherDebtsEnd = _otherDebtsEnd + _otherLongDebtsEnd;
                 #endregion
 
-                #region Итого кредиторская задолженность
+                #endregion
 
-                model.CalculateTotalAccountsPayableStartEnd();
+                #region Долгосрочные активы
+
+                #region Долгосрочная дебиторская задолженность контрагентов
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.LongTermReceivables);
+                model.LongTermReceivablesStart = _outStart;
+                model.LongTermReceivablesEnd = _outEnd;
+
+                #endregion
+
+                #region Прочая долгосрочная дебиторская задолженность контрагентов
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables1,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables2,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables3,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables4,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables5,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables6,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables7,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables8,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables9,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables10,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables11,
+                    (int)ScoresForBusinessResults.OtherLongTermReceivables12);
+                model.OtherLongTermReceivablesStart = _outStart;
+                model.OtherLongTermReceivablesEnd = _outEnd;
+
+                #endregion
+
+                #region Инвестиции
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.Investments1,
+                    (int)ScoresForBusinessResults.Investments2,
+                    (int)ScoresForBusinessResults.Investments3);
+                model.InvestmentsStart = _outStart;
+                model.InvestmentsEnd = _outEnd;
+
+                #endregion
+
+                #region Основные средства
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.FixedAssets);
+                model.FixedAssetsStart = _outStart;
+                model.FixedAssetsEnd = _outEnd;
+
+                #endregion
+
+                #region Нематериальные активы
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.IntangibleAssets);
+                model.IntangibleAssetsStart = _outStart;
+                model.IntangibleAssetsEnd = _outEnd;
+
+                #endregion
+
+                #region Долгосрочные налоговые активы
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.LongTermTaxAssets);
+                model.LongTermTaxAssetsStart = _outStart;
+                model.LongTermTaxAssetsEnd = _outEnd;
+
+                #endregion
+
+                #region Долгосрочные активы
+
+                model.CalculateLongTermAssets();
+
+                #endregion
+
+                #endregion
+
+                #region Краткосрочные долги
+
+                #region Краткосрочные банковские займы
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.ShortTermBankLoans1,
+                    (int)ScoresForBusinessResults.ShortTermBankLoans2);
+                model.ShortTermBankLoansStart = _outStart;
+                model.ShortTermBankLoansEnd = _outEnd;
+
+                #endregion
+
+                #region Задолженность по КПН/ИПН
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.DebtCitIit);
+                model.DebtCitIitStart = _outStart;
+                model.DebtCitIitEnd = _outEnd;
+
+                #endregion
+
+                #region Задолженность по НДС
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.DebtVat);
+                model.DebtVatStart = _outStart;
+                model.DebtVatEnd = _outEnd;
+
+                #endregion
+
+                #region Прочая задолженность по налогам
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable1,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable2,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable3,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable4,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable5,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable6,
+                    (int)ScoresForBusinessResults.OtherTaxesPayable7);
+                model.OtherTaxesPayableStart = _outStart;
+                model.OtherTaxesPayableEnd = _outEnd;
+
+                #endregion
+
+                #region Прочая задолженность по налогам
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.PayablesToCounterpartiesShortTermDebts);
+                model.PayablesToCounterpartiesShortTermDebtsStart = _outStart;
+                model.PayablesToCounterpartiesShortTermDebtsEnd = _outEnd;
+
+                #endregion
+
+                #region Задолженность перед сотрудниками
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.PayablesToEmployees);
+                model.PayablesToEmployeesStart = _outStart;
+                model.PayablesToEmployeesEnd = _outEnd;
+
+                #endregion
+
+                #region Прочая задолженность
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts1,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts2,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts3,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts4,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts5,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts6,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts7,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts8,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts9,
+                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts10);
+                model.OtherDebtsShortTermDebtsStart = _outStart;
+                model.OtherDebtsShortTermDebtsEnd = _outEnd;
+
+                #endregion
+
+                #region Краткосрочные долги
+
+                model.CalculateShortTermDebt();
+
+                #endregion
+
+                #endregion
+
+                #region Долгосрочные долги
+
+                #region Долгосрочные банковские займы
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.LongTermBankLoans1,
+                    (int)ScoresForBusinessResults.LongTermBankLoans2);
+                model.LongTermBankLoansStart = _outStart;
+                model.LongTermBankLoansEnd = _outEnd;
+
+                #endregion
+
+                #region Задолженность перед контрагентами
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.PayablesToCounterpartiesLongTermDebts);
+                model.PayablesToCounterpartiesLongTermDebtsStart = _outStart;
+                model.PayablesToCounterpartiesLongTermDebtsEnd = _outEnd;
+
+                #endregion
+
+                #region Отложеннные налоговая задолженность
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.DefferedTaxDebts);
+                model.DefferedTaxDebtsStart = _outStart;
+                model.DefferedTaxDebtsEnd = _outEnd;
+
+                #endregion
+
+                #region Прочая задолженность
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts1,
+                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts2,
+                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts3,
+                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts4);
+                model.OtherDebtsLongTermDebtsStart = _outStart;
+                model.OtherDebtsLongTermDebtsEnd = _outEnd;
+
+                #endregion
+
+                #region Долгосрочные долги
+
+                model.CalculateLongTermDebt();
+
+                #endregion
 
                 #endregion
 
                 #region Собственный капитал
 
-                model.CalculateOwnCapitalStartEnd();
+                #region Уставной капитал
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.AuthorizedCapital1,
+                    (int)ScoresForBusinessResults.AuthorizedCapital2);
+                model.AuthorizedCapitalStart = _outStart;
+                model.AuthorizedCapitalEnd = _outEnd;
+
+                #endregion
+
+                #region Накопленная прибыль/убыток
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.AccumulatedProfitAndLoss);
+                model.AccumulatedProfitAndLossStart = _outStart;
+                model.AccumulatedProfitAndLossEnd = _outEnd;
+
+                #endregion
+
+                #region Прочий капитал
+
+                Calculate(out _outStart, out _outEnd,
+                    (int)ScoresForBusinessResults.OtherCapital);
+                model.OtherCapitalStart = _outStart;
+                model.OtherCapitalEnd = _outEnd;
+
+                #endregion
+
+                #region Собственный капитал
+
+                model.CalculateOwnCapital();
+
+                #endregion
+
+                #endregion
+
+                #region Итого
+
+                #region Итого активов
+
+                model.CalculateTotalAssets();
+
+                #endregion
+
+                #region Итого пассивов
+
+                model.CalculateTotalLiabilities();
+
+                #endregion
+
+
 
                 #endregion
 
@@ -529,26 +739,26 @@ namespace ProgressoExpert.DataAccess
         }
 
         #region SubQuery
+
         /// <summary>
-        /// 
+        /// Метод рассчета
         /// </summary>
-        /// <param name="items"></param>
+        /// <param name="values"></param>
         /// <param name="_start"></param>
         /// <param name="_end"></param>
-        private static void Calculate(long[] items, out decimal _start, out decimal _end)
+        private static void Calculate(out decimal _start, out decimal _end, params int[] values)
         {
             _start = 0;
             _end = 0;
 
-            foreach (var item in items)
-            {
-            //    var _ourScr = GetOurScore(item, scores);
-            //    GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-            //    var _itemStart = CalculateStart(ourDbtSt, ourCrtSt);
-            //    var _itemFinish = CalculateEnd(_itemStart, ourDbtEnd, ourCrtEnd);
-            //    _start += _itemStart;
-            //    _end += _itemFinish;
-            }
+            List<int> list = values.OfType<int>().ToList();
+
+            ourScr = GetOurScore(list, scores);
+            GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+            var _itemStart = CalculateStart(ourDbtSt, ourCrtSt);
+            var _itemFinish = CalculateEnd(_itemStart, ourDbtEnd, ourCrtEnd);
+            _start += _itemStart;
+            _end += _itemFinish;
         }
 
         /// <summary>
@@ -561,28 +771,51 @@ namespace ProgressoExpert.DataAccess
         {
             var _ourScr = new List<ScoreEnt>();
             var _myScore = MyScore.ToString();
-            List<string> Scores = new List<string>();
-            for (int i = 0; i < _myScore.Count(); i = i + 2)
-            {
-                Scores.Add(_myScore[i].ToString() + _myScore[i + 1].ToString());
-            }
+            //List<string> Scores = new List<string>();
+            //for (int i = 0; i < _myScore.Count(); i = i + 2)
+            //{
+            //    Scores.Add(_myScore[i].ToString() + _myScore[i + 1].ToString());
+            //}
 
             foreach (var sc in scores)
             {
-                if (sc.Code.Length < 2) continue;
-                var tt = string.Join("", sc.Code.Take(2)); // берем все счета которые начинаются с 10
-                if (Scores.Contains(tt))
+                if (sc.Code.Length < 4) continue;
+                if (sc.ToString().Contains(_myScore))
                 {
                     _ourScr.Add(sc);
                 }
+                //var tt = string.Join("", sc.Code.Take(4)); // берем все счета которые начинаются с 10
+                //if (Scores.Contains(tt))
+                //{
+                //    _ourScr.Add(sc);
+                //}
             }
             return _ourScr;
+
+            //var _ourScr = new List<ScoreEnt>();
+            //var _myScore = MyScore.ToString();
+            //List<string> Scores = new List<string>();
+            //for (int i = 0; i < _myScore.Count(); i = i + 2)
+            //{
+            //    Scores.Add(_myScore[i].ToString() + _myScore[i + 1].ToString());
+            //}
+
+            //foreach (var sc in scores)
+            //{
+            //    if (sc.Code.Length < 4) continue;
+            //    var tt = string.Join("", sc.Code.Take(2)); // берем все счета которые начинаются с 10
+            //    if (Scores.Contains(tt))
+            //    {
+            //        _ourScr.Add(sc);
+            //    }
+            //}
+            //return _ourScr;
         }
 
         /// <summary>
         /// Метод возращает массив счетов которые нам нужны
         /// </summary>
-        /// <param name="sroreArr">массив состоящий из первых двух цыфр счетов которые нам нужны</param>
+        /// <param name="sroreArr">массив состоящий из первых двух цифр счетов которые нам нужны</param>
         /// <param name="scores">все счета</param>
         /// <param name="ourScr">результат</param>
         private static List<ScoreEnt> GetOurScore(List<int> MyScores, List<ScoreEnt> scores)
