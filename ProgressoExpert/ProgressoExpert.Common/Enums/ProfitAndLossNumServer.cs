@@ -10,79 +10,50 @@ namespace ProgressoExpert.Common.Enums
     {
         // Просто присваиваем операциям номер, такой в очереди она и будет стоять при получении данных из БД
         /// <summary>
-        /// 2. Доход от реализации  - продажи
+        /// Доход от реализации товаров и услуг
         /// </summary>
-        IncomeSale = 0,
-
+        Income = 0,
         /// <summary>
-        /// 3. Доход от реализации  - сервис
+        /// Себестоимость
         /// </summary>
-        IncomeService = 1,
-        
+        CostPrice = 1,
         /// <summary>
-        /// 5. Себестоимость - продажи
+        /// Прочий доход
         /// </summary>
-        CostPriceSale = 2,
-        
+        OtherIncome = 2,
         /// <summary>
-        /// 6. Себестоимость - сервис
+        /// Расходы по реализации продукции и услуг
         /// </summary>
-        CostPriceService = 3,
-
+        CostsSalesServices = 3,
         /// <summary>
-        /// 11. Заработная плата АП - расходы 
+        /// Административные расходы
         /// </summary>
-        SalaryAdmPer = 4,
-
+        AdministrativeExpenses = 4,
         /// <summary>
-        /// 12. ЗП отдла продаж - расходы
+        /// Расходы на финансирование
         /// </summary>
-        SalarySalesDepartment = 5,
-
+        FinancingCosts = 5,
         /// <summary>
-        /// 13. ЗП сервис персонала - расходы
+        /// Прочие расходы
         /// </summary>
-        SalaryServicePer = 6,
-
+        OtherCosts = 6,
         /// <summary>
-        /// 14. Бонусы от продаж менеджера и продавцов - расходы 
-        /// </summary>        
-        BonusesSalesManagerSellers = 7,
-        
+        /// Амортизация
+        /// </summary>
+        Depreciation = 7,
         /// <summary>
-        /// 15. Арендная плата за офис и склад - расходы
-        /// </summary>        
-        RentOfficeWarehouse = 8,
-
+        /// Прочие налоги
+        /// </summary>
+        OtherTaxes = 8,
         /// <summary>
-        /// 16. Расходы по реализации - расходы
-        /// </summary>      
-        DistributionСosts = 9,
-
-        /// <summary>
-        /// 17. Прочие административные расходы - расходы 
-        /// </summary>      
-        OtherAdministrativeExpenses = 10,
-
-        /// <summary>
-        /// 19. Проценты банка
-        /// </summary>     
-        BankInterest = 11,
-
-        /// <summary>
-        /// 19. Амортизация
-        /// </summary>  
-        Depreciation = 12,
-        
-        /// <summary>
-        /// 19. КПН (20%)
-        /// </summary>     
-        KPN20 = 13,
+        /// KPN20
+        /// </summary>
+        KPN20 = 9,
 
         /// <summary>
         /// Общее кол-во строк необходимых для построения таблицы
         /// </summary>     
-        Total = 14,
+        Total = 10,
     }
 }									
 										

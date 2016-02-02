@@ -321,14 +321,14 @@
 
                 <!-- Информационые данные -->
 
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Background="#EFEFF2" Grid.Column="1">
+                    <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Background="#EFEFF2" Grid.Column="1">
 
                     <Border BorderThickness="2,0,0,0" BorderBrush="#e3f2fd" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="6">
                         <StackPanel Background="White">
                             <Image Source="kase.png"/>
                         </StackPanel>
                     </Border>
-                </ScrollViewer>
+                </ScrollViewer>-->
             </Grid>
         </Grid>
         

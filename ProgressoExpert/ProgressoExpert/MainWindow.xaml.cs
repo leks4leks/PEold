@@ -207,15 +207,12 @@ namespace ProgressoExpert
             #region Данные 
             
             #region Красота, фон
-            SetParamForRectangle(0, 0, 23, monthCount - 2, ResBusiness.RB_ProfitLossReport.WhiteSpaseForData);
-            SetParamForRectangle(monthCount - 2, 0, 23, 2, ResBusiness.RB_ProfitLossReport.GraySpaseForData);
-            SetParamForRectangle(0, 0, 0, monthCount, ResBusiness.RB_ProfitLossReport.FirstBlueRow, false);
-            SetParamForRectangle(0, 17, 0, monthCount, ResBusiness.RB_ProfitLossReport.SeventinBlueRow, false);
-            SetParamForRectangle(0, 22, 0, monthCount, ResBusiness.RB_ProfitLossReport.TwentyTwoBlueRow, false);
-            SetParamForRectangle(0, 3, 0, monthCount - 2, ResBusiness.RB_ProfitLossReport.TreeGrayRow, false);
-            SetParamForRectangle(0, 6, 0, monthCount - 2, ResBusiness.RB_ProfitLossReport.SixGrayRow, false);
-            SetParamForRectangle(0, 9, 0, monthCount - 2, ResBusiness.RB_ProfitLossReport.NineGrayRow, false);
-            SetParamForRectangle(0, 20, 0, monthCount - 2, ResBusiness.RB_ProfitLossReport.TwentyGrayRow, false);
+            SetParamForRectangle(0, 0, 15, monthCount - 2, ResBusiness.RB_ProfitLossReport.WhiteSpaseForData);
+            SetParamForRectangle(monthCount - 2, 0, 15, 2, ResBusiness.RB_ProfitLossReport.GraySpaseForData);
+            SetParamForRectangle(0, 2, 0, monthCount, ResBusiness.RB_ProfitLossReport.SecondBlueRow, false);
+            SetParamForRectangle(0, 9, 0, monthCount, ResBusiness.RB_ProfitLossReport.NineBlueRow, false);
+            SetParamForRectangle(0, 11, 0, monthCount, ResBusiness.RB_ProfitLossReport.ElevenBlueRow, false);
+            SetParamForRectangle(0, 14, 0, monthCount, ResBusiness.RB_ProfitLossReport.FourteenBlueRow, false);
             #endregion
 
             var model = vm.ReportProfitAndLoss;
@@ -229,80 +226,55 @@ namespace ProgressoExpert
                     switch (scoreNum)
                     {
                         #region Запишем суммы в модель
-                        case (int)ProfitAndLossNumUI.Income://доход
+                        case (int)ProfitAndLossNumUI.TotalIncome://доход
                             textBlock = CreateAndFillTextBlock((model.TotalIncome[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.IncomeSale:
-                            textBlock = CreateAndFillTextBlock(model.IncomeSale[j].ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.TotalCostPrice:
+                            textBlock = CreateAndFillTextBlock(model.TotalCostPrice[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.IncomeService:
-                            textBlock = CreateAndFillTextBlock(model.IncomeService[j].ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.GrossProfit:
+                            textBlock = CreateAndFillTextBlock(model.GrossProfit[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.CostPrice://Себестоимость
-                            textBlock = CreateAndFillTextBlock((model.TotalCostPrice[j]).ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.OtherIncome:
+                            textBlock = CreateAndFillTextBlock((model.OtherIncome[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.CostPriceSale:
-                            textBlock = CreateAndFillTextBlock(model.CostPriceSale[j].ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.Costs:
+                            textBlock = CreateAndFillTextBlock(model.Costs[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.CostPriceService:
-                            textBlock = CreateAndFillTextBlock(model.CostPriceService[j].ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.CostsSalesServices:
+                            textBlock = CreateAndFillTextBlock(model.CostsSalesServices[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.GrossProfit://Валовая прибыль
-                            textBlock = CreateAndFillTextBlock((model.GrossProfit[j]).ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.AdministrativeExpenses:
+                            textBlock = CreateAndFillTextBlock((model.AdministrativeExpenses[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.GrossProfitSale:
-                            textBlock = CreateAndFillTextBlock((model.GrossProfitSale[j]).ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.FinancingCosts:
+                            textBlock = CreateAndFillTextBlock((model.FinancingCosts[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.GrossProfitService:
-                            textBlock = CreateAndFillTextBlock((model.GrossProfitService[j]).ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.OtherCosts:
+                            textBlock = CreateAndFillTextBlock((model.OtherCosts[j]).ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.Costs://Расходы 
-                            textBlock = CreateAndFillTextBlock((model.Costs[j]).ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.SalaryAdmPer:
-                            textBlock = CreateAndFillTextBlock(model.SalaryAdmPer[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.SalarySalesDepartment:
-                            textBlock = CreateAndFillTextBlock(model.SalarySalesDepartment[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.SalaryServicePer:
-                            textBlock = CreateAndFillTextBlock(model.SalaryServicePer[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.BonusesSalesManagerSellers:
-                            textBlock = CreateAndFillTextBlock(model.BonusesSalesManagerSellers[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.RentOfficeWarehouse:
-                            textBlock = CreateAndFillTextBlock(model.RentOfficeWarehouse[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.DistributionСosts:
-                            textBlock = CreateAndFillTextBlock(model.DistributionСosts[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.OtherAdministrativeExpenses:
-                            textBlock = CreateAndFillTextBlock(model.OtherAdministrativeExpenses[j].ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.Ebitda:
-                            textBlock = CreateAndFillTextBlock((model.Ebitda[j]).ToString(), scoreNum, j, true, ref monthCount);
-                            break;
-                        case (int)ProfitAndLossNumUI.BankInterest:
-                            textBlock = CreateAndFillTextBlock(model.BankInterest[j].ToString(), scoreNum, j, true, ref monthCount);
+                        case (int)ProfitAndLossNumUI.OperatingProfit:
+                            textBlock = CreateAndFillTextBlock(model.OperatingProfit[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.Depreciation:
                             textBlock = CreateAndFillTextBlock(model.Depreciation[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.ProfitBeforeTaxation:
-                            textBlock = CreateAndFillTextBlock((model.ProfitBeforeTaxation[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(model.ProfitBeforeTaxation[j].ToString(), scoreNum, j, true, ref monthCount);
+                            break;
+                        case (int)ProfitAndLossNumUI.OtherTaxes:
+                            textBlock = CreateAndFillTextBlock(model.OtherTaxes[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.KPN20:
                             textBlock = CreateAndFillTextBlock(model.KPN20[j].ToString(), scoreNum, j, true, ref monthCount);
                             break;
-                        case (int)ProfitAndLossNumUI.ProfitAfterTaxation:
-                            textBlock = CreateAndFillTextBlock((model.ProfitAfterTaxation[j]).ToString(), scoreNum, j, true, ref monthCount);
-                            break;
+                        case (int)ProfitAndLossNumUI.TotalProfit:
+                            textBlock = CreateAndFillTextBlock(model.TotalProfit[j].ToString(), scoreNum, j, true, ref monthCount);
+                            break;                        
                         #endregion
                     }
                     if (j == monthCount - 1) textBlock.Width = 250; // последнюю колонку сделаем пошырше
-                    ResBusiness.RB_ProfitLossReport.GridDataProfitLossReportGrid.Children.Add(textBlock);
-                    
+                    ResBusiness.RB_ProfitLossReport.GridDataProfitLossReportGrid.Children.Add(textBlock);                    
                 }
             }
             #endregion

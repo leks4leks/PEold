@@ -37,7 +37,7 @@ namespace ProgressoExpert.Models.Models
             get { return _regGroups; }
             set { SetValue(ref _regGroups, value, "RegGroups"); }
         }
-        private List<ScoreEnt> _scores;
+        private List<RefGroupsEnt> _regGroups;
 
         public int TimeSpan
         {

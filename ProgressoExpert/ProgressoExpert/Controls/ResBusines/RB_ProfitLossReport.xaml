@@ -58,19 +58,23 @@
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
 
-                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="23">
+                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="15">
                             <Rectangle  Style="{StaticResource MDTRectangleWhite}"/>
-                        </Border>
-                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="0" Grid.Column="0">
+                        </Border>                       
+                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="2" Grid.Column="0">
                             <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
                         </Border>
-                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="17" Grid.Column="0">
+                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="9" Grid.Column="0">
                             <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
                         </Border>
-                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="22" Grid.Column="0">
+                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="11" Grid.Column="0">
                             <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
                         </Border>
-                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="3" Grid.Column="0">
+                        <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="14" Grid.Column="0">
+                            <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
+                        </Border>
+                        
+                        <!--<Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="3" Grid.Column="0">
                             <Rectangle  Style="{StaticResource MDTRectangleGray}"/>
                         </Border>
                         <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="6" Grid.Column="0">
@@ -81,31 +85,23 @@
                         </Border>
                         <Border BorderThickness="0,0,0,0" BorderBrush="Black" Grid.Row="20" Grid.Column="0">
                             <Rectangle  Style="{StaticResource MDTRectangleGray}"/>
-                        </Border>
+                        </Border>-->
 
-                        <TextBlock  Text="Доход от  реализации (без НДС), в т.ч.:" Grid.Row="0" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                        <TextBlock  Text=" - продажи" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" - сервис" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="Себестоимость (без НДС), в т.ч.:" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" - продажи" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" - сервис" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="Валовая прибыль (без НДС), в т.ч.:" Grid.Row="6" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" - продажи" Grid.Row="7" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" - сервис" Grid.Row="8" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="Расходы (без НДС), в т.ч.:" Grid.Row="9" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Заработная плата административного персонала" Grid.Row="10" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Заработная плата отдела продаж" Grid.Row="11" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Заработная плата сервис-персонала" Grid.Row="12" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Бонусы от продаж менеджера и продавцов" Grid.Row="13" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Арендная плата за офис и склад" Grid.Row="14" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Расходы по реализации" Grid.Row="15" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Прочие административные расходы" Grid.Row="16" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="EBITDA" Grid.Row="17" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}" />
-                        <TextBlock  Text=" Проценты банка" Grid.Row="18" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" Амортизация" Grid.Row="19" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="Прибыль до налогооблажения" Grid.Row="20" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text=" КПН (20%)" Grid.Row="21" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                        <TextBlock  Text="Прибыль после налогооблажения" Grid.Row="22" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="Доход от реализации товаров и услуг" Grid.Row="0" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Себестоимость" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Валовая прибыль" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="Прочий доход" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Расходы, всего" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="  Расходы по реализации продукции и услуг" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="  Административные расходы" Grid.Row="6" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="  Расходы на финансирование" Grid.Row="7" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="  Прочие расходы" Grid.Row="8" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Операционная прибыль" Grid.Row="9" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="  Амортизация" Grid.Row="10" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Прибыль до налогооблажения" Grid.Row="11" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
+                        <TextBlock  Text="Прочие налоги" Grid.Row="12" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="КПН (20%)" Grid.Row="13" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                        <TextBlock  Text="Итоговая прибыль" Grid.Row="14" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>                     
 
                     </Grid>
                 </ScrollViewer>
@@ -144,25 +140,25 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
+                            <!--<RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>-->
                         </Grid.RowDefinitions>
 
                         <Rectangle Style="{StaticResource MDTRectangleWhite}" Name="WhiteSpaseForData"/>
                         <Rectangle Style="{StaticResource MDTRectangleGray}" Name="GraySpaseForData"/>
-                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="FirstBlueRow"/>
-                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="SeventinBlueRow"/>
-                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="TwentyTwoBlueRow"/>
-                        <Rectangle Style="{StaticResource MDTRectangleGray}" Name="TreeGrayRow"/>
-                        <Rectangle Style="{StaticResource MDTRectangleGray}" Name="SixGrayRow"/>
+                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="SecondBlueRow"/>
+                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="NineBlueRow"/>
+                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="ElevenBlueRow"/>
+                        <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="FourteenBlueRow"/>
+                        <!--<Rectangle Style="{StaticResource MDTRectangleGray}" Name="SixGrayRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleGray}" Name="NineGrayRow"/>
-                        <Rectangle Style="{StaticResource MDTRectangleGray}" Name="TwentyGrayRow"/>
+                        <Rectangle Style="{StaticResource MDTRectangleGray}" Name="TwentyGrayRow"/>-->
                     </Grid>
                 </ScrollViewer>
 
@@ -188,14 +184,14 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
+                            <!--<RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>-->
                         </Grid.RowDefinitions>
 
                         <Rectangle Style="{StaticResource MDTRectangleWhite}" />

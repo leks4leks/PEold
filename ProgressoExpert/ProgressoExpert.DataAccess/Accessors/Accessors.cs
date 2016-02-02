@@ -457,32 +457,24 @@ namespace ProgressoExpert.DataAccess
                 DateTime oneMonthDateEnd = new DateTime();// конечная дата для каждого месяца
                 
                 #region Инициализация
-                model.IncomeSale = new List<decimal>();
-                model.IncomeService = new List<decimal>();
-                model.CostPriceSale = new List<decimal>();
-                model.CostPriceService = new List<decimal>();
-                model.SalaryAdmPer = new List<decimal>();
-                model.SalarySalesDepartment = new List<decimal>();
-                model.SalaryServicePer = new List<decimal>();
-                model.BonusesSalesManagerSellers = new List<decimal>();
-                model.RentOfficeWarehouse = new List<decimal>();
-                model.DistributionСosts = new List<decimal>();
-                model.OtherAdministrativeExpenses = new List<decimal>();
-                model.BankInterest = new List<decimal>();
-                model.Depreciation = new List<decimal>();
-                model.KPN20 = new List<decimal>();
                 model.TotalIncome = new List<decimal>();
                 model.TotalCostPrice = new List<decimal>();
-                model.GrossProfitSale = new List<decimal>();
-                model.GrossProfitService = new List<decimal>();
                 model.GrossProfit = new List<decimal>();
+                model.OtherIncome = new List<decimal>();
                 model.Costs = new List<decimal>();
-                model.Ebitda = new List<decimal>();
+                model.CostsSalesServices = new List<decimal>();
+                model.AdministrativeExpenses = new List<decimal>();
+                model.FinancingCosts = new List<decimal>();
+                model.OtherCosts = new List<decimal>();
+                model.OperatingProfit = new List<decimal>();
+                model.Depreciation = new List<decimal>();
                 model.ProfitBeforeTaxation = new List<decimal>();
-                model.ProfitAfterTaxation = new List<decimal>();           
+                model.OtherTaxes = new List<decimal>();
+                model.KPN20 = new List<decimal>();
+                model.TotalProfit = new List<decimal>();
                 #endregion
 
-                
+
                 int monthCounter = 0; // счетчик пройденых месяцев
                 for (int scoreNum = 0; scoreNum < (int)ProfitAndLossNumServer.Total; scoreNum++)
                 {
@@ -492,58 +484,50 @@ namespace ProgressoExpert.DataAccess
                     switch (scoreNum)
                     {
                         #region Вытаскиваем наши счета
-                        case (int)ProfitAndLossNumServer.IncomeSale:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.IncomeSale }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.IncomeService:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.IncomeService1,
-                                                                 (int)ScoresReportProfitAndLoss.IncomeService2, 
-                                                                 (int)ScoresReportProfitAndLoss.IncomeService3, 
-                                                                 (int)ScoresReportProfitAndLoss.IncomeService4, 
-                                                                 (int)ScoresReportProfitAndLoss.IncomeService5, 
-                                                                 (int)ScoresReportProfitAndLoss.IncomeService6  
+                        case (int)ProfitAndLossNumServer.Income:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.Income0,
+                                                                 (int)ScoresReportProfitAndLoss.Income1,
+                                                                 (int)ScoresReportProfitAndLoss.Income2
                                                                }, scores);
                             break;
-                        case (int)ProfitAndLossNumServer.CostPriceSale:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.СostPriceSale1,
-                                                                 (int)ScoresReportProfitAndLoss.СostPriceSale2
+                        case (int)ProfitAndLossNumServer.CostPrice:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.CostPrice}, scores);
+                            break;
+                        case (int)ProfitAndLossNumServer.OtherIncome:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherIncome0,
+                                                                 (int)ScoresReportProfitAndLoss.OtherIncome1,
+                                                                 (int)ScoresReportProfitAndLoss.OtherIncome2,
+                                                                 (int)ScoresReportProfitAndLoss.OtherIncome3,
                                                                }, scores);
                             break;
-                        case (int)ProfitAndLossNumServer.CostPriceService:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.СostPriceService}, scores);
+                        case (int)ProfitAndLossNumServer.CostsSalesServices:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.CostsSalesServices}, scores);
                             break;
-                        case (int)ProfitAndLossNumServer.SalaryAdmPer:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.SalaryAdmPer }, scores);
+                        case (int)ProfitAndLossNumServer.AdministrativeExpenses:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.AdministrativeExpenses }, scores);
                             break;
-                        case (int)ProfitAndLossNumServer.SalarySalesDepartment:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.SalarySalesDepartment }, scores);
+                        case (int)ProfitAndLossNumServer.FinancingCosts:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.FinancingCosts }, scores);
                             break;
-                        case (int)ProfitAndLossNumServer.SalaryServicePer:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.SalaryServicePer }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.BonusesSalesManagerSellers:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.BonusesSalesManagerSellers }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.RentOfficeWarehouse:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.RentOfficeWarehouse }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.DistributionСosts:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.DistributionСosts }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.OtherAdministrativeExpenses:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherAdministrativeExpenses }, scores);
-                            break;
-                        case (int)ProfitAndLossNumServer.BankInterest:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.BankInterest }, scores);
+                        case (int)ProfitAndLossNumServer.OtherCosts:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherCosts0,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts1,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts2,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts3,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts4,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts5,
+                                                                 (int)ScoresReportProfitAndLoss.OtherCosts6,
+                                                               }, scores);
                             break;
                         case (int)ProfitAndLossNumServer.Depreciation:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.Depreciation1,
-                                                                 (int)ScoresReportProfitAndLoss.Depreciation2
-                                                               }, scores);
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.Depreciation }, scores);
+                            break;
+                        case (int)ProfitAndLossNumServer.OtherTaxes:
+                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherTaxes }, scores);
                             break;
                         case (int)ProfitAndLossNumServer.KPN20:
                             ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.KPN20 }, scores);
-                            break;
+                            break;                        
                         #endregion
                     }
 
@@ -600,47 +584,35 @@ namespace ProgressoExpert.DataAccess
                         switch (scoreNum)
                         {
                             #region Запишем суммы в модель
-                            case (int)ProfitAndLossNumServer.IncomeSale:
-                                model.IncomeSale.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum(), 2));;
+                            case (int)ProfitAndLossNumServer.Income:
+                                model.TotalIncome.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum() * 112 / 100, 2)); // + 12 процентов
                                 break;
-                            case (int)ProfitAndLossNumServer.IncomeService:
-                                model.IncomeService.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.CostPrice:
+                                model.TotalCostPrice.Add(Math.Round(ourCrt.Select(_ => _.Money).Sum(), 2));
                                 break;
-                            case (int)ProfitAndLossNumServer.CostPriceSale:
-                                model.CostPriceSale.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.OtherIncome:
+                                model.OtherIncome.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
-                            case (int)ProfitAndLossNumServer.CostPriceService:
-                                model.CostPriceService.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.CostsSalesServices:
+                                model.CostsSalesServices.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
-                            case (int)ProfitAndLossNumServer.SalaryAdmPer:
-                                model.SalaryAdmPer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.AdministrativeExpenses:
+                                model.AdministrativeExpenses.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
-                            case (int)ProfitAndLossNumServer.SalarySalesDepartment:
-                                model.SalarySalesDepartment.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.FinancingCosts:
+                                model.FinancingCosts.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
-                            case (int)ProfitAndLossNumServer.SalaryServicePer:
-                                model.SalaryServicePer.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
-                                break;
-                            case (int)ProfitAndLossNumServer.BonusesSalesManagerSellers:
-                                model.BonusesSalesManagerSellers.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
-                                break;
-                            case (int)ProfitAndLossNumServer.RentOfficeWarehouse:
-                                model.RentOfficeWarehouse.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
-                                break;
-                            case (int)ProfitAndLossNumServer.DistributionСosts:
-                                model.DistributionСosts.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
-                                break;
-                            case (int)ProfitAndLossNumServer.OtherAdministrativeExpenses:
-                                model.OtherAdministrativeExpenses.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
-                                break;
-                            case (int)ProfitAndLossNumServer.BankInterest:
-                                model.BankInterest.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                            case (int)ProfitAndLossNumServer.OtherCosts:
+                                model.OtherCosts.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
                             case (int)ProfitAndLossNumServer.Depreciation:
                                 model.Depreciation.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
                                 break;
+                            case (int)ProfitAndLossNumServer.OtherTaxes:
+                                model.OtherTaxes.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                                break;
                             case (int)ProfitAndLossNumServer.KPN20:
-                                model.KPN20.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum(), 2));
+                                model.KPN20.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() * 20 / 100, 2)); // берем только 20 процентов
                                 break;
                             #endregion
                         }                        
@@ -651,87 +623,58 @@ namespace ProgressoExpert.DataAccess
                 // Заполним расчитываемые поля
                 for(int i = 0; i < monthCounter; i++)
                 {
-                    model.TotalIncome.Add(model.IncomeSale[i] + model.IncomeService[i]);
-                    model.TotalCostPrice.Add(model.CostPriceSale[i] + model.CostPriceService[i]);
-                    model.GrossProfitSale.Add(model.IncomeSale[i] - model.CostPriceSale[i]);
-                    model.GrossProfitService.Add(model.IncomeService[i] - model.CostPriceService[i]);                    
-                    model.GrossProfit.Add(model.GrossProfitSale[i] - model.GrossProfitService[i]);
-                    model.Costs.Add(model.SalaryAdmPer[i] + model.SalarySalesDepartment[i] + model.SalaryServicePer[i] + model.BonusesSalesManagerSellers[i]
-                                    + model.RentOfficeWarehouse[i] + model.DistributionСosts[i] + model.OtherAdministrativeExpenses[i]);
-                    model.Ebitda.Add(model.GrossProfitSale[i] + model.GrossProfitService[i] - model.Costs[i]);
-                    model.ProfitBeforeTaxation.Add(model.Ebitda[i] - model.BankInterest[i] - model.Depreciation[i]);
-                    model.ProfitAfterTaxation.Add(model.ProfitBeforeTaxation[i] - model.KPN20[i]);
+                    model.GrossProfit.Add(model.TotalIncome[i] + model.TotalCostPrice[i]);
+                    model.Costs.Add(model.AdministrativeExpenses[i] + model.CostsSalesServices[i] + model.FinancingCosts[i] + model.OtherTaxes[i]);
+                    model.OperatingProfit.Add(model.GrossProfit[i] + model.OtherIncome[i] - model.Costs[i]);
+                    model.ProfitBeforeTaxation.Add(model.OperatingProfit[i] - model.Depreciation[i]);                    
+                    model.TotalProfit.Add(model.ProfitBeforeTaxation[i] - model.OtherTaxes[i] - model.KPN20[i]);                    
                 }
 
                 #region Расчитаем среднюю и общую сумму по каждой строке
                 model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum(), 2));// общее
                 model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.IncomeSale.Add(Math.Round(model.IncomeSale.Take(monthCounter).Sum(), 2));// общее
-                model.IncomeSale.Add(Math.Round(model.IncomeSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.IncomeService.Add(Math.Round(model.IncomeService.Take(monthCounter).Sum(), 2));// общее
-                model.IncomeService.Add(Math.Round(model.IncomeService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
+                
                 model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum(), 2));// общее
                 model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.CostPriceSale.Add(Math.Round(model.CostPriceSale.Take(monthCounter).Sum(), 2));// общее
-                model.CostPriceSale.Add(Math.Round(model.CostPriceSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.CostPriceService.Add(Math.Round(model.CostPriceService.Take(monthCounter).Sum(), 2));// общее
-                model.CostPriceService.Add(Math.Round(model.CostPriceService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.GrossProfitSale.Add(Math.Round(model.GrossProfitSale.Take(monthCounter).Sum(), 2));// общее
-                model.GrossProfitSale.Add(Math.Round(model.GrossProfitSale.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.GrossProfitService.Add(Math.Round(model.GrossProfitService.Take(monthCounter).Sum(), 2));// общее
-                model.GrossProfitService.Add(Math.Round(model.GrossProfitService.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
+                
                 model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum(), 2));// общее
                 model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.OtherIncome.Add(Math.Round(model.OtherIncome.Take(monthCounter).Sum(), 2));// общее
+                model.OtherIncome.Add(Math.Round(model.OtherIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+
+                model.CostsSalesServices.Add(Math.Round(model.CostsSalesServices.Take(monthCounter).Sum(), 2));// общее
+                model.CostsSalesServices.Add(Math.Round(model.CostsSalesServices.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
                 model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum(), 2));// общее
                 model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.SalaryAdmPer.Add(Math.Round(model.SalaryAdmPer.Take(monthCounter).Sum(), 2));// общее
-                model.SalaryAdmPer.Add(Math.Round(model.SalaryAdmPer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.SalarySalesDepartment.Add(Math.Round(model.SalarySalesDepartment.Take(monthCounter).Sum(), 2));// общее
-                model.SalarySalesDepartment.Add(Math.Round(model.SalarySalesDepartment.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.SalaryServicePer.Add(Math.Round(model.SalaryServicePer.Take(monthCounter).Sum(), 2));// общее
-                model.SalaryServicePer.Add(Math.Round(model.SalaryServicePer.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.BonusesSalesManagerSellers.Add(Math.Round(model.BonusesSalesManagerSellers.Take(monthCounter).Sum(), 2));// общее
-                model.BonusesSalesManagerSellers.Add(Math.Round(model.BonusesSalesManagerSellers.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.RentOfficeWarehouse.Add(Math.Round(model.RentOfficeWarehouse.Take(monthCounter).Sum(), 2));// общее
-                model.RentOfficeWarehouse.Add(Math.Round(model.RentOfficeWarehouse.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.DistributionСosts.Add(Math.Round(model.DistributionСosts.Take(monthCounter).Sum(), 2));// общее
-                model.DistributionСosts.Add(Math.Round(model.DistributionСosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.OtherAdministrativeExpenses.Add(Math.Round(model.OtherAdministrativeExpenses.Take(monthCounter).Sum(), 2));// общее
-                model.OtherAdministrativeExpenses.Add(Math.Round(model.OtherAdministrativeExpenses.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.BankInterest.Add(Math.Round(model.BankInterest.Take(monthCounter).Sum(), 2));// общее
-                model.BankInterest.Add(Math.Round(model.BankInterest.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
+                
                 model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum(), 2));// общее
                 model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
                 model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum(), 2));// общее
                 model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.Ebitda.Add(Math.Round(model.Ebitda.Take(monthCounter).Sum(), 2));// общее
-                model.Ebitda.Add(Math.Round(model.Ebitda.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
+                
                 model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum(), 2));// общее
                 model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-
-                model.ProfitAfterTaxation.Add(Math.Round(model.ProfitAfterTaxation.Take(monthCounter).Sum(), 2));// общее
-                model.ProfitAfterTaxation.Add(Math.Round(model.ProfitAfterTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.AdministrativeExpenses.Add(Math.Round(model.AdministrativeExpenses.Take(monthCounter).Sum(), 2));// общее
+                model.AdministrativeExpenses.Add(Math.Round(model.AdministrativeExpenses.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.FinancingCosts.Add(Math.Round(model.FinancingCosts.Take(monthCounter).Sum(), 2));// общее
+                model.FinancingCosts.Add(Math.Round(model.FinancingCosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.OtherCosts.Add(Math.Round(model.OtherCosts.Take(monthCounter).Sum(), 2));// общее
+                model.OtherCosts.Add(Math.Round(model.OtherCosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.OtherTaxes.Add(Math.Round(model.OtherTaxes.Take(monthCounter).Sum(), 2));// общее
+                model.OtherTaxes.Add(Math.Round(model.OtherTaxes.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.OperatingProfit.Add(Math.Round(model.OperatingProfit.Take(monthCounter).Sum(), 2));// общее
+                model.OperatingProfit.Add(Math.Round(model.OperatingProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
+                
+                model.TotalProfit.Add(Math.Round(model.TotalProfit.Take(monthCounter).Sum(), 2));// общее
+                model.TotalProfit.Add(Math.Round(model.TotalProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее                
                 #endregion
 
                 return model;

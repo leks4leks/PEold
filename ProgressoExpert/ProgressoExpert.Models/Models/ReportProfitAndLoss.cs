@@ -10,7 +10,7 @@ namespace ProgressoExpert.Models.Models
     public class ReportProfitAndLoss : BaseViewModel
     {
         /// <summary>
-        /// Доход от реализации
+        /// Доход от реализации товаров и услуг
         /// </summary>
         public List<decimal> TotalIncome
         {
@@ -18,27 +18,7 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _totalIncome, value, "TotalIncome"); }
         }
         private List<decimal> _totalIncome;
-
-        /// <summary>
-        /// Доход от реализации - продажи
-        /// </summary>
-        public List<decimal> IncomeSale
-        {
-            get { return _incomeSale; }
-            set { SetValue(ref _incomeSale, value, "IncomeSale"); }
-        }
-        private List<decimal> _incomeSale;
-
-        /// <summary>
-        /// Доход от реализации - сервис
-        /// </summary>
-        public List<decimal> IncomeService
-        {
-            get { return _incomeService; }
-            set { SetValue(ref _incomeService, value, "IncomeService"); }
-        }
-        private List<decimal> _incomeService;
-
+        
         /// <summary>
         /// Себестоимость 
         /// </summary>
@@ -48,27 +28,7 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _totalCostPrice, value, "TotalCostPrice"); }
         }
         private List<decimal> _totalCostPrice;
-
-        /// <summary>
-        /// Себестоимость - продажи 
-        /// </summary>
-        public List<decimal> CostPriceSale
-        {
-            get { return _сostPriceSale; }
-            set { SetValue(ref _сostPriceSale, value, "CostPriceSale"); }
-        }
-        private List<decimal> _сostPriceSale;
-
-        /// <summary>
-        /// Себестоимость - сервис 
-        /// </summary>
-        public List<decimal> CostPriceService
-        {
-            get { return _сostPriceService; }
-            set { SetValue(ref _сostPriceService, value, "CostPriceService"); }
-        }
-        private List<decimal> _сostPriceService;
-
+        
         /// <summary>
         /// Валовая прибыль
         /// </summary>
@@ -78,26 +38,16 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _grossProfit, value, "GrossProfit"); }
         }
         private List<decimal> _grossProfit;
-
+        
         /// <summary>
-        /// Валовая прибыль - продажи
+        /// Прочий доход
         /// </summary>
-        public List<decimal> GrossProfitSale
+        public List<decimal> OtherIncome
         {
-            get { return _grossProfitSale; }
-            set { SetValue(ref _grossProfitSale, value, "GrossProfitSale"); }
+            get { return _otherIncome; }
+            set { SetValue(ref _otherIncome, value, "OtherIncome"); }
         }
-        private List<decimal> _grossProfitSale;
-
-        /// <summary>
-        /// Валовая прибыль - сервис
-        /// </summary>
-        public List<decimal> GrossProfitService
-        {
-            get { return _grossProfitService; }
-            set { SetValue(ref _grossProfitService, value, "GrossProfitService"); }
-        }
-        private List<decimal> _grossProfitService;
+        private List<decimal> _otherIncome;
 
         /// <summary>
         /// Расходы
@@ -110,94 +60,54 @@ namespace ProgressoExpert.Models.Models
         private List<decimal> _сosts;
 
         /// <summary>
-        /// Заработная плата АП
+        /// Расходы по реализации продукции и услуг
         /// </summary>
-        public List<decimal> SalaryAdmPer
+        public List<decimal> CostsSalesServices
         {
-            get { return _salaryAdmPer; }
-            set { SetValue(ref _salaryAdmPer, value, "SalaryAdmPer"); }
+            get { return _costsSalesServices; }
+            set { SetValue(ref _costsSalesServices, value, "CostsSalesServices"); }
         }
-        private List<decimal> _salaryAdmPer;
+        private List<decimal> _costsSalesServices;
 
         /// <summary>
-        /// ЗП отдла продаж
+        /// Административные расходы
         /// </summary>
-        public List<decimal> SalarySalesDepartment
+        public List<decimal> AdministrativeExpenses
         {
-            get { return _salarySalesDepartment; }
-            set { SetValue(ref _salarySalesDepartment, value, "SalarySalesDepartment"); }
+            get { return _administrativeExpenses; }
+            set { SetValue(ref _administrativeExpenses, value, "AdministrativeExpenses"); }
         }
-        private List<decimal> _salarySalesDepartment;
+        private List<decimal> _administrativeExpenses;
 
         /// <summary>
-        /// ЗП сервис персонала
+        /// Расходы на финансирование
         /// </summary>
-        public List<decimal> SalaryServicePer
+        public List<decimal> FinancingCosts
         {
-            get { return _salaryServicePer; }
-            set { SetValue(ref _salaryServicePer, value, "SalaryServicePer"); }
+            get { return _financingCosts; }
+            set { SetValue(ref _financingCosts, value, "FinancingCosts"); }
         }
-        private List<decimal> _salaryServicePer;
+        private List<decimal> _financingCosts;
 
         /// <summary>
-        /// Бонусы от продаж менеджера и продавцов
+        /// Прочие расходы
         /// </summary>
-        public List<decimal> BonusesSalesManagerSellers
+        public List<decimal> OtherCosts
         {
-            get { return _bonusesSalesManagerSellers; }
-            set { SetValue(ref _bonusesSalesManagerSellers, value, "BonusesSalesManagerSellers"); }
+            get { return _otherCosts; }
+            set { SetValue(ref _otherCosts, value, "OtherCosts"); }
         }
-        private List<decimal> _bonusesSalesManagerSellers;
+        private List<decimal> _otherCosts;
 
         /// <summary>
-        /// Арендная плата за офис и склад
+        /// Операционная прибыль
         /// </summary>
-        public List<decimal> RentOfficeWarehouse
+        public List<decimal> OperatingProfit
         {
-            get { return _rentOfficeWarehouse; }
-            set { SetValue(ref _rentOfficeWarehouse, value, "RentOfficeWarehouse"); }
+            get { return _operatingProfitt; }
+            set { SetValue(ref _operatingProfitt, value, "OperatingProfit"); }
         }
-        private List<decimal> _rentOfficeWarehouse;
-        
-        /// <summary>
-        /// Расходы по реализации
-        /// </summary>
-        public List<decimal> DistributionСosts
-        {
-            get { return _distributionСosts; }
-            set { SetValue(ref _distributionСosts, value, "DistributionСosts"); }
-        }
-        private List<decimal> _distributionСosts;
-
-        /// <summary>
-        /// Прочие административные расходы
-        /// </summary>
-        public List<decimal> OtherAdministrativeExpenses
-        {
-            get { return _otherAdministrativeExpenses; }
-            set { SetValue(ref _otherAdministrativeExpenses, value, "OtherAdministrativeExpenses"); }
-        }
-        private List<decimal> _otherAdministrativeExpenses;
-
-        /// <summary>
-        /// EBITDA
-        /// </summary>
-        public List<decimal> Ebitda
-        {
-            get { return _ebitda; }
-            set { SetValue(ref _ebitda, value, "Ebitda"); }
-        }
-        private List<decimal> _ebitda;
-
-        /// <summary>
-        /// Проценты банка
-        /// </summary>
-        public List<decimal> BankInterest
-        {
-            get { return _bankInterest; }
-            set { SetValue(ref _bankInterest, value, "BankInterest"); }
-        }
-        private List<decimal> _bankInterest;
+        private List<decimal> _operatingProfitt;
 
         /// <summary>
         /// Амортизация
@@ -220,6 +130,16 @@ namespace ProgressoExpert.Models.Models
         private List<decimal> _profitBeforeTaxation;
 
         /// <summary>
+        /// Прочие налоги
+        /// </summary>
+        public List<decimal> OtherTaxes
+        {
+            get { return _otherTaxes; }
+            set { SetValue(ref _otherTaxes, value, "OtherTaxes"); }
+        }
+        private List<decimal> _otherTaxes;
+
+        /// <summary>
         /// КПН (20%)
         /// </summary>
         public List<decimal> KPN20
@@ -230,14 +150,14 @@ namespace ProgressoExpert.Models.Models
         private List<decimal> _kpn20;
 
         /// <summary>
-        /// Прибыль после налогооблажения
+        /// Итоговая прибыль
         /// </summary>
-        public List<decimal> ProfitAfterTaxation
+        public List<decimal> TotalProfit
         {
-            get { return _profitAfterTaxation; }
-            set { SetValue(ref _profitAfterTaxation, value, "ProfitAfterTaxation"); }
+            get { return _totalProfit; }
+            set { SetValue(ref _totalProfit, value, "TotalProfit"); }
         }
-        private List<decimal> _profitAfterTaxation;
+        private List<decimal> _totalProfit;
         
     }
 }

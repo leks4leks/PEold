@@ -11,108 +11,88 @@ namespace ProgressoExpert.Common.Enums
         // TODO: Где Enum = 0 - индивидуальная настройка для каждого потенциального клиента
 
         /// <summary>
-        /// 2. Доход от реализации  - продажи 6010
+        /// Доход от реализации товаров и услуг
         /// </summary>
-        IncomeSale = 6010,
-
+        Income0 = 6010,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6020
+        /// Доход от реализации товаров и услуг
         /// </summary>
-        IncomeService1 = 6020,
-
+        Income1 = 6020,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6030
+        /// Доход от реализации товаров и услуг
         /// </summary>
-        IncomeService2 = 6030,
-
+        Income2 = 6030,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6100
+        /// Себестоимость
         /// </summary>
-        IncomeService3 = 6100,
-
+        CostPrice = 7000,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6200
+        /// Прочий доход
         /// </summary>
-        IncomeService4 = 6200,
-
+        OtherIncome0 = 6100,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6300
+        /// Прочий доход
         /// </summary>
-        IncomeService5 = 6300,
-
+        OtherIncome1 = 6200,
         /// <summary>
-        /// 3. Доход от реализации  - сервис 6400
+        /// Прочий доход
         /// </summary>
-        IncomeService6 = 6400,
-        
+        OtherIncome2 = 6300,
         /// <summary>
-        /// 5. Себестоимость - продажи 7011
+        /// Прочий доход
         /// </summary>
-        СostPriceSale1 = 7010,
-
+        OtherIncome3 = 6400,
         /// <summary>
-        /// 5. Себестоимость - продажи 7012
+        /// Расходы по реализации продукции и услуг
         /// </summary>
-        СostPriceSale2 = 7012,
-
+        CostsSalesServices = 7100,
         /// <summary>
-        /// 6. Себестоимость - сервис 7013
+        /// Административные расходы
         /// </summary>
-        СostPriceService = 7013,
-
+        AdministrativeExpenses = 7200,
         /// <summary>
-        /// 11. Заработная плата АП - расходы -1
+        /// Расходы на финансирование
         /// </summary>
-        SalaryAdmPer = -1,
-
+        FinancingCosts = 7300,
         /// <summary>
-        /// 12. ЗП отдла продаж - расходы 7211
+        /// Прочие расходы
         /// </summary>
-        SalarySalesDepartment = 7211,
-
+        OtherCosts0 = 7410,
         /// <summary>
-        /// 13. ЗП сервис персонала - расходы 7212
+        /// Прочие расходы
         /// </summary>
-        SalaryServicePer = 7212,
-
+        OtherCosts1 = 7430,
         /// <summary>
-        /// 14. Бонусы от продаж менеджера и продавцов - расходы -1
-        /// </summary>        
-        BonusesSalesManagerSellers = -1,
-        
+        /// Прочие расходы
+        /// </summary>
+        OtherCosts2 = 7440,
         /// <summary>
-        /// 15. Арендная плата за офис и склад - расходы 7450
-        /// </summary>        
-        RentOfficeWarehouse = 7450,
-
+        /// Прочие расходы
+        /// </summary>
+        OtherCosts3 = 7450,
         /// <summary>
-        /// 16. Расходы по реализации - расходы 7100
-        /// </summary>      
-        DistributionСosts = 7100,
-
+        /// Прочие расходы
+        /// </summary>
+        OtherCosts4 = 7470,
         /// <summary>
-        /// 17. Прочие административные расходы - расходы -1
-        /// </summary>      
-        OtherAdministrativeExpenses = -1,
-
+        /// Прочие расходы
+        /// </summary>
+        OtherCosts5 = 7500,
         /// <summary>
-        /// 19. Проценты банка - 7300
-        /// </summary>     
-        BankInterest = 7300,
-
+        /// Прочие расходы
+        /// </summary>
+        OtherCosts6 = 7600,
         /// <summary>
-        /// 19. Амортизация - 7410
-        /// </summary>  
-        Depreciation1 = 7410,
-
+        /// Амортизация
+        /// </summary>
+        Depreciation = 7420,
         /// <summary>
-        /// 19. Амортизация - 7420
-        /// </summary>     
-        Depreciation2 = 7420,
-
+        /// Прочие налоги
+        /// </summary>
+        OtherTaxes = -1,
         /// <summary>
-        /// 19. КПН (20%) - 7710
-        /// </summary>     
+        /// KPN20
+        /// </summary>
         KPN20 = 7710
     }
 }									
