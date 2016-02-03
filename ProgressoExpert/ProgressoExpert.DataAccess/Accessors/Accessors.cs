@@ -372,10 +372,11 @@ namespace ProgressoExpert.DataAccess
 
                 #region Накопленная прибыль/убыток
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.AccumulatedProfitAndLoss);
-                model.AccumulatedProfitAndLossStart = _outStart;
-                model.AccumulatedProfitAndLossEnd = _outEnd;
+                model.CalculateAccumulatedProfitAndLoss();
+                //Calculate(out _outStart, out _outEnd,
+                //    (int)ScoresForBusinessResults.AccumulatedProfitAndLoss);
+                //model.AccumulatedProfitAndLossStart = _outStart;
+                //model.AccumulatedProfitAndLossEnd = _outEnd;
 
                 #endregion
 
@@ -770,7 +771,7 @@ namespace ProgressoExpert.DataAccess
                 if (sc.ToString().Length < 4) continue;
                 foreach (var ms in MyScores)
                 {
-                    if (ms.ToString().Contains(sc.Code))
+                    if (ms.ToString().Equals(sc.Code))
                     {
                         _ourScr.Add(sc);
                     }

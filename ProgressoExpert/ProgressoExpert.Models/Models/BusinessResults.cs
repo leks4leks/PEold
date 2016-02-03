@@ -435,7 +435,7 @@ namespace ProgressoExpert.Models.Models
         public decimal ShortTermBankLoansStart
         {
             get { return _shortTermBankLoansStart; }
-            set { SetValue(ref _shortTermBankLoansStart, value, "ShortTermBankLoansStart"); }
+            set { SetValue(ref _shortTermBankLoansStart, value * (-1), "ShortTermBankLoansStart"); }
         }
         private decimal _shortTermBankLoansStart;
 
@@ -445,7 +445,7 @@ namespace ProgressoExpert.Models.Models
         public decimal ShortTermBankLoansEnd
         {
             get { return _shortTermBankLoansEnd; }
-            set { SetValue(ref _shortTermBankLoansEnd, value, "ShortTermBankLoansEnd"); }
+            set { SetValue(ref _shortTermBankLoansEnd, value * (-1), "ShortTermBankLoansEnd"); }
         }
         private decimal _shortTermBankLoansEnd;
 
@@ -459,7 +459,7 @@ namespace ProgressoExpert.Models.Models
         public decimal DebtCitIitStart
         {
             get { return _debtCitIitStart; }
-            set { SetValue(ref _debtCitIitStart, value, "DebtCitIitStart"); }
+            set { SetValue(ref _debtCitIitStart, value * (-1), "DebtCitIitStart"); }
         }
         private decimal _debtCitIitStart;
 
@@ -469,7 +469,7 @@ namespace ProgressoExpert.Models.Models
         public decimal DebtCitIitEnd
         {
             get { return _debtCitIitEnd; }
-            set { SetValue(ref _debtCitIitEnd, value, "DebtCitIitEnd"); }
+            set { SetValue(ref _debtCitIitEnd, value * (-1), "DebtCitIitEnd"); }
         }
         private decimal _debtCitIitEnd;
 
@@ -966,8 +966,26 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateTotalLiabilities()
         {
-            TotalLiabilitiesStart = ShortTermDebtStart + LongTermDebtStart + OwnCapitalStart;
-            TotalLiabilitiesEnd = ShortTermDebtEnd + LongTermDebtEnd + OwnCapitalEnd;
+            TotalLiabilitiesStart = TotalAssetsStart;//ShortTermDebtStart + LongTermDebtStart + OwnCapitalStart;
+            TotalLiabilitiesEnd = TotalAssetsEnd;//ShortTermDebtEnd + LongTermDebtEnd + OwnCapitalEnd;
+        }
+
+        /// <summary>
+        /// Рассчитать Накопленная прибыль/убыток
+        /// </summary>
+        public void CalculateAccumulatedProfitAndLoss()
+        {
+            AccumulatedProfitAndLossStart = TotalLiabilitiesStart - ShortTermDebtStart - LongTermDebtStart - AuthorizedCapitalStart - OtherCapitalStart;
+            AccumulatedProfitAndLossEnd = TotalLiabilitiesEnd - ShortTermDebtEnd - LongTermDebtEnd - AuthorizedCapitalEnd - OtherCapitalEnd;
+        }
+
+        /// <summary>
+        /// Рассчитать дополнительные налоговые активы (Все то, что в пассиве в минусе)
+        /// </summary>
+        public void CalculateAdditionalTaxAssets()
+        {
+            TaxAssetsStart = 1;
+            TaxAssetsEnd = 1;
         }
 
         #endregion
