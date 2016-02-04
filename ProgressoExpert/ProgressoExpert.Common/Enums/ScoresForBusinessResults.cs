@@ -21,14 +21,14 @@ namespace ProgressoExpert.Common.Enums
         CashInCashBox2 = 1020,
 
         /// <summary>
-        /// 2. Денежные средства на рассчетном счете - 1030
+        /// 2. Деньги на банковских счетах - 1030
         /// </summary>
-        CasnInCheckingAccount1 = 1030,
+        MoneyInTheBankAccounts1 = 1030,
 
         /// <summary>
-        /// 2. Денежные средства на рассчетном счете - 1040
+        /// 2. Деньги на банковских счетах - 1040
         /// </summary>
-        CasnInCheckingAccount2 = 1040,
+        MoneyInTheBankAccounts2 = 1040,
 
         /// <summary>
         /// 3. Депозиты - 1050
@@ -36,9 +36,9 @@ namespace ProgressoExpert.Common.Enums
         Deposits = 1050,
 
         /// <summary>
-        /// 4. Дебиторская задолженность - 1210
+        /// 4. Долги клиентов и переплаты - 1210
         /// </summary>        
-        Receivables = 1210,
+        DebtsOfCustomersAndOverpayments = 1210,
 
         /// <summary>
         /// 5. Сырье и материалы - 1310
@@ -61,136 +61,136 @@ namespace ProgressoExpert.Common.Enums
         UnfinishedProduction = 1340,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1060
+        /// 8. Прочие оборотные активы - 1060
         /// </summary>        
         OtherCurrentAssets1 = 1060,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1100
+        /// 8. Прочие оборотные активы - 1100
         /// </summary>        
         OtherCurrentAssets2 = 1100,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1230
+        /// 8. Прочие оборотные активы - 1230
         /// </summary>        
         OtherCurrentAssets3 = 1230,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1250
+        /// 8. Прочие оборотные активы - 1250
         /// </summary>        
         OtherCurrentAssets4 = 1250,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1260
+        /// 8. Прочие оборотные активы - 1260
         /// </summary>        
         OtherCurrentAssets5 = 1260,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1270
+        /// 8. Прочие оборотные активы - 1270
         /// </summary>        
         OtherCurrentAssets6 = 1270,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1280
+        /// 8. Прочие оборотные активы - 1280
         /// </summary>        
         OtherCurrentAssets7 = 1280,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1290
+        /// 8. Прочие оборотные активы - 1290
         /// </summary>        
         OtherCurrentAssets8 = 1290,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1350
+        /// 8. Прочие оборотные активы - 1350
         /// </summary>        
         OtherCurrentAssets9 = 1350,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1360
+        /// 8. Прочие оборотные активы - 1360
         /// </summary>        
         OtherCurrentAssets10 = 1360,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1500
+        /// 8. Прочие оборотные активы - 1500
         /// </summary>        
         OtherCurrentAssets11 = 1500,
 
         /// <summary>
-        /// 8. Прочие краткосрочные активы - 1600
+        /// 8. Прочие оборотные активы - 1600
         /// </summary>        
         OtherCurrentAssets12 = 1600,
 
         /// <summary>
-        /// 9. Налоговые активы - 1400
+        /// 9. Налоговые переплаты/авансы - 1400
         /// </summary>
-        TaxAssets = 1400,
+        TaxOverpaymentsAndAdvances = 1400,
         #endregion
 
         #region Сумма статей с 10 по 15 является показателем графы "Долгосрочные активы"
         /// <summary>
-        /// 10. Долгосрочная Дебиторская задолженность - 2110
+        /// 10. Долги клиентов (срок возврата более 1 года) - 2110
         /// </summary>        
-        LongTermReceivables = 2110,
+        CustomerDebts = 2110,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2010
+        /// 11. Прочие долги клиентов/переплаты - 2010
         /// </summary>        
-        OtherLongTermReceivables1 = 2010,
+        OtherDebtsOfClientsAndOverpayment1 = 2010,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2020
+        /// 11. Прочие долги клиентов/переплаты - 2020
         /// </summary>        
-        OtherLongTermReceivables2 = 2020,
+        OtherDebtsOfClientsAndOverpayment2 = 2020,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2030
+        /// 11. Прочие долги клиентов/переплаты - 2030
         /// </summary>        
-        OtherLongTermReceivables3 = 2030,
+        OtherDebtsOfClientsAndOverpayment3 = 2030,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2040
+        /// 11. Прочие долги клиентов/переплаты - 2040
         /// </summary>        
-        OtherLongTermReceivables4 = 2040,
+        OtherDebtsOfClientsAndOverpayment4 = 2040,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2130
+        /// 11. Прочие долги клиентов/переплаты - 2130
         /// </summary>        
-        OtherLongTermReceivables5 = 2130,
+        OtherDebtsOfClientsAndOverpayment5 = 2130,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2150
+        /// 11. Прочие долги клиентов/переплаты - 2150
         /// </summary>        
-        OtherLongTermReceivables6 = 2150,
+        OtherDebtsOfClientsAndOverpayment6 = 2150,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2160
+        /// 11. Прочие долги клиентов/переплаты - 2160
         /// </summary>        
-        OtherLongTermReceivables7 = 2160,
+        OtherDebtsOfClientsAndOverpayment7 = 2160,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2170
+        /// 11. Прочие долги клиентов/переплаты - 2170
         /// </summary>        
-        OtherLongTermReceivables8 = 2170,
+        OtherDebtsOfClientsAndOverpayment8 = 2170,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2180
+        /// 11. Прочие долги клиентов/переплаты - 2180
         /// </summary>        
-        OtherLongTermReceivables9 = 2180,
+        OtherDebtsOfClientsAndOverpayment9 = 2180,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2910
+        /// 11. Прочие долги клиентов/переплаты - 2910
         /// </summary>        
-        OtherLongTermReceivables10 = 2910,
+        OtherDebtsOfClientsAndOverpayment10 = 2910,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2920
+        /// 11. Прочие долги клиентов/переплаты - 2920
         /// </summary>        
-        OtherLongTermReceivables11 = 2920,
+        OtherDebtsOfClientsAndOverpayment11 = 2920,
 
         /// <summary>
-        /// 11. Прочая долгосрочная Дебиторская задолжность - 2940
+        /// 11. Прочие долги клиентов/переплаты - 2940
         /// </summary>        
-        OtherLongTermReceivables12 = 2940,
+        OtherDebtsOfClientsAndOverpayment12 = 2940,
 
         /// <summary>
         /// 12. Инвестиции - 2200
@@ -218,23 +218,23 @@ namespace ProgressoExpert.Common.Enums
         IntangibleAssets = 2700,
 
         /// <summary>
-        /// 15. Долгосрочные налоговые активы
+        /// 15. Отложенные налоговые переплаты/авансы
         /// </summary>
-        LongTermTaxAssets = 2800,
+        TheDeferredTaxOverpaymentsAndAdvances = 2800,
         #endregion
         #endregion
 
         #region Пассивы - Сумма графы "Итого краткосрочная задолженность", "Итого долгосрочная задолженность", "Собственный капитал" является показателем графы "Итого Валюта Баланса" (в правой стороне Баланса)
         #region Сумма статей с 16 по 22 является показателем графы "Краткосрочные долги"
         /// <summary>
-        /// 16. Краткосрочные банковские займы - 3010
+        /// 16. Кредиты сроком до 1 года - 3010
         /// </summary>        
-        ShortTermBankLoans1 = 3010,
+        CreditsForOneYear1 = 3010,
 
         /// <summary>
-        /// 16. Краткосрочные банковские займы - 3020
+        /// 16. Кредиты сроком до 1 года - 3020
         /// </summary>        
-        ShortTermBankLoans2 = 3020,
+        CreditsForOneYear2 = 3020,
 
         /// <summary>
         /// 17. Задолженность по КПН/ИПН - 3110
@@ -282,9 +282,9 @@ namespace ProgressoExpert.Common.Enums
         OtherTaxesPayable7 = 3200,
 
         /// <summary>
-        /// 20. Задолженность перед контрагентами - 3310
+        /// 20. Задолженность перед поставщиками - 3310
         /// </summary>
-        PayablesToCounterpartiesShortTermDebts = 3310,
+        PayablesToSuppliersShortTermDebts = 3310,
 
         /// <summary>
         /// 21. Задолженность перед сотрудниками - 3350
@@ -344,19 +344,19 @@ namespace ProgressoExpert.Common.Enums
 
         #region Сумма статей с 23 по 26 является показателем графы "Долгосрочные долги"
         /// <summary>
-        /// 23. Долгосрочные банковские займы - 4010
+        /// 23. Кредиты сроком более 1 года - 4010
         /// </summary>   
-        LongTermBankLoans1 = 4010,
+        CreditsForLongerThanOneYear1 = 4010,
 
         /// <summary>
-        /// 23. Долгосрочные банковские займы - 4020
+        /// 23. Кредиты сроком более 1 года - 4020
         /// </summary>   
-        LongTermBankLoans2 = 4020,
+        CreditsForLongerThanOneYear2 = 4020,
 
         /// <summary>
-        /// 24. Задолженность перед контрагентами - 4110
+        /// 24. Задолженность перед поставщиками - 4110
         /// </summary>  
-        PayablesToCounterpartiesLongTermDebts = 4110,
+        PayablesToSuppliersLongTermDebts = 4110,
 
         /// <summary>
         /// 25. Отложеннные налоговая задолженность - 4310

@@ -43,7 +43,7 @@ namespace ProgressoExpert.Process
             //    ? Math.Round((businessResults.CashInCashBoxEnd / businessResults.DebtsBanksEnd), 2)
             //    : 0;
             //model.QuickLiquidityRatio = businessResults.DebtsBanksEnd != 0
-            //    ? Math.Round(((businessResults.CashInCashBoxEnd + businessResults.ReceivablesEnd) / businessResults.DebtsBanksEnd), 2)
+            //    ? Math.Round(((businessResults.CashInCashBoxEnd + businessResults.DebtsOfCustomersAndOverpaymentsEnd) / businessResults.DebtsBanksEnd), 2)
             //    : 0;
             //model.CurrentLiquidityRatio = businessResults.DebtsBanksEnd != 0
             //    ? Math.Round((businessResults.TotalCurrentAssetsEnd / businessResults.DebtsBanksEnd), 2)
@@ -59,11 +59,11 @@ namespace ProgressoExpert.Process
             //model.RateOfTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0 
             //    ? Math.Round(businessResults.InventoriesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
             //    : 0;
-            //model.AccountsReceivableTurnoverRatio = businessResults.ReceivablesEnd != 0
-            //    ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.ReceivablesEnd, 2)
+            //model.AccountsReceivableTurnoverRatio = businessResults.DebtsOfCustomersAndOverpaymentsEnd != 0
+            //    ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsOfCustomersAndOverpaymentsEnd, 2)
             //    : 0;
             //model.TermOfReceivablesTurnover = reportProfitAndLoss.TotalCostPrice.Last() != 0
-            //    ? Math.Round(businessResults.ReceivablesEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
+            //    ? Math.Round(businessResults.DebtsOfCustomersAndOverpaymentsEnd * ProcessesEngineConsts.Days / reportProfitAndLoss.TotalCostPrice.Last(), 2)
             //    : 0;
             //model.AccountsPayableTurnoverRatio = businessResults.DebtsSupplierBuyersEnd != 0
             //    ? Math.Round(reportProfitAndLoss.TotalIncome.Last() / businessResults.DebtsSupplierBuyersEnd, 2)

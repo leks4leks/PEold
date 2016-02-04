@@ -9,8 +9,8 @@ namespace ProgressoExpert.Models.Models
 {
     public class BusinessResults : BaseViewModel
     {
-        #region Краткосрочные активы 
-        
+        #region Оборотные активы
+
         #region Денежные средства в кассе
 
         /// <summary>
@@ -35,27 +35,27 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Денежные средства на рассчетном счете
+        #region Деньги на банковских счетах
 
         /// <summary>
-        /// Денежные средства на рассчетном счете на начало периода
+        /// Деньги на банковских счетах на начало периода
         /// </summary>
-        public decimal CasnInCheckingAccountStart
+        public decimal MoneyInTheBankAccountsStart
         {
-            get { return _casnInCheckingAccountStart; }
-            set { SetValue(ref _casnInCheckingAccountStart, value, "CasnInCheckingAccountStart"); }
+            get { return _moneyInTheBankAccountsStart; }
+            set { SetValue(ref _moneyInTheBankAccountsStart, value, "MoneyInTheBankAccountsStart"); }
         }
-        private decimal _casnInCheckingAccountStart;
+        private decimal _moneyInTheBankAccountsStart;
 
         /// <summary>
-        /// Денежные средства на рассчетном счете на конец периода
+        /// Деньги на банковских счетах на конец периода
         /// </summary>
-        public decimal CasnInCheckingAccountEnd
+        public decimal MoneyInTheBankAccountsEnd
         {
-            get { return _casnInCheckingAccountEnd; }
-            set { SetValue(ref _casnInCheckingAccountEnd, value, "CasnInCheckingAccountEnd"); }
+            get { return _moneyInTheBankAccountsEnd; }
+            set { SetValue(ref _moneyInTheBankAccountsEnd, value, "MoneyInTheBankAccountsEnd"); }
         }
-        private decimal _casnInCheckingAccountEnd;
+        private decimal _moneyInTheBankAccountsEnd;
 
         #endregion
 
@@ -83,27 +83,27 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Дебиторская задолженность
+        #region Долги клиентов и переплаты
 
         /// <summary>
-        /// Дебиторская задолженность на начало периода
+        /// Долги клиентов и переплаты на начало периода
         /// </summary>
-        public decimal ReceivablesStart
+        public decimal DebtsOfCustomersAndOverpaymentsStart
         {
-            get { return _receivablesStart; }
-            set { SetValue(ref _receivablesStart, value, "ReceivablesStart"); }
+            get { return _debtsOfCustomersAndOverpaymentsStart; }
+            set { SetValue(ref _debtsOfCustomersAndOverpaymentsStart, value, "DebtsOfCustomersAndOverpaymentsStart"); }
         }
-        private decimal _receivablesStart;
+        private decimal _debtsOfCustomersAndOverpaymentsStart;
 
         /// <summary>
-        /// Дебиторская задолженность на конец периода
+        /// Долги клиентов и переплаты на конец периода
         /// </summary>
-        public decimal ReceivablesEnd
+        public decimal DebtsOfCustomersAndOverpaymentsEnd
         {
-            get { return _receivablesEnd; }
-            set { SetValue(ref _receivablesEnd, value, "ReceivablesEnd"); }
+            get { return _debtsOfCustomersAndOverpaymentsEnd; }
+            set { SetValue(ref _debtsOfCustomersAndOverpaymentsEnd, value, "DebtsOfCustomersAndOverpaymentsEnd"); }
         }
-        private decimal _receivablesEnd;
+        private decimal _debtsOfCustomersAndOverpaymentsEnd;
 
         #endregion
 
@@ -179,10 +179,10 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Прочие краткосрочные активы
+        #region Прочие оборотные активы
 
         /// <summary>
-        /// Прочие краткосрочные активы на начало периода
+        /// Прочие оборотные активы на начало периода
         /// </summary>
         public decimal OtherCurrentAssetsStart
         {
@@ -192,7 +192,7 @@ namespace ProgressoExpert.Models.Models
         private decimal _otherCurrentAssetsStart;
 
         /// <summary>
-        /// Прочие краткосрочные активы на конец периода
+        /// Прочие оборотные активы на конец периода
         /// </summary>
         public decimal OtherCurrentAssetsEnd
         {
@@ -203,51 +203,51 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Налоговые активы
+        #region Налоговые переплаты/авансы
 
         /// <summary>
-        /// Налоговые активы на начало периода
+        /// Налоговые переплаты/авансы на начало периода
         /// </summary>
-        public decimal TaxAssetsStart
+        public decimal TaxOverpaymentsAndAdvancesStart
         {
-            get { return _taxAssetsStart; }
-            set { SetValue(ref _taxAssetsStart, value, "TaxAssetsStart"); }
+            get { return _taxOverpaymentsAndAdvancesStart; }
+            set { SetValue(ref _taxOverpaymentsAndAdvancesStart, value, "TaxOverpaymentsAndAdvancesStart"); }
         }
-        private decimal _taxAssetsStart;
+        private decimal _taxOverpaymentsAndAdvancesStart;
 
         /// <summary>
-        /// Налоговые активы на конец периода
+        /// Налоговые переплаты/авансы на конец периода
         /// </summary>
-        public decimal TaxAssetsEnd
+        public decimal TaxOverpaymentsAndAdvancesEnd
         {
-            get { return _taxAssetsEnd; }
-            set { SetValue(ref _taxAssetsEnd, value, "TaxAssetsEnd"); }
+            get { return _taxOverpaymentsAndAdvancesEnd; }
+            set { SetValue(ref _taxOverpaymentsAndAdvancesEnd, value, "TaxOverpaymentsAndAdvancesEnd"); }
         }
-        private decimal _taxAssetsEnd;
+        private decimal _taxOverpaymentsAndAdvancesEnd;
 
         #endregion
 
-        #region Краткосрочные активы
+        #region Оборотные активы
 
         /// <summary>
-        /// Краткосрочные активы на начало периода
+        /// Оборотные активы на начало периода
         /// </summary>
-        public decimal ShortTermAssetsStart
+        public decimal CirculatingAssetsStart
         {
-            get { return _shortTermAssetsStart; }
-            set { SetValue(ref _shortTermAssetsStart, value, "ShortTermAssetsStart"); }
+            get { return _сirculatingAssetsStart; }
+            set { SetValue(ref _сirculatingAssetsStart, value, "CirculatingAssetsStart"); }
         }
-        private decimal _shortTermAssetsStart;
+        private decimal _сirculatingAssetsStart;
 
         /// <summary>
-        /// Краткосрочные активы на конец периода
+        /// Оборотные активы на конец периода
         /// </summary>
-        public decimal ShortTermAssetsEnd
+        public decimal CirculatingAssetsEnd
         {
-            get { return _shortTermAssetsEnd; }
-            set { SetValue(ref _shortTermAssetsEnd, value, "ShortTermAssetsEnd"); }
+            get { return _сirculatingAssetsEnd; }
+            set { SetValue(ref _сirculatingAssetsEnd, value, "CirculatingAssetsEnd"); }
         }
-        private decimal _shortTermAssetsEnd;
+        private decimal _сirculatingAssetsEnd;
 
         #endregion
 
@@ -255,51 +255,51 @@ namespace ProgressoExpert.Models.Models
 
         #region Долгосрочные активы
 
-        #region Долгосрочная дебиторская задолженность контрагентов
+        #region Долги клиентов (срок возврата более 1 года)
 
         /// <summary>
-        /// Долгосрочная дебиторская задолженность контрагентов на начало периода
+        /// Долги клиентов (срок возврата более 1 года) на начало периода
         /// </summary>
-        public decimal LongTermReceivablesStart
+        public decimal CustomerDebtsStart
         {
-            get { return _longTermReceivablesStart; }
-            set { SetValue(ref _longTermReceivablesStart, value, "LongTermReceivablesStart"); }
+            get { return _customerDebtsStart; }
+            set { SetValue(ref _customerDebtsStart, value, "CustomerDebtsStart"); }
         }
-        private decimal _longTermReceivablesStart;
+        private decimal _customerDebtsStart;
 
         /// <summary>
-        /// Долгосрочная дебиторская задолженность контрагентов на конец периода
+        /// Долги клиентов (срок возврата более 1 года) на конец периода
         /// </summary>
-        public decimal LongTermReceivablesEnd
+        public decimal CustomerDebtsEnd
         {
-            get { return _longTermReceivablesEnd; }
-            set { SetValue(ref _longTermReceivablesEnd, value, "LongTermReceivablesEnd"); }
+            get { return _customerDebtsEnd; }
+            set { SetValue(ref _customerDebtsEnd, value, "CustomerDebtsEnd"); }
         }
-        private decimal _longTermReceivablesEnd;
+        private decimal _customerDebtsEnd;
 
         #endregion
 
-        #region Прочая долгосрочная дебиторская задолженность
+        #region Прочие долги клиентов/переплаты
 
         /// <summary>
-        /// Прочая долгосрочная дебиторская задолженность  на начало периода
+        /// Прочие долги клиентов/переплаты  на начало периода
         /// </summary>
-        public decimal OtherLongTermReceivablesStart
+        public decimal OtherDebtsOfClientsAndOverpaymentStart
         {
-            get { return _otherLongTermReceivablesStart; }
-            set { SetValue(ref _otherLongTermReceivablesStart, value, "OtherLongTermReceivablesStart"); }
+            get { return _otherDebtsOfClientsAndOverpaymentStart; }
+            set { SetValue(ref _otherDebtsOfClientsAndOverpaymentStart, value, "OtherDebtsOfClientsAndOverpaymentStart"); }
         }
-        private decimal _otherLongTermReceivablesStart;
+        private decimal _otherDebtsOfClientsAndOverpaymentStart;
 
         /// <summary>
-        /// Прочая долгосрочная дебиторская задолженность  на конец периода
+        /// Прочие долги клиентов/переплаты  на конец периода
         /// </summary>
-        public decimal OtherLongTermReceivablesEnd
+        public decimal OtherDebtsOfClientsAndOverpaymentEnd
         {
-            get { return _otherLongTermReceivablesEnd; }
-            set { SetValue(ref _otherLongTermReceivablesEnd, value, "OtherLongTermReceivablesEnd"); }
+            get { return _otherDebtsOfClientsAndOverpaymentEnd; }
+            set { SetValue(ref _otherDebtsOfClientsAndOverpaymentEnd, value, "OtherDebtsOfClientsAndOverpaymentEnd"); }
         }
-        private decimal _otherLongTermReceivablesEnd;
+        private decimal _otherDebtsOfClientsAndOverpaymentEnd;
 
         #endregion
 
@@ -375,27 +375,27 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Долгосрочные налоговые активы
+        #region Отложенные налоговые переплаты/авансы
 
         /// <summary>
-        /// Долгосрочные налоговые активы на начало периода
+        /// Отложенные налоговые переплаты/авансы на начало периода
         /// </summary>
-        public decimal LongTermTaxAssetsStart
+        public decimal TheDeferredTaxOverpaymentsAndAdvancesStart
         {
-            get { return _longTermTaxAssetsStart; }
-            set { SetValue(ref _longTermTaxAssetsStart, value, "LongTermTaxAssetsStart"); }
+            get { return _theDeferredTaxOverpaymentsAndAdvancesStart; }
+            set { SetValue(ref _theDeferredTaxOverpaymentsAndAdvancesStart, value, "TheDeferredTaxOverpaymentsAndAdvancesStart"); }
         }
-        private decimal _longTermTaxAssetsStart;
+        private decimal _theDeferredTaxOverpaymentsAndAdvancesStart;
 
         /// <summary>
-        /// Долгосрочные налоговые активы на конец периода
+        /// Отложенные налоговые переплаты/авансы на конец периода
         /// </summary>
-        public decimal LongTermTaxAssetsEnd
+        public decimal TheDeferredTaxOverpaymentsAndAdvancesEnd
         {
-            get { return _longTermTaxAssetsEnd; }
-            set { SetValue(ref _longTermTaxAssetsEnd, value, "LongTermTaxAssetsEnd"); }
+            get { return theDeferredTaxOverpaymentsAndAdvancesEnd; }
+            set { SetValue(ref theDeferredTaxOverpaymentsAndAdvancesEnd, value, "TheDeferredTaxOverpaymentsAndAdvancesEnd"); }
         }
-        private decimal _longTermTaxAssetsEnd;
+        private decimal theDeferredTaxOverpaymentsAndAdvancesEnd;
 
         #endregion
 
@@ -425,29 +425,29 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Краткосрочные долги
+        #region Текущая задолженность
 
-        #region Краткосрочные банковские займы
-
-        /// <summary>
-        /// Краткосрочные банковские займы на начало периода
-        /// </summary>
-        public decimal ShortTermBankLoansStart
-        {
-            get { return _shortTermBankLoansStart; }
-            set { SetValue(ref _shortTermBankLoansStart, value * (-1), "ShortTermBankLoansStart"); }
-        }
-        private decimal _shortTermBankLoansStart;
+        #region Кредиты сроком до 1 года
 
         /// <summary>
-        /// Краткосрочные банковские займы на конец периода
+        /// Кредиты сроком до 1 года на начало периода
         /// </summary>
-        public decimal ShortTermBankLoansEnd
+        public decimal CreditsForOneYearStart
         {
-            get { return _shortTermBankLoansEnd; }
-            set { SetValue(ref _shortTermBankLoansEnd, value * (-1), "ShortTermBankLoansEnd"); }
+            get { return _creditsForOneYearStart; }
+            set { SetValue(ref _creditsForOneYearStart, value * (-1), "CreditsForOneYearStart"); }
         }
-        private decimal _shortTermBankLoansEnd;
+        private decimal _creditsForOneYearStart;
+
+        /// <summary>
+        /// Кредиты сроком до 1 года на конец периода
+        /// </summary>
+        public decimal CreditsForOneYearEnd
+        {
+            get { return _creditsForOneYearEnd; }
+            set { SetValue(ref _creditsForOneYearEnd, value * (-1), "CreditsForOneYearEnd"); }
+        }
+        private decimal _creditsForOneYearEnd;
 
         #endregion
 
@@ -523,27 +523,27 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Задолженность перед контрагентами
+        #region Задолженность перед поставщиками
 
         /// <summary>
-        /// Задолженность перед контрагентами на начало периода
+        /// Задолженность перед поставщиками на начало периода
         /// </summary>
-        public decimal PayablesToCounterpartiesShortTermDebtsStart
+        public decimal PayablesToSuppliersShortTermDebtsStart
         {
-            get { return _payablesToCounterpartiesShortTermDebtsStart; }
-            set { SetValue(ref _payablesToCounterpartiesShortTermDebtsStart, value, "PayablesToCounterpartiesShortTermDebtsStart"); }
+            get { return _payablesToSuppliersShortTermDebtsStart; }
+            set { SetValue(ref _payablesToSuppliersShortTermDebtsStart, value, "PayablesToSuppliersShortTermDebtsStart"); }
         }
-        private decimal _payablesToCounterpartiesShortTermDebtsStart;
+        private decimal _payablesToSuppliersShortTermDebtsStart;
 
         /// <summary>
-        /// Задолженность перед контрагентами на конец периода
+        /// Задолженность перед поставщиками на конец периода
         /// </summary>
-        public decimal PayablesToCounterpartiesShortTermDebtsEnd
+        public decimal PayablesToSuppliersShortTermDebtsEnd
         {
-            get { return _payablesToCounterpartiesShortTermDebtsEnd; }
-            set { SetValue(ref _payablesToCounterpartiesShortTermDebtsEnd, value, "PayablesToCounterpartiesShortTermDebtsEnd"); }
+            get { return _payablesToSuppliersShortTermDebtsEnd; }
+            set { SetValue(ref _payablesToSuppliersShortTermDebtsEnd, value, "PayablesToSuppliersShortTermDebtsEnd"); }
         }
-        private decimal _payablesToCounterpartiesShortTermDebtsEnd;
+        private decimal _payablesToSuppliersShortTermDebtsEnd;
 
         #endregion
 
@@ -595,79 +595,79 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Краткосрочные долги
+        #region Текущая задолженность
 
         /// <summary>
-        /// Краткосрочные долги на начало периода
+        /// Текущая задолженность на начало периода
         /// </summary>
-        public decimal ShortTermDebtStart
+        public decimal CurrentDebtStart
         {
-            get { return _shortTermDebtStart; }
-            set { SetValue(ref _shortTermDebtStart, value, "ShortTermDebtStart"); }
+            get { return _currentDebtStart; }
+            set { SetValue(ref _currentDebtStart, value, "CurrentDebtStart"); }
         }
-        private decimal _shortTermDebtStart;
+        private decimal _currentDebtStart;
 
         /// <summary>
-        /// Краткосрочные долги на конец периода
+        /// Текущая задолженность на конец периода
         /// </summary>
-        public decimal ShortTermDebtEnd
+        public decimal CurrentDebtEnd
         {
-            get { return _shortTermDebtEnd; }
-            set { SetValue(ref _shortTermDebtEnd, value, "ShortTermDebtEnd"); }
+            get { return _currentDebtEnd; }
+            set { SetValue(ref _currentDebtEnd, value, "CurrentDebtEnd"); }
         }
-        private decimal _shortTermDebtEnd;
+        private decimal _currentDebtEnd;
 
         #endregion
 
         #endregion
 
-        #region Долгосрочные долги
+        #region Долгосрочная задолженность
 
-        #region Долгосрочные банковские займы
-
-        /// <summary>
-        /// Долгосрочные банковские займы на начало периода
-        /// </summary>
-        public decimal LongTermBankLoansStart
-        {
-            get { return _longTermBankLoansStart; }
-            set { SetValue(ref _longTermBankLoansStart, value, "LongTermBankLoansStart"); }
-        }
-        private decimal _longTermBankLoansStart;
+        #region Кредиты сроком более 1 года
 
         /// <summary>
-        /// Долгосрочные банковские займы на конец периода
+        /// Кредиты сроком более 1 года на начало периода
         /// </summary>
-        public decimal LongTermBankLoansEnd
+        public decimal CreditsForLongerThanOneYearStart
         {
-            get { return _longTermBankLoansEnd; }
-            set { SetValue(ref _longTermBankLoansEnd, value, "LongTermBankLoansEnd"); }
+            get { return _creditsForLongerThanOneYearStart; }
+            set { SetValue(ref _creditsForLongerThanOneYearStart, value, "CreditsForLongerThanOneYearStart"); }
         }
-        private decimal _longTermBankLoansEnd;
+        private decimal _creditsForLongerThanOneYearStart;
+
+        /// <summary>
+        /// Кредиты сроком более 1 года на конец периода
+        /// </summary>
+        public decimal CreditsForLongerThanOneYearEnd
+        {
+            get { return _creditsForLongerThanOneYearEnd; }
+            set { SetValue(ref _creditsForLongerThanOneYearEnd, value, "CreditsForLongerThanOneYearEnd"); }
+        }
+        private decimal _creditsForLongerThanOneYearEnd;
 
         #endregion
 
-        #region Задолженность перед контрагентами
+        #region Задолженность перед поставщиками
 
         /// <summary>
-        /// Задолженность перед контрагентами на начало периода
+        /// Задолженность перед поставщиками на начало периода
         /// </summary>
-        public decimal PayablesToCounterpartiesLongTermDebtsStart
+        public decimal PayablesToSuppliersLongTermDebtsStart
         {
-            get { return _payablesToCounterpartiesLongTermDebtsStart; }
-            set { SetValue(ref _payablesToCounterpartiesLongTermDebtsStart, value, "PayablesToCounterpartiesLongTermDebtsStart"); }
+            get { return _payablesToSuppliersLongTermDebtsStart; }
+            set { SetValue(ref _payablesToSuppliersLongTermDebtsStart, value, "PayablesToSuppliersLongTermDebtsStart"); }
         }
-        private decimal _payablesToCounterpartiesLongTermDebtsStart;
+        private decimal _payablesToSuppliersLongTermDebtsStart;
 
         /// <summary>
-        /// Задолженность перед контрагентами на конец периода
+        /// Задолженность перед поставщиками на конец периода
         /// </summary>
-        public decimal PayablesToCounterpartiesLongTermDebtsEnd
+        public decimal PayablesToSuppliersLongTermDebtsEnd
         {
-            get { return _payablesToCounterpartiesLongTermDebtsEnd; }
-            set { SetValue(ref _payablesToCounterpartiesLongTermDebtsEnd, value, "PayablesToCounterpartiesLongTermDebtsEnd"); }
+            get { return _payablesToSuppliersLongTermDebtsEnd; }
+            set { SetValue(ref _payablesToSuppliersLongTermDebtsEnd, value, "PayablesToSuppliersLongTermDebtsEnd"); }
         }
-        private decimal _payablesToCounterpartiesLongTermDebtsEnd;
+        private decimal _payablesToSuppliersLongTermDebtsEnd;
 
         #endregion
 
@@ -719,10 +719,10 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
-        #region Долгосрочные долги
+        #region Долгосрочная задолженность
 
         /// <summary>
-        /// Долгосрочные долги на начало периода
+        /// Долгосрочная задолженность на начало периода
         /// </summary>
         public decimal LongTermDebtStart
         {
@@ -732,7 +732,7 @@ namespace ProgressoExpert.Models.Models
         private decimal _longTermDebtStart;
 
         /// <summary>
-        /// Долгосрочные долги на конец периода
+        /// Долгосрочная задолженность на конец периода
         /// </summary>
         public decimal LongTermDebtEnd
         {
@@ -901,14 +901,14 @@ namespace ProgressoExpert.Models.Models
 
 
         /// <summary>
-        /// Рассчитать Краткосрочные активы
+        /// Рассчитать Оборотные активы
         /// </summary>
-        public void CalculateShortTermAssets()
+        public void CalculateCirculatingAssets()
         {
-            ShortTermAssetsStart = CashInCashBoxStart + CasnInCheckingAccountStart + DepositsStart + ReceivablesStart
-                 + RawAndMaterialsStart + GoodsStart + UnfinishedProductionStart + OtherCurrentAssetsStart + TaxAssetsStart;
-            ShortTermAssetsEnd = CashInCashBoxEnd + CasnInCheckingAccountEnd + DepositsEnd + ReceivablesEnd
-                 + RawAndMaterialsEnd + GoodsEnd + UnfinishedProductionEnd + OtherCurrentAssetsEnd + TaxAssetsEnd;
+            CirculatingAssetsStart = CashInCashBoxStart + MoneyInTheBankAccountsStart + DepositsStart + DebtsOfCustomersAndOverpaymentsStart
+                 + RawAndMaterialsStart + GoodsStart + UnfinishedProductionStart + OtherCurrentAssetsStart + TaxOverpaymentsAndAdvancesStart;
+            CirculatingAssetsEnd = CashInCashBoxEnd + MoneyInTheBankAccountsEnd + DepositsEnd + DebtsOfCustomersAndOverpaymentsEnd
+                 + RawAndMaterialsEnd + GoodsEnd + UnfinishedProductionEnd + OtherCurrentAssetsEnd + TaxOverpaymentsAndAdvancesEnd;
         }
 
         /// <summary>
@@ -916,22 +916,22 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateLongTermAssets()
         {
-            LongTermAssetsStart = LongTermReceivablesStart + OtherLongTermReceivablesStart + InvestmentsStart + FixedAssetsStart
+            LongTermAssetsStart = CustomerDebtsStart + OtherDebtsOfClientsAndOverpaymentStart + InvestmentsStart + FixedAssetsStart
                  + IntangibleAssetsStart + LongTermAssetsStart;
-            LongTermAssetsEnd = LongTermReceivablesEnd + OtherLongTermReceivablesEnd + InvestmentsEnd + FixedAssetsEnd
+            LongTermAssetsEnd = CustomerDebtsEnd + OtherDebtsOfClientsAndOverpaymentEnd + InvestmentsEnd + FixedAssetsEnd
                  + IntangibleAssetsEnd + LongTermAssetsEnd;
         }
 
 
         /// <summary>
-        /// Рассчитать Краткосрочные долги
+        /// Рассчитать Текущую задолженность
         /// </summary>
-        public void CalculateShortTermDebt()
+        public void CalculateCurrentDebt()
         {
-            ShortTermDebtStart = ShortTermBankLoansStart + DebtCitIitStart + DebtVatStart + OtherTaxesPayableStart
-                 + PayablesToCounterpartiesShortTermDebtsStart + PayablesToEmployeesStart + OtherDebtsShortTermDebtsStart;
-            ShortTermDebtEnd = ShortTermBankLoansEnd + DebtCitIitEnd + DebtVatEnd + OtherTaxesPayableEnd
-                 + PayablesToCounterpartiesShortTermDebtsEnd + PayablesToEmployeesEnd + OtherDebtsShortTermDebtsEnd;
+            CurrentDebtStart = CreditsForOneYearStart + DebtCitIitStart + DebtVatStart + OtherTaxesPayableStart
+                 + PayablesToSuppliersShortTermDebtsStart + PayablesToEmployeesStart + OtherDebtsShortTermDebtsStart;
+            CurrentDebtEnd = CreditsForOneYearEnd + DebtCitIitEnd + DebtVatEnd + OtherTaxesPayableEnd
+                 + PayablesToSuppliersShortTermDebtsEnd + PayablesToEmployeesEnd + OtherDebtsShortTermDebtsEnd;
         }
 
         /// <summary>
@@ -939,8 +939,8 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateLongTermDebt()
         {
-            LongTermDebtStart = LongTermBankLoansStart + PayablesToCounterpartiesLongTermDebtsStart + DefferedTaxDebtsStart + OtherDebtsLongTermDebtsStart;
-            LongTermDebtEnd = LongTermBankLoansEnd + PayablesToCounterpartiesLongTermDebtsEnd + DefferedTaxDebtsEnd + OtherDebtsLongTermDebtsEnd;
+            LongTermDebtStart = CreditsForLongerThanOneYearStart + PayablesToSuppliersLongTermDebtsStart + DefferedTaxDebtsStart + OtherDebtsLongTermDebtsStart;
+            LongTermDebtEnd = CreditsForLongerThanOneYearEnd + PayablesToSuppliersLongTermDebtsEnd + DefferedTaxDebtsEnd + OtherDebtsLongTermDebtsEnd;
         }
 
         /// <summary>
@@ -957,8 +957,8 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateTotalAssets()
         {
-            TotalAssetsStart = ShortTermAssetsStart + LongTermAssetsStart;
-            TotalAssetsEnd = ShortTermAssetsEnd + LongTermAssetsEnd;
+            TotalAssetsStart = CirculatingAssetsStart + LongTermAssetsStart;
+            TotalAssetsEnd = CirculatingAssetsEnd + LongTermAssetsEnd;
         }
 
         /// <summary>
@@ -966,8 +966,8 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateTotalLiabilities()
         {
-            TotalLiabilitiesStart = TotalAssetsStart;//ShortTermDebtStart + LongTermDebtStart + OwnCapitalStart;
-            TotalLiabilitiesEnd = TotalAssetsEnd;//ShortTermDebtEnd + LongTermDebtEnd + OwnCapitalEnd;
+            TotalLiabilitiesStart = TotalAssetsStart;//CurrentDebtStart + LongTermDebtStart + OwnCapitalStart;
+            TotalLiabilitiesEnd = TotalAssetsEnd;//CurrentDebtEnd + LongTermDebtEnd + OwnCapitalEnd;
         }
 
         /// <summary>
@@ -975,8 +975,8 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateAccumulatedProfitAndLoss()
         {
-            AccumulatedProfitAndLossStart = TotalLiabilitiesStart - ShortTermDebtStart - LongTermDebtStart - AuthorizedCapitalStart - OtherCapitalStart;
-            AccumulatedProfitAndLossEnd = TotalLiabilitiesEnd - ShortTermDebtEnd - LongTermDebtEnd - AuthorizedCapitalEnd - OtherCapitalEnd;
+            AccumulatedProfitAndLossStart = TotalLiabilitiesStart - CurrentDebtStart - LongTermDebtStart - AuthorizedCapitalStart - OtherCapitalStart;
+            AccumulatedProfitAndLossEnd = TotalLiabilitiesEnd - CurrentDebtEnd - LongTermDebtEnd - AuthorizedCapitalEnd - OtherCapitalEnd;
         }
 
         /// <summary>
@@ -984,8 +984,8 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateAdditionalTaxAssets()
         {
-            TaxAssetsStart = 1;
-            TaxAssetsEnd = 1;
+            TaxOverpaymentsAndAdvancesStart = 1;
+            TaxOverpaymentsAndAdvancesEnd = 1;
         }
 
         #endregion

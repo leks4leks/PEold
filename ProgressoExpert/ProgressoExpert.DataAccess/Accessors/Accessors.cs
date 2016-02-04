@@ -52,10 +52,10 @@ namespace ProgressoExpert.DataAccess
                 #region Денежные средства на рассчетном счете
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.CasnInCheckingAccount1,
-                    (int)ScoresForBusinessResults.CasnInCheckingAccount2);
-                model.CasnInCheckingAccountStart = _outStart;
-                model.CasnInCheckingAccountEnd = _outEnd;
+                    (int)ScoresForBusinessResults.MoneyInTheBankAccounts1,
+                    (int)ScoresForBusinessResults.MoneyInTheBankAccounts2);
+                model.MoneyInTheBankAccountsStart = _outStart;
+                model.MoneyInTheBankAccountsEnd = _outEnd;
 
                 #endregion
 
@@ -71,9 +71,9 @@ namespace ProgressoExpert.DataAccess
                 #region Дебиторская задолженность
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.Receivables);
-                model.ReceivablesStart = _outStart;
-                model.ReceivablesEnd = _outEnd;
+                    (int)ScoresForBusinessResults.DebtsOfCustomersAndOverpayments);
+                model.DebtsOfCustomersAndOverpaymentsStart = _outStart;
+                model.DebtsOfCustomersAndOverpaymentsEnd = _outEnd;
 
                 #endregion
 
@@ -128,15 +128,15 @@ namespace ProgressoExpert.DataAccess
                 #region Налоговые активы
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.TaxAssets);
-                model.TaxAssetsStart = _outStart;
-                model.TaxAssetsEnd = _outEnd;
+                    (int)ScoresForBusinessResults.TaxOverpaymentsAndAdvances);
+                model.TaxOverpaymentsAndAdvancesStart = _outStart;
+                model.TaxOverpaymentsAndAdvancesEnd = _outEnd;
 
                 #endregion
 
                 #region Краткосрочные активы
 
-                model.CalculateShortTermAssets();
+                model.CalculateCirculatingAssets();
 
                 #endregion
 
@@ -147,29 +147,29 @@ namespace ProgressoExpert.DataAccess
                 #region Долгосрочная дебиторская задолженность контрагентов
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.LongTermReceivables);
-                model.LongTermReceivablesStart = _outStart;
-                model.LongTermReceivablesEnd = _outEnd;
+                    (int)ScoresForBusinessResults.CustomerDebts);
+                model.CustomerDebtsStart = _outStart;
+                model.CustomerDebtsEnd = _outEnd;
 
                 #endregion
 
                 #region Прочая долгосрочная дебиторская задолженность контрагентов
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables1,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables2,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables3,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables4,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables5,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables6,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables7,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables8,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables9,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables10,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables11,
-                    (int)ScoresForBusinessResults.OtherLongTermReceivables12);
-                model.OtherLongTermReceivablesStart = _outStart;
-                model.OtherLongTermReceivablesEnd = _outEnd;
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment1,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment2,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment3,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment4,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment5,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment6,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment7,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment8,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment9,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment10,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment11,
+                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment12);
+                model.OtherDebtsOfClientsAndOverpaymentStart = _outStart;
+                model.OtherDebtsOfClientsAndOverpaymentEnd = _outEnd;
 
                 #endregion
 
@@ -205,9 +205,9 @@ namespace ProgressoExpert.DataAccess
                 #region Долгосрочные налоговые активы
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.LongTermTaxAssets);
-                model.LongTermTaxAssetsStart = _outStart;
-                model.LongTermTaxAssetsEnd = _outEnd;
+                    (int)ScoresForBusinessResults.TheDeferredTaxOverpaymentsAndAdvances);
+                model.TheDeferredTaxOverpaymentsAndAdvancesStart = _outStart;
+                model.TheDeferredTaxOverpaymentsAndAdvancesEnd = _outEnd;
 
                 #endregion
 
@@ -224,10 +224,10 @@ namespace ProgressoExpert.DataAccess
                 #region Краткосрочные банковские займы
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.ShortTermBankLoans1,
-                    (int)ScoresForBusinessResults.ShortTermBankLoans2);
-                model.ShortTermBankLoansStart = _outStart;
-                model.ShortTermBankLoansEnd = _outEnd;
+                    (int)ScoresForBusinessResults.CreditsForOneYear1,
+                    (int)ScoresForBusinessResults.CreditsForOneYear2);
+                model.CreditsForOneYearStart = _outStart;
+                model.CreditsForOneYearEnd = _outEnd;
 
                 #endregion
 
@@ -267,9 +267,9 @@ namespace ProgressoExpert.DataAccess
                 #region Прочая задолженность по налогам
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.PayablesToCounterpartiesShortTermDebts);
-                model.PayablesToCounterpartiesShortTermDebtsStart = _outStart;
-                model.PayablesToCounterpartiesShortTermDebtsEnd = _outEnd;
+                    (int)ScoresForBusinessResults.PayablesToSuppliersShortTermDebts);
+                model.PayablesToSuppliersShortTermDebtsStart = _outStart;
+                model.PayablesToSuppliersShortTermDebtsEnd = _outEnd;
 
                 #endregion
 
@@ -302,7 +302,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Краткосрочные долги
 
-                model.CalculateShortTermDebt();
+                model.CalculateCurrentDebt();
 
                 #endregion
 
@@ -313,19 +313,19 @@ namespace ProgressoExpert.DataAccess
                 #region Долгосрочные банковские займы
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.LongTermBankLoans1,
-                    (int)ScoresForBusinessResults.LongTermBankLoans2);
-                model.LongTermBankLoansStart = _outStart;
-                model.LongTermBankLoansEnd = _outEnd;
+                    (int)ScoresForBusinessResults.CreditsForLongerThanOneYear1,
+                    (int)ScoresForBusinessResults.CreditsForLongerThanOneYear2);
+                model.CreditsForLongerThanOneYearStart = _outStart;
+                model.CreditsForLongerThanOneYearEnd = _outEnd;
 
                 #endregion
 
                 #region Задолженность перед контрагентами
 
                 Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.PayablesToCounterpartiesLongTermDebts);
-                model.PayablesToCounterpartiesLongTermDebtsStart = _outStart;
-                model.PayablesToCounterpartiesLongTermDebtsEnd = _outEnd;
+                    (int)ScoresForBusinessResults.PayablesToSuppliersLongTermDebts);
+                model.PayablesToSuppliersLongTermDebtsStart = _outStart;
+                model.PayablesToSuppliersLongTermDebtsEnd = _outEnd;
 
                 #endregion
 
