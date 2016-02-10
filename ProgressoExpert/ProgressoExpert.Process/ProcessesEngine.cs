@@ -36,6 +36,7 @@ namespace ProgressoExpert.Process
             var model = new RatiosIndicatorsResult();
 
             model.EndDate = endDate;
+            model.StartDate = startDate;
 
             #region Первый блок
 
