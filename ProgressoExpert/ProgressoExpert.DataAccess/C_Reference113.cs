@@ -12,11 +12,18 @@ namespace ProgressoExpert.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class C_AccChngR10859
+    public partial class C_Reference113
     {
-        public byte[] C_NodeTRef { get; set; }
-        public byte[] C_NodeRRef { get; set; }
-        public Nullable<decimal> C_MessageNo { get; set; }
         public byte[] C_IDRRef { get; set; }
+        public byte[] C_Version { get; set; }
+        public byte[] C_Marked { get; set; }
+        public byte[] C_IsMetadata { get; set; }
+        public byte[] C_ParentIDRRef { get; set; }
+        public byte[] C_Folder { get; set; }
+        public string C_Code { get; set; }
+        public string C_Description { get; set; }
+        public byte[] C_Fld1333RRef { get; set; }
+        public byte[] C_Fld1334RRef { get; set; }
+        public byte[] C_Fld1335RRef { get; set; }
     }
 }

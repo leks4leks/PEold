@@ -55,6 +55,9 @@
     <Compile Include="C_Acc10.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="C_Acc10_ExtDim10863.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="C_Acc9.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -116,6 +119,24 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="C_AccRgOpt.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_AccumRg10053.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_AccumRg9987.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_AccumRgTn10006.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Enum302.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Enum450.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Reference113.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="C_Seq10830.cs">

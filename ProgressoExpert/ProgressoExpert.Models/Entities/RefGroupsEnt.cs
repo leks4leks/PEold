@@ -9,6 +9,6 @@ namespace ProgressoExpert.DataAccess.Entities
     public class RefGroupsEnt
     {
         public string Name;
-        public byte[] Id;
+        public string Code;
     }
 }

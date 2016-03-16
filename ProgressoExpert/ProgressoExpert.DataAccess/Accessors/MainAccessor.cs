@@ -17,58 +17,45 @@ namespace ProgressoExpert.DataAccess
         /// <param name="stDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
-        public static List<TranzEnt> GetAllTrans(DateTime stDate, DateTime? endDate, int timeSpan)
+        public static List<TranzEnt> GetAllTrans(DateTime stDate, DateTime? endDate)
         {
             List<TranzEnt> res = new List<TranzEnt>();
             using (dbEntities db = new dbEntities())
-            {                
+            {
                 if (endDate == null)
                 {
-                    stDate = ((DateTime)stDate).AddYears(timeSpan);
-
-                    res = (from accRg in db.C_AccRg10893 // Выгрузим все транзакции на начало периода
-                           where accRg.C_Period < stDate
-                           select new TranzEnt
-                           {
-                               CtRRef = accRg.C_AccountCtRRef,
-                               DtRRef = accRg.C_AccountDtRRef,
-                               Money = accRg.C_Fld10896,
-                               period = accRg.C_Period
-                           }).ToList();
+                    res = (from acctr in db.C_AccRg10893 
+                              join accCr in db.C_Acc10 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
+                              join accDt in db.C_Acc10 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
+                              where acctr.C_Period < stDate
+                              select new TranzEnt
+                              {
+                                  Money = acctr.C_Fld10896,
+                                  period = acctr.C_Period,
+                                  ScoreCt = accCr.C_Code,
+                                  ScoreDt = accDt.C_Code
+                              }).ToList();
                 }
                 if (endDate != null)
                 {
-                    endDate = ((DateTime)endDate).AddYears(timeSpan);
-                    stDate = ((DateTime)stDate).AddYears(timeSpan);
-
                     res = (
                            from accRg in db.C_AccRg10893 // Выгрузим все транзакции на период который мы указали
-                           where accRg.C_Period >= stDate && accRg.C_Period < endDate
+                           join accDt in db.C_Acc10 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
+                           join accCt in db.C_Acc10 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
+                           where accRg.C_Period >= stDate && accRg.C_Period <= endDate
                            select new TranzEnt
                            {
-                               CtRRef = accRg.C_AccountCtRRef,
-                               DtRRef = accRg.C_AccountDtRRef,
                                Money = accRg.C_Fld10896,
-                               period = accRg.C_Period
-                           }).ToList();
+                               period = accRg.C_Period,
+                               ScoreDt = accDt.C_Code,
+                               ScoreCt = accCt.C_Code
+                           }).ToList();             
                 }
-                return res;
-            }         
-        }
 
-        public static List<ScoreEnt> GetAllScores()
-        {
-            using (dbEntities db = new dbEntities())
-            {
-                return (from scr in db.C_Acc10 // выгрузим все, чтобы 1000 раз не лезть в БД
-                              select new ScoreEnt
-                              {
-                                  Code = scr.C_Code,
-                                  Id = scr.C_IDRRef
-                              }).ToList();
+                return res;
             }
         }
-
+        
         public static List<RefGroupsEnt> GetAllGroups()
         {
             using (dbEntities db = new dbEntities())
@@ -77,7 +64,7 @@ namespace ProgressoExpert.DataAccess
                         select new RefGroupsEnt
                         {
                             Name = cref.C_Description,
-                            Id = cref.C_IDRRef
+                            Code = cref.C_Code
                         }).ToList();
             }
         }
@@ -89,8 +76,7 @@ namespace ProgressoExpert.DataAccess
                 return db.C_YearOffset.First().Offset;
             }
         }
-
     }
 
-    
+
 }

@@ -24,11 +24,15 @@ where acc._Code like '%7700%'
 group by accrg._Value_RRRef
 );
 
-select * from _Reference114 ref114 where ref114._IDRRef in (
+select * from _Reference113 ref114 where ref114._IDRRef in (
 select acced._Value_RRRef from _AccRgED10920 acced where acced._RecorderRRef in (
 select acc93._RecorderRRef from _AccRg10893 acc93 where acc93._AccountDtRRef in (
 select acc._IDRRef from _Acc10 acc where acc._Code like '12%')
 ))
+
+select * from _AccRg10893 acc93 
+join 
+where acc93._AccountDtRRef
 
 --_Value_RRRef
 --_Value_RTRef

@@ -12,11 +12,9 @@ namespace ProgressoExpert.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class C_AccChngR10859
+    public partial class C_Enum302
     {
-        public byte[] C_NodeTRef { get; set; }
-        public byte[] C_NodeRRef { get; set; }
-        public Nullable<decimal> C_MessageNo { get; set; }
         public byte[] C_IDRRef { get; set; }
+        public decimal C_EnumOrder { get; set; }
     }
 }

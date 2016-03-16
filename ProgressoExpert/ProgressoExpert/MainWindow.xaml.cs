@@ -90,6 +90,7 @@ namespace ProgressoExpert
                 = RatiosIndicators.RI_Liquidity.DataContext = RatiosIndicators.RI_ProfitabilityRatios.DataContext = vm.RatiosIndicatorsResult;
 
             CreateAndFillReportProfitAndLosses(vm);
+            CreateAndFillADDS(vm);
 
             //CollapseAllBtn_Click(sender, e);
             #region Видимость
@@ -122,6 +123,31 @@ namespace ProgressoExpert
             MonitorProject.dataMonitorProjectGrid.Visibility = Visibility.Visible;
             MonitorProject.nodataMonitorProjectGrid.Visibility = Visibility.Hidden;
             #endregion
+        }
+
+        private void CreateAndFillADDS(MainModel vm)
+        {
+            int monthCount = 0; // заглушка
+            int rowNum = 0;
+            foreach(var item in vm.ADDSTranz)
+            {
+                ResBusiness.RB_StatementCashFlows.GridStatementCashFlowsGrid.RowDefinitions.Add(new RowDefinition());
+                TextBlock textBlock = new TextBlock();
+                textBlock = CreateAndFillTextBlock(item.GroupName, rowNum, 0, true, ref monthCount);
+                textBlock.Width = 500; // последнюю колонку сделаем пошырше
+                ResBusiness.RB_StatementCashFlows.GridStatementCashFlowsGrid.Children.Add(textBlock);
+
+                textBlock = CreateAndFillTextBlock(item.Money.ToString("### ### ### ##0.00"), rowNum, 1, true, ref monthCount);
+                ResBusiness.RB_StatementCashFlows.GridStatementCashFlowsGrid.Children.Add(textBlock);
+                rowNum++;
+            }
+            for (int scoreNum = 0; scoreNum < (int)ProfitAndLossNumUI.Total; scoreNum++)
+            {
+                for (int j = 0; j < monthCount; j++)
+                {
+                    
+                }
+            }
         }
 
         private void CreateAndFillReportProfitAndLosses(MainModel vm)
@@ -336,8 +362,8 @@ namespace ProgressoExpert
         {
             ResBusiness.RB_ProfitLossReport.grid1.ColumnDefinitions[1].Width = 
                 new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
-            ResBusiness.RB_StatementCashFlows.grid2.ColumnDefinitions[1].Width = 
-                new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
+            //ResBusiness.RB_StatementCashFlows.grid2.ColumnDefinitions[1].Width = 
+            //    new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
             MonitorProject.grid2.ColumnDefinitions[1].Width =
                 new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
         }

@@ -24,6 +24,30 @@
           <Property Name="_Fld10861" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="_Fld10862" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._Acc10_ExtDim10863" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_Acc10_ExtDim10863">
+          <Key>
+            <PropertyRef Name="_Acc10_IDRRef" />
+            <PropertyRef Name="_KeyField" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_DimKindRRef" />
+            <PropertyRef Name="_DimIsMetadata" />
+            <PropertyRef Name="_TurnoverOnly" />
+            <PropertyRef Name="_Fld10864" />
+            <PropertyRef Name="_Fld10865" />
+            <PropertyRef Name="_Fld10866" />
+          </Key>
+          <Property Name="_Acc10_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_KeyField" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="_DimKindRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_DimIsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_TurnoverOnly" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10864" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10865" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10866" Type="binary" MaxLength="1" Nullable="false" />
+        </EntityType>
         <EntityType Name="_Acc9">
           <Key>
             <PropertyRef Name="_IDRRef" />
@@ -42,8 +66,8 @@
           <Property Name="_Fld11337" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="_Fld10856" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._Acc9_ExtDim10857' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._Acc9_ExtDim10857" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_Acc9_ExtDim10857">
           <Key>
             <PropertyRef Name="_Acc9_IDRRef" />
@@ -64,8 +88,8 @@ warning 6002: The table/view 'base1s.dbo._Acc9_ExtDim10857' does not have a prim
           <Property Name="_Fld10858" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="_Fld11338" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccChngR10859' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccChngR10859" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccChngR10859">
           <Key>
             <PropertyRef Name="_NodeTRef" />
@@ -77,8 +101,8 @@ warning 6002: The table/view 'base1s.dbo._AccChngR10859' does not have a primary
           <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
           <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccChngR10867' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccChngR10867" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccChngR10867">
           <Key>
             <PropertyRef Name="_NodeTRef" />
@@ -90,8 +114,8 @@ warning 6002: The table/view 'base1s.dbo._AccChngR10867' does not have a primary
           <Property Name="_MessageNo" Type="numeric" Precision="10" Scale="0" />
           <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRg10868' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRg10868" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRg10868">
           <Key>
             <PropertyRef Name="_Period" />
@@ -132,8 +156,8 @@ warning 6002: The table/view 'base1s.dbo._AccRg10868' does not have a primary ke
           <Property Name="_Fld10875" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="_Fld10876RRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRg10893' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRg10893" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRg10893">
           <Key>
             <PropertyRef Name="_Period" />
@@ -174,8 +198,8 @@ warning 6002: The table/view 'base1s.dbo._AccRg10893' does not have a primary ke
           <Property Name="_Fld10901" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="_Fld10902RRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT010880' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT010880" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT010880">
           <Key>
             <PropertyRef Name="_Period" />
@@ -200,8 +224,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT010880' does not have a primary
           <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT010906' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT010906" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT010906">
           <Key>
             <PropertyRef Name="_Period" />
@@ -229,8 +253,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT010906' does not have a primary
           <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT110887' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT110887" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT110887">
           <Key>
             <PropertyRef Name="_Period" />
@@ -258,8 +282,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT110887' does not have a primary
           <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT110916' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT110916" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT110916">
           <Key>
             <PropertyRef Name="_Period" />
@@ -290,8 +314,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT110916' does not have a primary
           <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT210888' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT210888" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT210888">
           <Key>
             <PropertyRef Name="_Period" />
@@ -322,8 +346,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT210888' does not have a primary
           <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT210917' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT210917" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT210917">
           <Key>
             <PropertyRef Name="_Period" />
@@ -357,8 +381,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT210917' does not have a primary
           <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT310889' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT310889" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT310889">
           <Key>
             <PropertyRef Name="_Period" />
@@ -392,8 +416,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT310889' does not have a primary
           <Property Name="_Turnover10886" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgAT310918' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgAT310918" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgAT310918">
           <Key>
             <PropertyRef Name="_Period" />
@@ -430,8 +454,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgAT310918' does not have a primary
           <Property Name="_Turnover10915" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgChngR10892' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgChngR10892" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgChngR10892">
           <Key>
             <PropertyRef Name="_NodeTRef" />
@@ -445,8 +469,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgChngR10892' does not have a prima
           <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgChngR10921' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgChngR10921" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgChngR10921">
           <Key>
             <PropertyRef Name="_NodeTRef" />
@@ -460,8 +484,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgChngR10921' does not have a prima
           <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgCT10890' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgCT10890" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgCT10890">
           <Key>
             <PropertyRef Name="_Period" />
@@ -487,8 +511,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgCT10890' does not have a primary 
           <Property Name="_Fld10872Ct" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgCT10919' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgCT10919" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgCT10919">
           <Key>
             <PropertyRef Name="_Period" />
@@ -514,8 +538,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgCT10919' does not have a primary 
           <Property Name="_Fld10898Ct" Type="numeric" Precision="21" Scale="3" />
           <Property Name="_Splitter" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgED10891' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgED10891" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgED10891">
           <Key>
             <PropertyRef Name="_Period" />
@@ -538,8 +562,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgED10891' does not have a primary 
           <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgED10920' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgED10920" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgED10920">
           <Key>
             <PropertyRef Name="_Period" />
@@ -562,8 +586,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgED10920' does not have a primary 
           <Property Name="_Value_RTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_Value_RRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._AccRgOpt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccRgOpt" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_AccRgOpt">
           <Key>
             <PropertyRef Name="_RegID" />
@@ -584,6 +608,214 @@ warning 6002: The table/view 'base1s.dbo._AccRgOpt' does not have a primary key 
           <Property Name="_MinPeriod" Type="datetime" Nullable="false" />
           <Property Name="_UseSplitter" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccumRg10053" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_AccumRg10053">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Active" />
+            <PropertyRef Name="_RecordKind" />
+            <PropertyRef Name="_Fld10054RRef" />
+            <PropertyRef Name="_Fld10055_TYPE" />
+            <PropertyRef Name="_Fld10055_RTRef" />
+            <PropertyRef Name="_Fld10055_RRRef" />
+            <PropertyRef Name="_Fld10056_TYPE" />
+            <PropertyRef Name="_Fld10056_RTRef" />
+            <PropertyRef Name="_Fld10056_RRRef" />
+            <PropertyRef Name="_Fld10057RRef" />
+            <PropertyRef Name="_Fld10058RRef" />
+            <PropertyRef Name="_Fld10059" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_RecordKind" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="_Fld10054RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10055_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10055_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10055_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10056_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10056_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10056_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10057RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10058RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10059" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccumRg9987" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_AccumRg9987">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_RecorderTRef" />
+            <PropertyRef Name="_RecorderRRef" />
+            <PropertyRef Name="_LineNo" />
+            <PropertyRef Name="_Active" />
+            <PropertyRef Name="_Fld9988RRef" />
+            <PropertyRef Name="_Fld9989RRef" />
+            <PropertyRef Name="_Fld9990_TYPE" />
+            <PropertyRef Name="_Fld9990_RTRef" />
+            <PropertyRef Name="_Fld9990_RRRef" />
+            <PropertyRef Name="_Fld9991RRef" />
+            <PropertyRef Name="_Fld9992_TYPE" />
+            <PropertyRef Name="_Fld9992_RTRef" />
+            <PropertyRef Name="_Fld9992_RRRef" />
+            <PropertyRef Name="_Fld9993_TYPE" />
+            <PropertyRef Name="_Fld9993_RTRef" />
+            <PropertyRef Name="_Fld9993_RRRef" />
+            <PropertyRef Name="_Fld9994RRef" />
+            <PropertyRef Name="_Fld9995_TYPE" />
+            <PropertyRef Name="_Fld9995_RTRef" />
+            <PropertyRef Name="_Fld9995_RRRef" />
+            <PropertyRef Name="_Fld9996_TYPE" />
+            <PropertyRef Name="_Fld9996_RTRef" />
+            <PropertyRef Name="_Fld9996_RRRef" />
+            <PropertyRef Name="_Fld9997_TYPE" />
+            <PropertyRef Name="_Fld9997_RTRef" />
+            <PropertyRef Name="_Fld9997_RRRef" />
+            <PropertyRef Name="_Fld9998RRef" />
+            <PropertyRef Name="_Fld9999_TYPE" />
+            <PropertyRef Name="_Fld9999_RTRef" />
+            <PropertyRef Name="_Fld9999_RRRef" />
+            <PropertyRef Name="_Fld10000" />
+            <PropertyRef Name="_Fld10001" />
+            <PropertyRef Name="_DimHash" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_LineNo" Type="numeric" Precision="9" Scale="0" Nullable="false" />
+          <Property Name="_Active" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9988RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9989RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9990_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9990_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9990_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9991RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9992_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9992_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9992_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9993_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9993_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9993_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9994RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9995_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9995_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9995_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9996_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9996_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9996_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9997_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9997_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9997_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9998RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9999_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9999_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9999_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10000" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="_Fld10001" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="_DimHash" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccumRgTn10006" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_AccumRgTn10006">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_Fld9988RRef" />
+            <PropertyRef Name="_Fld9989RRef" />
+            <PropertyRef Name="_Fld9990_TYPE" />
+            <PropertyRef Name="_Fld9990_RTRef" />
+            <PropertyRef Name="_Fld9990_RRRef" />
+            <PropertyRef Name="_Fld9991RRef" />
+            <PropertyRef Name="_Fld9992_TYPE" />
+            <PropertyRef Name="_Fld9992_RTRef" />
+            <PropertyRef Name="_Fld9992_RRRef" />
+            <PropertyRef Name="_Fld9993_TYPE" />
+            <PropertyRef Name="_Fld9993_RTRef" />
+            <PropertyRef Name="_Fld9993_RRRef" />
+            <PropertyRef Name="_Fld9994RRef" />
+            <PropertyRef Name="_Fld9995_TYPE" />
+            <PropertyRef Name="_Fld9995_RTRef" />
+            <PropertyRef Name="_Fld9995_RRRef" />
+            <PropertyRef Name="_Fld9996_TYPE" />
+            <PropertyRef Name="_Fld9996_RTRef" />
+            <PropertyRef Name="_Fld9996_RRRef" />
+            <PropertyRef Name="_Fld9997_TYPE" />
+            <PropertyRef Name="_Fld9997_RTRef" />
+            <PropertyRef Name="_Fld9997_RRRef" />
+            <PropertyRef Name="_Fld9998RRef" />
+            <PropertyRef Name="_Fld9999_TYPE" />
+            <PropertyRef Name="_Fld9999_RTRef" />
+            <PropertyRef Name="_Fld9999_RRRef" />
+            <PropertyRef Name="_Fld10000" />
+            <PropertyRef Name="_Fld10001" />
+            <PropertyRef Name="_DimHash" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_Fld9988RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9989RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9990_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9990_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9990_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9991RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9992_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9992_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9992_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9993_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9993_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9993_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9994RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9995_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9995_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9995_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9996_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9996_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9996_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9997_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9997_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9997_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9998RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld9999_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld9999_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld9999_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10000" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_Fld10001" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_DimHash" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Enum302">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_EnumOrder" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Enum450">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_EnumOrder" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Reference113">
+          <Key>
+            <PropertyRef Name="_IDRRef" />
+          </Key>
+          <Property Name="_IDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="_Marked" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_IsMetadata" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_ParentIDRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Folder" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Code" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="_Fld1333RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld1334RRef" Type="binary" MaxLength="16" />
+          <Property Name="_Fld1335RRef" Type="binary" MaxLength="16" />
+        </EntityType>
         <EntityType Name="_Reference114">
           <Key>
             <PropertyRef Name="_IDRRef" />
@@ -601,8 +833,8 @@ warning 6002: The table/view 'base1s.dbo._AccRgOpt' does not have a primary key 
           <Property Name="_Fld1339RRef" Type="binary" MaxLength="16" />
           <Property Name="_Fld1340RRef" Type="binary" MaxLength="16" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._Seq10830' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._Seq10830" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_Seq10830">
           <Key>
             <PropertyRef Name="_Period" />
@@ -613,8 +845,8 @@ warning 6002: The table/view 'base1s.dbo._Seq10830' does not have a primary key 
           <Property Name="_RecorderTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._Seq10832' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._Seq10832" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_Seq10832">
           <Key>
             <PropertyRef Name="_Period" />
@@ -627,8 +859,8 @@ warning 6002: The table/view 'base1s.dbo._Seq10832' does not have a primary key 
           <Property Name="_RecorderRRef" Type="binary" MaxLength="16" Nullable="false" />
           <Property Name="_Fld10833RRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._SeqB10831' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._SeqB10831" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_SeqB10831">
           <Key>
             <PropertyRef Name="_Period" />
@@ -641,8 +873,8 @@ warning 6002: The table/view 'base1s.dbo._SeqB10831' does not have a primary key
           <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._SeqB10834' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._SeqB10834" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_SeqB10834">
           <Key>
             <PropertyRef Name="_Fld10833RRef" />
@@ -657,8 +889,8 @@ warning 6002: The table/view 'base1s.dbo._SeqB10834' does not have a primary key
           <Property Name="_Recorder_RTRef" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="_Recorder_RRRef" Type="binary" MaxLength="16" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'base1s.dbo._YearOffset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._YearOffset" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="_YearOffset">
           <Key>
             <PropertyRef Name="Offset" />
@@ -668,7 +900,23 @@ warning 6002: The table/view 'base1s.dbo._YearOffset' does not have a primary ke
         <EntityContainer Name="base1sModelStoreContainer">
           <EntitySet Name="_Acc10" EntityType="Self._Acc10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_Acc9" EntityType="Self._Acc9" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Enum302" EntityType="Self._Enum302" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Enum450" EntityType="Self._Enum450" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Reference113" EntityType="Self._Reference113" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="_Reference114" EntityType="Self._Reference114" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Acc10_ExtDim10863" EntityType="Self._Acc10_ExtDim10863" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_Acc10_ExtDim10863].[_Acc10_IDRRef] AS [_Acc10_IDRRef], 
+[_Acc10_ExtDim10863].[_KeyField] AS [_KeyField], 
+[_Acc10_ExtDim10863].[_LineNo] AS [_LineNo], 
+[_Acc10_ExtDim10863].[_DimKindRRef] AS [_DimKindRRef], 
+[_Acc10_ExtDim10863].[_DimIsMetadata] AS [_DimIsMetadata], 
+[_Acc10_ExtDim10863].[_TurnoverOnly] AS [_TurnoverOnly], 
+[_Acc10_ExtDim10863].[_Fld10864] AS [_Fld10864], 
+[_Acc10_ExtDim10863].[_Fld10865] AS [_Fld10865], 
+[_Acc10_ExtDim10863].[_Fld10866] AS [_Fld10866]
+FROM [dbo].[_Acc10_ExtDim10863] AS [_Acc10_ExtDim10863]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="_Acc9_ExtDim10857" EntityType="Self._Acc9_ExtDim10857" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [_Acc9_ExtDim10857].[_Acc9_IDRRef] AS [_Acc9_IDRRef], 
@@ -1030,6 +1278,98 @@ FROM [dbo].[_AccRgED10920] AS [_AccRgED10920]</DefiningQuery>
 [_AccRgOpt].[_MinPeriod] AS [_MinPeriod], 
 [_AccRgOpt].[_UseSplitter] AS [_UseSplitter]
 FROM [dbo].[_AccRgOpt] AS [_AccRgOpt]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccumRg10053" EntityType="Self._AccumRg10053" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccumRg10053].[_Period] AS [_Period], 
+[_AccumRg10053].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccumRg10053].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccumRg10053].[_LineNo] AS [_LineNo], 
+[_AccumRg10053].[_Active] AS [_Active], 
+[_AccumRg10053].[_RecordKind] AS [_RecordKind], 
+[_AccumRg10053].[_Fld10054RRef] AS [_Fld10054RRef], 
+[_AccumRg10053].[_Fld10055_TYPE] AS [_Fld10055_TYPE], 
+[_AccumRg10053].[_Fld10055_RTRef] AS [_Fld10055_RTRef], 
+[_AccumRg10053].[_Fld10055_RRRef] AS [_Fld10055_RRRef], 
+[_AccumRg10053].[_Fld10056_TYPE] AS [_Fld10056_TYPE], 
+[_AccumRg10053].[_Fld10056_RTRef] AS [_Fld10056_RTRef], 
+[_AccumRg10053].[_Fld10056_RRRef] AS [_Fld10056_RRRef], 
+[_AccumRg10053].[_Fld10057RRef] AS [_Fld10057RRef], 
+[_AccumRg10053].[_Fld10058RRef] AS [_Fld10058RRef], 
+[_AccumRg10053].[_Fld10059] AS [_Fld10059]
+FROM [dbo].[_AccumRg10053] AS [_AccumRg10053]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccumRg9987" EntityType="Self._AccumRg9987" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccumRg9987].[_Period] AS [_Period], 
+[_AccumRg9987].[_RecorderTRef] AS [_RecorderTRef], 
+[_AccumRg9987].[_RecorderRRef] AS [_RecorderRRef], 
+[_AccumRg9987].[_LineNo] AS [_LineNo], 
+[_AccumRg9987].[_Active] AS [_Active], 
+[_AccumRg9987].[_Fld9988RRef] AS [_Fld9988RRef], 
+[_AccumRg9987].[_Fld9989RRef] AS [_Fld9989RRef], 
+[_AccumRg9987].[_Fld9990_TYPE] AS [_Fld9990_TYPE], 
+[_AccumRg9987].[_Fld9990_RTRef] AS [_Fld9990_RTRef], 
+[_AccumRg9987].[_Fld9990_RRRef] AS [_Fld9990_RRRef], 
+[_AccumRg9987].[_Fld9991RRef] AS [_Fld9991RRef], 
+[_AccumRg9987].[_Fld9992_TYPE] AS [_Fld9992_TYPE], 
+[_AccumRg9987].[_Fld9992_RTRef] AS [_Fld9992_RTRef], 
+[_AccumRg9987].[_Fld9992_RRRef] AS [_Fld9992_RRRef], 
+[_AccumRg9987].[_Fld9993_TYPE] AS [_Fld9993_TYPE], 
+[_AccumRg9987].[_Fld9993_RTRef] AS [_Fld9993_RTRef], 
+[_AccumRg9987].[_Fld9993_RRRef] AS [_Fld9993_RRRef], 
+[_AccumRg9987].[_Fld9994RRef] AS [_Fld9994RRef], 
+[_AccumRg9987].[_Fld9995_TYPE] AS [_Fld9995_TYPE], 
+[_AccumRg9987].[_Fld9995_RTRef] AS [_Fld9995_RTRef], 
+[_AccumRg9987].[_Fld9995_RRRef] AS [_Fld9995_RRRef], 
+[_AccumRg9987].[_Fld9996_TYPE] AS [_Fld9996_TYPE], 
+[_AccumRg9987].[_Fld9996_RTRef] AS [_Fld9996_RTRef], 
+[_AccumRg9987].[_Fld9996_RRRef] AS [_Fld9996_RRRef], 
+[_AccumRg9987].[_Fld9997_TYPE] AS [_Fld9997_TYPE], 
+[_AccumRg9987].[_Fld9997_RTRef] AS [_Fld9997_RTRef], 
+[_AccumRg9987].[_Fld9997_RRRef] AS [_Fld9997_RRRef], 
+[_AccumRg9987].[_Fld9998RRef] AS [_Fld9998RRef], 
+[_AccumRg9987].[_Fld9999_TYPE] AS [_Fld9999_TYPE], 
+[_AccumRg9987].[_Fld9999_RTRef] AS [_Fld9999_RTRef], 
+[_AccumRg9987].[_Fld9999_RRRef] AS [_Fld9999_RRRef], 
+[_AccumRg9987].[_Fld10000] AS [_Fld10000], 
+[_AccumRg9987].[_Fld10001] AS [_Fld10001], 
+[_AccumRg9987].[_DimHash] AS [_DimHash]
+FROM [dbo].[_AccumRg9987] AS [_AccumRg9987]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccumRgTn10006" EntityType="Self._AccumRgTn10006" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccumRgTn10006].[_Period] AS [_Period], 
+[_AccumRgTn10006].[_Fld9988RRef] AS [_Fld9988RRef], 
+[_AccumRgTn10006].[_Fld9989RRef] AS [_Fld9989RRef], 
+[_AccumRgTn10006].[_Fld9990_TYPE] AS [_Fld9990_TYPE], 
+[_AccumRgTn10006].[_Fld9990_RTRef] AS [_Fld9990_RTRef], 
+[_AccumRgTn10006].[_Fld9990_RRRef] AS [_Fld9990_RRRef], 
+[_AccumRgTn10006].[_Fld9991RRef] AS [_Fld9991RRef], 
+[_AccumRgTn10006].[_Fld9992_TYPE] AS [_Fld9992_TYPE], 
+[_AccumRgTn10006].[_Fld9992_RTRef] AS [_Fld9992_RTRef], 
+[_AccumRgTn10006].[_Fld9992_RRRef] AS [_Fld9992_RRRef], 
+[_AccumRgTn10006].[_Fld9993_TYPE] AS [_Fld9993_TYPE], 
+[_AccumRgTn10006].[_Fld9993_RTRef] AS [_Fld9993_RTRef], 
+[_AccumRgTn10006].[_Fld9993_RRRef] AS [_Fld9993_RRRef], 
+[_AccumRgTn10006].[_Fld9994RRef] AS [_Fld9994RRef], 
+[_AccumRgTn10006].[_Fld9995_TYPE] AS [_Fld9995_TYPE], 
+[_AccumRgTn10006].[_Fld9995_RTRef] AS [_Fld9995_RTRef], 
+[_AccumRgTn10006].[_Fld9995_RRRef] AS [_Fld9995_RRRef], 
+[_AccumRgTn10006].[_Fld9996_TYPE] AS [_Fld9996_TYPE], 
+[_AccumRgTn10006].[_Fld9996_RTRef] AS [_Fld9996_RTRef], 
+[_AccumRgTn10006].[_Fld9996_RRRef] AS [_Fld9996_RRRef], 
+[_AccumRgTn10006].[_Fld9997_TYPE] AS [_Fld9997_TYPE], 
+[_AccumRgTn10006].[_Fld9997_RTRef] AS [_Fld9997_RTRef], 
+[_AccumRgTn10006].[_Fld9997_RRRef] AS [_Fld9997_RRRef], 
+[_AccumRgTn10006].[_Fld9998RRef] AS [_Fld9998RRef], 
+[_AccumRgTn10006].[_Fld9999_TYPE] AS [_Fld9999_TYPE], 
+[_AccumRgTn10006].[_Fld9999_RTRef] AS [_Fld9999_RTRef], 
+[_AccumRgTn10006].[_Fld9999_RRRef] AS [_Fld9999_RRRef], 
+[_AccumRgTn10006].[_Fld10000] AS [_Fld10000], 
+[_AccumRgTn10006].[_Fld10001] AS [_Fld10001], 
+[_AccumRgTn10006].[_DimHash] AS [_DimHash]
+FROM [dbo].[_AccumRgTn10006] AS [_AccumRgTn10006]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="_Seq10830" EntityType="Self._Seq10830" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1695,6 +2035,13 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           <EntitySet Name="C_SeqB10834" EntityType="Self.C_SeqB10834" />
           <EntitySet Name="C_YearOffset" EntityType="Self.C_YearOffset" />
           <EntitySet Name="C_Reference114" EntityType="base1sModel.C_Reference114" />
+          <EntitySet Name="C_Reference113" EntityType="base1sModel.C_Reference113" />
+          <EntitySet Name="C_Acc10_ExtDim10863" EntityType="base1sModel.C_Acc10_ExtDim10863" />
+          <EntitySet Name="C_AccumRgTn10006" EntityType="base1sModel.C_AccumRgTn10006" />
+          <EntitySet Name="C_AccumRg10053" EntityType="base1sModel.C_AccumRg10053" />
+          <EntitySet Name="C_AccumRg9987" EntityType="base1sModel.C_AccumRg9987" />
+          <EntitySet Name="C_Enum302" EntityType="base1sModel.C_Enum302" />
+          <EntitySet Name="C_Enum450" EntityType="base1sModel.C_Enum450" />
         </EntityContainer>
         <EntityType Name="C_Reference114">
           <Key>
@@ -1712,6 +2059,230 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           <Property Name="C_Fld1338RRef" Type="Binary" MaxLength="16" FixedLength="true" />
           <Property Name="C_Fld1339RRef" Type="Binary" MaxLength="16" FixedLength="true" />
           <Property Name="C_Fld1340RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="C_Reference113">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="C_Marked" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_IsMetadata" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_ParentIDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Folder" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Code" Type="String" Nullable="false" MaxLength="9" FixedLength="true" Unicode="true" />
+          <Property Name="C_Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Fld1333RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld1334RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld1335RRef" Type="Binary" MaxLength="16" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="C_Acc10_ExtDim10863">
+          <Key>
+            <PropertyRef Name="C_Acc10_IDRRef" />
+            <PropertyRef Name="C_KeyField" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_DimKindRRef" />
+            <PropertyRef Name="C_DimIsMetadata" />
+            <PropertyRef Name="C_TurnoverOnly" />
+            <PropertyRef Name="C_Fld10864" />
+            <PropertyRef Name="C_Fld10865" />
+            <PropertyRef Name="C_Fld10866" />
+          </Key>
+          <Property Name="C_Acc10_IDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_KeyField" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_LineNo" Type="Decimal" Nullable="false" Precision="5" Scale="0" />
+          <Property Name="C_DimKindRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_DimIsMetadata" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_TurnoverOnly" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10864" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10865" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10866" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="C_AccumRgTn10006">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_Fld9988RRef" />
+            <PropertyRef Name="C_Fld9989RRef" />
+            <PropertyRef Name="C_Fld9990_TYPE" />
+            <PropertyRef Name="C_Fld9990_RTRef" />
+            <PropertyRef Name="C_Fld9990_RRRef" />
+            <PropertyRef Name="C_Fld9991RRef" />
+            <PropertyRef Name="C_Fld9992_TYPE" />
+            <PropertyRef Name="C_Fld9992_RTRef" />
+            <PropertyRef Name="C_Fld9992_RRRef" />
+            <PropertyRef Name="C_Fld9993_TYPE" />
+            <PropertyRef Name="C_Fld9993_RTRef" />
+            <PropertyRef Name="C_Fld9993_RRRef" />
+            <PropertyRef Name="C_Fld9994RRef" />
+            <PropertyRef Name="C_Fld9995_TYPE" />
+            <PropertyRef Name="C_Fld9995_RTRef" />
+            <PropertyRef Name="C_Fld9995_RRRef" />
+            <PropertyRef Name="C_Fld9996_TYPE" />
+            <PropertyRef Name="C_Fld9996_RTRef" />
+            <PropertyRef Name="C_Fld9996_RRRef" />
+            <PropertyRef Name="C_Fld9997_TYPE" />
+            <PropertyRef Name="C_Fld9997_RTRef" />
+            <PropertyRef Name="C_Fld9997_RRRef" />
+            <PropertyRef Name="C_Fld9998RRef" />
+            <PropertyRef Name="C_Fld9999_TYPE" />
+            <PropertyRef Name="C_Fld9999_RTRef" />
+            <PropertyRef Name="C_Fld9999_RRRef" />
+            <PropertyRef Name="C_Fld10000" />
+            <PropertyRef Name="C_Fld10001" />
+            <PropertyRef Name="C_DimHash" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Fld9988RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9989RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9990_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9990_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9990_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9991RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9992_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9992_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9992_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9993_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9993_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9993_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9994RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9995_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9995_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9995_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9996_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9996_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9996_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9997_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9997_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9997_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9998RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9999_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9999_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9999_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10000" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_Fld10001" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_DimHash" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="C_AccumRg10053">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Active" />
+            <PropertyRef Name="C_RecordKind" />
+            <PropertyRef Name="C_Fld10054RRef" />
+            <PropertyRef Name="C_Fld10055_TYPE" />
+            <PropertyRef Name="C_Fld10055_RTRef" />
+            <PropertyRef Name="C_Fld10055_RRRef" />
+            <PropertyRef Name="C_Fld10056_TYPE" />
+            <PropertyRef Name="C_Fld10056_RTRef" />
+            <PropertyRef Name="C_Fld10056_RRRef" />
+            <PropertyRef Name="C_Fld10057RRef" />
+            <PropertyRef Name="C_Fld10058RRef" />
+            <PropertyRef Name="C_Fld10059" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_RecorderRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_LineNo" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+          <Property Name="C_Active" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_RecordKind" Type="Decimal" Nullable="false" Precision="1" Scale="0" />
+          <Property Name="C_Fld10054RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10055_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10055_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10055_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10056_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10056_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10056_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10057RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10058RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10059" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="C_AccumRg9987">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_RecorderTRef" />
+            <PropertyRef Name="C_RecorderRRef" />
+            <PropertyRef Name="C_LineNo" />
+            <PropertyRef Name="C_Active" />
+            <PropertyRef Name="C_Fld9988RRef" />
+            <PropertyRef Name="C_Fld9989RRef" />
+            <PropertyRef Name="C_Fld9990_TYPE" />
+            <PropertyRef Name="C_Fld9990_RTRef" />
+            <PropertyRef Name="C_Fld9990_RRRef" />
+            <PropertyRef Name="C_Fld9991RRef" />
+            <PropertyRef Name="C_Fld9992_TYPE" />
+            <PropertyRef Name="C_Fld9992_RTRef" />
+            <PropertyRef Name="C_Fld9992_RRRef" />
+            <PropertyRef Name="C_Fld9993_TYPE" />
+            <PropertyRef Name="C_Fld9993_RTRef" />
+            <PropertyRef Name="C_Fld9993_RRRef" />
+            <PropertyRef Name="C_Fld9994RRef" />
+            <PropertyRef Name="C_Fld9995_TYPE" />
+            <PropertyRef Name="C_Fld9995_RTRef" />
+            <PropertyRef Name="C_Fld9995_RRRef" />
+            <PropertyRef Name="C_Fld9996_TYPE" />
+            <PropertyRef Name="C_Fld9996_RTRef" />
+            <PropertyRef Name="C_Fld9996_RRRef" />
+            <PropertyRef Name="C_Fld9997_TYPE" />
+            <PropertyRef Name="C_Fld9997_RTRef" />
+            <PropertyRef Name="C_Fld9997_RRRef" />
+            <PropertyRef Name="C_Fld9998RRef" />
+            <PropertyRef Name="C_Fld9999_TYPE" />
+            <PropertyRef Name="C_Fld9999_RTRef" />
+            <PropertyRef Name="C_Fld9999_RRRef" />
+            <PropertyRef Name="C_Fld10000" />
+            <PropertyRef Name="C_Fld10001" />
+            <PropertyRef Name="C_DimHash" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_RecorderTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_RecorderRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_LineNo" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+          <Property Name="C_Active" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9988RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9989RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9990_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9990_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9990_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9991RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9992_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9992_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9992_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9993_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9993_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9993_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9994RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9995_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9995_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9995_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9996_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9996_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9996_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9997_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9997_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9997_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9998RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld9999_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld9999_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld9999_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10000" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="C_Fld10001" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="C_DimHash" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="C_Enum302">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_EnumOrder" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="C_Enum450">
+          <Key>
+            <PropertyRef Name="C_IDRRef" />
+          </Key>
+          <Property Name="C_IDRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_EnumOrder" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2221,6 +2792,152 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
                 <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
                 <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
                 <ScalarProperty Name="C_Version" ColumnName="_Version" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Reference113">
+            <EntityTypeMapping TypeName="base1sModel.C_Reference113">
+              <MappingFragment StoreEntitySet="_Reference113">
+                <ScalarProperty Name="C_Fld1335RRef" ColumnName="_Fld1335RRef" />
+                <ScalarProperty Name="C_Fld1334RRef" ColumnName="_Fld1334RRef" />
+                <ScalarProperty Name="C_Fld1333RRef" ColumnName="_Fld1333RRef" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_Code" ColumnName="_Code" />
+                <ScalarProperty Name="C_Folder" ColumnName="_Folder" />
+                <ScalarProperty Name="C_ParentIDRRef" ColumnName="_ParentIDRRef" />
+                <ScalarProperty Name="C_IsMetadata" ColumnName="_IsMetadata" />
+                <ScalarProperty Name="C_Marked" ColumnName="_Marked" />
+                <ScalarProperty Name="C_Version" ColumnName="_Version" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Acc10_ExtDim10863">
+            <EntityTypeMapping TypeName="base1sModel.C_Acc10_ExtDim10863">
+              <MappingFragment StoreEntitySet="_Acc10_ExtDim10863">
+                <ScalarProperty Name="C_Fld10866" ColumnName="_Fld10866" />
+                <ScalarProperty Name="C_Fld10865" ColumnName="_Fld10865" />
+                <ScalarProperty Name="C_Fld10864" ColumnName="_Fld10864" />
+                <ScalarProperty Name="C_TurnoverOnly" ColumnName="_TurnoverOnly" />
+                <ScalarProperty Name="C_DimIsMetadata" ColumnName="_DimIsMetadata" />
+                <ScalarProperty Name="C_DimKindRRef" ColumnName="_DimKindRRef" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_KeyField" ColumnName="_KeyField" />
+                <ScalarProperty Name="C_Acc10_IDRRef" ColumnName="_Acc10_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccumRgTn10006">
+            <EntityTypeMapping TypeName="base1sModel.C_AccumRgTn10006">
+              <MappingFragment StoreEntitySet="_AccumRgTn10006">
+                <ScalarProperty Name="C_DimHash" ColumnName="_DimHash" />
+                <ScalarProperty Name="C_Fld10001" ColumnName="_Fld10001" />
+                <ScalarProperty Name="C_Fld10000" ColumnName="_Fld10000" />
+                <ScalarProperty Name="C_Fld9999_RRRef" ColumnName="_Fld9999_RRRef" />
+                <ScalarProperty Name="C_Fld9999_RTRef" ColumnName="_Fld9999_RTRef" />
+                <ScalarProperty Name="C_Fld9999_TYPE" ColumnName="_Fld9999_TYPE" />
+                <ScalarProperty Name="C_Fld9998RRef" ColumnName="_Fld9998RRef" />
+                <ScalarProperty Name="C_Fld9997_RRRef" ColumnName="_Fld9997_RRRef" />
+                <ScalarProperty Name="C_Fld9997_RTRef" ColumnName="_Fld9997_RTRef" />
+                <ScalarProperty Name="C_Fld9997_TYPE" ColumnName="_Fld9997_TYPE" />
+                <ScalarProperty Name="C_Fld9996_RRRef" ColumnName="_Fld9996_RRRef" />
+                <ScalarProperty Name="C_Fld9996_RTRef" ColumnName="_Fld9996_RTRef" />
+                <ScalarProperty Name="C_Fld9996_TYPE" ColumnName="_Fld9996_TYPE" />
+                <ScalarProperty Name="C_Fld9995_RRRef" ColumnName="_Fld9995_RRRef" />
+                <ScalarProperty Name="C_Fld9995_RTRef" ColumnName="_Fld9995_RTRef" />
+                <ScalarProperty Name="C_Fld9995_TYPE" ColumnName="_Fld9995_TYPE" />
+                <ScalarProperty Name="C_Fld9994RRef" ColumnName="_Fld9994RRef" />
+                <ScalarProperty Name="C_Fld9993_RRRef" ColumnName="_Fld9993_RRRef" />
+                <ScalarProperty Name="C_Fld9993_RTRef" ColumnName="_Fld9993_RTRef" />
+                <ScalarProperty Name="C_Fld9993_TYPE" ColumnName="_Fld9993_TYPE" />
+                <ScalarProperty Name="C_Fld9992_RRRef" ColumnName="_Fld9992_RRRef" />
+                <ScalarProperty Name="C_Fld9992_RTRef" ColumnName="_Fld9992_RTRef" />
+                <ScalarProperty Name="C_Fld9992_TYPE" ColumnName="_Fld9992_TYPE" />
+                <ScalarProperty Name="C_Fld9991RRef" ColumnName="_Fld9991RRef" />
+                <ScalarProperty Name="C_Fld9990_RRRef" ColumnName="_Fld9990_RRRef" />
+                <ScalarProperty Name="C_Fld9990_RTRef" ColumnName="_Fld9990_RTRef" />
+                <ScalarProperty Name="C_Fld9990_TYPE" ColumnName="_Fld9990_TYPE" />
+                <ScalarProperty Name="C_Fld9989RRef" ColumnName="_Fld9989RRef" />
+                <ScalarProperty Name="C_Fld9988RRef" ColumnName="_Fld9988RRef" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccumRg10053">
+            <EntityTypeMapping TypeName="base1sModel.C_AccumRg10053">
+              <MappingFragment StoreEntitySet="_AccumRg10053">
+                <ScalarProperty Name="C_Fld10059" ColumnName="_Fld10059" />
+                <ScalarProperty Name="C_Fld10058RRef" ColumnName="_Fld10058RRef" />
+                <ScalarProperty Name="C_Fld10057RRef" ColumnName="_Fld10057RRef" />
+                <ScalarProperty Name="C_Fld10056_RRRef" ColumnName="_Fld10056_RRRef" />
+                <ScalarProperty Name="C_Fld10056_RTRef" ColumnName="_Fld10056_RTRef" />
+                <ScalarProperty Name="C_Fld10056_TYPE" ColumnName="_Fld10056_TYPE" />
+                <ScalarProperty Name="C_Fld10055_RRRef" ColumnName="_Fld10055_RRRef" />
+                <ScalarProperty Name="C_Fld10055_RTRef" ColumnName="_Fld10055_RTRef" />
+                <ScalarProperty Name="C_Fld10055_TYPE" ColumnName="_Fld10055_TYPE" />
+                <ScalarProperty Name="C_Fld10054RRef" ColumnName="_Fld10054RRef" />
+                <ScalarProperty Name="C_RecordKind" ColumnName="_RecordKind" />
+                <ScalarProperty Name="C_Active" ColumnName="_Active" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccumRg9987">
+            <EntityTypeMapping TypeName="base1sModel.C_AccumRg9987">
+              <MappingFragment StoreEntitySet="_AccumRg9987">
+                <ScalarProperty Name="C_DimHash" ColumnName="_DimHash" />
+                <ScalarProperty Name="C_Fld10001" ColumnName="_Fld10001" />
+                <ScalarProperty Name="C_Fld10000" ColumnName="_Fld10000" />
+                <ScalarProperty Name="C_Fld9999_RRRef" ColumnName="_Fld9999_RRRef" />
+                <ScalarProperty Name="C_Fld9999_RTRef" ColumnName="_Fld9999_RTRef" />
+                <ScalarProperty Name="C_Fld9999_TYPE" ColumnName="_Fld9999_TYPE" />
+                <ScalarProperty Name="C_Fld9998RRef" ColumnName="_Fld9998RRef" />
+                <ScalarProperty Name="C_Fld9997_RRRef" ColumnName="_Fld9997_RRRef" />
+                <ScalarProperty Name="C_Fld9997_RTRef" ColumnName="_Fld9997_RTRef" />
+                <ScalarProperty Name="C_Fld9997_TYPE" ColumnName="_Fld9997_TYPE" />
+                <ScalarProperty Name="C_Fld9996_RRRef" ColumnName="_Fld9996_RRRef" />
+                <ScalarProperty Name="C_Fld9996_RTRef" ColumnName="_Fld9996_RTRef" />
+                <ScalarProperty Name="C_Fld9996_TYPE" ColumnName="_Fld9996_TYPE" />
+                <ScalarProperty Name="C_Fld9995_RRRef" ColumnName="_Fld9995_RRRef" />
+                <ScalarProperty Name="C_Fld9995_RTRef" ColumnName="_Fld9995_RTRef" />
+                <ScalarProperty Name="C_Fld9995_TYPE" ColumnName="_Fld9995_TYPE" />
+                <ScalarProperty Name="C_Fld9994RRef" ColumnName="_Fld9994RRef" />
+                <ScalarProperty Name="C_Fld9993_RRRef" ColumnName="_Fld9993_RRRef" />
+                <ScalarProperty Name="C_Fld9993_RTRef" ColumnName="_Fld9993_RTRef" />
+                <ScalarProperty Name="C_Fld9993_TYPE" ColumnName="_Fld9993_TYPE" />
+                <ScalarProperty Name="C_Fld9992_RRRef" ColumnName="_Fld9992_RRRef" />
+                <ScalarProperty Name="C_Fld9992_RTRef" ColumnName="_Fld9992_RTRef" />
+                <ScalarProperty Name="C_Fld9992_TYPE" ColumnName="_Fld9992_TYPE" />
+                <ScalarProperty Name="C_Fld9991RRef" ColumnName="_Fld9991RRef" />
+                <ScalarProperty Name="C_Fld9990_RRRef" ColumnName="_Fld9990_RRRef" />
+                <ScalarProperty Name="C_Fld9990_RTRef" ColumnName="_Fld9990_RTRef" />
+                <ScalarProperty Name="C_Fld9990_TYPE" ColumnName="_Fld9990_TYPE" />
+                <ScalarProperty Name="C_Fld9989RRef" ColumnName="_Fld9989RRef" />
+                <ScalarProperty Name="C_Fld9988RRef" ColumnName="_Fld9988RRef" />
+                <ScalarProperty Name="C_Active" ColumnName="_Active" />
+                <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
+                <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
+                <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Enum302">
+            <EntityTypeMapping TypeName="base1sModel.C_Enum302">
+              <MappingFragment StoreEntitySet="_Enum302">
+                <ScalarProperty Name="C_EnumOrder" ColumnName="_EnumOrder" />
+                <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Enum450">
+            <EntityTypeMapping TypeName="base1sModel.C_Enum450">
+              <MappingFragment StoreEntitySet="_Enum450">
+                <ScalarProperty Name="C_EnumOrder" ColumnName="_EnumOrder" />
                 <ScalarProperty Name="C_IDRRef" ColumnName="_IDRRef" />
               </MappingFragment>
             </EntityTypeMapping>

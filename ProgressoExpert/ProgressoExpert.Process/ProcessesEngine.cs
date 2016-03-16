@@ -14,17 +14,20 @@ namespace ProgressoExpert.Process
         public static MainModel GetResult(DateTime startDate, DateTime endDate)
         {
             var model = new MainModel();
-            model.StartDate = startDate;
-            model.EndDate = endDate;
 
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
-            model.StartTranz = MainAccessor.GetAllTrans(startDate, null, model.TimeSpan); // Вытащим сразу все транзакции, отдельным запросом
-            model.EndTranz = MainAccessor.GetAllTrans(startDate, endDate, model.TimeSpan);
-            model.Scores = MainAccessor.GetAllScores();// и счета
-            model.RegGroups = MainAccessor.GetAllGroups();// группы
 
+            model.StartDate = startDate.AddYears(model.TimeSpan);
+            model.EndDate = endDate.AddYears(model.TimeSpan).AddHours(23).AddMinutes(59).AddSeconds(59);
+
+            model.StartTranz = MainAccessor.GetAllTrans(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
+            model.EndTranz = MainAccessor.GetAllTrans(model.StartDate, model.EndDate);
+            
             model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
+
+            model.RegGroups = MainAccessor.GetAllGroups();// группы
+            model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<DataAccess.Entities.RefGroupsEnt>());
 
             model.RatiosIndicatorsResult = CalculateRatiosIndicators(endDate, model.BusinessResults, model.ReportProfitAndLoss);
 
