@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Entities\RefGroupsEnt.cs" />
     <Compile Include="Entities\ScoreEnt.cs" />
+    <Compile Include="Entities\GroupsEnt.cs" />
     <Compile Include="Entities\TranzEnt.cs" />
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />
     <Compile Include="Models\InfoModel.cs" />

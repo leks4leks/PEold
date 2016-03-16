@@ -26,13 +26,13 @@ namespace ProgressoExpert.Models.Models
         }
         private List<TranzEnt> _endTranz;
 
-        public List<ScoreEnt> Scores
+        public List<GroupsEnt> ADDSTranz
         {
-            get { return _scores; }
-            set { SetValue(ref _scores, value, "Scores"); }
+            get { return _ADDSTranz; }
+            set { SetValue(ref _ADDSTranz, value, "ADDSTranz"); }
         }
-        private List<ScoreEnt> _scores;
-
+        private List<GroupsEnt> _ADDSTranz;
+        
         public List<RefGroupsEnt> RegGroups
         {
             get { return _regGroups; }

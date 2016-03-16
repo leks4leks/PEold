@@ -24,8 +24,8 @@
         <EntityTypeShape EntityType="base1sModel.C_AccRgChngR10921" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_AccRgCT10890" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_AccRgCT10919" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="base1sModel.C_AccRgED10891" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="base1sModel.C_AccRgED10920" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="base1sModel.C_AccRgED10891" Width="1.875" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="base1sModel.C_AccRgED10920" Width="1.875" PointX="12.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_AccRgOpt" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_Seq10830" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_Seq10832" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
@@ -33,6 +33,13 @@
         <EntityTypeShape EntityType="base1sModel.C_SeqB10834" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_YearOffset" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="base1sModel.C_Reference114" Width="1.5" PointX="11.375" PointY="16.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Reference113" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Acc10_ExtDim10863" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRgTn10006" Width="1.5" PointX="17.375" PointY="0.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRg10053" Width="1.5" PointX="5.375" PointY="17.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRg9987" Width="1.5" PointX="7.375" PointY="17.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Enum302" Width="1.5" PointX="17.375" PointY="8.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Enum450" Width="1.5" PointX="17.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

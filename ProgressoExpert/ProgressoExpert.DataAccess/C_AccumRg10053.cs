@@ -12,10 +12,23 @@ namespace ProgressoExpert.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class C_Seq10830
+    public partial class C_AccumRg10053
     {
         public System.DateTime C_Period { get; set; }
         public byte[] C_RecorderTRef { get; set; }
         public byte[] C_RecorderRRef { get; set; }
+        public decimal C_LineNo { get; set; }
+        public byte[] C_Active { get; set; }
+        public decimal C_RecordKind { get; set; }
+        public byte[] C_Fld10054RRef { get; set; }
+        public byte[] C_Fld10055_TYPE { get; set; }
+        public byte[] C_Fld10055_RTRef { get; set; }
+        public byte[] C_Fld10055_RRRef { get; set; }
+        public byte[] C_Fld10056_TYPE { get; set; }
+        public byte[] C_Fld10056_RTRef { get; set; }
+        public byte[] C_Fld10056_RRRef { get; set; }
+        public byte[] C_Fld10057RRef { get; set; }
+        public byte[] C_Fld10058RRef { get; set; }
+        public decimal C_Fld10059 { get; set; }
     }
 }

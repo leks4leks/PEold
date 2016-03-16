@@ -28,8 +28,8 @@ namespace ProgressoExpert.Controls.ResBusines
         private void dataStatementCashFlowsGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             ScrollViewer scrollViewer = (ScrollViewer)sender;
-            (rowStatementCashFlowsGrid).ScrollToHorizontalOffset(scrollViewer.HorizontalOffset);
-            (stStatementCashFlowsGrid).ScrollToVerticalOffset(scrollViewer.VerticalOffset);
+            //(rowStatementCashFlowsGrid).ScrollToHorizontalOffset(scrollViewer.HorizontalOffset);
+            //(stStatementCashFlowsGrid).ScrollToVerticalOffset(scrollViewer.VerticalOffset);
             (nodataStatementCashFlowsGrid).ScrollToVerticalOffset(scrollViewer.VerticalOffset);
         }
 

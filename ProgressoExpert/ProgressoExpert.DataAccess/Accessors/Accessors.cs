@@ -12,12 +12,10 @@ namespace ProgressoExpert.DataAccess
 {
     public class Accessors
     {
-        private const int minusOne = -1;
-        private static List<ScoreEnt> scores = null;
-        private static List<TranzEnt> Start = null;
+		private const int minusOne = -1;        private static List<TranzEnt> Start = null;
         private static List<TranzEnt> End = null;
 
-        private static List<ScoreEnt> ourScr = null;
+        private static List<int> ourScr = null;
 
         private static List<TranzEnt> ourDbtSt; // Это уже транзакции связанные с нашим счетом на начало
         private static List<TranzEnt> ourDbtEnd; // Это уже транзакции связанные с нашим счетом на конец (мы не будем считать на конец периода заного, почтитаем между датами, и сложем)
@@ -29,11 +27,10 @@ namespace ProgressoExpert.DataAccess
             BusinessResults model = new BusinessResults();
             using (dbEntities db = new dbEntities())
             {
-                scores = mainModel.Scores;
                 Start = mainModel.StartTranz;
                 End = mainModel.EndTranz;
 
-                ourScr = new List<ScoreEnt>(); // Вытащим ID интересующих нас счетов нас счетов
+                ourScr = new List<int>(); // Вытащим ID интересующих нас счетов нас счетов
 
                 decimal _outStart = 0;
                 decimal _outEnd = 0;
@@ -426,13 +423,13 @@ namespace ProgressoExpert.DataAccess
             ReportProfitAndLoss model = new ReportProfitAndLoss();
             using (dbEntities db = new dbEntities())
             {
-                var scores = mainModel.Scores;
-                List<ScoreEnt> ourScr = new List<ScoreEnt>();
+                //var scores = mainModel.Scores;
+                List<int> ourScr = new List<int>();
                 List<TranzEnt> ourDbt = new List<TranzEnt>();
                 List<TranzEnt> ourCrt = new List<TranzEnt>();
 
-                int[] endMonthYear = new int[] { mainModel.EndDate.Month, mainModel.EndDate.Year + mainModel.TimeSpan };
-                int[] startMonthYear = new int[] { mainModel.StartDate.Month, mainModel.StartDate.Year + mainModel.TimeSpan };//будем бежать от начала до конца периода
+                int[] endMonthYear = new int[] { mainModel.EndDate.Month, mainModel.EndDate.Year };
+                int[] startMonthYear = new int[] { mainModel.StartDate.Month, mainModel.StartDate.Year };//будем бежать от начала до конца периода
 
                 #region Посчитаем кол-во месяцев
                 int monthCount = 0;
@@ -481,55 +478,55 @@ namespace ProgressoExpert.DataAccess
                 int monthCounter = 0; // счетчик пройденых месяцев
                 for (int scoreNum = 0; scoreNum < (int)ProfitAndLossNumServer.Total; scoreNum++)
                 {
-                    endMonthYear = new int[] { mainModel.EndDate.Month, mainModel.EndDate.Year + mainModel.TimeSpan };
-                    startMonthYear = new int[] { mainModel.StartDate.Month, mainModel.StartDate.Year + mainModel.TimeSpan };
+                    endMonthYear = new int[] { mainModel.EndDate.Month, mainModel.EndDate.Year };
+                    startMonthYear = new int[] { mainModel.StartDate.Month, mainModel.StartDate.Year };
 
                     switch (scoreNum)
                     {
                         #region Вытаскиваем наши счета
                         case (int)ProfitAndLossNumServer.Income:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.Income0,
-                                                                 (int)ScoresReportProfitAndLoss.Income1,
-                                                                 (int)ScoresReportProfitAndLoss.Income2
-                                                               }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.Income0,
+                                                     (int)ScoresReportProfitAndLoss.Income1,
+                                                     (int)ScoresReportProfitAndLoss.Income2
+                                                   };
                             break;
                         case (int)ProfitAndLossNumServer.CostPrice:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.CostPrice}, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostPrice};
                             break;
                         case (int)ProfitAndLossNumServer.OtherIncome:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherIncome0,
-                                                                 (int)ScoresReportProfitAndLoss.OtherIncome1,
-                                                                 (int)ScoresReportProfitAndLoss.OtherIncome2,
-                                                                 (int)ScoresReportProfitAndLoss.OtherIncome3,
-                                                               }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.OtherIncome0,
+                                                     (int)ScoresReportProfitAndLoss.OtherIncome1,
+                                                     (int)ScoresReportProfitAndLoss.OtherIncome2,
+                                                     (int)ScoresReportProfitAndLoss.OtherIncome3,
+                                                   };
                             break;
                         case (int)ProfitAndLossNumServer.CostsSalesServices:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.CostsSalesServices}, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostsSalesServices};
                             break;
                         case (int)ProfitAndLossNumServer.AdministrativeExpenses:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.AdministrativeExpenses }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.AdministrativeExpenses };
                             break;
                         case (int)ProfitAndLossNumServer.FinancingCosts:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.FinancingCosts }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.FinancingCosts };
                             break;
                         case (int)ProfitAndLossNumServer.OtherCosts:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherCosts0,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts1,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts2,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts3,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts4,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts5,
-                                                                 (int)ScoresReportProfitAndLoss.OtherCosts6,
-                                                               }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.OtherCosts0,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts1,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts2,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts3,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts4,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts5,
+                                                     (int)ScoresReportProfitAndLoss.OtherCosts6,
+                                                   };
                             break;
                         case (int)ProfitAndLossNumServer.Depreciation:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.Depreciation }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.Depreciation };
                             break;
                         case (int)ProfitAndLossNumServer.OtherTaxes:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.OtherTaxes }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.OtherTaxes };
                             break;
                         case (int)ProfitAndLossNumServer.KPN20:
-                            ourScr = GetOurScore(new List<int> { (int)ScoresReportProfitAndLoss.KPN20 }, scores);
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.KPN20 };
                             break;                        
                         #endregion
                     }
@@ -684,6 +681,61 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
+        public static List<GroupsEnt> GetAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                var res = (from accEd in db.C_AccumRg9987
+                           join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
+                           join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
+                           join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
+                           where accEd.C_Period >= stDate && accEd.C_Period <= endDate
+                           select new GroupsEnt
+                           {
+                               Money = accEd.C_Fld10000,
+                               period = accEd.C_Period,
+                               GroupCode = refs.C_Code,
+                               en302 = en302.C_EnumOrder,
+                               en450 = en450.C_EnumOrder
+                           }).ToList();
+
+                var codeGroups = (from gg in db.C_Reference113
+                                  select new
+                                  { gg.C_Code }).ToList().OrderBy(_ => _.C_Code);
+
+                List<GroupsEnt> realres = new List<GroupsEnt>();
+                decimal money;
+                string desc = string.Empty;
+                string descNum = string.Empty;
+                decimal e3 = 0;
+                decimal e5 = 0;
+                foreach (var gg in codeGroups)
+                {
+                    money = res.Where(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).Sum(_ => Math.Abs(_.Money));
+                    if (res.Any(_ => _.GroupCode.Contains(gg.C_Code)))
+                    {
+                        descNum = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).GroupCode;
+                        desc = group.FirstOrDefault(_ => _.Name != null && _.Code == gg.C_Code).Name;
+                        e3 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).en302;
+                        e5 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).en450;
+                    }
+                    if (money != 0)
+                    {
+                        realres.Add(new GroupsEnt()
+                        {
+                            Money = money,
+                            GroupCode = descNum,
+                            GroupName = desc,
+                            en302 = e3,
+                            en450 = e5
+                        });
+                    }
+                }
+                return realres;
+
+            }
+        }
+
         #region SubQuery
 
         /// <summary>
@@ -697,14 +749,11 @@ namespace ProgressoExpert.DataAccess
             _start = 0;
             _end = 0;
 
-            List<int> list = values.OfType<int>().ToList();
-
-            ourScr = GetOurScore(list, scores);
-            GetStartEndDateMoney(Start, End, ourScr, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
-            var _itemStart = CalculateStart(ourDbtSt, ourCrtSt);
-            var _itemFinish = CalculateEnd(_itemStart, ourDbtEnd, ourCrtEnd);
-            _start += _itemStart;
-            _end += _itemFinish;
+            List<int> list = values.ToList();
+            
+            GetStartEndDateMoney(Start, End, list, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+            _start = Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
+            _end = _start + Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
         }
 
         /// <summary>
@@ -757,32 +806,7 @@ namespace ProgressoExpert.DataAccess
             //}
             //return _ourScr;
         }
-
-        /// <summary>
-        /// Метод возращает массив счетов которые нам нужны
-        /// </summary>
-        /// <param name="sroreArr">массив состоящий из первых двух цифр счетов которые нам нужны</param>
-        /// <param name="scores">все счета</param>
-        /// <param name="ourScr">результат</param>
-        private static List<ScoreEnt> GetOurScore(List<int> MyScores, List<ScoreEnt> scores)
-        {
-            var _ourScr = new List<ScoreEnt>();
-            List<string> Scores = new List<string>();
-            foreach (var sc in scores)
-            {
-                if (sc.ToString().Length < 4) continue;
-                foreach (var ms in MyScores)
-                {
-                    if (ms.ToString().Equals(sc.Code))
-                    {
-                        _ourScr.Add(sc);
-                    }
-                }
-            }
-            return _ourScr;
-        }
-
-
+        
         /// <summary>
         /// Метод вытаскивает деньги на начало периода и на конец, по дебету и кредету
         /// </summary>
@@ -793,28 +817,15 @@ namespace ProgressoExpert.DataAccess
         /// <param name="ourDbtEnd"></param>
         /// <param name="ourCrtSt"></param>
         /// <param name="ourCrtEnd"></param>
-        private static void GetStartEndDateMoney(List<TranzEnt> Start, List<TranzEnt> End, List<ScoreEnt> ourScr, out List<TranzEnt> ourDbtSt, out List<TranzEnt> ourDbtEnd, out List<TranzEnt> ourCrtSt, out List<TranzEnt> ourCrtEnd)
+        private static void GetStartEndDateMoney(List<TranzEnt> Start, List<TranzEnt> End, List<int> ourScr, out List<TranzEnt> ourDbtSt, out List<TranzEnt> ourDbtEnd, out List<TranzEnt> ourCrtSt, out List<TranzEnt> ourCrtEnd)
         {
-            ourDbtSt = new List<TranzEnt>();
-            ourDbtEnd = new List<TranzEnt>();
+            ourDbtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
 
-            ourCrtSt = new List<TranzEnt>();
-            ourCrtEnd = new List<TranzEnt>();
+            ourCrtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreCt))).ToList();
 
-            foreach (var item in ourScr)
-            {
-                foreach (var St in Start)
-                {
-                    // ID приходит как массив байтов, поэтому
-                    if (UnsafeCompare(St.DtRRef, item.Id)) { ourDbtSt.Add(St); }
-                    if (UnsafeCompare(St.CtRRef, item.Id)) { ourCrtSt.Add(St); }
-                }
-                foreach (var En in End)
-                {
-                    if (UnsafeCompare(En.DtRRef, item.Id)) { ourDbtEnd.Add(En); }
-                    if (UnsafeCompare(En.CtRRef, item.Id)) { ourCrtEnd.Add(En); }
-                }
-            }
+            ourDbtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
+
+            ourCrtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();            
         }
 
          /// <summary>
@@ -827,96 +838,13 @@ namespace ProgressoExpert.DataAccess
         /// <param name="ourDbtEnd"></param>
         /// <param name="ourCrtSt"></param>
         /// <param name="ourCrtEnd"></param>
-        private static void GetPeriodMoney(List<TranzEnt> Trans, List<ScoreEnt> ourScr, out List<TranzEnt> ourDbt, out List<TranzEnt> ourCrt)
+        private static void GetPeriodMoney(List<TranzEnt> Trans, List<int> ourScr, out List<TranzEnt> ourDbt, out List<TranzEnt> ourCrt)
         {
-            ourDbt = new List<TranzEnt>();
-            ourCrt = new List<TranzEnt>();
+            ourDbt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
 
-            foreach (var item in ourScr)
-            {
-                foreach (var St in Trans)
-                {
-                    if (UnsafeCompare(St.DtRRef, item.Id)) { ourDbt.Add(St); }
-                    if (UnsafeCompare(St.CtRRef, item.Id)) { ourCrt.Add(St); }
-                }
-            }
+            ourCrt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreCt))).ToList();            
         }        
-
-        /// <summary>
-        /// Сравнение 2х массивов
-        /// </summary>
-        /// <param name="a1"></param>
-        /// <param name="a2"></param>
-        /// <returns></returns>
-        private static unsafe bool UnsafeCompare(byte[] a1, byte[] a2)
-          {
-             if (a1 == null || a2 == null || a1.Length != a2.Length)
-                return false;
-             fixed (byte* p1 = a1, p2 = a2)
-             {
-                byte* x1 = p1, x2 = p2;
-                int l = a1.Length;
-                for (int i = 0; i < l / 8; i++, x1 += 8, x2 += 8)
-                   if (*((long*) x1) != *((long*) x2))
-                      return false;
-                if ((l & 4) != 0)
-                {
-                   if (*((int*) x1) != *((int*) x2)) return false;
-                   x1 += 4;
-                   x2 += 4;
-                }
-                if ((l & 2) != 0)
-                {
-                   if (*((short*) x1) != *((short*) x2)) return false;
-                   x1 += 2;
-                   x2 += 2;
-                }
-                if ((l & 1) != 0)
-                   if (*((byte*) x1) != *((byte*) x2))
-                      return false;
-                return true;
-             }
-          }
-
-        /// <summary>
-        /// Рассчет суммы даты начала периоды
-        /// </summary>
-        /// <param name="_ourDbtSt"></param>
-        /// <param name="_ourCrtSt"></param>
-        /// <returns></returns>
-        private static decimal CalculateStart(List<TranzEnt> _ourDbtSt, List<TranzEnt> _ourCrtSt) 
-         {
-#if DEBUG
-             var start = _ourDbtSt.Select(_ => _.Money).Sum();
-             var end = _ourCrtSt.Select(_ => _.Money).Sum();
-             foreach (var item in _ourCrtSt)
-             {
-                 Debug.Print("Value: " + item.Money);
-             }
-
-             var total = start - end;
-#endif
-             return Math.Round(_ourDbtSt.Select(_ => _.Money).Sum() - _ourCrtSt.Select(_ => _.Money).Sum(), 2);
-         }
-
-        /// <summary>
-        /// Рассчет суммы даты конца периода
-        /// </summary>
-        /// <param name="startValue"></param>
-        /// <param name="_ourDbtEnd"></param>
-        /// <param name="_ourCrtEnd"></param>
-        /// <returns></returns>
-        private static decimal CalculateEnd(decimal startValue, List<TranzEnt> _ourDbtEnd, List<TranzEnt> _ourCrtEnd)
-        {
-#if DEBUG
-            var start = _ourDbtEnd.Select(_ => _.Money).Sum();
-            var end = _ourCrtEnd.Select(_ => _.Money).Sum();
-
-            var total = start - end;
-            var superTotal = startValue + total;
-#endif
-            return startValue + Math.Round(_ourDbtEnd.Select(_ => _.Money).Sum() - _ourCrtEnd.Select(_ => _.Money).Sum(), 2);
-        }
+              
         #endregion
     }
 
