@@ -11,6 +11,7 @@ namespace ProgressoExpert.Models.Models
 {
     public class MainModel : BaseViewModel
     {
+        #region Common
         public List<TranzEnt> StartTranz
         {
             get { return _startTranz; }
@@ -44,7 +45,10 @@ namespace ProgressoExpert.Models.Models
             get { return _timeSpan; }
             set { SetValue(ref _timeSpan, value, "TimeSpan"); }
         }
-        private int _timeSpan;        
+        private int _timeSpan;
+        #endregion
+
+        public InfoModel InfoModel = new InfoModel();
 
         public DateTime StartDate
         {

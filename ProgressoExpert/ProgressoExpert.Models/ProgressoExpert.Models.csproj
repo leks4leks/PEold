@@ -43,6 +43,7 @@
     <Compile Include="Entities\ScoreEnt.cs" />
     <Compile Include="Entities\TranzEnt.cs" />
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />
+    <Compile Include="Models\InfoModel.cs" />
     <Compile Include="Models\ReportProfitAndLoss.cs" />
     <Compile Include="Models\BusinessResults.cs" />
     <Compile Include="Models\MainModel.cs" />
