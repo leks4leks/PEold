@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel.RatiosIndicatorsResult}">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -21,9 +20,10 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid  Name="liquidityGrid" Visibility="Hidden">
+                <Grid  Name="liquidityGrid" Visibility="Visible">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="450" />
+                        <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
@@ -41,25 +41,34 @@
                     <Border BorderThickness="0,0,0,2" BorderBrush="White" Grid.Row="0" Grid.Column="2">
                         <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
                     </Border>
+                    <Border BorderThickness="0,0,0,2" BorderBrush="White" Grid.Row="0" Grid.Column="3">
+                        <Rectangle  Style="{StaticResource MDTRectangleBlue}"/>
+                    </Border>
                     <Rectangle  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Style="{StaticResource MDTRectangleGreen}"/>
                     <Rectangle  Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Style="{StaticResource MDTRectangleBlue}"/>
+                    <Rectangle  Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Style="{StaticResource MDTRectangleBlue}"/>
 
-                    <TextBlock  Text="Коэффициент абсолютной ликвидности" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
-                    <TextBlock  Text="Коэффициент быстрой ликвидности" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                    <TextBlock  Text="Коэффициент текущей ликвидности" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Покрытие текущей задолженности деньгами" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}" />
+                    <TextBlock  Text="Покрытие текущей задолженности деньгами и долгами клиентов" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
+                    <TextBlock  Text="Покрытие текущей задолженности Оборотными активами" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
 
                     <TextBlock  Text="Рекомендованное" Grid.Row="0" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                     <TextBlock  Text=">=0,2"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                     <TextBlock  Text="0,5-1"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                     <TextBlock  Text=">=2"  Grid.Row="3" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
-                    <TextBlock  Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text="{Binding AbsoluteLiquidityRatio}" Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text="{Binding QuickLiquidityRatio}" Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                    <TextBlock  Text="{Binding CurrentLiquidityRatio}" Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding StartDate, StringFormat='dd.MM.yyyy'}" Grid.Row="0" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtMoneyStart}" Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebtsStart}" Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtOfCurrentAssetsStart}" Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+
+                    <TextBlock  Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="0" Grid.Column="3" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtMoneyEnd}" Grid.Row="1" Grid.Column="3" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebtsEnd}" Grid.Row="2" Grid.Column="3" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                    <TextBlock  Text="{Binding CoveringCurrentDebtOfCurrentAssetsEnd}" Grid.Row="3" Grid.Column="3" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
                 </Grid>
-                <Grid  Name="nodataliquidityGrid" Visibility="Visible">
+                <Grid  Name="nodataliquidityGrid" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="450" />
                         <ColumnDefinition Width="150"/>

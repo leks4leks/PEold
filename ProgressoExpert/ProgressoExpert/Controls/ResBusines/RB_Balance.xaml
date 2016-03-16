@@ -100,7 +100,7 @@
                         <TextBlock Text="{Binding UnfinishedProductionEnd}" Grid.Row="9" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
                         <TextBlock Text="Налоговые переплаты/авансы" Grid.Row="10" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
                         <TextBlock Text="{Binding TaxOverpaymentsAndAdvancesStart}"  Grid.Row="10" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                        <TextBlock Text="{Binding TaxOverpaymentsAndAdvancesnd}" Grid.Row="10" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                        <TextBlock Text="{Binding TaxOverpaymentsAndAdvancesEnd}" Grid.Row="10" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
                         <TextBlock Text="Прочие оборотные активы" Grid.Row="11" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
                         <TextBlock Text="{Binding OtherCurrentAssetsStart}"  Grid.Row="11" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
                         <TextBlock Text="{Binding OtherCurrentAssetsEnd}" Grid.Row="11" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>

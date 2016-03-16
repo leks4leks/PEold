@@ -392,10 +392,10 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public decimal TheDeferredTaxOverpaymentsAndAdvancesEnd
         {
-            get { return theDeferredTaxOverpaymentsAndAdvancesEnd; }
-            set { SetValue(ref theDeferredTaxOverpaymentsAndAdvancesEnd, value, "TheDeferredTaxOverpaymentsAndAdvancesEnd"); }
+            get { return _theDeferredTaxOverpaymentsAndAdvancesEnd; }
+            set { SetValue(ref _theDeferredTaxOverpaymentsAndAdvancesEnd, value, "TheDeferredTaxOverpaymentsAndAdvancesEnd"); }
         }
-        private decimal theDeferredTaxOverpaymentsAndAdvancesEnd;
+        private decimal _theDeferredTaxOverpaymentsAndAdvancesEnd;
 
         #endregion
 
@@ -435,7 +435,7 @@ namespace ProgressoExpert.Models.Models
         public decimal CreditsForOneYearStart
         {
             get { return _creditsForOneYearStart; }
-            set { SetValue(ref _creditsForOneYearStart, value * (-1), "CreditsForOneYearStart"); }
+            set { SetValue(ref _creditsForOneYearStart, value, "CreditsForOneYearStart"); }
         }
         private decimal _creditsForOneYearStart;
 
@@ -445,7 +445,7 @@ namespace ProgressoExpert.Models.Models
         public decimal CreditsForOneYearEnd
         {
             get { return _creditsForOneYearEnd; }
-            set { SetValue(ref _creditsForOneYearEnd, value * (-1), "CreditsForOneYearEnd"); }
+            set { SetValue(ref _creditsForOneYearEnd, value, "CreditsForOneYearEnd"); }
         }
         private decimal _creditsForOneYearEnd;
 
@@ -459,7 +459,7 @@ namespace ProgressoExpert.Models.Models
         public decimal DebtCitIitStart
         {
             get { return _debtCitIitStart; }
-            set { SetValue(ref _debtCitIitStart, value * (-1), "DebtCitIitStart"); }
+            set { SetValue(ref _debtCitIitStart, value, "DebtCitIitStart"); }
         }
         private decimal _debtCitIitStart;
 
@@ -469,7 +469,7 @@ namespace ProgressoExpert.Models.Models
         public decimal DebtCitIitEnd
         {
             get { return _debtCitIitEnd; }
-            set { SetValue(ref _debtCitIitEnd, value * (-1), "DebtCitIitEnd"); }
+            set { SetValue(ref _debtCitIitEnd, value, "DebtCitIitEnd"); }
         }
         private decimal _debtCitIitEnd;
 
@@ -928,23 +928,39 @@ namespace ProgressoExpert.Models.Models
         /// </summary>
         public void CalculateCurrentDebt()
         {
-            CurrentDebtStart = CreditsForOneYearStart + DebtCitIitStart + DebtVatStart + OtherTaxesPayableStart
-                 + PayablesToSuppliersShortTermDebtsStart + PayablesToEmployeesStart + OtherDebtsShortTermDebtsStart;
-            CurrentDebtEnd = CreditsForOneYearEnd + DebtCitIitEnd + DebtVatEnd + OtherTaxesPayableEnd
-                 + PayablesToSuppliersShortTermDebtsEnd + PayablesToEmployeesEnd + OtherDebtsShortTermDebtsEnd;
+            CurrentDebtStart = CreditsForOneYearStart 
+                + CheckDenailOf(ref _debtCitIitStart, ref _taxOverpaymentsAndAdvancesStart) 
+                + CheckDenailOf(ref _debtVatStart, ref _taxOverpaymentsAndAdvancesStart)
+                + CheckDenailOf(ref _otherTaxesPayableStart, ref _taxOverpaymentsAndAdvancesStart)
+                + CheckDenailOf(ref _debtsOfCustomersAndOverpaymentsStart, ref _payablesToSuppliersShortTermDebtsStart) 
+                + CheckDenailOf(ref _payablesToEmployeesStart, ref _otherCurrentAssetsStart)
+                + CheckDenailOf(ref _otherDebtsShortTermDebtsStart, ref _otherCurrentAssetsStart);
+            CurrentDebtEnd = CreditsForOneYearEnd
+                + CheckDenailOf(ref _debtCitIitEnd, ref _taxOverpaymentsAndAdvancesEnd)
+                + CheckDenailOf(ref _debtVatEnd, ref _taxOverpaymentsAndAdvancesEnd)
+                + CheckDenailOf(ref _otherTaxesPayableEnd, ref _taxOverpaymentsAndAdvancesEnd)
+                + CheckDenailOf(ref _debtsOfCustomersAndOverpaymentsEnd, ref _payablesToSuppliersShortTermDebtsEnd)
+                + CheckDenailOf(ref _payablesToEmployeesEnd, ref _otherCurrentAssetsEnd)
+                + CheckDenailOf(ref _otherDebtsShortTermDebtsEnd, ref _otherCurrentAssetsEnd);
         }
 
         /// <summary>
-        /// Рассчитать Долгосрочные долги
+        /// Рассчитать Долгосрочную задолженность
         /// </summary>
         public void CalculateLongTermDebt()
         {
-            LongTermDebtStart = CreditsForLongerThanOneYearStart + PayablesToSuppliersLongTermDebtsStart + DefferedTaxDebtsStart + OtherDebtsLongTermDebtsStart;
-            LongTermDebtEnd = CreditsForLongerThanOneYearEnd + PayablesToSuppliersLongTermDebtsEnd + DefferedTaxDebtsEnd + OtherDebtsLongTermDebtsEnd;
+            LongTermDebtStart = CreditsForLongerThanOneYearStart 
+                + CheckDenailOf(ref _payablesToSuppliersLongTermDebtsStart, ref _otherDebtsOfClientsAndOverpaymentStart)
+                + CheckDenailOf(ref _defferedTaxDebtsStart, ref _theDeferredTaxOverpaymentsAndAdvancesStart) 
+                + CheckDenailOf(ref _otherDebtsLongTermDebtsStart, ref _otherDebtsOfClientsAndOverpaymentStart);
+            LongTermDebtEnd = CreditsForLongerThanOneYearEnd
+                + CheckDenailOf(ref _payablesToSuppliersLongTermDebtsEnd, ref _otherDebtsOfClientsAndOverpaymentEnd)
+                + CheckDenailOf(ref _defferedTaxDebtsEnd, ref _theDeferredTaxOverpaymentsAndAdvancesEnd) 
+                + CheckDenailOf(ref _otherDebtsLongTermDebtsEnd, ref _otherDebtsOfClientsAndOverpaymentEnd);
         }
 
         /// <summary>
-        /// Рассчитать Краткосрочные активы
+        /// Рассчитать Собственный капитал
         /// </summary>
         public void CalculateOwnCapital()
         {
@@ -979,15 +995,22 @@ namespace ProgressoExpert.Models.Models
             AccumulatedProfitAndLossEnd = TotalLiabilitiesEnd - CurrentDebtEnd - LongTermDebtEnd - AuthorizedCapitalEnd - OtherCapitalEnd;
         }
 
-        /// <summary>
-        /// Рассчитать дополнительные налоговые активы (Все то, что в пассиве в минусе)
-        /// </summary>
-        public void CalculateAdditionalTaxAssets()
-        {
-            TaxOverpaymentsAndAdvancesStart = 1;
-            TaxOverpaymentsAndAdvancesEnd = 1;
-        }
-
         #endregion
+
+        /// <summary>
+        /// Проверка на отрицание
+        /// </summary>
+        /// <param name="value">Проверяемое значние</param>
+        /// <param name="finalValue">Итоговое значение, к которому прибавляется проверяемое значение в случае наличия отрицания</param>
+        /// <returns></returns>
+        private decimal CheckDenailOf(ref decimal value, ref decimal finalValue)
+        {
+            if (value < 0)
+            {
+                finalValue += Math.Abs(value);
+                value = 0;
+            }
+            return value;
+        }
     }
 }

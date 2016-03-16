@@ -26,19 +26,81 @@ namespace ProgressoExpert.Process
             model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
 
-            model.RegGroups = MainAccessor.GetAllGroups();// группы
+			model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<DataAccess.Entities.RefGroupsEnt>());
 
-            model.RatiosIndicatorsResult = CalculateRatiosIndicators(endDate, model.BusinessResults, model.ReportProfitAndLoss);
+            model.RatiosIndicatorsResult = CalculateRatiosIndicators(startDate, endDate, model.BusinessResults, model.ReportProfitAndLoss);
 
+			
             return model;
         }
 
-        private static RatiosIndicatorsResult CalculateRatiosIndicators(DateTime endDate, BusinessResults businessResults, ReportProfitAndLoss reportProfitAndLoss)
+        private static RatiosIndicatorsResult CalculateRatiosIndicators(DateTime startDate, DateTime endDate, BusinessResults businessResults, ReportProfitAndLoss reportProfitAndLoss)
         {
             var model = new RatiosIndicatorsResult();
 
             model.EndDate = endDate;
+            model.StartDate = startDate;
+
+            #region Первый блок
+
+            #region Вест сайд
+
+            model.CoveringCurrentDebtMoneyStart = Math.Round((businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart 
+                + businessResults.DepositsStart) / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
+            model.CoveringCurrentDebtMoneyEnd = Math.Round((businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
+                + businessResults.DepositsEnd) / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+
+            model.CoveringCurrentDebtMoneyAndCustomerDebtsStart = Math.Round((businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart
+                + businessResults.DepositsStart + businessResults.DebtsOfCustomersAndOverpaymentsStart)
+                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
+            model.CoveringCurrentDebtMoneyAndCustomerDebtsEnd = Math.Round((businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
+                + businessResults.DepositsEnd + businessResults.DebtsOfCustomersAndOverpaymentsEnd)
+                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+
+            model.CoveringCurrentDebtOfCurrentAssetsStart = Math.Round(businessResults.CirculatingAssetsStart 
+                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
+            model.CoveringCurrentDebtOfCurrentAssetsEnd = Math.Round(businessResults.CirculatingAssetsEnd 
+                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+
+            #endregion
+
+            #region Ист сайд
+
+            model.DebtPartInTheCompanyAssetsStart = Math.Round((businessResults.CurrentDebtStart + businessResults.LongTermDebtStart)
+                / (businessResults.TotalLiabilitiesStart != 0 ? businessResults.TotalLiabilitiesStart : 1), 2);
+            model.DebtPartInTheCompanyAssetsEnd = Math.Round((businessResults.CurrentDebtEnd + businessResults.LongTermDebtEnd)
+                / (businessResults.TotalLiabilitiesEnd != 0 ? businessResults.TotalLiabilitiesEnd : 1), 2);
+
+            model.PartOfEquityInTheCompanyAssetsStart = Math.Round(businessResults.OwnCapitalStart + businessResults.TotalLiabilitiesStart, 2);
+            model.PartOfEquityInTheCompanyAssetsEnd = Math.Round(businessResults.OwnCapitalEnd + businessResults.TotalLiabilitiesEnd, 2);
+
+            model.CoveringLoansByEquityStart = Math.Round((businessResults.CreditsForOneYearStart + businessResults.CreditsForLongerThanOneYearStart) 
+                / (businessResults.OwnCapitalStart != 0 ? businessResults.OwnCapitalStart : 1), 2);
+            model.CoveringLoansByEquityEnd = Math.Round((businessResults.CreditsForOneYearEnd + businessResults.CreditsForLongerThanOneYearEnd)
+                / (businessResults.OwnCapitalEnd != 0 ? businessResults.OwnCapitalEnd : 1), 2);
+
+            #endregion
+
+            #endregion
+
+            #region Второй блок
+
+            #region Вест сайд
+
+            model.SpeedOfTurnover = 1;
+
+            model.TermOfCirculationOfClientsDebt = 1;
+
+            #endregion
+
+            #region Ист сайд
+
+            model.TermOfCirculationOfDebtToSuppliers = 1;
+
+            #endregion
+
+            #endregion
 
             //#region Ликвидность
 

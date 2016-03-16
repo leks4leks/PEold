@@ -10,6 +10,16 @@ namespace ProgressoExpert.Models.Models
     public class RatiosIndicatorsResult: BaseViewModel
     {
         /// <summary>
+        /// Начальная дата
+        /// </summary>
+        public DateTime StartDate
+        {
+            get { return _startDate; }
+            set { SetValue(ref _startDate, value, "StartDate"); }
+        }
+        private DateTime _startDate;
+
+        /// <summary>
         /// Конечная дата
         /// </summary>
         public DateTime EndDate
@@ -19,151 +29,301 @@ namespace ProgressoExpert.Models.Models
         }
         private DateTime _endDate;
 
-        #region Ликвидность
+        /// <summary>
+        /// Покрытие текущей задолженности деньгами на начало периода
+        /// </summary>
+        public decimal CoveringCurrentDebtMoneyStart
+        {
+            get { return _coveringCurrentDebtMoneyStart; }
+            set { SetValue(ref _coveringCurrentDebtMoneyStart, value, "CoveringCurrentDebtMoneyStart"); }
+        }
+        private decimal _coveringCurrentDebtMoneyStart;
 
         /// <summary>
-        /// Коэффициент абсолютной ликивдности
+        /// Покрытие текущей задолженности деньгами на конец периода
         /// </summary>
-        public decimal AbsoluteLiquidityRatio
+        public decimal CoveringCurrentDebtMoneyEnd
         {
-            get { return _absoluteLiquidityRatio; }
-            set { SetValue(ref _absoluteLiquidityRatio, value, "AbsoluteLiquidityRatio"); }
+            get { return _coveringCurrentDebtMoneyEnd; }
+            set { SetValue(ref _coveringCurrentDebtMoneyEnd, value, "CoveringCurrentDebtMoneyEnd"); }
         }
-        private decimal _absoluteLiquidityRatio;
+        private decimal _coveringCurrentDebtMoneyEnd;
 
         /// <summary>
-        /// Коэффициент быстрой ликвидности 
+        /// Покрытие текущей задолженности деньгами и долгами клиентов на начало периода
         /// </summary>
-        public decimal QuickLiquidityRatio
+        public decimal CoveringCurrentDebtMoneyAndCustomerDebtsStart
         {
-            get { return _quickLiquidityRatio; }
-            set { SetValue(ref _quickLiquidityRatio, value, "QuickLiquidityRatio"); }
+            get { return _coveringCurrentDebtMoneyAndCustomerDebtsStart; }
+            set { SetValue(ref _coveringCurrentDebtMoneyAndCustomerDebtsStart, value, "CoveringCurrentDebtMoneyAndCustomerDebtsStart"); }
         }
-        private decimal _quickLiquidityRatio;
+        private decimal _coveringCurrentDebtMoneyAndCustomerDebtsStart;
 
         /// <summary>
-        /// Коэффициент текущей ликвидности 
+        /// Покрытие текущей задолженности деньгами и долгами клиентов на конец периода
         /// </summary>
-        public decimal CurrentLiquidityRatio
+        public decimal CoveringCurrentDebtMoneyAndCustomerDebtsEnd
         {
-            get { return _currentLiquidityRatio; }
-            set { SetValue(ref _currentLiquidityRatio, value, "CurrentLiquidityRatio"); }
+            get { return _coveringCurrentDebtMoneyAndCustomerDebtsEnd; }
+            set { SetValue(ref _coveringCurrentDebtMoneyAndCustomerDebtsEnd, value, "CoveringCurrentDebtMoneyAndCustomerDebtsEnd"); }
         }
-        private decimal _currentLiquidityRatio;
-
-        #endregion
-
-        #region Показатели деловой активности
+        private decimal _coveringCurrentDebtMoneyAndCustomerDebtsEnd;
 
         /// <summary>
-        /// Коэффициент оборачиваемости запасов
+        /// Покрытие текущей задолженности Оборотными активами на начало периода
         /// </summary>
-        public decimal InventoryTurnoverRatio
+        public decimal CoveringCurrentDebtOfCurrentAssetsStart
         {
-            get { return _inventoryTurnoverRatio; }
-            set { SetValue(ref _inventoryTurnoverRatio, value, "InventoryTurnoverRatio"); }
+            get { return _coveringCurrentDebtOfCurrentAssetsStart; }
+            set { SetValue(ref _coveringCurrentDebtOfCurrentAssetsStart, value, "CoveringCurrentDebtOfCurrentAssetsStart"); }
         }
-        private decimal _inventoryTurnoverRatio;
+        private decimal _coveringCurrentDebtOfCurrentAssetsStart;
 
         /// <summary>
-        /// Скорость товарооборота
+        /// Покрытие текущей задолженности Оборотными активами на конец периода
         /// </summary>
-        public decimal RateOfTurnover
+        public decimal CoveringCurrentDebtOfCurrentAssetsEnd
         {
-            get { return _rateOfTurnover; }
-            set { SetValue(ref _rateOfTurnover, value, "RateOfTurnover"); }
+            get { return _coveringCurrentDebtOfCurrentAssetsEnd; }
+            set { SetValue(ref _coveringCurrentDebtOfCurrentAssetsEnd, value, "CoveringCurrentDebtOfCurrentAssetsEnd"); }
         }
-        private decimal _rateOfTurnover;
+        private decimal _coveringCurrentDebtOfCurrentAssetsEnd;
 
         /// <summary>
-        /// Коэффициент оборачиваемости дебиторской задолженности
+        /// Доля Задолженности в активах компании на начало периода
         /// </summary>
-        public decimal AccountsReceivableTurnoverRatio
+        public decimal DebtPartInTheCompanyAssetsStart
         {
-            get { return _accountsReceivableTurnoverRatio; }
-            set { SetValue(ref _accountsReceivableTurnoverRatio, value, "AccountsReceivableTurnoverRatio"); }
+            get { return _debtPartInTheCompanyAssetsStart; }
+            set { SetValue(ref _debtPartInTheCompanyAssetsStart, value, "DebtPartInTheCompanyAssetsStart"); }
         }
-        private decimal _accountsReceivableTurnoverRatio;
+        private decimal _debtPartInTheCompanyAssetsStart;
 
         /// <summary>
-        /// Срок оборота дебиторской задолженности
+        /// Доля Задолженности в активах компании на конец периода
         /// </summary>
-        public decimal TermOfReceivablesTurnover
+        public decimal DebtPartInTheCompanyAssetsEnd
         {
-            get { return _termOfReceivablesTurnover; }
-            set { SetValue(ref _termOfReceivablesTurnover, value, "TermOfReceivablesTurnover"); }
+            get { return _debtPartInTheCompanyAssetsEnd; }
+            set { SetValue(ref _debtPartInTheCompanyAssetsEnd, value, "DebtPartInTheCompanyAssetsEnd"); }
         }
-        private decimal _termOfReceivablesTurnover;
+        private decimal _debtPartInTheCompanyAssetsEnd;
 
         /// <summary>
-        /// Коэффициент оборачиваемости кредиторской задолженности
+        /// Доля Собственного капитала в активах компании на начало периода
         /// </summary>
-        public decimal AccountsPayableTurnoverRatio
+        public decimal PartOfEquityInTheCompanyAssetsStart
         {
-            get { return _accountsPayableTurnoverRatio; }
-            set { SetValue(ref _accountsPayableTurnoverRatio, value, "AccountsPayableTurnoverRatio"); }
+            get { return _partOfEquityInTheCompanyAssetsStart; }
+            set { SetValue(ref _partOfEquityInTheCompanyAssetsStart, value, "PartOfEquityInTheCompanyAssetsStart"); }
         }
-        private decimal _accountsPayableTurnoverRatio;
+        private decimal _partOfEquityInTheCompanyAssetsStart;
 
         /// <summary>
-        /// Срок оборота дебиторской задолженности
+        /// Доля Собственного капитала в активах компании на конец периода
         /// </summary>
-        public decimal TermOfPayablesTurnover
+        public decimal PartOfEquityInTheCompanyAssetsEnd
         {
-            get { return _termOfPayablesTurnover; }
-            set { SetValue(ref _termOfPayablesTurnover, value, "TermOfPayablesTurnover"); }
+            get { return _partOfEquityInTheCompanyAssetsEnd; }
+            set { SetValue(ref _partOfEquityInTheCompanyAssetsEnd, value, "PartOfEquityInTheCompanyAssetsEnd"); }
         }
-        private decimal _termOfPayablesTurnover;
-
-        #endregion
-
-        #region Показатели финансовой устойчивости
+        private decimal _partOfEquityInTheCompanyAssetsEnd;
 
         /// <summary>
-        /// Коэффициент автономии
+        /// Покрытие кредитов Собственным капиталом на начало периода
         /// </summary>
-        public decimal CoefficientOfAutonomy
+        public decimal CoveringLoansByEquityStart
         {
-            get { return _coefficientOfAutonomy; }
-            set { SetValue(ref _coefficientOfAutonomy, value, "CoefficientOfAutonomy"); }
+            get { return _coveringLoansByEquityStart; }
+            set { SetValue(ref _coveringLoansByEquityStart, value, "CoveringLoansByEquityStart"); }
         }
-        private decimal _coefficientOfAutonomy;
+        private decimal _coveringLoansByEquityStart;
 
         /// <summary>
-        /// Коэффициент финансовой зависимости 
+        /// Покрытие кредитов Собственным капиталом на конец периода
         /// </summary>
-        public decimal CoefficientOfFinancialDependence
+        public decimal CoveringLoansByEquityEnd
         {
-            get { return _coefficientOfFinancialDependence; }
-            set { SetValue(ref _coefficientOfFinancialDependence, value, "CoefficientOfFinancialDependence"); }
+            get { return _coveringLoansByEquityEnd; }
+            set { SetValue(ref _coveringLoansByEquityEnd, value, "CoveringLoansByEquityEnd"); }
         }
-        private decimal _coefficientOfFinancialDependence;
-
-        #endregion
-
-        #region Показатели рентабельности
+        private decimal _coveringLoansByEquityEnd;
 
         /// <summary>
-        /// Коэффициент рентабельности основной деятельности
+        /// Скорость товарооборота 
         /// </summary>
-        public decimal CoefficientOfProfabilityPrimaryActivity
+        public decimal SpeedOfTurnover
         {
-            get { return _coefficientOfProfabilityPrimaryActivity; }
-            set { SetValue(ref _coefficientOfProfabilityPrimaryActivity, value, "CoefficientOfProfabilityPrimaryActivity"); }
+            get { return _speedOfTurnover; }
+            set { SetValue(ref _speedOfTurnover, value, "SpeedOfTurnover"); }
         }
-        private decimal _coefficientOfProfabilityPrimaryActivity;
+        private decimal _speedOfTurnover;
 
         /// <summary>
-        /// Коэффициент валовой рентабельности
+        /// Срок оборота долгов клиентов 
         /// </summary>
-        public decimal CoefficientOfGrossMargin
+        public decimal TermOfCirculationOfClientsDebt
         {
-            get { return _coefficientOfGrossMargin; }
-            set { SetValue(ref _coefficientOfGrossMargin, value, "CoefficientOfGrossMargin"); }
+            get { return _termOfCirculationOfClientsDebt; }
+            set { SetValue(ref _termOfCirculationOfClientsDebt, value, "TermOfCirculationOfClientsDebt"); }
         }
-        private decimal _coefficientOfGrossMargin;
+        private decimal _termOfCirculationOfClientsDebt;
 
-        #endregion
+        /// <summary>
+        /// Срок оборота задолженности перед поставщиками 
+        /// </summary>
+        public decimal TermOfCirculationOfDebtToSuppliers
+        {
+            get { return _termOfCirculationOfDebtToSuppliers; }
+            set { SetValue(ref _termOfCirculationOfDebtToSuppliers, value, "TermOfCirculationOfDebtToSuppliers"); }
+        }
+        private decimal _termOfCirculationOfDebtToSuppliers;
+
+        //#region Ликвидность
+
+        ///// <summary>
+        ///// Коэффициент абсолютной ликивдности
+        ///// </summary>
+        //public decimal AbsoluteLiquidityRatio
+        //{
+        //    get { return _absoluteLiquidityRatio; }
+        //    set { SetValue(ref _absoluteLiquidityRatio, value, "AbsoluteLiquidityRatio"); }
+        //}
+        //private decimal _absoluteLiquidityRatio;
+
+        ///// <summary>
+        ///// Коэффициент быстрой ликвидности 
+        ///// </summary>
+        //public decimal QuickLiquidityRatio
+        //{
+        //    get { return _quickLiquidityRatio; }
+        //    set { SetValue(ref _quickLiquidityRatio, value, "QuickLiquidityRatio"); }
+        //}
+        //private decimal _quickLiquidityRatio;
+
+        ///// <summary>
+        ///// Коэффициент текущей ликвидности 
+        ///// </summary>
+        //public decimal CurrentLiquidityRatio
+        //{
+        //    get { return _currentLiquidityRatio; }
+        //    set { SetValue(ref _currentLiquidityRatio, value, "CurrentLiquidityRatio"); }
+        //}
+        //private decimal _currentLiquidityRatio;
+
+        //#endregion
+
+        //#region Показатели деловой активности
+
+        ///// <summary>
+        ///// Коэффициент оборачиваемости запасов
+        ///// </summary>
+        //public decimal InventoryTurnoverRatio
+        //{
+        //    get { return _inventoryTurnoverRatio; }
+        //    set { SetValue(ref _inventoryTurnoverRatio, value, "InventoryTurnoverRatio"); }
+        //}
+        //private decimal _inventoryTurnoverRatio;
+
+        ///// <summary>
+        ///// Скорость товарооборота
+        ///// </summary>
+        //public decimal RateOfTurnover
+        //{
+        //    get { return _rateOfTurnover; }
+        //    set { SetValue(ref _rateOfTurnover, value, "RateOfTurnover"); }
+        //}
+        //private decimal _rateOfTurnover;
+
+        ///// <summary>
+        ///// Коэффициент оборачиваемости дебиторской задолженности
+        ///// </summary>
+        //public decimal AccountsReceivableTurnoverRatio
+        //{
+        //    get { return _accountsReceivableTurnoverRatio; }
+        //    set { SetValue(ref _accountsReceivableTurnoverRatio, value, "AccountsReceivableTurnoverRatio"); }
+        //}
+        //private decimal _accountsReceivableTurnoverRatio;
+
+        ///// <summary>
+        ///// Срок оборота дебиторской задолженности
+        ///// </summary>
+        //public decimal TermOfReceivablesTurnover
+        //{
+        //    get { return _termOfReceivablesTurnover; }
+        //    set { SetValue(ref _termOfReceivablesTurnover, value, "TermOfReceivablesTurnover"); }
+        //}
+        //private decimal _termOfReceivablesTurnover;
+
+        ///// <summary>
+        ///// Коэффициент оборачиваемости кредиторской задолженности
+        ///// </summary>
+        //public decimal AccountsPayableTurnoverRatio
+        //{
+        //    get { return _accountsPayableTurnoverRatio; }
+        //    set { SetValue(ref _accountsPayableTurnoverRatio, value, "AccountsPayableTurnoverRatio"); }
+        //}
+        //private decimal _accountsPayableTurnoverRatio;
+
+        ///// <summary>
+        ///// Срок оборота дебиторской задолженности
+        ///// </summary>
+        //public decimal TermOfPayablesTurnover
+        //{
+        //    get { return _termOfPayablesTurnover; }
+        //    set { SetValue(ref _termOfPayablesTurnover, value, "TermOfPayablesTurnover"); }
+        //}
+        //private decimal _termOfPayablesTurnover;
+
+        //#endregion
+
+        //#region Показатели финансовой устойчивости
+
+        ///// <summary>
+        ///// Коэффициент автономии
+        ///// </summary>
+        //public decimal CoefficientOfAutonomy
+        //{
+        //    get { return _coefficientOfAutonomy; }
+        //    set { SetValue(ref _coefficientOfAutonomy, value, "CoefficientOfAutonomy"); }
+        //}
+        //private decimal _coefficientOfAutonomy;
+
+        ///// <summary>
+        ///// Коэффициент финансовой зависимости 
+        ///// </summary>
+        //public decimal CoefficientOfFinancialDependence
+        //{
+        //    get { return _coefficientOfFinancialDependence; }
+        //    set { SetValue(ref _coefficientOfFinancialDependence, value, "CoefficientOfFinancialDependence"); }
+        //}
+        //private decimal _coefficientOfFinancialDependence;
+
+        //#endregion
+
+        //#region Показатели рентабельности
+
+        ///// <summary>
+        ///// Коэффициент рентабельности основной деятельности
+        ///// </summary>
+        //public decimal CoefficientOfProfabilityPrimaryActivity
+        //{
+        //    get { return _coefficientOfProfabilityPrimaryActivity; }
+        //    set { SetValue(ref _coefficientOfProfabilityPrimaryActivity, value, "CoefficientOfProfabilityPrimaryActivity"); }
+        //}
+        //private decimal _coefficientOfProfabilityPrimaryActivity;
+
+        ///// <summary>
+        ///// Коэффициент валовой рентабельности
+        ///// </summary>
+        //public decimal CoefficientOfGrossMargin
+        //{
+        //    get { return _coefficientOfGrossMargin; }
+        //    set { SetValue(ref _coefficientOfGrossMargin, value, "CoefficientOfGrossMargin"); }
+        //}
+        //private decimal _coefficientOfGrossMargin;
+
+        //#endregion
 
     }
 }
