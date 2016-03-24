@@ -47,7 +47,6 @@
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />
     <Compile Include="Entities\SalesEnt.cs" />
     <Compile Include="Models\SalesModel.cs" />
-    <Compile Include="Models\InfoModel.cs" />
     <Compile Include="Models\App\InfoModel.cs" />
     <Compile Include="Models\ReportProfitAndLoss.cs" />
     <Compile Include="Models\BusinessResults.cs" />
