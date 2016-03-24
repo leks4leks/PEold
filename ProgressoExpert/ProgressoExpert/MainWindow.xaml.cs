@@ -28,6 +28,8 @@ namespace ProgressoExpert
             InitializeComponent();
             DataContext = ViewModel = new MainModel();
             HeaderControl.DataContext = ViewModel.InfoModel;
+            MenuControl.DataContext = MenuControl.ViewModel = ViewModel;
+            ViewModel.Test = false;
         }
     }
 }

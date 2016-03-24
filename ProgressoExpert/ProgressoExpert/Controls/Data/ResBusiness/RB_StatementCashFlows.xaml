@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ProgressoExpert.Controls.Data.ResBusiness.RB_StatementCashFlows"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+
+    <Border Margin="5">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+            <Grid x:Name="grid2" Background="{Binding ElementName=window, Path=Background}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="500"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1000"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Данные -->
+                <ScrollViewer Grid.Row="0"  Grid.Column="0" Visibility="Visible" Name="dataStatementCashFlowsGrid" Height="Auto" Width="Auto"  HorizontalScrollBarVisibility="Visible" Focusable="False" >
+                    <Grid Name="GridStatementCashFlowsGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </ScrollViewer>
+    </Border>
+</UserControl>

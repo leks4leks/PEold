@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using ProgressoExpert.Common.Const;
 
-namespace ProgressoExpert.Models.Models
+namespace ProgressoExpert.Models.Models.App
 {
     public class InfoModel : BaseViewModel
     {

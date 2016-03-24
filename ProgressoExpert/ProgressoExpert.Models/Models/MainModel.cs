@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.DataAccess.Entities;
+using ProgressoExpert.Models.Models.App;
 using ProgressoExpert.Models.Models.BaseVM;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace ProgressoExpert.Models.Models
 {
     public class MainModel : BaseViewModel
     {
-        #region Common
+        #region Tranz
+
         public List<TranzEnt> StartTranz
         {
             get { return _startTranz; }
@@ -46,9 +48,13 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _timeSpan, value, "TimeSpan"); }
         }
         private int _timeSpan;
+
         #endregion
 
+        #region Info & Visibility
+
         public InfoModel InfoModel = new InfoModel();
+        //public VisibilityModel VisibilityModel = new VisibilityModel();
 
         public DateTime StartDate
         {
@@ -63,6 +69,106 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _endDate, value, "EndDate"); }
         }
         private DateTime _endDate;
+
+        #region Visibility
+
+        /// <summary>
+        /// Live Stream
+        /// </summary>
+        public bool LiveStreamVisibility
+        {
+            get { return _liveStreamVisibility; }
+            set
+            {
+                if (value == true)
+                {
+                    SetInvisibleAll();
+                }
+                SetValue(ref _liveStreamVisibility, value, "LiveStreamVisibility");
+            }
+        }
+        private bool _liveStreamVisibility;
+
+        /// <summary>
+        /// Анализ бизнеса
+        /// </summary>
+        public bool BusinessAnalysisVisibility
+        {
+            get { return _businessAnalysisVisibility; }
+            set
+            {
+                if (value == true)
+                {
+                    SetInvisibleAll();
+                }
+                SetValue(ref _businessAnalysisVisibility, value, "BusinessAnalysisVisibility");
+            }
+        }
+        private bool _businessAnalysisVisibility;
+
+        /// <summary>
+        /// Стресс-тестирование
+        /// </summary>
+        public bool StressTestingVisibility
+        {
+            get { return _stressTestingVisibility; }
+            set
+            {
+                if (value == true)
+                {
+                    SetInvisibleAll();
+                }
+                SetValue(ref _stressTestingVisibility, value, "StressTestingVisibility");
+            }
+        }
+        private bool _stressTestingVisibility;
+
+        /// <summary>
+        /// Результаты бизнеса
+        /// </summary>
+        public bool ResBusinessVisibility
+        {
+            get { return _resBusinessVisibility; }
+            set
+            {
+                if (value == true)
+                {
+                    SetInvisibleAll();
+                }
+                SetValue(ref _resBusinessVisibility, value, "ResBusinessVisibility");
+            }
+        }
+        private bool _resBusinessVisibility;
+
+        /// <summary>
+        /// Прогноз
+        /// </summary>
+        public bool ForecastVisibility
+        {
+            get { return _forecastVisibility; }
+            set
+            {
+                if (value == true)
+                {
+                    SetInvisibleAll();
+                }
+                SetValue(ref _forecastVisibility, value, "ForecastVisibility");
+            }
+        }
+        private bool _forecastVisibility;
+
+        public void SetInvisibleAll()
+        {
+            LiveStreamVisibility = false;
+            BusinessAnalysisVisibility = false;
+            StressTestingVisibility = false;
+            ResBusinessVisibility = false;
+            ForecastVisibility = false;
+        }
+
+        #endregion
+
+        #endregion
 
         /// <summary>
         /// Результаты бизнеса
@@ -94,7 +200,21 @@ namespace ProgressoExpert.Models.Models
         }
         private RatiosIndicatorsResult _ratiosIndicatorsResult;
 
+        /// <summary>
+        /// Коэффициенты и основные показатели
+        /// </summary>
+        public bool Test
+        {
+            get { return _test; }
+            set { SetValue(ref _test, value, "Test"); }
+        }
+        private bool _test;
 
 
+        public MainModel()
+        {
+            InfoModel InfoModel = new InfoModel();
+            VisibilityModel VisibilityModel = new VisibilityModel();
+        }
     }
 }
