@@ -336,8 +336,8 @@ namespace ProgressoExpert
         {
             ResBusiness.RB_ProfitLossReport.grid1.ColumnDefinitions[1].Width = 
                 new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
-            ResBusiness.RB_StatementCashFlows.grid2.ColumnDefinitions[1].Width = 
-                new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
+            //ResBusiness.RB_StatementCashFlows.grid2.ColumnDefinitions[1].Width = 
+            //    new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
             MonitorProject.grid2.ColumnDefinitions[1].Width =
                 new GridLength(GridMainTable.ColumnDefinitions[0].ActualWidth - DELETED_PART_FROM_WINDOW_WIDTH);
         }
