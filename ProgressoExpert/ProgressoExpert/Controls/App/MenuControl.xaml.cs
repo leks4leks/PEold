@@ -1,10 +1,13 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using ProgressoExpert.Models.Models.App;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,9 +23,46 @@ namespace ProgressoExpert.Controls.App
     /// </summary>
     public partial class MenuControl : UserControl
     {
+        public MainModel ViewModel;
+
         public MenuControl()
         {
             InitializeComponent();
+        }
+
+        private void MenuBtns_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckedOrUnchecked(sender);
+        }
+
+        private void CheckedOrUnchecked(object sender)
+        {
+            LiveStreamBtn.IsChecked = false;
+            BusinessAnalysisBtn.IsChecked = false;
+            StressTestingBtn.IsChecked = false;
+            BusinessResultsBtn.IsChecked = false;
+            ForecastBtn.IsChecked = false;
+
+            if ((sender as ToggleButton) == LiveStreamBtn)
+            {
+                LiveStreamBtn.IsChecked = ViewModel.LiveStreamVisibility = true;
+            }
+            else if ((sender as ToggleButton) == BusinessAnalysisBtn)
+            {
+                BusinessAnalysisBtn.IsChecked = ViewModel.BusinessAnalysisVisibility = true;
+            }
+            else if ((sender as ToggleButton) == StressTestingBtn)
+            {
+                StressTestingBtn.IsChecked = ViewModel.StressTestingVisibility = true;
+            }
+            else if ((sender as ToggleButton) == BusinessResultsBtn)
+            {
+                BusinessResultsBtn.IsChecked = ViewModel.ResBusinessVisibility = true;
+            }
+            else if ((sender as ToggleButton) == ForecastBtn)
+            {
+                ForecastBtn.IsChecked = ViewModel.ForecastVisibility = true;
+            }
         }
     }
 }
