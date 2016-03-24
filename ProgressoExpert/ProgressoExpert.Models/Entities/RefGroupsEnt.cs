@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgressoExpert.DataAccess.Entities
+namespace ProgressoExpert.Models.Entities
 {
     public class RefGroupsEnt
     {

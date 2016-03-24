@@ -60,5 +60,9 @@ namespace ProgressoExpert.DataAccess
         public DbSet<C_AccumRg9987> C_AccumRg9987 { get; set; }
         public DbSet<C_Enum302> C_Enum302 { get; set; }
         public DbSet<C_Enum450> C_Enum450 { get; set; }
+        public DbSet<C_Reference67> C_Reference67 { get; set; }
+        public DbSet<C_Reference77> C_Reference77 { get; set; }
+        public DbSet<C_Reference78> C_Reference78 { get; set; }
+        public DbSet<C_AccumRg10327> C_AccumRg10327 { get; set; }
     }
 }

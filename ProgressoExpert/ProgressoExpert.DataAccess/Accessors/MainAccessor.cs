@@ -1,5 +1,5 @@
 ﻿using ProgressoExpert.Common.Enums;
-using ProgressoExpert.DataAccess.Entities;
+using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;

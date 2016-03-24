@@ -1,5 +1,5 @@
 ﻿using ProgressoExpert.Common.Enums;
-using ProgressoExpert.DataAccess.Entities;
+using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace ProgressoExpert.DataAccess
 {
     public class Accessors
     {
-		private const int minusOne = -1;        private static List<TranzEnt> Start = null;
+        private const int minusOne = -1; private static List<TranzEnt> Start = null;
         private static List<TranzEnt> End = null;
 
         private static List<int> ourScr = null;
@@ -39,7 +39,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Денежные средства в кассе
 
-                Calculate(out _outStart, out _outEnd, 
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.CashInCashBox1,
                     (int)ScoresForBusinessResults.CashInCashBox2);
                 model.CashInCashBoxStart = _outStart;
@@ -415,7 +415,7 @@ namespace ProgressoExpert.DataAccess
                 #endregion
 
                 return model;
-            }         
+            }
         }
 
         public static ReportProfitAndLoss GetReportProfitAndLoss(MainModel mainModel)
@@ -455,7 +455,7 @@ namespace ProgressoExpert.DataAccess
                 List<TranzEnt> monthTranz = new List<TranzEnt>();//все транзакции за месяц (первый и последний могут быть обрезаны)
                 DateTime oneMonthDateStart = new DateTime();// стартовая дата для каждого месяца
                 DateTime oneMonthDateEnd = new DateTime();// конечная дата для каждого месяца
-                
+
                 #region Инициализация
                 model.TotalIncome = new List<decimal>();
                 model.TotalCostPrice = new List<decimal>();
@@ -491,7 +491,7 @@ namespace ProgressoExpert.DataAccess
                                                    };
                             break;
                         case (int)ProfitAndLossNumServer.CostPrice:
-                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostPrice};
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostPrice };
                             break;
                         case (int)ProfitAndLossNumServer.OtherIncome:
                             ourScr = new List<int> { (int)ScoresReportProfitAndLoss.OtherIncome0,
@@ -501,7 +501,7 @@ namespace ProgressoExpert.DataAccess
                                                    };
                             break;
                         case (int)ProfitAndLossNumServer.CostsSalesServices:
-                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostsSalesServices};
+                            ourScr = new List<int> { (int)ScoresReportProfitAndLoss.CostsSalesServices };
                             break;
                         case (int)ProfitAndLossNumServer.AdministrativeExpenses:
                             ourScr = new List<int> { (int)ScoresReportProfitAndLoss.AdministrativeExpenses };
@@ -527,8 +527,8 @@ namespace ProgressoExpert.DataAccess
                             break;
                         case (int)ProfitAndLossNumServer.KPN20:
                             ourScr = new List<int> { (int)ScoresReportProfitAndLoss.KPN20 };
-                            break;                        
-                        #endregion
+                            break;
+                            #endregion
                     }
 
                     bool isFirstMonth = true;
@@ -536,7 +536,7 @@ namespace ProgressoExpert.DataAccess
                     do
                     {
                         #region Определим дату начала и конца месяца
-                        monthCounter++;                        
+                        monthCounter++;
                         if (isFirstMonth)
                         {
                             oneMonthDateStart = new DateTime(startMonthYear[1], startMonthYear[0], mainModel.StartDate.Day);
@@ -580,7 +580,7 @@ namespace ProgressoExpert.DataAccess
                         }
 
                         GetPeriodMoney(monthTrans, ourScr, out ourDbt, out ourCrt);
-                        
+
                         switch (scoreNum)
                         {
                             #region Запишем суммы в модель
@@ -614,32 +614,32 @@ namespace ProgressoExpert.DataAccess
                             case (int)ProfitAndLossNumServer.KPN20:
                                 model.KPN20.Add(Math.Round(ourDbt.Select(_ => _.Money).Sum() * 20 / 100, 2)); // берем только 20 процентов
                                 break;
-                            #endregion
-                        }                        
+                                #endregion
+                        }
                     }
                     while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
                 }
 
                 // Заполним расчитываемые поля
-                for(int i = 0; i < monthCounter; i++)
+                for (int i = 0; i < monthCounter; i++)
                 {
                     model.GrossProfit.Add(model.TotalIncome[i] + model.TotalCostPrice[i]);
                     model.Costs.Add(model.AdministrativeExpenses[i] + model.CostsSalesServices[i] + model.FinancingCosts[i] + model.OtherTaxes[i]);
                     model.OperatingProfit.Add(model.GrossProfit[i] + model.OtherIncome[i] - model.Costs[i]);
-                    model.ProfitBeforeTaxation.Add(model.OperatingProfit[i] - model.Depreciation[i]);                    
-                    model.TotalProfit.Add(model.ProfitBeforeTaxation[i] - model.OtherTaxes[i] - model.KPN20[i]);                    
+                    model.ProfitBeforeTaxation.Add(model.OperatingProfit[i] - model.Depreciation[i]);
+                    model.TotalProfit.Add(model.ProfitBeforeTaxation[i] - model.OtherTaxes[i] - model.KPN20[i]);
                 }
 
                 #region Расчитаем среднюю и общую сумму по каждой строке
                 model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum(), 2));// общее
                 model.TotalIncome.Add(Math.Round(model.TotalIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum(), 2));// общее
                 model.TotalCostPrice.Add(Math.Round(model.TotalCostPrice.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum(), 2));// общее
                 model.GrossProfit.Add(Math.Round(model.GrossProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.OtherIncome.Add(Math.Round(model.OtherIncome.Take(monthCounter).Sum(), 2));// общее
                 model.OtherIncome.Add(Math.Round(model.OtherIncome.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
@@ -648,31 +648,31 @@ namespace ProgressoExpert.DataAccess
 
                 model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum(), 2));// общее
                 model.Costs.Add(Math.Round(model.Costs.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum(), 2));// общее
                 model.Depreciation.Add(Math.Round(model.Depreciation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
 
                 model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum(), 2));// общее
                 model.KPN20.Add(Math.Round(model.KPN20.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum(), 2));// общее
                 model.ProfitBeforeTaxation.Add(Math.Round(model.ProfitBeforeTaxation.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.AdministrativeExpenses.Add(Math.Round(model.AdministrativeExpenses.Take(monthCounter).Sum(), 2));// общее
                 model.AdministrativeExpenses.Add(Math.Round(model.AdministrativeExpenses.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.FinancingCosts.Add(Math.Round(model.FinancingCosts.Take(monthCounter).Sum(), 2));// общее
                 model.FinancingCosts.Add(Math.Round(model.FinancingCosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.OtherCosts.Add(Math.Round(model.OtherCosts.Take(monthCounter).Sum(), 2));// общее
                 model.OtherCosts.Add(Math.Round(model.OtherCosts.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.OtherTaxes.Add(Math.Round(model.OtherTaxes.Take(monthCounter).Sum(), 2));// общее
                 model.OtherTaxes.Add(Math.Round(model.OtherTaxes.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.OperatingProfit.Add(Math.Round(model.OperatingProfit.Take(monthCounter).Sum(), 2));// общее
                 model.OperatingProfit.Add(Math.Round(model.OperatingProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее
-                
+
                 model.TotalProfit.Add(Math.Round(model.TotalProfit.Take(monthCounter).Sum(), 2));// общее
                 model.TotalProfit.Add(Math.Round(model.TotalProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее                
                 #endregion
@@ -733,6 +733,103 @@ namespace ProgressoExpert.DataAccess
                 }
                 return realres;
 
+            }
+        }
+
+
+
+        public static List<SalesModel> GetSales(DateTime stDate, DateTime endDate)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                List<SalesModel> result = new List<SalesModel>();
+                int[] endMonthYear = new int[] { endDate.Month, endDate.Year };
+
+                int monthCount = 0;
+                int[] startMonthYear = new int[] { stDate.Month, stDate.Year };//будем бежать от начала до конца периода
+                do
+                {
+                    DateTime stDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
+                    DateTime endDt = new DateTime();
+                    #region Cчитаем кол-во месяцев
+                    if (startMonthYear[0] == 12)
+                    {
+                        startMonthYear[1]++;
+                        startMonthYear[0] = 1;
+                        monthCount++;
+                        endDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
+                    }
+                    else
+                    {
+                        startMonthYear[0]++;
+                        monthCount++;
+                        endDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
+                    }
+                    #endregion
+                    //только инфа по группам и производителям или как их
+                    var res = (from r77 in db.C_Reference77
+                               join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
+                               select new SalesEnt
+                               {
+                                   refId = r77.C_IDRRef,
+                                   CostPrise = decimal.Zero,
+                                   SalesWithoutNDS = decimal.Zero,
+                                   DivName = r77.C_Description,
+                                   GroupCode = r78.C_Code,
+                                   GroupName = r78.C_Description,
+                               }
+                               );
+
+                    //Себестоимость за период
+                    var res1 = (from s888 in db.C_AccRgAT210888
+                                where s888.C_Period >= stDt && s888.C_Period < endDt
+                                group s888 by s888.C_Value2_RRRef into g
+                                select new SalesEnt
+                                {
+                                    refId = g.FirstOrDefault().C_Value2_RRRef,
+                                    CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                                    SalesWithoutNDS = decimal.Zero,
+                                    DivName = string.Empty,
+                                    GroupCode = string.Empty,
+                                    GroupName = string.Empty,
+                                });
+                    
+                    //Цена продажи без ндс
+                    var res2 = (from r27 in db.C_AccumRg10327
+                                where r27.C_Fld10340 > 0 && r27.C_Period >= stDt && r27.C_Period < endDt
+                                group r27 by r27.C_Fld10328RRef into g
+                                select new SalesEnt
+                                {
+                                    refId = g.FirstOrDefault().C_Fld10328RRef,
+                                    CostPrise = decimal.Zero,
+                                    SalesWithoutNDS = g.Sum(_ => _.C_Fld10337),
+                                    DivName = string.Empty,
+                                    GroupCode = string.Empty,
+                                    GroupName = string.Empty,
+                                }
+                                );
+
+                    var res3 =
+                        (from r in res
+                         join r1 in res1 on r.refId equals r1.refId
+                         join r2 in res2 on r.refId equals r2.refId
+                         select new SalesEnt
+                         {
+                             refId = r.refId,
+                             CostPrise = r1.CostPrise,
+                             SalesWithoutNDS = r2.SalesWithoutNDS,
+                             DivName = r.DivName,
+                             GroupCode = r.GroupCode,
+                             GroupName = r.GroupName
+                     });
+                    SalesModel tmp = new SalesModel();
+                    tmp.Date = stDt;
+                    tmp.Sales = res3.ToList();
+                    result.Add(tmp);
+                }
+                while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
+                
+                return result;
             }
         }
 
