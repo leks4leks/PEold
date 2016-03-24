@@ -1,4 +1,4 @@
-﻿using ProgressoExpert.DataAccess.Entities;
+﻿using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models.App;
 using ProgressoExpert.Models.Models.BaseVM;
 using System;
@@ -35,6 +35,13 @@ namespace ProgressoExpert.Models.Models
         }
         private List<GroupsEnt> _ADDSTranz;
         
+        public List<SalesModel> Sales
+        {
+            get { return _sales; }
+            set { SetValue(ref _sales, value, "Sales"); }
+        }
+        private List<SalesModel> _sales;
+
         public List<RefGroupsEnt> RegGroups
         {
             get { return _regGroups; }
