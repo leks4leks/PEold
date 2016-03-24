@@ -44,6 +44,8 @@ Temporary Items
 
 # Progresso
 
+/ProgressoExpert/ProgressoExpert.Old/bin
+/ProgressoExpert/ProgressoExpert.Old/obj
 /ProgressoExpert/ProgressoExpert/bin
 /ProgressoExpert/ProgressoExpert.Common/bin
 /ProgressoExpert/ProgressoExpert.DataAccess/bin

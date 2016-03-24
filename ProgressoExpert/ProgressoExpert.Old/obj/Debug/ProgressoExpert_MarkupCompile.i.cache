@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Dmitriy_Ler\Documents\ProgressoExpert\ProgressoExpert\ProgressoExpert.Old\obj\Debug\
+C:\Git\PE\ProgressoExpert\ProgressoExpert\ProgressoExpert.Old\obj\Debug\
 ProgressoExpert
 none
 false
 DEBUG;TRACE
-C:\Users\Dmitriy_Ler\Documents\ProgressoExpert\ProgressoExpert\ProgressoExpert.Old\App.xaml
+C:\Git\PE\ProgressoExpert\ProgressoExpert\ProgressoExpert.Old\App.xaml
 63-827664093
 
-431718840435
-271722367862
+43-655665691
+27-705463282
 Controls\BusinessIndicators\BI1.xaml;Controls\BusinessIndicators\BI2.xaml;Controls\BusinessIndicators\BI3.xaml;Controls\BusinessIndicators\BusIndicator.xaml;Controls\DateTimeSelectedControl.xaml;Controls\MonitoringProjects\MonitorProject.xaml;Controls\RatiosIndicatorses\RatiosIndicators.xaml;Controls\RatiosIndicatorses\RI_BusinessActivity.xaml;Controls\RatiosIndicatorses\RI_FinancialStability.xaml;Controls\RatiosIndicatorses\RI_Liquidity.xaml;Controls\RatiosIndicatorses\RI_ProfitabilityRatios.xaml;Controls\ResBusines\RB_Balance.xaml;Controls\ResBusines\RB_ProfitLossReport.xaml;Controls\ResBusines\RB_StatementCashFlows.xaml;Controls\ResBusines\ResBusiness.xaml;Controls\StressTesting\StrTest.xaml;Login.xaml;MainWindow.xaml;Settings.xaml;Styles\CustomizedWindow\VS2012WindowStyle.xaml;Themes\Colors\MaterialDesignColor.Amber.xaml;Themes\Colors\MaterialDesignColor.Black.xaml;Themes\Colors\MaterialDesignColor.Blue.xaml;Themes\Colors\MaterialDesignColor.BlueGrey.xaml;Themes\Colors\MaterialDesignColor.Brown.xaml;Themes\Colors\MaterialDesignColor.Cyan.xaml;Themes\Colors\MaterialDesignColor.DeepOrange.xaml;Themes\Colors\MaterialDesignColor.DeepPurple.xaml;Themes\Colors\MaterialDesignColor.Green.xaml;Themes\Colors\MaterialDesignColor.Grey.xaml;Themes\Colors\MaterialDesignColor.Indigo.xaml;Themes\Colors\MaterialDesignColor.LightBlue.xaml;Themes\Colors\MaterialDesignColor.LightGreen.xaml;Themes\Colors\MaterialDesignColor.Lime.xaml;Themes\Colors\MaterialDesignColor.Orange.xaml;Themes\Colors\MaterialDesignColor.Pink.xaml;Themes\Colors\MaterialDesignColor.Purple.xaml;Themes\Colors\MaterialDesignColor.Red.xaml;Themes\Colors\MaterialDesignColor.Teal.xaml;Themes\Colors\MaterialDesignColor.Yellow.xaml;Themes\MaterialDesignTheme.PasswordBox.xaml;Themes\Generic.xaml;Themes\MaterialDesignTheme.Button.xaml;Themes\MaterialDesignTheme.Calendar.xaml;Themes\MaterialDesignTheme.CheckBox.xaml;Themes\MaterialDesignTheme.Clock.xaml;Themes\MaterialDesignTheme.ComboBox.xaml;Themes\MaterialDesignTheme.Dark.xaml;Themes\MaterialDesignTheme.DatePicker.xaml;Themes\MaterialDesignTheme.Defaults.xaml;Themes\MaterialDesignTheme.Light.xaml;Themes\MaterialDesignTheme.ListBox.xaml;Themes\MaterialDesignTheme.RadioButton.xaml;Themes\MaterialDesignTheme.Shadows.xaml;Themes\MaterialDesignTheme.Slider.xaml;Themes\MaterialDesignTheme.TextBox.xaml;Themes\MaterialDesignTheme.TimePicker.xaml;Themes\MaterialDesignTheme.ToggleButton.xaml;Themes\MaterialDesignTheme.Panel.xaml;Themes\MDT.Expander.xaml;Themes\MDT.Rectangle.xaml;Themes\MDT.TextBlock.xaml;Themes\MaterialDesignTheme.Expander.xaml;
 
-False
+True
 
