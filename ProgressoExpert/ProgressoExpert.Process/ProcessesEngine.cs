@@ -1,5 +1,6 @@
 ﻿using ProgressoExpert.Common.Const;
 using ProgressoExpert.DataAccess;
+using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,9 @@ namespace ProgressoExpert.Process
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
 
 			model.RegGroups = MainAccessor.GetAllGroups();// группы
-            model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<DataAccess.Entities.RefGroupsEnt>());
+            model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>());
+            
+            model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
             model.RatiosIndicatorsResult = CalculateRatiosIndicators(startDate, endDate, model.BusinessResults, model.ReportProfitAndLoss);
 

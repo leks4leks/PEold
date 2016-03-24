@@ -40,6 +40,10 @@
         <EntityTypeShape EntityType="base1sModel.C_AccumRg9987" Width="1.5" PointX="7.375" PointY="17.75" />
         <EntityTypeShape EntityType="base1sModel.C_Enum302" Width="1.5" PointX="17.375" PointY="8.75" />
         <EntityTypeShape EntityType="base1sModel.C_Enum450" Width="1.5" PointX="17.375" PointY="11.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Reference67" Width="1.5" PointX="17.75" PointY="14.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Reference77" Width="1.5" PointX="19.75" PointY="0.75" />
+        <EntityTypeShape EntityType="base1sModel.C_Reference78" Width="1.5" PointX="0.75" PointY="19.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRg10327" Width="1.5" PointX="2.75" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

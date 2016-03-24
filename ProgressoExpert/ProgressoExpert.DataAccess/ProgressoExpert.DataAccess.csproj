@@ -124,6 +124,9 @@
     <Compile Include="C_AccumRg10053.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="C_AccumRg10327.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="C_AccumRg9987.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -137,6 +140,15 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="C_Reference113.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Reference67.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Reference77.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_Reference78.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="C_Seq10830.cs">
