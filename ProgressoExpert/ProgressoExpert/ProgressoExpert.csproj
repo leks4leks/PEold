@@ -38,6 +38,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -49,6 +50,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -62,6 +64,18 @@
     <Page Include="Controls\App\MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\LiveStreamControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\LiveStream\LsTodayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\LiveStream\LsCurrentMonthControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Data\ResBusinessControl.xaml">
       <SubType>Designer</SubType>
@@ -105,6 +119,15 @@
     <Compile Include="Controls\App\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Data\LiveStreamControl.xaml.cs">
+      <DependentUpon>LiveStreamControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\LiveStream\LsTodayControl.xaml.cs">
+      <DependentUpon>LsTodayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\LiveStream\LsCurrentMonthControl.xaml.cs">
+      <DependentUpon>LsCurrentMonthControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Data\ResBusinessControl.xaml.cs">
       <DependentUpon>ResBusinessControl.xaml</DependentUpon>
     </Compile>
@@ -142,6 +165,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

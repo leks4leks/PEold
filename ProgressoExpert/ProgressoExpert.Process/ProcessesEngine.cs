@@ -16,6 +16,9 @@ namespace ProgressoExpert.Process
         {
             var model = new MainModel();
 
+            model.LiveStreamModel = GetLiveStream(startDate, endDate);
+            return model;
+
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
 
             model.StartDate = startDate.AddYears(model.TimeSpan);
@@ -34,7 +37,33 @@ namespace ProgressoExpert.Process
 
             model.RatiosIndicatorsResult = CalculateRatiosIndicators(startDate, endDate, model.BusinessResults, model.ReportProfitAndLoss);
 
-			
+            return model;
+        }
+
+        private static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
+        {
+            var model = new LiveStreamModel();
+
+            // Сегодня
+
+            var sales = Accessors.GetSales(DateTime.Today, DateTime.Today);
+            model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
+            model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
+            model.ProfitabilityToday = model.SalesToday != 0 
+                    ? (model.GrossProfitToday / model.SalesToday) * 100
+                    : 0;
+            model.PaymentCustomersToday = 0;
+
+
+            // Текущий месяц
+            sales = Accessors.GetSales(startDate, endDate);
+            model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
+            model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
+            model.ProfitabilityMonth = model.SalesMonth != 0
+                    ? (model.GrossProfitMonth / model.SalesMonth) * 100
+                    : 0;
+            model.PaymentCustomersMonth = 0;
+
             return model;
         }
 

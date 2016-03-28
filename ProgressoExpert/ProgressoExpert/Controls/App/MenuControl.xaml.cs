@@ -35,7 +35,7 @@ namespace ProgressoExpert.Controls.App
             CheckedOrUnchecked(sender);
         }
 
-        private void CheckedOrUnchecked(object sender)
+        public void CheckedOrUnchecked(object sender)
         {
             LiveStreamBtn.IsChecked = false;
             BusinessAnalysisBtn.IsChecked = false;
