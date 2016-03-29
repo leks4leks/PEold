@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,29 @@ namespace ProgressoExpert.Controls.Data.LiveStream
     /// </summary>
     public partial class LsCurrentMonthControl : UserControl
     {
+        LiveStreamModel ViewModel;
+
         public LsCurrentMonthControl()
         {
             InitializeComponent();
         }
 
+        public void DataBind(LiveStreamModel model)
+        {
+            ViewModel = (LiveStreamModel)model;
+            this.DataContext = (LiveStreamModel)model;
+            if (ViewModel.CurrentMonthDiagram != null && ViewModel.LastMonthDiagram != null)
+            {
+                LoadDiagram();
+            }
+        }
+
         private void WindowsFormsHost_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        public void LoadDiagram()
         {
             chart.ChartAreas.Add(new ChartArea("Default"));
             var legend = new Legend("Legend1");
@@ -40,20 +58,20 @@ namespace ProgressoExpert.Controls.Data.LiveStream
 
             Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
 
-            seriesData1.Add("Продажи", 78000);
-            seriesData1.Add("Валовая прибыль", 11000);
-            seriesData1.Add("Оплата покупателя", 200000);
+            //seriesData1.Add("Продажи", 78000);
+            //seriesData1.Add("Валовая прибыль", 11000);
+            //seriesData1.Add("Оплата покупателя", 200000);
 
-            foreach (KeyValuePair<string, int> data in seriesData1)
+            foreach (KeyValuePair<string, int> data in ViewModel.CurrentMonthDiagram)
                 chart.Series[0].Points.AddXY(data.Key, data.Value);
 
             Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
 
-            seriesData2.Add("Продажи", 52000);
-            seriesData2.Add("Валовая прибыль", 3000);
-            seriesData2.Add("Оплата покупателя", 20000);
+            //seriesData2.Add("Продажи", 52000);
+            //seriesData2.Add("Валовая прибыль", 3000);
+            //seriesData2.Add("Оплата покупателя", 20000);
 
-            foreach (KeyValuePair<string, int> data in seriesData2)
+            foreach (KeyValuePair<string, int> data in ViewModel.LastMonthDiagram)
                 chart.Series[1].Points.AddXY(data.Key, data.Value);
         }
     }

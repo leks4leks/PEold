@@ -30,14 +30,14 @@ namespace ProgressoExpert
             DataContext = ViewModel = new MainModel();
             HeaderControl.DataContext = ViewModel.InfoModel;
             MenuControl.DataContext = MenuControl.ViewModel = ViewModel;
-            ViewModel.Test = false;
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
             ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
-            //ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
+            ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
+            LiveStreamControl.DataBind(ViewModel.LiveStreamModel);
         }
     }
 }

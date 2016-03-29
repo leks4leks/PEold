@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,22 @@ namespace ProgressoExpert.Controls.Data
     /// </summary>
     public partial class LiveStreamControl : UserControl
     {
+        LiveStreamModel ViewModel;
+
         public LiveStreamControl()
         {
+            ViewModel = (LiveStreamModel)this.DataContext;
             InitializeComponent();
+            LsCurrentMonthControl.DataContext = ViewModel;
+            LsTodayControl.DataContext = ViewModel;
+        }
+
+        public void DataBind(LiveStreamModel model)
+        {
+            ViewModel = model;
+            //DataContext = (LiveStreamModel)model;
+            LsTodayControl.DataBind(model);
+            LsCurrentMonthControl.DataBind(model);
         }
     }
 }

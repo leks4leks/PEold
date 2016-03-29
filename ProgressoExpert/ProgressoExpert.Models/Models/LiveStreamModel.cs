@@ -172,14 +172,24 @@ namespace ProgressoExpert.Models.Models
         private decimal _paymentCustomersMonth;
 
         /// <summary>
-        /// Диаграмма предыдущий месяц vs текущий месяц
+        /// Диаграмма текущий месяц
         /// </summary>
-        public Dictionary<string, int> LastMonthVsCurrentMonth
+        public Dictionary<string, int> CurrentMonthDiagram
         {
-            get { return _lastMonthVsCurrentMonth; }
-            set { SetValue(ref _lastMonthVsCurrentMonth, value, "LastMonthVsCurrentMonth"); }
+            get { return _currentMonthDiagram; }
+            set { SetValue(ref _currentMonthDiagram, value, "CurrentMonthDiagram"); }
         }
-        private Dictionary<string, int> _lastMonthVsCurrentMonth;
+        private Dictionary<string, int> _currentMonthDiagram;
+
+        /// <summary>
+        /// Диаграмма предыдущий месяц
+        /// </summary>
+        public Dictionary<string, int> LastMonthDiagram
+        {
+            get { return _lastMonthDiagram; }
+            set { SetValue(ref _lastMonthDiagram, value, "LastMonthDiagram"); }
+        }
+        private Dictionary<string, int> _lastMonthDiagram;
 
         /// <summary>
         /// Разница оплат

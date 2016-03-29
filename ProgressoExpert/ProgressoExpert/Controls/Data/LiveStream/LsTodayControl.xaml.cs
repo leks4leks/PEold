@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,8 @@ namespace ProgressoExpert.Controls.Data.LiveStream
     /// </summary>
     public partial class LsTodayControl : UserControl
     {
+        LiveStreamModel ViewModel;
+
         public LsTodayControl()
         {
             InitializeComponent();
@@ -28,6 +31,22 @@ namespace ProgressoExpert.Controls.Data.LiveStream
 
         private void WindowsFormsHost_Loaded_1(object sender, RoutedEventArgs e)
         {
+            
+        }
+
+        public void DataBind(LiveStreamModel model)
+        {
+            ViewModel = (LiveStreamModel)model;
+            this.DataContext = (LiveStreamModel)model;
+            if (ViewModel.CycleMoneyDiagram != null)
+            {
+                LoadDiagram();
+            }
+        }
+
+        public void LoadDiagram()
+        {
+
             chart.ChartAreas.Add(new ChartArea("Default"));
             chart.IsSoftShadows = false;
 
@@ -40,39 +59,22 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             series.ChartArea = "Default";
             series.Legend = "Legend1";
 
-            series.Points.Add(new DataPoint() 
-            { 
-                Label = "3000", 
-                XValue = 3000, 
-                YValues = new double[] { 3000 }, 
-                LegendText = "Деньги в кассе",
-                Color = System.Drawing.Color.FromArgb(137, 165, 78),
-                BorderColor = System.Drawing.Color.White
-            });
-            series.Points.Add(new DataPoint()
+            foreach (var item in ViewModel.CycleMoneyDiagram)
             {
-                Label = "7000",
-                XValue = 7000,
-                YValues = new double[] { 7000 },
-                LegendText = "Деньги на счетах",
-                Color = System.Drawing.Color.FromArgb(155, 187, 89),
-                BorderColor = System.Drawing.Color.White
-            });
+                series.Points.Add(new DataPoint()
+                {
+                    Label = item.Value.ToString(),
+                    XValue = item.Value,
+                    YValues = new double[] { item.Value },
+                    LegendText = item.Key.ToString(),
+                    Color = System.Drawing.Color.FromArgb(137, 165, 78),
+                    BorderColor = System.Drawing.Color.White
+                });
+            }
 
             chart.Series.Add(series);
             chart.Legends.Add(legend);
             chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-
-            //Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
-
-            //seriesData1.Add("Деньги в кассе", 7000);
-            //seriesData1.Add("Деньги на счетах", 3000);
-
-            //foreach (KeyValuePair<string, int> data in seriesData1)
-            //    chart.Series[0].Points.AddXY(data.Key, data.Value);
-
-
-
         }
     }
 }

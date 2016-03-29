@@ -93,21 +93,21 @@
                     <TextBlock Text="Долги клиентов" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="1" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding DebtOfCustomers}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Row="0" Grid.Column="1">
                     <TextBlock Text="Остаток товара" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock Text="2" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding GoodsBalance}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="2">
                     <TextBlock Text="Задолженность перед поставщиками" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="2">
-                    <TextBlock Text="3" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding PayblesToSupplier}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -147,13 +147,13 @@
                         <TextBlock Text="На сегодня" Style="{StaticResource TextBlockCenterGreenSmall}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="1%" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoney}" Style="{StaticResource TextBlockCenter}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="1">
-                        <TextBlock Text="2%" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebt}" Style="{StaticResource TextBlockCenter}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="1">
-                        <TextBlock Text="3%" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtOfCurrentAssets}" Style="{StaticResource TextBlockCenter}"/>
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.Column="2">
