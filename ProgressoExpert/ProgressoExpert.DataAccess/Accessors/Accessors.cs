@@ -250,7 +250,7 @@ namespace ProgressoExpert.DataAccess
 
                 #endregion
 
-                #region Прочая задолженность по налогам
+                #region Задолжность перед поставщиками
 
                 Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.PayablesToSuppliersShortTermDebts);

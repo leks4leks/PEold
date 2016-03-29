@@ -43,10 +43,10 @@ namespace ProgressoExpert.Process
         private static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
         {
             var model = new LiveStreamModel();
-
+            var tmSpan = MainAccessor.GetTimeSpan();
             // Сегодня
 
-            var sales = Accessors.GetSales(DateTime.Today, DateTime.Today);
+            var sales = Accessors.GetSales(DateTime.Today.AddYears(tmSpan), DateTime.Today.AddYears(tmSpan));
             model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
             model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
             model.ProfitabilityToday = model.SalesToday != 0 
@@ -54,9 +54,8 @@ namespace ProgressoExpert.Process
                     : 0;
             model.PaymentCustomersToday = 0;
 
-
             // Текущий месяц
-            sales = Accessors.GetSales(startDate, endDate);
+            sales = Accessors.GetSales(startDate.AddYears(tmSpan), endDate.AddYears(tmSpan));
             model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
             model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
             model.ProfitabilityMonth = model.SalesMonth != 0
