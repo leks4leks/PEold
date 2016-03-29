@@ -55,11 +55,11 @@ namespace ProgressoExpert.Process
             // Сегодня
 
             var sales = Accessors.GetSales(stTodayDate, endTodayDate);
-            model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
-            model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
-            model.ProfitabilityToday = model.SalesToday != 0 
+            model.SalesToday = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
+            model.GrossProfitToday = Math.Round(model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+            model.ProfitabilityToday = Math.Round(model.SalesToday != 0 
                     ? (model.GrossProfitToday / model.SalesToday) * 100
-                    : 0;
+                    : 0, 2);
 
             MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
             MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
@@ -68,17 +68,17 @@ namespace ProgressoExpert.Process
             MainModel.StartTranz = MainAccessor.GetAllTrans(stTodayDate, null); // Вытащим сразу все транзакции, отдельным запросом
             MainModel.EndTranz = MainAccessor.GetAllTrans(stTodayDate, endTodayDate);
             MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel, true); //Баланс
-
-            model.CycleMoneyDiagram.Add("Деньги в кассе", MainModel.BusinessResults.CashInCashBoxEnd);
-            model.CycleMoneyDiagram.Add("Деньги на счетах", MainModel.BusinessResults.MoneyInTheBankAccountsEnd);
+            model.CycleMoneyDiagram = new Dictionary<string, decimal>();
+            model.CycleMoneyDiagram.Add("Деньги в кассе", Math.Round(MainModel.BusinessResults.CashInCashBoxEnd, 2));
+            model.CycleMoneyDiagram.Add("Деньги на счетах", Math.Round(MainModel.BusinessResults.MoneyInTheBankAccountsEnd, 2));
 
             // Текущий месяц
             sales = Accessors.GetSales(MainModel.StartDate, MainModel.EndDate);
-            model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
-            model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
-            model.ProfitabilityMonth = model.SalesMonth != 0
+            model.SalesMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
+            model.GrossProfitMonth = Math.Round(model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+            model.ProfitabilityMonth = Math.Round(model.SalesMonth != 0
                     ? (model.GrossProfitMonth / model.SalesMonth) * 100
-                    : 0;
+                    : 0, 2);
 
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
             model.PaymentCustomersMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
