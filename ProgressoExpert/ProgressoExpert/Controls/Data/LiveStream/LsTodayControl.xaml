@@ -40,28 +40,28 @@
                     <TextBlock Text="Продажи" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="1">
-                    <TextBlock Text="1" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding SalesToday}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="1" Grid.Row="0">
                     <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="2" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding GrossProfitToday}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="2" Grid.Row="0">
                     <TextBlock Text="Рентабельность" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <TextBlock Text="3" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding ProfitabilityToday}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="3" Grid.Row="0">
                     <TextBlock Text="Оплата клиентов" Style="{StaticResource TextBlockCenterGreen}"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
-                    <TextBlock Text="4" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding PaymentCustomersToday}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
             </Grid>
         </Grid>

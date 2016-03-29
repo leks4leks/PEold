@@ -65,10 +65,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\App\SelectPeriodControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\Data\LiveStreamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,9 +118,6 @@
     </Compile>
     <Compile Include="Controls\App\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\App\SelectPeriodControl.xaml.cs">
-      <DependentUpon>SelectPeriodControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Data\LiveStreamControl.xaml.cs">
       <DependentUpon>LiveStreamControl.xaml</DependentUpon>
