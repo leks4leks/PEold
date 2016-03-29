@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Models.Models;
+using ProgressoExpert.Process;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,13 @@ namespace ProgressoExpert
             HeaderControl.DataContext = ViewModel.InfoModel;
             MenuControl.DataContext = MenuControl.ViewModel = ViewModel;
             ViewModel.Test = false;
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
+            ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
+            //ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
         }
     }
 }

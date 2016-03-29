@@ -60,7 +60,7 @@ namespace ProgressoExpert.Models.Models
 
         #region Info & Visibility
 
-        public InfoModel InfoModel = new InfoModel();
+        public InfoModel InfoModel;
         //public VisibilityModel VisibilityModel = new VisibilityModel();
 
         public DateTime StartDate
@@ -177,6 +177,8 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
+        public LiveStreamModel LiveStreamModel;
+
         /// <summary>
         /// Результаты бизнеса
         /// </summary>
@@ -220,8 +222,8 @@ namespace ProgressoExpert.Models.Models
 
         public MainModel()
         {
-            InfoModel InfoModel = new InfoModel();
-            VisibilityModel VisibilityModel = new VisibilityModel();
+            InfoModel = new InfoModel();
+            LiveStreamModel = new LiveStreamModel();
         }
     }
 }

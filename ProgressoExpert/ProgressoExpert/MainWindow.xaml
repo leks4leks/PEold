@@ -5,7 +5,7 @@
         xmlns:dataContols="clr-namespace:ProgressoExpert.Controls.Data"
         xmlns:converters="clr-namespace:ProgressoExpert.Converters"
         Title="MainWindow" WindowStartupLocation="Manual" WindowState="Maximized"
-        DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}">
+        DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}" Loaded="Window_Loaded_1">
    
     <Window.Resources>
         <ResourceDictionary>
@@ -38,13 +38,11 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Column="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="293*"/>
-                        <ColumnDefinition Width="63*"/>
-                    </Grid.ColumnDefinitions>
+                    <dataContols:LiveStreamControl x:Name="LiveStreamControl"
+                        Visibility="{Binding Path=LiveStreamVisibility, Converter={StaticResource VisibilityConverterInstance}}" />
                     <dataContols:ResBusinessControl x:Name="ResBusinessControl"
                         Visibility="{Binding Path=ResBusinessVisibility, Converter={StaticResource VisibilityConverterInstance}}" 
-                        Grid.ColumnSpan="2" Margin="0,0,0,-0.4"/>
+                        />
                 </Grid>
 
                 <Grid Grid.Column="1" Background="LightGray">
