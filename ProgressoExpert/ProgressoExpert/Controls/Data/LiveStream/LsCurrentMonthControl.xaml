@@ -39,28 +39,28 @@
                     <TextBlock Text="Продажи" Style="{StaticResource TextBlockCenterOrange}"/>
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="1">
-                    <TextBlock Text="1" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding SalesMonth}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="1" Grid.Row="0">
                     <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlockCenterOrange}"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="2" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding GrossProfitMonth}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="2" Grid.Row="0">
                     <TextBlock Text="Рентабельность" Style="{StaticResource TextBlockCenterOrange}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <TextBlock Text="3" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding ProfitabilityMonth}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
                 
                 <Grid Grid.Column="3" Grid.Row="0">
                     <TextBlock Text="Оплата клиентов" Style="{StaticResource TextBlockCenterOrange}"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
-                    <TextBlock Text="4" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding PaymentCustomersMonth}" Style="{StaticResource TextBlockCenterBig}"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -119,21 +119,21 @@
                             <TextBlock Text="Разница оплат с прошлым месяцем" Style="{StaticResource TextBlockPaddingBold}"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="0">
-                            <TextBlock Text="- 100 000" Style="{StaticResource TextBlockCenterRed}"/>
+                            <TextBlock Text="{Binding AveragePayment}" Style="{StaticResource TextBlockCenterRed}"/>
                         </Grid>
 
                         <Grid Grid.Column="0" Grid.Row="1">
                             <TextBlock Text="Разница валовой прибыли с прошлым месяцем" Style="{StaticResource TextBlockPaddingBold}"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="1">
-                            <TextBlock Text="2" Style="{StaticResource TextBlockCenterRed}"/>
+                            <TextBlock Text="{Binding AverageGrossProfit}" Style="{StaticResource TextBlockCenterRed}"/>
                         </Grid>
 
                         <Grid Grid.Column="0" Grid.Row="2">
                             <TextBlock Text="Разница продаж с прошлым месяцем" Style="{StaticResource TextBlockPaddingBold}"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="2">
-                            <TextBlock Text="2" Style="{StaticResource TextBlockCenterRed}"/>
+                            <TextBlock Text="{Binding AverageSales}" Style="{StaticResource TextBlockCenterRed}"/>
                         </Grid>
                     </Grid>    
                 </Grid>
@@ -149,7 +149,7 @@
                                        VerticalAlignment="Center" TextWrapping="Wrap" Margin="5 5 5 5"/>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <TextBlock Text="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding CountDaysToEndOfMonth}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Grid>
                 </Border>
