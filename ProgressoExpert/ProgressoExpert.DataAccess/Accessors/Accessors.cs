@@ -22,7 +22,7 @@ namespace ProgressoExpert.DataAccess
         private static List<TranzEnt> ourCrtSt;
         private static List<TranzEnt> ourCrtEnd;
 
-        public static BusinessResults GetBusinessResults(MainModel mainModel)
+        public static BusinessResults GetBusinessResults(MainModel mainModel, bool isLiveStraem = false)
         {
             BusinessResults model = new BusinessResults();
             using (dbEntities db = new dbEntities())
@@ -57,363 +57,367 @@ namespace ProgressoExpert.DataAccess
 
                 #endregion
 
-                #region Депозиты
+                if (!isLiveStraem)
+                {
+                    #region Депозиты
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.Deposits);
-                model.DepositsStart = _outStart;
-                model.DepositsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.Deposits);
+                    model.DepositsStart = _outStart;
+                    model.DepositsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Долги клиентов и переплаты
+                    #region Долги клиентов и переплаты
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.DebtsOfCustomersAndOverpayments);
-                model.DebtsOfCustomersAndOverpaymentsStart = _outStart;
-                model.DebtsOfCustomersAndOverpaymentsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.DebtsOfCustomersAndOverpayments);
+                    model.DebtsOfCustomersAndOverpaymentsStart = _outStart;
+                    model.DebtsOfCustomersAndOverpaymentsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Сырье и материалы
+                    #region Сырье и материалы
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.RawAndMaterials);
-                model.RawAndMaterialsStart = _outStart;
-                model.RawAndMaterialsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.RawAndMaterials);
+                    model.RawAndMaterialsStart = _outStart;
+                    model.RawAndMaterialsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Товары
+                    #region Товары
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.Goods1,
-                    (int)ScoresForBusinessResults.Goods2);
-                model.GoodsStart = _outStart;
-                model.GoodsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.Goods1,
+                        (int)ScoresForBusinessResults.Goods2);
+                    model.GoodsStart = _outStart;
+                    model.GoodsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Незавершенное производство
+                    #region Незавершенное производство
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.UnfinishedProduction);
-                model.UnfinishedProductionStart = _outStart;
-                model.UnfinishedProductionEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.UnfinishedProduction);
+                    model.UnfinishedProductionStart = _outStart;
+                    model.UnfinishedProductionEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Прочие оборотные активы
+                    #region Прочие оборотные активы
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets1,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets2,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets3,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets4,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets5,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets6,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets7,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets8,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets9,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets10,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets11,
-                    (int)ScoresForBusinessResults.OtherCurrentAssets12);
-                model.OtherCurrentAssetsStart = _outStart;
-                model.OtherCurrentAssetsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets1,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets2,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets3,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets4,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets5,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets6,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets7,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets8,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets9,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets10,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets11,
+                        (int)ScoresForBusinessResults.OtherCurrentAssets12);
+                    model.OtherCurrentAssetsStart = _outStart;
+                    model.OtherCurrentAssetsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Налоговые переплаты / авансы
+                    #region Налоговые переплаты / авансы
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.TaxOverpaymentsAndAdvances);
-                model.TaxOverpaymentsAndAdvancesStart = _outStart;
-                model.TaxOverpaymentsAndAdvancesEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.TaxOverpaymentsAndAdvances);
+                    model.TaxOverpaymentsAndAdvancesStart = _outStart;
+                    model.TaxOverpaymentsAndAdvancesEnd = _outEnd;
 
-                #endregion
-
-                #endregion
-
-                #region Долгосрочные активы
-
-                #region Долгосрочная дебиторская задолженность контрагентов
-
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.CustomerDebts);
-                model.CustomerDebtsStart = _outStart;
-                model.CustomerDebtsEnd = _outEnd;
+                    #endregion
+                }
 
                 #endregion
+                if (!isLiveStraem)
+                {
+                    #region Долгосрочные активы
 
-                #region Прочие долги клиентов/переплаты
+                        #region Долгосрочная дебиторская задолженность контрагентов
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment1,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment2,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment3,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment4,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment5,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment6,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment7,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment8,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment9,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment10,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment11,
-                    (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment12);
-                model.OtherDebtsOfClientsAndOverpaymentStart = _outStart;
-                model.OtherDebtsOfClientsAndOverpaymentEnd = _outEnd;
+                        Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.CustomerDebts);
+                    model.CustomerDebtsStart = _outStart;
+                    model.CustomerDebtsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Инвестиции
+                    #region Прочие долги клиентов/переплаты
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.Investments1,
-                    (int)ScoresForBusinessResults.Investments2,
-                    (int)ScoresForBusinessResults.Investments3);
-                model.InvestmentsStart = _outStart;
-                model.InvestmentsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment1,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment2,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment3,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment4,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment5,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment6,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment7,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment8,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment9,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment10,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment11,
+                        (int)ScoresForBusinessResults.OtherDebtsOfClientsAndOverpayment12);
+                    model.OtherDebtsOfClientsAndOverpaymentStart = _outStart;
+                    model.OtherDebtsOfClientsAndOverpaymentEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Основные средства
+                    #region Инвестиции
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.FixedAssets);
-                model.FixedAssetsStart = _outStart;
-                model.FixedAssetsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.Investments1,
+                        (int)ScoresForBusinessResults.Investments2,
+                        (int)ScoresForBusinessResults.Investments3);
+                    model.InvestmentsStart = _outStart;
+                    model.InvestmentsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Нематериальные активы
+                    #region Основные средства
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.IntangibleAssets);
-                model.IntangibleAssetsStart = _outStart;
-                model.IntangibleAssetsEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.FixedAssets);
+                    model.FixedAssetsStart = _outStart;
+                    model.FixedAssetsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #region Отложенные налоговые переплаты/авансы
+                    #region Нематериальные активы
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.TheDeferredTaxOverpaymentsAndAdvances);
-                model.TheDeferredTaxOverpaymentsAndAdvancesStart = _outStart;
-                model.TheDeferredTaxOverpaymentsAndAdvancesEnd = _outEnd;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.IntangibleAssets);
+                    model.IntangibleAssetsStart = _outStart;
+                    model.IntangibleAssetsEnd = _outEnd;
 
-                #endregion
+                    #endregion
 
-                #endregion
+                    #region Отложенные налоговые переплаты/авансы
 
-                #region Текущая задолженность
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.TheDeferredTaxOverpaymentsAndAdvances);
+                    model.TheDeferredTaxOverpaymentsAndAdvancesStart = _outStart;
+                    model.TheDeferredTaxOverpaymentsAndAdvancesEnd = _outEnd;
 
-                #region Кредиты сроком до одного года
+                    #endregion
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.CreditsForOneYear1,
-                    (int)ScoresForBusinessResults.CreditsForOneYear2);
-                model.CreditsForOneYearStart = _outStart * minusOne;
-                model.CreditsForOneYearEnd = _outEnd * minusOne;
+                    #endregion
 
-                #endregion
+                    #region Текущая задолженность
 
-                #region Задолженность по КПН/ИПН
+                    #region Кредиты сроком до одного года
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.DebtCitIit);
-                model.DebtCitIitStart = _outStart * minusOne;
-                model.DebtCitIitEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.CreditsForOneYear1,
+                        (int)ScoresForBusinessResults.CreditsForOneYear2);
+                    model.CreditsForOneYearStart = _outStart * minusOne;
+                    model.CreditsForOneYearEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Задолженность по НДС
+                    #region Задолженность по КПН/ИПН
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.DebtVat);
-                model.DebtVatStart = _outStart * minusOne;
-                model.DebtVatEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.DebtCitIit);
+                    model.DebtCitIitStart = _outStart * minusOne;
+                    model.DebtCitIitEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Прочая задолженность по налогам
+                    #region Задолженность по НДС
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable1,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable2,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable3,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable4,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable5,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable6,
-                    (int)ScoresForBusinessResults.OtherTaxesPayable7);
-                model.OtherTaxesPayableStart = _outStart * minusOne;
-                model.OtherTaxesPayableEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.DebtVat);
+                    model.DebtVatStart = _outStart * minusOne;
+                    model.DebtVatEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Задолжность перед поставщиками
+                    #region Прочая задолженность по налогам
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.PayablesToSuppliersShortTermDebts);
-                model.PayablesToSuppliersShortTermDebtsStart = _outStart * minusOne;
-                model.PayablesToSuppliersShortTermDebtsEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable1,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable2,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable3,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable4,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable5,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable6,
+                        (int)ScoresForBusinessResults.OtherTaxesPayable7);
+                    model.OtherTaxesPayableStart = _outStart * minusOne;
+                    model.OtherTaxesPayableEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Задолженность перед сотрудниками
+                    #region Задолжность перед поставщиками
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.PayablesToEmployees);
-                model.PayablesToEmployeesStart = _outStart * minusOne;
-                model.PayablesToEmployeesEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.PayablesToSuppliersShortTermDebts);
+                    model.PayablesToSuppliersShortTermDebtsStart = _outStart * minusOne;
+                    model.PayablesToSuppliersShortTermDebtsEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Прочая задолженность
+                    #region Задолженность перед сотрудниками
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts1,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts2,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts3,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts4,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts5,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts6,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts7,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts8,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts9,
-                    (int)ScoresForBusinessResults.OtherDebtsShortTermDebts10);
-                model.OtherDebtsShortTermDebtsStart = _outStart * minusOne;
-                model.OtherDebtsShortTermDebtsEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.PayablesToEmployees);
+                    model.PayablesToEmployeesStart = _outStart * minusOne;
+                    model.PayablesToEmployeesEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #endregion
+                    #region Прочая задолженность
 
-                #region Долгосрочные долги
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts1,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts2,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts3,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts4,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts5,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts6,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts7,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts8,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts9,
+                        (int)ScoresForBusinessResults.OtherDebtsShortTermDebts10);
+                    model.OtherDebtsShortTermDebtsStart = _outStart * minusOne;
+                    model.OtherDebtsShortTermDebtsEnd = _outEnd * minusOne;
 
-                #region Долгосрочные банковские займы
+                    #endregion
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.CreditsForLongerThanOneYear1,
-                    (int)ScoresForBusinessResults.CreditsForLongerThanOneYear2);
-                model.CreditsForLongerThanOneYearStart = _outStart * minusOne;
-                model.CreditsForLongerThanOneYearEnd = _outEnd * minusOne;
+                    #endregion
 
-                #endregion
+                    #region Долгосрочные долги
 
-                #region Задолженность перед контрагентами
+                    #region Долгосрочные банковские займы
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.PayablesToSuppliersLongTermDebts);
-                model.PayablesToSuppliersLongTermDebtsStart = _outStart * minusOne;
-                model.PayablesToSuppliersLongTermDebtsEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.CreditsForLongerThanOneYear1,
+                        (int)ScoresForBusinessResults.CreditsForLongerThanOneYear2);
+                    model.CreditsForLongerThanOneYearStart = _outStart * minusOne;
+                    model.CreditsForLongerThanOneYearEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Отложеннные налоговая задолженность
+                    #region Задолженность перед контрагентами
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.DefferedTaxDebts);
-                model.DefferedTaxDebtsStart = _outStart * minusOne;
-                model.DefferedTaxDebtsEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.PayablesToSuppliersLongTermDebts);
+                    model.PayablesToSuppliersLongTermDebtsStart = _outStart * minusOne;
+                    model.PayablesToSuppliersLongTermDebtsEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #region Прочая задолженность
+                    #region Отложеннные налоговая задолженность
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts1,
-                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts2,
-                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts3,
-                    (int)ScoresForBusinessResults.OtherDebtsLongTermDebts4);
-                model.OtherDebtsLongTermDebtsStart = _outStart * minusOne;
-                model.OtherDebtsLongTermDebtsEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.DefferedTaxDebts);
+                    model.DefferedTaxDebtsStart = _outStart * minusOne;
+                    model.DefferedTaxDebtsEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #endregion
+                    #region Прочая задолженность
 
-                #region Собственный капитал
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherDebtsLongTermDebts1,
+                        (int)ScoresForBusinessResults.OtherDebtsLongTermDebts2,
+                        (int)ScoresForBusinessResults.OtherDebtsLongTermDebts3,
+                        (int)ScoresForBusinessResults.OtherDebtsLongTermDebts4);
+                    model.OtherDebtsLongTermDebtsStart = _outStart * minusOne;
+                    model.OtherDebtsLongTermDebtsEnd = _outEnd * minusOne;
 
-                #region Уставной капитал
+                    #endregion
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.AuthorizedCapital1,
-                    (int)ScoresForBusinessResults.AuthorizedCapital2);
-                model.AuthorizedCapitalStart = _outStart * minusOne;
-                model.AuthorizedCapitalEnd = _outEnd * minusOne;
+                    #endregion
 
-                #endregion
+                    #region Собственный капитал
 
-                #region Прочий капитал
+                    #region Уставной капитал
 
-                Calculate(out _outStart, out _outEnd,
-                    (int)ScoresForBusinessResults.OtherCapital);
-                model.OtherCapitalStart = _outStart * minusOne;
-                model.OtherCapitalEnd = _outEnd * minusOne;
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.AuthorizedCapital1,
+                        (int)ScoresForBusinessResults.AuthorizedCapital2);
+                    model.AuthorizedCapitalStart = _outStart * minusOne;
+                    model.AuthorizedCapitalEnd = _outEnd * minusOne;
 
-                #endregion
+                    #endregion
 
-                #endregion
+                    #region Прочий капитал
 
-                #region Итого
+                    Calculate(out _outStart, out _outEnd,
+                        (int)ScoresForBusinessResults.OtherCapital);
+                    model.OtherCapitalStart = _outStart * minusOne;
+                    model.OtherCapitalEnd = _outEnd * minusOne;
 
-                // Сначала считаем пассивые, потом активы
+                    #endregion
 
-                #region Текущая задолженность
+                    #endregion
 
-                model.CalculateCurrentDebt();
+                    #region Итого
 
-                #endregion
+                    // Сначала считаем пассивые, потом активы
 
-                #region Долгосрочная задолженность
+                    #region Текущая задолженность
 
-                model.CalculateLongTermDebt();
+                    model.CalculateCurrentDebt();
 
-                #endregion
+                    #endregion
 
-                #region Собственный капитал
+                    #region Долгосрочная задолженность
 
-                model.CalculateOwnCapital();
+                    model.CalculateLongTermDebt();
 
-                #endregion
+                    #endregion
 
-                #region Оборотные активы
+                    #region Собственный капитал
 
-                model.CalculateCirculatingAssets();
+                    model.CalculateOwnCapital();
 
-                #endregion
+                    #endregion
 
-                #region Долгосрочные активы
+                    #region Оборотные активы
 
-                model.CalculateLongTermAssets();
+                    model.CalculateCirculatingAssets();
 
-                #endregion
+                    #endregion
 
-                #region Итого активов
+                    #region Долгосрочные активы
 
-                model.CalculateTotalAssets();
+                    model.CalculateLongTermAssets();
 
-                #endregion
+                    #endregion
 
-                #region Итого пассивов
+                    #region Итого активов
 
-                model.CalculateTotalLiabilities();
+                    model.CalculateTotalAssets();
 
-                #endregion
+                    #endregion
 
-                #region Накопленная прибыль/убыток
+                    #region Итого пассивов
 
-                model.CalculateAccumulatedProfitAndLoss();
-                //Calculate(out _outStart, out _outEnd,
-                //    (int)ScoresForBusinessResults.AccumulatedProfitAndLoss);
-                //model.AccumulatedProfitAndLossStart = _outStart;
-                //model.AccumulatedProfitAndLossEnd = _outEnd;
+                    model.CalculateTotalLiabilities();
 
-                #endregion
+                    #endregion
 
+                    #region Накопленная прибыль/убыток
 
-                #endregion
+                    model.CalculateAccumulatedProfitAndLoss();
+                        //Calculate(out _outStart, out _outEnd,
+                        //    (int)ScoresForBusinessResults.AccumulatedProfitAndLoss);
+                        //model.AccumulatedProfitAndLossStart = _outStart;
+                        //model.AccumulatedProfitAndLossEnd = _outEnd;
 
+                    #endregion
+
+
+                    #endregion
+                }
                 return model;
             }
         }
@@ -681,11 +685,35 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
-        public static List<GroupsEnt> GetAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group)
+        public static List<GroupsEnt> GetAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group, List<string> GroupsCode)
         {
             using (dbEntities db = new dbEntities())
             {
-                var res = (from accEd in db.C_AccumRg9987
+                List<GroupsEnt> res = new List<GroupsEnt>();
+                List<string> codeGroups = new List<string>();
+                if (GroupsCode.Count() > 0)
+                {
+                    res = (from accEd in db.C_AccumRg9987
+                           join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
+                           join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
+                           join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
+                           where accEd.C_Period >= stDate && accEd.C_Period <= endDate && GroupsCode.Contains(refs.C_Code)
+                           select new GroupsEnt
+                           {
+                               Money = accEd.C_Fld10000,
+                               period = accEd.C_Period,
+                               GroupCode = refs.C_Code,
+                               en302 = en302.C_EnumOrder,
+                               en450 = en450.C_EnumOrder
+                           }).ToList();
+
+                    codeGroups = (from gg in db.C_Reference113
+                                  where GroupsCode.Contains(gg.C_Code)
+                                  select gg.C_Code).OrderBy(_ => _).ToList();
+                }
+                else
+                {
+                    res = (from accEd in db.C_AccumRg9987
                            join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
                            join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
                            join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
@@ -699,9 +727,10 @@ namespace ProgressoExpert.DataAccess
                                en450 = en450.C_EnumOrder
                            }).ToList();
 
-                var codeGroups = (from gg in db.C_Reference113
-                                  select new
-                                  { gg.C_Code }).ToList().OrderBy(_ => _.C_Code);
+                    codeGroups = (from gg in db.C_Reference113
+                                  select gg.C_Code).OrderBy(_ => _).ToList();
+                }
+                
 
                 List<GroupsEnt> realres = new List<GroupsEnt>();
                 decimal money;
@@ -709,15 +738,15 @@ namespace ProgressoExpert.DataAccess
                 string descNum = string.Empty;
                 decimal e3 = 0;
                 decimal e5 = 0;
-                foreach (var gg in codeGroups)
+                foreach (var code in codeGroups)
                 {
-                    money = res.Where(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).Sum(_ => Math.Abs(_.Money));
-                    if (res.Any(_ => _.GroupCode.Contains(gg.C_Code)))
+                    money = res.Where(_ => _.GroupCode != null && _.GroupCode.Contains(code)).Sum(_ => Math.Abs(_.Money));
+                    if (res.Any(_ => _.GroupCode.Contains(code)))
                     {
-                        descNum = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).GroupCode;
-                        desc = group.FirstOrDefault(_ => _.Name != null && _.Code == gg.C_Code).Name;
-                        e3 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).en302;
-                        e5 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(gg.C_Code)).en450;
+                        descNum = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(code)).GroupCode;
+                        desc = group.FirstOrDefault(_ => _.Name != null && _.Code == code).Name;
+                        e3 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(code)).en302;
+                        e5 = res.FirstOrDefault(_ => _.GroupCode != null && _.GroupCode.Contains(code)).en450;
                     }
                     if (money != 0)
                     {
@@ -825,7 +854,8 @@ namespace ProgressoExpert.DataAccess
                     SalesModel tmp = new SalesModel();
                     tmp.Date = stDt;
                     tmp.Sales = res3.ToList();
-                    result.Add(tmp);
+                    if(tmp.Sales.Count != 0)
+                        result.Add(tmp);
                 }
                 while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
                 

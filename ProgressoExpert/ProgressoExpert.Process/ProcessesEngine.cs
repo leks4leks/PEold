@@ -31,7 +31,7 @@ namespace ProgressoExpert.Process
             model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
 
 			model.RegGroups = MainAccessor.GetAllGroups();// группы
-            model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>());
+            model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
             
             model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
@@ -42,26 +42,46 @@ namespace ProgressoExpert.Process
 
         private static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
         {
+            var MainModel = new MainModel();
             var model = new LiveStreamModel();
+
             var tmSpan = MainAccessor.GetTimeSpan();
+            //TODO поставить текущую дату
+            var stTodayDate = new DateTime(4013, 01, 01);
+            var endTodayDate = DateTime.Today.AddYears(tmSpan);
+
+            MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
+            MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
             // Сегодня
 
-            var sales = Accessors.GetSales(DateTime.Today.AddYears(tmSpan), DateTime.Today.AddYears(tmSpan));
-            model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
-            model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
+            var sales = Accessors.GetSales(stTodayDate, endTodayDate);
+            model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
+            model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
             model.ProfitabilityToday = model.SalesToday != 0 
                     ? (model.GrossProfitToday / model.SalesToday) * 100
                     : 0;
-            model.PaymentCustomersToday = 0;
+
+            MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
+            MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+            model.PaymentCustomersToday = MainModel.ADDSTranz.Sum(_ => _.Money);
+
+            MainModel.StartTranz = MainAccessor.GetAllTrans(stTodayDate, null); // Вытащим сразу все транзакции, отдельным запросом
+            MainModel.EndTranz = MainAccessor.GetAllTrans(stTodayDate, endTodayDate);
+            MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel, true); //Баланс
+
+            model.CycleMoneyDiagram.Add("Деньги в кассе", MainModel.BusinessResults.CashInCashBoxEnd);
+            model.CycleMoneyDiagram.Add("Деньги на счетах", MainModel.BusinessResults.MoneyInTheBankAccountsEnd);
 
             // Текущий месяц
-            sales = Accessors.GetSales(startDate.AddYears(tmSpan), endDate.AddYears(tmSpan));
-            model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).FirstOrDefault();
-            model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).FirstOrDefault();
+            sales = Accessors.GetSales(MainModel.StartDate, MainModel.EndDate);
+            model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
+            model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
             model.ProfitabilityMonth = model.SalesMonth != 0
                     ? (model.GrossProfitMonth / model.SalesMonth) * 100
                     : 0;
-            model.PaymentCustomersMonth = 0;
+
+            MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+            model.PaymentCustomersMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
 
             return model;
         }

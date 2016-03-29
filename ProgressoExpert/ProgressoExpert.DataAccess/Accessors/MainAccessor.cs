@@ -42,7 +42,7 @@ namespace ProgressoExpert.DataAccess
                            from accRg in db.C_AccRg10893 // Выгрузим все транзакции на период который мы указали
                            join accDt in db.C_Acc10 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
                            join accCt in db.C_Acc10 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
-                           where accRg.C_Period >= stDate && accRg.C_Period <= endDate
+                           where accRg.C_Period >= stDate && accRg.C_Period < endDate
                            select new TranzEnt
                            {
                                Money = accRg.C_Fld10896,

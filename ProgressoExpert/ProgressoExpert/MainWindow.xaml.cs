@@ -37,7 +37,7 @@ namespace ProgressoExpert
         {
             ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
             ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
-            //ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
+            ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
         }
     }
 }
