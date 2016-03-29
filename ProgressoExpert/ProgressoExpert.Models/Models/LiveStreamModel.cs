@@ -51,6 +51,80 @@ namespace ProgressoExpert.Models.Models
         }
         private decimal _paymentCustomersToday;
 
+        /// <summary>
+        /// Диаграмма денег
+        /// </summary>
+        public Dictionary<string, int> CycleMoneyDiagram
+        {
+            get { return _cycleMoneyDiagram; }
+            set { SetValue(ref _cycleMoneyDiagram, value, "CycleMoneyDiagram"); }
+        }
+        private Dictionary<string, int> _cycleMoneyDiagram;
+
+        /// <summary>
+        /// Долги клиентов
+        /// </summary>
+        public decimal DebtOfCustomers
+        {
+            get { return _debtOfCustomers; }
+            set { SetValue(ref _debtOfCustomers, value, "DebtOfCustomers"); }
+        }
+        private decimal _debtOfCustomers;
+
+        /// <summary>
+        /// Остаток товара
+        /// </summary>
+        public decimal GoodsBalance
+        {
+            get { return _goodsBalance; }
+            set { SetValue(ref _goodsBalance, value, "GoodsBalance"); }
+        }
+        private decimal _goodsBalance;
+
+        /// <summary>
+        /// Задолженность перед поставщиками
+        /// </summary>
+        public decimal PayblesToSupplier
+        {
+            get { return _payblesToSupplier; }
+            set { SetValue(ref _payblesToSupplier, value, "PayblesToSupplier"); }
+        }
+        private decimal _payblesToSupplier;
+
+        /// <summary>
+        /// Покрытие текущей задолженности деньгами
+        /// </summary>
+        public decimal CoveringCurrentDebtMoney
+        {
+            get { return _coveringCurrentDebtMoney; }
+            set { SetValue(ref _coveringCurrentDebtMoney, value, "CoveringCurrentDebtMoney"); }
+        }
+        private decimal _coveringCurrentDebtMoney;
+
+        /// <summary>
+        /// Покрытие текущей задолженности деньгами + долгами клиентов
+        /// </summary>
+        public decimal CoveringCurrentDebtMoneyAndCustomerDebt
+        {
+            get { return _coveringCurrentDebtMoneyAndCustomerDebt; }
+            set { SetValue(ref _coveringCurrentDebtMoneyAndCustomerDebt, value, "CoveringCurrentDebtMoneyAndCustomerDebt"); }
+        }
+        private decimal _coveringCurrentDebtMoneyAndCustomerDebt;
+
+        /// <summary>
+        /// Покрытие текущей задолженности деньгами + долгами клиентов + остатком товара
+        /// </summary>
+        public decimal CoveringCurrentDebtOfCurrentAssets
+        {
+            get { return _coveringCurrentDebtOfCurrentAssets; }
+            set { SetValue(ref _coveringCurrentDebtOfCurrentAssets, value, "CoveringCurrentDebtOfCurrentAssets"); }
+        }
+        private decimal _coveringCurrentDebtOfCurrentAssets;
+
+
+
+
+
         #endregion
 
 
@@ -96,6 +170,58 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _paymentCustomersMonth, value, "PaymentCustomersMonth"); }
         }
         private decimal _paymentCustomersMonth;
+
+        /// <summary>
+        /// Диаграмма предыдущий месяц vs текущий месяц
+        /// </summary>
+        public Dictionary<string, int> LastMonthVsCurrentMonth
+        {
+            get { return _lastMonthVsCurrentMonth; }
+            set { SetValue(ref _lastMonthVsCurrentMonth, value, "LastMonthVsCurrentMonth"); }
+        }
+        private Dictionary<string, int> _lastMonthVsCurrentMonth;
+
+        /// <summary>
+        /// Разница оплат
+        /// </summary>
+        public decimal AveragePayment
+        {
+            get { return _averagePayment; }
+            set { SetValue(ref _averagePayment, value, "AveragePayment"); }
+        }
+        private decimal _averagePayment;
+
+        /// <summary>
+        /// Разница валовой прибыли
+        /// </summary>
+        public decimal AverageGrossProfit
+        {
+            get { return _averageGrossProfit; }
+            set { SetValue(ref _averageGrossProfit, value, "AverageGrossProfit"); }
+        }
+        private decimal _averageGrossProfit;
+
+        /// <summary>
+        /// Разница продаж
+        /// </summary>
+        public decimal AverageSales
+        {
+            get { return _averageSales; }
+            set { SetValue(ref _averageSales, value, "AverageSales"); }
+        }
+        private decimal _averageSales;
+
+        /// <summary>
+        /// Количество дней до конца месяца
+        /// </summary>
+        public int CountDaysToEndOfMonth
+        {
+            get { return _countDaysToEndOfMonth; }
+            set { SetValue(ref _countDaysToEndOfMonth, value, "CountDaysToEndOfMonth"); }
+        }
+        private int _countDaysToEndOfMonth;   
+
+
 
         #endregion
     }
