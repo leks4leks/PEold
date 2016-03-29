@@ -54,12 +54,12 @@ namespace ProgressoExpert.Models.Models
         /// <summary>
         /// Диаграмма денег
         /// </summary>
-        public Dictionary<string, int> CycleMoneyDiagram
+        public Dictionary<string, decimal> CycleMoneyDiagram
         {
             get { return _cycleMoneyDiagram; }
             set { SetValue(ref _cycleMoneyDiagram, value, "CycleMoneyDiagram"); }
         }
-        private Dictionary<string, int> _cycleMoneyDiagram;
+        private Dictionary<string, decimal> _cycleMoneyDiagram;
 
         /// <summary>
         /// Долги клиентов
@@ -174,22 +174,22 @@ namespace ProgressoExpert.Models.Models
         /// <summary>
         /// Диаграмма текущий месяц
         /// </summary>
-        public Dictionary<string, int> CurrentMonthDiagram
+        public Dictionary<string, decimal> CurrentMonthDiagram
         {
             get { return _currentMonthDiagram; }
             set { SetValue(ref _currentMonthDiagram, value, "CurrentMonthDiagram"); }
         }
-        private Dictionary<string, int> _currentMonthDiagram;
+        private Dictionary<string, decimal> _currentMonthDiagram;
 
         /// <summary>
         /// Диаграмма предыдущий месяц
         /// </summary>
-        public Dictionary<string, int> LastMonthDiagram
+        public Dictionary<string, decimal> LastMonthDiagram
         {
             get { return _lastMonthDiagram; }
             set { SetValue(ref _lastMonthDiagram, value, "LastMonthDiagram"); }
         }
-        private Dictionary<string, int> _lastMonthDiagram;
+        private Dictionary<string, decimal> _lastMonthDiagram;
 
         /// <summary>
         /// Разница оплат

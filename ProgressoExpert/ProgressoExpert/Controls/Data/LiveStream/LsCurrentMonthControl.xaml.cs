@@ -62,7 +62,7 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             //seriesData1.Add("Валовая прибыль", 11000);
             //seriesData1.Add("Оплата покупателя", 200000);
 
-            foreach (KeyValuePair<string, int> data in ViewModel.CurrentMonthDiagram)
+            foreach (KeyValuePair<string, decimal> data in ViewModel.CurrentMonthDiagram)
                 chart.Series[0].Points.AddXY(data.Key, data.Value);
 
             Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
@@ -71,7 +71,7 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             //seriesData2.Add("Валовая прибыль", 3000);
             //seriesData2.Add("Оплата покупателя", 20000);
 
-            foreach (KeyValuePair<string, int> data in ViewModel.LastMonthDiagram)
+            foreach (KeyValuePair<string, decimal> data in ViewModel.LastMonthDiagram)
                 chart.Series[1].Points.AddXY(data.Key, data.Value);
         }
     }

@@ -64,8 +64,8 @@ namespace ProgressoExpert.Controls.Data.LiveStream
                 series.Points.Add(new DataPoint()
                 {
                     Label = item.Value.ToString(),
-                    XValue = item.Value,
-                    YValues = new double[] { item.Value },
+                    XValue = (double)item.Value,
+                    YValues = new double[] { (double)item.Value },
                     LegendText = item.Key.ToString(),
                     Color = System.Drawing.Color.FromArgb(137, 165, 78),
                     BorderColor = System.Drawing.Color.White
