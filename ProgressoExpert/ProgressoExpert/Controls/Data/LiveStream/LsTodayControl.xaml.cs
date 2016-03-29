@@ -29,9 +29,12 @@ namespace ProgressoExpert.Controls.Data.LiveStream
         private void WindowsFormsHost_Loaded_1(object sender, RoutedEventArgs e)
         {
             chart.ChartAreas.Add(new ChartArea("Default"));
+            chart.IsSoftShadows = false;
 
             var legend = new Legend("Legend1");
             var series = new Series("Series1");
+            series.ShadowColor = System.Drawing.Color.Black;
+            series.ShadowOffset = 1;
 
             series.ChartType = SeriesChartType.Doughnut;
             series.ChartArea = "Default";
@@ -42,14 +45,18 @@ namespace ProgressoExpert.Controls.Data.LiveStream
                 Label = "3000", 
                 XValue = 3000, 
                 YValues = new double[] { 3000 }, 
-                LegendText = "Деньги в кассе" 
+                LegendText = "Деньги в кассе",
+                Color = System.Drawing.Color.FromArgb(137, 165, 78),
+                BorderColor = System.Drawing.Color.White
             });
             series.Points.Add(new DataPoint()
             {
                 Label = "7000",
                 XValue = 7000,
                 YValues = new double[] { 7000 },
-                LegendText = "Деньги на счетах"
+                LegendText = "Деньги на счетах",
+                Color = System.Drawing.Color.FromArgb(155, 187, 89),
+                BorderColor = System.Drawing.Color.White
             });
 
             chart.Series.Add(series);

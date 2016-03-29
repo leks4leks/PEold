@@ -33,7 +33,10 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             chart.Legends.Add(legend);
 
             chart.Series[0].LegendText = "Прошлый месяц";
+            chart.Series[0].Color = System.Drawing.Color.FromArgb(250, 203, 180);
+
             chart.Series[1].LegendText = "Текущий месяц";
+            chart.Series[1].Color = System.Drawing.Color.FromArgb(248, 170, 121);
 
             Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
 
