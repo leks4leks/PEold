@@ -126,9 +126,7 @@ namespace ProgressoExpert.Models.Models
 
 
         #endregion
-
-
-
+        
         #region Текущий месяц
 
         /// <summary>
@@ -229,10 +227,44 @@ namespace ProgressoExpert.Models.Models
             get { return _countDaysToEndOfMonth; }
             set { SetValue(ref _countDaysToEndOfMonth, value, "CountDaysToEndOfMonth"); }
         }
-        private int _countDaysToEndOfMonth;   
+        private int _countDaysToEndOfMonth;
 
 
 
+        #endregion
+
+
+        #region Прошлый месяц
+
+        /// <summary>
+        /// Продажи прошлый месяц
+        /// </summary>
+        public decimal SalesPastMonth
+        {
+            get { return _salesPastMonth; }
+            set { SetValue(ref _salesPastMonth, value, "SalesPastMonth"); }
+        }
+        private decimal _salesPastMonth;
+
+        /// <summary>
+        /// Валовая прибыль прошлый месяц
+        /// </summary>
+        public decimal GrossProfitPastMonth
+        {
+            get { return _grossProfitPastMonth; }
+            set { SetValue(ref _grossProfitPastMonth, value, "GrossProfitPastMonth"); }
+        }
+        private decimal _grossProfitPastMonth;
+        
+        /// <summary>
+        /// Оплата клиентов прошлый месяц
+        /// </summary>
+        public decimal PaymentCustomersPastMonth
+        {
+            get { return _paymentCustomersPastMonth; }
+            set { SetValue(ref _paymentCustomersPastMonth, value, "PaymentCustomersPastMonth"); }
+        }
+        private decimal _paymentCustomersPastMonth;      
         #endregion
     }
 }
