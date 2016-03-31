@@ -59,18 +59,27 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             series.ChartArea = "Default";
             series.Legend = "Legend1";
 
-            foreach (var item in ViewModel.CycleMoneyDiagram)
+            var dataPointData = ViewModel.CycleMoneyDiagram["Деньги в кассе"];
+            series.Points.Add(new DataPoint()
             {
-                series.Points.Add(new DataPoint()
-                {
-                    Label = item.Value.ToString(),
-                    XValue = (double)item.Value,
-                    YValues = new double[] { (double)item.Value },
-                    LegendText = item.Key.ToString(),
-                    Color = System.Drawing.Color.FromArgb(137, 165, 78),
-                    BorderColor = System.Drawing.Color.White
-                });
-            }
+                Label = dataPointData.ToString(),
+                XValue = (double)dataPointData,
+                YValues = new double[] { (double)dataPointData },
+                LegendText = "Деньги в кассе",
+                Color = System.Drawing.Color.FromArgb(137, 165, 78),
+                BorderColor = System.Drawing.Color.White
+            });
+
+            dataPointData = ViewModel.CycleMoneyDiagram["Деньги на счетах"];
+            series.Points.Add(new DataPoint()
+            {
+                Label = dataPointData.ToString(),
+                XValue = (double)dataPointData,
+                YValues = new double[] { (double)dataPointData},
+                LegendText = "Деньги на счетах",
+                Color = System.Drawing.Color.FromArgb(185, 205, 150),
+                BorderColor = System.Drawing.Color.White
+            });
 
             chart.Series.Add(series);
             chart.Legends.Add(legend);

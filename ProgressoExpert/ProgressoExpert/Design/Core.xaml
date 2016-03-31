@@ -138,6 +138,7 @@
 
     <Style TargetType="{x:Type TextBlock}" x:Key="MDTTextBlockCenter" BasedOn="{StaticResource TextBlock}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="MDTTextBlockCenterWhite" BasedOn="{StaticResource MDTTextBlockCenter}">
@@ -171,8 +172,30 @@
         <Setter Property="FontSize" Value="18"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockMedium" BasedOn="{StaticResource TextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockMediumLeftMargin" BasedOn="{StaticResource TextBlockMedium}">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockMediumBlue2" BasedOn="{StaticResource TextBlockMediumLeftMargin}">
+        <Setter Property="Foreground" Value="{StaticResource BlueColor2}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockMediumBlue3" BasedOn="{StaticResource TextBlockMediumLeftMargin}">
+        <Setter Property="Foreground" Value="{StaticResource BlueColor3}"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockCenterGreen" BasedOn="{StaticResource TextBlockCenter}">
         <Setter Property="Foreground" Value="{StaticResource Green}" />
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlockCenterDarkRed" BasedOn="{StaticResource TextBlockCenter}">
+        <Setter Property="Foreground" Value="{StaticResource DarkRed}" />
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
@@ -235,6 +258,19 @@
 
     <Style x:Key="MDTRectangleGreen" TargetType="{x:Type Rectangle}">
         <Setter Property="Fill" Value="#66bb6a"/>
+    </Style>
+    
+    
+    <!-- StackPanel -->
+    <Style x:Key="StackPanelVerticalCenter" TargetType="{x:Type StackPanel}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelVerticalHorizontalCenter" TargetType="{x:Type StackPanel}" BasedOn="{StaticResource StackPanelVerticalCenter}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelVerticalHorizontalCenterVerticalOrientation" TargetType="{x:Type StackPanel}" BasedOn="{StaticResource StackPanelVerticalHorizontalCenter}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Orientation" Value="Vertical"/>
     </Style>
 
 </ResourceDictionary>
