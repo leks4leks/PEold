@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Common.Const;
+using ProgressoExpert.Common.Enums;
 using ProgressoExpert.DataAccess;
 using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models;
@@ -47,7 +48,7 @@ namespace ProgressoExpert.Process
 
             var tmSpan = MainAccessor.GetTimeSpan();
             //TODO поставить текущую дату
-            var stTodayDate = new DateTime(4013, 01, 01);
+            var stTodayDate = new DateTime(4013, 02, 01);
             var endTodayDate = DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
@@ -67,12 +68,27 @@ namespace ProgressoExpert.Process
 
             MainModel.StartTranz = MainAccessor.GetAllTrans(stTodayDate, null); // Вытащим сразу все транзакции, отдельным запросом
             MainModel.EndTranz = MainAccessor.GetAllTrans(stTodayDate, endTodayDate);
-            MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel, true); //Баланс
+            MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel); 
+
+            model.DebtOfCustomers = Math.Round(MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd, 2);            
+            model.GoodsBalance = Math.Round(MainModel.BusinessResults.GoodsEnd, 2);            
+            model.PayblesToSupplier = Math.Round(MainModel.BusinessResults.PayablesToSuppliersShortTermDebtsEnd, 2);
+            
             model.CycleMoneyDiagram = new Dictionary<string, decimal>();
             model.CycleMoneyDiagram.Add("Деньги в кассе", Math.Round(MainModel.BusinessResults.CashInCashBoxEnd, 2));
             model.CycleMoneyDiagram.Add("Деньги на счетах", Math.Round(MainModel.BusinessResults.MoneyInTheBankAccountsEnd, 2));
 
-            // Текущий месяц
+            model.CoveringCurrentDebtMoney = Math.Round((MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
+               + MainModel.BusinessResults.DepositsEnd) / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+            
+            model.CoveringCurrentDebtMoneyAndCustomerDebt = Math.Round((MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
+                + MainModel.BusinessResults.DepositsEnd + MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd)
+                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+
+            model.CoveringCurrentDebtOfCurrentAssets = Math.Round(MainModel.BusinessResults.CirculatingAssetsEnd
+                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+
+            // Текущий месяц            
             sales = Accessors.GetSales(MainModel.StartDate, MainModel.EndDate);
             model.SalesMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
             model.GrossProfitMonth = Math.Round(model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
@@ -82,6 +98,35 @@ namespace ProgressoExpert.Process
 
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
             model.PaymentCustomersMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
+            model.LastMonthDiagram = new Dictionary<string, decimal>();
+            model.LastMonthDiagram.Add("Продажи", model.SalesMonth);
+            model.LastMonthDiagram.Add("Валовая прибыль", model.GrossProfitMonth);
+            model.LastMonthDiagram.Add("Оплата покупателя", model.PaymentCustomersMonth);
+
+            // Прошлый месяц
+            sales = Accessors.GetSales(MainModel.StartDate.Month != 1 ?
+                                        new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
+                                        new DateTime(MainModel.StartDate.Year - 1, 12, 01)
+                                        , MainModel.StartDate);
+            model.SalesPastMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
+            model.GrossProfitPastMonth = Math.Round(model.SalesPastMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+           
+            MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate.Month != 1 ?
+                                                            new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
+                                                            new DateTime(MainModel.StartDate.Year - 1, 12, 01)
+                                                            , MainModel.StartDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+            model.PaymentCustomersPastMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
+
+            model.CurrentMonthDiagram = new Dictionary<string, decimal>();
+            model.CurrentMonthDiagram.Add("Продажи", model.SalesPastMonth);
+            model.CurrentMonthDiagram.Add("Валовая прибыль", model.GrossProfitPastMonth);
+            model.CurrentMonthDiagram.Add("Оплата покупателя", model.PaymentCustomersPastMonth);
+
+            model.AverageGrossProfit = Math.Round(model.GrossProfitPastMonth - model.GrossProfitMonth , 2);
+            model.AverageSales = Math.Round(model.SalesPastMonth - model.SalesMonth, 2);
+            model.AveragePayment = Math.Round(model.PaymentCustomersPastMonth - model.PaymentCustomersMonth, 2);
+            
+            model.CountDaysToEndOfMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1;
 
             return model;
         }
