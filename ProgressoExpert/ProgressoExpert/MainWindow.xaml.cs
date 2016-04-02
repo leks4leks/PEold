@@ -36,6 +36,7 @@ namespace ProgressoExpert
         {
             ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
             ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
+            return;
             ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
             LiveStreamControl.DataBind(ViewModel.LiveStreamModel);
         }

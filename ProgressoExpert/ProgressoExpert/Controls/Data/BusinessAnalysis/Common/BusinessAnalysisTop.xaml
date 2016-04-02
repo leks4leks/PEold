@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ProgressoExpert.Controls.Data.BusinessAnalysis.BusinessAnalysisTop"
+﻿<UserControl x:Class="ProgressoExpert.Controls.Data.BusinessAnalysis.Common.BusinessAnalysisTop"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>   
-        
-        <Grid Grid.Column="0">
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="10,10,20,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*" MaxWidth="100"/>
@@ -98,56 +98,64 @@
                 <TextBlock Text=" +3%" Style="{StaticResource TextBlockCenterGreen}"/>
             </StackPanel>
         </Grid>
-        
-        <Grid Grid.Column="1">
+
+        <Grid Grid.Column="1" Margin="20,10,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                <TextBlock Text="Структура компании" Style="{StaticResource TextBlockSmallGray}" Margin="10 0 0 10"/>
+            </StackPanel>
+
+            <Grid Grid.Column="0" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="70*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1,1,0,0">
+                <Border Grid.Row="0" BorderThickness="1,1,0,0" Style="{StaticResource BorderBlackLightGray}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                        <TextBlock Text="30"/>
-                        <TextBlock Text="30"/>
+                        <TextBlock Text="Оборотные активы" Style="{StaticResource TextBlockCenterMedium}"/>
+                        <TextBlock Text="30" Style="{StaticResource TextBlockCenterBigBlue}"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1,1,0,1">
+                <Border Grid.Row="1" BorderThickness="1,1,0,1" Style="{StaticResource BorderBlackLightGray}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                        <TextBlock Text="30"/>
-                        <TextBlock Text="30"/>
+                        <TextBlock Text="Долгосрочные активы" Style="{StaticResource TextBlockCenterMedium}"/>
+                        <TextBlock Text="30" Style="{StaticResource TextBlockCenterBigBlue}"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1,1,1,0">
+                <Border Grid.Row="0" BorderThickness="1,1,1,0" Style="{StaticResource BorderBlackLightGray}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                        <TextBlock Text="30"/>
-                        <TextBlock Text="30"/>
+                        <TextBlock Text="Текущая задолженность" Style="{StaticResource TextBlockCenterMedium}"/>
+                        <TextBlock Text="30" Style="{StaticResource TextBlockCenterBigBlue}"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1,1,1,0">
+                <Border Grid.Row="1" BorderThickness="1,1,1,0" Style="{StaticResource BorderBlackLightGray}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                        <TextBlock Text="30"/>
-                        <TextBlock Text="30"/>
+                        <TextBlock Text="Долгосрочная задолженность" Style="{StaticResource TextBlockCenterMedium}"/>
+                        <TextBlock Text="30" Style="{StaticResource TextBlockCenterBigBlue}"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1,1,1,1">
+                <Border Grid.Row="2" BorderThickness="1,1,1,1" Style="{StaticResource BorderBlackLightGray}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                        <TextBlock Text="30"/>
-                        <TextBlock Text="30"/>
+                        <TextBlock Text="Собственный капитал" Style="{StaticResource TextBlockCenterMedium}"/>
+                        <TextBlock Text="30" Style="{StaticResource TextBlockCenterBigBlue}"/>
                     </StackPanel>
                 </Border>
             </Grid>
