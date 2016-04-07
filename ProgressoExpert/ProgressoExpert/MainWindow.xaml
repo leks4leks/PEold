@@ -41,8 +41,9 @@
                     <dataContols:LiveStreamControl x:Name="LiveStreamControl"
                         Visibility="{Binding Path=LiveStreamVisibility, Converter={StaticResource VisibilityConverterInstance}}" />
                     <dataContols:ResBusinessControl x:Name="ResBusinessControl"
-                        Visibility="{Binding Path=ResBusinessVisibility, Converter={StaticResource VisibilityConverterInstance}}" 
-                        />
+                        Visibility="{Binding Path=ResBusinessVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
+                    <dataContols:BusinessAnalysisControl x:Name="BusinessAnalysisControl"
+                        Visibility="{Binding Path=BusinessAnalysisVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
                 </Grid>
 
                 <Grid Grid.Column="1" Background="LightGray">

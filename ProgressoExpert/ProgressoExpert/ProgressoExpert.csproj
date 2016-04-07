@@ -72,6 +72,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Data\BusinessAnalysisControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisCommonBottom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisTop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Data\LiveStreamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +137,15 @@
     </Compile>
     <Compile Include="Controls\App\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysisControl.xaml.cs">
+      <DependentUpon>BusinessAnalysisControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisCommonBottom.xaml.cs">
+      <DependentUpon>BusinessAnalysisCommonBottom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisTop.xaml.cs">
+      <DependentUpon>BusinessAnalysisTop.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Data\LiveStreamControl.xaml.cs">
       <DependentUpon>LiveStreamControl.xaml</DependentUpon>
@@ -196,6 +217,7 @@
       <Name>ProgressoExpert.Process</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
