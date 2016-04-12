@@ -5,6 +5,10 @@
     <SolidColorBrush x:Key="BlueColor2" Color="#035C87" />
     <SolidColorBrush x:Key="BlueColor3" Color="#3494C3" />
     <SolidColorBrush x:Key="BlueColor4" Color="#5AA1C3" />
+    <SolidColorBrush x:Key="BlueColor5" Color="#4198af" />
+    <SolidColorBrush x:Key="BlueColor6" Color="#91c3d5" />
+    <SolidColorBrush x:Key="BlueColor7" Color="#4f81bd" />
+    
 
 
     <SolidColorBrush x:Key="LightGray" Color="#e9e7e7" />
@@ -13,5 +17,8 @@
     <SolidColorBrush x:Key="Orange" Color="#e46c0a"/>
     <SolidColorBrush x:Key="Red" Color="#ff0000"/>
     <SolidColorBrush x:Key="DarkRed" Color="#c00000"/>
+
+    
+    
 
 </ResourceDictionary>

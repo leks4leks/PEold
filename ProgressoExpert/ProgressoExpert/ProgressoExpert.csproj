@@ -84,6 +84,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitBottom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitTop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Data\LiveStreamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +154,12 @@
     </Compile>
     <Compile Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisTop.xaml.cs">
       <DependentUpon>BusinessAnalysisTop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitBottom.xaml.cs">
+      <DependentUpon>BusinessAnalysisProfitBottom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitTop.xaml.cs">
+      <DependentUpon>BusinessAnalysisProfitTop.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Data\LiveStreamControl.xaml.cs">
       <DependentUpon>LiveStreamControl.xaml</DependentUpon>
