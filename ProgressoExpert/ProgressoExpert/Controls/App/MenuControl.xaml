@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Button Name="ShowUpdatePanelBtn" Background="Transparent" BorderBrush="Transparent"
+            <Button Name="ShowUpdatePanelBtn" Background="Transparent" BorderBrush="Transparent" Click="ShowUpdatePanelBtn_Click"
                     Margin="0 0 0 0" HorizontalAlignment="Left" ToolTip="Обновить">
                 <StackPanel>
                     <Viewbox Width="40" Height="40">

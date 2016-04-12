@@ -16,10 +16,7 @@ namespace ProgressoExpert.Process
         public static MainModel GetResult(DateTime startDate, DateTime endDate)
         {
             var model = new MainModel();
-
-            model.LiveStreamModel = GetLiveStream(startDate, endDate);
-            return model;
-
+            
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
 
             model.StartDate = startDate.AddYears(model.TimeSpan);
@@ -41,7 +38,7 @@ namespace ProgressoExpert.Process
             return model;
         }
 
-        private static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
+        public static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
         {
             var MainModel = new MainModel();
             var model = new LiveStreamModel();
