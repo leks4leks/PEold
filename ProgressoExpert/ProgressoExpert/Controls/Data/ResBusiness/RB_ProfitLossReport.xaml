@@ -142,7 +142,7 @@
                         </Grid.RowDefinitions>
 
                         <Rectangle Style="{StaticResource MDTRectangleWhite}" Name="WhiteSpaseForData"/>
-                        <Rectangle Style="{StaticResource MDTRectangleGray}" Name="GraySpaseForData"/>
+                        <Rectangle Style="{StaticResource RectangleGray3}" Name="GraySpaseForData"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="SecondBlueRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="NineBlueRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="ElevenBlueRow"/>

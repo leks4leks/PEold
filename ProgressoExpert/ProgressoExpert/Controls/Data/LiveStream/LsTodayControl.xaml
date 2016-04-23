@@ -6,19 +6,19 @@
              xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
              xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
-             mc:Ignorable="d" d:DesignWidth="602.4" d:DesignHeight="539.8" >
+             mc:Ignorable="d" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" MaxHeight="120"/>
+            <RowDefinition Height="*" MaxHeight="100"/>
             <RowDefinition Height="*" MaxHeight="100"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*" MaxHeight="100"/>
-            <RowDefinition Height="*" MaxHeight="100"/>
+            <RowDefinition Height="*" MaxHeight="120"/>
         </Grid.RowDefinitions> 
         
         <!-- Заголовок -->
         <Grid Grid.Row="0">
-            <TextBlock Text="СЕГОДНЯ" Style="{StaticResource TextBlockContentHeader}"/>
+            <TextBlock Text="СЕГОДНЯ" Style="{StaticResource TextBlock25Gray5CenterCenter}"/>
         </Grid>
         
         <Grid Grid.Row="1">
@@ -34,46 +34,46 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"  Style="{StaticResource MDTRectangleLightGray}"/>
+                <Rectangle  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"  Style="{StaticResource RectangleGray1}"/>
                 
                 <Grid Grid.Column="0" Grid.Row="0">
-                    <TextBlock Text="Продажи" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Продажи" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="1">
-                    <TextBlock Text="{Binding SalesToday}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding SalesToday, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Column="1" Grid.Row="0">
-                    <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="{Binding GrossProfitToday}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding GrossProfitToday, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Column="2" Grid.Row="0">
-                    <TextBlock Text="Рентабельность" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Рентабельность" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <TextBlock Text="{Binding ProfitabilityToday}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding ProfitabilityToday, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Column="3" Grid.Row="0">
-                    <TextBlock Text="Оплата клиентов" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Оплата клиентов" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
-                    <TextBlock Text="{Binding PaymentCustomersToday}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding PaymentCustomersToday, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
             </Grid>
         </Grid>
         
         <!-- Диаграмма -->
         <Grid Grid.Row="2">
-            <WindowsFormsHost Loaded="WindowsFormsHost_Loaded_1">
+            <WindowsFormsHost>
                 <dvc:Chart x:Name="chart" >
                 </dvc:Chart>
             </WindowsFormsHost>
         </Grid>
-        
+
         <Grid Grid.Row="3">
             <Grid>
                 <Grid.RowDefinitions>
@@ -86,35 +86,35 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource MDTRectangleLightGray}"/>
-                <Rectangle  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource MDTRectangleGray}"/>
+                <Rectangle  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleGray1}"/>
+                <Rectangle  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleGray3}"/>
 
                 <Grid Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="Долги клиентов" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Долги клиентов" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="{Binding DebtOfCustomers}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding DebtOfCustomers, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Row="0" Grid.Column="1">
-                    <TextBlock Text="Остаток товара" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Остаток товара" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBlock Text="{Binding GoodsBalance}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding GoodsBalance, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="2">
-                    <TextBlock Text="Задолженность перед поставщиками" Style="{StaticResource TextBlockCenterGreen}"/>
+                    <TextBlock Text="Задолженность перед поставщиками" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="2">
-                    <TextBlock Text="{Binding PayblesToSupplier}" Style="{StaticResource TextBlockCenterBig}"/>
+                    <TextBlock Text="{Binding PayblesToSupplier, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
             </Grid>
         </Grid>
         
         <!-- Таблица -->
-        <Grid Grid.Row="4" Margin="0,0,0,0">
-            <Border BorderThickness="1,1,1,1" BorderBrush="Black">
+        <Grid Grid.Row="4" Margin="0, 10, 0, 0">
+            <Border Style="{StaticResource BorderAllGray2}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -128,45 +128,47 @@
                         <ColumnDefinition Width="*" MaxWidth="100"/>
                     </Grid.ColumnDefinitions>
 
-                    <Rectangle  Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"  Style="{StaticResource MDTRectangleGray}"/>
+                    <Rectangle  Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"  Style="{StaticResource RectangleGray3}"/>
 
                     <Grid Grid.Row="0" Grid.Column="0">
-                        <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlockLeftGreenSmall}"/>
+                        <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlock15BoldGreen0LeftCenter}"
+                                   Margin="2, 0, 0, 0"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="0">
-                        <TextBlock Text="Деньгами" Style="{StaticResource TextBlockPaddingBold}"/>
+                        <TextBlock Text="Деньгами" Style="{StaticResource TextBlock12Bold}" Padding="10, 10, 0, 0"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="0">
-                        <TextBlock Text="Деньгами + долгами клиентов" Style="{StaticResource TextBlockPaddingBold}"/>
+                        <TextBlock Text="Деньгами + долгами клиентов" Style="{StaticResource TextBlock12Bold}" Padding="10, 5, 0, 0"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0">
-                        <TextBlock Text="Деньгами + долгами клиентов + остатком товара" Style="{StaticResource TextBlockPaddingBold}"/>
+                        <TextBlock Text="Деньгами + долгами клиентов + остатком товара" Style="{StaticResource TextBlock12Bold}" 
+                                   Padding="10, 5, 0, 0"/>
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.Column="1">
-                        <TextBlock Text="На сегодня" Style="{StaticResource TextBlockCenterGreenSmall}"/>
+                        <TextBlock Text="На сегодня" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtMoney}" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoney, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebt}" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebt, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtOfCurrentAssets}" Style="{StaticResource TextBlockCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtOfCurrentAssets, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.Column="2">
-                        <TextBlock Text="Норма" Style="{StaticResource TextBlockCenterGrayMedium}"/>
+                        <TextBlock Text="Норма" Style="{StaticResource TextBlock13BoldGray2CenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="2">
-                        <TextBlock Text="1%" Style="{StaticResource TextBlockCenterGrayMedium}"/>
+                        <TextBlock Text="1%" Style="{StaticResource TextBlock13Gray2CenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="2">
-                        <TextBlock Text="2%" Style="{StaticResource TextBlockCenterGrayMedium}"/>
+                        <TextBlock Text="2%" Style="{StaticResource TextBlock13Gray2CenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="2">
-                        <TextBlock Text="3%" Style="{StaticResource TextBlockCenterGrayMedium}"/>
+                        <TextBlock Text="3%" Style="{StaticResource TextBlock13Gray2CenterCenter}"/>
                     </Grid>
                 </Grid>
             </Border>

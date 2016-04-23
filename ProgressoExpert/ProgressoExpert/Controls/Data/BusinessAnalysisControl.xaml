@@ -6,7 +6,11 @@
              mc:Ignorable="d" 
              xmlns:local="clr-namespace:ProgressoExpert.Converters"
              xmlns:dataControlsCommon="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Common"
-             xmlns:dataControlsProfit="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Profit">
+             xmlns:dataControlsProfit="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Profit"
+             xmlns:dataControlsSales="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Sales"
+             xmlns:dataControlsExpenses="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses"
+             xmlns:dataControlsPurchase="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase"
+             xmlns:dataControlsWorkingCapital="clr-namespace:ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital">
     
     <UserControl.Resources>
         <local:TabSizeConverter x:Key="tabSizeConverter" />
@@ -32,13 +36,17 @@
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <Grid>
-                        <Grid.RowDefinitions>
+                    <Grid Style="{StaticResource GridContent}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="416*"/>
+                        <ColumnDefinition Width="497*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <dataControlsCommon:BusinessAnalysisTop x:Name="BusinessAnalysisTop" Grid.Row="0" Padding="20,20,20,20"/>
-                        <dataControlsCommon:BusinessAnalysisCommonBottom x:Name="BusinessAnalysisCommonBottom" Grid.Row="1"/>
+                        <dataControlsCommon:BusinessAnalysisTop x:Name="BusinessAnalysisTop" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,-0.2,0"/>
+                        <dataControlsCommon:BusinessAnalysisCommonBottom x:Name="BusinessAnalysisCommonBottom" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-0.2,-0.4"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -71,6 +79,12 @@
             </TabItem.Header>
             <TabItem.Content>
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="85*"/>
+                    </Grid.RowDefinitions>
+                    <dataControlsSales:BusinessAnalysisSalesTop x:Name="BusinessAnalysisSalesTop" Grid.Row="0"/>
+                    <dataControlsSales:BusinessAnalysisSalesBottom x:Name="BusinessAnalysisSalesBottom" Grid.Row="1"/>
                 </Grid>
             </TabItem.Content>
         </TabItem>
@@ -84,6 +98,12 @@
             </TabItem.Header>
             <TabItem.Content>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <dataControlsExpenses:BusinessAnalysisExpensesLeft x:Name="BusinessAnalysisExpensesLeft" Grid.Column="0"/>
+                    <dataControlsExpenses:BusinessAnalysisExpensesRight x:Name="BusinessAnalysisExpensesRight" Grid.Column="1"/>
                 </Grid>
             </TabItem.Content>
         </TabItem>
@@ -97,6 +117,12 @@
             </TabItem.Header>
             <TabItem.Content>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <dataControlsPurchase:BusinessAnalysisPurchaseLeft x:Name="BusinessAnalysisPurchaseLeft" Grid.Column="0"/>
+                    <dataControlsPurchase:BusinessAnalysisPurchaseRight x:Name="BusinessAnalysisPurchaseRight" Grid.Column="1"/>
                 </Grid>
             </TabItem.Content>
         </TabItem>
@@ -110,6 +136,12 @@
             </TabItem.Header>
             <TabItem.Content>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <dataControlsWorkingCapital:BusinessAnalysisWorkingCapitalLeft x:Name="BusinessAnalysisWorkingCapitalLeft" Grid.Column="0"/>
+                    <dataControlsWorkingCapital:BusinessAnalysisWorkingCapitalRight x:Name="BusinessAnalysisWorkingCapitalRight" Grid.Column="1"/>
                 </Grid>
             </TabItem.Content>
         </TabItem>

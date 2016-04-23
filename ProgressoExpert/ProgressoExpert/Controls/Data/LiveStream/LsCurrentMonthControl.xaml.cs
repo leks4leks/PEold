@@ -1,6 +1,7 @@
 ﻿using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,42 +38,87 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             {
                 LoadDiagram();
             }
+            UpdateColors();
         }
 
-        private void WindowsFormsHost_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Текущий месяц vs Прошлый месяц
+        /// </summary>
         public void LoadDiagram()
         {
-            chart.ChartAreas.Add(new ChartArea("Default"));
-            var legend = new Legend("Legend1");
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chartArea.AxisX.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.LabelStyle.Format = "# ##0,тыс";
+            chart.ChartAreas.Add(chartArea);
+
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
             chart.Legends.Add(legend);
 
-            chart.Series[0].LegendText = "Прошлый месяц";
-            chart.Series[0].Color = System.Drawing.Color.FromArgb(250, 203, 180);
-
-            chart.Series[1].LegendText = "Текущий месяц";
-            chart.Series[1].Color = System.Drawing.Color.FromArgb(248, 170, 121);
-
-            Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
-
-            //seriesData1.Add("Продажи", 78000);
-            //seriesData1.Add("Валовая прибыль", 11000);
-            //seriesData1.Add("Оплата покупателя", 200000);
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Bar,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name,
+                LegendText = "Прошлый месяц",
+                Color = System.Drawing.Color.FromArgb(250, 203, 180),
+                BorderColor = System.Drawing.Color.White,
+                IsValueShownAsLabel = true
+            };
 
             foreach (KeyValuePair<string, decimal> data in ViewModel.CurrentMonthDiagram)
-                chart.Series[0].Points.AddXY(data.Key, data.Value);
+            {
+                series.Points.AddXY(data.Key, data.Value);
+                var _point = series.Points.Last();
+                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", _point.YValues[0]);
+                _point.Font = new System.Drawing.Font("Arial", 10);
+            }
 
-            Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
+            chart.Series.Add(series);
 
-            //seriesData2.Add("Продажи", 52000);
-            //seriesData2.Add("Валовая прибыль", 3000);
-            //seriesData2.Add("Оплата покупателя", 20000);
+            var series2 = new Series()
+            {
+                Name = "Series2",
+                ChartType = SeriesChartType.Bar,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name,
+                LegendText = "Текущий месяц",
+                Color = System.Drawing.Color.FromArgb(248, 170, 121),
+                BorderColor = System.Drawing.Color.White,
+                IsValueShownAsLabel = true
+            };
 
             foreach (KeyValuePair<string, decimal> data in ViewModel.LastMonthDiagram)
-                chart.Series[1].Points.AddXY(data.Key, data.Value);
+            {
+                series2.Points.AddXY(data.Key, data.Value);
+                var _point = series2.Points.Last();
+                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", _point.YValues[0]);
+                _point.Font = new System.Drawing.Font("Arial", 10);
+            }
+
+            chart.Series.Add(series2);
+        }
+
+        public void UpdateColors()
+        {
+            AveragePaymentTb.Style = ViewModel.AveragePayment >= 0
+                ? (Style)FindResource("TextBlock16BoldGreen0CenterCenter")
+                : (Style)FindResource("TextBlock16BoldRed2CenterCenter");
+
+            AverageGrossProfitTb.Style = ViewModel.AverageGrossProfit >= 0
+                ? (Style)FindResource("TextBlock16BoldGreen0CenterCenter")
+                : (Style)FindResource("TextBlock16BoldRed2CenterCenter");
+
+            AverageSalesTb.Style = ViewModel.AverageSales >= 0
+                ? (Style)FindResource("TextBlock16BoldGreen0CenterCenter")
+                : (Style)FindResource("TextBlock16BoldRed2CenterCenter");
         }
     }
 }

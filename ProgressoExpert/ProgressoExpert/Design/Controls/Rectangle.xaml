@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Brushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Gray1}"/>
+    </Style>
+
+    <Style x:Key="RectangleGray1" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Gray1}"/>
+    </Style>
+
+    <Style x:Key="RectangleGray3" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Gray3}"/>
+    </Style>
+    <Style x:Key="RectangleGray3White" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Gray3}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
+
+    <Style x:Key="RectangleGray3Transparent" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Gray3}"/>
+        <Setter Property="Stroke" Value="Transparent"/>
+        <Setter Property="StrokeThickness" Value="0"/>
+    </Style>
+
+    
+    
+    
+    
+
+    <Style x:Key="RectangleLightGray" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource LightGray}"/>
+    </Style>
+
+    <Style x:Key="MDTRectangleBlue" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="#FF3F669F"/>
+    </Style>
+
+    <Style x:Key="MDTRectangleWhite" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="White"/>
+    </Style>
+
+    <Style x:Key="MDTRectangleGreen" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="#66bb6a"/>
+    </Style>
+
+    <Style x:Key="RectangleBlueColor7" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource BlueColor7}"/>
+        <Setter Property="Opacity" Value="0.2"/>
+    </Style>
+
+    <Style x:Key="RectangleStyleGray3" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Gray3}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
+
+    <Style x:Key="RectangleStyleGray1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Gray1}"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray3}"/>
+    </Style>
+
+    <Style x:Key="RectangleStylePurple1" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Purple1}"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray3}"/>
+    </Style>
+
+    <Style x:Key="RectangleStylePurple2" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Purple2}"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray3}"/>
+    </Style>
+
+    <Style x:Key="RectangleStyleBlue10" TargetType="{x:Type Rectangle}">
+        <Setter Property="Fill" Value="{StaticResource Blue10}"/>
+        <Setter Property="Stroke" Value="{StaticResource Blue9}"/>
+    </Style>
+
+    <Style x:Key="RectangleStyleWhite" TargetType="{x:Type Rectangle}">
+        <Setter Property="Stroke" Value="{StaticResource Blue9}"/>
+    </Style>
+
+</ResourceDictionary>

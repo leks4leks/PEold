@@ -1,6 +1,7 @@
 ﻿using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,6 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             InitializeComponent();
         }
 
-        private void WindowsFormsHost_Loaded_1(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         public void DataBind(LiveStreamModel model)
         {
             ViewModel = (LiveStreamModel)model;
@@ -44,25 +40,37 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             }
         }
 
+        /// <summary>
+        /// Диаграмма Деньги в кассе / Деньги на счетах
+        /// </summary>
         public void LoadDiagram()
         {
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chart.ChartAreas.Add(chartArea);
 
-            chart.ChartAreas.Add(new ChartArea("Default"));
-            chart.IsSoftShadows = false;
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
+            chart.Legends.Add(legend);
 
-            var legend = new Legend("Legend1");
-            var series = new Series("Series1");
-            series.ShadowColor = System.Drawing.Color.Black;
-            series.ShadowOffset = 1;
-
-            series.ChartType = SeriesChartType.Doughnut;
-            series.ChartArea = "Default";
-            series.Legend = "Legend1";
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Doughnut,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name
+            };
+            chart.Series.Add(series);
 
             var dataPointData = ViewModel.CycleMoneyDiagram["Деньги в кассе"];
             series.Points.Add(new DataPoint()
             {
-                Label = dataPointData.ToString(),
+                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", dataPointData),
+                Font = new System.Drawing.Font("Arial", 10),
                 XValue = (double)dataPointData,
                 YValues = new double[] { (double)dataPointData },
                 LegendText = "Деньги в кассе",
@@ -73,17 +81,14 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             dataPointData = ViewModel.CycleMoneyDiagram["Деньги на счетах"];
             series.Points.Add(new DataPoint()
             {
-                Label = dataPointData.ToString(),
+                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", dataPointData),
+                Font = new System.Drawing.Font("Arial", 10),
                 XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData},
+                YValues = new double[] { (double)dataPointData },
                 LegendText = "Деньги на счетах",
                 Color = System.Drawing.Color.FromArgb(185, 205, 150),
                 BorderColor = System.Drawing.Color.White
             });
-
-            chart.Series.Add(series);
-            chart.Legends.Add(legend);
-            chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
         }
     }
 }

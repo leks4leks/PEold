@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Brushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="StackPanelVerticalCenter" TargetType="{x:Type StackPanel}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelVerticalHorizontalCenter" TargetType="{x:Type StackPanel}" BasedOn="{StaticResource StackPanelVerticalCenter}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelVerticalHorizontalCenterVerticalOrientation" TargetType="{x:Type StackPanel}" BasedOn="{StaticResource StackPanelVerticalHorizontalCenter}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+    </Style>
+    <Style x:Key="StackPanelVerticalHorizontalCenterHorizontalOrientation" TargetType="{x:Type StackPanel}" BasedOn="{StaticResource StackPanelVerticalHorizontalCenter}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <!-- Align -->
+    <Style x:Key="StackPanelStyleStretch" TargetType="{x:Type StackPanel}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchBottom" TargetType="{x:Type StackPanel}">
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchTop" TargetType="{x:Type StackPanel}">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchRightCenter" TargetType="{x:Type StackPanel}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchLeftCenter" TargetType="{x:Type StackPanel}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Orientation-->
+    <Style x:Key="StackPanelStyleStretchVertical" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Orientation" Value="Vertical"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchHorizontal" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <!-- Background Colors -->
+    <Style x:Key="StackPanelStyleStretchGreen1" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Background" Value="{StaticResource Green1}"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchGreen2" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Background" Value="{StaticResource Green2}"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchGreen3" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Background" Value="{StaticResource Green3}"/>
+    </Style>
+    <Style x:Key="StackPanelStyleStretchGray1" TargetType="{x:Type StackPanel}" 
+           BasedOn="{StaticResource StackPanelStyleStretch}">
+        <Setter Property="Background" Value="{StaticResource Gray1}"/>
+    </Style>
+
+</ResourceDictionary>
