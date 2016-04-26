@@ -33,6 +33,15 @@
     <Style x:Key="Border1BottomGray2" TargetType="{x:Type Border}" BasedOn="{StaticResource Border1Bottom}">
         <Setter Property="BorderBrush" Value="{StaticResource Gray2}"/>
     </Style>
+    
+    <Style x:Key="Border1BottomGray3" TargetType="{x:Type Border}" BasedOn="{StaticResource Border1Bottom}">
+        <Setter Property="BorderBrush" Value="{StaticResource Gray3}"/>
+    </Style>
+
+    <Style x:Key="Border1AllGray2Blue10" TargetType="{x:Type Border}" BasedOn="{StaticResource Border1All}">
+        <Setter Property="BorderBrush" Value="{StaticResource Gray2}"/>
+        <Setter Property="Background" Value="{StaticResource Blue10}"/>
+    </Style>
 
 
     <Style x:Key="BorderGray2Gray1" TargetType="{x:Type Border}">

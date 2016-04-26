@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" Grid.Row="0" Grid.Column="0"  Margin="10,0,10,0" BorderThickness="0,0,0,1">
+        <Border Grid.Row="0" Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource Border1BottomGray3}">
             <Grid Margin="10,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -27,33 +27,36 @@
 
                 <Rectangle  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Style="{StaticResource RectangleLightGray}"/>
 
-                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom">
-                    <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock16BoldGray2LeftCenter}"/>
-                    <TextBlock Text="35 000" Style="{StaticResource TextBlock16BoldGray2LeftCenter}"/>
-                </StackPanel>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock21BoldBlue11}"/>
+                        <TextBlock Text="35 000" Style="{StaticResource TextBlock21Bold}" Margin="5, 0, 0, 0"/>
+                    </StackPanel>
+                </Grid>
                 <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
-                    <TextBlock Text="+5%" Style="{StaticResource TextBlockLeftGreenSmallLeftMargin}"/>
-                    <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
+                    <TextBlock Text="+5%" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
+                    <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock15CenterCenter}"
+                               Margin="5, 0, 0, 0"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="0" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="Чистая рентабельность" Style="{StaticResource TextBlockCenterSmallBlue2}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="2.3%" Style="{StaticResource TextBlock}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenterSmallBlue2}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="1" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="2 800" Style="{StaticResource TextBlock}"/>
-                </StackPanel>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <TextBlock Text="Чистая рентабельность" Style="{StaticResource TextBlockCenter15BoldBlue2CenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <TextBlock Text="2.3%" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenter15BoldBlue2CenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <TextBlock Text="2 800" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                </Grid>
 
 
 
 
             </Grid>
         </Border>
-        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="0"  Margin="10,0,10,0" BorderThickness="0,0,0,1">
+        <Border Grid.Row="1" Grid.Column="0"  Margin="10,0,10,0" Style="{StaticResource Border1BottomGray3}">
             <Grid Margin="10,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -67,37 +70,41 @@
 
                 <Rectangle  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Style="{StaticResource RectangleLightGray}"/>
 
-                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom">
-                    <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock16BoldGray2LeftCenter}"/>
-                    <TextBlock Text="35 000" Style="{StaticResource TextBlock16BoldGray2LeftCenter}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
-                    <TextBlock Text="+5%" Style="{StaticResource TextBlockLeftGreenSmallLeftMargin}"/>
-                    <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="0" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="Валовая рентабельность" Style="{StaticResource TextBlockCenterSmallBlue3}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="2.3%" Style="{StaticResource TextBlock}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenterSmallBlue3}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="1" Style="{StaticResource StackPanelVerticalHorizontalCenterHorizontalOrientation}">
-                    <TextBlock Text="2 800" Style="{StaticResource TextBlock}"/>
-                </StackPanel>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock21BoldBlue8}"/>
+                        <TextBlock Text="35 000" Style="{StaticResource TextBlock21Bold}" Margin="5, 0, 0, 0"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <TextBlock Text="+5%" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
+                        <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock15CenterCenter}" Margin="5, 0, 0, 0"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <TextBlock Text="Валовая рентабельность" Style="{StaticResource TextBlockCenter15BoldBlue8CenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <TextBlock Text="2.3%" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenter15BoldBlue8CenterCenter}"/>
+                </Grid>
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <TextBlock Text="2 800" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                </Grid>
 
 
 
 
             </Grid>
         </Border>
-        <Border BorderBrush="Black" Background="AliceBlue" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" BorderThickness="1,1,1,1"
-                Margin="10,10,10,0">
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Style="{StaticResource Border1AllGray2Blue10}"
+                Margin="10,10,10,10" Padding="10, 10, 10, 0">
             <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
-                <TextBlock Text="Накопленная прибыль компании" Margin="0,0,0,30"/>
-                <TextBlock Text="64 500" Style="{StaticResource TextBlockCenter}"/>
+                <TextBlock Text="Накопленная прибыль компании" Style="{StaticResource TextBlockCenter16BoldCenterCenter}"/>
+                <TextBlock Text="64 500" Style="{StaticResource TextBlock26BoldBlue11CenterCenter}" Margin="0, 30, 0, 0"/>
             </StackPanel>
         </Border>
     </Grid>

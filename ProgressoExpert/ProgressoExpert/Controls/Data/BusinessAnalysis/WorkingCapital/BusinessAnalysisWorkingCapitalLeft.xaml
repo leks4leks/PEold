@@ -27,7 +27,7 @@
             <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RectangleStyleGray1}"/>
             
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                <TextBlock Text="Структура оборотного капитала по источникам" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Структура оборотного капитала по источникам" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
             
             <Grid Grid.Row="1" Grid.Column="0">
@@ -50,7 +50,7 @@
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle10ContentTopBoldGray2}"/>
+                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -76,7 +76,7 @@
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle10ContentTopBoldGray2}"/>
+                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -99,7 +99,7 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <TextBlock Text="Оборачиваемость по видам товара, дней" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Оборачиваемость по видам товара, дней" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
             
             <Grid Grid.Row="1">

@@ -21,7 +21,7 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <TextBlock Text="Структура оборотного капитала" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Структура оборотного капитала" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
             
             <Grid Grid.Row="1">
@@ -114,7 +114,7 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock Text="Соотношение дебиторской и кредиторской задолженности" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Соотношение дебиторской и кредиторской задолженности" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
 
             <Grid Grid.Row="1">

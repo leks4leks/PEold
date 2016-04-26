@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,22 +30,28 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
         public void LoadDiagram1()
         {
-            chart1.ChartAreas.Add(new ChartArea("Default"));
-            chart1.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chartArea.AxisX.LabelStyle.Interval = 1;
+            chartArea.AxisX.LabelStyle.Interval = 1;
+            chartArea.AxisX.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.LabelStyle.Enabled = false;
+            chartArea.AxisY.MajorTickMark.Enabled = false;
+            chartArea.AxisY.MinorTickMark.Enabled = false;
+            chartArea.AxisY.LineWidth = 0;
+            chart1.ChartAreas.Add(chartArea);
 
-            chart1.Series.Add(new Series() { Name = "Series1", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
 
-            chart1.Series[0].LegendText = "Валовая прибыль по товарам";
-            chart1.Series[0].Color = System.Drawing.Color.FromArgb(149, 55, 53);
-            chart1.Series[0].ChartType = SeriesChartType.Bar;
-
-            chart1.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
-            chart1.ChartAreas[0].AxisY.MajorTickMark.Enabled = false;
-            chart1.ChartAreas[0].AxisY.MinorTickMark.Enabled = false;
-            chart1.ChartAreas[0].AxisY.LineWidth = 0;
-
-            chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-            chart1.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Bar,
+                ChartArea = chartArea.Name,
+                IsValueShownAsLabel = true,
+                LegendText = "Валовая прибыль по товарам",
+                Color = System.Drawing.Color.FromArgb(149, 55, 53),
+                BorderColor = System.Drawing.Color.White
+            };
 
             Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
 
@@ -55,7 +62,13 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             seriesData1.Add("Прочие", 150000);
 
             foreach (KeyValuePair<string, int> data in seriesData1)
-                chart1.Series[0].Points.AddXY(data.Key, data.Value);
+            {
+                series.Points.AddXY(data.Key, data.Value);
+                var _point = series.Points.Last();
+                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N0}", _point.YValues[0]);
+                _point.Font = new System.Drawing.Font("Arial", 10);
+            }
+            chart1.Series.Add(series);
         }
     }
 }

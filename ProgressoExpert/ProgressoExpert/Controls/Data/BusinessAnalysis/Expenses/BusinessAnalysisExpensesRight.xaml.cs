@@ -31,28 +31,40 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
         public void LoadDiagram2()
         {
-            chart2.ChartAreas.Add(new ChartArea("Default"));
-            chart2.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
-            var legend = new Legend("Legend1");
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chartArea.AxisX.LabelStyle.Interval = 1;
+            chartArea.AxisX.LabelStyle.Interval = 1;
+            chartArea.AxisX.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.MajorGrid.LineWidth = 0;
+            //chartArea.AxisY.LabelStyle.Enabled = false;
+            chartArea.AxisY.MajorTickMark.Enabled = false;
+            chartArea.AxisY.MinorTickMark.Enabled = false;
+            //chartArea.AxisY.LineWidth = 0;
+            chart2.ChartAreas.Add(chartArea);
+
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
             chart2.Legends.Add(legend);
-            chart2.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-            chart2.ChartAreas[0].AxisY.MajorGrid.LineWidth = 0;
 
-            chart2.Series.Add(new Series() { Name = "Series1", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
-            chart2.Series.Add(new Series() { Name = "Series2", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
-            chart2.Series.Add(new Series() { Name = "Series3", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
 
-            chart2.Series[0].LegendText = "Расходы";
-            chart2.Series[0].Color = System.Drawing.Color.FromArgb(170, 70, 67);
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Column,
+                ChartArea = chartArea.Name,
+                IsValueShownAsLabel = false,
+                LegendText = "Расходы",
+                Color = System.Drawing.Color.FromArgb(170, 70, 67),
+                BorderColor = System.Drawing.Color.White
+            };
 
-            chart2.Series[1].LegendText = "Валовая прибыль";
-            chart2.Series[1].Color = System.Drawing.Color.FromArgb(209, 147, 146);
-
-            chart2.Series[2].LegendText = "Продажи";
-            chart2.Series[2].Color = System.Drawing.Color.FromArgb(0, 176, 80);
 
             Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
-
             seriesData1.Add("Янв", 1);
             seriesData1.Add("Фев", 2);
             seriesData1.Add("Мар", 3);
@@ -67,7 +79,23 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             seriesData1.Add("Дек", 12);
 
             foreach (KeyValuePair<string, int> data in seriesData1)
-                chart2.Series[0].Points.AddXY(data.Key, data.Value);
+                series.Points.AddXY(data.Key, data.Value);
+
+            chart2.Series.Add(series);
+
+
+
+
+            var series2 = new Series()
+            {
+                Name = "Series2",
+                ChartType = SeriesChartType.Column,
+                ChartArea = chartArea.Name,
+                IsValueShownAsLabel = false,
+                LegendText = "Валовая прибыль",
+                Color = System.Drawing.Color.FromArgb(209, 147, 146),
+                BorderColor = System.Drawing.Color.White
+            };
 
             Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
 
@@ -85,7 +113,22 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             seriesData2.Add("Дек", 120);
 
             foreach (KeyValuePair<string, int> data in seriesData2)
-                chart2.Series[1].Points.AddXY(data.Key, data.Value);
+                series2.Points.AddXY(data.Key, data.Value);
+
+            chart2.Series.Add(series2);
+
+
+
+            var series3 = new Series()
+            {
+                Name = "Series3",
+                ChartType = SeriesChartType.Column,
+                ChartArea = chartArea.Name,
+                IsValueShownAsLabel = false,
+                LegendText = "Продажи",
+                Color = System.Drawing.Color.FromArgb(0, 176, 80),
+                BorderColor = System.Drawing.Color.White
+            };
 
             Dictionary<string, int> seriesData3 = new Dictionary<string, int>();
 
@@ -103,23 +146,34 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             seriesData3.Add("Дек", 120);
 
             foreach (KeyValuePair<string, int> data in seriesData3)
-                chart2.Series[2].Points.AddXY(data.Key, data.Value);
+                series3.Points.AddXY(data.Key, data.Value);
+
+            chart2.Series.Add(series3);
         }
 
 
         public void LoadDiagram3()
         {
-            chart3.ChartAreas.Add(new ChartArea("Default"));
-            chart3.IsSoftShadows = false;
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chart3.ChartAreas.Add(chartArea);
 
-            var legend = new Legend("Legend1");
-            var series = new Series("Series1");
-            series.ShadowColor = System.Drawing.Color.Black;
-            series.ShadowOffset = 1;
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
+            chart3.Legends.Add(legend);
 
-            series.ChartType = SeriesChartType.Pie;
-            series.ChartArea = "Default";
-            series.Legend = "Legend1";
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Pie,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name
+            };
+            chart3.Series.Add(series);
 
 
             Dictionary<string, decimal> seriesData1 = new Dictionary<string, decimal>();
@@ -172,27 +226,30 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
                 Color = System.Drawing.Color.FromArgb(221, 182, 181),
                 BorderColor = System.Drawing.Color.White
             });
-
-            chart3.Series.Add(series);
-            chart3.Legends.Add(legend);
-            legend.Docking = Docking.Right;
-            legend.Alignment = System.Drawing.StringAlignment.Center;
-            chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
         }
 
         public void LoadDiagram4()
         {
-            chart4.ChartAreas.Add(new ChartArea("Default"));
-            chart4.IsSoftShadows = false;
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chart4.ChartAreas.Add(chartArea);
 
-            var series = new Series("Series1");
-            series.ShadowColor = System.Drawing.Color.Black;
-            series.ShadowOffset = 1;
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
+            chart4.Legends.Add(legend);
 
-            series.ChartType = SeriesChartType.Pie;
-            series.ChartArea = "Default";
-            series.Legend = "Legend1";
-
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Pie,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name
+            };
+            chart4.Series.Add(series);
 
             Dictionary<string, decimal> seriesData1 = new Dictionary<string, decimal>();
 
@@ -244,9 +301,6 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
                 Color = System.Drawing.Color.FromArgb(221, 182, 181),
                 BorderColor = System.Drawing.Color.White
             });
-
-            chart4.Series.Add(series);
-            chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
         }
     }
 }

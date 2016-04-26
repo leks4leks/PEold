@@ -28,6 +28,30 @@
         <Setter Property="StrokeThickness" Value="0"/>
     </Style>
 
+    <Style x:Key="RectangleBlue7Opacity02" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Blue7}"/>
+        <Setter Property="Opacity" Value="0.2"/>
+    </Style>
+
+    <Style x:Key="RectangleGreen1White" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Green1}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
+
+    <Style x:Key="RectangleGreen2White" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Green2}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
+
+    <Style x:Key="RectangleGreen3White" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Green3}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
+
+    <Style x:Key="RectangleGray1White" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource Gray1}"/>
+        <Setter Property="Stroke" Value="White"/>
+    </Style>
     
     
     

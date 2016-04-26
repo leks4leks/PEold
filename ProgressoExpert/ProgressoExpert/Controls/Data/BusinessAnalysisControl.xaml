@@ -59,7 +59,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <Grid>
+                <Grid Style="{StaticResource GridContent}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" MaxHeight="150"/>
                         <RowDefinition Height="*"/>
@@ -78,7 +78,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <Grid>
+                <Grid Style="{StaticResource GridContent}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
                         <RowDefinition Height="85*"/>
@@ -97,7 +97,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <Grid>
+                <Grid Style="{StaticResource GridContent}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="60*"/>

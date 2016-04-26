@@ -43,12 +43,12 @@
             <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource StackPanelStyleStretchVertical}" Width="170" 
                     HorizontalAlignment="Right"  Margin="0,0,10,0" Visibility="Hidden">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <TextBlock Text="15%" Style="{StaticResource TextBlockStyle10ContentTopBoldGreen4}"
+                    <TextBlock Text="15%" Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}"
                                        Margin="0,0,5,0"/>
                     <TextBlock Text="15 000 000" Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <TextBlock Text="+1 250 vs прошлый месяц" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle10ContentTopBoldGray2}"/>
+                    <TextBlock Text="+1 250 vs прошлый месяц" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
                 </StackPanel>
             </StackPanel>
 
@@ -106,7 +106,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock Text="Закуп по видам товара vs Продажи" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Закуп по видам товара vs Продажи" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>

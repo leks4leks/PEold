@@ -31,7 +31,7 @@
             <Grid Grid.Row="0" Grid.Column="0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Продажи" Style="{StaticResource TextBlockStyle14Green5Bold}"/>
-                    <TextBlock Text="vs" Margin="5,0,5,0" Style="{StaticResource TextBlockStyle14Bold}"/>
+                    <TextBlock Text="vs" Margin="5,0,5,0" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
                     <TextBlock Text="Закупки" Style="{StaticResource TextBlockStyle14Orange1Bold}"/>
                 </StackPanel>
             </Grid>
@@ -50,7 +50,7 @@
             <Grid Grid.Row="0" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <TextBlock Text="Оплата" Style="{StaticResource TextBlockStyle14Blue8Bold}"/>
-                    <TextBlock Text="vs" Margin="10,0,10,0" Style="{StaticResource TextBlockStyle14Bold}"/>
+                    <TextBlock Text="vs" Margin="10,0,10,0" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
                     <TextBlock Text="Закупки" Style="{StaticResource TextBlockStyle14Orange1Bold}"/>
                 </StackPanel>
             </Grid>
@@ -74,7 +74,7 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <TextBlock Text="Закуп к оплате и продажам" Style="{StaticResource TextBlockStyle14Bold}"/>    
+                <TextBlock Text="Закуп к оплате и продажам" Style="{StaticResource TextBlock14BoldLeftCenter}"/>    
             </Grid>
             
             <Grid Grid.Row="1">
@@ -96,7 +96,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                <TextBlock Text="Закуп и оплата поставщикам" Style="{StaticResource TextBlockStyle14Bold}"/>
+                <TextBlock Text="Закуп и оплата поставщикам" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0">

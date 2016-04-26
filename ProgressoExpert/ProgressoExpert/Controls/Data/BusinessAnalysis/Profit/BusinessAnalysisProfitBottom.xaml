@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,45 +18,67 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="50,20,0,0">
-                <TextBlock Text="Динамика " Style="{StaticResource TextBlock}"/>
-                <TextBlock Text="валовой " Style="{StaticResource TextBlockBlue5}"/>
-                <TextBlock Text="и " Style="{StaticResource TextBlock}"/>
-                <TextBlock Text="чистой " Style="{StaticResource TextBlockBlue6}"/>
-                <TextBlock Text="прибыли" Style="{StaticResource TextBlock}"/>
-            </StackPanel>
-            <WindowsFormsHost>
-                <dvc:Chart x:Name="chart" Palette="EarthTones" >
-                </dvc:Chart>
-            </WindowsFormsHost>
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="50,20,0,0">
-                <TextBlock Text="Динамика " Style="{StaticResource TextBlock}"/>
-                <TextBlock Text="валовой " Style="{StaticResource TextBlockBlue5}"/>
-                <TextBlock Text="и " Style="{StaticResource TextBlock}"/>
-                <TextBlock Text="чистой " Style="{StaticResource TextBlockBlue6}"/>
-                <TextBlock Text="рентабельности" Style="{StaticResource TextBlock}"/>
-            </StackPanel>
-            <WindowsFormsHost>
-                <dvc:Chart x:Name="chart2" Palette="EarthTones" >
-                </dvc:Chart>
-            </WindowsFormsHost>
-        </StackPanel>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" Margin="50,0,0,0" VerticalAlignment="Bottom">
+                    <TextBlock Text="Динамика " Style="{StaticResource TextBlock12Bold}"/>
+                    <TextBlock Text="валовой " Style="{StaticResource TextBlock12BoldBlue8}"/>
+                    <TextBlock Text="и " Style="{StaticResource TextBlock12Bold}"/>
+                    <TextBlock Text="чистой " Style="{StaticResource TextBlock12BoldBlue2}"/>
+                    <TextBlock Text="прибыли" Style="{StaticResource TextBlock12Bold}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <WindowsFormsHost>
+                    <dvc:Chart x:Name="chart" Palette="EarthTones" >
+                    </dvc:Chart>
+                </WindowsFormsHost>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" Margin="50,0,0,0" VerticalAlignment="Bottom">
+                    <TextBlock Text="Динамика " Style="{StaticResource TextBlock12Bold}"/>
+                    <TextBlock Text="валовой " Style="{StaticResource TextBlock12BoldBlue8}"/>
+                    <TextBlock Text="и " Style="{StaticResource TextBlock12Bold}"/>
+                    <TextBlock Text="чистой " Style="{StaticResource TextBlock12BoldBlue2}"/>
+                    <TextBlock Text="рентабельности" Style="{StaticResource TextBlock12Bold}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <WindowsFormsHost>
+                    <dvc:Chart x:Name="chart2" Palette="EarthTones" >
+                    </dvc:Chart>
+                </WindowsFormsHost>
+            </Grid>
+        </Grid>
 
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="30,20,0,0">
-                <TextBlock Text="Структура валовой прибыли по товарам " Style="{StaticResource TextBlock}"/>
-            </StackPanel>
-            <WindowsFormsHost>
-                <dvc:Chart x:Name="chart3" Palette="EarthTones" >
-                </dvc:Chart>
-            </WindowsFormsHost>
-        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="30,0,0,0">
+                <TextBlock Text="Структура валовой прибыли по товарам " Style="{StaticResource TextBlock12BoldCenterBottom}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <WindowsFormsHost>
+                    <dvc:Chart x:Name="chart3" Palette="EarthTones" >
+                    </dvc:Chart>
+                </WindowsFormsHost>
+            </Grid>
+        </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="20, 20, 20, 20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -69,58 +91,64 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlueColor7}"/>
-            <Rectangle  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlueColor7}"/>
+            <Rectangle  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlue7Opacity02}"/>
+            <Rectangle  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlue7Opacity02}"/>
 
-            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Шины"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Запчасти"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Масла"/>
-            </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="Шины" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <TextBlock Text="Запчасти" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <TextBlock Text="Масла" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Доля"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Рентабельность" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Рентабельность"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <TextBlock Text="Доля" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
 
         </Grid>
 
-        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Margin="30,20,0,0">
-                <TextBlock Text="Структура валовой прибыли по клиентам " Style="{StaticResource TextBlock}"/>
-            </StackPanel>
-            <WindowsFormsHost>
-                <dvc:Chart x:Name="chart4" Palette="EarthTones" >
-                </dvc:Chart>
-            </WindowsFormsHost>
-        </StackPanel>
+        <Grid Grid.Column="2" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="20,0,0,0">
+                <TextBlock Text="Структура валовой прибыли по клиентам " Style="{StaticResource TextBlock12BoldCenterBottom}"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <WindowsFormsHost>
+                    <dvc:Chart x:Name="chart4" Palette="EarthTones" >
+                    </dvc:Chart>
+                </WindowsFormsHost>
+            </Grid>
+        </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="10, 10, 10, 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -140,68 +168,69 @@
             <Rectangle  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlueColor7}"/>
             <Rectangle  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource RectangleBlueColor7}"/>
 
-            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Иванов"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Петров"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Сидоров"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Носков"/>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Дюжин"/>
-            </StackPanel>
-            <StackPanel Grid.Row="6" Grid.Column="0" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Прочие"/>
-            </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="Иванов" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0">
+                <TextBlock Text="Петров" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <TextBlock Text="Сидоров" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0">
+                <TextBlock Text="Носков" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="0">
+                <TextBlock Text="Дюжин" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="0">
+                <TextBlock Text="Прочие" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Доля"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="6" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Рентабельность" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="1">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="1">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            
+            <Grid Grid.Row="0" Grid.Column="2">
+                <TextBlock Text="Доля" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="2">
+                <TextBlock Text="60%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="2">
+                <TextBlock Text="32%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="2">
+                <TextBlock Text="8%" Style="{StaticResource TextBlock12CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="Рентабельность"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="60%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="32%"/>
-            </StackPanel>
-            <StackPanel Grid.Row="6" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="8%"/>
-            </StackPanel>
 
         </Grid>
     </Grid>
