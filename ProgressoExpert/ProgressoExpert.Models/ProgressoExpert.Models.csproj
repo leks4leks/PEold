@@ -46,6 +46,7 @@
     <Compile Include="Models\App\VisibilityModel.cs" />
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />
     <Compile Include="Entities\SalesEnt.cs" />
+    <Compile Include="Models\BusinessAnalysis\GeneralBusinessAnalysis.cs" />
     <Compile Include="Models\LiveStreamModel.cs" />
     <Compile Include="Models\SalesModel.cs" />
     <Compile Include="Models\App\InfoModel.cs" />

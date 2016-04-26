@@ -133,6 +133,12 @@
     <Compile Include="C_AccumRgTn10006.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="C_AccumRgTn10122.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C_AccumRgTn10472.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="C_Enum302.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

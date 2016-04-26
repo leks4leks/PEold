@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,12 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
         {
             InitializeComponent();
         }
+
+        public void DataBind(MainModel vm)
+        {
+            DataContext = vm.BusinessResults;
+        }
     }
 }
+
+

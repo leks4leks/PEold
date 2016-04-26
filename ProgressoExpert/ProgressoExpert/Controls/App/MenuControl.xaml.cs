@@ -79,7 +79,6 @@ namespace ProgressoExpert.Controls.App
                 ViewModel.Sales = tmp.Sales;
                 ViewModel.RatiosIndicatorsResult = tmp.RatiosIndicatorsResult;
                 ViewModel.ADDSTranz = tmp.ADDSTranz;
-
             }
         }
     }

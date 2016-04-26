@@ -844,6 +844,112 @@
           <Property Name="_Fld10001" Type="numeric" Precision="21" Scale="2" Nullable="false" />
           <Property Name="_DimHash" Type="numeric" Precision="10" Scale="0" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccumRgTn10122" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_AccumRgTn10122">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_Fld10107_TYPE" />
+            <PropertyRef Name="_Fld10107_RTRef" />
+            <PropertyRef Name="_Fld10107_RRRef" />
+            <PropertyRef Name="_Fld10108RRef" />
+            <PropertyRef Name="_Fld10109RRef" />
+            <PropertyRef Name="_Fld10110_TYPE" />
+            <PropertyRef Name="_Fld10110_RTRef" />
+            <PropertyRef Name="_Fld10110_RRRef" />
+            <PropertyRef Name="_Fld10111RRef" />
+            <PropertyRef Name="_Fld10112_TYPE" />
+            <PropertyRef Name="_Fld10112_RTRef" />
+            <PropertyRef Name="_Fld10112_RRRef" />
+            <PropertyRef Name="_Fld10113_TYPE" />
+            <PropertyRef Name="_Fld10113_RTRef" />
+            <PropertyRef Name="_Fld10113_RRRef" />
+            <PropertyRef Name="_Fld10114RRef" />
+            <PropertyRef Name="_Fld10115RRef" />
+            <PropertyRef Name="_Fld10116RRef" />
+            <PropertyRef Name="_Fld10117" />
+            <PropertyRef Name="_Fld10118" />
+            <PropertyRef Name="_Fld10119" />
+            <PropertyRef Name="_DimHash" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_Fld10107_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10107_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10107_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10108RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10109RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10110_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10110_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10110_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10111RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10112_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10112_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10112_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10113_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10113_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10113_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10114RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10115RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10116RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10117" Type="numeric" Precision="21" Scale="3" Nullable="false" />
+          <Property Name="_Fld10118" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_Fld10119" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_DimHash" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "base1s.dbo._AccumRgTn10472" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="_AccumRgTn10472">
+          <Key>
+            <PropertyRef Name="_Period" />
+            <PropertyRef Name="_Fld10452_TYPE" />
+            <PropertyRef Name="_Fld10452_RTRef" />
+            <PropertyRef Name="_Fld10452_RRRef" />
+            <PropertyRef Name="_Fld10453RRef" />
+            <PropertyRef Name="_Fld10454_TYPE" />
+            <PropertyRef Name="_Fld10454_RTRef" />
+            <PropertyRef Name="_Fld10454_RRRef" />
+            <PropertyRef Name="_Fld10455RRef" />
+            <PropertyRef Name="_Fld10456_TYPE" />
+            <PropertyRef Name="_Fld10456_RTRef" />
+            <PropertyRef Name="_Fld10456_RRRef" />
+            <PropertyRef Name="_Fld10457_TYPE" />
+            <PropertyRef Name="_Fld10457_RTRef" />
+            <PropertyRef Name="_Fld10457_RRRef" />
+            <PropertyRef Name="_Fld10458RRef" />
+            <PropertyRef Name="_Fld10459RRef" />
+            <PropertyRef Name="_Fld10460RRef" />
+            <PropertyRef Name="_Fld10461" />
+            <PropertyRef Name="_Fld10462" />
+            <PropertyRef Name="_Fld10463" />
+            <PropertyRef Name="_Fld10464" />
+            <PropertyRef Name="_Fld10465" />
+            <PropertyRef Name="_DimHash" />
+          </Key>
+          <Property Name="_Period" Type="datetime" Nullable="false" />
+          <Property Name="_Fld10452_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10452_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10452_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10453RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10454_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10454_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10454_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10455RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10456_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10456_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10456_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10457_TYPE" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="_Fld10457_RTRef" Type="binary" MaxLength="4" Nullable="false" />
+          <Property Name="_Fld10457_RRRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10458RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10459RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10460RRef" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="_Fld10461" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_Fld10462" Type="numeric" Precision="21" Scale="3" Nullable="false" />
+          <Property Name="_Fld10463" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_Fld10464" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_Fld10465" Type="numeric" Precision="21" Scale="2" Nullable="false" />
+          <Property Name="_DimHash" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="_Enum302">
           <Key>
             <PropertyRef Name="_IDRRef" />
@@ -1569,6 +1675,61 @@ FROM [dbo].[_AccumRg9987] AS [_AccumRg9987]</DefiningQuery>
 [_AccumRgTn10006].[_DimHash] AS [_DimHash]
 FROM [dbo].[_AccumRgTn10006] AS [_AccumRgTn10006]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="_AccumRgTn10122" EntityType="Self._AccumRgTn10122" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccumRgTn10122].[_Period] AS [_Period], 
+[_AccumRgTn10122].[_Fld10107_TYPE] AS [_Fld10107_TYPE], 
+[_AccumRgTn10122].[_Fld10107_RTRef] AS [_Fld10107_RTRef], 
+[_AccumRgTn10122].[_Fld10107_RRRef] AS [_Fld10107_RRRef], 
+[_AccumRgTn10122].[_Fld10108RRef] AS [_Fld10108RRef], 
+[_AccumRgTn10122].[_Fld10109RRef] AS [_Fld10109RRef], 
+[_AccumRgTn10122].[_Fld10110_TYPE] AS [_Fld10110_TYPE], 
+[_AccumRgTn10122].[_Fld10110_RTRef] AS [_Fld10110_RTRef], 
+[_AccumRgTn10122].[_Fld10110_RRRef] AS [_Fld10110_RRRef], 
+[_AccumRgTn10122].[_Fld10111RRef] AS [_Fld10111RRef], 
+[_AccumRgTn10122].[_Fld10112_TYPE] AS [_Fld10112_TYPE], 
+[_AccumRgTn10122].[_Fld10112_RTRef] AS [_Fld10112_RTRef], 
+[_AccumRgTn10122].[_Fld10112_RRRef] AS [_Fld10112_RRRef], 
+[_AccumRgTn10122].[_Fld10113_TYPE] AS [_Fld10113_TYPE], 
+[_AccumRgTn10122].[_Fld10113_RTRef] AS [_Fld10113_RTRef], 
+[_AccumRgTn10122].[_Fld10113_RRRef] AS [_Fld10113_RRRef], 
+[_AccumRgTn10122].[_Fld10114RRef] AS [_Fld10114RRef], 
+[_AccumRgTn10122].[_Fld10115RRef] AS [_Fld10115RRef], 
+[_AccumRgTn10122].[_Fld10116RRef] AS [_Fld10116RRef], 
+[_AccumRgTn10122].[_Fld10117] AS [_Fld10117], 
+[_AccumRgTn10122].[_Fld10118] AS [_Fld10118], 
+[_AccumRgTn10122].[_Fld10119] AS [_Fld10119], 
+[_AccumRgTn10122].[_DimHash] AS [_DimHash]
+FROM [dbo].[_AccumRgTn10122] AS [_AccumRgTn10122]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="_AccumRgTn10472" EntityType="Self._AccumRgTn10472" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[_AccumRgTn10472].[_Period] AS [_Period], 
+[_AccumRgTn10472].[_Fld10452_TYPE] AS [_Fld10452_TYPE], 
+[_AccumRgTn10472].[_Fld10452_RTRef] AS [_Fld10452_RTRef], 
+[_AccumRgTn10472].[_Fld10452_RRRef] AS [_Fld10452_RRRef], 
+[_AccumRgTn10472].[_Fld10453RRef] AS [_Fld10453RRef], 
+[_AccumRgTn10472].[_Fld10454_TYPE] AS [_Fld10454_TYPE], 
+[_AccumRgTn10472].[_Fld10454_RTRef] AS [_Fld10454_RTRef], 
+[_AccumRgTn10472].[_Fld10454_RRRef] AS [_Fld10454_RRRef], 
+[_AccumRgTn10472].[_Fld10455RRef] AS [_Fld10455RRef], 
+[_AccumRgTn10472].[_Fld10456_TYPE] AS [_Fld10456_TYPE], 
+[_AccumRgTn10472].[_Fld10456_RTRef] AS [_Fld10456_RTRef], 
+[_AccumRgTn10472].[_Fld10456_RRRef] AS [_Fld10456_RRRef], 
+[_AccumRgTn10472].[_Fld10457_TYPE] AS [_Fld10457_TYPE], 
+[_AccumRgTn10472].[_Fld10457_RTRef] AS [_Fld10457_RTRef], 
+[_AccumRgTn10472].[_Fld10457_RRRef] AS [_Fld10457_RRRef], 
+[_AccumRgTn10472].[_Fld10458RRef] AS [_Fld10458RRef], 
+[_AccumRgTn10472].[_Fld10459RRef] AS [_Fld10459RRef], 
+[_AccumRgTn10472].[_Fld10460RRef] AS [_Fld10460RRef], 
+[_AccumRgTn10472].[_Fld10461] AS [_Fld10461], 
+[_AccumRgTn10472].[_Fld10462] AS [_Fld10462], 
+[_AccumRgTn10472].[_Fld10463] AS [_Fld10463], 
+[_AccumRgTn10472].[_Fld10464] AS [_Fld10464], 
+[_AccumRgTn10472].[_Fld10465] AS [_Fld10465], 
+[_AccumRgTn10472].[_DimHash] AS [_DimHash]
+FROM [dbo].[_AccumRgTn10472] AS [_AccumRgTn10472]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="_Seq10830" EntityType="Self._Seq10830" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [_Seq10830].[_Period] AS [_Period], 
@@ -2244,6 +2405,8 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           <EntitySet Name="C_Reference77" EntityType="base1sModel.C_Reference77" />
           <EntitySet Name="C_Reference78" EntityType="base1sModel.C_Reference78" />
           <EntitySet Name="C_AccumRg10327" EntityType="base1sModel.C_AccumRg10327" />
+          <EntitySet Name="C_AccumRgTn10122" EntityType="base1sModel.C_AccumRgTn10122" />
+          <EntitySet Name="C_AccumRgTn10472" EntityType="base1sModel.C_AccumRgTn10472" />
         </EntityContainer>
         <EntityType Name="C_Reference114">
           <Key>
@@ -2648,6 +2811,108 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
           <Property Name="C_Fld10341_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
           <Property Name="C_Fld10342" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="C_Fld10343" Type="Decimal" Nullable="false" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="C_AccumRgTn10122">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_Fld10107_TYPE" />
+            <PropertyRef Name="C_Fld10107_RTRef" />
+            <PropertyRef Name="C_Fld10107_RRRef" />
+            <PropertyRef Name="C_Fld10108RRef" />
+            <PropertyRef Name="C_Fld10109RRef" />
+            <PropertyRef Name="C_Fld10110_TYPE" />
+            <PropertyRef Name="C_Fld10110_RTRef" />
+            <PropertyRef Name="C_Fld10110_RRRef" />
+            <PropertyRef Name="C_Fld10111RRef" />
+            <PropertyRef Name="C_Fld10112_TYPE" />
+            <PropertyRef Name="C_Fld10112_RTRef" />
+            <PropertyRef Name="C_Fld10112_RRRef" />
+            <PropertyRef Name="C_Fld10113_TYPE" />
+            <PropertyRef Name="C_Fld10113_RTRef" />
+            <PropertyRef Name="C_Fld10113_RRRef" />
+            <PropertyRef Name="C_Fld10114RRef" />
+            <PropertyRef Name="C_Fld10115RRef" />
+            <PropertyRef Name="C_Fld10116RRef" />
+            <PropertyRef Name="C_Fld10117" />
+            <PropertyRef Name="C_Fld10118" />
+            <PropertyRef Name="C_Fld10119" />
+            <PropertyRef Name="C_DimHash" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Fld10107_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10107_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10107_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10108RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10109RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10110_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10110_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10110_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10111RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10112_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10112_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10112_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10113_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10113_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10113_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10114RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10115RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10116RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10117" Type="Decimal" Nullable="false" Precision="21" Scale="3" />
+          <Property Name="C_Fld10118" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_Fld10119" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_DimHash" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="C_AccumRgTn10472">
+          <Key>
+            <PropertyRef Name="C_Period" />
+            <PropertyRef Name="C_Fld10452_TYPE" />
+            <PropertyRef Name="C_Fld10452_RTRef" />
+            <PropertyRef Name="C_Fld10452_RRRef" />
+            <PropertyRef Name="C_Fld10453RRef" />
+            <PropertyRef Name="C_Fld10454_TYPE" />
+            <PropertyRef Name="C_Fld10454_RTRef" />
+            <PropertyRef Name="C_Fld10454_RRRef" />
+            <PropertyRef Name="C_Fld10455RRef" />
+            <PropertyRef Name="C_Fld10456_TYPE" />
+            <PropertyRef Name="C_Fld10456_RTRef" />
+            <PropertyRef Name="C_Fld10456_RRRef" />
+            <PropertyRef Name="C_Fld10457_TYPE" />
+            <PropertyRef Name="C_Fld10457_RTRef" />
+            <PropertyRef Name="C_Fld10457_RRRef" />
+            <PropertyRef Name="C_Fld10458RRef" />
+            <PropertyRef Name="C_Fld10459RRef" />
+            <PropertyRef Name="C_Fld10460RRef" />
+            <PropertyRef Name="C_Fld10461" />
+            <PropertyRef Name="C_Fld10462" />
+            <PropertyRef Name="C_Fld10463" />
+            <PropertyRef Name="C_Fld10464" />
+            <PropertyRef Name="C_Fld10465" />
+            <PropertyRef Name="C_DimHash" />
+          </Key>
+          <Property Name="C_Period" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_Fld10452_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10452_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10452_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10453RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10454_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10454_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10454_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10455RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10456_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10456_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10456_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10457_TYPE" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+          <Property Name="C_Fld10457_RTRef" Type="Binary" Nullable="false" MaxLength="4" FixedLength="true" />
+          <Property Name="C_Fld10457_RRRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10458RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10459RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10460RRef" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="C_Fld10461" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_Fld10462" Type="Decimal" Nullable="false" Precision="21" Scale="3" />
+          <Property Name="C_Fld10463" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_Fld10464" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_Fld10465" Type="Decimal" Nullable="false" Precision="21" Scale="2" />
+          <Property Name="C_DimHash" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3445,6 +3710,65 @@ FROM [dbo].[_YearOffset] AS [_YearOffset]</DefiningQuery>
                 <ScalarProperty Name="C_LineNo" ColumnName="_LineNo" />
                 <ScalarProperty Name="C_RecorderRRef" ColumnName="_RecorderRRef" />
                 <ScalarProperty Name="C_RecorderTRef" ColumnName="_RecorderTRef" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccumRgTn10122">
+            <EntityTypeMapping TypeName="base1sModel.C_AccumRgTn10122">
+              <MappingFragment StoreEntitySet="_AccumRgTn10122">
+                <ScalarProperty Name="C_DimHash" ColumnName="_DimHash" />
+                <ScalarProperty Name="C_Fld10119" ColumnName="_Fld10119" />
+                <ScalarProperty Name="C_Fld10118" ColumnName="_Fld10118" />
+                <ScalarProperty Name="C_Fld10117" ColumnName="_Fld10117" />
+                <ScalarProperty Name="C_Fld10116RRef" ColumnName="_Fld10116RRef" />
+                <ScalarProperty Name="C_Fld10115RRef" ColumnName="_Fld10115RRef" />
+                <ScalarProperty Name="C_Fld10114RRef" ColumnName="_Fld10114RRef" />
+                <ScalarProperty Name="C_Fld10113_RRRef" ColumnName="_Fld10113_RRRef" />
+                <ScalarProperty Name="C_Fld10113_RTRef" ColumnName="_Fld10113_RTRef" />
+                <ScalarProperty Name="C_Fld10113_TYPE" ColumnName="_Fld10113_TYPE" />
+                <ScalarProperty Name="C_Fld10112_RRRef" ColumnName="_Fld10112_RRRef" />
+                <ScalarProperty Name="C_Fld10112_RTRef" ColumnName="_Fld10112_RTRef" />
+                <ScalarProperty Name="C_Fld10112_TYPE" ColumnName="_Fld10112_TYPE" />
+                <ScalarProperty Name="C_Fld10111RRef" ColumnName="_Fld10111RRef" />
+                <ScalarProperty Name="C_Fld10110_RRRef" ColumnName="_Fld10110_RRRef" />
+                <ScalarProperty Name="C_Fld10110_RTRef" ColumnName="_Fld10110_RTRef" />
+                <ScalarProperty Name="C_Fld10110_TYPE" ColumnName="_Fld10110_TYPE" />
+                <ScalarProperty Name="C_Fld10109RRef" ColumnName="_Fld10109RRef" />
+                <ScalarProperty Name="C_Fld10108RRef" ColumnName="_Fld10108RRef" />
+                <ScalarProperty Name="C_Fld10107_RRRef" ColumnName="_Fld10107_RRRef" />
+                <ScalarProperty Name="C_Fld10107_RTRef" ColumnName="_Fld10107_RTRef" />
+                <ScalarProperty Name="C_Fld10107_TYPE" ColumnName="_Fld10107_TYPE" />
+                <ScalarProperty Name="C_Period" ColumnName="_Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_AccumRgTn10472">
+            <EntityTypeMapping TypeName="base1sModel.C_AccumRgTn10472">
+              <MappingFragment StoreEntitySet="_AccumRgTn10472">
+                <ScalarProperty Name="C_DimHash" ColumnName="_DimHash" />
+                <ScalarProperty Name="C_Fld10465" ColumnName="_Fld10465" />
+                <ScalarProperty Name="C_Fld10464" ColumnName="_Fld10464" />
+                <ScalarProperty Name="C_Fld10463" ColumnName="_Fld10463" />
+                <ScalarProperty Name="C_Fld10462" ColumnName="_Fld10462" />
+                <ScalarProperty Name="C_Fld10461" ColumnName="_Fld10461" />
+                <ScalarProperty Name="C_Fld10460RRef" ColumnName="_Fld10460RRef" />
+                <ScalarProperty Name="C_Fld10459RRef" ColumnName="_Fld10459RRef" />
+                <ScalarProperty Name="C_Fld10458RRef" ColumnName="_Fld10458RRef" />
+                <ScalarProperty Name="C_Fld10457_RRRef" ColumnName="_Fld10457_RRRef" />
+                <ScalarProperty Name="C_Fld10457_RTRef" ColumnName="_Fld10457_RTRef" />
+                <ScalarProperty Name="C_Fld10457_TYPE" ColumnName="_Fld10457_TYPE" />
+                <ScalarProperty Name="C_Fld10456_RRRef" ColumnName="_Fld10456_RRRef" />
+                <ScalarProperty Name="C_Fld10456_RTRef" ColumnName="_Fld10456_RTRef" />
+                <ScalarProperty Name="C_Fld10456_TYPE" ColumnName="_Fld10456_TYPE" />
+                <ScalarProperty Name="C_Fld10455RRef" ColumnName="_Fld10455RRef" />
+                <ScalarProperty Name="C_Fld10454_RRRef" ColumnName="_Fld10454_RRRef" />
+                <ScalarProperty Name="C_Fld10454_RTRef" ColumnName="_Fld10454_RTRef" />
+                <ScalarProperty Name="C_Fld10454_TYPE" ColumnName="_Fld10454_TYPE" />
+                <ScalarProperty Name="C_Fld10453RRef" ColumnName="_Fld10453RRef" />
+                <ScalarProperty Name="C_Fld10452_RRRef" ColumnName="_Fld10452_RRRef" />
+                <ScalarProperty Name="C_Fld10452_RTRef" ColumnName="_Fld10452_RTRef" />
+                <ScalarProperty Name="C_Fld10452_TYPE" ColumnName="_Fld10452_TYPE" />
                 <ScalarProperty Name="C_Period" ColumnName="_Period" />
               </MappingFragment>
             </EntityTypeMapping>
