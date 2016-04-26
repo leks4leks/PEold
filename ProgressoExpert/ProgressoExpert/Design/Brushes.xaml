@@ -5,6 +5,10 @@
     <SolidColorBrush x:Key="BlueColor2" Color="#035C87" />
     <SolidColorBrush x:Key="BlueColor3" Color="#3494C3" />
     <SolidColorBrush x:Key="BlueColor4" Color="#5AA1C3" />
+    <SolidColorBrush x:Key="BlueColor5" Color="#4198af" />
+    <SolidColorBrush x:Key="BlueColor6" Color="#91c3d5" />
+    <SolidColorBrush x:Key="BlueColor7" Color="#4f81bd" />
+    
 
 
     <SolidColorBrush x:Key="LightGray" Color="#e9e7e7" />
@@ -13,5 +17,55 @@
     <SolidColorBrush x:Key="Orange" Color="#e46c0a"/>
     <SolidColorBrush x:Key="Red" Color="#ff0000"/>
     <SolidColorBrush x:Key="DarkRed" Color="#c00000"/>
+    
+    
+    <!-- Green -->
+    <!-- Green0 - Plus value -->
+    <SolidColorBrush x:Key="Green0" Color="#00b050"/> 
+    <SolidColorBrush x:Key="Green1" Color="#7f9a48"/>
+    <SolidColorBrush x:Key="Green2" Color="#9bbb59"/>
+    <SolidColorBrush x:Key="Green3" Color="#c6d6ac"/>
+    <SolidColorBrush x:Key="Green4" Color="#0ac61c"/>
+    <SolidColorBrush x:Key="Green5" Color="#00d22d"/>
+    
+    <!-- Gray -->
+    <SolidColorBrush x:Key="Gray1" Color="#f2f2f2"/>
+    <SolidColorBrush x:Key="Gray2" Color="#7f7f7f"/>
+    <SolidColorBrush x:Key="Gray3" Color="#d9d9d9"/>
+    <SolidColorBrush x:Key="Gray4" Color="#c9c9c9" />
+    <SolidColorBrush x:Key="Gray5" Color="#595959" />
+    <SolidColorBrush x:Key="Gray6" Color="#9f9f9f" />
+    
+
+
+    <!-- Blue -->
+    <SolidColorBrush x:Key="Blue1" Color="#013B58" />
+    <SolidColorBrush x:Key="Blue2" Color="#035C87" />
+    <SolidColorBrush x:Key="Blue3" Color="#3494C3" />
+    <SolidColorBrush x:Key="Blue4" Color="#5AA1C3" />
+    <SolidColorBrush x:Key="Blue5" Color="#4198af" />
+    <SolidColorBrush x:Key="Blue6" Color="#91c3d5" />
+    <SolidColorBrush x:Key="Blue7" Color="#4f81bd" />
+    <SolidColorBrush x:Key="Blue8" Color="#31859c"/>
+    <SolidColorBrush x:Key="Blue9" Color="#82c5d7"/>
+    <SolidColorBrush x:Key="Blue10" Color="#dbeef4"/>
+    <SolidColorBrush x:Key="Blue11" Color="#17375e"/>
+    <SolidColorBrush x:Key="Blue12" Color="#17365e"/>
+    
+    
+    
+    <!-- Red -->
+    <SolidColorBrush x:Key="Red1" Color="#953735"/>
+    <SolidColorBrush x:Key="Red2" Color="#ff0000"/>
+    
+    <!-- Orange -->
+    <SolidColorBrush x:Key="Orange1" Color="#e46c0a"/>
+    
+    <!-- Purple -->
+    <SolidColorBrush x:Key="Purple1" Color="#8064a2"/>
+    <SolidColorBrush x:Key="Purple2" Color="#ccc1da"/>
+
+    
+    
 
 </ResourceDictionary>

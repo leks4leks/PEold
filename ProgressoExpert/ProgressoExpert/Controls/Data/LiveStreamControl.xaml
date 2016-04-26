@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:dataControls="clr-namespace:ProgressoExpert.Controls.Data.LiveStream"
              mc:Ignorable="d" >
-<Grid>
+    <Grid Style="{StaticResource GridContent}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>

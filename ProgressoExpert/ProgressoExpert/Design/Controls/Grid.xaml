@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Brushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="GridStyle" TargetType="{x:Type Grid}">
+        
+    </Style>
+    
+    <Style x:Key="GridContent" TargetType="{x:Type Grid}" BasedOn="{StaticResource GridStyle}">
+        <Setter Property="Margin" Value="10, 10, 10, 10"/>
+    </Style>
+
+</ResourceDictionary>

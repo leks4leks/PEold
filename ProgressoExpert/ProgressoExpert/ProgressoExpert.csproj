@@ -84,6 +84,46 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Expenses\BusinessAnalysisExpensesLeft.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Expenses\BusinessAnalysisExpensesRight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitBottom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitTop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Purchase\BusinessAnalysisPurchaseLeft.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Purchase\BusinessAnalysisPurchaseRight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Sales\BusinessAnalysisSalesBottom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\Sales\BusinessAnalysisSalesTop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\WorkingCapital\BusinessAnalysisWorkingCapitalLeft.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\BusinessAnalysis\WorkingCapital\BusinessAnalysisWorkingCapitalRight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Data\LiveStreamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +156,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Design\Controls\Rectangle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Design\Controls\StackPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Design\Controls\Border.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Design\Controls\Grid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Design\Core.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +179,10 @@
     <Page Include="Design\Brushes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Design\Controls\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +206,36 @@
     </Compile>
     <Compile Include="Controls\Data\BusinessAnalysis\Common\BusinessAnalysisTop.xaml.cs">
       <DependentUpon>BusinessAnalysisTop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Expenses\BusinessAnalysisExpensesLeft.xaml.cs">
+      <DependentUpon>BusinessAnalysisExpensesLeft.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Expenses\BusinessAnalysisExpensesRight.xaml.cs">
+      <DependentUpon>BusinessAnalysisExpensesRight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitBottom.xaml.cs">
+      <DependentUpon>BusinessAnalysisProfitBottom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Profit\BusinessAnalysisProfitTop.xaml.cs">
+      <DependentUpon>BusinessAnalysisProfitTop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Purchase\BusinessAnalysisPurchaseLeft.xaml.cs">
+      <DependentUpon>BusinessAnalysisPurchaseLeft.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Purchase\BusinessAnalysisPurchaseRight.xaml.cs">
+      <DependentUpon>BusinessAnalysisPurchaseRight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Sales\BusinessAnalysisSalesBottom.xaml.cs">
+      <DependentUpon>BusinessAnalysisSalesBottom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\Sales\BusinessAnalysisSalesTop.xaml.cs">
+      <DependentUpon>BusinessAnalysisSalesTop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\WorkingCapital\BusinessAnalysisWorkingCapitalLeft.xaml.cs">
+      <DependentUpon>BusinessAnalysisWorkingCapitalLeft.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\BusinessAnalysis\WorkingCapital\BusinessAnalysisWorkingCapitalRight.xaml.cs">
+      <DependentUpon>BusinessAnalysisWorkingCapitalRight.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Data\LiveStreamControl.xaml.cs">
       <DependentUpon>LiveStreamControl.xaml</DependentUpon>
@@ -217,7 +307,9 @@
       <Name>ProgressoExpert.Process</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Design\Controls\_Rules.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

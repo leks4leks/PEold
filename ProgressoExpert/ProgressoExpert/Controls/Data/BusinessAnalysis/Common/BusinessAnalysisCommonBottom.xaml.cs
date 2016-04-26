@@ -29,26 +29,34 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
 
         public void LoadDiagram()
         {
-            chart.ChartAreas.Add(new ChartArea("Default"));
-            chart.ChartAreas[0].AxisX.LabelStyle.Interval = 1;
-            var legend = new Legend("Legend1");
+            var chartArea = new ChartArea() { Name = "ChartArea" };
+            chartArea.AxisX.MajorGrid.LineWidth = 0;
+            chartArea.AxisY.MajorGrid.LineWidth = 0;
+            chartArea.AxisX.LabelStyle.Interval = 1;
+            chart.ChartAreas.Add(chartArea);
+
+            var legend = new Legend()
+            {
+                Name = "Legend",
+                Alignment = System.Drawing.StringAlignment.Center,
+                Docking = Docking.Right,
+                Font = new System.Drawing.Font("Arial", 10)
+            };
             chart.Legends.Add(legend);
 
-            chart.Series.Add(new Series() { Name = "Series1", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
-            chart.Series.Add(new Series() { Name = "Series2", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
-            chart.Series.Add(new Series() { Name = "Series3", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
-
-            chart.Series[0].LegendText = "КЗ Продажи";
-            chart.Series[0].Color = System.Drawing.Color.FromArgb(186, 112, 50);
-
-            chart.Series[1].LegendText = "ОК Средний остаток";
-            chart.Series[1].Color = System.Drawing.Color.FromArgb(149, 195, 213);
-
-            chart.Series[2].LegendText = "0 Чистая прибыль";
-            chart.Series[2].Color = System.Drawing.Color.FromArgb(249, 181, 144);
+            var series = new Series()
+            {
+                Name = "Series1",
+                ChartType = SeriesChartType.Column,
+                ChartArea = chartArea.Name,
+                Legend = legend.Name,
+                LegendText = "КЗ Продажи",
+                Color = System.Drawing.Color.FromArgb(186, 112, 50),
+                BorderColor = System.Drawing.Color.White,
+                IsValueShownAsLabel = true
+            };
 
             Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
-
             seriesData1.Add("Янв", 1);
             seriesData1.Add("Фев", 2);
             seriesData1.Add("Мар", 3);
@@ -61,9 +69,23 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
             seriesData1.Add("Окт", 10);
             seriesData1.Add("Ноя", 11);
             seriesData1.Add("Дек", 12);
-
             foreach (KeyValuePair<string, int> data in seriesData1)
-                chart.Series[0].Points.AddXY(data.Key, data.Value);
+                series.Points.AddXY(data.Key, data.Value);
+
+            chart.Series.Add(series);
+
+
+
+
+            chart.Series.Add(new Series() { Name = "Series2", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
+            chart.Series.Add(new Series() { Name = "Series3", ChartType = SeriesChartType.Column, IsValueShownAsLabel = true });
+
+
+            chart.Series[1].LegendText = "ОК Средний остаток";
+            chart.Series[1].Color = System.Drawing.Color.FromArgb(149, 195, 213);
+
+            chart.Series[2].LegendText = "0 Чистая прибыль";
+            chart.Series[2].Color = System.Drawing.Color.FromArgb(249, 181, 144);
 
             Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
 

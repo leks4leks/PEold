@@ -1,0 +1,13 @@
+﻿FAQ - Как называть стили
+
+TextBlock19BoldGreenCenterRight
+
+TextBlock - Control Type
+---
+19 - FontSize
+---
+Bold - FontWeight (+ Italic + Underline + etc.)
+Green - Foreground
+---
+Center - HorizontalAligment
+Right - VerticalALigment
