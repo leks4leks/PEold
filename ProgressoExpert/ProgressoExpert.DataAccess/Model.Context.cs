@@ -64,5 +64,7 @@ namespace ProgressoExpert.DataAccess
         public DbSet<C_Reference77> C_Reference77 { get; set; }
         public DbSet<C_Reference78> C_Reference78 { get; set; }
         public DbSet<C_AccumRg10327> C_AccumRg10327 { get; set; }
+        public DbSet<C_AccumRgTn10122> C_AccumRgTn10122 { get; set; }
+        public DbSet<C_AccumRgTn10472> C_AccumRgTn10472 { get; set; }
     }
 }

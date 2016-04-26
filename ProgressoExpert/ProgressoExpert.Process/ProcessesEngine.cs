@@ -3,6 +3,7 @@ using ProgressoExpert.Common.Enums;
 using ProgressoExpert.DataAccess;
 using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models;
+using ProgressoExpert.Models.Models.BusinessAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,7 +107,7 @@ namespace ProgressoExpert.Process
                                         new DateTime(MainModel.StartDate.Year - 1, 12, 01)
                                         , MainModel.StartDate);
             model.SalesPastMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
-            model.GrossProfitPastMonth = Math.Round(model.SalesPastMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+            model.GrossProfitPastMonth = Math.Round(model.SalesPastMonth - sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);
            
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate.Month != 1 ?
                                                             new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
@@ -126,6 +127,126 @@ namespace ProgressoExpert.Process
             model.CountDaysToEndOfMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1;
 
             return model;
+        }
+
+        public static void GetGeneralBusinessAnalysis(DateTime startDate, DateTime endDate, MainModel MainModel)
+        {
+            var tmSpan = MainAccessor.GetTimeSpan();
+            var stTodayDate = MainModel.StartDate;
+            var endTodayDate = MainModel.EndDate;
+            
+            var model = new GeneralBusinessAnalysis();
+            
+            model.Sales = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
+
+            
+            model.CostPrice = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+            model.GrossProfit = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);            
+            model.Cost = MainModel.ReportProfitAndLoss.Costs.Sum();
+            
+            #region Прошлые периоды
+            DateTime newStTodayDate = new DateTime();
+            DateTime newEndTodayDate = new DateTime();
+            var dif = (endTodayDate.Year - stTodayDate.Year) * 12 + (endTodayDate.Month - stTodayDate.Month);
+            if (dif <= 12)
+            {
+                decimal tmp = decimal.Zero;
+                newStTodayDate = stTodayDate.AddMonths(-dif);
+                newEndTodayDate = stTodayDate.AddMonths(1);
+                var salesFirst = Accessors.GetSales(newStTodayDate, newEndTodayDate);
+
+                MainModel tmMain = new MainModel();
+                decimal RPALF = decimal.Zero;
+                if (model.Cost > 0)
+                {
+                    tmMain.StartDate = newStTodayDate;
+                    tmMain.EndDate = newEndTodayDate;
+                    tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null); 
+                    tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
+                    tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
+                    RPALF = tmMain.ReportProfitAndLoss.Costs.Sum();
+                    tmp = Math.Round(RPALF / model.Cost * 100, 2);
+                    model.CostAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                }
+
+                newStTodayDate = stTodayDate.AddYears(-1);
+                newEndTodayDate = endTodayDate.AddYears(-1);
+                var salesSecond = Accessors.GetSales(newStTodayDate, newEndTodayDate);
+
+                decimal RPALS = decimal.Zero;
+                if (model.Cost > 0)
+                {
+                    tmMain.StartDate = newStTodayDate;
+                    tmMain.EndDate = newEndTodayDate;
+                    tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null); 
+                    tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
+                    tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
+                    RPALS = tmMain.ReportProfitAndLoss.Costs.Sum();
+                    tmp = Math.Round(RPALS / model.Cost * 100, 2);
+                    model.CostAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                }
+
+                tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
+                model.SalesAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+
+                tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
+                model.SalesAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+
+                tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
+                model.CostPriceAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+
+                tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
+                model.CostPriceAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+
+                var GPFtmp = salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
+                tmp = Math.Round(GPFtmp / model.CostPrice * 100, 2);                
+                model.GrossProfitAnFirst = (GPFtmp > 1 ? (GPFtmp - 1).ToString() : (1 - GPFtmp).ToString()) + "%";
+
+                var GPStmp = salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
+                tmp  = Math.Round(GPStmp / model.CostPrice * 100, 2);
+                model.GrossProfitAnSecond = (GPStmp > 1 ? (GPStmp - 1).ToString() : (1 - GPStmp).ToString()) + "%";
+
+                model.NetProfit = Math.Round(model.GrossProfit - model.Cost, 2);
+                tmp = Math.Round((GPFtmp - RPALF) / model.NetProfit * 100, 2);
+                model.NetProfitAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                tmp = Math.Round((GPStmp - RPALS) / model.NetProfit * 100, 2);
+                model.NetProfitAnSecond= (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+            }
+            else
+            {
+                model.SalesAnFirst = 
+                model.SalesAnSecond =
+                model.CostPriceAnSecond =
+                model.GrossProfitAnFirst =
+                model.GrossProfitAnSecond =
+                model.NetProfitAnFirst =
+                model.NetProfitAnSecond =
+                model.CostAnFirst =
+                model.CostAnSecond =
+                model.CostPriceAnFirst = "-";
+            }
+            #endregion
+
+            model.SalesDiagram.Add("Оборотные активы", MainModel.BusinessResults.CirculatingAssetsEnd);
+            model.SalesDiagram.Add("Долгосрочные активы", MainModel.BusinessResults.LongTermAssetsEnd);
+            model.SalesDiagram.Add("Текущая задолженность", MainModel.BusinessResults.CurrentDebtEnd);
+            model.SalesDiagram.Add("Долгосрочная задолженность", MainModel.BusinessResults.LongTermDebtEnd);
+            model.SalesDiagram.Add("Собственный капитал", MainModel.BusinessResults.OwnCapitalEnd);
+
+            //Dictionary<string, decimal> allGoods = new Dictionary<string, decimal>() { };
+            //foreach (var monthSales in MainModel.Sales)
+            //{
+
+            //};
+            //model.ProfitabilityDiagram.Add()
+
+
+        }
+
+        private static void FillPercentForAllProperty(ref string First, ref string Second, DateTime stTodayDate, DateTime endTodayDate, GeneralBusinessAnalysis model
+            , List<SalesModel> salesFirst, List<SalesModel> salesSecond, int dif)
+        {
+            
         }
 
         private static RatiosIndicatorsResult CalculateRatiosIndicators(DateTime startDate, DateTime endDate, BusinessResults businessResults, ReportProfitAndLoss reportProfitAndLoss)

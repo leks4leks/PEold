@@ -22,6 +22,26 @@ namespace ProgressoExpert.Models.Entities
         private byte[] _refId;
 
         /// <summary>
+        /// Мужики продавцы
+        /// </summary>
+        public byte[] SalersRefId
+        {
+            get { return _salersRefId; }
+            set { SetValue(ref _salersRefId, value, "SalersRefId"); }
+        }
+        private byte[] _salersRefId;
+
+        /// <summary>
+        /// Мужики покупатели
+        /// </summary>
+        public byte[] ClientRefId
+        {
+            get { return _clientRefId; }
+            set { SetValue(ref _clientRefId, value, "ClientRefId"); }
+        }
+        private byte[] _clientRefId;
+
+        /// <summary>
         /// 
         /// </summary>
         public byte[] refManId
@@ -100,5 +120,27 @@ namespace ProgressoExpert.Models.Entities
             set { SetValue(ref _buyerName, value, "BuyerName"); }
         }
         private string _buyerName;
+
+        /// <summary>
+        /// Количество покупки
+        /// </summary>
+        public decimal CountPur
+        {
+            get { return _countPur; }
+            set { SetValue(ref _countPur, value, "CountPur"); }
+        }
+        private decimal _countPur;
+
+        /// <summary>
+        /// Количество продажи
+        /// </summary>
+        public decimal CountSal
+        {
+            get { return _countSal; }
+            set { SetValue(ref _countSal, value, "CountSal"); }
+        }
+        private decimal _countSal;
+
+
     }
 }

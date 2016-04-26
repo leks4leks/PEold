@@ -26,7 +26,7 @@
 
         <!-- Меню -->
         <Grid Grid.Row="1">
-            <appContols:MenuControl x:Name="MenuControl"></appContols:MenuControl>
+            <appContols:MenuControl x:Name="MenuControl" ></appContols:MenuControl>
         </Grid>
 
         <!-- Контент -->

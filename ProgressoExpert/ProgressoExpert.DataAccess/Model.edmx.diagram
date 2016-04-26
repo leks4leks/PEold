@@ -44,6 +44,8 @@
         <EntityTypeShape EntityType="base1sModel.C_Reference77" Width="1.5" PointX="19.75" PointY="0.75" />
         <EntityTypeShape EntityType="base1sModel.C_Reference78" Width="1.5" PointX="0.75" PointY="19.75" />
         <EntityTypeShape EntityType="base1sModel.C_AccumRg10327" Width="1.5" PointX="2.75" PointY="19.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRgTn10122" Width="1.5" PointX="20.375" PointY="10.75" />
+        <EntityTypeShape EntityType="base1sModel.C_AccumRgTn10472" Width="1.5" PointX="13.375" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
