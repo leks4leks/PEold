@@ -46,8 +46,8 @@ namespace ProgressoExpert.Process
 
             var tmSpan = MainAccessor.GetTimeSpan();
             //TODO поставить текущую дату
-            var stTodayDate = new DateTime(4013, 02, 01);
-            var endTodayDate = DateTime.Today.AddYears(tmSpan);
+            var stTodayDate = new DateTime(4012, 02, 01);
+            var endTodayDate = new DateTime(4012, 05, 01); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
@@ -138,7 +138,6 @@ namespace ProgressoExpert.Process
             var model = new GeneralBusinessAnalysis();
             
             model.Sales = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
-
             
             model.CostPrice = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
             model.GrossProfit = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);            
@@ -227,20 +226,112 @@ namespace ProgressoExpert.Process
             }
             #endregion
 
-            model.SalesDiagram.Add("Оборотные активы", MainModel.BusinessResults.CirculatingAssetsEnd);
-            model.SalesDiagram.Add("Долгосрочные активы", MainModel.BusinessResults.LongTermAssetsEnd);
-            model.SalesDiagram.Add("Текущая задолженность", MainModel.BusinessResults.CurrentDebtEnd);
-            model.SalesDiagram.Add("Долгосрочная задолженность", MainModel.BusinessResults.LongTermDebtEnd);
-            model.SalesDiagram.Add("Собственный капитал", MainModel.BusinessResults.OwnCapitalEnd);
+            model.StructureCompanyDiagram = new Dictionary<string, decimal>();
+            model.StructureCompanyDiagram.Add("Оборотные активы", MainModel.BusinessResults.CirculatingAssetsEnd);
+            model.StructureCompanyDiagram.Add("Долгосрочные активы", MainModel.BusinessResults.LongTermAssetsEnd);
+            model.StructureCompanyDiagram.Add("Текущая задолженность", MainModel.BusinessResults.CurrentDebtEnd);
+            model.StructureCompanyDiagram.Add("Долгосрочная задолженность", MainModel.BusinessResults.LongTermDebtEnd);
+            model.StructureCompanyDiagram.Add("Собственный капитал", MainModel.BusinessResults.OwnCapitalEnd);
 
-            //Dictionary<string, decimal> allGoods = new Dictionary<string, decimal>() { };
-            //foreach (var monthSales in MainModel.Sales)
-            //{
+            #region рентабельность
+            //Для рентабельности вложенных денег нам необходимо знать сколько какого товара на начало периода
+            var beginingDate = new DateTime(1970, 01, 01);
+            var beginingSalesModel = Accessors.GetSalesOneQuery(beginingDate, stTodayDate);
+            var beginingSales = beginingSalesModel.SelectMany(_ => _.Sales);// вытащим все месяца в одну ентити
+            var GroupsBSales = (from bs in beginingSales
+                                    group bs by bs.GroupCode into g
+                                    select new SalesEnt
+                                    {
+                                        GroupCode = g.FirstOrDefault().GroupCode,
+                                        GroupName = g.FirstOrDefault().GroupName,
+                                        CostPrise = g.Sum(_ => _.CostPrise),
+                                        SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
+                                        CountPur = g.Sum(_ => _.CountPur),
+                                        CountSal = g.Sum(_ => _.CountSal)                                    
+                                    }
+                                ).ToList();
 
-            //};
-            //model.ProfitabilityDiagram.Add()
+            //тоже самое уже для нашего периода
+            var thisSales = Accessors.GetSalesOneQuery(stTodayDate, endTodayDate);
+            var sEnt = thisSales.SelectMany(_ => _.Sales);
+            var gSales = (from s in sEnt
+                              group s by s.GroupCode into g
+                              select new SalesEnt
+                              {
+                                  GroupCode = g.FirstOrDefault().GroupCode,
+                                  GroupName = g.FirstOrDefault().GroupName,
+                                  CostPrise = g.Sum(_ => _.CostPrise),
+                                  SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
+                                  CountPur = g.Sum(_ => _.CountPur),
+                                  CountSal = g.Sum(_ => _.CountSal)
+                              }
+                          ).ToList();
 
+            //с процентами беда
+            var averageRentSales = (from bs in GroupsBSales
+                                    join s in gSales on bs.GroupCode equals s.GroupCode
+                                    select new
+                                    {
+                                        k = bs.GroupName,
+                                        v = model.GrossProfit / ((bs.CountPur - bs.CountSal + s.CountPur - s.CountSal) / 2) * 100
+                                    }
+                                    ).OrderByDescending(_ => _.v).ToDictionary(_ => _.k, _ => _.v);
+            model.ProfitabilityDiagram = averageRentSales;
+            #endregion
 
+            #region объем оборотного капитала и все к нему
+            model.SalesDiagram = new Dictionary<string, decimal>();
+            foreach (var mon in MainModel.Sales)
+            {
+                model.SalesDiagram.Add(((Month)mon.Date.Month).ToString(), mon.Sales.Sum(_ => _.SalesWithoutNDS));
+            }
+
+            model.NetProfitDiagram = new Dictionary<string, decimal>();
+            var tmpMon = 0;
+            for (int i = 0; i <= dif; i++)
+            {
+                if (startDate.Month + i > 12) tmpMon = i - 12;
+                else tmpMon = startDate.Month + i;
+                model.NetProfitDiagram.Add(((Month)tmpMon).ToString(), MainModel.ReportProfitAndLoss.Costs.ToArray()[i]);
+            }
+
+            var mm = new MainModel();
+            model.AverageWorkingCapitalDiagram = new Dictionary<string, decimal>();
+            int[] endMonthYear = new int[] { MainModel.EndDate.Month, MainModel.EndDate.Year };
+
+            int monthCount = 0;
+            int[] startMonthYear = new int[] { MainModel.StartDate.Month, MainModel.StartDate.Year };//будем бежать от начала до конца периода
+            do
+            {
+                mm.StartDate = new DateTime(startMonthYear[1], startMonthYear[0], 01);
+                mm.EndDate = new DateTime(startMonthYear[1], startMonthYear[0], DateTime.DaysInMonth(startMonthYear[1], startMonthYear[0]))
+                    .AddHours(23).AddMinutes(59).AddSeconds(59);
+
+                mm.StartTranz = MainModel.StartTranz.Where(_ => _.period < mm.StartDate).ToList();
+                mm.EndTranz = MainModel.EndTranz.Where(_ => _.period < mm.EndDate).ToList();
+                if (mm.EndTranz.Where(_ => _.period < mm.StartDate).Count() > 0)
+                    mm.StartTranz.AddRange(mm.EndTranz.Where(_ => _.period < mm.StartDate).ToList());//чтобы из бд не тащить мы переложим из модельки за текущий период транзикции в прошедщий период
+
+                var tmp = Accessors.GetBusinessResults(mm);
+                model.AverageWorkingCapitalDiagram.Add(((Month)startMonthYear[0]).ToString(), (tmp.CirculatingAssetsStart + tmp.CirculatingAssetsEnd) / 2);
+
+                #region Cчитаем кол-во месяцев
+                if (startMonthYear[0] == 12)
+                {
+                    startMonthYear[1]++;
+                    startMonthYear[0] = 1;
+                    monthCount++;
+                }
+                else
+                {
+                    startMonthYear[0]++;
+                    monthCount++;
+                }
+                #endregion
+                
+            }
+            while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
+            #endregion 
         }
 
         private static void FillPercentForAllProperty(ref string First, ref string Second, DateTime stTodayDate, DateTime endTodayDate, GeneralBusinessAnalysis model

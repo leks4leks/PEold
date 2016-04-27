@@ -169,7 +169,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         private string _netProfitAnSecond;
         
         /// <summary>
-        /// Структура компании
+        /// Диагранма продажи
         /// </summary>
         public Dictionary<string, decimal> SalesDiagram
         {
