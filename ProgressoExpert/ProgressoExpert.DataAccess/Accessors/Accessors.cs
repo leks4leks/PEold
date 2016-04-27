@@ -837,6 +837,8 @@ namespace ProgressoExpert.DataAccess
                            DivName = r77.C_Description,
                            GroupCode = r78.C_Code,
                            GroupName = r78.C_Description,
+                           BuyerCode = string.Empty,
+                           BuyerName = string.Empty
                        }
                                         );
 
@@ -856,6 +858,8 @@ namespace ProgressoExpert.DataAccess
                             DivName = string.Empty,
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
                         });
 
             //Цена продажи без ндс
@@ -874,6 +878,8 @@ namespace ProgressoExpert.DataAccess
                             DivName = string.Empty,
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
                         }
                         );
 
@@ -893,13 +899,34 @@ namespace ProgressoExpert.DataAccess
                             DivName = string.Empty,
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
                         });
 
-            var res4 =
+            //покупатели 
+            var res4 = (from s888 in db.C_Reference67
+                        select new SalesEnt
+                        {
+                            refId = new byte[] { },
+                            ClientRefId = s888.C_IDRRef,
+                            SalersRefId = new byte[] { },
+                            CostPrise = decimal.Zero,
+                            CountPur = decimal.Zero,
+                            SalesWithoutNDS = decimal.Zero,
+                            CountSal = decimal.Zero,
+                            DivName = string.Empty,
+                            GroupCode = string.Empty,
+                            GroupName = string.Empty,
+                            BuyerCode = s888.C_Code,
+                            BuyerName = s888.C_Description
+                        });
+
+            var res5 =
                 (from r in res
                  join r1 in res1 on r.refId equals r1.refId
                  join r2 in res2 on r.refId equals r2.refId
                  join r3 in res3 on r.refId equals r3.SalersRefId
+                 join r4 in res4 on r2.ClientRefId equals r4.ClientRefId
                  select new SalesEnt
                  {
                      refId = r.refId,
@@ -911,9 +938,11 @@ namespace ProgressoExpert.DataAccess
                      CountSal = r2.CountSal,
                      DivName = r.DivName,
                      GroupCode = r.GroupCode,
-                     GroupName = r.GroupName
+                     GroupName = r.GroupName,
+                     BuyerCode = r4.BuyerCode,
+                     BuyerName = r4.BuyerName
                  });
-            return res4;
+            return res5;
         }
 
         #region SubQuery

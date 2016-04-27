@@ -14,6 +14,7 @@ namespace ProgressoExpert.Process
 {
     public class ProcessesEngine
     {
+        static int dif = 0;
         public static MainModel GetResult(DateTime startDate, DateTime endDate)
         {
             var model = new MainModel();
@@ -129,7 +130,7 @@ namespace ProgressoExpert.Process
             return model;
         }
 
-        public static void GetGeneralBusinessAnalysis(DateTime startDate, DateTime endDate, MainModel MainModel)
+        public static GeneralBusinessAnalysis GetGeneralBusinessAnalysis(DateTime startDate, DateTime endDate, MainModel MainModel)
         {
             var tmSpan = MainAccessor.GetTimeSpan();
             var stTodayDate = MainModel.StartDate;
@@ -146,7 +147,7 @@ namespace ProgressoExpert.Process
             #region Прошлые периоды
             DateTime newStTodayDate = new DateTime();
             DateTime newEndTodayDate = new DateTime();
-            var dif = (endTodayDate.Year - stTodayDate.Year) * 12 + (endTodayDate.Month - stTodayDate.Month);
+            dif = (endTodayDate.Year - stTodayDate.Year) * 12 + (endTodayDate.Month - stTodayDate.Month);
             if (dif <= 12)
             {
                 decimal tmp = decimal.Zero;
@@ -254,7 +255,7 @@ namespace ProgressoExpert.Process
             //тоже самое уже для нашего периода
             var thisSales = Accessors.GetSalesOneQuery(stTodayDate, endTodayDate);
             var sEnt = thisSales.SelectMany(_ => _.Sales);
-            var gSales = (from s in sEnt
+            model.gSales = (from s in sEnt
                               group s by s.GroupCode into g
                               select new SalesEnt
                               {
@@ -267,9 +268,22 @@ namespace ProgressoExpert.Process
                               }
                           ).ToList();
 
+            model.gSalesByClient = (from s in sEnt
+                                    group s by s.BuyerCode into g
+                                    select new SalesEnt
+                                    {
+                                        BuyerCode = g.FirstOrDefault().BuyerCode,
+                                        BuyerName = g.FirstOrDefault().BuyerName,
+                                        CostPrise = g.Sum(_ => _.CostPrise),
+                                        SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
+                                        CountPur = g.Sum(_ => _.CountPur),
+                                        CountSal = g.Sum(_ => _.CountSal)
+                                    }
+                                  ).ToList();
+
             //с процентами беда
             var averageRentSales = (from bs in GroupsBSales
-                                    join s in gSales on bs.GroupCode equals s.GroupCode
+                                    join s in model.gSales on bs.GroupCode equals s.GroupCode
                                     select new
                                     {
                                         k = bs.GroupName,
@@ -332,6 +346,88 @@ namespace ProgressoExpert.Process
             }
             while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
             #endregion 
+
+            return model;
+        }
+
+        public static ProfitBusinessAnalysis GetProfitBA(MainModel MainModel)
+        {
+            var model = new ProfitBusinessAnalysis();
+
+            //пока валовая равна чистой т.к. у нас нет расходов
+            model.GrossProfit = MainModel.GeneralBA.GrossProfit;
+            model.GrossProfitAnFirst = MainModel.GeneralBA.GrossProfitAnFirst;
+            model.NetProfit = MainModel.GeneralBA.NetProfit;
+            model.NetProfitAnFirst = MainModel.GeneralBA.NetProfitAnFirst;
+
+            var mM = MainModel.Sales.Sum(_ => _.Sales.Sum(s => s.SalesWithoutNDS));// выручка - цена продажи
+            model.NetProfitability = Math.Round(model.NetProfit / mM * 100, 2);
+            model.AverageNetProfitByMonth = Math.Round(model.NetProfit / dif, 2);
+
+            model.GrossProfitability = Math.Round(model.GrossProfit / mM * 100, 2);
+            model.AverageGrossProfitByMonth = Math.Round(model.GrossProfit / dif, 2);
+
+            model.SavedProfit = Math.Round(MainModel.BusinessResults.AccumulatedProfitAndLossStart + MainModel.BusinessResults.AccumulatedProfitAndLossEnd, 2);
+
+            //Динамика валовой и чистой прибыли и рентабильность тут же
+            model.GrossProfitDiagram = new Dictionary<string, decimal>();
+            model.NetProfitDiagram = new Dictionary<string, decimal>();
+            model.GrossProfitabilityDiagram = new Dictionary<string, decimal>();
+            model.NetProfitabilityDiagram = new Dictionary<string, decimal>();
+            var counter = 0;//счетчик месяцев
+            foreach (var mon in MainModel.Sales)
+            {
+                model.GrossProfitDiagram.Add(((Month)mon.Date.Month).ToString(), mon.Sales.Sum(_ => _.CostPrise));
+                model.NetProfitDiagram.Add(((Month)mon.Date.Month).ToString(), 
+                    mon.Sales.Sum(_ => _.CostPrise) - MainModel.ReportProfitAndLoss.Costs.ToArray()[counter]
+                    );
+                counter++;
+
+                model.GrossProfitabilityDiagram.Add(((Month)mon.Date.Month).ToString(), Math.Round(MainModel.Sales.
+                    Where(_ => _.Date.Year == mon.Date.Year && _.Date.Month == mon.Date.Month).Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2));
+
+                model.NetProfitabilityDiagram.Add(((Month)mon.Date.Month).ToString(), 
+                    Math.Round(model.GrossProfitabilityDiagram[((Month)mon.Date.Month).ToString()] - MainModel.ReportProfitAndLoss.Costs[counter], 2));
+            }
+
+            //структура валовой прибыли по товарам
+            var StrBestGoods = MainModel.GeneralBA.gSales
+                        .Select(_ => new { gName = _.GroupName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
+                        .OrderBy(_ => _.gGrow)
+                        .Take(3);
+            model.StructureGrossProfitGoodsDiagram = new Dictionary<string, decimal>();
+            model.StructureGrossProfitGoodsInfo = new List<FillModel>();
+            foreach (var g in StrBestGoods)
+            {
+                model.StructureGrossProfitGoodsDiagram.Add(g.gName, Math.Round(g.gGrow, 2));
+                model.StructureGrossProfitGoodsInfo.Add(new FillModel
+                {
+                    Name = g.gName,
+                    Share = Math.Round(g.gGrow / model.GrossProfit * 100, 2),
+                    Value = Math.Round(g.gGrow / g.gPrice * 100, 2)
+                });
+            }
+               
+
+            //структура валовой прибыли по клиентам
+            var StrBestClient = MainModel.GeneralBA.gSalesByClient
+                        .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
+                        .OrderBy(   _ => _.gGrow)
+                        .Take(3);
+            model.StructureGrossProfitClientDiagram = new Dictionary<string, decimal>();
+            model.StructureGrossProfitClientInfo = new List<FillModel>();
+            foreach (var g in StrBestClient)
+            {
+                model.StructureGrossProfitClientDiagram.Add(g.gName, Math.Round(g.gGrow, 2));
+                model.StructureGrossProfitClientInfo.Add(new FillModel
+                {
+                    Name = g.gName,
+                    Share = Math.Round(g.gGrow / model.GrossProfit * 100, 2),
+                    Value = Math.Round(g.gGrow / g.gPrice * 100, 2)
+                });
+            }             
+
+            return model;
         }
 
         private static void FillPercentForAllProperty(ref string First, ref string Second, DateTime stTodayDate, DateTime endTodayDate, GeneralBusinessAnalysis model
