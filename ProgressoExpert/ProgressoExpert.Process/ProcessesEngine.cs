@@ -413,7 +413,7 @@ namespace ProgressoExpert.Process
             var StrBestClient = MainModel.GeneralBA.gSalesByClient
                         .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
                         .OrderBy(   _ => _.gGrow)
-                        .Take(3);
+                        .Take(6);
             model.StructureGrossProfitClientDiagram = new Dictionary<string, decimal>();
             model.StructureGrossProfitClientInfo = new List<FillModel>();
             foreach (var g in StrBestClient)
@@ -428,6 +428,14 @@ namespace ProgressoExpert.Process
             }             
 
             return model;
+        }
+
+        public static SalesBusinessAnalysis GetSalesBA(MainModel MainModel)
+        {
+            var model = new SalesBusinessAnalysis();
+
+            return model;
+
         }
 
         private static void FillPercentForAllProperty(ref string First, ref string Second, DateTime stTodayDate, DateTime endTodayDate, GeneralBusinessAnalysis model

@@ -231,6 +231,15 @@ namespace ProgressoExpert.Models.Models
         }
         private ProfitBusinessAnalysis _profitBA;
 
+        /// <summary>
+        /// продажи Анализа бизнеса
+        /// </summary>
+        public SalesBusinessAnalysis SalesBA
+        {
+            get { return _salesBA; }
+            set { SetValue(ref _salesBA, value, "SalesBA"); }
+        }
+        private SalesBusinessAnalysis _salesBA;       
 
         /// <summary>
         /// Коэффициенты и основные показатели
