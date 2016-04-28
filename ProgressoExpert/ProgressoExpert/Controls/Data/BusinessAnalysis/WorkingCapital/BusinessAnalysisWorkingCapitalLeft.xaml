@@ -27,7 +27,8 @@
             <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RectangleStyleGray1}"/>
             
             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                <TextBlock Text="Структура оборотного капитала по источникам" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
+                <TextBlock Text="Структура оборотного капитала по источникам" Style="{StaticResource TextBlock14BoldLeftCenter}"
+                           Margin="20,0,0,0"/>
             </Grid>
             
             <Grid Grid.Row="1" Grid.Column="0">
@@ -94,12 +95,13 @@
         
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" MaxHeight="20"/>
+                <RowDefinition Height="*" MaxHeight="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <TextBlock Text="Оборачиваемость по видам товара, дней" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
+                <TextBlock Text="Оборачиваемость по видам товара, дней" Style="{StaticResource TextBlock14BoldLeftCenter}"
+                           Margin="20,0,0,0"/>
             </Grid>
             
             <Grid Grid.Row="1">

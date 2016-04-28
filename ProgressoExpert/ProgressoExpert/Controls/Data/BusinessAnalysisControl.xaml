@@ -116,13 +116,14 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <Grid>
+                <Grid Style="{StaticResource GridContent}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="60*"/>
                     </Grid.ColumnDefinitions>
                     <dataControlsPurchase:BusinessAnalysisPurchaseLeft x:Name="BusinessAnalysisPurchaseLeft" Grid.Column="0"/>
-                    <dataControlsPurchase:BusinessAnalysisPurchaseRight x:Name="BusinessAnalysisPurchaseRight" Grid.Column="1"/>
+                    <dataControlsPurchase:BusinessAnalysisPurchaseRight x:Name="BusinessAnalysisPurchaseRight" Grid.Column="1"
+                                                                        Margin="10,0,0,0"/>
                 </Grid>
             </TabItem.Content>
         </TabItem>
@@ -135,7 +136,7 @@
                 </StackPanel>
             </TabItem.Header>
             <TabItem.Content>
-                <Grid>
+                <Grid Style="{StaticResource GridContent}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="60*"/>

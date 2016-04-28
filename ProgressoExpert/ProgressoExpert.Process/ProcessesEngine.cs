@@ -47,10 +47,16 @@ namespace ProgressoExpert.Process
             var tmSpan = MainAccessor.GetTimeSpan();
             //TODO поставить текущую дату
             var stTodayDate = new DateTime(4013, 02, 01);
-            var endTodayDate = DateTime.Today.AddYears(tmSpan);
+            var endTodayDate = new DateTime(4013, 04, 01);// DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
-            MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
+            MainModel.EndDate = new DateTime(stTodayDate.Month != 12 
+                ? stTodayDate.Year 
+                : stTodayDate.Year + 1, 
+                    stTodayDate.Month != 12 
+                        ? stTodayDate.Month + 1 
+                        : 01, 
+                            01);
             // Сегодня
 
             var sales = Accessors.GetSales(stTodayDate, endTodayDate);
