@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models;
+using ProgressoExpert.Models.Models.BusinessAnalysis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,16 @@ namespace ProgressoExpert.Controls.Data
     /// </summary>
     public partial class BusinessAnalysisControl : UserControl
     {
+        GeneralBusinessAnalysis ViewModel;
         public BusinessAnalysisControl()
         {
             InitializeComponent();
+        }
+
+        public void DataBind(GeneralBusinessAnalysis model)
+        {
+            ViewModel = model;
+            BusinessAnalysisTop.DataBind(model);
         }
     }
 }
