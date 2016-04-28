@@ -1,6 +1,7 @@
 ﻿using ProgressoExpert.Models.Entities;
 using ProgressoExpert.Models.Models.App;
 using ProgressoExpert.Models.Models.BaseVM;
+using ProgressoExpert.Models.Models.BusinessAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -208,6 +209,28 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _ratiosIndicatorsResult, value, "RatiosIndicatorsResult"); }
         }
         private RatiosIndicatorsResult _ratiosIndicatorsResult;
+
+        /// <summary>
+        /// Основная вкладка Анализа бизнеса
+        /// </summary>
+        public GeneralBusinessAnalysis GeneralBA
+        {
+            get { return _generalBA; }
+            set { SetValue(ref _generalBA, value, "GeneralBA"); }
+        }
+        private GeneralBusinessAnalysis _generalBA;
+              
+
+        /// <summary>
+        /// прибыль Анализа бизнеса
+        /// </summary>
+        public ProfitBusinessAnalysis ProfitBA
+        {
+            get { return _profitBA; }
+            set { SetValue(ref _profitBA, value, "ProfitBA"); }
+        }
+        private ProfitBusinessAnalysis _profitBA;
+
 
         /// <summary>
         /// Коэффициенты и основные показатели

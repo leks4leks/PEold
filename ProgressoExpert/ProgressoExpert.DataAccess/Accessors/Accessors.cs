@@ -789,97 +789,8 @@ namespace ProgressoExpert.DataAccess
                         endDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
                     }
                     #endregion
-                    //только инфа по группам и производителям или как их
-                    var res = (from r77 in db.C_Reference77
-                               join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
-                               select new SalesEnt
-                               {
-                                   refId = r77.C_IDRRef,
-                                   ClientRefId = new byte[] { },
-                                   SalersRefId = new byte[] { },
-                                   CostPrise = decimal.Zero,
-                                   CountPur = decimal.Zero,
-                                   SalesWithoutNDS = decimal.Zero,
-                                   CountSal = decimal.Zero,
-                                   DivName = r77.C_Description,
-                                   GroupCode = r78.C_Code,
-                                   GroupName = r78.C_Description,
-                               }
-                               );
 
-                    //Себестоимость за период + кол-во сколько поставили(в C_AccumRgTn10122) +  сам поставщик (C_Value1_RRRef)
-                    var res1 = (from s888 in db.C_AccRgAT210888
-                                where s888.C_Period >= stDt && s888.C_Period < endDt
-                                group s888 by s888.C_Value2_RRRef into g
-                                select new SalesEnt
-                                {
-                                    refId = g.FirstOrDefault().C_Value2_RRRef,
-                                    ClientRefId = new byte[] { },
-                                    SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
-                                    CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
-                                    CountPur = decimal.Zero,
-                                    SalesWithoutNDS = decimal.Zero,
-                                    CountSal = decimal.Zero,
-                                    DivName = string.Empty,
-                                    GroupCode = string.Empty,
-                                    GroupName = string.Empty,
-                                });
-                                   
-                    //Цена продажи без ндс
-                    var res2 = (from r27 in db.C_AccumRgTn10472
-                                where r27.C_Period >= stDt && r27.C_Period < endDt
-                                group r27 by r27.C_Fld10452_RRRef into g
-                                select new SalesEnt
-                                {
-                                    refId = g.FirstOrDefault().C_Fld10452_RRRef,
-                                    ClientRefId = g.FirstOrDefault().C_Fld10459RRef, 
-                                    SalersRefId = new byte[] { },
-                                    CostPrise = decimal.Zero,
-                                    CountPur = decimal.Zero,
-                                    SalesWithoutNDS = g.Sum(_ => _.C_Fld10464),
-                                    CountSal = g.Sum(_ => _.C_Fld10462),
-                                    DivName = string.Empty,
-                                    GroupCode = string.Empty,
-                                    GroupName = string.Empty,
-                                }
-                                );
-
-                    // количество сколько поступило на конечную дату
-                    var res3 = (from s888 in db.C_AccumRgTn10122
-                                 where s888.C_Period < endDt
-                                 group s888 by s888.C_Fld10107_RRRef into g
-                                 select new SalesEnt
-                                 {
-                                     refId = new byte[] { },
-                                     ClientRefId = new byte[] { },                                    
-                                     SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
-                                     CostPrise = decimal.Zero,
-                                     CountPur = g.Sum(_ => _.C_Fld10117),
-                                     SalesWithoutNDS = decimal.Zero,
-                                     CountSal = decimal.Zero,
-                                     DivName = string.Empty,
-                                     GroupCode = string.Empty,
-                                     GroupName = string.Empty,
-                                 });
-
-                    var res4 =
-                        (from r in res
-                         join r1 in res1 on r.refId equals r1.refId
-                         join r2 in res2 on r.refId equals r2.refId
-                         join r3 in res3 on r.refId equals r3.SalersRefId
-                         select new SalesEnt
-                         {
-                             refId = r.refId,
-                             ClientRefId = r2.ClientRefId,
-                             SalersRefId = r1.SalersRefId,
-                             CostPrise = r1.CostPrise,
-                             CountPur = r3.CountPur,
-                             SalesWithoutNDS = r2.SalesWithoutNDS,
-                             CountSal = r2.CountSal,
-                             DivName = r.DivName,
-                             GroupCode = r.GroupCode,
-                             GroupName = r.GroupName
-                     });
+                    IQueryable<SalesEnt> res4 = QueryForGetSales(stDt, endDt, db);
                     SalesModel tmp = new SalesModel();
                     tmp.Date = stDt;
                     tmp.Sales = res4.ToList();
@@ -890,6 +801,148 @@ namespace ProgressoExpert.DataAccess
                 
                 return result;
             }
+        }
+
+        public static List<SalesModel> GetSalesOneQuery(DateTime stDate, DateTime endDate)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                List<SalesModel> result = new List<SalesModel>();
+
+                //только инфа по группам и производителям или как их
+                IQueryable<SalesEnt> res4 = QueryForGetSales(stDate, endDate, db);
+                SalesModel tmp = new SalesModel();
+                tmp.Date = stDate;
+                tmp.Sales = res4.ToList();
+                if (tmp.Sales.Count != 0)
+                    result.Add(tmp);
+
+                return result;
+            }
+        }
+
+        private static IQueryable<SalesEnt> QueryForGetSales(DateTime stDate, DateTime endDate, dbEntities db)
+        {
+            var res = (from r77 in db.C_Reference77
+                       join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
+                       select new SalesEnt
+                       {
+                           refId = r77.C_IDRRef,
+                           ClientRefId = new byte[] { },
+                           SalersRefId = new byte[] { },
+                           CostPrise = decimal.Zero,
+                           CountPur = decimal.Zero,
+                           SalesWithoutNDS = decimal.Zero,
+                           CountSal = decimal.Zero,
+                           DivName = r77.C_Description,
+                           GroupCode = r78.C_Code,
+                           GroupName = r78.C_Description,
+                           BuyerCode = string.Empty,
+                           BuyerName = string.Empty
+                       }
+                                        );
+
+            //Себестоимость за период + кол-во сколько поставили(в C_AccumRgTn10122) +  сам поставщик (C_Value1_RRRef)
+            var res1 = (from s888 in db.C_AccRgAT210888
+                        where s888.C_Period >= stDate && s888.C_Period < endDate
+                        group s888 by s888.C_Value2_RRRef into g
+                        select new SalesEnt
+                        {
+                            refId = g.FirstOrDefault().C_Value2_RRRef,
+                            ClientRefId = new byte[] { },
+                            SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
+                            CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                            CountPur = decimal.Zero,
+                            SalesWithoutNDS = decimal.Zero,
+                            CountSal = decimal.Zero,
+                            DivName = string.Empty,
+                            GroupCode = string.Empty,
+                            GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
+                        });
+
+            //Цена продажи без ндс
+            var res2 = (from r27 in db.C_AccumRgTn10472
+                        where r27.C_Period >= stDate && r27.C_Period < endDate
+                        group r27 by r27.C_Fld10452_RRRef into g
+                        select new SalesEnt
+                        {
+                            refId = g.FirstOrDefault().C_Fld10452_RRRef,
+                            ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
+                            SalersRefId = new byte[] { },
+                            CostPrise = decimal.Zero,
+                            CountPur = decimal.Zero,
+                            SalesWithoutNDS = g.Sum(_ => _.C_Fld10464),
+                            CountSal = g.Sum(_ => _.C_Fld10462),
+                            DivName = string.Empty,
+                            GroupCode = string.Empty,
+                            GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
+                        }
+                        );
+
+            // количество сколько поступило на конечную дату
+            var res3 = (from s888 in db.C_AccumRgTn10122
+                        where s888.C_Period < endDate
+                        group s888 by s888.C_Fld10107_RRRef into g
+                        select new SalesEnt
+                        {
+                            refId = new byte[] { },
+                            ClientRefId = new byte[] { },
+                            SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
+                            CostPrise = decimal.Zero,
+                            CountPur = g.Sum(_ => _.C_Fld10117),
+                            SalesWithoutNDS = decimal.Zero,
+                            CountSal = decimal.Zero,
+                            DivName = string.Empty,
+                            GroupCode = string.Empty,
+                            GroupName = string.Empty,
+                            BuyerCode = string.Empty,
+                            BuyerName = string.Empty
+                        });
+
+            //покупатели 
+            var res4 = (from s888 in db.C_Reference67
+                        select new SalesEnt
+                        {
+                            refId = new byte[] { },
+                            ClientRefId = s888.C_IDRRef,
+                            SalersRefId = new byte[] { },
+                            CostPrise = decimal.Zero,
+                            CountPur = decimal.Zero,
+                            SalesWithoutNDS = decimal.Zero,
+                            CountSal = decimal.Zero,
+                            DivName = string.Empty,
+                            GroupCode = string.Empty,
+                            GroupName = string.Empty,
+                            BuyerCode = s888.C_Code,
+                            BuyerName = s888.C_Description
+                        });
+
+            var res5 =
+                (from r in res
+                 join r1 in res1 on r.refId equals r1.refId
+                 join r2 in res2 on r.refId equals r2.refId
+                 join r3 in res3 on r.refId equals r3.SalersRefId
+                 join r4 in res4 on r2.ClientRefId equals r4.ClientRefId
+                 select new SalesEnt
+                 {
+                     refId = r.refId,
+                     ClientRefId = r2.ClientRefId,
+                     SalersRefId = r1.SalersRefId,
+                     CostPrise = r1.CostPrise,
+                     CountPur = r3.CountPur,
+                     SalesWithoutNDS = r2.SalesWithoutNDS,
+                     CountSal = r2.CountSal,
+                     DivName = r.DivName,
+                     GroupCode = r.GroupCode,
+                     GroupName = r.GroupName,
+                     BuyerCode = r4.BuyerCode,
+                     BuyerName = r4.BuyerName
+                 });
+            return res5;
         }
 
         #region SubQuery

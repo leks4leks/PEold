@@ -1,4 +1,5 @@
-﻿using ProgressoExpert.Models.Models.BaseVM;
+﻿using ProgressoExpert.Models.Entities;
+using ProgressoExpert.Models.Models.BaseVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -169,7 +170,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         private string _netProfitAnSecond;
         
         /// <summary>
-        /// Структура компании
+        /// Диагранма продажи
         /// </summary>
         public Dictionary<string, decimal> SalesDiagram
         {
@@ -209,6 +210,26 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
             set { SetValue(ref _structureCompanyDiagram, value, "StructureCompanyDiagram"); }
         }
         private Dictionary<string, decimal> _structureCompanyDiagram;
+        
+        /// <summary>
+        /// Продажи сгрупированные по группам
+        /// </summary>
+        public List<SalesEnt> gSales
+        {
+            get { return _gSales; }
+            set { SetValue(ref _gSales, value, "gSales"); }
+        }
+        private List<SalesEnt> _gSales;
+
+        /// <summary>
+        /// Продажи сгрупированные по клиентам
+        /// </summary>
+        public List<SalesEnt> gSalesByClient
+        {
+            get { return _gSalesByClient; }
+            set { SetValue(ref _gSalesByClient, value, "gSalesByClient"); }
+        }
+        private List<SalesEnt> _gSalesByClient;       
 
 
         /// <summary>
