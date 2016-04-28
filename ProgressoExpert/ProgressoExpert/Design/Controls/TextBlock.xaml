@@ -458,6 +458,13 @@
     </Style>
 
 
+    <Style x:Key="TextBlockStyle18BoldCenterCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
 
 
 
@@ -709,22 +716,28 @@
     </Style>
 
 
-    <Style x:Key="TextBlockStyle14Green5Bold" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+    <Style x:Key="TextBlockStyle14Green5BoldCenterCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Green5}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-    
-    <Style x:Key="TextBlockStyle14Blue8Bold" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+
+    <Style x:Key="TextBlockStyle14Blue8BoldCenterCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Blue8}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-    
-    <Style x:Key="TextBlockStyle14Orange1Bold" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+
+    <Style x:Key="TextBlockStyle14Orange1BoldCenterCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Orange1}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
     
     <Style x:Key="TextBlockStyle14BoldCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">

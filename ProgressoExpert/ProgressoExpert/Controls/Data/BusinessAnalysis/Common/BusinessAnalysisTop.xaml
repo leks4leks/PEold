@@ -37,13 +37,13 @@
                 <TextBlock Text="Продажи" Style="{StaticResource TextBlock18LeftCenter}" Margin="10, 0, 0, 0"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="1 508 900" Style="{StaticResource TextBlock18Bold}"/>
+                <TextBlock Text="{Binding Sales, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Bold}"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="+5%" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Text="{Binding SalesAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text=" +3%" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Text="{Binding SalesAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">

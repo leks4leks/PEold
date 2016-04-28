@@ -21,10 +21,11 @@
             </Grid.RowDefinitions>
             
             <Grid Grid.Row="0">
-                <TextBlock Text="Структура оборотного капитала" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
+                <TextBlock Text="Структура оборотного капитала" Style="{StaticResource TextBlock14BoldLeftCenter}"
+                           Margin="60,0,0,0"/>
             </Grid>
-            
-            <Grid Grid.Row="1">
+
+            <Grid Grid.Row="1" Margin="20,0,0,0">
                 <WindowsFormsHost>
                     <dvc:Chart x:Name="chart" Palette="EarthTones">
                     </dvc:Chart>
@@ -32,7 +33,7 @@
             </Grid>
         </Grid>
         
-        <Grid Grid.Row="1">
+        <Grid Margin="50,10,30,10" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" MaxHeight="20"/>
                 <RowDefinition Height="*" MaxHeight="20"/>
@@ -114,10 +115,11 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <TextBlock Text="Соотношение дебиторской и кредиторской задолженности" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
+                <TextBlock Text="Соотношение дебиторской и кредиторской задолженности" Style="{StaticResource TextBlock14BoldLeftCenter}"
+                           Margin="60,0,0,0"/>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="20,0,0,0">
                 <WindowsFormsHost>
                     <dvc:Chart x:Name="chart2" Palette="EarthTones">
                     </dvc:Chart>

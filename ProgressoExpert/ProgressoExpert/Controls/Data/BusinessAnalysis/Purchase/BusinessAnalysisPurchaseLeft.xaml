@@ -52,14 +52,15 @@
                 </StackPanel>
             </StackPanel>
 
-            <Grid Grid.Row="0" Grid.Column="1">
+            <Rectangle Grid.Column="1" Grid.Row="0" Style="{StaticResource RectangleGray3White}"/>
+            <Grid Grid.Column="1" Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="75*"/>
-                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RectangleStyleGray3}"/>
                 <Grid Grid.Column="0">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Style="{StaticResource StackPanelStyleStretchVertical}" Width="150" HorizontalAlignment="Center"
+                            Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="Max." Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
                             <TextBlock Text="закуп" Style="{StaticResource TextBlockStyle10ContentTopBoldOrange1}"
@@ -71,17 +72,20 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}" />
+                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
+
+
+            <Rectangle Grid.Column="1" Grid.Row="1" Style="{StaticResource RectangleGray3White}"/>
+            <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="75*"/>
-                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RectangleStyleGray3}"/>
                 <Grid Grid.Column="0">
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Style="{StaticResource StackPanelStyleStretchVertical}" Width="150" HorizontalAlignment="Center"
+                            Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="Средний" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
                             <TextBlock Text="закуп" Style="{StaticResource TextBlockStyle10ContentTopBoldOrange1}"
@@ -93,7 +97,7 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}" />
+                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
 
@@ -106,7 +110,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock Text="Закуп по видам товара vs Продажи" Style="{StaticResource TextBlock14BoldLeftCenter}"/>
+                <TextBlock Text="Закуп по видам товара vs Продажи" Style="{StaticResource TextBlock14BoldLeftCenter}" Margin="10, 0, 0, 0"/>
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>

@@ -162,7 +162,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
                 Name = "Legend",
                 Alignment = System.Drawing.StringAlignment.Center,
                 Docking = Docking.Right,
-                Font = new System.Drawing.Font("Arial", 10)
+                Font = new System.Drawing.Font("Arial", 9)
             };
             chart3.Legends.Add(legend);
 
@@ -233,21 +233,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             var chartArea = new ChartArea() { Name = "ChartArea" };
             chart4.ChartAreas.Add(chartArea);
 
-            var legend = new Legend()
-            {
-                Name = "Legend",
-                Alignment = System.Drawing.StringAlignment.Center,
-                Docking = Docking.Right,
-                Font = new System.Drawing.Font("Arial", 10)
-            };
-            chart4.Legends.Add(legend);
-
             var series = new Series()
             {
                 Name = "Series1",
                 ChartType = SeriesChartType.Pie,
                 ChartArea = chartArea.Name,
-                Legend = legend.Name
             };
             chart4.Series.Add(series);
 
