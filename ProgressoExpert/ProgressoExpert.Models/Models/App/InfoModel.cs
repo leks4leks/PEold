@@ -14,11 +14,22 @@ namespace ProgressoExpert.Models.Models.App
         private Timer timer;
 
         /// <summary>
+        /// Наименование фирмы
+        /// </summary>
+        public string CompanyName
+        {
+            get { return _companyName; }
+            set { SetValue(ref _companyName, value, "CompanyName"); }
+        }
+        private string _companyName;
+
+
+        /// <summary>
         /// Текущий день недели
         /// </summary>
         public string DayOfWeek
         {
-            get { return _dayOfWeek; }
+            get { return _dayOfWeek.ToUpper(); }
             set { SetValue(ref _dayOfWeek, value, "DayOfWeek"); }
         }
         private string _dayOfWeek;
@@ -52,6 +63,8 @@ namespace ProgressoExpert.Models.Models.App
             timer = new Timer() { Interval = 500 };
             timer.Elapsed += timer_Elapsed;
             timer.Start();
+
+            CompanyName = "Наименование фирмы";
         }
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)

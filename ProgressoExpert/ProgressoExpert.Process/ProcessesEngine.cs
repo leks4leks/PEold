@@ -166,7 +166,7 @@ namespace ProgressoExpert.Process
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALF = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = Math.Round(RPALF / model.Cost * 100, 2);
-                    model.CostAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                    model.CostAnFirst = tmp;// (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
                 newStTodayDate = stTodayDate.AddYears(-1);
@@ -183,34 +183,34 @@ namespace ProgressoExpert.Process
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALS = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = Math.Round(RPALS / model.Cost * 100, 2);
-                    model.CostAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                    model.CostAnSecond = tmp;// (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
                 tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
-                model.SalesAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.SalesAnFirst = tmp;// (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
-                model.SalesAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.SalesAnSecond = tmp;//(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
-                model.CostPriceAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.CostPriceAnFirst = tmp;//(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
-                model.CostPriceAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.CostPriceAnSecond = tmp;//(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 var GPFtmp = salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
-                tmp = Math.Round(GPFtmp / model.CostPrice * 100, 2);                
-                model.GrossProfitAnFirst = (GPFtmp > 1 ? (GPFtmp - 1).ToString() : (1 - GPFtmp).ToString()) + "%";
+                tmp = Math.Round(GPFtmp / model.CostPrice * 100, 2);
+                model.GrossProfitAnFirst = GPFtmp;// (GPFtmp > 1 ? (GPFtmp - 1).ToString() : (1 - GPFtmp).ToString()) + "%";
 
                 var GPStmp = salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
                 tmp  = Math.Round(GPStmp / model.CostPrice * 100, 2);
-                model.GrossProfitAnSecond = (GPStmp > 1 ? (GPStmp - 1).ToString() : (1 - GPStmp).ToString()) + "%";
+                model.GrossProfitAnSecond = GPStmp;// (GPStmp > 1 ? (GPStmp - 1).ToString() : (1 - GPStmp).ToString()) + "%";
 
                 model.NetProfit = Math.Round(model.GrossProfit - model.Cost, 2);
                 tmp = Math.Round((GPFtmp - RPALF) / model.NetProfit * 100, 2);
-                model.NetProfitAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.NetProfitAnFirst = tmp;// (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 tmp = Math.Round((GPStmp - RPALS) / model.NetProfit * 100, 2);
-                model.NetProfitAnSecond= (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
+                model.NetProfitAnSecond = tmp;// (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
             }
             else
             {
@@ -223,7 +223,7 @@ namespace ProgressoExpert.Process
                 model.NetProfitAnSecond =
                 model.CostAnFirst =
                 model.CostAnSecond =
-                model.CostPriceAnFirst = "-";
+                model.CostPriceAnFirst = 0;// "-";
             }
             #endregion
 

@@ -57,6 +57,7 @@
     <!-- Red -->
     <SolidColorBrush x:Key="Red1" Color="#953735"/>
     <SolidColorBrush x:Key="Red2" Color="#ff0000"/>
+    <SolidColorBrush x:Key="Red3" Color="#c00000"/>
     
     <!-- Orange -->
     <SolidColorBrush x:Key="Orange1" Color="#e46c0a"/>

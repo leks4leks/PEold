@@ -1,4 +1,5 @@
-﻿using ProgressoExpert.Models.Models;
+﻿using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -45,50 +46,15 @@ namespace ProgressoExpert.Controls.Data.LiveStream
         /// </summary>
         public void LoadDiagram()
         {
-            var chartArea = new ChartArea() { Name = "ChartArea" };
-            chart.ChartAreas.Add(chartArea);
+            ChartUtils.AddChartArea(string.Empty, ref chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
+            
+            ChartUtils.AddSeries("Series1", SeriesChartType.Doughnut, ref chart);
 
-            var legend = new Legend()
-            {
-                Name = "Legend",
-                Alignment = System.Drawing.StringAlignment.Center,
-                Docking = Docking.Right,
-                Font = new System.Drawing.Font("Arial", 10)
-            };
-            chart.Legends.Add(legend);
-
-            var series = new Series()
-            {
-                Name = "Series1",
-                ChartType = SeriesChartType.Doughnut,
-                ChartArea = chartArea.Name,
-                Legend = legend.Name
-            };
-            chart.Series.Add(series);
-
-            var dataPointData = ViewModel.CycleMoneyDiagram["Деньги в кассе"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", dataPointData),
-                Font = new System.Drawing.Font("Arial", 10),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Деньги в кассе",
-                Color = System.Drawing.Color.FromArgb(137, 165, 78),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = ViewModel.CycleMoneyDiagram["Деньги на счетах"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", dataPointData),
-                Font = new System.Drawing.Font("Arial", 10),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Деньги на счетах",
-                Color = System.Drawing.Color.FromArgb(185, 205, 150),
-                BorderColor = System.Drawing.Color.White
-            });
+            ChartUtils.AddPoint("Series1", ViewModel.CycleMoneyDiagram["Деньги в кассе"], FormatUtils.Thousand, "Деньги в кассе",
+                System.Drawing.Color.FromArgb(137, 165, 78), ref chart);
+            ChartUtils.AddPoint("Series1", ViewModel.CycleMoneyDiagram["Деньги на счетах"], FormatUtils.Thousand, "Деньги на счетах",
+                System.Drawing.Color.FromArgb(185, 205, 150), ref chart);
         }
     }
 }

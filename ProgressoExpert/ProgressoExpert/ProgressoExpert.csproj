@@ -258,6 +258,9 @@
     <Compile Include="Controls\Data\ResBusiness\RB_StatementCashFlows.xaml.cs">
       <DependentUpon>RB_StatementCashFlows.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Utils\ChartUtils.cs" />
+    <Compile Include="Controls\Utils\FormatUtils.cs" />
+    <Compile Include="Controls\Utils\Utils.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\TabSizeConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">

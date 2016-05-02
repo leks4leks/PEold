@@ -13,7 +13,7 @@
         <Grid Grid.Column="0" Margin="10,10,20,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*" MaxWidth="100"/>
+                <ColumnDefinition Width="*" MaxWidth="200"/>
                 <ColumnDefinition Width="*" MaxWidth="100"/>
                 <ColumnDefinition Width="*" MaxWidth="100"/>
             </Grid.ColumnDefinitions>
@@ -33,70 +33,70 @@
             <Rectangle  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"  Style="{StaticResource RectangleGray3Transparent}"/>
             <Rectangle  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"  Style="{StaticResource RectangleGray3Transparent}"/>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">
+            <Grid Grid.Row="0" Grid.Column="0">
                 <TextBlock Text="Продажи" Style="{StaticResource TextBlock18LeftCenter}" Margin="10, 0, 0, 0"/>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="{Binding Sales, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Bold}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="{Binding SalesAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="{Binding SalesAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="{Binding Sales, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="2">
+                <TextBlock Name="SalesAnFirstTb" Text="{Binding SalesAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="3">
+                <TextBlock Name="SalesAnSecondTb" Text="{Binding SalesAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">
+            <Grid Grid.Row="1" Grid.Column="0">
                 <TextBlock Text="Себестоимость" Style="{StaticResource TextBlock18LeftCenter}" Margin="10, 0, 0, 0"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="1 508 900" Style="{StaticResource TextBlock18Bold}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="+5%" Style="{StaticResource TextBlockCenterDarkRed}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text=" +3%" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="{Binding GrossProfitAnSecond, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2">
+                <TextBlock Name="CostPriceAnFirstTb" Text="{Binding CostPriceAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3">
+                <TextBlock Name="CostPriceAnSecondTb" Text="{Binding CostPriceAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">
+            <Grid Grid.Row="2" Grid.Column="0">
                 <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock18Blue8LeftCenter}" Margin="10, 0, 0, 0"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="1 508 900" Style="{StaticResource TextBlock18BoldBlue8}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="+5%" Style="{StaticResource TextBlockCenterDarkRed}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text=" +3%" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="{Binding GrossProfit, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldBlue8CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <TextBlock Name="GrossProfitAnFirstTb" Text="{Binding GrossProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3">
+                <TextBlock Name="GrossProfitAnSecondTb" Text="{Binding GrossProfitAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="3" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">
+            <Grid Grid.Row="3" Grid.Column="0">
                 <TextBlock Text="Расходы" Style="{StaticResource TextBlock18LeftCenter}" Margin="10, 0, 0, 0"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="1 508 900" Style="{StaticResource TextBlock18Bold}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="+5%" Style="{StaticResource TextBlockCenterDarkRed}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text=" +3%" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <TextBlock Text="{Binding Cost, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2">
+                <TextBlock Name="CostAnFirstTb" Text="{Binding CostAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="3">
+                <TextBlock Name="CostAnSecondTb" Text="{Binding CostAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+            </Grid>
 
-            <StackPanel Grid.Row="4" Grid.Column="0" Style="{StaticResource StackPanelVerticalCenter}">
+            <Grid Grid.Row="4" Grid.Column="0">
                 <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock18Blue11LeftCenter}" Margin="10, 0, 0, 0"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="1" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="1 508 900" Style="{StaticResource TextBlock18BoldBlue11}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="2" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text="+5%" Style="{StaticResource TextBlockCenterDarkRed}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="3" Style="{StaticResource StackPanelVerticalHorizontalCenter}">
-                <TextBlock Text=" +3%" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
-            </StackPanel>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="1">
+                <TextBlock Text="{Binding NetProfit, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldBlue11CenterCenter}"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="2">
+                <TextBlock Name="NetProfitAnFirstTb" Text="{Binding NetProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="3">
+                <TextBlock Name="NetProfitAnSecondTb" Text="{Binding NetProfitAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+            </Grid>
         </Grid>
 
         <Grid Grid.Column="1" Margin="20,10,10,10">
@@ -122,13 +122,13 @@
                 <Border Grid.Row="0" BorderThickness="1,1,0,0" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Оборотные активы" Style="{StaticResource TextBlock18CenterCenter}"/>
-                        <TextBlock Text="30" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
+                        <TextBlock Name="CurrentAssetsTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="1" BorderThickness="1,1,0,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Долгосрочные активы" Style="{StaticResource TextBlock18CenterCenter}"/>
-                        <TextBlock Text="30" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
+                        <TextBlock Name="LongTermAssetsTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -143,19 +143,19 @@
                 <Border Grid.Row="0" BorderThickness="1,1,1,0" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Текущая задолженность" Style="{StaticResource TextBlock18CenterCenter}"/>
-                        <TextBlock Text="30" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
+                        <TextBlock Name="CurrentDebtTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="1" BorderThickness="1,1,1,0" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Долгосрочная задолженность" Style="{StaticResource TextBlock18CenterCenter}"/>
-                        <TextBlock Text="30" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
+                        <TextBlock Name="LongTermDebtTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
                 <Border Grid.Row="2" BorderThickness="1,1,1,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Собственный капитал" Style="{StaticResource TextBlock18CenterCenter}"/>
-                        <TextBlock Text="30" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
+                        <TextBlock Name="EquityTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
             </Grid>

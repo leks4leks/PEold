@@ -19,6 +19,14 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldGreen0CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Green0}" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock20BoldCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -45,6 +53,14 @@
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Green0}" />
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock17BoldRed3LeftCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Red3}" />
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
@@ -176,16 +192,39 @@
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldBlue8" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Blue8}"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldBlue8CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Blue8}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldBlue11" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Blue11}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldBlue11CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Blue11}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock12BoldGray2" BasedOn="{StaticResource TextBlockStyle}">
@@ -466,7 +505,13 @@
     </Style>
 
 
-
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18RBolded3CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Red3}" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
 
 
 
