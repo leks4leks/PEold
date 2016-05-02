@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Globalization;
+using ProgressoExpert.Models.Models.BusinessAnalysis;
+using ProgressoExpert.Controls.Utils;
 
 namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
 {
@@ -23,99 +25,52 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
     /// </summary>
     public partial class BusinessAnalysisSalesBottom : UserControl
     {
+        SalesBusinessAnalysis ViewModel;
+
         public BusinessAnalysisSalesBottom()
         {
             InitializeComponent();
-            LoadDiagram();
-            LoadDiagram2();
-            LoadDiagram4();
+        }
+
+        public void DataBind(SalesBusinessAnalysis model)
+        {
+            ViewModel = (SalesBusinessAnalysis)model;
+            this.DataContext = (SalesBusinessAnalysis)model;
+            if (ViewModel.DynamicsSalesDiagram != null && ViewModel.DynamicsPaymentDiagram != null)
+            {
+                LoadDiagram();
+            }
+            if (ViewModel.StructureGrossProfitClientDiagram != null && ViewModel.StructureGrossProfitClientDiagram.Count > 0)
+            {
+                LoadDiagram4();
+            }
+            if (ViewModel.StructureGrossProfitClientInfo != null && ViewModel.StructureGrossProfitClientInfo.Count > 0)
+            {
+                UpdateTable2();
+            };
         }
 
         public void LoadDiagram()
         {
-            var chartArea = new ChartArea() { Name = "ChartArea" };
-            chartArea.AxisX.LabelStyle.Interval = 1;
-            chartArea.AxisX.LabelStyle.Interval = 1;
-            chartArea.AxisX.MajorGrid.LineWidth = 0;
-            chartArea.AxisY.MajorGrid.LineWidth = 0;
-            chartArea.AxisY.LabelStyle.Enabled = false;
-            chartArea.AxisY.MajorTickMark.Enabled = false;
-            chartArea.AxisY.MinorTickMark.Enabled = false;
-            chartArea.AxisY.LineWidth = 0;
-            chartArea.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            chart.ChartAreas.Add(chartArea);
+            //var chartArea = new ChartArea() { Name = "ChartArea" };
+            //chartArea.AxisX.LabelStyle.Interval = 1;
+            //chartArea.AxisX.LabelStyle.Interval = 1;
+            //chartArea.AxisX.MajorGrid.LineWidth = 0;
+            //chartArea.AxisY.MajorGrid.LineWidth = 0;
+            //chartArea.AxisY.LabelStyle.Enabled = false;
+            //chartArea.AxisY.MajorTickMark.Enabled = false;
+            //chartArea.AxisY.MinorTickMark.Enabled = false;
+            //chartArea.AxisY.LineWidth = 0;
+            //chartArea.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
+            //chart.ChartAreas.Add(chartArea);
 
+            chart.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
+            ChartUtils.AddChartArea(string.Empty, ref chart, 0, 0, 1, 1, true, false, false, false);
 
-            var series = new Series()
-            {
-                Name = "Series1",
-                ChartType = SeriesChartType.Column,
-                ChartArea = chartArea.Name,
-                IsValueShownAsLabel = true,
-                LegendText = "Продажи",
-                Color = System.Drawing.Color.FromArgb(0, 176, 80),
-                BorderColor = System.Drawing.Color.White
-            };
-
-            Dictionary<string, int> seriesData1 = new Dictionary<string, int>();
-            seriesData1.Add("янв", 5600);
-            seriesData1.Add("фев", 3900);
-            seriesData1.Add("мар", 6800);
-            seriesData1.Add("апр", 11800);
-            seriesData1.Add("май", 9300);
-            seriesData1.Add("июн", 2900);
-            seriesData1.Add("июл", 3800);
-            seriesData1.Add("авг", 4100);
-            seriesData1.Add("сен", 10500);
-            seriesData1.Add("окт", 7800);
-            seriesData1.Add("ноя", 6300);
-            seriesData1.Add("дек", 12700);
-            foreach (KeyValuePair<string, int> data in seriesData1)
-            {
-                series.Points.AddXY(data.Key, data.Value);
-                var _point = series.Points.Last();
-                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N0}", _point.YValues[0]);
-                _point.Font = new System.Drawing.Font("Arial", 10);
-            }
-
-            chart.Series.Add(series);
-
-
-            var series2 = new Series()
-            {
-                Name = "Series2",
-                ChartType = SeriesChartType.Column,
-                ChartArea = chartArea.Name,
-                IsValueShownAsLabel = true,
-                LegendText = "Оплаты",
-                Color = System.Drawing.Color.FromArgb(147, 169, 207),
-                BorderColor = System.Drawing.Color.White
-            };
-
-
-            Dictionary<string, int> seriesData2 = new Dictionary<string, int>();
-
-            seriesData2.Add("янв", 5500);
-            seriesData2.Add("фев", 3700);
-            seriesData2.Add("мар", 6400);
-            seriesData2.Add("апр", 9400);
-            seriesData2.Add("май", 7700);
-            seriesData2.Add("июн", 2100);
-            seriesData2.Add("июл", 3600);
-            seriesData2.Add("авг", 3200);
-            seriesData2.Add("сен", 8400);
-            seriesData2.Add("окт", 10600);
-            seriesData2.Add("ноя", 7000);
-            seriesData2.Add("дек", 5000);
-
-            foreach (KeyValuePair<string, int> data in seriesData2)
-            {
-                series2.Points.AddXY(data.Key, data.Value);
-                var _point = series2.Points.Last();
-                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N0}", _point.YValues[0]);
-                _point.Font = new System.Drawing.Font("Arial", 10);
-            }
-            chart.Series.Add(series2);
+            ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
+                ViewModel.DynamicsSalesDiagram, FormatUtils.Thousand, ref chart);
+            ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Оплаты", System.Drawing.Color.FromArgb(147, 169, 207),
+                ViewModel.DynamicsPaymentDiagram, FormatUtils.Thousand, ref chart);
         }
 
         public void LoadDiagram2()
@@ -129,8 +84,9 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
             chartArea.AxisY.MajorTickMark.Enabled = false;
             chartArea.AxisY.MinorTickMark.Enabled = false;
             chartArea.AxisY.LineWidth = 0;
-            chartArea.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
             chart2.ChartAreas.Add(chartArea);
+
+            //ChartUtils.AddChartArea(string.Empty, ref chart, 0, 0, 1, 1, true, false, false, false);
 
 
             var series = new Series()
@@ -245,102 +201,73 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
 
         public void LoadDiagram4()
         {
-            var chartArea = new ChartArea() { Name = "ChartArea" };
-            chart4.ChartAreas.Add(chartArea);
+            ChartUtils.AddChartArea(string.Empty, ref chart4);
 
-            var legend = new Legend()
+            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
+            ChartUtils.AddLegend(StringAlignment.Center, Docking.Right, ref chart4);
+
+            var index = 1;
+            foreach (var item in ViewModel.StructureGrossProfitClientDiagram)
             {
-                Name = "Legend",
-                Alignment = System.Drawing.StringAlignment.Center,
-                Docking = Docking.Right,
-                Font = new System.Drawing.Font("Arial", 10)
-            };
-            chart4.Legends.Add(legend);
+                System.Drawing.Color color;
+                switch (index)
+                {
+                    case 1:
+                        color = System.Drawing.Color.FromArgb(69, 114, 167);
+                        break;
+                    case 2:
+                        color = System.Drawing.Color.FromArgb(170, 70, 67);
+                        break;
+                    case 3:
+                        color = System.Drawing.Color.FromArgb(137, 165, 78);
+                        break;
+                    case 4:
+                        color = System.Drawing.Color.FromArgb(113, 88, 143);
+                        break;
+                    case 5:
+                        color = System.Drawing.Color.FromArgb(65, 152, 175);
+                        break;
+                    case 6:
+                        color = System.Drawing.Color.FromArgb(219, 132, 61);
+                        break;
+                    default:
+                        color = System.Drawing.Color.Red;
+                        break;
 
-            var series = new Series()
-            {
-                Name = "Series1",
-                ChartType = SeriesChartType.Pie,
-                ChartArea = chartArea.Name,
-                Legend = legend.Name
-            };
-            chart4.Series.Add(series);
+                };
+                index++;
+                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+            }
+        }
 
+        /// <summary>
+        /// Клиенты
+        /// </summary>
+        public void UpdateTable2()
+        {
+            Table2Name1Tb.Text = ViewModel.StructureGrossProfitClientInfo[0].Name;
+            Table2Sales1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Value);
+            Table2Payment1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Share);
 
-            Dictionary<string, decimal> seriesData1 = new Dictionary<string, decimal>();
+            Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
+            Table2Sales2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Value);
+            Table2Payment2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Share);
 
-            seriesData1.Add("Иванов", 25);
-            seriesData1.Add("Петров", 17);
-            seriesData1.Add("Сидоров", 10);
-            seriesData1.Add("Носков", 9);
-            seriesData1.Add("Дюжин", 8);
-            seriesData1.Add("Прочие", 31);
+            Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
+            Table2Sales3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Value);
+            Table2Payment3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Share);
 
-            var dataPointData = seriesData1["Иванов"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Иванов",
-                Color = System.Drawing.Color.FromArgb(69, 114, 167),
-                BorderColor = System.Drawing.Color.White
-            });
+            Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
+            Table2Sales4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Value);
+            Table2Payment4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Share);
 
-            dataPointData = seriesData1["Петров"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Петров",
-                Color = System.Drawing.Color.FromArgb(170, 70, 67),
-                BorderColor = System.Drawing.Color.White
-            });
+            Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
+            Table2Sales5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Value);
+            Table2Payment5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Share);
 
-            dataPointData = seriesData1["Сидоров"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Сидоров",
-                Color = System.Drawing.Color.FromArgb(137, 165, 78),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Носков"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Носков",
-                Color = System.Drawing.Color.FromArgb(113, 88, 143),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Дюжин"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Дюжин",
-                Color = System.Drawing.Color.FromArgb(65, 152, 175),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Прочие"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Прочие",
-                Color = System.Drawing.Color.FromArgb(219, 132, 61),
-                BorderColor = System.Drawing.Color.White
-            });
+            Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
+            Table2Sales6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Value);
+            Table2Payment6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Share);
         }
     }
 }

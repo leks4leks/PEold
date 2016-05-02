@@ -39,6 +39,10 @@ namespace ProgressoExpert.Controls.Data
             // Прибыль
             BusinessAnalysisProfitTop.DataBind(model.ProfitBA);
             BusinessAnalysisProfitBottom.DataBind(model.ProfitBA);
+
+            // Продажи
+            BusinessAnalysisSalesTop.DataBind(model.SalesBA);
+            BusinessAnalysisSalesBottom.DataBind(model.SalesBA);
         }
     }
 }

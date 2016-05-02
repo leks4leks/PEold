@@ -84,6 +84,9 @@ namespace ProgressoExpert.Controls.Utils
             chartArea.AxisY.MinorTickMark.Enabled = yMinorTickMarkEnabled;
 
             chartArea.AxisY.LabelStyle.Format = labelStyleFormat;
+
+            chartArea.BackColor = System.Drawing.Color.Transparent;
+
             _chart.ChartAreas.Add(chartArea);
         }
 
