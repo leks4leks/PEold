@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Models.Models.BusinessAnalysis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,29 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
     /// </summary>
     public partial class BusinessAnalysisSalesTop : UserControl
     {
+        SalesBusinessAnalysis ViewModel;
+
         public BusinessAnalysisSalesTop()
         {
             InitializeComponent();
+        }
+
+        public void DataBind(SalesBusinessAnalysis model)
+        {
+            ViewModel = (SalesBusinessAnalysis)model;
+            this.DataContext = (SalesBusinessAnalysis)model;
+            UpdateColors();
+        }
+
+        private void UpdateColors()
+        {
+            AveragePercentSaleGoodsTb.Style = ViewModel.AveragePercentSaleGoods >= 0
+                ? (Style)FindResource("TextBlockStyle19BoldGreen4Bottom")
+                : (Style)FindResource("TextBlockStyle19BoldRed3Bottom");
+
+            AveragePercentPaymentBuyerTb.Style = ViewModel.AveragePercentPaymentBuyer >= 0
+                ? (Style)FindResource("TextBlockStyle19BoldGreen4Bottom")
+                : (Style)FindResource("TextBlockStyle19BoldRed3Bottom");
         }
     }
 }

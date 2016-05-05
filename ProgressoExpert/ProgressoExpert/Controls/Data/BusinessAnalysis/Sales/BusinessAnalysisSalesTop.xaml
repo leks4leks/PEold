@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                <TextBlock Text="{Binding maxCountSaleGoods}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
             </Grid>
             <Grid Grid.Column="1">
                 <StackPanel Style="{StaticResource StackPanelStyleStretchVertical}" Width="150" HorizontalAlignment="Center"
@@ -51,7 +51,7 @@
                 <ColumnDefinition Width="80*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <TextBlock Text="8.4" Style="{StaticResource TextBlockStyle14ContentCenter}" />
+                <TextBlock Text="{Binding maxAverageCountSaleGoods}" Style="{StaticResource TextBlockStyle14ContentCenter}" />
             </Grid>
             <Grid Grid.Column="1">
                 <StackPanel Style="{StaticResource StackPanelStyleStretchVertical}" Width="150"
@@ -78,13 +78,19 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <TextBlock Text="+15%" Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}"
-                                           Margin="0,0,5,0"/>
-                    <TextBlock Text="15 000 000" Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
+                    <TextBlock Name="AveragePercentSaleGoodsTb" Text="{Binding AveragePercentSaleGoods, StringFormat={}{0}%, ConverterCulture=ru-RU}" 
+                               Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding SummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                               Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" VerticalAlignment="Top">
-                <TextBlock Text="+1 250 vs прошлый месяц" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <TextBlock Text="{Binding AverageSummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                               TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                    <TextBlock Text="vs прошлый месяц" Margin="5, 0, 0, 0" TextWrapping="Wrap"
+                               Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                </StackPanel>
             </Grid>
         </Grid>
 
@@ -98,13 +104,19 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                    <TextBlock Text="+15%" Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}"
-                                       Margin="0,0,5,0"/>
-                    <TextBlock Text="15 000 000" Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
+                    <TextBlock Name="AveragePercentPaymentBuyerTb" Text="{Binding AveragePercentPaymentBuyer, StringFormat={}{0}%, ConverterCulture=ru-RU}"
+                               Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
+                    <TextBlock Text="{Binding SummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                               Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" VerticalAlignment="Top">
-                <TextBlock Text="+1 250 vs прошлый месяц" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock Text="{Binding AverageSummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                               TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                    <TextBlock Text="vs прошлый месяц" Margin="5, 0, 0, 0" TextWrapping="Wrap"
+                               Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                </StackPanel>
             </Grid>
         </Grid>
 
@@ -118,7 +130,7 @@
                             Margin="20,0,0,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                         <TextBlock Text="Max." Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                        <TextBlock Text="продажи" Style="{StaticResource TextBlockStyle12BoldBlue8Bottom}"
+                        <TextBlock Text="оплаты" Style="{StaticResource TextBlockStyle12BoldBlue8Bottom}"
                                        Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -127,7 +139,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                <TextBlock Text="{Binding maxCountPaymentBuyer}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="4" Grid.Row="1">
@@ -140,7 +152,7 @@
                             Margin="20,0,0,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                         <TextBlock Text="Средние" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                        <TextBlock Text="продажи" Style="{StaticResource TextBlockStyle12BoldBlue8Bottom}"
+                        <TextBlock Text="оплаты" Style="{StaticResource TextBlockStyle12BoldBlue8Bottom}"
                                        Margin="5,0,0,0"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -149,7 +161,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                <TextBlock Text="{Binding maxAverageCountPaymentBuyer}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
             </Grid>
         </Grid>
     </Grid>

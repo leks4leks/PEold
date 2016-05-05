@@ -1,4 +1,5 @@
-﻿using ProgressoExpert.Models.Models;
+﻿using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -46,64 +47,13 @@ namespace ProgressoExpert.Controls.Data.LiveStream
         /// </summary>
         public void LoadDiagram()
         {
-            var chartArea = new ChartArea() { Name = "ChartArea" };
-            chartArea.AxisX.MajorGrid.LineWidth = 0;
-            chartArea.AxisY.MajorGrid.LineWidth = 0;
-            chartArea.AxisY.LabelStyle.Format = "# ##0,тыс";
-            chart.ChartAreas.Add(chartArea);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
 
-            var legend = new Legend()
-            {
-                Name = "Legend",
-                Alignment = System.Drawing.StringAlignment.Center,
-                Docking = Docking.Right,
-                Font = new System.Drawing.Font("Arial", 10)
-            };
-            chart.Legends.Add(legend);
-
-            var series = new Series()
-            {
-                Name = "Series1",
-                ChartType = SeriesChartType.Bar,
-                ChartArea = chartArea.Name,
-                Legend = legend.Name,
-                LegendText = "Прошлый месяц",
-                Color = System.Drawing.Color.FromArgb(250, 203, 180),
-                BorderColor = System.Drawing.Color.White,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (KeyValuePair<string, decimal> data in ViewModel.CurrentMonthDiagram)
-            {
-                series.Points.AddXY(data.Key, data.Value);
-                var _point = series.Points.Last();
-                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", _point.YValues[0]);
-                _point.Font = new System.Drawing.Font("Arial", 10);
-            }
-
-            chart.Series.Add(series);
-
-            var series2 = new Series()
-            {
-                Name = "Series2",
-                ChartType = SeriesChartType.Bar,
-                ChartArea = chartArea.Name,
-                Legend = legend.Name,
-                LegendText = "Текущий месяц",
-                Color = System.Drawing.Color.FromArgb(248, 170, 121),
-                BorderColor = System.Drawing.Color.White,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (KeyValuePair<string, decimal> data in ViewModel.LastMonthDiagram)
-            {
-                series2.Points.AddXY(data.Key, data.Value);
-                var _point = series2.Points.Last();
-                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), "{0:N2}", _point.YValues[0]);
-                _point.Font = new System.Drawing.Font("Arial", 10);
-            }
-
-            chart.Series.Add(series2);
+            ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Прошлый месяц", System.Drawing.Color.FromArgb(250, 203, 180),
+                ViewModel.CurrentMonthDiagram, FormatUtils.Thousand, ref chart);
+            ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Bar, "Текущий месяц", System.Drawing.Color.FromArgb(248, 170, 121),
+                ViewModel.LastMonthDiagram, FormatUtils.Thousand, ref chart);
         }
 
         public void UpdateColors()

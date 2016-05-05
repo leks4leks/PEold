@@ -7,13 +7,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="200"/>
@@ -24,26 +24,26 @@
         
         <!-- Наименование фирмы -->
         <Grid Grid.Column="0">
-            <Label>Наименование фирмы</Label>
+            <TextBlock Text="{Binding CompanyName}" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="12"/>
         </Grid>
 
         <!-- Сплиттер -->
         <Grid Grid.Column="1">
-            <GridSplitter Height="20" Width="1" Cursor="Arrow"/>
+            <GridSplitter Height="20" Width="1" Cursor="Arrow" Background="#FF797474"/>
         </Grid>
 
         <!-- Дата / время -->
         <Grid Grid.Column="2">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding DayOfWeek}" Margin="10 5 10 10"/>
-                <TextBlock Text="{Binding CurrentDate}" Margin="10 5 10 10"/>
-                <TextBlock Text="{Binding CurrentTime}" Margin="10 5 10 10"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding DayOfWeek}" Margin="10, 0, 0, 0" Foreground="#FF17375E" FontFamily="Arial" FontSize="15"/>
+                <TextBlock Text="{Binding CurrentDate}" Margin="10, 0, 0, 0" FontFamily="Arial" FontSize="15"/>
+                <TextBlock Text="{Binding CurrentTime}" Margin="10, 0, 0, 0" FontFamily="Arial" FontSize="15"/>
             </StackPanel>
         </Grid>
 
         <!-- Сплиттер -->
         <Grid Grid.Column="3">
-            <GridSplitter Height="Auto" Width="5"/>
+            <GridSplitter Height="20" Width="1" Cursor="Arrow" Background="#FF797474"/>
         </Grid>
 
         <!-- Котировки валют-->
@@ -53,7 +53,7 @@
 
         <!-- Сплиттер -->
         <Grid Grid.Column="5">
-            <GridSplitter Height="Auto" Width="5"/>
+            <GridSplitter Height="20" Width="1" Cursor="Arrow" Background="#FF797474"/>
         </Grid>
 
         <!-- Котировки нефти-->
@@ -63,7 +63,7 @@
 
         <!-- Сплиттер -->
         <Grid Grid.Column="7">
-            <GridSplitter Height="Auto" Width="5"/>
+            <GridSplitter Height="20" Width="1" Cursor="Arrow" Background="#FF797474"/>
         </Grid>
         
         <!-- Меню приложения-->

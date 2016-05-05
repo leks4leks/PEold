@@ -22,12 +22,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Валовая прибыль
         /// </summary>
-        public string GrossProfitAnFirst
+        public decimal GrossProfitAnFirst
         {
             get { return _grossProfitAnFirst; }
             set { SetValue(ref _grossProfitAnFirst, value, "GrossProfitAnFirst"); }
         }
-        private string _grossProfitAnFirst;
+        private decimal _grossProfitAnFirst;
         
        
         /// <summary>
@@ -43,12 +43,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Чистая прибыль
         /// </summary>
-        public string NetProfitAnFirst
+        public decimal NetProfitAnFirst
         {
             get { return _netProfitAnFirst; }
             set { SetValue(ref _netProfitAnFirst, value, "NetProfitAnFirst"); }
         }
-        private string _netProfitAnFirst;
+        private decimal _netProfitAnFirst;
                 
         /// <summary>
         /// Динамика валовой прибыли

@@ -27,12 +27,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// Сравнение идет по следующей формуле: (заданный период - предыдущий период)/предыдущий перод*100%. 
         /// Если значение положительное, то процент зеленого цвета, если отрицательное - красного.
         /// </summary>
-        public string SalesAnFirst
+        public decimal SalesAnFirst
         {
             get { return _salesAnFirst; }
             set { SetValue(ref _salesAnFirst, value, "SalesAnFirst"); }
         }
-        private string _salesAnFirst;
+        private decimal _salesAnFirst;
 
         /// <summary>
         /// Продажи
@@ -41,12 +41,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         ///Сравнение идет по следующей формуле: (заданный период - предыдущий аналогичный период)/предыдущий аналогичный перод*100%. 
         ///Если значение положительное, то процент зеленого цвета, если отрицательное - красного.
         /// </summary>
-        public string SalesAnSecond
+        public decimal SalesAnSecond
         {
             get { return _salesAnSecond; }
             set { SetValue(ref _salesAnSecond, value, "SalesAnSecond"); }
         }
-        private string _salesAnSecond;
+        private decimal _salesAnSecond;
 
         /// <summary>
         /// Валовая прибыль
@@ -61,22 +61,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Валовая прибыль
         /// </summary>
-        public string GrossProfitAnFirst
+        public decimal GrossProfitAnFirst
         {
             get { return _grossProfitAnFirst; }
             set { SetValue(ref _grossProfitAnFirst, value, "GrossProfitAnFirst"); }
         }
-        private string _grossProfitAnFirst;
+        private decimal _grossProfitAnFirst;
 
         /// <summary>
         /// Валовая прибыль
         /// </summary>
-        public string GrossProfitAnSecond
+        public decimal GrossProfitAnSecond
         {
             get { return _grossProfitAnSecond; }
             set { SetValue(ref _grossProfitAnSecond, value, "GrossProfitAnSecond"); }
         }
-        private string _grossProfitAnSecond;
+        private decimal _grossProfitAnSecond;
 
         /// <summary>
         /// Себестоимость
@@ -91,22 +91,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Себестоимость
         /// </summary>
-        public string CostPriceAnFirst
+        public decimal CostPriceAnFirst
         {
             get { return _costPriceAnFirst; }
             set { SetValue(ref _costPriceAnFirst, value, "CostPriceAnFirst"); }
         }
-        private string _costPriceAnFirst;
+        private decimal _costPriceAnFirst;
 
         /// <summary>
         /// Себестоимость
         /// </summary>
-        public string CostPriceAnSecond
+        public decimal CostPriceAnSecond
         {
             get { return _costPriceAnSecond; }
             set { SetValue(ref _costPriceAnSecond, value, "CostPriceAnSecond"); }
         }
-        private string _costPriceAnSecond;
+        private decimal _costPriceAnSecond;
 
         /// <summary>
         /// Расходы
@@ -121,22 +121,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Расходы
         /// </summary>
-        public string CostAnFirst
+        public decimal CostAnFirst
         {
             get { return _costAnFirst; }
             set { SetValue(ref _costAnFirst, value, "CostAnFirst"); }
         }
-        private string _costAnFirst;
+        private decimal _costAnFirst;
 
         /// <summary>
         /// Расходы
         /// </summary>
-        public string CostAnSecond
+        public decimal CostAnSecond
         {
             get { return _costAnSecond; }
             set { SetValue(ref _costAnSecond, value, "CostAnSecond"); }
         }
-        private string _costAnSecond;
+        private decimal _costAnSecond;
 
 
         /// <summary>
@@ -152,22 +152,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Чистая прибыль
         /// </summary>
-        public string NetProfitAnFirst
+        public decimal NetProfitAnFirst
         {
             get { return _netProfitAnFirst; }
             set { SetValue(ref _netProfitAnFirst, value, "NetProfitAnFirst"); }
         }
-        private string _netProfitAnFirst;
+        private decimal _netProfitAnFirst;
 
         /// <summary>
         /// Чистая прибыль
         /// </summary>
-        public string NetProfitAnSecond
+        public decimal NetProfitAnSecond
         {
             get { return _netProfitAnSecond; }
             set { SetValue(ref _netProfitAnSecond, value, "NetProfitAnSecond"); }
         }
-        private string _netProfitAnSecond;
+        private decimal _netProfitAnSecond;
         
         /// <summary>
         /// Диагранма продажи
@@ -202,7 +202,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
 
 
         /// <summary>
-        /// Диаграмма Средний оборотный капитал
+        /// Диаграмма Структура компании
         /// </summary>
         public Dictionary<string, decimal> StructureCompanyDiagram
         {

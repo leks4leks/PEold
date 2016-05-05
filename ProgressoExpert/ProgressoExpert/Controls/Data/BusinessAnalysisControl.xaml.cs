@@ -22,16 +22,27 @@ namespace ProgressoExpert.Controls.Data
     /// </summary>
     public partial class BusinessAnalysisControl : UserControl
     {
-        GeneralBusinessAnalysis ViewModel;
+        MainModel ViewModel;
         public BusinessAnalysisControl()
         {
             InitializeComponent();
         }
 
-        public void DataBind(GeneralBusinessAnalysis model)
+        public void DataBind(MainModel model)
         {
             ViewModel = model;
-            BusinessAnalysisTop.DataBind(model);
+            
+            // Общее
+            BusinessAnalysisTop.DataBind(model.GeneralBA);
+            BusinessAnalysisCommonBottom.DataBind(model.GeneralBA);
+
+            // Прибыль
+            BusinessAnalysisProfitTop.DataBind(model.ProfitBA);
+            BusinessAnalysisProfitBottom.DataBind(model.ProfitBA);
+
+            // Продажи
+            BusinessAnalysisSalesTop.DataBind(model.SalesBA);
+            BusinessAnalysisSalesBottom.DataBind(model.SalesBA);
         }
     }
 }
