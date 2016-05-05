@@ -37,11 +37,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
 
         private void UpdateColors()
         {
-            AveragePercentSaleGoodsTb.Style = ViewModel.AveragePercentSaleGoods >= 0
+            AveragePercentSaleGoodsTb.Style = ViewModel.DifPercentSaleGoods >= 0
                 ? (Style)FindResource("TextBlockStyle19BoldGreen4Bottom")
                 : (Style)FindResource("TextBlockStyle19BoldRed3Bottom");
 
-            AveragePercentPaymentBuyerTb.Style = ViewModel.AveragePercentPaymentBuyer >= 0
+            AveragePercentPaymentBuyerTb.Style = ViewModel.DifPercentPaymentBuyer >= 0
                 ? (Style)FindResource("TextBlockStyle19BoldGreen4Bottom")
                 : (Style)FindResource("TextBlockStyle19BoldRed3Bottom");
         }
