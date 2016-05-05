@@ -78,6 +78,20 @@ namespace ProgressoExpert.Models.Models
         }
         private DateTime _endDate;
 
+        public DateTime StartDateTemp
+        {
+            get { return _startDateTemp; }
+            set { SetValue(ref _startDateTemp, value, "StartDateTemp"); }
+        }
+        private DateTime _startDateTemp;
+
+        public DateTime EndDateTemp
+        {
+            get { return _endDateTemp; }
+            set { SetValue(ref _endDateTemp, value, "EndDateTemp"); }
+        }
+        private DateTime _endDateTemp;
+
         #region Visibility
 
         /// <summary>
