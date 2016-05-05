@@ -679,52 +679,24 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
+        public static List<GroupsEnt> GetAllAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group, List<string> GroupsCode)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                List<GroupsEnt> res = new List<GroupsEnt>();
+                List<string> codeGroups = new List<string>();
+                ContinGetAddzTr(stDate, endDate, GroupsCode, db, out res, out codeGroups);
+                return res;
+            }
+        }
+
         public static List<GroupsEnt> GetAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group, List<string> GroupsCode)
         {
             using (dbEntities db = new dbEntities())
             {
                 List<GroupsEnt> res = new List<GroupsEnt>();
                 List<string> codeGroups = new List<string>();
-                if (GroupsCode.Count() > 0)
-                {
-                    res = (from accEd in db.C_AccumRg9987
-                           join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
-                           join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
-                           join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                           where accEd.C_Period >= stDate && accEd.C_Period <= endDate && GroupsCode.Contains(refs.C_Code)
-                           select new GroupsEnt
-                           {
-                               Money = accEd.C_Fld10000,
-                               period = accEd.C_Period,
-                               GroupCode = refs.C_Code,
-                               en302 = en302.C_EnumOrder,
-                               en450 = en450.C_EnumOrder
-                           }).ToList();
-
-                    codeGroups = (from gg in db.C_Reference113
-                                  where GroupsCode.Contains(gg.C_Code)
-                                  select gg.C_Code).OrderBy(_ => _).ToList();
-                }
-                else
-                {
-                    res = (from accEd in db.C_AccumRg9987
-                           join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
-                           join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
-                           join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                           where accEd.C_Period >= stDate && accEd.C_Period <= endDate
-                           select new GroupsEnt
-                           {
-                               Money = accEd.C_Fld10000,
-                               period = accEd.C_Period,
-                               GroupCode = refs.C_Code,
-                               en302 = en302.C_EnumOrder,
-                               en450 = en450.C_EnumOrder
-                           }).ToList();
-
-                    codeGroups = (from gg in db.C_Reference113
-                                  select gg.C_Code).OrderBy(_ => _).ToList();
-                }
-                
+                ContinGetAddzTr(stDate, endDate, GroupsCode, db, out res, out codeGroups);
 
                 List<GroupsEnt> realres = new List<GroupsEnt>();
                 decimal money;
@@ -759,7 +731,48 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
+        private static void ContinGetAddzTr(DateTime stDate, DateTime endDate, List<string> GroupsCode, dbEntities db, out List<GroupsEnt> res, out List<string> codeGroups)
+        {
+            if (GroupsCode.Count() > 0)
+            {
+                res = (from accEd in db.C_AccumRg9987
+                       join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
+                       join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
+                       join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
+                       where accEd.C_Period >= stDate && accEd.C_Period <= endDate && GroupsCode.Contains(refs.C_Code)
+                       select new GroupsEnt
+                       {
+                           Money = accEd.C_Fld10000,
+                           period = accEd.C_Period,
+                           GroupCode = refs.C_Code,
+                           en302 = en302.C_EnumOrder,
+                           en450 = en450.C_EnumOrder
+                       }).ToList();
 
+                codeGroups = (from gg in db.C_Reference113
+                              where GroupsCode.Contains(gg.C_Code)
+                              select gg.C_Code).OrderBy(_ => _).ToList();
+            }
+            else
+            {
+                res = (from accEd in db.C_AccumRg9987
+                       join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
+                       join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
+                       join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
+                       where accEd.C_Period >= stDate && accEd.C_Period <= endDate
+                       select new GroupsEnt
+                       {
+                           Money = accEd.C_Fld10000,
+                           period = accEd.C_Period,
+                           GroupCode = refs.C_Code,
+                           en302 = en302.C_EnumOrder,
+                           en450 = en450.C_EnumOrder
+                       }).ToList();
+
+                codeGroups = (from gg in db.C_Reference113
+                              select gg.C_Code).OrderBy(_ => _).ToList();
+            }
+        }
 
         public static List<SalesModel> GetSales(DateTime stDate, DateTime endDate)
         {

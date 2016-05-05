@@ -143,24 +143,24 @@ namespace ProgressoExpert.Process
             model.CostPrice = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
             model.GrossProfit = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);            
             model.Cost = MainModel.ReportProfitAndLoss.Costs.Sum();
-            
+
             #region Прошлые периоды
-            DateTime newStTodayDate = new DateTime();
-            DateTime newEndTodayDate = new DateTime();
+            MainModel.newStTodayDate = new DateTime();
+            MainModel.newEndTodayDate = new DateTime();
             dif = (endTodayDate.Year - stTodayDate.Year) * 12 + (endTodayDate.Month - stTodayDate.Month);
             if (dif <= 12)
             {
                 decimal tmp = decimal.Zero;
-                newStTodayDate = stTodayDate.AddMonths(-dif);
-                newEndTodayDate = stTodayDate.AddMonths(1);
-                var salesFirst = Accessors.GetSales(newStTodayDate, newEndTodayDate);
+                MainModel.newStTodayDate = stTodayDate.AddMonths(-dif);
+                MainModel.newEndTodayDate = stTodayDate.AddMonths(1);
+                model.salesFirst = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate);
 
                 MainModel tmMain = new MainModel();
                 decimal RPALF = decimal.Zero;
                 if (model.Cost > 0)
                 {
-                    tmMain.StartDate = newStTodayDate;
-                    tmMain.EndDate = newEndTodayDate;
+                    tmMain.StartDate = MainModel.newStTodayDate;
+                    tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null); 
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
@@ -169,15 +169,15 @@ namespace ProgressoExpert.Process
                     model.CostAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
-                newStTodayDate = stTodayDate.AddYears(-1);
-                newEndTodayDate = endTodayDate.AddYears(-1);
-                var salesSecond = Accessors.GetSales(newStTodayDate, newEndTodayDate);
+                MainModel.newStTodayDate = stTodayDate.AddYears(-1);
+                MainModel.newEndTodayDate = endTodayDate.AddYears(-1);
+                var salesSecond = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate);
 
                 decimal RPALS = decimal.Zero;
                 if (model.Cost > 0)
                 {
-                    tmMain.StartDate = newStTodayDate;
-                    tmMain.EndDate = newEndTodayDate;
+                    tmMain.StartDate = MainModel.newStTodayDate;
+                    tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null); 
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
@@ -186,19 +186,19 @@ namespace ProgressoExpert.Process
                     model.CostAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
-                tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
+                tmp = Math.Round(model.salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
                 model.SalesAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
                 model.SalesAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
-                tmp = Math.Round(salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
+                tmp = Math.Round(model.salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
                 model.CostPriceAnFirst = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
                 model.CostPriceAnSecond = (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
-                var GPFtmp = salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
+                var GPFtmp = model.salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
                 tmp = Math.Round(GPFtmp / model.CostPrice * 100, 2);                
                 model.GrossProfitAnFirst = (GPFtmp > 1 ? (GPFtmp - 1).ToString() : (1 - GPFtmp).ToString()) + "%";
 
@@ -432,7 +432,128 @@ namespace ProgressoExpert.Process
 
         public static SalesBusinessAnalysis GetSalesBA(MainModel MainModel)
         {
+            //TODO
+            // структура компании перевести в проценты
             var model = new SalesBusinessAnalysis();
+            model.DynamicsSalesDiagram = new Dictionary<string, decimal>();
+            model.Goods1Diagram = new Dictionary<string, decimal>();
+            model.Goods2Diagram = new Dictionary<string, decimal>();
+            model.Goods3Diagram = new Dictionary<string, decimal>();
+            foreach (var mon in MainModel.Sales)
+            {
+                var tmp = mon.Sales.Select(_ => _.SalesWithoutNDS).Sum();
+
+                model.DynamicsSalesDiagram.Add(((Month)mon.Date.Month).ToString(), tmp);
+
+                var salGr = (from s in mon.Sales
+                             group s by s.GroupCode into g
+                             select new
+                             {
+                                 name = g.FirstOrDefault().GroupName,
+                                 money = g.Sum(_ => _.SalesWithoutNDS)
+                             }).OrderByDescending(_ => _.money).ToList();
+
+                model.Goods1Diagram.Add(((Month)mon.Date.Month).ToString(), salGr[0].money);
+                model.Goods2Diagram.Add(((Month)mon.Date.Month).ToString(), salGr[1].money);
+                model.Goods3Diagram.Add(((Month)mon.Date.Month).ToString(), salGr[2].money);
+                
+                if (tmp > model.maxCountSaleGoods)
+                {
+                    model.maxCountSaleGoods = Math.Round(tmp, 2);
+                    model.MonthOfMaxCountSaleGoods = ((Month)mon.Date.Month).ToString() + ", " + mon.Date.Year;
+                }        
+            }
+
+            model.SummSaleGoods = Math.Round(MainModel.Sales.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum() , 2);
+            model.maxAverageCountSaleGoods = Math.Round(model.SummSaleGoods / MainModel.Sales.Count(), 2);
+
+            var tmpDecimal = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum();
+            model.DifSummSaleGoods = Math.Round(model.SummSaleGoods - tmpDecimal, 2);
+            model.DifPercentSaleGoods = Math.Round(model.SummSaleGoods / tmpDecimal * 100, 2);
+            
+            MainModel.allADDSTranz = Accessors.GetAllAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
+
+            var rt = (from tt in MainModel.allADDSTranz
+                      group tt by new { tt.period.Month, tt.period.Year }  into g
+                       select new
+                       {
+                           mon = g.FirstOrDefault().period.Month,
+                           year = g.FirstOrDefault().period.Year,
+                           money = g.Sum(_ => _.Money)
+                       }).OrderByDescending(_ => _.year).ThenBy(_ => _.mon).ToList();
+
+            model.DynamicsPaymentDiagram = new Dictionary<string, decimal>();
+            rt.ForEach(_ => model.DynamicsPaymentDiagram.Add(((Month)_.mon).ToString(), _.money));
+
+            model.MonthOfMaxCountPaymentBuyer = ((Month)rt.OrderByDescending(_ => _.money).First().mon).ToString() + ", " + rt.OrderByDescending(_ => _.money).First().year;
+            model.maxAverageCountPaymentBuyer = Math.Round(rt.Sum(_ => _.money) / rt.Count(), 2);
+            model.maxCountPaymentBuyer = Math.Round(rt.OrderByDescending(_ => _.money).First().money, 2);
+            model.SummPaymentBuyer = Math.Round(rt.Sum(_ => _.money), 2);
+
+            MainModel.ADDSTranzPastPeriod = Accessors.GetAllAddsTranz(MainModel.newStTodayDate, MainModel.newEndTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
+
+            var rtPast = (from tt in MainModel.ADDSTranzPastPeriod
+                      group tt by new { tt.period.Month, tt.period.Year } into g
+                      select new
+                      {
+                          mon = g.FirstOrDefault().period.Month,
+                          year = g.FirstOrDefault().period.Year,
+                          money = g.Sum(_ => _.Money)
+                      }).OrderByDescending(_ => _.year).ThenBy(_ => _.mon).ToList();
+
+            tmpDecimal = rtPast.Sum(_ => _.money);
+            model.DifSummPaymentBuyer = Math.Round(model.SummPaymentBuyer - tmpDecimal, 2);
+            model.DifPercentPaymentBuyer = Math.Round(model.SummPaymentBuyer / tmpDecimal * 100, 2);
+
+            var salGrNow = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
+                         group s by s.GroupCode into g
+                         select new
+                         {
+                             name = g.FirstOrDefault().GroupName,
+                             money = g.Sum(_ => _.SalesWithoutNDS)
+                         }).OrderByDescending(_ => _.money).ToList();
+
+            var salGrPast = (from s in MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales)
+                         group s by s.GroupCode into g
+                         select new
+                         {
+                             name = g.FirstOrDefault().GroupName,
+                             money = g.Sum(_ => _.SalesWithoutNDS)
+                         }).OrderByDescending(_ => _.money).ToList();
+
+            model.Goods1Info = new FillGoodsModel();
+            model.Goods1Info.Name = salGrNow[0].name;
+            model.Goods1Info.Value = Math.Round(salGrNow[0].money, 2);
+            model.Goods1Info.pastValue = Math.Round(salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money, 2);
+            model.Goods1Info.Percent = Math.Round(salGrNow[0].money / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100, 2);
+
+            model.Goods2Info = new FillGoodsModel();
+            model.Goods2Info.Name = salGrNow[1].name;
+            model.Goods2Info.Value = Math.Round(salGrNow[1].money, 2);
+            model.Goods2Info.pastValue = Math.Round(salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money, 2);
+            model.Goods2Info.Percent = Math.Round(salGrNow[1].money / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
+
+            model.Goods3Info = new FillGoodsModel();
+            model.Goods3Info.Name = salGrNow[1].name;
+            model.Goods3Info.Value = Math.Round(salGrNow[2].money, 2);
+            model.Goods3Info.pastValue = Math.Round(salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money, 2);
+            model.Goods3Info.Percent = Math.Round(salGrNow[2].money / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);
+
+            var salCli = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
+                          group s by s.BuyerCode into g
+                          select new
+                          {
+                              name = g.FirstOrDefault().BuyerName,
+                              money = g.Sum(_ => _.SalesWithoutNDS)
+                          }
+                          ).OrderByDescending(_ => _.money).ToList();
+            model.StructureGrossProfitClientDiagram = new Dictionary<string, decimal>();
+            var generalSumm = salCli.Sum(_ => _.money);
+            for (var i = 0; i < 5; i++)
+            {
+                model.StructureGrossProfitClientDiagram.Add(salCli[i].name, Math.Round(salCli[i].money / generalSumm * 100, 2));
+            }
+            model.StructureGrossProfitClientDiagram.Add("Прочие", Math.Round(100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value), 2));
 
             return model;
 

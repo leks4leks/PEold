@@ -242,5 +242,16 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         }
         private Dictionary<string, decimal> _profitabilityDiagram;
         
+        /// <summary>
+        /// Продажи прошлого периода
+        /// </summary>
+        public List<SalesModel> salesFirst
+        {
+            get { return _salesFirst; }
+            set { SetValue(ref _salesFirst, value, "salesFirst"); }
+        }
+        private List<SalesModel> _salesFirst;
+        
+
     }
 }
