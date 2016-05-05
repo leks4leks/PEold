@@ -23,13 +23,14 @@ namespace ProgressoExpert
     {
         private bool IsStartDateSelect = true;
         MainModel ViewModel;
+        MainWindow MainWindow;
 
         public SelectPeriod()
         {
             InitializeComponent();
         }
 
-        public SelectPeriod(MainModel model)
+        public SelectPeriod(MainModel model, MainWindow mainWindow)
         {
             InitializeComponent();
             ViewModel = (MainModel)model;
@@ -37,12 +38,14 @@ namespace ProgressoExpert
             ViewModel.EndDateTemp = ViewModel.EndDate;
             DataContext = (MainModel)model;
             DateStartTb_MouseDown(this, null);
+            MainWindow = mainWindow;
         }
 
         private void ChangePeriodBtn_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.StartDate = ViewModel.StartDateTemp;
             ViewModel.EndDate = ViewModel.EndDateTemp;
+            MainWindow.UpdateData();
             CancelBtn_Click(this, null);
         }
 

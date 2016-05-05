@@ -74,20 +74,8 @@ namespace ProgressoExpert.Controls.App
 
         private void ShowUpdatePanelBtn_Click(object sender, RoutedEventArgs e)
         {
-            //if (ViewModel.ResBusinessVisibility)
-            //{
-            //    //TODO чота сделать
-            //    var stTodayDate = new DateTime(2013, 02, 01);
-            //    var endTodayDate = DateTime.Today;
-            //    var tmp = ProcessesEngine.GetResult(stTodayDate, endTodayDate);
-            //    ViewModel.BusinessResults = tmp.BusinessResults;
-            //    ViewModel.ReportProfitAndLoss = tmp.ReportProfitAndLoss;
-            //    ViewModel.Sales = tmp.Sales;
-            //    ViewModel.RatiosIndicatorsResult = tmp.RatiosIndicatorsResult;
-            //    ViewModel.ADDSTranz = tmp.ADDSTranz;
-            //}
-
-            SelectPeriod wnd = new SelectPeriod(ViewModel);
+            MainWindow win = (MainWindow)Window.GetWindow(this);
+            SelectPeriod wnd = new SelectPeriod(ViewModel, win);
             wnd.ShowDialog();
         }
     }
