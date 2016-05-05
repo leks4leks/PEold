@@ -39,11 +39,39 @@ namespace ProgressoExpert
             DateStartTb_MouseDown(this, null);
         }
 
+        private void ChangePeriodBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.StartDate = ViewModel.StartDateTemp;
+            ViewModel.EndDate = ViewModel.EndDateTemp;
+            CancelBtn_Click(this, null);
+        }
+
+
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.StartDateTemp = ViewModel.StartDate;
+            ViewModel.EndDateTemp = ViewModel.EndDate;
+            if (IsStartDateSelect)
+            {
+                DateStartTb_MouseDown(this, null);
+            }
+            else
+            {
+                DateEndTb_MouseDown(this, null);
+            }
+        }
+
+
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Windows[1].Close();
         }
 
+        /// <summary>
+        /// Кнопки Месяцы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MonthSelect(object sender, RoutedEventArgs e)
         {
             ToggleButton btn = sender as ToggleButton;
@@ -98,6 +126,11 @@ namespace ProgressoExpert
             CheckToggleButton(sender as ToggleButton);
         }
 
+        /// <summary>
+        /// Кнопки Кварталы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void QuarterSelect(object sender, RoutedEventArgs e)
         {
             ToggleButton btn = sender as ToggleButton;
@@ -120,6 +153,10 @@ namespace ProgressoExpert
             CheckToggleButton(btn);
         }
 
+        /// <summary>
+        /// Поменять месяц
+        /// </summary>
+        /// <param name="month"></param>
         private void ChangeMonth(int month)
         {
             if (IsStartDateSelect)
@@ -132,6 +169,10 @@ namespace ProgressoExpert
             }
         }
 
+        /// <summary>
+        /// Поменять год
+        /// </summary>
+        /// <param name="year"></param>
         private void ChangeYear(int year)
         {
             if (IsStartDateSelect)
@@ -140,36 +181,15 @@ namespace ProgressoExpert
             }
             else
             {
-                ViewModel.EndDateTemp = new DateTime(year, ViewModel.StartDateTemp.Month, 1);
+                ViewModel.EndDateTemp = new DateTime(year, ViewModel.EndDateTemp.Month, 1);
             }
         }
 
-        private void CheckToggleButton(ToggleButton selectedBtn)
-        {
-            CheckToggleBtnOnWrapPanel(this.Month1Wrap, selectedBtn);
-            CheckToggleBtnOnWrapPanel(this.Month2Wrap, selectedBtn);
-            CheckToggleBtnOnWrapPanel(this.QuarterWrap, selectedBtn);
-        }
-
-        private void CheckToggleBtnOnWrapPanel(WrapPanel panel, ToggleButton selectedBtn)
-        {
-            foreach (var item in panel.Children)
-            {
-                if (item.GetType() == typeof(ToggleButton))
-                {
-                    ToggleButton btn = item as ToggleButton;
-                    if (btn.Name == selectedBtn.Name)
-                    {
-                        btn.IsChecked = true;
-                    }
-                    else
-                    {
-                        btn.IsChecked = false;
-                    }
-                }
-            }
-        }
-
+        /// <summary>
+        /// Дата начала периода
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateStartTb_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DateStartTb.BorderBrush = Brushes.Blue;
@@ -178,6 +198,11 @@ namespace ProgressoExpert
             Configure(ViewModel.StartDateTemp.Month, ViewModel.StartDateTemp.Year);
         }
 
+        /// <summary>
+        /// Дата конца периода
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateEndTb_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DateStartTb.BorderBrush = Brushes.Black;
@@ -186,14 +211,12 @@ namespace ProgressoExpert
             Configure(ViewModel.EndDateTemp.Month, ViewModel.EndDateTemp.Year);
         }
 
-        private void YearSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (ViewModel != null)
-            {
-                ChangeYear(Convert.ToInt32(YearSlider.Value));
-            }
-        }
 
+        /// <summary>
+        /// Конфигурация кнопок по выбранной дате
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
         private void Configure(int month, int year)
         {
             switch (month)
@@ -238,5 +261,49 @@ namespace ProgressoExpert
 
             YearSlider.Value = year;
         }
+
+        /// <summary>
+        /// Выделить кнопку (Месяц/квартал)
+        /// </summary>
+        /// <param name="selectedBtn"></param>
+        private void CheckToggleButton(ToggleButton selectedBtn)
+        {
+            CheckToggleBtnOnWrapPanel(this.Month1Wrap, selectedBtn);
+            CheckToggleBtnOnWrapPanel(this.Month2Wrap, selectedBtn);
+            CheckToggleBtnOnWrapPanel(this.QuarterWrap, selectedBtn);
+        }
+
+        private void CheckToggleBtnOnWrapPanel(WrapPanel panel, ToggleButton selectedBtn)
+        {
+            foreach (var item in panel.Children)
+            {
+                if (item.GetType() == typeof(ToggleButton))
+                {
+                    ToggleButton btn = item as ToggleButton;
+                    if (btn.Name == selectedBtn.Name)
+                    {
+                        btn.IsChecked = true;
+                    }
+                    else
+                    {
+                        btn.IsChecked = false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Год
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void YearSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (ViewModel != null)
+            {
+                ChangeYear(Convert.ToInt32(YearSlider.Value));
+            }
+        }
+
     }
 }

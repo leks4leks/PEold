@@ -51,20 +51,20 @@
         <Grid Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="MonthWrap">
                 <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="Month1Wrap">
-                    <ToggleButton Name="Month1Btn"  Content="Январь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month2Btn" Content="Февраль" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month3Btn"  Content="Март" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month4Btn" Content="Апрель" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month5Btn"  Content="Май" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month6Btn" Content="Июнь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
+                    <ToggleButton Name="Month1Btn"  Content="Январь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month2Btn" Content="Февраль" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month3Btn"  Content="Март" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month4Btn" Content="Апрель" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month5Btn"  Content="Май" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month6Btn" Content="Июнь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="Month2Wrap">
-                    <ToggleButton Name="Month7Btn" Content="Июль" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month8Btn" Content="Август" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month9Btn"  Content="Сентябрь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month10Btn" Content="Октябрь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month11Btn" Content="Ноябрь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
-                    <ToggleButton Name="Month12Btn" Content="Декабрь" HorizontalAlignment="Left" Width="71" Checked="MonthSelect"/>
+                    <ToggleButton Name="Month7Btn" Content="Июль" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month8Btn" Content="Август" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month9Btn"  Content="Сентябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month10Btn" Content="Октябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month11Btn" Content="Ноябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month12Btn" Content="Декабрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
                 </WrapPanel>
             </WrapPanel>
         </Grid>
@@ -72,17 +72,17 @@
         <Grid Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">
 
             <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="QuarterWrap">
-                <ToggleButton Name="Quarter1Btn" Content="1 квартал" HorizontalAlignment="Left" Width="71" Checked="QuarterSelect"/>
-                <ToggleButton Name="Quarter2Btn" Content="2 квартал" HorizontalAlignment="Left" Width="71" Checked="QuarterSelect"/>
-                <ToggleButton Name="Quarter3Btn" Content="3 квартал" HorizontalAlignment="Left" Width="71" Checked="QuarterSelect"/>
-                <ToggleButton Name="Quarter4Btn" Content="4 квартал" HorizontalAlignment="Left" Width="71" Checked="QuarterSelect"/>
+                <ToggleButton Name="Quarter1Btn" Content="1 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
+                <ToggleButton Name="Quarter2Btn" Content="2 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
+                <ToggleButton Name="Quarter3Btn" Content="3 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
+                <ToggleButton Name="Quarter4Btn" Content="4 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
             </WrapPanel>
         </Grid>
 
         <Grid Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Выбрать" Width="100"/>
-                <Button Content="Очистить" Width="100" Margin="20,0,0,0"/>
+                <Button Name="ChangePeriodBtn" Content="Выбрать" Width="100" Click="ChangePeriodBtn_Click"/>
+                <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="20,0,0,0" Click="ClearBtn_Click"/>
                 <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="20,0,0,0" Click="CancelBtn_Click"/>
             </StackPanel>
         </Grid>

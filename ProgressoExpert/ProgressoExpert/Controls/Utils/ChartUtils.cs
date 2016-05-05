@@ -58,17 +58,24 @@ namespace ProgressoExpert.Controls.Utils
         }
 
         /// <summary>
-        /// Add ChartArea
+        /// 
         /// </summary>
-        /// <param name="labelStyleFormat">AxisY.LabelStyle.Format</param>
-        /// <param name="_chart">Chart</param>
-        /// <param name="xMajorGridLineWidth">AxisX.MajorGrid.LineWidth</param>
-        /// <param name="yMajorGridLineWidth">AxisY.MajorGrid.LineWidth</param>
-        /// <param name="xLabelStyleInterval">AxisX.LabelStyle.Interval</param>
+        /// <param name="labelStyleFormat"></param>
+        /// <param name="_chart"></param>
+        /// <param name="xMajorGridLineWidth"></param>
+        /// <param name="yMajorGridLineWidth"></param>
+        /// <param name="xLabelStyleInterval"></param>
+        /// <param name="yLabelStyleInterval"></param>
+        /// <param name="xLabelStyleEnabled"></param>
+        /// <param name="yLabelStyleEnabled"></param>
+        /// <param name="yMajorTickMarkEnabled"></param>
+        /// <param name="yMinorTickMarkEnabled"></param>
+        /// <param name="xLineWidth"></param>
+        /// <param name="yLineWidth"></param>
         public static void AddChartArea(string labelStyleFormat, ref Chart _chart, int xMajorGridLineWidth = 0,
             int yMajorGridLineWidth = 0, int xLabelStyleInterval = 0, int yLabelStyleInterval = 0,
             bool xLabelStyleEnabled = true, bool yLabelStyleEnabled = true, bool yMajorTickMarkEnabled = true,
-            bool yMinorTickMarkEnabled = true)
+            bool yMinorTickMarkEnabled = true, int xLineWidth = 1, int yLineWidth = 1)
         {
             var chartArea = new ChartArea() { Name = "ChartArea" };
             chartArea.AxisX.MajorGrid.LineWidth = xMajorGridLineWidth;
@@ -86,6 +93,9 @@ namespace ProgressoExpert.Controls.Utils
             chartArea.AxisY.LabelStyle.Format = labelStyleFormat;
 
             chartArea.BackColor = System.Drawing.Color.Transparent;
+
+            chartArea.AxisX.LineWidth = xLineWidth;
+            chartArea.AxisY.LineWidth = yLineWidth;
 
             _chart.ChartAreas.Add(chartArea);
         }

@@ -534,7 +534,7 @@ namespace ProgressoExpert.Process
             model.Goods2Info.Percent = Math.Round(salGrNow[1].money / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
 
             model.Goods3Info = new FillGoodsModel();
-            model.Goods3Info.Name = salGrNow[1].name;
+            model.Goods3Info.Name = salGrNow[2].name;
             model.Goods3Info.Value = Math.Round(salGrNow[2].money, 2);
             model.Goods3Info.pastValue = Math.Round(salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money, 2);
             model.Goods3Info.Percent = Math.Round(salGrNow[2].money / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);
