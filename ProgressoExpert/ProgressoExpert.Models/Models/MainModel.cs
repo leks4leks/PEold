@@ -35,7 +35,21 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _ADDSTranz, value, "ADDSTranz"); }
         }
         private List<GroupsEnt> _ADDSTranz;
-        
+
+        public List<GroupsEnt> allADDSTranz
+        {
+            get { return _allADDSTranz; }
+            set { SetValue(ref _allADDSTranz, value, "allADDSTranz"); }
+        }
+        private List<GroupsEnt> _allADDSTranz;
+
+        public List<GroupsEnt> ADDSTranzPastPeriod
+        {
+            get { return _ADDSTranzPastPeriod; }
+            set { SetValue(ref _ADDSTranzPastPeriod, value, "ADDSTranzPastPeriod"); }
+        }
+        private List<GroupsEnt> _ADDSTranzPastPeriod;
+
         public List<SalesModel> Sales
         {
             get { return _sales; }
@@ -91,6 +105,20 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _endDateTemp, value, "EndDateTemp"); }
         }
         private DateTime _endDateTemp;
+
+        public DateTime newStTodayDate
+        {
+            get { return _newStTodayDate; }
+            set { SetValue(ref _newStTodayDate, value, "newStTodayDate"); }
+        }
+        private DateTime _newStTodayDate;
+
+        public DateTime newEndTodayDate
+        {
+            get { return _newEndTodayDate; }
+            set { SetValue(ref _newEndTodayDate, value, "newEndTodayDate"); }
+        }
+        private DateTime _newEndTodayDate;
 
         #region Visibility
 

@@ -17,7 +17,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
             get { return _maxCountSaleGoods; }
             set { SetValue(ref _maxCountSaleGoods, value, "maxCountSaleGoods"); }
         }
-        private decimal _maxCountSaleGoods;
+        private decimal _maxCountSaleGoods = 0;
 
         /// <summary>
         /// месяц за который были макс продажи за период
@@ -52,22 +52,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// процент от прошлого периода
         /// </summary>
-        public decimal AveragePercentSaleGoods
+        public decimal DifPercentSaleGoods
         {
-            get { return _averagePercentSaleGoods; }
-            set { SetValue(ref _averagePercentSaleGoods, value, "AveragePercentSaleGoods"); }
+            get { return _difPercentSaleGoods; }
+            set { SetValue(ref _difPercentSaleGoods, value, "DifPercentSaleGoods"); }
         }
-        private decimal _averagePercentSaleGoods;
+        private decimal _difPercentSaleGoods;
 
         /// <summary>
         /// + сумм от прошлого периода
         /// </summary>
-        public decimal AverageSummSaleGoods
+        public decimal DifSummSaleGoods
         {
-            get { return _averageSummSaleGoods; }
-            set { SetValue(ref _averageSummSaleGoods, value, "AverageSummSaleGoods"); }
+            get { return _difSummSaleGoods; }
+            set { SetValue(ref _difSummSaleGoods, value, "DifSummSaleGoods"); }
         }
-        private decimal _averageSummSaleGoods;
+        private decimal _difSummSaleGoods;
         
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
             get { return _maxCountPaymentBuyer; }
             set { SetValue(ref _maxCountPaymentBuyer, value, "maxCountPaymentBuyer"); }
         }
-        private decimal _maxCountPaymentBuyer;
+        private decimal _maxCountPaymentBuyer = 0;
 
         /// <summary>
         /// месяц за который были макс оплат за период
@@ -113,22 +113,22 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// процент от прошлого периода
         /// </summary>
-        public decimal AveragePercentPaymentBuyer
+        public decimal DifPercentPaymentBuyer
         {
-            get { return _averagePercentPaymentBuyer; }
-            set { SetValue(ref _averagePercentPaymentBuyer, value, "AveragePercentPaymentBuyer"); }
+            get { return _difPercentPaymentBuyer; }
+            set { SetValue(ref _difPercentPaymentBuyer, value, "DifPercentPaymentBuyer"); }
         }
-        private decimal _averagePercentPaymentBuyer;
+        private decimal _difPercentPaymentBuyer;
 
         /// <summary>
         /// + сумм от прошлого периода
         /// </summary>
-        public decimal AverageSummPaymentBuyer
+        public decimal DifSummPaymentBuyer
         {
-            get { return _averageSummPaymentBuyer; }
-            set { SetValue(ref _averageSummPaymentBuyer, value, "AverageSummPaymentBuyer"); }
+            get { return _difSummPaymentBuyer; }
+            set { SetValue(ref _difSummPaymentBuyer, value, "DifSummPaymentBuyer"); }
         }
-        private decimal _averageSummPaymentBuyer;
+        private decimal _difSummPaymentBuyer;
         
         /// <summary>
         /// продажи - диаграмма продаж и оплат
@@ -170,26 +170,65 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         }
         private List<FillModel> _structureGrossProfitClientInfo;
 
+        /// <summary>
+        /// товар1 - продажи по видам товара
+        /// </summary>
+        public Dictionary<string, decimal> Goods1Diagram
+        {
+            get { return _doods1Diagram; }
+            set { SetValue(ref _doods1Diagram, value, "Goods1Diagram"); }
+        }
+        private Dictionary<string, decimal> _doods1Diagram;
 
-        ///// <summary>
-        ///// продажи по видам товара
-        ///// </summary>
-        //public Dictionary<string, decimal> DynamicsSalesDiagram
-        //{
-        //    get { return _dynamicsSalesDiagram; }
-        //    set { SetValue(ref _dynamicsSalesDiagram, value, "DynamicsSalesDiagram"); }
-        //}
-        //private Dictionary<string, decimal> _dynamicsSalesDiagram;
+        /// <summary>
+        /// товар2 - продажи по видам товара
+        /// </summary>
+        public Dictionary<string, decimal> Goods2Diagram
+        {
+            get { return _doods2Diagram; }
+            set { SetValue(ref _doods2Diagram, value, "Goods2Diagram"); }
+        }
+        private Dictionary<string, decimal> _doods2Diagram;
+        
+        /// <summary>
+        /// товар3 - продажи по видам товара
+        /// </summary>
+        public Dictionary<string, decimal> Goods3Diagram
+        {
+            get { return _doods3Diagram; }
+            set { SetValue(ref _doods3Diagram, value, "Goods3Diagram"); }
+        }
+        private Dictionary<string, decimal> _doods3Diagram;
 
-        ///// <summary>
-        ///// Оплаты - диаграмма продаж и оплат
-        ///// </summary>
-        //public Dictionary<string, decimal> DynamicsPaymentDiagram
-        //{
-        //    get { return _dynamicsPaymentDiagram; }
-        //    set { SetValue(ref _dynamicsPaymentDiagram, value, "DynamicsPaymentDiagram"); }
-        //}
-        //private Dictionary<string, decimal> _dynamicsPaymentDiagram;
+        /// <summary>
+        /// товар1 - инфо
+        /// </summary>
+        public FillGoodsModel Goods1Info
+        {
+            get { return _goods1Info; }
+            set { SetValue(ref _goods1Info, value, "Goods1Info"); }
+        }
+        private FillGoodsModel _goods1Info;
+
+        /// <summary>
+        /// товар2 - инфо
+        /// </summary>
+        public FillGoodsModel Goods2Info
+        {
+            get { return _goods2Info; }
+            set { SetValue(ref _goods2Info, value, "Goods2Info"); }
+        }
+        private FillGoodsModel _goods2Info;
+
+        /// <summary>
+        /// товар3 - инфо
+        /// </summary>
+        public FillGoodsModel Goods3Info
+        {
+            get { return _goods3Info; }
+            set { SetValue(ref _goods3Info, value, "Goods3Info"); }
+        }
+        private FillGoodsModel _goods3Info;
 
 
     }
