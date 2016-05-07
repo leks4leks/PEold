@@ -63,6 +63,9 @@ namespace ProgressoExpert
             ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
             ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
             ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
+            ViewModel.CostsBA = ProcessesEngine.GetCostsBA(ViewModel);
+            ViewModel.PurchaseBA = ProcessesEngine.GetPurchaseBA(ViewModel);
+            ViewModel.WorkingСapitalBA = ProcessesEngine.GetWorkingСapitalBA(ViewModel);
 
             // Стресс-тестирование
 
