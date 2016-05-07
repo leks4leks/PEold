@@ -78,7 +78,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <TextBlock Name="AveragePercentSaleGoodsTb" Text="{Binding AveragePercentSaleGoods, StringFormat={}{0}%, ConverterCulture=ru-RU}" 
+                    <TextBlock Name="AveragePercentSaleGoodsTb" Text="{Binding DifPercentSaleGoods, StringFormat={}{0}%, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
                     <TextBlock Text="{Binding SummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
@@ -86,7 +86,7 @@
             </Grid>
             <Grid Grid.Row="1" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <TextBlock Text="{Binding AverageSummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                    <TextBlock Text="{Binding DifSummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
                     <TextBlock Text="vs прошлый месяц" Margin="5, 0, 0, 0" TextWrapping="Wrap"
                                Style="{StaticResource TextBlockStyle12BoldGray2}"/>
@@ -104,7 +104,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                    <TextBlock Name="AveragePercentPaymentBuyerTb" Text="{Binding AveragePercentPaymentBuyer, StringFormat={}{0}%, ConverterCulture=ru-RU}"
+                    <TextBlock Name="AveragePercentPaymentBuyerTb" Text="{Binding DifPercentPaymentBuyer, StringFormat={}{0}%, ConverterCulture=ru-RU}"
                                Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
                     <TextBlock Text="{Binding SummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
@@ -112,7 +112,7 @@
             </Grid>
             <Grid Grid.Row="1" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock Text="{Binding AverageSummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
+                    <TextBlock Text="{Binding DifSummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
                     <TextBlock Text="vs прошлый месяц" Margin="5, 0, 0, 0" TextWrapping="Wrap"
                                Style="{StaticResource TextBlockStyle12BoldGray2}"/>

@@ -29,6 +29,7 @@ namespace ProgressoExpert.Controls.Data
         public void DataBind(MainModel vm)
         {
             RB_Balance.DataBind(vm);
+            RB_ProfitLossReport.DataBind(vm);
         }
     }
 }

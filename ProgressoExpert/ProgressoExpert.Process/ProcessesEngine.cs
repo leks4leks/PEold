@@ -15,7 +15,7 @@ namespace ProgressoExpert.Process
     public class ProcessesEngine
     {
         static int dif = 0;
-        public static MainModel GetResult(DateTime startDate, DateTime endDate)
+        public static MainModel InitMainModel(DateTime startDate, DateTime endDate)
         {
             var model = new MainModel();
 
@@ -27,18 +27,29 @@ namespace ProgressoExpert.Process
             model.StartTranz = MainAccessor.GetAllTrans(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(model.StartDate, model.EndDate);
 
-            model.BusinessResults = Accessors.GetBusinessResults(model); //Баланс
-            model.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(model); //Отчет о прибылях и убытках
-
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
             model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
-            model.RatiosIndicatorsResult = CalculateRatiosIndicators(startDate, endDate, model.BusinessResults, model.ReportProfitAndLoss);
-
             return model;
         }
+
+        public static BusinessResults GetBusinessResults(MainModel model)
+        {
+            return Accessors.GetBusinessResults(model);
+        }
+
+        public static ReportProfitAndLoss GetReportProfitAndLoss(MainModel model)
+        {
+            return Accessors.GetReportProfitAndLoss(model);
+        }
+
+        public static RatiosIndicatorsResult GetRatiosIndicatorsResult(MainModel model)
+        {
+            return CalculateRatiosIndicators(model.StartDate, model.EndDate, model.BusinessResults, model.ReportProfitAndLoss);
+        }
+
 
         public static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
         {
@@ -534,7 +545,7 @@ namespace ProgressoExpert.Process
             model.Goods2Info.Percent = Math.Round(salGrNow[1].money / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
 
             model.Goods3Info = new FillGoodsModel();
-            model.Goods3Info.Name = salGrNow[1].name;
+            model.Goods3Info.Name = salGrNow[2].name;
             model.Goods3Info.Value = Math.Round(salGrNow[2].money, 2);
             model.Goods3Info.pastValue = Math.Round(salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money, 2);
             model.Goods3Info.Percent = Math.Round(salGrNow[2].money / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);

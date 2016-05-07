@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SelectPeriod.xaml.cs">
+      <DependentUpon>SelectPeriod.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\App\HeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +201,7 @@
     <Compile Include="Controls\App\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\App\NumberedTickBar.cs" />
     <Compile Include="Controls\Data\BusinessAnalysisControl.xaml.cs">
       <DependentUpon>BusinessAnalysisControl.xaml</DependentUpon>
     </Compile>
@@ -267,6 +271,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SelectPeriod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

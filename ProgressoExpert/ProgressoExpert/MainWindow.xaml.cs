@@ -37,17 +37,40 @@ namespace ProgressoExpert
             ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
             ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
             //return;
-            ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
 
             ViewModel.StartDate = new DateTime(2013, 02, 01);
             ViewModel.EndDate = new DateTime(2013, 08, 01);
             //алешкин код
-            ViewModel = ProcessesEngine.GetResult(ViewModel.StartDate, ViewModel.EndDate);
+            ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
+            ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
+
+            LiveStreamControl.DataBind(ViewModel.LiveStreamModel);
+        }
+
+        private void DataBind()
+        {
+            MenuControl.DataBind(ViewModel);
+        }
+
+        public void UpdateData()
+        {
+            // Результаты бизнеса
+            ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
+            ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);
+            ViewModel.RatiosIndicatorsResult = ProcessesEngine.GetRatiosIndicatorsResult(ViewModel);
+
+            // Бизнес Анализ
             ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
             ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
             ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
 
-            LiveStreamControl.DataBind(ViewModel.LiveStreamModel);
+            // Стресс-тестирование
+
+
+            // Биндинг
+            BusinessAnalysisControl.DataBind(ViewModel);
+
+            ResBusinessControl.DataBind(ViewModel);
         }
     }
 }
