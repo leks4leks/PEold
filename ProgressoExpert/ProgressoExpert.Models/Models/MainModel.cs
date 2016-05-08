@@ -281,7 +281,37 @@ namespace ProgressoExpert.Models.Models
             get { return _salesBA; }
             set { SetValue(ref _salesBA, value, "SalesBA"); }
         }
-        private SalesBusinessAnalysis _salesBA;       
+        private SalesBusinessAnalysis _salesBA;
+
+        /// <summary>
+        /// расходы Анализа бизнеса
+        /// </summary>
+        public CostsBusinessAnalysis CostsBA
+        {
+            get { return _costsBA; }
+            set { SetValue(ref _costsBA, value, "CostsBA"); }
+        }
+        private CostsBusinessAnalysis _costsBA;
+
+        /// <summary>
+        /// закуп Анализа бизнеса
+        /// </summary>
+        public PurchaseBusinessAnalysis PurchaseBA
+        {
+            get { return _purchaseBA; }
+            set { SetValue(ref _purchaseBA, value, "PurchaseBA"); }
+        }
+        private PurchaseBusinessAnalysis _purchaseBA;
+
+        /// <summary>
+        /// оборотный капитал Анализа бизнеса
+        /// </summary>
+        public WorkingСapitalBusinessAnalysis WorkingСapitalBA
+        {
+            get { return _workingСapitalBA; }
+            set { SetValue(ref _workingСapitalBA, value, "WorkingСapitalBA"); }
+        }
+        private WorkingСapitalBusinessAnalysis _workingСapitalBA;
 
         /// <summary>
         /// Коэффициенты и основные показатели

@@ -569,6 +569,27 @@ namespace ProgressoExpert.Process
             return model;
 
         }
+        
+        public static CostsBusinessAnalysis GetCostsBA(MainModel MainModel)
+        {
+            var model = new CostsBusinessAnalysis();
+
+            return model;
+        }
+
+        public static PurchaseBusinessAnalysis GetPurchaseBA(MainModel MainModel)
+        {
+            var model = new PurchaseBusinessAnalysis();
+
+            return model;
+        }
+
+        public static WorkingСapitalBusinessAnalysis GetWorkingСapitalBA(MainModel MainModel)
+        {
+            var model = new WorkingСapitalBusinessAnalysis();
+
+            return model;
+        }
 
         private static void FillPercentForAllProperty(ref string First, ref string Second, DateTime stTodayDate, DateTime endTodayDate, GeneralBusinessAnalysis model
             , List<SalesModel> salesFirst, List<SalesModel> salesSecond, int dif)
