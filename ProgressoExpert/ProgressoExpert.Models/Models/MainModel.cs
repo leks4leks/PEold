@@ -137,7 +137,7 @@ namespace ProgressoExpert.Models.Models
                 SetValue(ref _liveStreamVisibility, value, "LiveStreamVisibility");
             }
         }
-        private bool _liveStreamVisibility;
+        private bool _liveStreamVisibility = true;
 
         /// <summary>
         /// Анализ бизнеса
