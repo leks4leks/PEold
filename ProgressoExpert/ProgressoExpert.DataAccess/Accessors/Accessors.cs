@@ -898,7 +898,7 @@ namespace ProgressoExpert.DataAccess
 
             // количество сколько поступило на конечную дату
             var res3 = (from s888 in db.C_AccumRgTn10122
-                        where s888.C_Period < endDate
+                        where s888.C_Period < endDate && s888.C_Period >= stDate
                         group s888 by s888.C_Fld10107_RRRef into g
                         select new SalesEnt
                         {

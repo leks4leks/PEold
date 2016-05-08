@@ -22,12 +22,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// разница с пред периодом
         /// </summary>
-        public string difPastPeriod
+        public decimal difPastPeriod
         {
             get { return _difPastPeriod; }
             set { SetValue(ref _difPastPeriod, value, "difPastPeriod"); }
         }
-        private string _difPastPeriod;
+        private decimal _difPastPeriod;
 
         /// <summary>
         /// макс закупки за период
