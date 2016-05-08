@@ -28,7 +28,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
         public void DataBind(MainModel vm)
         {
-            DataContext = vm.BusinessResults;
+            DataContext = vm;
         }
     }
 }

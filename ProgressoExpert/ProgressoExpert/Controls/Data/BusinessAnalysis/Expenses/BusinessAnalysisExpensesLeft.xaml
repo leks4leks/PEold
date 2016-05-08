@@ -33,13 +33,13 @@
                 <Grid Grid.Row="0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                         <TextBlock Text="Расходы" Style="{StaticResource TextBlockStyle21Red1Bottom}" Margin="0,0,20,0"/>
-                        <TextBlock Text="152 000" Style="{StaticResource TextBlockStyle26}"/>
+                        <TextBlock Text="{Binding allCosts, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle26}"/>
                     </StackPanel>
                 </Grid>
                 
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <TextBlock Text="+5%" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
                         <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle19Top}"/>
                     </StackPanel>
                 </Grid>
@@ -65,7 +65,7 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                    <TextBlock Text="{Binding maxCostsByMonth}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
             
@@ -89,7 +89,7 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                    <TextBlock Text="{Binding averageCostsByMonth}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
 
@@ -126,7 +126,7 @@
                     <TextBlock Text="Оплачено налогов" Style="{StaticResource TextBlockStyle17Center}"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="15" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxes}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <TextBlock Text="=" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
@@ -144,10 +144,10 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="5%" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxesFromSales, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="15%" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxesFromGrosProfit, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="1">

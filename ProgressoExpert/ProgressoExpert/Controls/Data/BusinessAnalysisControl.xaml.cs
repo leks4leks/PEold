@@ -43,6 +43,14 @@ namespace ProgressoExpert.Controls.Data
             // Продажи
             BusinessAnalysisSalesTop.DataBind(model.SalesBA);
             BusinessAnalysisSalesBottom.DataBind(model.SalesBA);
+
+            // Расходы
+            BusinessAnalysisExpensesLeft.DataBind(model.CostsBA);
+            BusinessAnalysisExpensesRight.DataBind(model.CostsBA);
+
+            // Расходы
+            BusinessAnalysisPurchaseLeft.DataBind(model.PurchaseBA);
+            BusinessAnalysisPurchaseRight.DataBind(model.PurchaseBA);
         }
     }
 }

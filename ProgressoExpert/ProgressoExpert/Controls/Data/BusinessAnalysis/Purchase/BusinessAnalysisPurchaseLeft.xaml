@@ -31,11 +31,11 @@
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                     <TextBlock Text="Закуп" Style="{StaticResource TextBlockStyle21Orange1Bottom}" Margin="0,0,20,0"/>
-                    <TextBlock Text="152 000" Style="{StaticResource TextBlockStyle26}"/>
+                    <TextBlock Text="{Binding allPurchase, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle26}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <TextBlock Text="+5%" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
                     <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle19Top}"/>
                 </StackPanel>
             </Grid>
@@ -72,7 +72,7 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                    <TextBlock Text="{Binding maxPurchaseByMonth}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
 
@@ -97,7 +97,7 @@
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="16" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
+                    <TextBlock Text="{Binding averagePurchaseByMonth}" Style="{StaticResource TextBlockStyle14ContentCenter}"/>
                 </Grid>
             </Grid>
 

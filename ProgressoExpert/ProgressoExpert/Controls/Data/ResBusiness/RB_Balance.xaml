@@ -60,136 +60,136 @@
                 <TextBlock Text="Активы" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
 
                 <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="0" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding StartDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.StartDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.EndDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
 
-                <TextBlock Text="Оборотные активы" Grid.Row="2" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding CirculatingAssetsStart}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding CirculatingAssetsEnd}" Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="Деньги в кассе" Grid.Row="3" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding CashInCashBoxStart}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding CashInCashBoxEnd}" Grid.Row="3" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Деньги на банковских счетах" Grid.Row="4" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding MoneyInTheBankAccountsStart}"  Grid.Row="4" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding MoneyInTheBankAccountsEnd}" Grid.Row="4" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Депозиты" Grid.Row="5" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding DepositsStart}"  Grid.Row="5" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding DepositsEnd}" Grid.Row="5" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Долги клиентов и переплаты" Grid.Row="6" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding DebtsOfCustomersAndOverpaymentsStart}"  Grid.Row="6" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding DebtsOfCustomersAndOverpaymentsEnd}" Grid.Row="6" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Сырье и материалы" Grid.Row="7" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding RawAndMaterialsStart}"  Grid.Row="7" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding RawAndMaterialsEnd}" Grid.Row="7" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Товары" Grid.Row="8" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding GoodsStart}"  Grid.Row="8" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding GoodsEnd}" Grid.Row="8" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Незавершенное производство" Grid.Row="9" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding UnfinishedProductionStart}"  Grid.Row="9" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding UnfinishedProductionEnd}" Grid.Row="9" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Налоговые переплаты/авансы" Grid.Row="10" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding TaxOverpaymentsAndAdvancesStart}"  Grid.Row="10" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding TaxOverpaymentsAndAdvancesEnd}" Grid.Row="10" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочие оборотные активы" Grid.Row="11" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherCurrentAssetsStart}"  Grid.Row="11" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherCurrentAssetsEnd}" Grid.Row="11" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
+                <TextBlock Text="Оборотные активы" Grid.Row="2" Grid.Column="0" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CirculatingAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.CirculatingAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="2" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Деньги в кассе" Grid.Row="3" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.CashInCashBoxStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CashInCashBoxEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Деньги на банковских счетах" Grid.Row="4" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.MoneyInTheBankAccountsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.MoneyInTheBankAccountsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="4" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Депозиты" Grid.Row="5" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.DepositsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="5" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.DepositsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="5" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Долги клиентов и переплаты" Grid.Row="6" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtsOfCustomersAndOverpaymentsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtsOfCustomersAndOverpaymentsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="6" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Сырье и материалы" Grid.Row="7" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.RawAndMaterialsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.RawAndMaterialsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="7" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Товары" Grid.Row="8" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.GoodsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.GoodsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="8" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Незавершенное производство" Grid.Row="9" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.UnfinishedProductionStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.UnfinishedProductionEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="9" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Налоговые переплаты/авансы" Grid.Row="10" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.TaxOverpaymentsAndAdvancesStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.TaxOverpaymentsAndAdvancesEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="10" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочие оборотные активы" Grid.Row="11" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherCurrentAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherCurrentAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="11" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
 
-                <TextBlock Text="Долгосрочные активы" Grid.Row="12" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding LongTermAssetsStart}"  Grid.Row="12" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding LongTermAssetsEnd}" Grid.Row="12" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="Долги клиентов (срок возврата более 1 года)" Grid.Row="13" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding CustomerDebtsStart}"  Grid.Row="13" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding CustomerDebtsEnd}" Grid.Row="13" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочие долги клиентов/переплаты" Grid.Row="15" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherDebtsOfClientsAndOverpaymentStart}"  Grid.Row="15" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherDebtsOfClientsAndOverpaymentEnd}" Grid.Row="15" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Инвестиции" Grid.Row="17" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding InvestmentsStart}"  Grid.Row="17" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding InvestmentsEnd}" Grid.Row="17" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Основные средства" Grid.Row="18" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding FixedAssetsStart}"  Grid.Row="18" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding FixedAssetsEnd}" Grid.Row="18" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Нематериальные активы" Grid.Row="19" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding IntangibleAssetsStart}"  Grid.Row="19" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding IntangibleAssetsEnd}" Grid.Row="19" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Отложенные налоговые переплаты/авансы" Grid.Row="20" Grid.Column="0" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding TheDeferredTaxOverpaymentsAndAdvancesStart}"  Grid.Row="20" Grid.Column="1" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding TheDeferredTaxOverpaymentsAndAdvancesEnd}" Grid.Row="20" Grid.Column="2" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="ИТОГО АКТИВОВ" Grid.Row="21" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding TotalAssetsStart}"  Grid.Row="21" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding TotalAssetsEnd}" Grid.Row="21" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Долгосрочные активы" Grid.Row="12" Grid.Column="0" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.LongTermAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="12" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.LongTermAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="12" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Долги клиентов (срок возврата более 1 года)" Grid.Row="13" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.CustomerDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="13" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CustomerDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="13" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочие долги клиентов/переплаты" Grid.Row="15" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsOfClientsAndOverpaymentStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="15" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsOfClientsAndOverpaymentEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="15" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Инвестиции" Grid.Row="17" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.InvestmentsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="17" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.InvestmentsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="17" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Основные средства" Grid.Row="18" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.FixedAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="18" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.FixedAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="18" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Нематериальные активы" Grid.Row="19" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.IntangibleAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="19" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.IntangibleAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="19" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Отложенные налоговые переплаты/авансы" Grid.Row="20" Grid.Column="0" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.TheDeferredTaxOverpaymentsAndAdvancesStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="20" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.TheDeferredTaxOverpaymentsAndAdvancesEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="20" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="ИТОГО АКТИВОВ" Grid.Row="21" Grid.Column="0" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.TotalAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="21" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.TotalAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="21" Grid.Column="2" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
 
                 <!-- Пассивы -->
                 <TextBlock Text="Пассивы" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource MDTTextBlockCenter}"/>
 
                 <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="3" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding StartDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.StartDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
 
-                <TextBlock Text="Текущая задолженность" Grid.Row="2" Grid.Column="3" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding CurrentDebtStart}"  Grid.Row="2" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding CurrentDebtEnd}" Grid.Row="2" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="Кредиты сроком до 1 года" Grid.Row="3" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding CreditsForOneYearStart}"  Grid.Row="3" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding CreditsForOneYearEnd}" Grid.Row="3" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Задолженность по КПН/ИПН" Grid.Row="4" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding DebtCitIitStart}"  Grid.Row="4" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding DebtCitIitEnd}" Grid.Row="4" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Задолженность по НДС" Grid.Row="5" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding DebtVatStart}"  Grid.Row="5" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding DebtVatEnd}" Grid.Row="5" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочая задолженность по налогам" Grid.Row="6" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherTaxesPayableStart}"  Grid.Row="6" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherTaxesPayableEnd}" Grid.Row="6" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Задолженность перед поставщиками" Grid.Row="7" Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding PayablesToSuppliersShortTermDebtsStart}"  Grid.Row="7" Grid.Column="4" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding PayablesToSuppliersShortTermDebtsEnd}" Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Задолженность перед сотрудниками" Grid.Row="9" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding PayablesToEmployeesStart}"  Grid.Row="9" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding PayablesToEmployeesEnd}" Grid.Row="9" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочая задолженность " Grid.Row="10" Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherDebtsShortTermDebtsStart}"  Grid.Row="10" Grid.Column="4" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherDebtsShortTermDebtsEnd}" Grid.Row="10" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource MDTTextBlockCenter}"/>
+                <TextBlock Text="Текущая задолженность" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CurrentDebtStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="2" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.CurrentDebtEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="2" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Кредиты сроком до 1 года" Grid.Row="3" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.CreditsForOneYearStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="3" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CreditsForOneYearEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Задолженность по КПН/ИПН" Grid.Row="4" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtCitIitStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="4" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtCitIitEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="4" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Задолженность по НДС" Grid.Row="5" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtVatStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="5" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.DebtVatEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="5" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочая задолженность по налогам" Grid.Row="6" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherTaxesPayableStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="6" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherTaxesPayableEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="6" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Задолженность перед поставщиками" Grid.Row="7" Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToSuppliersShortTermDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="7" Grid.Column="4" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToSuppliersShortTermDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="7" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Задолженность перед сотрудниками" Grid.Row="9" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToEmployeesStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="9" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToEmployeesEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="9" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочая задолженность " Grid.Row="10" Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsShortTermDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="10" Grid.Column="4" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsShortTermDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="10" Grid.Column="5" Grid.RowSpan="2" VerticalAlignment="Center" Style="{StaticResource TextBlock12CenterCenter}"/>
 
-                <TextBlock Text="Долгосрочная задолженность" Grid.Row="12" Grid.Column="3" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding LongTermDebtStart}"  Grid.Row="12" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding LongTermDebtEnd}" Grid.Row="12" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="Кредиты сроком более 1 года" Grid.Row="13" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding CreditsForLongerThanOneYearStart}"  Grid.Row="13" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding CreditsForLongerThanOneYearEnd}" Grid.Row="13" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Задолженность перед поставщиками" Grid.Row="14" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding PayablesToSuppliersLongTermDebtsStart}"  Grid.Row="14" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding PayablesToSuppliersLongTermDebtsEnd}" Grid.Row="14" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Отложеннные налоговая задолженность" Grid.Row="15" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding DefferedTaxDebtsStart}"  Grid.Row="15" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding DefferedTaxDebtsEnd}" Grid.Row="15" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочая задолженность" Grid.Row="16" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherDebtsLongTermDebtsStart}"  Grid.Row="16" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherDebtsLongTermDebtsEnd}" Grid.Row="16" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
+                <TextBlock Text="Долгосрочная задолженность" Grid.Row="12" Grid.Column="3" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.LongTermDebtStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="12" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.LongTermDebtEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="12" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Кредиты сроком более 1 года" Grid.Row="13" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.CreditsForLongerThanOneYearStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="13" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.CreditsForLongerThanOneYearEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="13" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Задолженность перед поставщиками" Grid.Row="14" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToSuppliersLongTermDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="14" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.PayablesToSuppliersLongTermDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="14" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Отложеннные налоговая задолженность" Grid.Row="15" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.DefferedTaxDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="15" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.DefferedTaxDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="15" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочая задолженность" Grid.Row="16" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsLongTermDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="16" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherDebtsLongTermDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="16" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
 
-                <TextBlock Text="Собственный капитал" Grid.Row="17" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OwnCapitalStart}"  Grid.Row="17" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OwnCapitalEnd}" Grid.Row="17" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Уставной капитал" Grid.Row="18" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding AuthorizedCapitalStart}"  Grid.Row="18" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding AuthorizedCapitalEnd}" Grid.Row="18" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Накопленная прибыль/убыток" Grid.Row="19" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding AccumulatedProfitAndLossStart}"  Grid.Row="19" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding AccumulatedProfitAndLossEnd}" Grid.Row="19" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="Прочий капитал" Grid.Row="20" Grid.Column="3" Style="{StaticResource MDTTextBlockLeft}"/>
-                <TextBlock Text="{Binding OtherCapitalStart}"  Grid.Row="20" Grid.Column="4" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="{Binding OtherCapitalEnd}" Grid.Row="18" Grid.Column="5" Style="{StaticResource MDTTextBlockCenter}"/>
-                <TextBlock Text="ИТОГО ПАССИВОВ" Grid.Row="21" Grid.Column="3" Style="{StaticResource MDTTextBlockLeftWhite}"/>
-                <TextBlock Text="{Binding TotalLiabilitiesStart}"  Grid.Row="21" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
-                <TextBlock Text="{Binding TotalLiabilitiesEnd}" Grid.Row="21" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="Собственный капитал" Grid.Row="17" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OwnCapitalStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="17" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OwnCapitalEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="17" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Уставной капитал" Grid.Row="18" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.AuthorizedCapitalStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="18" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.AuthorizedCapitalEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="18" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Накопленная прибыль/убыток" Grid.Row="19" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.AccumulatedProfitAndLossStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="19" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.AccumulatedProfitAndLossEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="19" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Прочий капитал" Grid.Row="20" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherCapitalStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="20" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherCapitalEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="18" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="ИТОГО ПАССИВОВ" Grid.Row="21" Grid.Column="3" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.TotalLiabilitiesStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="21" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
+                <TextBlock Text="{Binding BusinessResults.TotalLiabilitiesEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="21" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>
 
                     
                 <!--  -->
                 
             </Grid>
 
-            <Grid Name="TextGrid" Grid.Row="1">
+            <Grid Name="TextGrid" Grid.Row="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="20"/>
@@ -211,6 +211,19 @@
                 </Grid.ColumnDefinitions>
 
                 <Border BorderThickness="1,1,1,1" BorderBrush="Black" Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="8"/>
+                <Rectangle  Grid.Row="1" Grid.Column="1" Style="{StaticResource RectangleGreen3}"/>
+                <Rectangle  Grid.Row="2" Grid.Column="1" Style="{StaticResource RectangleGreen3}"/>
+                <Rectangle  Grid.Row="3" Grid.Column="1" Style="{StaticResource RectangleGreen3}"/>
+
+                <Rectangle  Grid.Row="1" Grid.Column="5" Style="{StaticResource RectangleGreen3}"/>
+                <Rectangle  Grid.Row="2" Grid.Column="5" Style="{StaticResource RectangleGreen3}"/>
+                <Rectangle  Grid.Row="3" Grid.Column="5" Style="{StaticResource RectangleGreen3}"/>
+
+
+                <Rectangle  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource RectangleGreen3}"/>
+                <Rectangle  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource RectangleGreen3}"/>
+
+                <Rectangle  Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource RectangleGreen3}"/>
 
                 <TextBlock Text="Коэффициент" Grid.Row="0" Grid.Column="0" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                 <TextBlock Text="Норма"  Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
@@ -222,71 +235,78 @@
                     <TextBlock Text="деньгами" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 0,2" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyStart}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyEnd}" Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyStart}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyEnd}" Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="деньгами и долгами клиентов" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text="0,5 - 1" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebtsStart}" Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebtsEnd}" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsStart}" Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsEnd}" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="Оборотными активами" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtOfCurrentAssetsStart}" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtOfCurrentAssetsEnd}" Grid.Row="3" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsStart}" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsEnd}" Grid.Row="3" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Скорость" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="товарооборота," Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
-                <TextBlock  Text="{Binding SpeedOfTurnover}" Grid.Row="5" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding TermOfCirculationOfClientsDebt}"  Grid.Row="5" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="60" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.SpeedOfTurnover}"  Grid.Row="5" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Срок оборота" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="долгов клиентов," Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
-                <TextBlock  Text="{Binding SpeedOfTurnover}" Grid.Row="6" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding TermOfCirculationOfClientsDebt}"  Grid.Row="6" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="15" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfClientsDebt}"  Grid.Row="6" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <!--  -->
                 <TextBlock Text="Коэффициент" Grid.Row="0" Grid.Column="4" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                 <TextBlock Text="Норма"  Grid.Row="0" Grid.Column="5" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="Значение"  Grid.Row="0" Grid.Column="6" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="Значение" Grid.Row="0" Grid.Column="7" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <TextBlock Text="Значение"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <!--<TextBlock Text="Значение" Grid.Row="0" Grid.Column="7" Style="{StaticResource TextBlock12BoldCenterCenter}"/>-->
                 
                 <StackPanel Grid.Row="1" Grid.Column="4" Orientation="Horizontal" >
                     <TextBlock Text="Доля задолженности" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     <TextBlock Text="в активах компании" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyStart}" Grid.Row="1" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyEnd}" Grid.Row="1" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.DebtPartInTheCompanyAssetsStart}" Grid.Row="1" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.DebtPartInTheCompanyAssetsEnd}" Grid.Row="1" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" >
                     <TextBlock Text="Доля Собственного капитала" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     <TextBlock Text="в активах компании" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="2" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyStart}" Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyEnd}" Grid.Row="2" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.PartOfEquityInTheCompanyAssetsStart}" Grid.Row="2" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.PartOfEquityInTheCompanyAssetsEnd}" Grid.Row="2" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="3" Grid.Column="4" Orientation="Horizontal" >
                     <TextBlock Text="Покрытие кредитов" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     <TextBlock Text="Собственным капиталом" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="3" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyStart}" Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding CoveringCurrentDebtMoneyEnd}" Grid.Row="3" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityStart}" Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityEnd}" Grid.Row="3" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
 
+                <StackPanel Grid.Row="5" Grid.Column="4" Orientation="Horizontal" >
+                    <TextBlock Text="Срок оборота" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="задолженности перед поставщиками," Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
+                    <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
+                </StackPanel>
+                <TextBlock  Text="60" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfDebtToSuppliers}"  Grid.Row="5" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
         </Grid>
     </Border>

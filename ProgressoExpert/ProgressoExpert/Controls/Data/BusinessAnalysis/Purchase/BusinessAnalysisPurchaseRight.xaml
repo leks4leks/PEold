@@ -37,12 +37,12 @@
             </Grid>
             
             <Grid Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="95%" Style="{StaticResource TextBlockStyle18BoldCenterCenter}"/>
+                <TextBlock Text="{Binding SalesvsPurchase, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle18BoldCenterCenter}"/>
             </Grid>
             
             <Grid Grid.Row="2" Grid.Column="0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="+ 5%" Style="{StaticResource TextBlockStyle12Green0}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding difSalesvsPurchasePastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12Green0}" Margin="0,0,10,0"/>
                     <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle12}"/>
                 </StackPanel>
             </Grid>
@@ -56,12 +56,12 @@
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="1">
-                <TextBlock Text="95%" Style="{StaticResource TextBlockStyle18BoldCenterCenter}"/>
+                <TextBlock Text="{Binding PaymentvsPurchase, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle18BoldCenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="+ 5%" Style="{StaticResource TextBlockStyle12Green0}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding difPaymentvsPurchasePastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12Green0}" Margin="0,0,10,0"/>
                     <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle12}"/>
                 </StackPanel>
             </Grid>
@@ -144,44 +144,44 @@
                         <TextBlock Text="Список поставщиков" Style="{StaticResource TextBlockStyle12BoldLeft}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="0">
-                        <TextBlock Text="Иванов" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName1Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="0">
-                        <TextBlock Text="Петров" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName2Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="0">
-                        <TextBlock Text="Сидоров" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName3Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
                     <Grid Grid.Row="4" Grid.Column="0">
-                        <TextBlock Text="Чиж" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName4Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
                     <Grid Grid.Row="5" Grid.Column="0">
-                        <TextBlock Text="Васин" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName5Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
                     <Grid Grid.Row="6" Grid.Column="0">
-                        <TextBlock Text="Прочие" Style="{StaticResource TextBlockStyle12Left}"/>
+                        <TextBlock Name="TableName6Tb" Style="{StaticResource TextBlockStyle12Left}"/>
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.Column="1">
                         <TextBlock Text="Доля" Style="{StaticResource TextBlockStyle12BoldCenter}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="30%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare1Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="2">
-                        <TextBlock Text="28%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare2Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="3">
-                        <TextBlock Text="25%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare3Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                     <Grid Grid.Row="4" Grid.Column="4">
-                        <TextBlock Text="15%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare4Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                     <Grid Grid.Row="5" Grid.Column="5">
-                        <TextBlock Text="10%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare5Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                     <Grid Grid.Row="6" Grid.Column="6">
-                        <TextBlock Text="15%" Style="{StaticResource TextBlockStyle12Center}"/>
+                        <TextBlock Name="TableShare6Tb" Style="{StaticResource TextBlockStyle12Center}"/>
                     </Grid>
                 </Grid>
             </Border>

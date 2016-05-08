@@ -9,6 +9,20 @@ namespace ProgressoExpert.Models.Models
 {
     public class BusinessResults : BaseViewModel
     {
+        public DateTime StartDate
+        {
+            get { return _startDate; }
+            set { SetValue(ref _startDate, value, "StartDate"); }
+        }
+        private DateTime _startDate;
+
+        public DateTime EndDate
+        {
+            get { return _endDate; }
+            set { SetValue(ref _endDate, value, "EndDate"); }
+        }
+        private DateTime _endDate;
+
         #region Оборотные активы
 
         #region Денежные средства в кассе

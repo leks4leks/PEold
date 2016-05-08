@@ -70,7 +70,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         private Dictionary<string, decimal> _salesByGoodsDiagram;
 
         /// <summary>
-        /// закуп по постовщикам
+        /// закуп по поставщикам
         /// </summary>
         public Dictionary<string, decimal> PurchaseByClientDiagram
         {
@@ -80,7 +80,7 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         private Dictionary<string, decimal> _PurchaseByClientDiagram;
 
         /// <summary>
-        /// оплата по постовщикам
+        /// оплата по поставщикам
         /// </summary>
         public Dictionary<string, decimal> PaymentByClientDiagram
         {

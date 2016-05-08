@@ -46,11 +46,11 @@
             <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RectangleStyleGray3}"/>
 
             <Grid Grid.Column="0">
-                <TextBlock Text="12 800" Style="{StaticResource TextBlockStyle17Center}"/>
+                <TextBlock Text="{Binding CostsComming, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17Center}"/>
             </Grid>
 
             <Grid Grid.Column="1">
-                <TextBlock Text="13 240" Style="{StaticResource TextBlockStyle17Center}"/>
+                <TextBlock Text="{Binding CostsOut, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17Center}"/>
             </Grid>
         </Grid>
         

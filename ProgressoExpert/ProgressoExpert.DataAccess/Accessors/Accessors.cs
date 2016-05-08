@@ -25,6 +25,9 @@ namespace ProgressoExpert.DataAccess
         public static BusinessResults GetBusinessResults(MainModel mainModel)
         {
             BusinessResults model = new BusinessResults();
+            model.StartDate = mainModel.StartDate;
+            model.EndDate = mainModel.EndDate;
+
             using (dbEntities db = new dbEntities())
             {
                 Start = mainModel.StartTranz;
