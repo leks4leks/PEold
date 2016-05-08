@@ -113,7 +113,8 @@ namespace ProgressoExpert.Controls.Utils
                 Name = "Legend",
                 Alignment = alignment,
                 Docking = docking,
-                Font = new System.Drawing.Font("Arial", 10)
+                Font = new System.Drawing.Font("Arial", 10),
+                BackColor = System.Drawing.Color.Transparent
             };
             _chart.Legends.Add(legend);
         }

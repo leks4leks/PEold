@@ -39,11 +39,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             {
                 LoadDiagram2();
             }
-            if (ViewModel.CostsDiagram != null)
+            if (ViewModel.CostsCommingDiagram != null)
             {
                 LoadDiagram3();
             }
-            if (ViewModel.CostsDiagram != null)
+            if (ViewModel.CostsOutDiagram != null)
             {
                 LoadDiagram4();
             }
@@ -55,11 +55,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart2);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Расходы", System.Drawing.Color.FromArgb(170, 70, 67),
-                ViewModel.CostsByMonthDiagram, string.Empty, ref chart3);
+                ViewModel.CostsByMonthDiagram, string.Empty, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(209, 147, 146),
-                ViewModel.GrosProfitDiagram, string.Empty, ref chart3);
+                ViewModel.GrosProfitDiagram, string.Empty, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.SalesDiagram, string.Empty, ref chart3);
+                ViewModel.SalesDiagram, string.Empty, ref chart2);
         }
 
 
@@ -69,123 +69,66 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart3);
 
             ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart3);
-            //ChartUtils.AddPoint("Series1"
+            var index = 1;
+            foreach (var item in ViewModel.CostsCommingDiagram)
+            {
+                System.Drawing.Color color;
+                switch (index)
+                {
+                    case 1:
+                        color = System.Drawing.Color.FromArgb(192, 80, 77);
+                        break;
+                    case 2:
+                        color = System.Drawing.Color.FromArgb(179, 74, 71);
+                        break;
+                    case 3:
+                        color = System.Drawing.Color.FromArgb(202, 126, 125);
+                        break;
+                    case 4:
+                        color = System.Drawing.Color.FromArgb(221, 182, 181);
+                        break;
+                    default:
+                        color = System.Drawing.Color.Red;
+                        break;
 
-            //Dictionary<string, decimal> seriesData1 = new Dictionary<string, decimal>();
-
-            //seriesData1.Add("Расходы по реализации продукции и услуг", 41);
-            //seriesData1.Add("Административные расходы", 11);
-            //seriesData1.Add("Расходы на финансирование", 45);
-            //seriesData1.Add("Прочие расходы", 3);
-
-            //var dataPointData = seriesData1["Расходы по реализации продукции и услуг"];
-            //series.Points.Add(new DataPoint()
-            //{
-            //    Label = string.Format("{0}%", dataPointData),
-            //    XValue = (double)dataPointData,
-            //    YValues = new double[] { (double)dataPointData },
-            //    LegendText = "Расходы по реализации продукции и услуг",
-            //    Color = System.Drawing.Color.FromArgb(192, 80, 77),
-            //    BorderColor = System.Drawing.Color.White
-            //});
-
-            //dataPointData = seriesData1["Административные расходы"];
-            //series.Points.Add(new DataPoint()
-            //{
-            //    Label = string.Format("{0}%", dataPointData),
-            //    XValue = (double)dataPointData,
-            //    YValues = new double[] { (double)dataPointData },
-            //    LegendText = "Административные расходы",
-            //    Color = System.Drawing.Color.FromArgb(179, 74, 71),
-            //    BorderColor = System.Drawing.Color.White
-            //});
-
-            //dataPointData = seriesData1["Расходы на финансирование"];
-            //series.Points.Add(new DataPoint()
-            //{
-            //    Label = string.Format("{0}%", dataPointData),
-            //    XValue = (double)dataPointData,
-            //    YValues = new double[] { (double)dataPointData },
-            //    LegendText = "Расходы на финансирование",
-            //    Color = System.Drawing.Color.FromArgb(202, 126, 125),
-            //    BorderColor = System.Drawing.Color.White
-            //});
-
-            //dataPointData = seriesData1["Прочие расходы"];
-            //series.Points.Add(new DataPoint()
-            //{
-            //    Label = string.Format("{0}%", dataPointData),
-            //    XValue = (double)dataPointData,
-            //    YValues = new double[] { (double)dataPointData },
-            //    LegendText = "Прочие расходы",
-            //    Color = System.Drawing.Color.FromArgb(221, 182, 181),
-            //    BorderColor = System.Drawing.Color.White
-            //});
+                };
+                index++;
+                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart3);
+            }
         }
 
         public void LoadDiagram4()
         {
-            var chartArea = new ChartArea() { Name = "ChartArea" };
-            chart4.ChartAreas.Add(chartArea);
+            ChartUtils.AddChartArea(string.Empty, ref chart4);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
 
-            var series = new Series()
+            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
+            var index = 1;
+            foreach (var item in ViewModel.CostsCommingDiagram)
             {
-                Name = "Series1",
-                ChartType = SeriesChartType.Pie,
-                ChartArea = chartArea.Name,
-            };
-            chart4.Series.Add(series);
+                System.Drawing.Color color;
+                switch (index)
+                {
+                    case 1:
+                        color = System.Drawing.Color.FromArgb(192, 80, 77);
+                        break;
+                    case 2:
+                        color = System.Drawing.Color.FromArgb(179, 74, 71);
+                        break;
+                    case 3:
+                        color = System.Drawing.Color.FromArgb(202, 126, 125);
+                        break;
+                    case 4:
+                        color = System.Drawing.Color.FromArgb(221, 182, 181);
+                        break;
+                    default:
+                        color = System.Drawing.Color.Red;
+                        break;
 
-            Dictionary<string, decimal> seriesData1 = new Dictionary<string, decimal>();
-
-            seriesData1.Add("Расходы по реализации продукции и услуг", 38);
-            seriesData1.Add("Административные расходы", 12);
-            seriesData1.Add("Расходы на финансирование", 47);
-            seriesData1.Add("Прочие расходы", 3);
-
-            var dataPointData = seriesData1["Расходы по реализации продукции и услуг"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format("{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Расходы по реализации продукции и услуг",
-                Color = System.Drawing.Color.FromArgb(192, 80, 77),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Административные расходы"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format("{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Административные расходы",
-                Color = System.Drawing.Color.FromArgb(179, 74, 71),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Расходы на финансирование"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format("{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Расходы на финансирование",
-                Color = System.Drawing.Color.FromArgb(202, 126, 125),
-                BorderColor = System.Drawing.Color.White
-            });
-
-            dataPointData = seriesData1["Прочие расходы"];
-            series.Points.Add(new DataPoint()
-            {
-                Label = string.Format("{0}%", dataPointData),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = "Прочие расходы",
-                Color = System.Drawing.Color.FromArgb(221, 182, 181),
-                BorderColor = System.Drawing.Color.White
-            });
+                };
+                index++;
+                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+            }
         }
     }
 }

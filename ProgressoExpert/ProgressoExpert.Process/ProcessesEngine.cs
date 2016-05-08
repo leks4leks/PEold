@@ -579,6 +579,7 @@ namespace ProgressoExpert.Process
             model.maxCostsByMonth = MainModel.ReportProfitAndLoss.Costs.Max();
             model.averageCostsByMonth = model.allCosts / MainModel.ReportProfitAndLoss.Costs.Count();
 
+            model.CostsDiagram = new Dictionary<string, decimal>();
             model.CostsDiagram.Add("Прочие", MainModel.ReportProfitAndLoss.OtherCosts.Sum());
             model.CostsDiagram.Add("Бонусы", 0);
             model.CostsDiagram.Add("По реализации", MainModel.ReportProfitAndLoss.CostsSalesServices.Sum());
@@ -589,6 +590,7 @@ namespace ProgressoExpert.Process
             // раньше не предусмотрели, поэтому делаем так
             var stMon = MainModel.StartDate.Month;
             var stYear = MainModel.StartDate.Year;
+            model.CostsByMonthDiagram = new Dictionary<string, decimal>();
             foreach (var item in MainModel.ReportProfitAndLoss.Costs)
             {
                 if (stMon != 12) stMon++;
@@ -621,6 +623,9 @@ namespace ProgressoExpert.Process
 
             model.maxPurchaseByMonth = decimal.Zero;
             var counter = 0;
+            model.PurchaseDiagram = new Dictionary<string, decimal>();
+            model.SalesDiagram = new Dictionary<string, decimal>();
+            model.PaymentDiagram = new Dictionary<string, decimal>();
             foreach (var item in MainModel.Sales)
             {
                 var dt = string.Empty;
@@ -645,6 +650,8 @@ namespace ProgressoExpert.Process
                                    money = g.Sum(_ => _.CostPrise),
                                    count = g.Sum(_ => _.CountPur)
                                }).OrderByDescending(_ => _.money).ToList();
+
+            model.PurchaseByGoodsDiagram = new Dictionary<string, decimal>();
             model.PurchaseByGoodsDiagram.Add("Прочее", Math.Round(tmpPurGroup.Skip(3).Sum(_ => _.money), 2));
             model.PurchaseByGoodsDiagram.Add(tmpPurGroup[2].name, Math.Round(tmpPurGroup[2].money, 2));
             model.PurchaseByGoodsDiagram.Add(tmpPurGroup[1].name, Math.Round(tmpPurGroup[1].money, 2));
