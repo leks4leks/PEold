@@ -574,6 +574,40 @@ namespace ProgressoExpert.Process
         {
             var model = new CostsBusinessAnalysis();
 
+            model.allCosts = MainModel.GeneralBA.Cost; // MainModel.ReportProfitAndLoss.Costs.Sum();
+            model.difPastPeriod = MainModel.GeneralBA.CostAnFirst;
+            model.maxCostsByMonth = MainModel.ReportProfitAndLoss.Costs.Max();
+            model.averageCostsByMonth = model.allCosts / MainModel.ReportProfitAndLoss.Costs.Count();
+
+            model.CostsDiagram.Add("Прочие", MainModel.ReportProfitAndLoss.OtherCosts.Sum());
+            model.CostsDiagram.Add("Бонусы", 0);
+            model.CostsDiagram.Add("По реализации", MainModel.ReportProfitAndLoss.CostsSalesServices.Sum());
+            model.CostsDiagram.Add("Админ-ые", MainModel.ReportProfitAndLoss.AdministrativeExpenses.Sum());
+            model.CostsDiagram.Add("Закуп", 0);
+
+            // тут опасно, если вдруг в расходах не было записи за какой то месяц то у нас произойдет смещение, но вообще на норм предприятии это маловероятно
+            // раньше не предусмотрели, поэтому делаем так
+            var stMon = MainModel.StartDate.Month;
+            var stYear = MainModel.StartDate.Year;
+            foreach (var item in MainModel.ReportProfitAndLoss.Costs)
+            {
+                if (stMon != 12) stMon++;
+                else
+                {
+                    stMon = 0; stYear++;
+                }
+                model.CostsByMonthDiagram.Add(((Month)stMon).ToString() + "-" + stYear.ToString(), item);//расходы
+            }
+            model.GrosProfitDiagram = MainModel.ProfitBA.GrossProfitDiagram;// валовую уже считали
+            model.SalesDiagram = MainModel.SalesBA.DynamicsSalesDiagram;// продажи тоже
+
+            //аддс - операц деятельность - выбитие все кроме оплаты поставщику и - TODO ?? Авансы выданные под поставку активов и услуг
+            model.CostsOut = MainModel.ADDSTranz.Where(_ => _.en302 == 1 && _.en450 == 0 && _.GroupCode != "000000001" && _.GroupCode != "000000029").Sum(_ => _.Money);
+
+            model.paidTaxes = MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000037" || _.GroupCode == "000000036").Sum(_ => _.Money);
+            model.paidTaxesFromSales = Math.Round(MainModel.GeneralBA.Sales / model.paidTaxes * 100, 2);
+            model.paidTaxesFromGrosProfit = Math.Round(MainModel.GeneralBA.GrossProfit / model.paidTaxes * 100, 2);
+
             return model;
         }
 
@@ -581,6 +615,48 @@ namespace ProgressoExpert.Process
         {
             var model = new PurchaseBusinessAnalysis();
 
+            model.allPurchase = Math.Round(MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum(), 2);
+            var pastPur = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
+            model.difPastPeriod = Math.Round(model.allPurchase / pastPur * 100, 2);
+
+            model.maxPurchaseByMonth = decimal.Zero;
+            var counter = 0;
+            foreach (var item in MainModel.Sales)
+            {
+                var dt = string.Empty;
+                var tmp = item.Sales.Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
+                if (tmp > model.maxPurchaseByMonth)
+                    model.maxPurchaseByMonth = Math.Round(tmp, 2);
+
+                dt = ((Month)item.Date.Month).ToString();
+                model.PurchaseDiagram.Add(dt, Math.Round(item.Sales.Sum(_ => _.CostPrise), 2));
+                model.SalesDiagram.Add(dt, Math.Round(item.Sales.Sum(_ => _.SalesWithoutNDS), 2));
+                model.PaymentDiagram.Add(dt, MainModel.ADDSTranzPastPeriod[counter].Money);
+
+                counter++;
+            }
+            model.averagePurchaseByMonth = Math.Round(model.allPurchase / MainModel.Sales.Count(), 2);
+
+            var tmpPurGroup = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
+                               group s by s.GroupCode into g
+                               select new
+                               {
+                                   name = g.FirstOrDefault().GroupName,
+                                   money = g.Sum(_ => _.CostPrise),
+                                   count = g.Sum(_ => _.CountPur)
+                               }).OrderByDescending(_ => _.money).ToList();
+            model.PurchaseByGoodsDiagram.Add("Прочее", Math.Round(tmpPurGroup.Skip(3).Sum(_ => _.money), 2));
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[2].name, Math.Round(tmpPurGroup[2].money, 2));
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[1].name, Math.Round(tmpPurGroup[1].money, 2));
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[0].name, Math.Round(tmpPurGroup[0].money, 2));
+
+            model.SalesvsPurchase = Math.Round(MainModel.GeneralBA.Sales / model.allPurchase * 100, 2);
+            model.difSalesvsPurchasePastPeriod = Math.Round(model.SalesvsPurchase - 
+                (MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Sum(_ => _.SalesWithoutNDS) / pastPur * 100), 2);
+
+            model.PaymentvsPurchase = Math.Round(MainModel.SalesBA.SummPaymentBuyer / model.allPurchase * 100, 2);
+            model.difPaymentvsPurchasePastPeriod = Math.Round(MainModel.ADDSTranzPastPeriod.Sum(_ => _.Money) / pastPur, 2);
+            
             return model;
         }
 
