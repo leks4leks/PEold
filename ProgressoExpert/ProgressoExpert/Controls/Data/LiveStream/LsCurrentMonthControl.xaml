@@ -53,7 +53,7 @@
                     <TextBlock Text="Рентабельность" Style="{StaticResource TextBlock18Orange1CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <TextBlock Text="{Binding ProfitabilityMonth, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
+                    <TextBlock Text="{Binding ProfitabilityMonth, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Column="3" Grid.Row="0">

@@ -78,7 +78,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                    <TextBlock Name="AveragePercentSaleGoodsTb" Text="{Binding DifPercentSaleGoods, StringFormat={}{0}%, ConverterCulture=ru-RU}" 
+                    <TextBlock Name="AveragePercentSaleGoodsTb" Text="{Binding DifPercentSaleGoods, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
                     <TextBlock Text="{Binding SummSaleGoods, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>
@@ -104,7 +104,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                    <TextBlock Name="AveragePercentPaymentBuyerTb" Text="{Binding DifPercentPaymentBuyer, StringFormat={}{0}%, ConverterCulture=ru-RU}"
+                    <TextBlock Name="AveragePercentPaymentBuyerTb" Text="{Binding DifPercentPaymentBuyer, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"
                                Style="{StaticResource TextBlockStyle19BoldGreen4Bottom}" Margin="0,0,5,0"/>
                     <TextBlock Text="{Binding SummPaymentBuyer, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" 
                                Style="{StaticResource TextBlockStyle19ContentBottomBold}"/>

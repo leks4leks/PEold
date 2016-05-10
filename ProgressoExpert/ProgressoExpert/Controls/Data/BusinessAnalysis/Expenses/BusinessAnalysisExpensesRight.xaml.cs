@@ -56,69 +56,75 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
         public void LoadDiagram3()
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart3);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart3);
-
-            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart3);
-            var index = 1;
-            foreach (var item in ViewModel.CostsCommingDiagram)
+            if (ViewModel.CostsCommingDiagram != null)
             {
-                System.Drawing.Color color;
-                switch (index)
-                {
-                    case 1:
-                        color = System.Drawing.Color.FromArgb(192, 80, 77);
-                        break;
-                    case 2:
-                        color = System.Drawing.Color.FromArgb(179, 74, 71);
-                        break;
-                    case 3:
-                        color = System.Drawing.Color.FromArgb(202, 126, 125);
-                        break;
-                    case 4:
-                        color = System.Drawing.Color.FromArgb(221, 182, 181);
-                        break;
-                    default:
-                        color = System.Drawing.Color.Red;
-                        break;
+                ChartUtils.AddChartArea(string.Empty, ref chart3);
+                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart3);
 
-                };
-                index++;
-                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart3);
+                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart3);
+                var index = 1;
+                foreach (var item in ViewModel.CostsCommingDiagram)
+                {
+                    System.Drawing.Color color;
+                    switch (index)
+                    {
+                        case 1:
+                            color = System.Drawing.Color.FromArgb(192, 80, 77);
+                            break;
+                        case 2:
+                            color = System.Drawing.Color.FromArgb(179, 74, 71);
+                            break;
+                        case 3:
+                            color = System.Drawing.Color.FromArgb(202, 126, 125);
+                            break;
+                        case 4:
+                            color = System.Drawing.Color.FromArgb(221, 182, 181);
+                            break;
+                        default:
+                            color = System.Drawing.Color.Red;
+                            break;
+
+                    };
+                    index++;
+                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart3);
+                }
             }
         }
 
         public void LoadDiagram4()
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart4);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
-
-            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
-            var index = 1;
-            foreach (var item in ViewModel.CostsCommingDiagram)
+            if (ViewModel.CostsCommingDiagram != null)
             {
-                System.Drawing.Color color;
-                switch (index)
-                {
-                    case 1:
-                        color = System.Drawing.Color.FromArgb(192, 80, 77);
-                        break;
-                    case 2:
-                        color = System.Drawing.Color.FromArgb(179, 74, 71);
-                        break;
-                    case 3:
-                        color = System.Drawing.Color.FromArgb(202, 126, 125);
-                        break;
-                    case 4:
-                        color = System.Drawing.Color.FromArgb(221, 182, 181);
-                        break;
-                    default:
-                        color = System.Drawing.Color.Red;
-                        break;
+                ChartUtils.AddChartArea(string.Empty, ref chart4);
+                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
 
-                };
-                index++;
-                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
+                var index = 1;
+                foreach (var item in ViewModel.CostsCommingDiagram)
+                {
+                    System.Drawing.Color color;
+                    switch (index)
+                    {
+                        case 1:
+                            color = System.Drawing.Color.FromArgb(192, 80, 77);
+                            break;
+                        case 2:
+                            color = System.Drawing.Color.FromArgb(179, 74, 71);
+                            break;
+                        case 3:
+                            color = System.Drawing.Color.FromArgb(202, 126, 125);
+                            break;
+                        case 4:
+                            color = System.Drawing.Color.FromArgb(221, 182, 181);
+                            break;
+                        default:
+                            color = System.Drawing.Color.Red;
+                            break;
+
+                    };
+                    index++;
+                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+                }
             }
         }
     }

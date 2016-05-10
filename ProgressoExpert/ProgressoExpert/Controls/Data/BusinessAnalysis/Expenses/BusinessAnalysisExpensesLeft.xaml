@@ -39,7 +39,7 @@
                 
                 <Grid Grid.Row="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
                         <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle19Top}"/>
                     </StackPanel>
                 </Grid>
@@ -144,10 +144,10 @@
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="{Binding paidTaxesFromSales, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxesFromSales, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="{Binding paidTaxesFromGrosProfit, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxesFromGrosProfit, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="1">

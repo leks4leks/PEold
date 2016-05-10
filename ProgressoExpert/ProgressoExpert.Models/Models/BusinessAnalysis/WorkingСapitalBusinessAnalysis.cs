@@ -92,12 +92,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// прибыль - Структура оборотного капитала по источникам
         /// </summary>
-        public decimal profit
+        public Dictionary<string, decimal> profit
         {
             get { return _profit; }
             set { SetValue(ref _profit, value, "profit"); }
         }
-        private decimal _profit = 0;
+        private Dictionary<string, decimal> _profit;
         
         /// <summary>
         /// оборачиваемочть по видам товара дней

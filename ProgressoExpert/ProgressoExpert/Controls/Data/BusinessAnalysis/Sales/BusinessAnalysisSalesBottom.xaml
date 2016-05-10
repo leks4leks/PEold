@@ -91,7 +91,7 @@
                     <Grid Grid.Row="0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Goods1Info.Value, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14BoldCenterCenter}"/>
-                            <TextBlock Name="Goods1InfoPercentTb" Text="{Binding Goods1Info.Percent, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldRed3CenterCenter}"
+                            <TextBlock Name="Goods1InfoPercentTb" Text="{Binding Goods1Info.Percent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldRed3CenterCenter}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                     </Grid>
@@ -111,7 +111,7 @@
                     <Grid Grid.Row="0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Goods2Info.Value, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14BoldCenterCenter}"/>
-                            <TextBlock Name="Goods2InfoPercentTb" Text="{Binding Goods2Info.Percent, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"
+                            <TextBlock Name="Goods2InfoPercentTb" Text="{Binding Goods2Info.Percent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                     </Grid>
@@ -131,7 +131,7 @@
                     <Grid Grid.Row="0">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Goods3Info.Value, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14BoldCenterCenter}"/>
-                            <TextBlock Name="Goods3InfoPercentTb" Text="{Binding Goods3Info.Percent, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"
+                            <TextBlock Name="Goods3InfoPercentTb" Text="{Binding Goods3Info.Percent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                     </Grid>

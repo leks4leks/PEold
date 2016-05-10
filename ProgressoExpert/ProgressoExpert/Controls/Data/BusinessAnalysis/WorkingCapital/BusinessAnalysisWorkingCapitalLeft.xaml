@@ -46,12 +46,13 @@
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                            <TextBlock Text="15 000 000" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                            <TextBlock Text="+7%" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
+                            <TextBlock Text="{Binding myMoney, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
+                            <TextBlock Text="{Binding difmyMoneyByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                            <TextBlock Text="{Binding difmyMoney, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                            <TextBlock Text="vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -72,12 +73,13 @@
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                            <TextBlock Text="15 000 000" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                            <TextBlock Text="+7%" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
+                            <TextBlock Text="{Binding myCosts, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
+                            <TextBlock Text="{Binding difmyCostsByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <TextBlock Text="+1 250 vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                            <TextBlock Text="{Binding difmyCosts, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}"/>
+                            <TextBlock Text="vs прошлый период" TextWrapping="Wrap" Style="{StaticResource TextBlockStyle12BoldGray2}" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

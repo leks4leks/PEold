@@ -40,10 +40,10 @@
                 <TextBlock Text="{Binding Sales, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="2">
-                <TextBlock Name="SalesAnFirstTb" Text="{Binding SalesAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Name="SalesAnFirstTb" Text="{Binding SalesAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="3">
-                <TextBlock Name="SalesAnSecondTb" Text="{Binding SalesAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Name="SalesAnSecondTb" Text="{Binding SalesAnSecond, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="0">
@@ -53,10 +53,10 @@
                 <TextBlock Text="{Binding GrossProfitAnSecond, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="2">
-                <TextBlock Name="CostPriceAnFirstTb" Text="{Binding CostPriceAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Name="CostPriceAnFirstTb" Text="{Binding CostPriceAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="3">
-                <TextBlock Name="CostPriceAnSecondTb" Text="{Binding CostPriceAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Name="CostPriceAnSecondTb" Text="{Binding CostPriceAnSecond, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="0">
@@ -66,10 +66,10 @@
                 <TextBlock Text="{Binding GrossProfit, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldBlue8CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="2">
-                <TextBlock Name="GrossProfitAnFirstTb" Text="{Binding GrossProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Name="GrossProfitAnFirstTb" Text="{Binding GrossProfitAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="3">
-                <TextBlock Name="GrossProfitAnSecondTb" Text="{Binding GrossProfitAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Name="GrossProfitAnSecondTb" Text="{Binding GrossProfitAnSecond, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="3" Grid.Column="0">
@@ -79,10 +79,10 @@
                 <TextBlock Text="{Binding Cost, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="2">
-                <TextBlock Name="CostAnFirstTb" Text="{Binding CostAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Name="CostAnFirstTb" Text="{Binding CostAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="3">
-                <TextBlock Name="CostAnSecondTb" Text="{Binding CostAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Name="CostAnSecondTb" Text="{Binding CostAnSecond, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="4" Grid.Column="0">
@@ -92,10 +92,10 @@
                 <TextBlock Text="{Binding NetProfit, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldBlue11CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="4" Grid.Column="2">
-                <TextBlock Name="NetProfitAnFirstTb" Text="{Binding NetProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
+                <TextBlock Name="NetProfitAnFirstTb" Text="{Binding NetProfitAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>
             </Grid>
             <Grid Grid.Row="4" Grid.Column="3">
-                <TextBlock Name="NetProfitAnSecondTb" Text="{Binding NetProfitAnSecond, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
+                <TextBlock Name="NetProfitAnSecondTb" Text="{Binding NetProfitAnSecond, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
             </Grid>
         </Grid>
 

@@ -35,7 +35,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding difPastPeriod, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle19Green0Top}" Margin="0,0,10,0"/>
                     <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlockStyle19Top}"/>
                 </StackPanel>
             </Grid>

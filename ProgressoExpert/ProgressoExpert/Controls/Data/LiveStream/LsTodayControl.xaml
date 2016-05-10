@@ -54,7 +54,7 @@
                     <TextBlock Text="Рентабельность" Style="{StaticResource TextBlock18Green0CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="1">
-                    <TextBlock Text="{Binding ProfitabilityToday, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
+                    <TextBlock Text="{Binding ProfitabilityToday, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock20BoldCenterCenter}"/>
                 </Grid>
                 
                 <Grid Grid.Column="3" Grid.Row="0">
@@ -149,13 +149,13 @@
                         <TextBlock Text="На сегодня" Style="{StaticResource TextBlock15BoldGreen0CenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtMoney, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoney, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="2" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebt, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtMoneyAndCustomerDebt, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.Column="1">
-                        <TextBlock Text="{Binding CoveringCurrentDebtOfCurrentAssets, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                        <TextBlock Text="{Binding CoveringCurrentDebtOfCurrentAssets, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                     </Grid>
 
                     <Grid Grid.Row="0" Grid.Column="2">

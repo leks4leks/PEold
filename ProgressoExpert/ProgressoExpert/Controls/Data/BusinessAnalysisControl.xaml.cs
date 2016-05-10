@@ -48,9 +48,13 @@ namespace ProgressoExpert.Controls.Data
             BusinessAnalysisExpensesLeft.DataBind(model.CostsBA);
             BusinessAnalysisExpensesRight.DataBind(model.CostsBA);
 
-            // Расходы
+            // Закуп
             BusinessAnalysisPurchaseLeft.DataBind(model.PurchaseBA);
             BusinessAnalysisPurchaseRight.DataBind(model.PurchaseBA);
+
+            // Оборотный капитал
+            BusinessAnalysisWorkingCapitalLeft.DataBind(model.WorkingСapitalBA);
+            BusinessAnalysisWorkingCapitalRight.DataBind(model.WorkingСapitalBA);
         }
     }
 }

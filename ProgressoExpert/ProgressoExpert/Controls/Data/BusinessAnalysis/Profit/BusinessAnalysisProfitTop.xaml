@@ -34,7 +34,7 @@
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
-                    <TextBlock Name="NetProfitAnFirstTb" Text="{Binding NetProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
+                    <TextBlock Name="NetProfitAnFirstTb" Text="{Binding NetProfitAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
                     <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock15CenterCenter}"
                                Margin="5, 0, 0, 0"/>
                 </StackPanel>
@@ -42,7 +42,7 @@
                     <TextBlock Text="Чистая рентабельность" Style="{StaticResource TextBlockCenter15BoldBlue2CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="{Binding NetProfitability, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                    <TextBlock Text="{Binding NetProfitability, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="0">
                     <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenter15BoldBlue2CenterCenter}"/>
@@ -78,7 +78,7 @@
                 </Grid>
                 <Grid Grid.Column="0" Grid.Row="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                        <TextBlock Name="GrossProfitAnFirstTb" Text="{Binding GrossProfitAnFirst, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
+                        <TextBlock Name="GrossProfitAnFirstTb" Text="{Binding GrossProfitAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock17BoldGreen0LeftCenter}"/>
                         <TextBlock Text="к предыдущему периоду" Style="{StaticResource TextBlock15CenterCenter}" Margin="5, 0, 0, 0"/>
                     </StackPanel>
                 </Grid>
@@ -86,7 +86,7 @@
                     <TextBlock Text="Валовая рентабельность" Style="{StaticResource TextBlockCenter15BoldBlue8CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="1">
-                    <TextBlock Text="{Binding GrossProfitability, StringFormat={}{0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
+                    <TextBlock Text="{Binding GrossProfitability, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenter15BoldCenterCenter}"/>
                 </Grid>
                 <Grid Grid.Column="2" Grid.Row="0">
                     <TextBlock Text="Средняя прибыль в месяц" Style="{StaticResource TextBlockCenter15BoldBlue8CenterCenter}"/>

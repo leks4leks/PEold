@@ -21,6 +21,6 @@ namespace ProgressoExpert.Controls.Utils
         /// <summary>
         /// 10%
         /// </summary>
-        public static readonly string Percentage = "{0}%";
+        public static readonly string Percentage = "{0:N0}%";
     }
 }
