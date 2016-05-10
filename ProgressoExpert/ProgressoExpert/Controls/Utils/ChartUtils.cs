@@ -13,27 +13,38 @@ namespace ProgressoExpert.Controls.Utils
         public static void AddSeriesAndPoints(string seriesName, SeriesChartType chartType, string legendText, System.Drawing.Color color, 
             Dictionary<string, decimal> dataValues, string pointLabelFormat, ref Chart _chart)
         {
-            var series = new Series()
+            if (dataValues != null && dataValues.Count > 0)
             {
-                Name = seriesName,
-                ChartType = chartType,
-                Color = color,
-                LegendText = legendText,
-                BorderColor = System.Drawing.Color.White,
-                IsValueShownAsLabel = true
-            };
-            foreach (KeyValuePair<string, decimal> data in dataValues)
-            {
-                series.Points.AddXY(data.Key, data.Value);
-                var _point = series.Points.Last();
-                _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
-                _point.Font = new System.Drawing.Font("Arial", 10);
+                if (_chart.Series.Any(i=>i.Name == seriesName))
+                {
+                    _chart.Series.Remove(_chart.Series.Where(i=>i.Name == seriesName).FirstOrDefault());
+                }
+                var series = new Series()
+                {
+                    Name = seriesName,
+                    ChartType = chartType,
+                    Color = color,
+                    LegendText = legendText,
+                    BorderColor = System.Drawing.Color.White,
+                    IsValueShownAsLabel = true
+                };
+                foreach (KeyValuePair<string, decimal> data in dataValues)
+                {
+                    series.Points.AddXY(data.Key, data.Value);
+                    var _point = series.Points.Last();
+                    _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
+                    _point.Font = new System.Drawing.Font("Arial", 10);
+                }
+                _chart.Series.Add(series);
             }
-            _chart.Series.Add(series);
         }
 
         public static void AddSeries(string seriesName, SeriesChartType chartType, ref Chart _chart)
         {
+            if (_chart.Series.Any(i => i.Name == seriesName))
+            {
+                _chart.Series.Remove(_chart.Series.Where(i => i.Name == seriesName).FirstOrDefault());
+            }
             var series = new Series()
             {
                 Name = seriesName,

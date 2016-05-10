@@ -35,18 +35,9 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
         {
             ViewModel = (CostsBusinessAnalysis)model;
             this.DataContext = (CostsBusinessAnalysis)model;
-            if (ViewModel.SalesDiagram != null && ViewModel.CostsByMonthDiagram != null && ViewModel.GrosProfitDiagram != null)
-            {
-                LoadDiagram2();
-            }
-            if (ViewModel.CostsCommingDiagram != null)
-            {
-                LoadDiagram3();
-            }
-            if (ViewModel.CostsOutDiagram != null)
-            {
-                LoadDiagram4();
-            }
+            LoadDiagram2();
+            LoadDiagram3();
+            LoadDiagram4();
         }
 
         public void LoadDiagram2()

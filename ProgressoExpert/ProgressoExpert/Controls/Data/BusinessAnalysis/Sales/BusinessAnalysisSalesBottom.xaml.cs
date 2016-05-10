@@ -36,19 +36,9 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
         {
             ViewModel = (SalesBusinessAnalysis)model;
             this.DataContext = (SalesBusinessAnalysis)model;
-            if (ViewModel.DynamicsSalesDiagram != null && ViewModel.DynamicsPaymentDiagram != null)
-            {
-                LoadDiagram();
-            }
-            if (ViewModel.Goods1Diagram != null && ViewModel.Goods1Info != null && ViewModel.Goods2Diagram != null && ViewModel.Goods2Info != null
-                && ViewModel.Goods3Diagram != null && ViewModel.Goods3Info != null)
-            {
-                LoadDiagram2();
-            }
-            if (ViewModel.StructureGrossProfitClientDiagram != null && ViewModel.StructureGrossProfitClientDiagram.Count > 0)
-            {
-                LoadDiagram4();
-            }
+            LoadDiagram();
+            LoadDiagram2();
+            LoadDiagram4();
             if (ViewModel.StructureGrossProfitClientInfo != null && ViewModel.StructureGrossProfitClientInfo.Count > 0)
             {
                 UpdateTable();

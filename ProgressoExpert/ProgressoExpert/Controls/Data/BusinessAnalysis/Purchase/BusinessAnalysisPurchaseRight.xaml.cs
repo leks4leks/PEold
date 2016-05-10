@@ -34,14 +34,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         {
             ViewModel = (PurchaseBusinessAnalysis)model;
             this.DataContext = (PurchaseBusinessAnalysis)model;
-            if (ViewModel.PaymentDiagram != null && ViewModel.PurchaseDiagram != null && ViewModel.SalesDiagram != null)
-            {
-                LoadDiagram2();
-            }
-            if (ViewModel.PurchaseByClientDiagram != null && ViewModel.PaymentByClientDiagram != null)
-            {
-                LoadDiagram3();
-            }
+            LoadDiagram2();
+            LoadDiagram3();
             if (ViewModel.ClientDiagramInfo != null)
             {
                 UpdateTable();

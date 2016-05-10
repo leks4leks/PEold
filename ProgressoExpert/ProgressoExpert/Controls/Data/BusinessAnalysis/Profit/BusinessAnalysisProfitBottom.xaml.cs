@@ -35,22 +35,10 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
         {
             ViewModel = (ProfitBusinessAnalysis)model;
             this.DataContext = (ProfitBusinessAnalysis)model;
-            if (ViewModel.GrossProfitDiagram != null && ViewModel.NetProfitDiagram != null)
-            {
-                LoadDiagram();
-            }
-            if (ViewModel.GrossProfitabilityDiagram != null && ViewModel.NetProfitabilityDiagram != null)
-            {
-                LoadDiagram2();
-            }
-            if (ViewModel.StructureGrossProfitGoodsDiagram != null)
-            {
-                LoadDiagram3();
-            }
-            if (ViewModel.StructureGrossProfitClientDiagram != null)
-            {
-                LoadDiagram4();
-            }
+            LoadDiagram();
+            LoadDiagram2();
+            LoadDiagram3();
+            LoadDiagram4();
             if (ViewModel.StructureGrossProfitGoodsInfo != null && ViewModel.StructureGrossProfitGoodsInfo.Count > 0)
             {
                 UpdateTable1();

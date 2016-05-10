@@ -34,10 +34,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         {
             ViewModel = (PurchaseBusinessAnalysis)model;
             this.DataContext = (PurchaseBusinessAnalysis)model;
-            if (ViewModel.PurchaseByGoodsDiagram != null && ViewModel.salesByGoodsDiagram != null)
-            {
-                LoadDiagram1();
-            }
+            LoadDiagram1();
         }
 
         public void LoadDiagram1()
@@ -47,7 +44,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
                 ViewModel.PurchaseByGoodsDiagram, string.Empty, ref chart1);
-            ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
+            ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Bar, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
                 ViewModel.salesByGoodsDiagram, string.Empty, ref chart1);
         }
     }

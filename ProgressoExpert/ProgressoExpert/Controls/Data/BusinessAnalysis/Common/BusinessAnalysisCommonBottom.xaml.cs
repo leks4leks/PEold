@@ -35,10 +35,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
         {
             ViewModel = (GeneralBusinessAnalysis)model;
             this.DataContext = (GeneralBusinessAnalysis)model;
-            if (ViewModel.SalesDiagram != null && ViewModel.NetProfitDiagram != null && ViewModel.AverageWorkingCapitalDiagram != null)
-            {
-                LoadDiagram();
-            }
+            LoadDiagram();
             if (ViewModel.gSales.Count > 0)
             {
                 UpdateTable();
