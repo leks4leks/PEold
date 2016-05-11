@@ -72,7 +72,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
 
         public void LoadDiagram3()
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart3, 0, 0, 1, 1, true, false, false, false);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart3, 0, 0, 1, 1, true, false, false, false, 1, 0);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Валовая прибыль по товарам",
                 System.Drawing.Color.FromArgb(149, 179, 215), ViewModel.StructureGrossProfitGoodsDiagram, FormatUtils.Thousand,

@@ -40,6 +40,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             {
                 UpdateTable();
             }
+            UpdateColors();
         }
 
         public void LoadDiagram2()
@@ -72,6 +73,13 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         {
             //TableName1Tb.Text = ViewModel.ClientDiagramInfo
             //TableShare1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Value);
+        }
+
+        private void UpdateColors()
+        {
+            difSalesvsPurchasePastPeriodTb.Style = ViewModel.difSalesvsPurchasePastPeriod >= 0
+                ? (Style)FindResource("TextBlockStyle12Green0")
+                : (Style)FindResource("TextBlockStyle12Red3");
         }
     }
 }

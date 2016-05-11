@@ -86,7 +86,8 @@ namespace ProgressoExpert.Controls.Utils
         public static void AddChartArea(string labelStyleFormat, ref Chart _chart, int xMajorGridLineWidth = 0,
             int yMajorGridLineWidth = 0, int xLabelStyleInterval = 0, int yLabelStyleInterval = 0,
             bool xLabelStyleEnabled = true, bool yLabelStyleEnabled = true, bool yMajorTickMarkEnabled = true,
-            bool yMinorTickMarkEnabled = true, int xLineWidth = 1, int yLineWidth = 1)
+            bool yMinorTickMarkEnabled = false, int xLineWidth = 1, int yLineWidth = 1, bool xMajorTickMarkEnabled = true,
+            bool xMinorTickMarkEnabled = false)
         {
             var chartArea = new ChartArea() { Name = "ChartArea" };
             chartArea.AxisX.MajorGrid.LineWidth = xMajorGridLineWidth;
@@ -107,6 +108,9 @@ namespace ProgressoExpert.Controls.Utils
 
             chartArea.AxisX.LineWidth = xLineWidth;
             chartArea.AxisY.LineWidth = yLineWidth;
+
+            chartArea.AxisX.MajorTickMark.Enabled = xMajorTickMarkEnabled;
+            chartArea.AxisX.MinorTickMark.Enabled = xMinorTickMarkEnabled;
 
             _chart.ChartAreas.Add(chartArea);
         }
