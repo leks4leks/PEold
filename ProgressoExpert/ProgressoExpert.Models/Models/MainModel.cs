@@ -29,6 +29,20 @@ namespace ProgressoExpert.Models.Models
         }
         private List<TranzEnt> _endTranz;
 
+        public List<TranzEnt> StartTranzOriginal
+        {
+            get { return _startTranzOriginal; }
+            set { SetValue(ref _startTranzOriginal, value, "StartTranzOriginal"); }
+        }
+        private List<TranzEnt> _startTranzOriginal;
+
+        public List<TranzEnt> EndTranzOriginal
+        {
+            get { return _endTranzOriginal; }
+            set { SetValue(ref _endTranzOriginal, value, "EndTranzOriginal"); }
+        }
+        private List<TranzEnt> _endTranzOriginal;
+
         public List<GroupsEnt> ADDSTranz
         {
             get { return _ADDSTranz; }

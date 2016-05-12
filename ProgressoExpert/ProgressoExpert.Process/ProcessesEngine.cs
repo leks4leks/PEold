@@ -27,6 +27,9 @@ namespace ProgressoExpert.Process
             model.StartTranz = MainAccessor.GetAllTrans(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(model.StartDate, model.EndDate);
 
+            model.StartTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
+            model.EndTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, model.EndDate);
+
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
@@ -78,6 +81,10 @@ namespace ProgressoExpert.Process
 
             MainModel.StartTranz = MainAccessor.GetAllTrans(stTodayDate, null); // Вытащим сразу все транзакции, отдельным запросом
             MainModel.EndTranz = MainAccessor.GetAllTrans(stTodayDate, endTodayDate);
+
+            MainModel.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+            MainModel.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
+
             MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel);
 
             model.DebtOfCustomers = Math.Round(MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd, 2);
@@ -174,6 +181,8 @@ namespace ProgressoExpert.Process
                     tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null);
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
+                    tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+                    tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALF = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = Math.Round(RPALF / model.Cost * 100, 2);
@@ -191,6 +200,8 @@ namespace ProgressoExpert.Process
                     tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null);
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
+                    tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+                    tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALS = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = Math.Round(RPALS / model.Cost * 100, 2);
@@ -334,6 +345,9 @@ namespace ProgressoExpert.Process
 
                 mm.StartTranz = MainModel.StartTranz.Where(_ => _.period < mm.StartDate).ToList();
                 mm.EndTranz = MainModel.EndTranz.Where(_ => _.period < mm.EndDate).ToList();
+                
+                mm.StartTranzOriginal = MainModel.StartTranzOriginal.Where(_ => _.period < mm.StartDate).ToList();
+                mm.EndTranzOriginal = MainModel.EndTranzOriginal.Where(_ => _.period < mm.EndDate).ToList();
                 if (mm.EndTranz.Where(_ => _.period < mm.StartDate).Count() > 0)
                     mm.StartTranz.AddRange(mm.EndTranz.Where(_ => _.period < mm.StartDate).ToList());//чтобы из бд не тащить мы переложим из модельки за текущий период транзикции в прошедщий период
 

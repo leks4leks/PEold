@@ -6,14 +6,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ProgressoExpert.DataAccess
 {
     public class Accessors
     {
-        private const int minusOne = -1; private static List<TranzEnt> Start = null;
+        private const int minusOne = -1;
+        private static List<TranzEnt> Start = null;
         private static List<TranzEnt> End = null;
+
+        private static List<TranzEnt> StartOriginal = null;
+        private static List<TranzEnt> EndOriginal = null;
 
         private static List<int> ourScr = null;
 
@@ -32,6 +37,8 @@ namespace ProgressoExpert.DataAccess
             {
                 Start = mainModel.StartTranz;
                 End = mainModel.EndTranz;
+                StartOriginal = mainModel.StartTranzOriginal;
+                EndOriginal = mainModel.EndTranzOriginal;
 
                 ourScr = new List<int>(); // Вытащим ID интересующих нас счетов нас счетов
 
@@ -42,7 +49,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Денежные средства в кассе
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.CashInCashBox1,
                     (int)ScoresForBusinessResults.CashInCashBox2);
                 model.CashInCashBoxStart = _outStart;
@@ -52,7 +59,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Денежные средства на рассчетном счете
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.MoneyInTheBankAccounts1,
                     (int)ScoresForBusinessResults.MoneyInTheBankAccounts2);
                 model.MoneyInTheBankAccountsStart = _outStart;
@@ -71,7 +78,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Долги клиентов и переплаты
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.DebtsOfCustomersAndOverpayments);
                 model.DebtsOfCustomersAndOverpaymentsStart = _outStart;
                 model.DebtsOfCustomersAndOverpaymentsEnd = _outEnd;
@@ -964,7 +971,7 @@ namespace ProgressoExpert.DataAccess
         #region SubQuery
 
         /// <summary>
-        /// Метод рассчета
+        /// Метод рассчета упр учета
         /// </summary>
         /// <param name="values"></param>
         /// <param name="_start"></param>
@@ -977,6 +984,24 @@ namespace ProgressoExpert.DataAccess
             List<int> list = values.ToList();
             
             GetStartEndDateMoney(Start, End, list, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
+            _start = Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
+            _end = _start + Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
+        }
+
+        /// <summary>
+        /// Метод рассчета бух учета
+        /// </summary>
+        /// <param name="values"></param>
+        /// <param name="_start"></param>
+        /// <param name="_end"></param>
+        private static void CalculateOriginal(out decimal _start, out decimal _end, params int[] values)
+        {
+            _start = 0;
+            _end = 0;
+
+            List<int> list = values.ToList();
+
+            GetStartEndDateMoney(StartOriginal, EndOriginal, list, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
             _start = Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
             _end = _start + Math.Round(ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum(), 2);
         }
@@ -1044,13 +1069,13 @@ namespace ProgressoExpert.DataAccess
         /// <param name="ourCrtEnd"></param>
         private static void GetStartEndDateMoney(List<TranzEnt> Start, List<TranzEnt> End, List<int> ourScr, out List<TranzEnt> ourDbtSt, out List<TranzEnt> ourDbtEnd, out List<TranzEnt> ourCrtSt, out List<TranzEnt> ourCrtEnd)
         {
-            ourDbtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
+            ourDbtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value))).ToList();
 
-            ourCrtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreCt))).ToList();
+            ourCrtSt = Start.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreCt, @"\d+").Value))).ToList();
 
-            ourDbtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
+            ourDbtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value))).ToList();
 
-            ourCrtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();            
+            ourCrtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value))).ToList();            
         }
 
          /// <summary>
@@ -1065,9 +1090,9 @@ namespace ProgressoExpert.DataAccess
         /// <param name="ourCrtEnd"></param>
         private static void GetPeriodMoney(List<TranzEnt> Trans, List<int> ourScr, out List<TranzEnt> ourDbt, out List<TranzEnt> ourCrt)
         {
-            ourDbt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreDt))).ToList();
+            ourDbt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value ))).ToList();
 
-            ourCrt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(w.ScoreCt))).ToList();            
+            ourCrt = Trans.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreCt, @"\d+").Value ))).ToList();            
         }        
               
         #endregion
