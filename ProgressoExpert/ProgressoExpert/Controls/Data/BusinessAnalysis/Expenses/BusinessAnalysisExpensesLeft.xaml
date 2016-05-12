@@ -126,7 +126,7 @@
                     <TextBlock Text="Оплачено налогов" Style="{StaticResource TextBlockStyle17Center}"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <TextBlock Text="{Binding paidTaxes}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
+                    <TextBlock Text="{Binding paidTaxes, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <TextBlock Text="=" Style="{StaticResource TextBlockStyle17CenterRed1Bold}"/>
