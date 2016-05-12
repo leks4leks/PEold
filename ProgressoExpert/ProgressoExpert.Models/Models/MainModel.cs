@@ -134,6 +134,13 @@ namespace ProgressoExpert.Models.Models
         }
         private DateTime _newEndTodayDate;
 
+        public int DaysInPeriod
+        {
+            get { return _daysInPeriod; }
+            set { SetValue(ref _daysInPeriod, value, "DaysInPeriod"); }
+        }
+        private int _daysInPeriod;
+
         #region Visibility
 
         /// <summary>

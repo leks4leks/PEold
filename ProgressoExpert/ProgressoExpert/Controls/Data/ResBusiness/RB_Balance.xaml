@@ -325,7 +325,7 @@
                     <TextBlock Text="задолженности перед поставщиками," Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
-                <TextBlock  Text="60" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="90" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
                 <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfDebtToSuppliers}"  Grid.Row="1" Grid.Column="6" 
                             Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
