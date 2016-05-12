@@ -42,15 +42,15 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
         public void LoadDiagram2()
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart2, 0, 0, 1, 1, true, true, false, false);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart2);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Расходы", System.Drawing.Color.FromArgb(170, 70, 67),
-                ViewModel.CostsByMonthDiagram, string.Empty, ref chart2);
+                ViewModel.CostsByMonthDiagram, FormatUtils.Thousand, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(209, 147, 146),
-                ViewModel.GrosProfitDiagram, string.Empty, ref chart2);
+                ViewModel.GrosProfitDiagram, FormatUtils.Thousand, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.SalesDiagram, string.Empty, ref chart2);
+                ViewModel.SalesDiagram, FormatUtils.Thousand, ref chart2);
         }
 
 

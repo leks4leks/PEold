@@ -762,8 +762,14 @@
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Green0}"/>
     </Style>
-    
-   
+
+    <Style x:Key="TextBlockStyle12Red3" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Red3}"/>
+    </Style>
+
+
     <Style x:Key="TextBlockStyle17Center" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="VerticalAlignment" Value="Center"/>

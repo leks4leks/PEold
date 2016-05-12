@@ -44,7 +44,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
 
         public void LoadDiagram()
         {
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart, 0, 0, 1);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart, 0, 0, 1, 0);
 
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
 

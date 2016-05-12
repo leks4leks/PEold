@@ -47,7 +47,7 @@ namespace ProgressoExpert.Controls.Data.LiveStream
         /// </summary>
         public void LoadDiagram()
         {
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart, 0, 0, 0, 0, true, true, true, false);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Прошлый месяц", System.Drawing.Color.FromArgb(250, 203, 180),
