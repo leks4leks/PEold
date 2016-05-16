@@ -21,6 +21,10 @@
         <Setter Property="Fill" Value="{StaticResource Gray3}"/>
         <Setter Property="Stroke" Value="White"/>
     </Style>
+    <Style x:Key="RectangleWhiteGray3" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="White"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray3}"/>
+    </Style>
 
     <Style x:Key="RectangleGray3Transparent" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
         <Setter Property="Fill" Value="{StaticResource Gray3}"/>

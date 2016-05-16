@@ -10,7 +10,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70*"/>
                 <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
                 
             <Grid Name="BalanceGrid" Visibility="Visible" Grid.Row="0">
@@ -180,7 +180,7 @@
                 <TextBlock Text="{Binding BusinessResults.AccumulatedProfitAndLossEnd, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Grid.Row="19" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
                 <TextBlock Text="Прочий капитал" Grid.Row="20" Grid.Column="3" Style="{StaticResource TextBlock12LeftCenterMarginLeft5}"/>
                 <TextBlock Text="{Binding BusinessResults.OtherCapitalStart, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}"  Grid.Row="20" Grid.Column="4" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock Text="{Binding BusinessResults.OtherCapitalEnd, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Grid.Row="18" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.OtherCapitalEnd, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Grid.Row="20" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
                 <TextBlock Text="ИТОГО ПАССИВОВ" Grid.Row="21" Grid.Column="3" Style="{StaticResource TextBlock12WhiteLeftCenter}"/>
                 <TextBlock Text="{Binding BusinessResults.TotalLiabilitiesStart, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}"  Grid.Row="21" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>
                 <TextBlock Text="{Binding BusinessResults.TotalLiabilitiesEnd, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Grid.Row="21" Grid.Column="5" Style="{StaticResource MDTTextBlockCenterWhite}"/>

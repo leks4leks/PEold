@@ -25,6 +25,7 @@ namespace ProgressoExpert.Controls.App
     public partial class MenuControl : UserControl
     {
         public MainModel ViewModel;
+        SelectPeriod SelectPeriodWindow;
 
         public MenuControl()
         {
@@ -75,8 +76,11 @@ namespace ProgressoExpert.Controls.App
         private void ShowUpdatePanelBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow win = (MainWindow)Window.GetWindow(this);
-            SelectPeriod wnd = new SelectPeriod(ViewModel, win);
-            wnd.ShowDialog();
+            if (SelectPeriodWindow == null)
+            {
+                SelectPeriodWindow = new SelectPeriod(ViewModel, win);
+            }
+            SelectPeriodWindow.Show();
         }
     }
 }
