@@ -67,7 +67,7 @@ namespace ProgressoExpert
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Windows[1].Close();
+            Application.Current.Windows[Application.Current.Windows.Count-1].Close();
         }
 
         /// <summary>
@@ -306,6 +306,17 @@ namespace ProgressoExpert
             {
                 ChangeYear(Convert.ToInt32(YearSlider.Value));
             }
+        }
+
+        private void Window_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void Window_Deactivated_1(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
     }

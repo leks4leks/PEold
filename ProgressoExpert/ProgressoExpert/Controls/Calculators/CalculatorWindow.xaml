@@ -1,0 +1,100 @@
+﻿<Window x:Class="ProgressoExpert.Controls.Calculators.CalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CalculatorWindow" Height="300" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" MouseDown="Window_MouseDown_1" Deactivated="Window_Deactivated_1">
+    <Border BorderBrush="BLack" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="{DynamicResource BlueColor2}">
+                <TextBlock Text="Калькулятор" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" Background="#f6f6f8">
+                    <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                               Name="ResultTb"  Margin="0,0,10,10" FontSize="15"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0">
+                    <Button Content="C" Style="{StaticResource MaterialDesignFlatButton}" Name="ClearAllBtn" Click="ClearAllBtn_Click"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="1">
+                    <Button Content="Delete" Style="{StaticResource MaterialDesignFlatButton}" Name="DeleteLastSymbolBtn" Click="DeleteLastSymbolBtn_Click"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="2">
+                    <Button Content="/" Style="{StaticResource MaterialDesignFlatButton}" Name="DivisionBtn" Click="BtnClick" Tag="/"/>
+                </Grid>
+                <Grid Grid.Row="2" Grid.Column="3" Tag="*">
+                    <Button Content="*" Style="{StaticResource MaterialDesignFlatButton}" Name="MultipleBtn" Click="BtnClick" Tag="*"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="0">
+                    <Button Content="7" Style="{StaticResource MaterialDesignFlatButton}" Name="SevenBtn" Click="BtnClick" Tag="7"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="1">
+                    <Button Content="8" Style="{StaticResource MaterialDesignFlatButton}" Name="EightBtn" Click="BtnClick" Tag="8"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="2">
+                    <Button Content="9" Style="{StaticResource MaterialDesignFlatButton}" Name="NineBtn" Click="BtnClick" Tag="9"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="3">
+                    <Button Content="-" Style="{StaticResource MaterialDesignFlatButton}" Name="MinusBtn" Click="BtnClick" Tag="-"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="0">
+                    <Button Content="4" Style="{StaticResource MaterialDesignFlatButton}" Name="FourBtn" Click="BtnClick" Tag="4"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <Button Content="5" Style="{StaticResource MaterialDesignFlatButton}" Name="FiveBtn" Click="BtnClick" Tag="5"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="2">
+                    <Button Content="6" Style="{StaticResource MaterialDesignFlatButton}" Name="SixBtn" Click="BtnClick" Tag="6"/>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="3">
+                    <Button Content="+" Style="{StaticResource MaterialDesignFlatButton}" Name="PlusBtn" Click="BtnClick" Tag="+"/>
+                </Grid>
+
+                <Grid Grid.Row="5" Grid.Column="0">
+                    <Button Content="1" Style="{StaticResource MaterialDesignFlatButton}" Name="OneBtn" Click="BtnClick" Tag="1"/>
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="1">
+                    <Button Content="2" Style="{StaticResource MaterialDesignFlatButton}" Name="TwoBtn" Click="BtnClick" Tag="2"/>
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="2">
+                    <Button Content="3" Style="{StaticResource MaterialDesignFlatButton}" Name="ThreeBtn" Click="BtnClick" Tag="3"/>
+                </Grid>
+                <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="3">
+                    <Button Content="=" Style="{StaticResource MaterialDesignFlatButton}" Name="ResultBtn" Click="ResultBtn_Click"/>
+                </Grid>
+
+                <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Button Content="0" Style="{StaticResource MaterialDesignFlatButton}"
+                            Name="ZeroBtn" Click="BtnClick" Tag="0"/>
+                </Grid>
+                <Grid Grid.Row="6" Grid.Column="2">
+                    <Button Content="." Style="{StaticResource MaterialDesignFlatButton}" Name="PointBtn" Click="BtnClick" Tag="."/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

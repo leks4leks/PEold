@@ -3,26 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:local="clr-namespace:ProgressoExpert.Controls.App" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="ProgressoExpert.SelectPeriod"
         Title="SelectPeriod" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" d:DesignWidth="535.2" d:DesignHeight="345.6">
-    <Grid Height="310" Width="478">
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+    Width="450" Height="350" MouseDown="Window_MouseDown_1" Deactivated="Window_Deactivated_1" ShowInTaskbar="False">
+    <Border BorderBrush="Black" BorderThickness="1,1,1,1">
+        <Grid Background="#f6f6f8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Выберите период" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        </StackPanel>
+        <Grid Grid.Row="0" Background="{DynamicResource BlueColor2}">
+            <TextBlock Text="Выбор периода" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
+        </Grid>
 
-        <Grid Grid.Row="1">
+            <Border Grid.Row="1" BorderBrush="{DynamicResource Gray3}" BorderThickness="0,0,0,1"/>
+            <Border Grid.Row="2" BorderBrush="{DynamicResource Gray3}" BorderThickness="0,0,0,1"/>
+            <Border Grid.Row="3" BorderBrush="{DynamicResource Gray3}" BorderThickness="0,0,0,1"/>
+            <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -51,40 +56,57 @@
         <Grid Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="MonthWrap">
                 <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="Month1Wrap">
-                    <ToggleButton Name="Month1Btn"  Content="Январь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month2Btn" Content="Февраль" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month3Btn"  Content="Март" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month4Btn" Content="Апрель" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month5Btn"  Content="Май" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month6Btn" Content="Июнь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
+                    <ToggleButton Name="Month1Btn"  Content="Январь" HorizontalAlignment="Left" Width="71" Height="40" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                    <ToggleButton Name="Month2Btn" Content="Февраль" HorizontalAlignment="Left" Width="71" Click="MonthSelect" 
+                                  Style="{DynamicResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month3Btn"  Content="Март" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{DynamicResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month4Btn" Content="Апрель" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{DynamicResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month5Btn"  Content="Май" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{DynamicResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month6Btn" Content="Июнь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{DynamicResource ToggleButtonStyle1}"/>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="Month2Wrap">
-                    <ToggleButton Name="Month7Btn" Content="Июль" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month8Btn" Content="Август" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month9Btn"  Content="Сентябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month10Btn" Content="Октябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month11Btn" Content="Ноябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                    <ToggleButton Name="Month12Btn" Content="Декабрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"/>
-                </WrapPanel>
+                        <ToggleButton Name="Month7Btn" Content="Июль" HorizontalAlignment="Left" Width="71" Height="40" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month8Btn" Content="Август" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month9Btn"  Content="Сентябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month10Btn" Content="Октябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month11Btn" Content="Ноябрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                        <ToggleButton Name="Month12Btn" Content="Декабрь" HorizontalAlignment="Left" Width="71" Click="MonthSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                    </WrapPanel>
             </WrapPanel>
         </Grid>
 
         <Grid Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">
 
             <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="QuarterWrap">
-                <ToggleButton Name="Quarter1Btn" Content="1 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
-                <ToggleButton Name="Quarter2Btn" Content="2 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
-                <ToggleButton Name="Quarter3Btn" Content="3 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
-                <ToggleButton Name="Quarter4Btn" Content="4 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"/>
-            </WrapPanel>
+                    <ToggleButton Name="Quarter1Btn" Content="1 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                    <ToggleButton Name="Quarter2Btn" Content="2 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                    <ToggleButton Name="Quarter3Btn" Content="3 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                    <ToggleButton Name="Quarter4Btn" Content="4 квартал" HorizontalAlignment="Left" Width="71" Click="QuarterSelect"
+                                  Style="{StaticResource ToggleButtonStyle1}"/>
+                </WrapPanel>
         </Grid>
 
-        <Grid Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <Button Name="ChangePeriodBtn" Content="Выбрать" Width="100" Click="ChangePeriodBtn_Click"/>
-                <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="20,0,0,0" Click="ClearBtn_Click"/>
-                <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="20,0,0,0" Click="CancelBtn_Click"/>
+        <Grid Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Button Name="ChangePeriodBtn" Content="Выбрать" Width="100" Click="ChangePeriodBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Click="ClearBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Click="CancelBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
             </StackPanel>
         </Grid>
     </Grid>
+    </Border>
 </Window>

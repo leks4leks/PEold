@@ -5,7 +5,7 @@
         xmlns:dataContols="clr-namespace:ProgressoExpert.Controls.Data"
         xmlns:converters="clr-namespace:ProgressoExpert.Converters"
         Title="MainWindow" WindowStartupLocation="Manual" WindowState="Maximized"
-        DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}" Loaded="Window_Loaded_1">
+        DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}" Loaded="Window_Loaded_1" Closed="Window_Closed_1">
    
     <Window.Resources>
         <ResourceDictionary>
@@ -46,8 +46,8 @@
                         Visibility="{Binding Path=BusinessAnalysisVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
                 </Grid>
 
-                <Grid Grid.Column="1" Background="LightGray">
-
+                <Grid Grid.Column="1">
+                    <appContols:RightBarControl x:Name="RightBarControl"/>
                 </Grid>
             </Grid>
         </Grid>

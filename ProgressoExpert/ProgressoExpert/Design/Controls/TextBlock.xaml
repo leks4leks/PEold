@@ -544,7 +544,19 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
-    
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock15WhiteCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--<Style TargetType="{x:Type TextBlock}" x:Key="TextBlock12BoldCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>-->
 
 
 

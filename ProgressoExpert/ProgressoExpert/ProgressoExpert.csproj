@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="NCalc">
+      <HintPath>..\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -64,6 +67,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\App\RightBarControl.xaml.cs">
+      <DependentUpon>RightBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calculators\CalculatorWindow.xaml.cs">
+      <DependentUpon>CalculatorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calculators\DepositCalculatorWindow.xaml.cs">
+      <DependentUpon>DepositCalculatorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectPeriod.xaml.cs">
       <DependentUpon>SelectPeriod.xaml</DependentUpon>
     </Compile>
@@ -72,6 +84,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\App\MenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\App\RightBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calculators\CalculatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calculators\DepositCalculatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +196,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Design\Controls\Grid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Design\Controls\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
