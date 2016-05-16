@@ -50,7 +50,7 @@
                 <TextBlock Text="Себестоимость" Style="{StaticResource TextBlock18LeftCenter}" Margin="10, 0, 0, 0"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
-                <TextBlock Text="{Binding GrossProfitAnSecond, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
+                <TextBlock Text="{Binding CostPrice, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlock18BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="2">
                 <TextBlock Name="CostPriceAnFirstTb" Text="{Binding CostPriceAnFirst, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockCenterDarkRed}"/>

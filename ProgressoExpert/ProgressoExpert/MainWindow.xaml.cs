@@ -54,37 +54,27 @@ namespace ProgressoExpert
 
         public void UpdateData()
         {
-            ViewModel.DaysInPeriod = Convert.ToInt32(Math.Round((ViewModel.EndDate - ViewModel.StartDate).TotalDays, 0));
-
             // Результаты бизнеса
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
             ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);
             ViewModel.RatiosIndicatorsResult = ProcessesEngine.GetRatiosIndicatorsResult(ViewModel);
 
-            //// Бизнес Анализ
-            //ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
-            //ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
-            //ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
-            //ViewModel.CostsBA = ProcessesEngine.GetCostsBA(ViewModel);
-            //ViewModel.PurchaseBA = ProcessesEngine.GetPurchaseBA(ViewModel);
-            //ViewModel.WorkingСapitalBA = ProcessesEngine.GetWorkingСapitalBA(ViewModel);
+            ViewModel.EndDate = new DateTime(ViewModel.EndDate.Year, ViewModel.EndDate.Month, ViewModel.EndDate.Day); 
+            // Бизнес Анализ
+            ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
+            ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
+            ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
+            ViewModel.CostsBA = ProcessesEngine.GetCostsBA(ViewModel);
+            ViewModel.PurchaseBA = ProcessesEngine.GetPurchaseBA(ViewModel);
+            ViewModel.WorkingСapitalBA = ProcessesEngine.GetWorkingСapitalBA(ViewModel);
 
-            //// Стресс-тестирование
+            // Стресс-тестирование
 
 
-            //// Биндинг
-            //BusinessAnalysisControl.DataBind(ViewModel);
+            // Биндинг
+            BusinessAnalysisControl.DataBind(ViewModel);
 
             ResBusinessControl.DataBind(ViewModel);
-        }
-
-
-        private void Window_Closed_1(object sender, EventArgs e)
-        {
-            foreach (var item in Application.Current.Windows)
-            {
-                (item as Window).Close();
-            }
         }
     }
 }
