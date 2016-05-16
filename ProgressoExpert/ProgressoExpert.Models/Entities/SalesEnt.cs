@@ -6,11 +6,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using ProgressoExpert.Common.Const;
+using ProgressoExpert.Models.Models.BusinessAnalysis;
 
 namespace ProgressoExpert.Models.Entities
 {
     public class SalesEnt : BaseViewModel
     {
+        /// <summary>
+        /// месяц + год
+        /// </summary>
+        public int Mont
+        {
+            get { return _mont; }
+            set { SetValue(ref _mont, value, "Mont"); }
+        }
+        private int _mont;
+
+        /// <summary>
+        /// месяц + год
+        /// </summary>
+        public int Year
+        {
+            get { return _year; }
+            set { SetValue(ref _year, value, "Year"); }
+        }
+        private int _year;
+
         /// <summary>
         /// 
         /// </summary>

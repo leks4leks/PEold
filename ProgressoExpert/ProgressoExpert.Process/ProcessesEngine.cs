@@ -22,7 +22,7 @@ namespace ProgressoExpert.Process
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
 
             model.StartDate = startDate.AddYears(model.TimeSpan);
-            model.EndDate = endDate.AddYears(model.TimeSpan).AddHours(23).AddMinutes(59).AddSeconds(59);
+            model.EndDate = endDate.AddYears(model.TimeSpan);
 
             model.StartTranz = MainAccessor.GetAllTrans(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(model.StartDate, model.EndDate);
@@ -32,7 +32,7 @@ namespace ProgressoExpert.Process
 
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
-
+            
             model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
             return model;
@@ -258,7 +258,7 @@ namespace ProgressoExpert.Process
 
             #region рентабельность
             //Для рентабельности вложенных денег нам необходимо знать сколько какого товара на начало периода
-            var beginingDate = new DateTime(1970, 01, 01);
+            var beginingDate = new DateTime(2010, 01, 01);
             var beginingSalesModel = Accessors.GetSalesOneQuery(beginingDate, stTodayDate);
             var beginingSales = beginingSalesModel.SelectMany(_ => _.Sales);// вытащим все месяца в одну ентити
             var GroupsBSales = (from bs in beginingSales
@@ -275,8 +275,9 @@ namespace ProgressoExpert.Process
                                 ).ToList();
 
             //тоже самое уже для нашего периода
-            var thisSales = Accessors.GetSalesOneQuery(stTodayDate, endTodayDate);
-            var sEnt = thisSales.SelectMany(_ => _.Sales);
+            //Вроде не нужно
+            //var thisSales = Accessors.GetSalesOneQuery(stTodayDate, endTodayDate);
+            var sEnt = MainModel.Sales.SelectMany(_ => _.Sales);
             model.gSales = (from s in sEnt
                             group s by s.GroupCode into g
                             select new SalesEnt
