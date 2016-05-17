@@ -65,7 +65,6 @@ namespace ProgressoExpert.DataAccess
         public static List<TranzEnt> GetAllTransOriginal(DateTime stDate, DateTime? endDate)
         {
             List<string> tmp = new List<string>();
-            tmp.AddRange(new List<string> { "1010", "1020", "1030", "1040", "1210" });
 
             List<TranzEnt> res = new List<TranzEnt>();
             using (dbEntities db = new dbEntities())
@@ -75,9 +74,7 @@ namespace ProgressoExpert.DataAccess
                     res = (from acctr in db.C_AccRg10893
                            join accCr in db.C_Acc10 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
                            join accDt in db.C_Acc10 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
-                           where acctr.C_Period < stDate && 
-                           (tmp.Contains(accCr.C_Code) ||
-                           tmp.Contains(accDt.C_Code))
+                           where acctr.C_Period < stDate
                            select new TranzEnt
                            {
                                Money = acctr.C_Fld10896,

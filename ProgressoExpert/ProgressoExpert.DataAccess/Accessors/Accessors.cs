@@ -116,7 +116,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочие оборотные активы
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherCurrentAssets1,
                     (int)ScoresForBusinessResults.OtherCurrentAssets2,
                     (int)ScoresForBusinessResults.OtherCurrentAssets3,
@@ -815,11 +815,10 @@ namespace ProgressoExpert.DataAccess
                         endDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
                     }
                     #endregion
-
-                    IQueryable<SalesEnt> res4 = QueryForGetSales(stDt, endDt, db, qSeb);
+                    
                     SalesModel tmp = new SalesModel();
                     tmp.Date = stDt;
-                    tmp.Sales = res4.ToList();
+                    tmp.Sales = QueryForGetSales(stDt, endDt, db, qSeb);
                     if(tmp.Sales.Count != 0)
                         result.Add(tmp);
                 }
@@ -837,10 +836,9 @@ namespace ProgressoExpert.DataAccess
 
                 var qSeb = Accessors.QueryForGetSalesForSeb(stDate, endDate, db);
                 //только инфа по группам и производителям или как их
-                IQueryable<SalesEnt> res4 = QueryForGetSales(stDate, endDate, db, qSeb);
                 SalesModel tmp = new SalesModel();
                 tmp.Date = stDate;
-                tmp.Sales = res4.ToList();
+                tmp.Sales = QueryForGetSales(stDate, endDate, db, qSeb);
                 if (tmp.Sales.Count != 0)
                     result.Add(tmp);
 
@@ -1060,6 +1058,8 @@ namespace ProgressoExpert.DataAccess
             foreach (var gr in db.C_Reference78.ToList())
             {
                 decimal resSebValue = decimal.Zero;
+                var gst = decimal.Zero;
+                var gent = decimal.Zero;
                 var pastTmp = decimal.Zero;
                 var tmp = decimal.Zero;
                 var counterPur = 0;
@@ -1117,6 +1117,11 @@ namespace ProgressoExpert.DataAccess
                         }//если дошли - считаем среднюю себестоимость остатка
                         else
                         {
+                            if (!WeGoCalcSeb)
+                            {
+                                for (var i = counterPur; i < counterSales; i++)
+                                { gst += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }                                
+                            }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
                             if (salesForGroup[counterSales].Mont <= (endDate.Month - 1) && salesForGroup[counterSales].Year == endDate.Year || salesForGroup[counterSales].Year < endDate.Year)
@@ -1139,6 +1144,7 @@ namespace ProgressoExpert.DataAccess
                                         {
                                             resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CostPrise;
                                             pastTmp = 0;
+                                            antiCounter++;
                                             continue;
                                         }
                                     }
@@ -1155,14 +1161,16 @@ namespace ProgressoExpert.DataAccess
                         }
                     };
                 };
+                for (var i = counterPur; i < counterSales; i++)
+                { gent += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }
                 if (resSebValue > 0)
-                    gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = resSebValue });
+                    gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = resSebValue, CountGoodsSt = gst, CountGoodsEnd = gent });
             }
             #endregion
             return gSeb;
         }
 
-        private static IQueryable<SalesEnt> QueryForGetSales(DateTime stDate, DateTime endDate, dbEntities db, List<SalesEnt> gSeb)
+        private static List<SalesEnt> QueryForGetSales(DateTime stDate, DateTime endDate, dbEntities db, List<SalesEnt> gSeb)
         {
             var res = (from r77 in db.C_Reference77
                        join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
@@ -1181,7 +1189,10 @@ namespace ProgressoExpert.DataAccess
                            GroupCode = r78.C_Code,
                            GroupName = r78.C_Description,
                            BuyerCode = string.Empty,
-                           BuyerName = string.Empty
+                           BuyerName = string.Empty,
+                           CountGoodsEnd = decimal.Zero,
+                           CountGoodsSt = decimal.Zero,
+                           AveCostPrise = decimal.Zero
                        }
                                         );
 
@@ -1204,7 +1215,10 @@ namespace ProgressoExpert.DataAccess
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
                             BuyerCode = string.Empty,
-                            BuyerName = string.Empty
+                            BuyerName = string.Empty,
+                            CountGoodsEnd = decimal.Zero,
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
             
             //Цена продажи без ндс
@@ -1226,7 +1240,10 @@ namespace ProgressoExpert.DataAccess
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
                             BuyerCode = string.Empty,
-                            BuyerName = string.Empty
+                            BuyerName = string.Empty,
+                            CountGoodsEnd = decimal.Zero,
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         }
                         );
 
@@ -1249,7 +1266,10 @@ namespace ProgressoExpert.DataAccess
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
                             BuyerCode = string.Empty,
-                            BuyerName = string.Empty
+                            BuyerName = string.Empty,
+                            CountGoodsEnd = decimal.Zero,
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
 
             //покупатели 
@@ -1269,7 +1289,10 @@ namespace ProgressoExpert.DataAccess
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
                             BuyerCode = s888.C_Code,
-                            BuyerName = s888.C_Description
+                            BuyerName = s888.C_Description,
+                            CountGoodsEnd = decimal.Zero,
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
             
             var res5 =
@@ -1293,11 +1316,20 @@ namespace ProgressoExpert.DataAccess
                      GroupCode = r.GroupCode,
                      GroupName = r.GroupName,
                      BuyerCode = r4.BuyerCode,
-                     BuyerName = r4.BuyerName
+                     BuyerName = r4.BuyerName,
+                     CountGoodsEnd = decimal.Zero,
+                     CountGoodsSt = decimal.Zero,
+                     AveCostPrise = decimal.Zero
                  });
 
-            res5.ToList().ForEach(_ => _.CostPrise = gSeb.FirstOrDefault(f => f.GroupCode == _.GroupCode).CostPrise);
-            return res5;
+            var result = res5.ToList();
+            foreach (var i in result)
+            { 
+                i.AveCostPrise = i.CountSal != 0 ? gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CostPrise / i.CountSal : 0;
+                i.CountGoodsSt = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsSt;
+                i.CountGoodsEnd = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsEnd;
+            }
+            return result;
         }
 
         #region SubQuery

@@ -334,7 +334,9 @@ namespace ProgressoExpert.Process
                                     CostPrise = g.Sum(_ => _.CostPrise),
                                     SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
                                     CountPur = g.Sum(_ => _.CountPur),
-                                    CountSal = g.Sum(_ => _.CountSal)
+                                    CountSal = g.Sum(_ => _.CountSal),
+                                    CountGoodsSt = g.Sum(_ => _.CountGoodsSt),
+                                    CountGoodsEnd = g.Sum(_ => _.CountGoodsEnd)
                                 }
                                 ).ToList();
 
@@ -351,7 +353,9 @@ namespace ProgressoExpert.Process
                                 CostPrise = g.Sum(_ => _.CostPrise),
                                 SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
                                 CountPur = g.Sum(_ => _.CountPur),
-                                CountSal = g.Sum(_ => _.CountSal)
+                                CountSal = g.Sum(_ => _.CountSal),
+                                CountGoodsSt = g.Sum(_ => _.CountGoodsSt),
+                                CountGoodsEnd = g.Sum(_ => _.CountGoodsEnd)
                             }
                           ).ToList();
 
@@ -364,7 +368,9 @@ namespace ProgressoExpert.Process
                                         CostPrise = g.Sum(_ => _.CostPrise),
                                         SalesWithoutNDS = g.Sum(_ => _.SalesWithoutNDS),
                                         CountPur = g.Sum(_ => _.CountPur),
-                                        CountSal = g.Sum(_ => _.CountSal)
+                                        CountSal = g.Sum(_ => _.CountSal),
+                                        CountGoodsSt = g.Sum(_ => _.CountGoodsSt),
+                                        CountGoodsEnd = g.Sum(_ => _.CountGoodsEnd)
                                     }
                                   ).ToList();
 
@@ -374,7 +380,7 @@ namespace ProgressoExpert.Process
                                     select new FillModel
                                     {
                                         Name = bs.GroupName,
-                                        Share = model.GrossProfit / ((bs.CountPur - bs.CountSal + s.CountPur - s.CountSal) / 2) * 100
+                                        Share = model.GrossProfit / ((bs.CountGoodsSt + s.CountGoodsEnd) / 2) * 100
                                     }
                                     ).OrderByDescending(_ => _.Share).ToList();
             model.ProfitabilityDiagram = averageRentSales;
