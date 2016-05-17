@@ -67,7 +67,7 @@ namespace ProgressoExpert
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Windows[Application.Current.Windows.Count-1].Close();
+            this.Hide();
         }
 
         /// <summary>
