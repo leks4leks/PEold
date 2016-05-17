@@ -1120,7 +1120,7 @@ namespace ProgressoExpert.DataAccess
                             if (!WeGoCalcSeb)
                             {
                                 for (var i = counterPur; i < counterSales; i++)
-                                { gst += salesForGroup[i].CountPur; }                                
+                                { gst += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }                                
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
@@ -1144,6 +1144,7 @@ namespace ProgressoExpert.DataAccess
                                         {
                                             resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CostPrise;
                                             pastTmp = 0;
+                                            antiCounter++;
                                             continue;
                                         }
                                     }
@@ -1161,7 +1162,7 @@ namespace ProgressoExpert.DataAccess
                     };
                 };
                 for (var i = counterPur; i < counterSales; i++)
-                { gent += salesForGroup[i].CountPur; }
+                { gent += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }
                 if (resSebValue > 0)
                     gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = resSebValue, CountGoodsSt = gst, CountGoodsEnd = gent });
             }
@@ -1190,7 +1191,8 @@ namespace ProgressoExpert.DataAccess
                            BuyerCode = string.Empty,
                            BuyerName = string.Empty,
                            CountGoodsEnd = decimal.Zero,
-                           CountGoodsSt = decimal.Zero
+                           CountGoodsSt = decimal.Zero,
+                           AveCostPrise = decimal.Zero
                        }
                                         );
 
@@ -1215,7 +1217,8 @@ namespace ProgressoExpert.DataAccess
                             BuyerCode = string.Empty,
                             BuyerName = string.Empty,
                             CountGoodsEnd = decimal.Zero,
-                            CountGoodsSt = decimal.Zero
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
             
             //Цена продажи без ндс
@@ -1239,7 +1242,8 @@ namespace ProgressoExpert.DataAccess
                             BuyerCode = string.Empty,
                             BuyerName = string.Empty,
                             CountGoodsEnd = decimal.Zero,
-                            CountGoodsSt = decimal.Zero
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         }
                         );
 
@@ -1264,7 +1268,8 @@ namespace ProgressoExpert.DataAccess
                             BuyerCode = string.Empty,
                             BuyerName = string.Empty,
                             CountGoodsEnd = decimal.Zero,
-                            CountGoodsSt = decimal.Zero
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
 
             //покупатели 
@@ -1286,7 +1291,8 @@ namespace ProgressoExpert.DataAccess
                             BuyerCode = s888.C_Code,
                             BuyerName = s888.C_Description,
                             CountGoodsEnd = decimal.Zero,
-                            CountGoodsSt = decimal.Zero
+                            CountGoodsSt = decimal.Zero,
+                            AveCostPrise = decimal.Zero
                         });
             
             var res5 =
@@ -1302,7 +1308,7 @@ namespace ProgressoExpert.DataAccess
                      refId = r.refId,
                      ClientRefId = r2.ClientRefId,
                      SalersRefId = r1.SalersRefId,
-                     CostPrise = decimal.Zero,
+                     CostPrise = r1.CostPrise,
                      CountPur = r3.CountPur,
                      SalesWithoutNDS = r2.SalesWithoutNDS,
                      CountSal = r2.CountSal,
@@ -1312,13 +1318,14 @@ namespace ProgressoExpert.DataAccess
                      BuyerCode = r4.BuyerCode,
                      BuyerName = r4.BuyerName,
                      CountGoodsEnd = decimal.Zero,
-                     CountGoodsSt = decimal.Zero
+                     CountGoodsSt = decimal.Zero,
+                     AveCostPrise = decimal.Zero
                  });
 
             var result = res5.ToList();
             foreach (var i in result)
-            {
-                i.CostPrise = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CostPrise;
+            { 
+                i.AveCostPrise = i.CountSal != 0 ? gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CostPrise / i.CountSal : 0;
                 i.CountGoodsSt = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsSt;
                 i.CountGoodsEnd = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsEnd;
             }

@@ -123,6 +123,16 @@ namespace ProgressoExpert.Models.Entities
         private decimal _costPrise;
 
         /// <summary>
+        /// средняя себ остатка товара 
+        /// </summary>
+        public decimal AveCostPrise
+        {
+            get { return _aveCostPrise; }
+            set { SetValue(ref _aveCostPrise, value, "AveCostPrise"); }
+        }
+        private decimal _aveCostPrise;
+
+        /// <summary>
         /// Код покупателя
         /// </summary>
         public string BuyerCode
