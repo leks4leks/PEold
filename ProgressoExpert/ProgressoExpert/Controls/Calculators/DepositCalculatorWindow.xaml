@@ -45,14 +45,14 @@
                 <TextBlock Text="Сумма депозита" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
-                <TextBox Width="140" Height="25" Name="SumTb"></TextBox>
+                    <TextBox Width="140" Height="25" Name="SumTb" Text="{Binding Sum, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="0">
                 <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="1">
-                <TextBox Width="140" Height="25" Name="AnnualRateTB"></TextBox>
+                    <TextBox Width="140" Height="25" Name="AnnualRateTB" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"></TextBox>
             </Grid>
 
             <Grid Grid.Row="3" Grid.Column="0">
@@ -66,21 +66,21 @@
                 <TextBlock Text="Кол-во дней в году" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="4">
-                <TextBox Text="365" Width="140" Height="25" Name="DaysInYearTb"></TextBox>
+                <TextBox Text="360" Width="140" Height="25" Name="DaysInYearTb"></TextBox>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="3">
                 <TextBlock Text="Налог для физ.лица" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="4">
-                <TextBox Text="10%" Width="140" Height="25" Name="TaxForPhysTb"></TextBox>
+                    <TextBox Text="{Binding PercentForPhys, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Width="140" Height="25" Name="TaxForPhysTb"></TextBox>
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="3">
                 <TextBlock Text="Налог для юр.лица" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="4">
-                <TextBox Text="20%" Width="140" Height="25" Name="TaxForJuric"></TextBox>
+                <TextBox Text="{Binding PercentForJuric, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Width="140" Height="25" Name="TaxForJuric"></TextBox>
             </Grid>
 
             <Rectangle Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
@@ -88,16 +88,16 @@
                 <TextBlock Text="Итого доходов:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="4" Margin="10,10,10,5">
-                <TextBlock Text="380 000" Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}" Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="4" Grid.Column="4" Margin="10,5,10,10">
-                <TextBlock Text="25%" Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="{Binding PercentTotal, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="CalcBtn_Click"/>
                 <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}"/>
                 <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}"/>
             </StackPanel>
