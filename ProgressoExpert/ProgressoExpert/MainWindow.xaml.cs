@@ -79,7 +79,10 @@ namespace ProgressoExpert
 
         private void Window_Closed_1(object sender, EventArgs e)
         {
-
+            foreach (var item in Application.Current.Windows)
+            {
+                (item as Window).Close();
+            }
         }
     }
 }

@@ -46,12 +46,13 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" VerticalAlignment="Center">
             <Slider Maximum="2016" Minimum="2000" MinHeight="2" Interval="1" UseLayoutRounding="False" IsSnapToTickEnabled="True" 
-                    TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight" Visibility="Visible" Name="YearSlider" ValueChanged="YearSlider_ValueChanged"/>
-            <local:NumberedTickBar Fill="Red" x:Name="TopTick" Margin="5,0,10,0" SnapsToDevicePixels="True" Placement="Top" Height="4" 
-                                   Minimum="2000" Maximum="2016" Visibility="Hidden"/>
-        </Grid>
+                    TickPlacement="BottomRight" Name="YearSlider" 
+                    ValueChanged="YearSlider_ValueChanged" Margin="10,0,10,0"/>
+                <local:MyTickBar Margin="5,0,25,0" x:Name="TopTick" Placement="Top" Fill="Black" Height="50"
+                                 Minimum="2000" Maximum="2016"/>
+            </Grid>
 
         <Grid Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Name="MonthWrap">

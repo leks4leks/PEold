@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace ProgressoExpert.Controls.App
 {
-    class NumberedTickBar: TickBar
+    public class MyTickBar : TickBar
     {
         protected override void OnRender(DrawingContext dc)
         {
@@ -30,8 +30,9 @@ namespace ProgressoExpert.Controls.App
             for (i = 0; i <= tickCount; i++)
             {
                 text = Convert.ToString(Convert.ToInt32(this.Minimum + this.TickFrequency * i), 10);
+                //g.DrawString(text, font, brush, drawRect.Left + tickFrequencySize * i, drawRect.Top + drawRect.Height/2, stringFormat);
 
-                formattedText = new FormattedText(text, CultureInfo.GetCultureInfo("en-us"), FlowDirection.LeftToRight, new Typeface("Verdana"), 8, Brushes.Black);
+                formattedText = new FormattedText(text, CultureInfo.GetCultureInfo("ru-Ru"), FlowDirection.LeftToRight, new Typeface("Arial"), 8, Brushes.Black);
                 dc.DrawText(formattedText, new Point((tickFrequencySize * i), 30));
 
             }
