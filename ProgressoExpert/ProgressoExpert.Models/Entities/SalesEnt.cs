@@ -163,5 +163,25 @@ namespace ProgressoExpert.Models.Entities
         private decimal _countSal;
 
 
+        /// <summary>
+        /// Количество остатка товара на начало периода
+        /// </summary>
+        public decimal CountGoodsSt
+        {
+            get { return _countGoodsSt; }
+            set { SetValue(ref _countGoodsSt, value, "CountGoodsSt"); }
+        }
+        private decimal _countGoodsSt;
+
+        /// <summary>
+        /// Количество остатка товара на конец периода
+        /// </summary>
+        public decimal CountGoodsEnd
+        {
+            get { return _countGoodsEnd; }
+            set { SetValue(ref _countGoodsEnd, value, "CountGoodsEnd"); }
+        }
+        private decimal _countGoodsEnd;
+
     }
 }
