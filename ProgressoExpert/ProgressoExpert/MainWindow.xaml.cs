@@ -76,5 +76,10 @@ namespace ProgressoExpert
 
             ResBusinessControl.DataBind(ViewModel);
         }
+
+        private void Window_Closed_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -368,12 +368,12 @@ namespace ProgressoExpert.Process
             //с процентами беда
             var averageRentSales = (from bs in GroupsBSales
                                     join s in model.gSales on bs.GroupCode equals s.GroupCode
-                                    select new
+                                    select new FillModel
                                     {
-                                        k = bs.GroupName,
-                                        v = model.GrossProfit / ((bs.CountPur - bs.CountSal + s.CountPur - s.CountSal) / 2) * 100
+                                        Name = bs.GroupName,
+                                        Share = model.GrossProfit / ((bs.CountPur - bs.CountSal + s.CountPur - s.CountSal) / 2) * 100
                                     }
-                                    ).OrderByDescending(_ => _.v).ToDictionary(_ => _.k, _ => _.v);
+                                    ).OrderByDescending(_ => _.Share).ToList();
             model.ProfitabilityDiagram = averageRentSales;
             #endregion
 

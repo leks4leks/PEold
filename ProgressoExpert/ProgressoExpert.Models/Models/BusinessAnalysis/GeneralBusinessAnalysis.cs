@@ -235,12 +235,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Диаграмма рентабельность
         /// </summary>
-        public Dictionary<string, decimal> ProfitabilityDiagram
+        public List<FillModel> ProfitabilityDiagram
         {
             get { return _profitabilityDiagram; }
             set { SetValue(ref _profitabilityDiagram, value, "ProfitabilityDiagram"); }
         }
-        private Dictionary<string, decimal> _profitabilityDiagram;
+        private List<FillModel> _profitabilityDiagram;
         
         /// <summary>
         /// Продажи прошлого периода
