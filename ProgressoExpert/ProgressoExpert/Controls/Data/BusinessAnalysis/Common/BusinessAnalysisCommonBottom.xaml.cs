@@ -36,7 +36,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
             ViewModel = (GeneralBusinessAnalysis)model;
             this.DataContext = (GeneralBusinessAnalysis)model;
             LoadDiagram();
-            if (ViewModel.gSales.Count > 0)
+            if (ViewModel.ProfitabilityDiagram.Count > 0)
             {
                 UpdateTable();
             }
@@ -58,54 +58,67 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
 
         public void UpdateTable()
         {
-            var count = ViewModel.gSales.Count;
+            var count = ViewModel.ProfitabilityDiagram.Count;
 
-            ProductGroupLine1Tb.Text = count >= 1
-                ? ViewModel.gSales[0].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine1Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[0].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
+            if (ViewModel.ProfitabilityDiagram.Count > 0)
+            {
+                ProductGroupLine1Tb.Text = count >= 1
+                    ? ViewModel.ProfitabilityDiagram[0].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine1Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[0].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
+            }
 
+            if (ViewModel.ProfitabilityDiagram.Count > 1)
+            {
+                ProductGroupLine2Tb.Text = count >= 2
+                    ? ViewModel.ProfitabilityDiagram[1].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine2Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[1].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
+            }
 
-            ProductGroupLine2Tb.Text = count >= 2
-                ? ViewModel.gSales[1].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine2Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[1].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
+            if (ViewModel.ProfitabilityDiagram.Count > 2)
+            {
+                ProductGroupLine3Tb.Text = count >= 3
+                    ? ViewModel.ProfitabilityDiagram[2].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine3Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[2].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
+            }
 
+            if (ViewModel.ProfitabilityDiagram.Count > 3)
+            {
+                ProductGroupLine4Tb.Text = count >= 4
+                    ? ViewModel.ProfitabilityDiagram[3].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine4Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[3].Name)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Name);
+            }
 
-            ProductGroupLine3Tb.Text = count >= 3
-                ? ViewModel.gSales[2].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine3Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[2].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
+            if (ViewModel.ProfitabilityDiagram.Count > 4)
+            {
+                ProductGroupLine5Tb.Text = count >= 5
+                    ? ViewModel.ProfitabilityDiagram[4].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine5Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[4].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
+            }
 
-
-            ProductGroupLine4Tb.Text = count >= 4
-                ? ViewModel.gSales[3].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine4Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[3].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
-
-
-            ProductGroupLine5Tb.Text = count >= 5
-                ? ViewModel.gSales[4].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine5Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[4].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
-
-
-            ProductGroupLine6Tb.Text = count >= 6
-                ? ViewModel.gSales[5].GroupName
-                : ViewModel.gSales.Last().GroupName;
-            ProductGroupValueLine6Tb.Text = count >= 1
-                ? String.Format(FormatUtils.Percentage, ViewModel.gSales[5].GroupName)
-                : String.Format(FormatUtils.Percentage, ViewModel.gSales.Last().GroupName);
+            if (ViewModel.ProfitabilityDiagram.Count > 5)
+            {
+                ProductGroupLine6Tb.Text = count >= 6
+                    ? ViewModel.ProfitabilityDiagram[5].Name
+                    : ViewModel.ProfitabilityDiagram.Last().Name;
+                ProductGroupValueLine6Tb.Text = count >= 1
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[5].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
+            }
         }
     }
 }
