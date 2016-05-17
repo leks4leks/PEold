@@ -19,6 +19,7 @@ namespace ProgressoExpert.Controls.Calculators
     /// </summary>
     public partial class DepositCalculatorWindow : Window
     {
+        
         public DepositCalculatorWindow()
         {
             InitializeComponent();
@@ -33,6 +34,11 @@ namespace ProgressoExpert.Controls.Calculators
         private void Window_Deactivated_1(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void CalcBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

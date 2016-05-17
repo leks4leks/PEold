@@ -101,14 +101,17 @@ namespace ProgressoExpert.Process
 
             #region Второй блок
 
+            var sum = reportProfitAndLoss.TotalCostPrice.Count != 0 ? reportProfitAndLoss.TotalCostPrice.Sum() : 1;
             model.SpeedOfTurnover = Math.Round(businessResults.GoodsEnd * MainModel.DaysInPeriod /
-                (reportProfitAndLoss.TotalCostPrice.Count != 0 ? reportProfitAndLoss.TotalCostPrice.Sum() : 1), 0);
+                (sum != 0 ? sum : 1), 0);
 
+            sum = reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1;
             model.TermOfCirculationOfClientsDebt = Math.Round(businessResults.DebtsOfCustomersAndOverpaymentsEnd * MainModel.DaysInPeriod /
-                (reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1), 0);
+                (sum != 0 ? sum : 1), 0);
 
+            sum = reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1;
             model.TermOfCirculationOfDebtToSuppliers = Math.Round(businessResults.PayablesToSuppliersShortTermDebtsEnd * MainModel.DaysInPeriod /
-                (reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1), 0);
+                (sum != 0 ? sum : 1), 0);
 
             #endregion
 
