@@ -88,10 +88,11 @@
                 <TextBlock Text="Итого доходов:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="4" Margin="10,10,10,5">
-                <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
             </Grid>
             <Grid Grid.Row="4" Grid.Column="4" Margin="10,5,10,10">
-                <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}" 
+                               Text="{Binding PercentTotal, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"/>
             </Grid>
         </Grid>
 

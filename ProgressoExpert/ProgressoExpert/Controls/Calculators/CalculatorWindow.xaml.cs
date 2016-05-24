@@ -19,13 +19,14 @@ namespace ProgressoExpert.Controls.Calculators
     /// </summary>
     public partial class CalculatorWindow : Window
     {
-        private bool nonOperation = true;
+        private bool nonOperation = false;
 
 
         public CalculatorWindow()
         {
             InitializeComponent();
         }
+
 
         private void Window_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
@@ -46,7 +47,7 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void ResultBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (nonOperation)
+            if (nonOperation && !string.IsNullOrEmpty(ResultTb.Text))
             {
                 NCalc.Expression exp = new NCalc.Expression(ResultTb.Text);
                 ResultTb.Text = exp.Evaluate().ToString();
@@ -56,21 +57,24 @@ namespace ProgressoExpert.Controls.Calculators
         private void ClearAllBtn_Click(object sender, RoutedEventArgs e)
         {
             ResultTb.Text = "";
-            nonOperation = true;
+            nonOperation = false;
         }
 
         private void DeleteLastSymbolBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (ResultTb.Text.Last() == '.' || ResultTb.Text.Last() == '/' || ResultTb.Text.Last() == '*'
-                 || ResultTb.Text.Last() == '-' || ResultTb.Text.Last() == '+')
+            if (!string.IsNullOrEmpty(ResultTb.Text))
             {
-                nonOperation = true;
+                if (ResultTb.Text.Last() == '.' || ResultTb.Text.Last() == '/' || ResultTb.Text.Last() == '*'
+                     || ResultTb.Text.Last() == '-' || ResultTb.Text.Last() == '+')
+                {
+                    nonOperation = true;
+                }
+                else
+                {
+                    nonOperation = false;
+                }
+                ResultTb.Text = ResultTb.Text.Remove(ResultTb.Text.Length - 1, 1);
             }
-            else
-            {
-                nonOperation = false;
-            }
-            ResultTb.Text = ResultTb.Text.Remove(ResultTb.Text.Length - 1, 1);
         }
 
         private void PointBtn_Click_1(object sender, RoutedEventArgs e)

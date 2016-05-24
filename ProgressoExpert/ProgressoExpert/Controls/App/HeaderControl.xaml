@@ -48,7 +48,7 @@
 
         <!-- Котировки валют-->
         <Grid Grid.Column="4">
-            <Label>Котировки валют</Label>
+            <TextBlock Text="{Binding CurrencyRate}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#00b050" FontFamily="Arial" FontSize="15"/>
         </Grid>
 
         <!-- Сплиттер -->
