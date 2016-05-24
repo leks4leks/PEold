@@ -12,6 +12,9 @@ namespace ProgressoExpert.Models.Models.App
     public class InfoModel : BaseViewModel
     {
         private Timer timer;
+        private Timer timer2;
+
+        private int index = 0;
 
         /// <summary>
         /// Наименование фирмы
@@ -54,6 +57,18 @@ namespace ProgressoExpert.Models.Models.App
         }
         private string _currentTime;
 
+        /// <summary>
+        /// Котировки валют
+        /// </summary>
+        public string CurrencyRate
+        {
+            get { return _currencyRate; }
+            set { SetValue(ref _currencyRate, value, "CurrencyRate"); }
+        }
+        private string _currencyRate;
+
+        public List<CurrencyRate> CurrencyRateList;
+
         public InfoModel()
         {
             DayOfWeek = DateTime.Now.ToString(CommonConst.DayOfWeekFormat).First().ToString().ToUpper() 
@@ -63,6 +78,7 @@ namespace ProgressoExpert.Models.Models.App
             timer = new Timer() { Interval = 500 };
             timer.Elapsed += timer_Elapsed;
             timer.Start();
+
 
             CompanyName = "Наименование фирмы";
         }
@@ -75,6 +91,24 @@ namespace ProgressoExpert.Models.Models.App
                 DayOfWeek = DateTime.Now.ToString(CommonConst.DayOfWeekFormat).First().ToString().ToUpper() 
                     + DateTime.Now.ToString(CommonConst.DayOfWeekFormat).Substring(1);
                 CurrentDate = DateTime.Now.ToString(CommonConst.DateFormat);
+            }
+        }
+
+        public void StartTimer2()
+        {
+            timer2 = new Timer() { Interval = 5000 };
+            timer2.Elapsed += timer2_Elapsed;
+            timer2.Start();
+        }
+
+        void timer2_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            CurrencyRate = string.Format("{0}/KZT - {1}    {2}", CurrencyRateList[index].Name,
+                CurrencyRateList[index].ExchangeRate, CurrencyRateList[index].Change);
+            index++;
+            if (index > 2)
+            {
+                index = 0;
             }
         }
     }

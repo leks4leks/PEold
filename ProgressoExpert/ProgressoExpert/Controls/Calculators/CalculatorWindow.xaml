@@ -36,7 +36,7 @@
                 </Grid>
                 <Border Grid.Row="2" Grid.Column="0" BorderBrush="LightGray" BorderThickness="1,1,1,1">
                     <Grid>
-                        <Button Content="C" Style="{StaticResource MaterialDesignFlatButton}" Name="ClearAllBtn" Click="ClearAllBtn_Click"/>
+                        <Button Content="C" Style="{StaticResource MaterialDesignFlatButton}" Name="ClearAllBtn" Click="ClearAllBtn_Click" Margin="0,0,0,4" VerticalAlignment="Bottom"/>
                     </Grid>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" BorderBrush="LightGray"  BorderThickness="0,1,1,1">
@@ -114,7 +114,8 @@
                 </Border>
                 <Border Grid.Row="5" Grid.RowSpan="2" Grid.Column="3" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="3">
-                    <Button Content="=" Style="{StaticResource MaterialDesignFlatButton}" Name="ResultBtn" Click="ResultBtn_Click"/>
+                    <Button Content="=" Style="{StaticResource MaterialDesignFlatButton}" Name="ResultBtn" Click="ResultBtn_Click"
+                            Height="Auto"/>
                     </Grid>
                 </Border>
 

@@ -27,8 +27,8 @@ namespace ProgressoExpert
         public MainWindow()
         {
             InitializeComponent();
+
             DataContext = ViewModel = new MainModel();
-            HeaderControl.DataContext = ViewModel.InfoModel;
             MenuControl.DataContext = MenuControl.ViewModel = ViewModel;
         }
 
@@ -43,6 +43,10 @@ namespace ProgressoExpert
             //алешкин код
             ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
             ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
+
+            ViewModel.InfoModel.CurrencyRateList = CurrencyRates.GetExchangeRates();
+            ViewModel.InfoModel.StartTimer2();
+            HeaderControl.DataContext = ViewModel.InfoModel;
 
             LiveStreamControl.DataBind(ViewModel.LiveStreamModel);
         }
