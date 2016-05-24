@@ -61,6 +61,16 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Валовая прибыль
         /// </summary>
+        public decimal AveGrossProfit
+        {
+            get { return _aveGrossProfit; }
+            set { SetValue(ref _aveGrossProfit, value, "AveGrossProfit"); }
+        }
+        private decimal _aveGrossProfit;
+
+        /// <summary>
+        /// Валовая прибыль
+        /// </summary>
         public decimal GrossProfitAnFirst
         {
             get { return _grossProfitAnFirst; }

@@ -1058,6 +1058,7 @@ namespace ProgressoExpert.DataAccess
             foreach (var gr in db.C_Reference78.ToList())
             {
                 decimal resSebValue = decimal.Zero;
+                decimal resSebValueCount = decimal.Zero;
                 var gst = decimal.Zero;
                 var gent = decimal.Zero;
                 var pastTmp = decimal.Zero;
@@ -1065,11 +1066,12 @@ namespace ProgressoExpert.DataAccess
                 var counterPur = 0;
                 var counterSales = 0;
                 bool WeGoCalcSeb = false;
+                bool WeGoCalcSebReal = false;
                 bool isSoSmall = false;
                 // вытащим только нашу группу
                 var salesForGroup = resSeb.Where(_ => _.GroupCode == gr.C_Code).OrderBy(_ => _.Year).ThenBy(_ => _.Mont).ToList();
 
-                while (counterSales < salesForGroup.Count)
+                while (counterSales < salesForGroup.Count && !WeGoCalcSebReal)
                 {
                     if (!isSoSmall)
                         pastTmp = tmp;
@@ -1095,7 +1097,7 @@ namespace ProgressoExpert.DataAccess
                         isSoSmall = false;
                     }
 
-                    while (counterSales < salesForGroup.Count)
+                    while (counterSales < salesForGroup.Count && !WeGoCalcSebReal)
                     {
                         // если мы еще не дошли до даты начала периода - перебираем месяца смотрим что подали что купили
                         // чтобы определить с какого месяца брать себестоимость для нашего периода
@@ -1120,7 +1122,7 @@ namespace ProgressoExpert.DataAccess
                             if (!WeGoCalcSeb)
                             {
                                 for (var i = counterPur; i < counterSales; i++)
-                                { gst += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }                                
+                                { gst += salesForGroup[i].CountPur; }                                
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
@@ -1137,12 +1139,14 @@ namespace ProgressoExpert.DataAccess
                                         if (summCount > Math.Abs(pastTmp))
                                         {
                                             resSebValue += Math.Abs(pastTmp) * salesForGroup[counterPur - 1 - antiCounter].CostPrise;
+                                            resSebValueCount += Math.Abs(pastTmp) * salesForGroup[counterPur - 1 - antiCounter].CountPur;
                                             pastTmp = summCount + pastTmp;
                                             break;
                                         }
                                         else
                                         {
                                             resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CostPrise;
+                                            resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CountPur;      
                                             pastTmp = 0;
                                             antiCounter++;
                                             continue;
@@ -1150,7 +1154,9 @@ namespace ProgressoExpert.DataAccess
                                     }
                                     while (pastTmp < 0);
                                 }
-                                resSebValue += salesForGroup[counterSales - 1].CountSal * salesForGroup[counterPur - 1].CostPrise;
+                                resSebValue += salesForGroup.Skip(counterPur).Where(_ => _.Year <= endDate.Year && _.Mont < endDate.Month).Sum(_ => _.CostPrise * _.CountSal);
+                                resSebValueCount += salesForGroup.Skip(counterPur).Where(_ => _.Year <= endDate.Year && _.Mont < endDate.Month).Sum(_ => _.CountPur);
+                                WeGoCalcSebReal = true;
                                 continue;
 
                             }
@@ -1161,10 +1167,11 @@ namespace ProgressoExpert.DataAccess
                         }
                     };
                 };
-                for (var i = counterPur; i < counterSales; i++)
-                { gent += salesForGroup[i].CountPur - salesForGroup[i].CountSal; }
-                if (resSebValue > 0)
-                    gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = resSebValue, CountGoodsSt = gst, CountGoodsEnd = gent });
+                gent = gst + salesForGroup.Skip(counterSales).Sum(_ => _.CountPur - _.CountSal);
+                //for (var i = counterPur; i < counterSales; i++)
+                //{ gent += salesForGroup[i].CountPur; }
+                if (resSebValue > 0 && resSebValueCount > 0)
+                    gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = Math.Round(resSebValue / resSebValueCount, 2), CountGoodsSt = gst, CountGoodsEnd = gent });
             }
             #endregion
             return gSeb;
@@ -1324,10 +1331,13 @@ namespace ProgressoExpert.DataAccess
 
             var result = res5.ToList();
             foreach (var i in result)
-            { 
-                i.AveCostPrise = i.CountSal != 0 ? gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CostPrise / i.CountSal : 0;
-                i.CountGoodsSt = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsSt;
-                i.CountGoodsEnd = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsEnd;
+            {
+                if (gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode) != null)
+                {
+                    i.AveCostPrise = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CostPrise;
+                    i.CountGoodsSt = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsSt;
+                    i.CountGoodsEnd = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsEnd;
+                }
             }
             return result;
         }
