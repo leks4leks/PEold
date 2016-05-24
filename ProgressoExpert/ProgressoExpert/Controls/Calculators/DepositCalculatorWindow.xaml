@@ -52,21 +52,21 @@
                 <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="AnnualRateTB" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"></TextBox>
+                    <TextBox Width="140" Height="25" Name="AnnualRateTb" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB_GotFocus"></TextBox>
             </Grid>
 
             <Grid Grid.Row="3" Grid.Column="0">
-                <TextBlock Text="Срок депозита" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Text="Срок депозита (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="1">
-                <TextBox Width="140" Height="25" Name="MonthsTb"></TextBox>
+                    <TextBox Width="140" Height="25" Name="MonthsTb" Text="{Binding Months}"></TextBox>
             </Grid>
             
             <Grid Grid.Row="0" Grid.Column="3">
                 <TextBlock Text="Кол-во дней в году" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="4">
-                <TextBox Text="360" Width="140" Height="25" Name="DaysInYearTb"></TextBox>
+                    <TextBox Width="140" Height="25" Name="DaysInYearTb" Text="{Binding DaysInYear}"></TextBox>
             </Grid>
 
             <Grid Grid.Row="1" Grid.Column="3">
@@ -88,18 +88,18 @@
                 <TextBlock Text="Итого доходов:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="4" Margin="10,10,10,5">
-                <TextBlock Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}" Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             <Grid Grid.Row="4" Grid.Column="4" Margin="10,5,10,10">
-                <TextBlock Text="{Binding PercentTotal, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
                 <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="CalcBtn_Click"/>
-                <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}"/>
-                <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
+                <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
             </StackPanel>
         </Grid>
 

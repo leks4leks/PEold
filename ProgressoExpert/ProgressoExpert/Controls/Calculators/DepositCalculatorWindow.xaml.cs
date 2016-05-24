@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgressoExpert.Controls.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,8 +46,30 @@ namespace ProgressoExpert.Controls.Calculators
                 }
             }
         }
-        int months;
-        int daysInYear;
+        private int _months = 12;
+        public int Months
+        {
+            get { return _months; }
+            set
+            {
+                if (value != _months)
+                {
+                    _months = value;
+                }
+            }
+        }
+        private int _daysInYear = 365;
+        public int DaysInYear
+        {
+            get { return _daysInYear; }
+            set
+            {
+                if (value != _daysInYear)
+                {
+                    _daysInYear = value;
+                }
+            }
+        }
 
         double percentInMonth;
         double incomeTax;
@@ -122,21 +145,89 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void CalcBtn_Click(object sender, RoutedEventArgs e)
         {
-            //sum = Convert.ToDouble(SumTb.Text);
-            //annualRate = Convert.ToDouble(AnnualRateTB.Text);
-            months = Convert.ToInt32(MonthsTb.Text);
-            daysInYear = Convert.ToInt32(DaysInYearTb.Text);
+            if (Validate())
+            {
+                percentInMonth = Math.Round(Sum * AnnualRate / 100 / DaysInYear * daysInMonth, 0);
+                incomeTax = Math.Round(phys.IsSelected ? percentInMonth * PercentForPhys / 100 : percentInMonth * PercentForJuric / 100, 0);
+                profit = Math.Round(percentInMonth - incomeTax, 0);
 
-            percentInMonth = Math.Round(Sum * AnnualRate / 100 / daysInYear * daysInMonth, 0);
-            incomeTax = Math.Round(phys.IsSelected ? percentInMonth * PercentForPhys / 100 : percentInMonth * PercentForJuric / 100, 0);
-            profit = Math.Round(percentInMonth - incomeTax, 0);
+                SumTotal = profit * Months;
+                PercentTotal = Math.Round(SumTotal / Sum * 100, 0);
 
-            SumTotal = profit * months;
-            PercentTotal = Math.Round(SumTotal / Sum * 100, 0);
-
-            //ResultSumTb.Text = sumTotal.ToString();
-            //ResultPercentTb.Text = percentTotal.ToString();
+                ResultSumTb.Text = string.Format(FormatUtils.Thousand2, SumTotal);
+                ResultPercentTb.Text = string.Format(FormatUtils.Percentage, PercentTotal);
+            }
 
         }
+
+        private void AnnualRateTB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var indexPercent = AnnualRateTb.Text.IndexOf('%');
+            AnnualRateTb.Text = AnnualRateTb.Text.Remove(indexPercent, 1);
+            AnnualRateTb.SelectAll();
+        }
+
+        private bool Validate()
+        {
+            SumTb.BorderBrush = Brushes.Gray;
+            AnnualRateTb.BorderBrush = Brushes.Gray;
+            MonthsTb.BorderBrush = Brushes.Gray;
+            DaysInYearTb.BorderBrush = Brushes.Gray;
+            TaxForJuric.BorderBrush = Brushes.Gray;
+            TaxForPhysTb.BorderBrush = Brushes.Gray;
+
+            var result = true;
+            if (Sum <= 0)
+            {
+                SumTb.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (AnnualRate <= 0)
+            {
+                AnnualRateTb.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (Months <= 0)
+            {
+                MonthsTb.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (DaysInYear <= 0)
+            {
+                DaysInYearTb.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (PercentForJuric <= 0)
+            {
+                TaxForJuric.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (PercentForPhys <= 0)
+            {
+                TaxForPhysTb.BorderBrush = Brushes.Red;
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Sum = 0;
+            AnnualRate = 10;
+            Months = 12;
+            DaysInYear = 365;
+            PercentForPhys = 10;
+            PercentForJuric = 20;
+            ResultSumTb.Text = string.Empty;
+            ResultPercentTb.Text = string.Empty;
+            this.DataContext = this;
+        }
+
     }
 }

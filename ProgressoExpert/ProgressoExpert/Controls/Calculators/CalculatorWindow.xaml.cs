@@ -19,6 +19,9 @@ namespace ProgressoExpert.Controls.Calculators
     /// </summary>
     public partial class CalculatorWindow : Window
     {
+        private bool nonOperation = true;
+
+
         public CalculatorWindow()
         {
             InitializeComponent();
@@ -38,22 +41,81 @@ namespace ProgressoExpert.Controls.Calculators
         private void BtnClick(object sender, RoutedEventArgs e)
         {
             ResultTb.Text += (sender as Button).Tag.ToString();
+            nonOperation = true;
         }
 
         private void ResultBtn_Click(object sender, RoutedEventArgs e)
         {
-            NCalc.Expression exp = new NCalc.Expression(ResultTb.Text);
-            ResultTb.Text = exp.Evaluate().ToString();
+            if (nonOperation)
+            {
+                NCalc.Expression exp = new NCalc.Expression(ResultTb.Text);
+                ResultTb.Text = exp.Evaluate().ToString();
+            }
         }
 
         private void ClearAllBtn_Click(object sender, RoutedEventArgs e)
         {
             ResultTb.Text = "";
+            nonOperation = true;
         }
 
         private void DeleteLastSymbolBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (ResultTb.Text.Last() == '.' || ResultTb.Text.Last() == '/' || ResultTb.Text.Last() == '*'
+                 || ResultTb.Text.Last() == '-' || ResultTb.Text.Last() == '+')
+            {
+                nonOperation = true;
+            }
+            else
+            {
+                nonOperation = false;
+            }
             ResultTb.Text = ResultTb.Text.Remove(ResultTb.Text.Length - 1, 1);
+        }
+
+        private void PointBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (nonOperation)
+            {
+                nonOperation = false;
+                ResultTb.Text += ".";
+            }
+        }
+
+        private void DivisionBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (nonOperation)
+            {
+                nonOperation = false;
+                ResultTb.Text += "/";
+            }
+        }
+
+        private void MultipleBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (nonOperation)
+            {
+                nonOperation = false;
+                ResultTb.Text += "*";
+            }
+        }
+
+        private void MinusBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (nonOperation)
+            {
+                nonOperation = false;
+                ResultTb.Text += "-";
+            }
+        }
+
+        private void PlusBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (nonOperation)
+            {
+                nonOperation = false;
+                ResultTb.Text += "+";
+            }
         }
     }
 }

@@ -34,66 +34,101 @@
                     <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                Name="ResultTb"  Margin="0,0,10,10" FontSize="15"/>
                 </Grid>
-
-                <Grid Grid.Row="2" Grid.Column="0">
-                    <Button Content="C" Style="{StaticResource MaterialDesignFlatButton}" Name="ClearAllBtn" Click="ClearAllBtn_Click"/>
-                </Grid>
+                <Border Grid.Row="2" Grid.Column="0" BorderBrush="LightGray" BorderThickness="1,1,1,1">
+                    <Grid>
+                        <Button Content="C" Style="{StaticResource MaterialDesignFlatButton}" Name="ClearAllBtn" Click="ClearAllBtn_Click"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1" BorderBrush="LightGray"  BorderThickness="0,1,1,1">
                 <Grid Grid.Row="2" Grid.Column="1">
                     <Button Content="Delete" Style="{StaticResource MaterialDesignFlatButton}" Name="DeleteLastSymbolBtn" Click="DeleteLastSymbolBtn_Click"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="2" BorderBrush="LightGray"  BorderThickness="0,1,1,1">
                 <Grid Grid.Row="2" Grid.Column="2">
-                    <Button Content="/" Style="{StaticResource MaterialDesignFlatButton}" Name="DivisionBtn" Click="BtnClick" Tag="/"/>
-                </Grid>
-                <Grid Grid.Row="2" Grid.Column="3" Tag="*">
-                    <Button Content="*" Style="{StaticResource MaterialDesignFlatButton}" Name="MultipleBtn" Click="BtnClick" Tag="*"/>
-                </Grid>
+                        <Button Content="/" Style="{StaticResource MaterialDesignFlatButton}" Name="DivisionBtn" Click="DivisionBtn_Click_1"  Tag="/"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="3" BorderBrush="LightGray"  BorderThickness="0,1,1,1">
+                    <Grid Grid.Row="2" Grid.Column="3" Tag="*">
+                        <Button Content="*" Style="{StaticResource MaterialDesignFlatButton}" Name="MultipleBtn" Click="MultipleBtn_Click_1" Tag="*"/>
+                    </Grid>
+                </Border>
 
+                <Border Grid.Row="3" Grid.Column="0" BorderBrush="LightGray"  BorderThickness="1,0,1,1">
                 <Grid Grid.Row="3" Grid.Column="0">
                     <Button Content="7" Style="{StaticResource MaterialDesignFlatButton}" Name="SevenBtn" Click="BtnClick" Tag="7"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="1" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="3" Grid.Column="1">
                     <Button Content="8" Style="{StaticResource MaterialDesignFlatButton}" Name="EightBtn" Click="BtnClick" Tag="8"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="2" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="3" Grid.Column="2">
                     <Button Content="9" Style="{StaticResource MaterialDesignFlatButton}" Name="NineBtn" Click="BtnClick" Tag="9"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="3" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="3" Grid.Column="3">
-                    <Button Content="-" Style="{StaticResource MaterialDesignFlatButton}" Name="MinusBtn" Click="BtnClick" Tag="-"/>
-                </Grid>
+                    <Button Content="-" Style="{StaticResource MaterialDesignFlatButton}" Name="MinusBtn" Click="MinusBtn_Click_1" Tag="-"/>
+                    </Grid>
+                </Border>
 
+                <Border Grid.Row="4" Grid.Column="0" BorderBrush="LightGray"  BorderThickness="1,0,1,1">
                 <Grid Grid.Row="4" Grid.Column="0">
                     <Button Content="4" Style="{StaticResource MaterialDesignFlatButton}" Name="FourBtn" Click="BtnClick" Tag="4"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="1" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="4" Grid.Column="1">
                     <Button Content="5" Style="{StaticResource MaterialDesignFlatButton}" Name="FiveBtn" Click="BtnClick" Tag="5"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="2" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="4" Grid.Column="2">
                     <Button Content="6" Style="{StaticResource MaterialDesignFlatButton}" Name="SixBtn" Click="BtnClick" Tag="6"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="3" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="4" Grid.Column="3">
-                    <Button Content="+" Style="{StaticResource MaterialDesignFlatButton}" Name="PlusBtn" Click="BtnClick" Tag="+"/>
-                </Grid>
+                    <Button Content="+" Style="{StaticResource MaterialDesignFlatButton}" Name="PlusBtn" Click="PlusBtn_Click_1" Tag="+"/>
+                    </Grid>
+                </Border>
 
+                <Border Grid.Row="5" Grid.Column="0" BorderBrush="LightGray"  BorderThickness="1,0,1,1">
                 <Grid Grid.Row="5" Grid.Column="0">
                     <Button Content="1" Style="{StaticResource MaterialDesignFlatButton}" Name="OneBtn" Click="BtnClick" Tag="1"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="1" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="5" Grid.Column="1">
                     <Button Content="2" Style="{StaticResource MaterialDesignFlatButton}" Name="TwoBtn" Click="BtnClick" Tag="2"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="5" Grid.Column="2" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="5" Grid.Column="2">
                     <Button Content="3" Style="{StaticResource MaterialDesignFlatButton}" Name="ThreeBtn" Click="BtnClick" Tag="3"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="5" Grid.RowSpan="2" Grid.Column="3" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="5" Grid.RowSpan="2" Grid.Column="3">
                     <Button Content="=" Style="{StaticResource MaterialDesignFlatButton}" Name="ResultBtn" Click="ResultBtn_Click"/>
-                </Grid>
+                    </Grid>
+                </Border>
 
+                <Border Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="LightGray"  BorderThickness="1,0,1,1">
                 <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
                     <Button Content="0" Style="{StaticResource MaterialDesignFlatButton}"
                             Name="ZeroBtn" Click="BtnClick" Tag="0"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                <Border Grid.Row="6" Grid.Column="2" BorderBrush="LightGray"  BorderThickness="0,0,1,1">
                 <Grid Grid.Row="6" Grid.Column="2">
-                    <Button Content="." Style="{StaticResource MaterialDesignFlatButton}" Name="PointBtn" Click="BtnClick" Tag="."/>
-                </Grid>
+                    <Button Content="." Style="{StaticResource MaterialDesignFlatButton}" Name="PointBtn" Click="PointBtn_Click_1"  Tag="."/>
+                    </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Border>

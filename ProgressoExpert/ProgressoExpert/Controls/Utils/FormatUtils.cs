@@ -14,6 +14,11 @@ namespace ProgressoExpert.Controls.Utils
         public static readonly string Thousand = "{0:#,##0,}"; //"{0:N2}";
 
         /// <summary>
+        /// 100 000 000
+        /// </summary>
+        public static readonly string Thousand2 = "{0:N0}";
+
+        /// <summary>
         /// 100 тыс
         /// </summary>
         public static readonly string ThousandWithK = "# ##0,";
