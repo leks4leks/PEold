@@ -1122,7 +1122,7 @@ namespace ProgressoExpert.DataAccess
                             if (!WeGoCalcSeb)
                             {
                                 for (var i = counterPur; i < counterSales; i++)
-                                { gst += salesForGroup[i].CountPur; }                                
+                                { gst += salesForGroup[i].CostPrise; }                                
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
@@ -1167,7 +1167,7 @@ namespace ProgressoExpert.DataAccess
                         }
                     };
                 };
-                gent = gst + salesForGroup.Skip(counterSales).Sum(_ => _.CountPur - _.CountSal);
+                gent = gst + salesForGroup.Skip(counterSales).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
                 //for (var i = counterPur; i < counterSales; i++)
                 //{ gent += salesForGroup[i].CountPur; }
                 if (resSebValue > 0 && resSebValueCount > 0)
