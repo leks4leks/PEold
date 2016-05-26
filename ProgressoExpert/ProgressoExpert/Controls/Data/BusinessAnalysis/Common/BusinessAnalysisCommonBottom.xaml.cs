@@ -96,8 +96,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
                     ? ViewModel.ProfitabilityDiagram[3].Name
                     : ViewModel.ProfitabilityDiagram.Last().Name;
                 ProductGroupValueLine4Tb.Text = count >= 1
-                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[3].Name)
-                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Name);
+                    ? String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram[3].Share)
+                    : String.Format(FormatUtils.Percentage, ViewModel.ProfitabilityDiagram.Last().Share);
             }
 
             if (ViewModel.ProfitabilityDiagram.Count > 4)

@@ -108,6 +108,7 @@ namespace ProgressoExpert.Models.Models.App
             PercentForJuric = 20;
             SumTotal = 0;
             PercentTotal = 0;
+            PercentInMonth = 0;
         }
     }
 }
