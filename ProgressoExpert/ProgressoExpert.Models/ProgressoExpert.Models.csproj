@@ -45,6 +45,7 @@
     <Compile Include="Entities\TranzEnt.cs" />
     <Compile Include="Models\App\DepositCalculatorModel.cs" />
     <Compile Include="Models\App\VisibilityModel.cs" />
+    <Compile Include="Models\App\AnnCreditCalculatorModel.cs" />
     <Compile Include="Models\BaseVM\BaseViewModel.cs" />
     <Compile Include="Entities\SalesEnt.cs" />
     <Compile Include="Models\BusinessAnalysis\ArrayModel.cs" />

@@ -96,9 +96,16 @@ namespace ProgressoExpert.Models.Models.App
 
         public void StartTimer2()
         {
-            timer2 = new Timer() { Interval = 5000 };
-            timer2.Elapsed += timer2_Elapsed;
-            timer2.Start();
+            if (CurrencyRateList.Count > 0)
+            {
+                timer2 = new Timer() { Interval = 5000 };
+                timer2.Elapsed += timer2_Elapsed;
+                timer2.Start();
+            }
+            else
+            {
+                CurrencyRate = "Ошибка подключения";
+            }
         }
 
         void timer2_Elapsed(object sender, ElapsedEventArgs e)

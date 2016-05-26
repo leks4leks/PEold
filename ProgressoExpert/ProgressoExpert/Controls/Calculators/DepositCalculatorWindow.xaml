@@ -21,7 +21,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -83,7 +84,7 @@
                 <TextBox Text="{Binding PercentForJuric, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Width="140" Height="25" Name="TaxForJuric"></TextBox>
             </Grid>
 
-            <Rectangle Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
+            <Rectangle Grid.Row="3" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
             <Grid Grid.Row="3" Grid.Column="3" Margin="10,10,5,5">
                 <TextBlock Text="Итого доходов:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
             </Grid>
@@ -94,7 +95,14 @@
                     <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}" 
                                Text="{Binding PercentTotal, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"/>
             </Grid>
-        </Grid>
+                <Grid Grid.Row="5" Grid.Column="3" Margin="10,10,5,10">
+                    <TextBlock Text="Ежемесячный доход:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                </Grid>
+                <Grid Grid.Row="5" Grid.Column="4" Margin="10,5,10,10">
+                    <TextBlock Name="PercentInMonthTb" Style="{StaticResource TextBlock12CenterCenter}" 
+                               Text="{Binding PercentInMonth, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                </Grid>
+            </Grid>
 
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">

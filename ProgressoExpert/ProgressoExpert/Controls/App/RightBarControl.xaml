@@ -14,7 +14,7 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <Button Content="C" Name="SimpleCalculatorBtn" Style="{StaticResource MaterialDesignFlatButton}" Click="SimpleCalculatorBtn_Click"/>
-                <Button Content="C1" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Content="CCA" Name="AnnCreditCalculatorBtn" Style="{StaticResource MaterialDesignFlatButton}" Click="AnnCreditCalculatorBtn_Click"/>
                 <Button Content="C2" Style="{StaticResource MaterialDesignFlatButton}"/>
                 <Button Content="Dc" Name="DepositCalculatorBtn" Style="{StaticResource MaterialDesignFlatButton}" Click="DepositCalculatorBtn_Click"/>
             </StackPanel>
