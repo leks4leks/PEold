@@ -17,5 +17,8 @@ namespace ProgressoExpert.Models.Entities
         public decimal en302;
         public decimal en450;
 
+        public string MenCode;
+        public string MenName;
+
     }
 }

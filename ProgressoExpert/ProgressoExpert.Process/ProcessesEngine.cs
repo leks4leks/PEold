@@ -126,7 +126,7 @@ namespace ProgressoExpert.Process
             var tmSpan = MainAccessor.GetTimeSpan();
             //TODO поставить текущую дату
             var stTodayDate = new DateTime(4012, 10, 01);
-            var endTodayDate = new DateTime(4013, 09, 01); //DateTime.Today.AddYears(tmSpan);
+            var endTodayDate = new DateTime(4013, 02, 01); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
@@ -388,7 +388,7 @@ namespace ProgressoExpert.Process
                                     select new FillModel
                                     {
                                         Name = s.GroupName,
-                                        Share = MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.GroupCode == s.GroupCode).Sum(i => i.SalesWithoutNDS - i.AveCostPrise) / ((s.CountGoodsSt + s.CountGoodsEnd) / 2) * 100
+                                        Share = MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.GroupCode == s.GroupCode).Sum(i => i.SalesWithoutNDS - i.CostPrise) / ((s.CountGoodsSt + s.CountGoodsEnd) / 2) * 100
                                     }
                                     ).OrderByDescending(_ => _.Share).ToList();
             model.ProfitabilityDiagram = averageRentSales;
@@ -498,19 +498,19 @@ namespace ProgressoExpert.Process
 
             //структура валовой прибыли по товарам
             var StrBestGoods = MainModel.GeneralBA.gSales
-                        .Select(_ => new { gName = _.GroupName, gGrow = _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal), gPrice = _.SalesWithoutNDS })
+                        .Select(_ => new { gName = _.GroupName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
                         .OrderByDescending(_ => _.gGrow)
                         .Take(3);
             model.StructureGrossProfitGoodsDiagram = new Dictionary<string, decimal>();
             model.StructureGrossProfitGoodsInfo = new List<FillModel>();
             foreach (var g in StrBestGoods)
             {
-                var ty = MainModel.GeneralBA.gSales.Where(_ => _.GroupName == g.gName).Sum(_ => _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal));
+                var ty = MainModel.GeneralBA.gSales.Where(_ => _.GroupName == g.gName).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
                 model.StructureGrossProfitGoodsDiagram.Add(g.gName, Math.Round(g.gGrow, 2));
                 model.StructureGrossProfitGoodsInfo.Add(new FillModel
                 {
                     Name = g.gName,
-                    Share = Math.Round(ty / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal)) * 100, 2) ,
+                    Share = Math.Round(ty / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100, 2) ,
                     Value = Math.Round(ty
                         / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS) * 100, 2)
                 });
@@ -521,27 +521,27 @@ namespace ProgressoExpert.Process
 
             //структура валовой прибыли по клиентам
             var StrBestClient = MainModel.GeneralBA.gSalesByClient
-                        .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - (_.AveCostPrise * _.CountSal), gPrice = _.SalesWithoutNDS })
+                        .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
                         .OrderByDescending(_ => _.gGrow)
                         .Take(5);
             model.StructureGrossProfitClientDiagram = new Dictionary<string, decimal>();
             model.StructureGrossProfitClientInfo = new List<FillModel>();
             foreach (var g in StrBestClient)
             {
-                var tu = MainModel.GeneralBA.gSalesByClient.Where(_ => _.BuyerName == g.gName).Sum(_ => _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal));
-                model.StructureGrossProfitClientDiagram.Add(g.gName, Math.Round(g.gGrow / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal))  
+                var tu = MainModel.GeneralBA.gSalesByClient.Where(_ => _.BuyerName == g.gName).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
+                model.StructureGrossProfitClientDiagram.Add(g.gName, Math.Round(g.gGrow / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS - _.CostPrise)  
                      * 100, 2));
                 model.StructureGrossProfitClientInfo.Add(new FillModel
                 {
                     Name = g.gName,
-                    Share = Math.Round(tu / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal)) * 100, 2),
+                    Share = Math.Round(tu / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100, 2),
                     Value = Math.Round(tu / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS) * 100, 2)
                 });
             }
             model.StructureGrossProfitClientDiagram.Add("Прочее", 100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value));
             var tmOth =
                 MainModel.GeneralBA.gSalesByClient
-                            .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - (_.AveCostPrise - _.CountSal), gPrice = _.SalesWithoutNDS })
+                            .Select(_ => new { gName = _.BuyerName, gGrow = _.SalesWithoutNDS - _.CostPrise, gPrice = _.SalesWithoutNDS })
                             .OrderByDescending(_ => _.gGrow).Skip(5);
             model.StructureGrossProfitClientInfo.Add(new FillModel
             {
@@ -597,6 +597,7 @@ namespace ProgressoExpert.Process
             MainModel.allADDSTranz = Accessors.GetAllAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
             var rt = (from tt in MainModel.allADDSTranz
+                      where tt.GroupCode == "000000002"
                       group tt by new { tt.period.Month, tt.period.Year } into g
                       select new
                       {
@@ -616,6 +617,7 @@ namespace ProgressoExpert.Process
             MainModel.ADDSTranzPastPeriod = Accessors.GetAllAddsTranz(MainModel.newStTodayDate, MainModel.newEndTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
             var rtPast = (from tt in MainModel.ADDSTranzPastPeriod
+                          where tt.GroupCode == "000000002" // только оплата покупателя, если будет долго, можно отдельный запрос написать все не тащить
                           group tt by new { tt.period.Month, tt.period.Year } into g
                           select new
                           {
@@ -677,6 +679,38 @@ namespace ProgressoExpert.Process
                 model.StructureGrossProfitClientDiagram.Add(salCli[i].name, Math.Round(salCli[i].money / generalSumm * 100, 2));
             }
             model.StructureGrossProfitClientDiagram.Add("Прочие", Math.Round(100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value), 2));
+
+            var tc = (from sa in MainModel.GeneralBA.gSalesByClient
+                          //join addz in MainModel.ADDSTranz on sa.BuyerCode equals addz.MenCode
+                      group sa by sa.BuyerCode into g
+                      select new
+                      {
+                          code = g.FirstOrDefault().BuyerCode,
+                          name = g.FirstOrDefault().BuyerName,
+                          money = g.Sum(_ => _.SalesWithoutNDS)
+                      }).OrderByDescending(_ => _.money);
+            var ta = (from addz in MainModel.allADDSTranz
+                     // where tc.Select(_ => _.code).ToList().Contains(addz.MenCode)
+                      group addz by addz.MenCode into g
+                      select new
+                      {
+                          code = g.FirstOrDefault().MenCode,
+                          name = g.FirstOrDefault().MenName,
+                          money = g.Sum(_ => _.Money)
+                      }).ToList();
+
+            model.StructureGrossProfitClientInfo = new List<FillModel>();
+            foreach (var item in tc.Take(5))
+                model.StructureGrossProfitClientInfo.Add(new FillModel { Name = item.name, Value = item.money,
+                    Value2 = ta.FirstOrDefault(_ => _.code == item.code) != null ? ta.FirstOrDefault(_ => _.code == item.code).money : 0});
+
+            model.StructureGrossProfitClientInfo.Add(new FillModel
+            {
+                Name = "Прочие",
+                Value = tc.Sum(_ => _.money) - model.StructureGrossProfitClientInfo.Sum(_ => _.Value),
+                Value2 = ta.Sum(_ => _.money) - model.StructureGrossProfitClientInfo.Sum(_ => _.Value2)
+            });
+
 
             return model;
 

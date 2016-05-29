@@ -750,14 +750,18 @@ namespace ProgressoExpert.DataAccess
                        join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
                        join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
                        join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                       where accEd.C_Period >= stDate && accEd.C_Period <= endDate && GroupsCode.Contains(refs.C_Code)
+                       join men in db.C_Reference67 on accEd.C_Fld9993_RRRef equals men.C_IDRRef
+                       where accEd.C_Period >= stDate && accEd.C_Period < endDate && GroupsCode.Contains(refs.C_Code)
                        select new GroupsEnt
                        {
                            Money = accEd.C_Fld10000,
                            period = accEd.C_Period,
                            GroupCode = refs.C_Code,
                            en302 = en302.C_EnumOrder,
-                           en450 = en450.C_EnumOrder
+                           en450 = en450.C_EnumOrder,
+                           MenCode = men.C_Code,
+                           MenName = men.C_Description
+
                        }).ToList();
 
                 codeGroups = (from gg in db.C_Reference113
@@ -770,14 +774,17 @@ namespace ProgressoExpert.DataAccess
                        join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
                        join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
                        join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                       where accEd.C_Period >= stDate && accEd.C_Period <= endDate
+                       join men in db.C_Reference67 on accEd.C_Fld9993_RRRef equals men.C_IDRRef
+                       where accEd.C_Period >= stDate && accEd.C_Period < endDate
                        select new GroupsEnt
                        {
                            Money = accEd.C_Fld10000,
                            period = accEd.C_Period,
                            GroupCode = refs.C_Code,
                            en302 = en302.C_EnumOrder,
-                           en450 = en450.C_EnumOrder
+                           en450 = en450.C_EnumOrder,
+                           MenCode = men.C_Code,
+                           MenName = men.C_Description
                        }).ToList();
 
                 codeGroups = (from gg in db.C_Reference113
@@ -1167,7 +1174,7 @@ namespace ProgressoExpert.DataAccess
                         }
                     };
                 };
-                gent = gst + salesForGroup.Skip(counterSales).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
+                gent = gst + salesForGroup.Skip(counterSales).Sum(_ => _.CostPrise);
                 //for (var i = counterPur; i < counterSales; i++)
                 //{ gent += salesForGroup[i].CountPur; }
                 if (resSebValue > 0 && resSebValueCount > 0)

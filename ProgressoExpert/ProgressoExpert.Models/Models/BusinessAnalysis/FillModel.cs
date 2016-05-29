@@ -39,6 +39,15 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         }
         private decimal _value;
 
-        
+        /// <summary>
+        /// значение
+        /// </summary>
+        public decimal Value2
+        {
+            get { return _value2; }
+            set { SetValue(ref _value2, value, "Value2"); }
+        }
+        private decimal _value2;
+
     }
 }
