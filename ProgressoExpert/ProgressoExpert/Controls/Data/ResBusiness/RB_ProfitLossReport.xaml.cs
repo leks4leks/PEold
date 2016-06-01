@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Common.Enums;
+using ProgressoExpert.Controls.Utils;
 using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -138,49 +139,49 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     {
                         #region Запишем суммы в модель
                         case (int)ProfitAndLossNumUI.TotalIncome://доход
-                            textBlock = CreateAndFillTextBlock((model.TotalIncome[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((string.Format(FormatUtils.Thousand, model.TotalIncome[j])), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.TotalCostPrice:
-                            textBlock = CreateAndFillTextBlock(model.TotalCostPrice[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.TotalCostPrice[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.GrossProfit:
-                            textBlock = CreateAndFillTextBlock(model.GrossProfit[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.GrossProfit[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.OtherIncome:
-                            textBlock = CreateAndFillTextBlock((model.OtherIncome[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock((string.Format(FormatUtils.Thousand, model.OtherIncome[j])), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.Costs:
-                            textBlock = CreateAndFillTextBlock(model.Costs[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.Costs[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.CostsSalesServices:
-                            textBlock = CreateAndFillTextBlock(model.CostsSalesServices[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.CostsSalesServices[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.AdministrativeExpenses:
-                            textBlock = CreateAndFillTextBlock((model.AdministrativeExpenses[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.AdministrativeExpenses[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.FinancingCosts:
-                            textBlock = CreateAndFillTextBlock((model.FinancingCosts[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.FinancingCosts[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.OtherCosts:
-                            textBlock = CreateAndFillTextBlock((model.OtherCosts[j]).ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OtherCosts[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.OperatingProfit:
-                            textBlock = CreateAndFillTextBlock(model.OperatingProfit[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OperatingProfit[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.Depreciation:
-                            textBlock = CreateAndFillTextBlock(model.Depreciation[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.Depreciation[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.ProfitBeforeTaxation:
-                            textBlock = CreateAndFillTextBlock(model.ProfitBeforeTaxation[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.ProfitBeforeTaxation[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.OtherTaxes:
-                            textBlock = CreateAndFillTextBlock(model.OtherTaxes[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OtherTaxes[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.KPN20:
-                            textBlock = CreateAndFillTextBlock(model.KPN20[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.KPN20[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.TotalProfit:
-                            textBlock = CreateAndFillTextBlock(model.TotalProfit[j].ToString(), scoreNum, j, true, ref monthCount);
+                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.TotalProfit[j]), scoreNum, j, true, ref monthCount);
                             break;
                         #endregion
                     }
