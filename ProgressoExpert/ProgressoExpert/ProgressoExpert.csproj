@@ -73,6 +73,9 @@
     <Compile Include="Controls\Calculators\CalculatorWindow.xaml.cs">
       <DependentUpon>CalculatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Calculators\CreditCalculatorWindow.xaml.cs">
+      <DependentUpon>CreditCalculatorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Calculators\DepositCalculatorWindow.xaml.cs">
       <DependentUpon>DepositCalculatorWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Calculators\CalculatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Calculators\CreditCalculatorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -38,6 +38,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
             LongTermDebtTb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureCompanyDiagram["Долгосрочная задолженность"].ToString());
             EquityTb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureCompanyDiagram["Собственный капитал"].ToString());
             UpdateColors();
+            UpdateTableSize();
         }
 
         private void UpdateColors()
@@ -81,6 +82,15 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
             NetProfitAnSecondTb.Style = ViewModel.NetProfitAnSecond >= 0
                 ? (Style)FindResource("TextBlock18BoldGreen0CenterCenter")
                 : (Style)FindResource("TextBlock18RBolded3CenterCenter");
+        }
+
+        private void UpdateTableSize()
+        {
+            Row1.Height = new GridLength(Convert.ToDouble(ViewModel.StructureCompanyDiagram["Оборотные активы"]), GridUnitType.Star);
+            Row2.Height = new GridLength(Convert.ToDouble(ViewModel.StructureCompanyDiagram["Долгосрочные активы"]), GridUnitType.Star);
+            Row3.Height = new GridLength(Convert.ToDouble(ViewModel.StructureCompanyDiagram["Текущая задолженность"]), GridUnitType.Star);
+            Row4.Height = new GridLength(Convert.ToDouble(ViewModel.StructureCompanyDiagram["Долгосрочная задолженность"]), GridUnitType.Star);
+            Row5.Height = new GridLength(Convert.ToDouble(ViewModel.StructureCompanyDiagram["Собственный капитал"]), GridUnitType.Star);
         }
     }
 }
