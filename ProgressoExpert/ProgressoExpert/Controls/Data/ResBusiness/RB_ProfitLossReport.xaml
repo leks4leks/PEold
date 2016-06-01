@@ -6,32 +6,23 @@
              mc:Ignorable="d" >
 
     <Border Margin="5">
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
             <Grid x:Name="grid1" Background="{Binding ElementName=window, Path=Background}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="500"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="1000"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <!-- Боковая панель -->
-                <ScrollViewer Grid.Row="1"  Grid.Column="0" Height="Auto" Width="350" VerticalScrollBarVisibility="Hidden" Name="stProfitLossReportGrid" HorizontalScrollBarVisibility="Visible" Padding="0" VerticalContentAlignment="Center"  >
-                    <Grid>
+                    <Grid Grid.Row="1"  Grid.Column="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="350"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
@@ -95,11 +86,9 @@
                         <TextBlock  Text="Итоговая прибыль" Grid.Row="14" Grid.Column="0" Style="{StaticResource MDTTextBlockLeftWhite}"/>
 
                     </Grid>
-                </ScrollViewer>
 
                 <!-- Шапка -->
-                <ScrollViewer Grid.Row="0"  Grid.Column="1" Height="Auto" Width="Auto" Name="rowProfitLossReportGrid" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
-                    <Grid Name="dataRowProfitLossReportGrid">
+                    <Grid Name="dataRowProfitLossReportGrid" Grid.Row="0"  Grid.Column="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
@@ -107,11 +96,9 @@
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                     </Grid>
-                </ScrollViewer>
 
                 <!-- Данные -->
-                <ScrollViewer Grid.Row="1"  Grid.Column="1" Visibility="Hidden" Name="dataProfitLossReportGrid" Grid.ColumnSpan="2" Height="Auto" Width="Auto" HorizontalScrollBarVisibility="Visible" Focusable="False">
-                    <Grid Name="GridDataProfitLossReportGrid">
+                    <Grid Name="GridDataProfitLossReportGrid" Grid.Row="1"  Grid.Column="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
@@ -151,7 +138,6 @@
                         <Rectangle Style="{StaticResource MDTRectangleGray}" Name="NineGrayRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleGray}" Name="TwentyGrayRow"/>-->
                     </Grid>
-                </ScrollViewer>
             </Grid>
         </ScrollViewer>
     </Border>

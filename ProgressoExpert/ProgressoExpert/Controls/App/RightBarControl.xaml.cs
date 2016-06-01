@@ -24,6 +24,7 @@ namespace ProgressoExpert.Controls.App
         CalculatorWindow CalculatorWindow;
         DepositCalculatorWindow DepositCalculatorWindow;
         AnnCreditCalculatorWindow AnnCreditCalculatorWindow;
+        CreditCalculatorWindow CreditCalculatorWindow;
 
         public RightBarControl()
         {
@@ -55,6 +56,15 @@ namespace ProgressoExpert.Controls.App
                 AnnCreditCalculatorWindow = new AnnCreditCalculatorWindow();
             }
             AnnCreditCalculatorWindow.Show();
+        }
+
+        private void CreditCalculatorBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (CreditCalculatorWindow == null)
+            {
+                CreditCalculatorWindow = new CreditCalculatorWindow();
+            }
+            CreditCalculatorWindow.Show();
         }
     }
 }

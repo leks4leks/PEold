@@ -16,16 +16,16 @@ using System.Windows.Shapes;
 namespace ProgressoExpert.Controls.Calculators
 {
     /// <summary>
-    /// Логика взаимодействия для AnnCreditCalculatorWindow.xaml
+    /// Логика взаимодействия для CreditCalculatorWindow.xaml
     /// </summary>
-    public partial class AnnCreditCalculatorWindow : Window
+    public partial class CreditCalculatorWindow : Window
     {
-        private AnnCreditCalculatorModel ViewModel;
+        private CreditCalculatorModel ViewModel;
 
-        public AnnCreditCalculatorWindow()
+        public CreditCalculatorWindow()
         {
             InitializeComponent();
-            ViewModel = new AnnCreditCalculatorModel();
+            ViewModel = new CreditCalculatorModel();
             this.DataContext = ViewModel;
         }
 

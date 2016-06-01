@@ -116,28 +116,28 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
         public void UpdateTable()
         {
             Table2Name1Tb.Text = ViewModel.StructureGrossProfitClientInfo[0].Name;
-            Table2Sales1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Value);
-            Table2Payment1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Share);
+            Table2Sales1Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[0].Value);
+            Table2Payment1Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[0].Value2);
 
             Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
-            Table2Sales2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Value);
-            Table2Payment2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Share);
+            Table2Sales2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value);
+            Table2Payment2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value2);
 
             Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
-            Table2Sales3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Value);
-            Table2Payment3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Share);
+            Table2Sales3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value);
+            Table2Payment3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value2);
 
             Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
-            Table2Sales4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Value);
-            Table2Payment4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Share);
+            Table2Sales4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value);
+            Table2Payment4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value2);
 
             Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
-            Table2Sales5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Value);
-            Table2Payment5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Share);
+            Table2Sales5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value);
+            Table2Payment5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value2);
 
             Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
-            Table2Sales6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Value);
-            Table2Payment6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Share);
+            Table2Sales6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value);
+            Table2Payment6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value2);
         }
 
         public void UpdateColors()

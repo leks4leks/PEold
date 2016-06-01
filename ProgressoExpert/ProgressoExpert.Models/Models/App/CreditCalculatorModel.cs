@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProgressoExpert.Models.Models.App
 {
-    public class AnnCreditCalculatorModel : BaseViewModel
+    public class CreditCalculatorModel : BaseViewModel
     {
         const int daysInMonth = 30;
 
@@ -95,16 +95,6 @@ namespace ProgressoExpert.Models.Models.App
         private double _overPayment = 0;
 
         /// <summary>
-        /// Аннуитет
-        /// </summary>
-        public double Annuity
-        {
-            get { return _annuity; }
-            set { SetValue(ref _annuity, value, "Annuity"); }
-        }
-        private double _annuity = 0;
-
-        /// <summary>
         /// Отсрочка по ОД
         /// </summary>
         public double Delay
@@ -119,7 +109,6 @@ namespace ProgressoExpert.Models.Models.App
         public void Calculate()
         {
             MonthlyRate = AnnualRate / 12;
-            Annuity = Math.Round(Sum * MonthlyRate / 100 / (1-Math.Pow(1 + MonthlyRate / 100, Months * -1)), 0);
 
             DataList = new List<CreditCalculatorTableModel>();
             for(int i = 0; i < Months+Delay-1; i++)
@@ -135,18 +124,20 @@ namespace ProgressoExpert.Models.Models.App
                 else
                 {
                     item.DebtBalance = DataList[i-1].DebtBalance - DataList[i-1].RedemptionSum;
-                }
-                
-                // Итого взнос
-                item.TotalPayment = Annuity;
+                }   
 
                 // Сумма вознаграждения
                 item.RemunerationSum = item.DebtBalance * AnnualRate / 100 / DaysInYear * 30;
 
                 // Сумма погашения ОД
-                item.RedemptionSum = Delay-1 > i
-                    ? 0
-                    : item.TotalPayment - item.RemunerationSum;
+                item.RedemptionSum = Delay > 0
+                    ? Delay <= item.Num
+                        ? Sum / (Months - Delay)
+                        : 0
+                    : Sum / Months;
+
+                // Итого взнос
+                item.TotalPayment = item.RedemptionSum + item.RemunerationSum;
 
                 DataList.Add(item);
 
@@ -175,7 +166,6 @@ namespace ProgressoExpert.Models.Models.App
             AnnualRate = 10;
             Months = 36;
             DaysInYear = 365;
-            Annuity = 0;
             Overpayment = 0;
             SumTotal = 0;
             SumLoan = 0;

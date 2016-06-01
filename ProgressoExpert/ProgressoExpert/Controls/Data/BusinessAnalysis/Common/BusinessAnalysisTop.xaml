@@ -115,17 +115,17 @@
 
             <Grid Grid.Column="0" Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="70*"/>
+                    <RowDefinition Height="30*" Name="Row1"/>
+                    <RowDefinition Height="70*" Name="Row2"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" BorderThickness="1,1,0,0" Style="{StaticResource BorderGray2Gray1}">
+                <Border Grid.Row="0" BorderThickness="1,1,1,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Оборотные активы" Style="{StaticResource TextBlock18CenterCenter}"/>
                         <TextBlock Name="CurrentAssetsTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="1" BorderThickness="1,1,0,1" Style="{StaticResource BorderGray2Gray1}">
+                <Border Grid.Row="1" BorderThickness="1,1,1,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Долгосрочные активы" Style="{StaticResource TextBlock18CenterCenter}"/>
                         <TextBlock Name="LongTermAssetsTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
@@ -135,18 +135,18 @@
 
             <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="20*" Name="Row3"/>
+                    <RowDefinition Height="30*" Name="Row4"/>
+                    <RowDefinition Height="50*" Name="Row5"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" BorderThickness="1,1,1,0" Style="{StaticResource BorderGray2Gray1}">
+                <Border Grid.Row="0" BorderThickness="1,1,1,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Текущая задолженность" Style="{StaticResource TextBlock18CenterCenter}"/>
                         <TextBlock Name="CurrentDebtTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Row="1" BorderThickness="1,1,1,0" Style="{StaticResource BorderGray2Gray1}">
+                <Border Grid.Row="1" BorderThickness="1,1,1,1" Style="{StaticResource BorderGray2Gray1}">
                     <StackPanel Style="{StaticResource StackPanelVerticalHorizontalCenterVerticalOrientation}">
                         <TextBlock Text="Долгосрочная задолженность" Style="{StaticResource TextBlock18CenterCenter}"/>
                         <TextBlock Name="LongTermDebtTb" Style="{StaticResource TextBlock20BoldBlue12CenterCenter}"/>
