@@ -32,8 +32,11 @@ namespace ProgressoExpert.Controls.Utils
                 {
                     series.Points.AddXY(data.Key, data.Value);
                     var _point = series.Points.Last();
-                    _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
-                    _point.Font = new System.Drawing.Font("Arial", 10);
+                    if (_point.YValues[0] > 0)
+                    {
+                        _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
+                        _point.Font = new System.Drawing.Font("Arial", 10);
+                    }
                 }
                 _chart.Series.Add(series);
             }
@@ -56,16 +59,19 @@ namespace ProgressoExpert.Controls.Utils
         public static void AddPoint(string seriesName, decimal dataPointData, string labelFormat, string legendText, System.Drawing.Color color, ref Chart chart)
         {
             //var dataPointData = ViewModel.CycleMoneyDiagram["Деньги в кассе"];
-            chart.Series[seriesName].Points.Add(new DataPoint()
+            if (dataPointData > 0)
             {
-                Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), labelFormat, dataPointData),
-                Font = new System.Drawing.Font("Arial", 10),
-                XValue = (double)dataPointData,
-                YValues = new double[] { (double)dataPointData },
-                LegendText = legendText,
-                Color = color,
-                BorderColor = System.Drawing.Color.White
-            });
+                chart.Series[seriesName].Points.Add(new DataPoint()
+                {
+                    Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), labelFormat, dataPointData),
+                    Font = new System.Drawing.Font("Arial", 10),
+                    XValue = (double)dataPointData,
+                    YValues = new double[] { (double)dataPointData },
+                    LegendText = legendText,
+                    Color = color,
+                    BorderColor = System.Drawing.Color.White
+                });
+            }
         }
 
         /// <summary>
