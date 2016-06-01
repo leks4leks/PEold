@@ -93,14 +93,14 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
         public void LoadDiagram4()
         {
-            if (ViewModel.CostsCommingDiagram != null)
+            if (ViewModel.CostsOutDiagram != null)
             {
                 ChartUtils.AddChartArea(string.Empty, ref chart4);
                 ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
 
                 ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
                 var index = 1;
-                foreach (var item in ViewModel.CostsCommingDiagram)
+                foreach (var item in ViewModel.CostsOutDiagram)
                 {
                     System.Drawing.Color color;
                     switch (index)
