@@ -38,8 +38,8 @@ namespace ProgressoExpert
             ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
             //return;
 
-            ViewModel.StartDate = new DateTime(2012, 10, 01);
-            ViewModel.EndDate = new DateTime(2013, 02, 01);
+            ViewModel.StartDate = new DateTime(2013, 10, 01);
+            ViewModel.EndDate = new DateTime(2014, 02, 01);
             //алешкин код
             ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
             ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);

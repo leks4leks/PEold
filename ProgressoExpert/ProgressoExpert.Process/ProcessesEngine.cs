@@ -125,8 +125,8 @@ namespace ProgressoExpert.Process
 
             var tmSpan = MainAccessor.GetTimeSpan();
             //TODO поставить текущую дату
-            var stTodayDate = new DateTime(4012, 10, 01);
-            var endTodayDate = new DateTime(4013, 02, 01); //DateTime.Today.AddYears(tmSpan);
+            var stTodayDate = new DateTime(4013, 10, 01);
+            var endTodayDate = new DateTime(4014, 02, 01); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
@@ -727,10 +727,11 @@ namespace ProgressoExpert.Process
 
             model.CostsDiagram = new Dictionary<string, decimal>();
             model.CostsDiagram.Add("Прочие", MainModel.ReportProfitAndLoss.OtherCosts.Sum());
-            model.CostsDiagram.Add("Бонусы", 0);
-            model.CostsDiagram.Add("По реализации", MainModel.ReportProfitAndLoss.CostsSalesServices.Sum());
+            model.CostsDiagram.Add("Расходы по реализации", MainModel.ReportProfitAndLoss.CostsSalesServices.Sum());
             model.CostsDiagram.Add("Админ-ые", MainModel.ReportProfitAndLoss.AdministrativeExpenses.Sum());
-            model.CostsDiagram.Add("Закуп", 0);
+            model.CostsDiagram.Add("Расходы на финансирование", MainModel.ReportProfitAndLoss.FinancingCosts.Sum());
+            //TODO ЗАполнить в следующем окне
+           // model.CostsDiagram.Add("Закуп", );
 
             // тут опасно, если вдруг в расходах не было записи за какой то месяц то у нас произойдет смещение, но вообще на норм предприятии это маловероятно
             // раньше не предусмотрели, поэтому делаем так
@@ -750,11 +751,37 @@ namespace ProgressoExpert.Process
             model.SalesDiagram = MainModel.SalesBA.DynamicsSalesDiagram;// продажи тоже
 
             //аддс - операц деятельность - выбитие все кроме оплаты поставщику и - TODO ?? Авансы выданные под поставку активов и услуг
-            model.CostsOut = MainModel.ADDSTranz.Where(_ => _.en302 == 1 && _.en450 == 0 && _.GroupCode != "000000001" && _.GroupCode != "000000029").Sum(_ => _.Money);
+            model.CostsCommingDiagram = new Dictionary<string, decimal>();
+
+            model.CostsCommingDiagram.Add("Расходы по реализации", MainModel.ReportProfitAndLoss.CostsSalesServices.Sum());
+            model.CostsCommingDiagram.Add("Админ-ые", MainModel.ReportProfitAndLoss.AdministrativeExpenses.Sum());
+            model.CostsCommingDiagram.Add("Расходы на финансирование", MainModel.ReportProfitAndLoss.FinancingCosts.Sum());
+            model.CostsCommingDiagram.Add("Прочие", MainModel.ReportProfitAndLoss.OtherCosts.Sum());
+
+            model.CostsComming = model.CostsCommingDiagram.Sum(_ => _.Value);
+
+            model.CostsOutDiagram = new Dictionary<string, decimal>();
+            var ty = (from adz in MainModel.ADDSTranz
+                      where adz.en302 == 1 && adz.en450 == 0 && adz.GroupCode != "000000001" && adz.GroupCode != "000000029"
+                      group adz by adz.GroupCode into g
+                      select new
+                      {
+                          grCode = g.FirstOrDefault().GroupCode,
+                          grName = g.FirstOrDefault().GroupName,
+                          money = g.Sum(_ => _.Money)
+                      }
+                      ).OrderByDescending(_ => _.money).ToList();
+
+            for(var i = 0; i < 4; i++)
+                model.CostsOutDiagram.Add(ty[i].grName, ty[i].money);
+
+            model.CostsOutDiagram.Add("Прочее", ty.Sum(_ => _.money) - model.CostsOutDiagram.Select(_ => _.Value).Sum());
+            
+            model.CostsOut = model.CostsOutDiagram.Sum(_ => _.Value);
 
             model.paidTaxes = MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000037" || _.GroupCode == "000000036").Sum(_ => _.Money);
-            model.paidTaxesFromSales = Math.Round(MainModel.GeneralBA.Sales / model.paidTaxes * 100, 2);
-            model.paidTaxesFromGrosProfit = Math.Round(MainModel.GeneralBA.GrossProfit / model.paidTaxes * 100, 2);
+            model.paidTaxesFromSales = Math.Round(model.paidTaxes / MainModel.GeneralBA.Sales * 100, 2);
+            model.paidTaxesFromGrosProfit = Math.Round(model.paidTaxes / MainModel.GeneralBA.GrossProfit * 100, 2);
 
             return model;
         }
