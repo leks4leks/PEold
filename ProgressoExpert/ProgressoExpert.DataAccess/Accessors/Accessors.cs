@@ -853,6 +853,44 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
+        public static List<SalesEnt> getPurMan(DateTime stDate, DateTime endDate)
+        {
+            using (dbEntities db = new dbEntities())
+            {
+                List<SalesEnt> result = new List<SalesEnt>();
+
+                var tt = (from adz in db.C_AccRgAT210888
+                          group adz by adz.C_Value1_RRRef into g
+                          select new SalesEnt
+                          {
+                              SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
+                              CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                              SalerCode = string.Empty,
+                              SalerName = string.Empty
+                          });
+
+                var t1 = (from r67 in db.C_Reference67
+                          select new SalesEnt
+                          {
+                              SalersRefId = r67.C_IDRRef,
+                              CostPrise = decimal.Zero,
+                              SalerCode = r67.C_Code,
+                              SalerName = r67.C_Description
+                          });
+
+                result = (from t0 in tt
+                          join t_1 in t1 on t0.SalersRefId equals t_1.SalersRefId
+                          select new SalesEnt
+                          {
+                              SalersRefId = t0.SalersRefId,
+                              CostPrise = t0.CostPrise,
+                              SalerCode = t_1.SalerCode,
+                              SalerName = t_1.SalerName
+                          }).ToList();
+
+                return result;
+            }
+        }
 
         public static List<SalesEnt> QueryForGetSalesForSeb(DateTime stDate, DateTime endDate, dbEntities db)
         {

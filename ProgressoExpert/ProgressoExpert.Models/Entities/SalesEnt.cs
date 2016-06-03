@@ -153,6 +153,26 @@ namespace ProgressoExpert.Models.Entities
         private string _buyerName;
 
         /// <summary>
+        /// Код поставщика
+        /// </summary>
+        public string SalerCode
+        {
+            get { return _salerCode; }
+            set { SetValue(ref _salerCode, value, "SalerCode"); }
+        }
+        private string _salerCode;
+
+        /// <summary>
+        /// Имя поставщика
+        /// </summary>
+        public string SalerName
+        {
+            get { return _salerName; }
+            set { SetValue(ref _salerName, value, "SalerName"); }
+        }
+        private string _salerName;
+
+        /// <summary>
         /// Количество покупки
         /// </summary>
         public decimal CountPur

@@ -92,12 +92,12 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
         /// <summary>
         /// Доли по поставщикам
         /// </summary>
-        public Dictionary<string, decimal> ClientDiagramInfo
+        public List<FillModel> ClientDiagramInfo
         {
             get { return _ClientDiagramInfo; }
             set { SetValue(ref _ClientDiagramInfo, value, "ClientDiagramInfo"); }
         }
-        private Dictionary<string, decimal> _ClientDiagramInfo;
+        private List<FillModel> _ClientDiagramInfo;
 
         /// <summary>
         /// оплата - закуп к оплате и продажи

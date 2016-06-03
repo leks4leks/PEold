@@ -846,8 +846,45 @@ namespace ProgressoExpert.Process
             model.PaymentvsPurchase = Math.Round(MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000001").Sum(_ => _.Money) / model.allPurchase * 100, 2);
             model.difPaymentvsPurchasePastPeriod = Math.Round(MainModel.ADDSTranzPastPeriod.Sum(_ => _.Money) / pastPur, 2);
 
-            //model.PurchaseByClientDiagram = new Dictionary<string, decimal>();
-            //model.PurchaseByClientDiagram()
+            var pusa = Accessors.getPurMan(MainModel.StartDate, MainModel.EndDate).OrderByDescending(_ => _.CostPrise).ToList();
+
+            model.PurchaseByClientDiagram = new Dictionary<string, decimal>();
+
+            for (var i = 0; i < 5; i++)
+                model.PurchaseByClientDiagram.Add(pusa[i].SalerName, pusa[i].CostPrise);
+
+            model.PurchaseByClientDiagram.Add("Прочие", pusa.Skip(5).Sum(_ => _.CostPrise));
+
+            var adz = (from az in MainModel.allADDSTranz
+                       group az by az.MenCode into g
+                       select new
+                       {
+                           name = g.FirstOrDefault().MenName,
+                           code = g.FirstOrDefault().MenCode,
+                           money = g.Sum(_ => _.Money)
+                       }).OrderByDescending(_ => _.money).ToList();
+
+
+            model.PaymentByClientDiagram = new Dictionary<string, decimal>();
+
+            for (var i = 0; i < 5; i++)
+            {
+                if (adz.FirstOrDefault(_ => _.code == pusa[i].SalerCode) != null)
+                {
+                    model.PaymentByClientDiagram.Add(adz.FirstOrDefault(_ => _.code == pusa[i].SalerCode).name, adz.FirstOrDefault(_ => _.code == pusa[i].SalerCode).money);
+                }
+                else
+                {
+                    model.PaymentByClientDiagram.Add(pusa[i].SalerName, 0);
+                }
+            }
+
+            model.PaymentByClientDiagram.Add("Прочие", adz.Sum(_ => _.money) - model.PaymentByClientDiagram.Sum(_ => _.Value));
+
+            var sstmp = model.PurchaseByClientDiagram.Sum(_ => _.Value);
+            model.ClientDiagramInfo = new List<FillModel>();
+            foreach (var item in model.PurchaseByClientDiagram)
+                model.ClientDiagramInfo.Add(new FillModel() { Name = item.Key, Share = item.Value / sstmp * 100 });
 
 
             return model;
