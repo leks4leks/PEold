@@ -6,17 +6,6 @@
              mc:Ignorable="d" >
 
     <Border Margin="5">
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" >
-            <Grid x:Name="grid2" Background="{Binding ElementName=window, Path=Background}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="500"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1000"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <!-- Данные -->
-                <ScrollViewer Grid.Row="0"  Grid.Column="0" Visibility="Visible" Name="dataStatementCashFlowsGrid" Height="Auto" Width="Auto"  HorizontalScrollBarVisibility="Visible" Focusable="False" >
                     <Grid Name="GridStatementCashFlowsGrid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="500"/>
@@ -25,9 +14,10 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                    </Grid>
-                </ScrollViewer>
-            </Grid>
-        </ScrollViewer>
+            <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="BlueRow1"/>
+            <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="BlueRow2"/>
+            <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="BlueRow3"/>
+        </Grid>
+        
     </Border>
 </UserControl>

@@ -109,6 +109,13 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock12WhiteCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock12BoldCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Bold" />

@@ -30,6 +30,7 @@ namespace ProgressoExpert.Controls.Data
         {
             RB_Balance.DataBind(vm);
             RB_ProfitLossReport.DataBind(vm);
+            RB_StatementCashFlows.DataBind(vm);
         }
     }
 }

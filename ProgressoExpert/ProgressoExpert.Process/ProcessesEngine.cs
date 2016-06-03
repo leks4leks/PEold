@@ -33,7 +33,6 @@ namespace ProgressoExpert.Process
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
             
-            model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
             return model;
         }
@@ -118,9 +117,18 @@ namespace ProgressoExpert.Process
             return model;
         }
 
+        public static List<GroupsEnt> GetCashFlowReport(MainModel model)
+        {
+            return Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
+        }
+
         public static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
         {
             var MainModel = new MainModel();
+
+
+            MainModel.Sales = Accessors.GetSales(startDate, endDate);
+
             var model = new LiveStreamModel();
 
             var tmSpan = MainAccessor.GetTimeSpan();

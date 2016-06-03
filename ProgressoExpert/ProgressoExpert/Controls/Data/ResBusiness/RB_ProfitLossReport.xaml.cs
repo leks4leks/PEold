@@ -88,7 +88,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year };
             do // в верхний цикл засунить не могли, иначе заливка поверх текста встает
             {
-                dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition()); // создадим новую колонку в гриде
+                dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) }); // создадим новую колонку в гриде
                 tBlock = CreateAndFillTextBlock(((Month)startMonthYear[0]).ToString() + ", " + startMonthYear[1], 0, 0, false, ref monthCount);
                 dataRowProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
                 #region
@@ -106,13 +106,13 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
 
             // Две дополнительных колонки, которые есть всегда
-            dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
             tBlock = CreateAndFillTextBlock("Год", 0, 0, false, ref monthCount);
             dataRowProfitLossReportGrid.Children.Add(tBlock);
 
-            dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
             tBlock = CreateAndFillTextBlock("Средневзвешенная цена", 0, 0, false, ref monthCount);
-            tBlock.Width = 250;
+            //tBlock.Width = 100;
             dataRowProfitLossReportGrid.Children.Add(tBlock);
             #endregion
 
@@ -133,7 +133,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             {
                 for (int j = 0; j < monthCount; j++)
                 {
-                    GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                    GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
                     TextBlock textBlock = new TextBlock();
                     switch (scoreNum)
                     {
@@ -146,6 +146,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                             break;
                         case (int)ProfitAndLossNumUI.GrossProfit:
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.GrossProfit[j]), scoreNum, j, true, ref monthCount);
+                            textBlock.Style = (Style)FindResource("TextBlock12WhiteCenterCenter");
                             break;
                         case (int)ProfitAndLossNumUI.OtherIncome:
                             textBlock = CreateAndFillTextBlock((string.Format(FormatUtils.Thousand, model.OtherIncome[j])), scoreNum, j, true, ref monthCount);
@@ -166,13 +167,17 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OtherCosts[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.OperatingProfit:
-                            textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OperatingProfit[j]), scoreNum, j, true, ref monthCount);
-                            break;
+                            {
+                                textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OperatingProfit[j]), scoreNum, j, true, ref monthCount);
+                                textBlock.Style = (Style)FindResource("TextBlock12WhiteCenterCenter");
+                                break;
+                            }
                         case (int)ProfitAndLossNumUI.Depreciation:
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.Depreciation[j]), scoreNum, j, true, ref monthCount);
                             break;
                         case (int)ProfitAndLossNumUI.ProfitBeforeTaxation:
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.ProfitBeforeTaxation[j]), scoreNum, j, true, ref monthCount);
+                    textBlock.Style = (Style)FindResource("TextBlock12WhiteCenterCenter");
                             break;
                         case (int)ProfitAndLossNumUI.OtherTaxes:
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.OtherTaxes[j]), scoreNum, j, true, ref monthCount);
@@ -182,10 +187,15 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                             break;
                         case (int)ProfitAndLossNumUI.TotalProfit:
                             textBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Thousand, model.TotalProfit[j]), scoreNum, j, true, ref monthCount);
+                    textBlock.Style = (Style)FindResource("TextBlock12WhiteCenterCenter");
                             break;
                         #endregion
                     }
-                    if (j == monthCount - 1) textBlock.Width = 250; // последнюю колонку сделаем пошырше
+                    if (textBlock.Style == null)
+                    {
+                        textBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
+                    }
+                    //if (j == monthCount - 1) textBlock.Width = 100; // последнюю колонку сделаем пошырше
                     GridDataProfitLossReportGrid.Children.Add(textBlock);
                 }
             }
@@ -209,11 +219,11 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             textBlock.Text = text;
             Grid.SetColumn(textBlock, useRowColumn ? column : monthCount++);
             Grid.SetRow(textBlock, row);
-            textBlock.Width = 150;
+            textBlock.Width = 80;
             textBlock.TextAlignment = TextAlignment.Center;
             textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-            textBlock.FontSize = 14;
-            textBlock.Foreground = Brushes.Black;
+            //textBlock.FontSize = 12;
+            //textBlock.Foreground = Brushes.Black;
             textBlock.TextWrapping = TextWrapping.Wrap;
             #region Отступ
             //Thickness margin = textBox.Margin;

@@ -686,6 +686,8 @@ namespace ProgressoExpert.DataAccess
                 model.TotalProfit.Add(Math.Round(model.TotalProfit.Take(monthCounter).Sum() / monthCounter, 2));// среднее                
                 #endregion
 
+                model.Calculate();
+
                 return model;
             }
         }

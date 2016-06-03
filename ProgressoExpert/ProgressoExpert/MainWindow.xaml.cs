@@ -62,6 +62,7 @@ namespace ProgressoExpert
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
             ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);
             ViewModel.RatiosIndicatorsResult = ProcessesEngine.GetRatiosIndicatorsResult(ViewModel);
+            ViewModel.CashFlowReport = ProcessesEngine.GetCashFlowReport(ViewModel);
 
             ViewModel.EndDate = new DateTime(ViewModel.EndDate.Year, ViewModel.EndDate.Month, ViewModel.EndDate.Day);
             // Бизнес Анализ

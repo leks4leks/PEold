@@ -274,6 +274,16 @@ namespace ProgressoExpert.Models.Models
         private RatiosIndicatorsResult _ratiosIndicatorsResult;
 
         /// <summary>
+        /// Отчет о движении денежных средств
+        /// </summary>
+        public List<GroupsEnt> CashFlowReport
+        {
+            get { return _cashFlowReport; }
+            set { SetValue(ref _cashFlowReport, value, "WorkingСCashFlowReport"); }
+        }
+        private List<GroupsEnt> _cashFlowReport;
+
+        /// <summary>
         /// Основная вкладка Анализа бизнеса
         /// </summary>
         public GeneralBusinessAnalysis GeneralBA

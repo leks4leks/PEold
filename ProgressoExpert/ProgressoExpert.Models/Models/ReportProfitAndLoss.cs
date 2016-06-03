@@ -158,6 +158,54 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _totalProfit, value, "TotalProfit"); }
         }
         private List<decimal> _totalProfit;
+
+        /// <summary>
+        /// Валовая рентабельность 
+        /// </summary>
+        public decimal GrossMargin
+        {
+            get { return _grossMargin; }
+            set { SetValue(ref _grossMargin, value, "GrossMargin"); }
+        }
+        private decimal _grossMargin;
+
+        /// <summary>
+        /// Чистая рентабельность 
+        /// </summary>
+        public decimal NetMargin
+        {
+            get { return _netMargin; }
+            set { SetValue(ref _netMargin, value, "NetMargin"); }
+        }
+        private decimal _netMargin;
+
+        /// <summary>
+        /// Коэффициент обслуживания процентов
+        /// </summary>
+        public decimal ServiceRatioPercent
+        {
+            get { return _serviceRatioPercent; }
+            set { SetValue(ref _serviceRatioPercent, value, "ServiceRatioPercent"); }
+        }
+        private decimal _serviceRatioPercent;
+
+        public void Calculate()
+        {
+            GrossMargin = Divide(TotalIncome[TotalIncome.Count - 2], GrossProfit[GrossProfit.Count - 2]);
+            NetMargin = Divide(TotalIncome[TotalIncome.Count - 2], TotalProfit[TotalProfit.Count - 2]);
+            ServiceRatioPercent = Divide(FinancingCosts[FinancingCosts.Count - 2], OperatingProfit[OperatingProfit.Count - 2]);
+        }
+
+        private decimal Divide(decimal value1, decimal value2)
+        {
+            decimal result;
+            try
+            {
+                result = value1 / value2;
+            }
+            catch { result = 0; }
+            return result;
+        }
         
     }
 }
