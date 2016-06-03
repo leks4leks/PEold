@@ -42,7 +42,7 @@ namespace ProgressoExpert
             ViewModel.EndDate = new DateTime(2014, 02, 01);
             //алешкин код
             ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
-            ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
+            //ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
 
             ViewModel.InfoModel.CurrencyRateList = CurrencyRates.GetExchangeRates();
             ViewModel.InfoModel.StartTimer2();
@@ -62,6 +62,7 @@ namespace ProgressoExpert
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
             ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);
             ViewModel.RatiosIndicatorsResult = ProcessesEngine.GetRatiosIndicatorsResult(ViewModel);
+            ViewModel.CashFlowReport = ProcessesEngine.GetCashFlowReport(ViewModel);
 
             ViewModel.EndDate = new DateTime(ViewModel.EndDate.Year, ViewModel.EndDate.Month, ViewModel.EndDate.Day); 
             // Бизнес Анализ
