@@ -10,6 +10,13 @@ namespace ProgressoExpert.Models.Models.BusinessAnalysis
 {
     public class GeneralBusinessAnalysis : BaseViewModel
     {
+        public BusinessResults PastBisRes
+        {
+            get { return _pastBisRes; }
+            set { SetValue(ref _pastBisRes, value, "PastBisRes"); }
+        }
+        private BusinessResults _pastBisRes;
+
         /// <summary>
         /// Продажи
         /// </summary>
