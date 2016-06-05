@@ -32,7 +32,8 @@ namespace ProgressoExpert.Process
 
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
-            
+
+            model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
             return model;
         }
@@ -438,8 +439,8 @@ namespace ProgressoExpert.Process
                 if (mm.EndTranz.Where(_ => _.period < mm.StartDate).Count() > 0)
                     mm.StartTranz.AddRange(mm.EndTranz.Where(_ => _.period < mm.StartDate).ToList());//чтобы из бд не тащить мы переложим из модельки за текущий период транзикции в прошедщий период
 
-                var tmp = Accessors.GetBusinessResults(mm);
-                model.AverageWorkingCapitalDiagram.Add(((Month)startMonthYear[0]).ToString(), (tmp.CirculatingAssetsStart + tmp.CirculatingAssetsEnd) / 2);
+                model.PastBisRes = Accessors.GetBusinessResults(mm);
+                model.AverageWorkingCapitalDiagram.Add(((Month)startMonthYear[0]).ToString(), (model.PastBisRes.CirculatingAssetsStart + model.PastBisRes.CirculatingAssetsEnd) / 2);
 
                 #region Cчитаем кол-во месяцев
                 if (startMonthYear[0] == 12)
@@ -901,6 +902,80 @@ namespace ProgressoExpert.Process
         public static WorkingСapitalBusinessAnalysis GetWorkingСapitalBA(MainModel MainModel)
         {
             var model = new WorkingСapitalBusinessAnalysis();
+
+            model.myMoney = MainModel.BusinessResults.CirculatingAssetsEnd - MainModel.BusinessResults.CurrentDebtEnd;
+            model.myCosts = MainModel.BusinessResults.CurrentDebtEnd;
+
+            model.difmyMoney = model.myMoney - MainModel.GeneralBA.PastBisRes.CirculatingAssetsEnd - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd;
+            model.difmyMoneyByPercent = model.myMoney / (MainModel.GeneralBA.PastBisRes.CirculatingAssetsEnd - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd) * 100;
+
+            model.difmyCosts = model.myCosts - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd;
+            model.difmyCostsByPercent = model.myCosts / MainModel.GeneralBA.PastBisRes.CurrentDebtEnd * 100;
+
+            model.stSokDiagram = new Dictionary<string, decimal>();
+            var st = ((Month)MainModel.StartDate.Month).ToString() + "," + MainModel.StartDate.Year.ToString();
+            var en = ((Month)MainModel.EndDate.Month).ToString() + "," + MainModel.EndDate.Year.ToString();
+            model.stSokDiagram.Add(st , MainModel.BusinessResults.CirculatingAssetsStart - MainModel.BusinessResults.CurrentDebtStart);
+            model.stSokDiagram.Add(st + "-" + en, 0);
+            model.stSokDiagram.Add(en, model.myMoney);
+
+            model.profit = new Dictionary<string, decimal>();
+            model.profit.Add(st, 0);
+            model.profit.Add(st + "-" + en, MainModel.GeneralBA.NetProfit);
+            model.profit.Add(en, 0);
+
+            model.stDebtsDiagram = new Dictionary<string, decimal>();
+            model.stDebtsDiagram.Add(st, MainModel.BusinessResults.CurrentDebtStart);
+            model.stDebtsDiagram.Add(st + "-" + en, 0);
+            model.stDebtsDiagram.Add(en, MainModel.BusinessResults.CurrentDebtEnd);
+
+            model.turnoverDiagram = new Dictionary<string, decimal>();
+            var tr = (from sa in MainModel.Sales.SelectMany(_ => _.Sales)
+                      group sa by sa.GroupCode into g
+                      select new
+                      {
+                          code = g.FirstOrDefault().GroupCode,
+                          name = g.FirstOrDefault().GroupName,
+                          val = (g.FirstOrDefault().CountGoodsSt + g.FirstOrDefault().CountGoodsEnd == 0 
+                          ? 1 : g.Sum(_ => _.CostPrise) / ((g.FirstOrDefault().CountGoodsSt + g.FirstOrDefault().CountGoodsEnd) / 2)) * (MainModel.EndDate - MainModel.StartDate).Days
+                      }).OrderByDescending(_ => _.val).ToList();
+
+            for (var i = 0; i < 3; i++)
+                model.turnoverDiagram.Add(tr[i].name, tr[i].val);
+
+            model.turnoverDiagram.Add("Прочее", tr.Sum(_ => _.val) - model.turnoverDiagram.Sum(_ => _.Value));
+            DateTime sty = MainModel.StartDate;
+            DateTime eny = MainModel.EndDate;
+            BusinessResults tmpBR = new BusinessResults();
+
+            model.aveDZDiagram = new Dictionary<string, decimal>();
+            model.aveGoodsDiagram = new Dictionary<string, decimal>();
+            model.aveMoneyDiagram = new Dictionary<string, decimal>();
+            model.aveSalesDiagram = new Dictionary<string, decimal>();
+            model.DZ_dzVsKzDiagram = new Dictionary<string, decimal>();
+            model.KZ_dzVsKzDiagram = new Dictionary<string, decimal>();
+            foreach (var item in MainModel.Sales)
+            {
+                MainModel.StartDate = item.Date;
+                MainModel.EndDate = item.Date.AddMonths(1);
+                // можно оптимизировать это, изначально это считается сразу за весь период, можно в первоначальной загрузке разбить по месяцам,
+                // но это только если эта штука нужна будет еще где-то, если только тут, выгоды особой не будет, еще вариант вытаскивать не суммы, 
+                // а массивы данных по счетам в массивы данных с датой и на клиенте ворочать, но я думаю это тоже трешак их может быть овер 100 000 по каждому
+                tmpBR = GetBusinessResults(MainModel);
+
+                var mm = ((Month)item.Date.Month).ToString();
+                model.aveDZDiagram.Add(mm, (tmpBR.DebtsOfCustomersAndOverpaymentsStart + tmpBR.DebtsOfCustomersAndOverpaymentsEnd) / 2);
+                model.aveGoodsDiagram.Add(mm, (tmpBR.RawAndMaterialsStart + tmpBR.RawAndMaterialsEnd) / 2);
+                model.aveMoneyDiagram.Add(mm, (tmpBR.CashInCashBoxStart + tmpBR.MoneyInTheBankAccountsStart + tmpBR.CashInCashBoxEnd + tmpBR.MoneyInTheBankAccountsEnd) / 2);
+                model.aveSalesDiagram.Add(mm, item.Sales.Sum(_ => _.SalesWithoutNDS));
+
+                model.KZ_dzVsKzDiagram.Add(mm, (tmpBR.DebtsOfCustomersAndOverpaymentsStart + tmpBR.DebtsOfCustomersAndOverpaymentsEnd) / 2);
+                model.DZ_dzVsKzDiagram.Add(mm, (tmpBR.PayablesToSuppliersShortTermDebtsStart + tmpBR.PayablesToSuppliersShortTermDebtsEnd) / 2);
+            }
+
+            MainModel.StartDate = sty;
+            MainModel.EndDate = eny;
+
 
             return model;
         }
