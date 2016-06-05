@@ -47,7 +47,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                 SetParamForRectangle(0, rowNum, 0, 2, BlueRow1, false);
                 AddTextBlockToGrid("Операционная деятельность", 
                     String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0).Sum(i => i.Money)), true, ref rowNum,
-                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12WhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
+                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldWhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
                 bool ad1 = false;
                 bool ad2 = false;
                 foreach (var item in list)
@@ -56,18 +56,18 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     {
                         AddTextBlockToGrid("Поступление",  
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
-                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad2 = true;
                     }
-                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount, 
-                        ref GridStatementCashFlowsGrid, 500);
+                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
+                        ref GridStatementCashFlowsGrid, 500, "TextBlock12LeftCenterMarginLeft15");
                 }
             }
 
@@ -78,7 +78,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                 SetParamForRectangle(0, rowNum, 0, 2, BlueRow2, false);
                 AddTextBlockToGrid("Инвестиционная деятельность",  
                     String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1).Sum(i => i.Money)), true, ref rowNum,
-                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12WhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
+                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldWhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
                 var ad1 = false;
                 var ad2 = false;
                 foreach (var item in list)
@@ -87,18 +87,18 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     {
                         AddTextBlockToGrid("Поступление",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
-                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad2 = true;
                     }
-                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount, 
-                        ref GridStatementCashFlowsGrid, 500);
+                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
+                        ref GridStatementCashFlowsGrid, 500, "TextBlock12LeftCenterMarginLeft15");
                 }
             }
 
@@ -109,7 +109,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                 SetParamForRectangle(0, rowNum, 0, 2, BlueRow3, false);
                 AddTextBlockToGrid("Финансовая деятельность",  
                     String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2).Sum(i => i.Money)), true, ref rowNum,
-                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12WhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
+                    ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldWhiteLeftCenterMarginLeft5", "TextBlock12WhiteCenterCenter");
                 var ad1 = false;
                 var ad2 = false;
                 foreach (var item in list)
@@ -117,19 +117,19 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     if (!ad1 && item.en302 == 0)
                     {
                         AddTextBlockToGrid("Поступление",
-                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum,
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
-                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500);
+                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
                         ad2 = true;
                     }
-                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount, 
-                        ref GridStatementCashFlowsGrid, 500);
+                    AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
+                        ref GridStatementCashFlowsGrid, 500, "TextBlock12LeftCenterMarginLeft15");
                 }
             }
         }
@@ -141,6 +141,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             TextBlock textBlock = new TextBlock();
             textBlock = CreateAndFillTextBlock(text, rowNum, 0, true, ref monthCount, 500);
             textBlock.Width = 500;
+            textBlock.TextAlignment = TextAlignment.Left;
             textBlock.Style = (Style)FindResource(style1);
             GridStatementCashFlowsGrid.Children.Add(textBlock);
 
@@ -171,6 +172,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             //textBlock.FontSize = 12;
             //textBlock.Foreground = Brushes.Black;
             textBlock.TextWrapping = TextWrapping.Wrap;
+
             #region Отступ
             //Thickness margin = textBox.Margin;
             //margin.Left = 2;

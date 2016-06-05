@@ -43,9 +43,9 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseByGoodsDiagram, string.Empty, ref chart1);
+                ViewModel.PurchaseByGoodsDiagram, FormatUtils.Thousand, ref chart1);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Bar, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.salesByGoodsDiagram, string.Empty, ref chart1);
+                ViewModel.salesByGoodsDiagram, FormatUtils.Thousand, ref chart1);
         }
     }
 }

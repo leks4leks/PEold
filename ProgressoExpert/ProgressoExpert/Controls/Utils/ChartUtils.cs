@@ -36,6 +36,9 @@ namespace ProgressoExpert.Controls.Utils
                     {
                         _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
                         _point.Font = new System.Drawing.Font("Arial", 10);
+                        _point.AxisLabel = _point.AxisLabel.Length > 20 
+                            ? string.Format("{0}...", _point.AxisLabel.Substring(0, 20))
+                            : _point.AxisLabel;
                     }
                 }
                 _chart.Series.Add(series);

@@ -46,33 +46,48 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         public void LoadDiagram2()
         {
             chart2.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(string.Empty, ref chart2);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart2);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Оплата", System.Drawing.Color.FromArgb(49, 133, 156),
-                ViewModel.PaymentDiagram, string.Empty, ref chart2);
+                ViewModel.PaymentDiagram, FormatUtils.Thousand, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseDiagram, string.Empty, ref chart2);
+                ViewModel.PurchaseDiagram, FormatUtils.Thousand, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.SalesDiagram, string.Empty, ref chart2);
+                ViewModel.SalesDiagram, FormatUtils.Thousand, ref chart2);
         }
 
         public void LoadDiagram3()
         {
             chart3.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(string.Empty, ref chart3);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart3);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart3);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseByClientDiagram, string.Empty, ref chart3);
+                ViewModel.PurchaseByClientDiagram, FormatUtils.Thousand, ref chart3);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Оплачено", System.Drawing.Color.FromArgb(49, 133, 156),
-                ViewModel.PaymentByClientDiagram, string.Empty, ref chart3);
+                ViewModel.PaymentByClientDiagram, FormatUtils.Thousand, ref chart3);
         }
 
         public void UpdateTable()
         {
-            //TableName1Tb.Text = ViewModel.ClientDiagramInfo
-            //TableShare1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Value);
+            TableName1Tb.Text = ViewModel.ClientDiagramInfo[0].Name;
+            TableShare1Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[0].Share);
+
+            TableName2Tb.Text = ViewModel.ClientDiagramInfo[1].Name;
+            TableShare2Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[1].Share);
+
+            TableName3Tb.Text = ViewModel.ClientDiagramInfo[2].Name;
+            TableShare3Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[2].Share);
+
+            TableName4Tb.Text = ViewModel.ClientDiagramInfo[3].Name;
+            TableShare4Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[3].Share);
+
+            TableName5Tb.Text = ViewModel.ClientDiagramInfo[4].Name;
+            TableShare5Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[4].Share);
+
+            TableName6Tb.Text = ViewModel.ClientDiagramInfo[5].Name;
+            TableShare6Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[5].Share);
         }
 
         private void UpdateColors()

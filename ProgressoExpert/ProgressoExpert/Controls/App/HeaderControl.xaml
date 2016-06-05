@@ -58,7 +58,7 @@
 
         <!-- Котировки нефти-->
         <Grid Grid.Column="6">
-            <Label>Котировки нефти</Label>
+            <Label Visibility="Hidden">Котировки нефти</Label>
         </Grid>
 
         <!-- Сплиттер -->
@@ -68,7 +68,7 @@
         
         <!-- Меню приложения-->
         <Grid Grid.Column="9">
-            <Label>Меню приложения</Label>
+            <Label Visibility="Hidden">Меню приложения</Label>
         </Grid>
     </Grid>
 </UserControl>

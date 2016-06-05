@@ -32,7 +32,8 @@ namespace ProgressoExpert.Process
 
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
-            
+
+            model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
             return model;
         }
@@ -892,7 +893,7 @@ namespace ProgressoExpert.Process
             var sstmp = model.PurchaseByClientDiagram.Sum(_ => _.Value);
             model.ClientDiagramInfo = new List<FillModel>();
             foreach (var item in model.PurchaseByClientDiagram)
-                model.ClientDiagramInfo.Add(new FillModel() { Name = item.Key, Share = item.Value / sstmp * 100 });
+                model.ClientDiagramInfo.Add(new FillModel() { Name = item.Key, Share = Math.Round(item.Value / sstmp * 100) });
 
 
             return model;
