@@ -256,7 +256,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочая задолженность по налогам
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherTaxesPayable1,
                     (int)ScoresForBusinessResults.OtherTaxesPayable2,
                     (int)ScoresForBusinessResults.OtherTaxesPayable3,
@@ -355,7 +355,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Уставной капитал
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.AuthorizedCapital1,
                     (int)ScoresForBusinessResults.AuthorizedCapital2);
                 model.AuthorizedCapitalStart = _outStart * minusOne;
@@ -365,7 +365,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочий капитал
 
-                Calculate(out _outStart, out _outEnd,
+                CalculateOriginal(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherCapital);
                 model.OtherCapitalStart = _outStart * minusOne;
                 model.OtherCapitalEnd = _outEnd * minusOne;
