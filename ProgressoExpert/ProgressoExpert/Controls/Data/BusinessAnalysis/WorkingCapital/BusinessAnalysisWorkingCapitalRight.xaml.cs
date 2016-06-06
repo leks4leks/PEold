@@ -41,28 +41,28 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
 
         public void LoadDiagram()
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.StackedColumn, "ДЗ Средний долг",
-                System.Drawing.Color.FromArgb(128, 100, 162), ViewModel.aveDZDiagram, string.Empty, ref chart);
+                System.Drawing.Color.FromArgb(128, 100, 162), ViewModel.aveDZDiagram, FormatUtils.Thousand, ref chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.StackedColumn, "Товары средний остаток",
-                System.Drawing.Color.FromArgb(170, 186, 215), ViewModel.aveGoodsDiagram, string.Empty, ref chart);
+                System.Drawing.Color.FromArgb(170, 186, 215), ViewModel.aveGoodsDiagram, FormatUtils.Thousand, ref chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.StackedColumn, "Деньги средний остаток",
-                System.Drawing.Color.FromArgb(186, 176, 201), ViewModel.aveMoneyDiagram, string.Empty, ref chart);
+                System.Drawing.Color.FromArgb(186, 176, 201), ViewModel.aveMoneyDiagram, FormatUtils.Thousand, ref chart);
             ChartUtils.AddSeriesAndPoints("Series4", SeriesChartType.StackedColumn, "Продажи",
-                System.Drawing.Color.FromArgb(60, 103, 154), ViewModel.aveSalesDiagram, string.Empty, ref chart);
+                System.Drawing.Color.FromArgb(60, 103, 154), ViewModel.aveSalesDiagram, FormatUtils.Thousand, ref chart);
         }
 
         public void LoadDiagram2()
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart2, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2, 0, 0, 1, 0, true, false, false, false, 0, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart2);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "КЗ Средний долг",
-                System.Drawing.Color.FromArgb(128, 100, 162), ViewModel.aveSalesDiagram, string.Empty, ref chart2);
+                System.Drawing.Color.FromArgb(128, 100, 162), ViewModel.KZ_dzVsKzDiagram, FormatUtils.Thousand, ref chart2);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "ДЗ Средний долг",
-                System.Drawing.Color.FromArgb(186, 176, 201), ViewModel.aveSalesDiagram, string.Empty, ref chart2);
+                System.Drawing.Color.FromArgb(186, 176, 201), ViewModel.DZ_dzVsKzDiagram, FormatUtils.Thousand, ref chart2);
         }
     }
 }

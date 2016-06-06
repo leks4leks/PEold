@@ -41,21 +41,21 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
         public void LoadDiagram()
         {
             chart.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(string.Empty, ref chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.StackedColumn, "СОК", System.Drawing.Color.FromArgb(96, 74, 123),
-                ViewModel.stSokDiagram, string.Empty, ref chart);
+                ViewModel.stSokDiagram, FormatUtils.Thousand, ref chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.StackedColumn, "Прибыль", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.profit, string.Empty, ref chart);
+                ViewModel.profit, FormatUtils.Thousand, ref chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.StackedColumn, "Задолженность", System.Drawing.Color.FromArgb(204, 193, 218),
-                ViewModel.stDebtsDiagram, string.Empty, ref chart);
+                ViewModel.stDebtsDiagram, FormatUtils.Thousand, ref chart);
         }
 
         public void LoadDiagram2()
         {
             chart2.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(string.Empty, ref chart2, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2, 0, 0, 1, 0, true, false, false, false, 0, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart2);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, string.Empty, System.Drawing.Color.FromArgb(79, 129, 189),

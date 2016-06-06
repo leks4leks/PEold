@@ -28,7 +28,7 @@ namespace ProgressoExpert.DataAccess
         private static List<TranzEnt> ourCrtSt;
         private static List<TranzEnt> ourCrtEnd;
         
-        public static BusinessResults GetBusinessResults(MainModel mainModel)
+        public static BusinessResults GetBusinessResults(MainModel mainModel, bool isForMonth = false)
         {
             BusinessResults model = new BusinessResults();
             model.StartDate = mainModel.StartDate;
@@ -40,6 +40,15 @@ namespace ProgressoExpert.DataAccess
                 End = mainModel.EndTranz;
                 StartOriginal = mainModel.StartTranzOriginal;
                 EndOriginal = mainModel.EndTranzOriginal;
+
+                if (isForMonth)
+                {
+                    Start.AddRange(mainModel.EndTranz.Where(_ => _.period < mainModel.StartDate).ToList());
+                    End = mainModel.EndTranz.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
+
+                    StartOriginal.AddRange(mainModel.EndTranzOriginal.Where(_ => _.period < mainModel.StartDate).ToList());
+                    EndOriginal = mainModel.EndTranzOriginal.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
+                }
 
                 ourScr = new List<int>(); // Вытащим ID интересующих нас счетов нас счетов
 

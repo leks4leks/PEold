@@ -38,9 +38,9 @@ namespace ProgressoExpert.Process
             return model;
         }
 
-        public static BusinessResults GetBusinessResults(MainModel model)
+        public static BusinessResults GetBusinessResults(MainModel model, bool isForMonth = false)
         {
-            return Accessors.GetBusinessResults(model);
+            return Accessors.GetBusinessResults(model, isForMonth);
         }
 
         public static ReportProfitAndLoss GetReportProfitAndLoss(MainModel model)
@@ -941,7 +941,7 @@ namespace ProgressoExpert.Process
                       }).OrderByDescending(_ => _.val).ToList();
 
             for (var i = 0; i < 3; i++)
-                model.turnoverDiagram.Add(tr[i].name, tr[i].val);
+                model.turnoverDiagram.Add(tr[i].name, Math.Round(tr[i].val, 0));
 
             model.turnoverDiagram.Add("Прочее", tr.Sum(_ => _.val) - model.turnoverDiagram.Sum(_ => _.Value));
             DateTime sty = MainModel.StartDate;
@@ -961,7 +961,7 @@ namespace ProgressoExpert.Process
                 // можно оптимизировать это, изначально это считается сразу за весь период, можно в первоначальной загрузке разбить по месяцам,
                 // но это только если эта штука нужна будет еще где-то, если только тут, выгоды особой не будет, еще вариант вытаскивать не суммы, 
                 // а массивы данных по счетам в массивы данных с датой и на клиенте ворочать, но я думаю это тоже трешак их может быть овер 100 000 по каждому
-                tmpBR = GetBusinessResults(MainModel);
+                tmpBR = GetBusinessResults(MainModel, true);
 
                 var mm = ((Month)item.Date.Month).ToString();
                 model.aveDZDiagram.Add(mm, (tmpBR.DebtsOfCustomersAndOverpaymentsStart + tmpBR.DebtsOfCustomersAndOverpaymentsEnd) / 2);

@@ -24,10 +24,14 @@ namespace ProgressoExpert.Controls.Utils
                     Name = seriesName,
                     ChartType = chartType,
                     Color = color,
-                    LegendText = legendText,
+                    LegendText = string.IsNullOrEmpty(legendText) ? string.Empty : legendText,
                     BorderColor = System.Drawing.Color.White,
                     IsValueShownAsLabel = true
                 };
+                if (string.IsNullOrEmpty(legendText))
+                {
+                    series.IsValueShownAsLabel = false;
+                }
                 foreach (KeyValuePair<string, decimal> data in dataValues)
                 {
                     series.Points.AddXY(data.Key, data.Value);
