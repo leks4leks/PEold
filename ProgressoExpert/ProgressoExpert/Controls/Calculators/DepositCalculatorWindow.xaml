@@ -64,41 +64,37 @@
             </Grid>
             
             <Grid Grid.Row="0" Grid.Column="3">
-                <TextBlock Text="Кол-во дней в году" Style="{StaticResource TextBlock12CenterCenter}"/>
-            </Grid>
-            <Grid Grid.Row="0" Grid.Column="4">
-                    <TextBox Width="140" Height="25" Name="DaysInYearTb" Text="{Binding DaysInYear}"></TextBox>
-            </Grid>
-
-            <Grid Grid.Row="1" Grid.Column="3">
                 <TextBlock Text="Налог для физ.лица" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="4">
+            <Grid Grid.Row="0" Grid.Column="4">
                     <TextBox Text="{Binding PercentForPhys, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Width="140" Height="25" Name="TaxForPhysTb"></TextBox>
             </Grid>
 
-            <Grid Grid.Row="2" Grid.Column="3">
+            <Grid Grid.Row="1" Grid.Column="3">
                 <TextBlock Text="Налог для юр.лица" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
-            <Grid Grid.Row="2" Grid.Column="4">
+            <Grid Grid.Row="1" Grid.Column="4">
                 <TextBox Text="{Binding PercentForJuric, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Width="140" Height="25" Name="TaxForJuric"></TextBox>
             </Grid>
 
-            <Rectangle Grid.Row="3" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
-            <Grid Grid.Row="3" Grid.Column="3" Margin="10,10,5,5">
+            <Rectangle Grid.Row="2" Grid.RowSpan="3" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
+            <Grid Grid.Row="2" Grid.Column="3" Margin="10,10,5,5">
                 <TextBlock Text="Итого доходов:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
             </Grid>
-            <Grid Grid.Row="3" Grid.Column="4" Margin="10,10,10,5">
+            <Grid Grid.Row="2" Grid.Column="4" Margin="10,10,10,5">
                     <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
             </Grid>
-            <Grid Grid.Row="4" Grid.Column="4" Margin="10,5,10,10">
+                <Grid Grid.Row="3" Grid.Column="3" Margin="10,10,5,5">
+                    <TextBlock Text="Итоговая доходность:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                </Grid>
+                <Grid Grid.Row="3" Grid.Column="4" Margin="10,5,10,10">
                     <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}" 
                                Text="{Binding PercentTotal, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"/>
             </Grid>
-                <Grid Grid.Row="5" Grid.Column="3" Margin="10,10,5,10">
+                <Grid Grid.Row="4" Grid.Column="3" Margin="10,10,5,10">
                     <TextBlock Text="Ежемесячный доход:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                 </Grid>
-                <Grid Grid.Row="5" Grid.Column="4" Margin="10,5,10,10">
+                <Grid Grid.Row="4" Grid.Column="4" Margin="10,5,10,10">
                     <TextBlock Name="PercentInMonthTb" Style="{StaticResource TextBlock12CenterCenter}" 
                                Text="{Binding PercentInMonth, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
@@ -106,7 +102,7 @@
 
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="CalcBtn_Click"/>
+                    <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatGreenButton}" Click="CalcBtn_Click"/>
                 <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
                 <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
             </StackPanel>

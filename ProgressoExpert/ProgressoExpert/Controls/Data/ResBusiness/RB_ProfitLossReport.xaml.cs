@@ -107,11 +107,11 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
             // Две дополнительных колонки, которые есть всегда
             dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            tBlock = CreateAndFillTextBlock("Год", 0, 0, false, ref monthCount);
+            tBlock = CreateAndFillTextBlock("Итого за период", 0, 0, false, ref monthCount);
             dataRowProfitLossReportGrid.Children.Add(tBlock);
 
             dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            tBlock = CreateAndFillTextBlock("Средневзвешенная цена", 0, 0, false, ref monthCount);
+            tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount);
             //tBlock.Width = 100;
             dataRowProfitLossReportGrid.Children.Add(tBlock);
             #endregion

@@ -169,13 +169,13 @@
                 </Border>
 
                 <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="0,1,1,1" Margin="0,0,0,0.4">
-                    <TextBlock Text="{Binding GrossMargin, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="{Binding GrossMargin, StringFormat={}{0:N2}%, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
-                    <TextBlock Text="{Binding NetMargin, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="{Binding NetMargin, StringFormat={}{0:N2}%, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
-                    <TextBlock Text="{Binding ServiceRatioPercent, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="{Binding ServiceRatioPercent, StringFormat={}{0:N2}%, ConverterCulture=ru-RU}"  Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Border>
             </Grid>
         </Grid>

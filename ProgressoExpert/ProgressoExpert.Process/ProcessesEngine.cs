@@ -35,6 +35,8 @@ namespace ProgressoExpert.Process
 
             model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
+            model.DaysInPeriod = Convert.ToInt32(Math.Round((model.EndDate - model.StartDate).TotalDays, 0));
+
             return model;
         }
 

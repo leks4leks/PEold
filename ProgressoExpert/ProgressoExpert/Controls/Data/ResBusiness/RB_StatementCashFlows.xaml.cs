@@ -55,15 +55,15 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     if (!ad1 && item.en302 == 0)
                     {
                         AddTextBlockToGrid("Поступление",  
-                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum,
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 0 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad2 = true;
                     }
                     AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
@@ -87,14 +87,14 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     {
                         AddTextBlockToGrid("Поступление",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum, 
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 1 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad2 = true;
                     }
                     AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
@@ -118,14 +118,14 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                     {
                         AddTextBlockToGrid("Поступление",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 0).Sum(i => i.Money)), true, ref rowNum,
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad1 = true;
                     }
                     if (!ad2 && item.en302 == 1)
                     {
                         AddTextBlockToGrid("Выбытие",
                             String.Format(FormatUtils.Thousand, vm.ADDSTranz.Where(i => i.en450 == 2 && i.en302 == 1).Sum(i => i.Money)), true, ref rowNum,
-                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5");
+                            ref monthCount, ref GridStatementCashFlowsGrid, 500, "TextBlock12BoldLeftCenterMarginLeft5", "TextBlock12BoldCenterCenter");
                         ad2 = true;
                     }
                     AddTextBlockToGrid(item.GroupName, String.Format(FormatUtils.Thousand, item.Money), true, ref rowNum, ref monthCount,
@@ -137,7 +137,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
         private void AddTextBlockToGrid(string text, string text2, bool useRowColumn, ref int rowNum, ref int monthCount, ref Grid grid,
             double width = 80, string style1 = "TextBlock12LeftCenterMarginLeft5", string style2 = "TextBlock12CenterCenter")
         {
-            grid.RowDefinitions.Add(new RowDefinition());
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(25) });
             TextBlock textBlock = new TextBlock();
             textBlock = CreateAndFillTextBlock(text, rowNum, 0, true, ref monthCount, 500);
             textBlock.Width = 500;

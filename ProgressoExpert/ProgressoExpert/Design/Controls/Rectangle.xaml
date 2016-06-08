@@ -63,6 +63,12 @@
     </Style>
 
 
+    <Style x:Key="RectangleLightGrayBorder" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="{StaticResource LightGray}"/>
+        <Setter Property="Stroke" Value="Black"/>
+    </Style>
+
+
 
     <Style x:Key="RectangleLightGray" TargetType="{x:Type Rectangle}">
         <Setter Property="Fill" Value="{StaticResource LightGray}"/>

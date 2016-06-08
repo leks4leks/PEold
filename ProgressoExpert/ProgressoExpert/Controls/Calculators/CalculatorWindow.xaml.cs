@@ -41,8 +41,7 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void BtnClick(object sender, RoutedEventArgs e)
         {
-            ResultTb.Text += (sender as Button).Tag.ToString();
-            nonOperation = true;
+            SetResultText((sender as Button).Tag.ToString(), true);
         }
 
         private void ResultBtn_Click(object sender, RoutedEventArgs e)
@@ -56,8 +55,7 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void ClearAllBtn_Click(object sender, RoutedEventArgs e)
         {
-            ResultTb.Text = "";
-            nonOperation = false;
+            SetResultText(string.Empty, false);
         }
 
         private void DeleteLastSymbolBtn_Click(object sender, RoutedEventArgs e)
@@ -81,8 +79,7 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (nonOperation)
             {
-                nonOperation = false;
-                ResultTb.Text += ".";
+                SetResultText(".", false);
             }
         }
 
@@ -90,8 +87,7 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (nonOperation)
             {
-                nonOperation = false;
-                ResultTb.Text += "/";
+                SetResultText("/", false);
             }
         }
 
@@ -99,8 +95,7 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (nonOperation)
             {
-                nonOperation = false;
-                ResultTb.Text += "*";
+                SetResultText("*", false);
             }
         }
 
@@ -108,8 +103,7 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (nonOperation)
             {
-                nonOperation = false;
-                ResultTb.Text += "-";
+                SetResultText("-", false);
             }
         }
 
@@ -117,8 +111,67 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (nonOperation)
             {
-                nonOperation = false;
-                ResultTb.Text += "+";
+                SetResultText("+", false);
+            }
+        }
+
+        private void SetResultText(string text, bool _nonOperation)
+        {
+            ResultTb.Text += text;
+            nonOperation = _nonOperation;
+        }
+
+        private void Window_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.D1:
+                    SetResultText("1", true);
+                    break;
+                case Key.D2:
+                    SetResultText("2", true);
+                    break;
+                case Key.D3:
+                    SetResultText("3", true);
+                    break;
+                case Key.D4:
+                    SetResultText("4", true);
+                    break;
+                case Key.D5:
+                    SetResultText("5", true);
+                    break; 
+                case Key.D6:
+                    SetResultText("6", true);
+                    break;
+                case Key.D7:
+                    SetResultText("7", true);
+                    break;
+                case Key.D8:
+                    SetResultText("8", true);
+                    break;
+                case Key.D9:
+                    SetResultText("9", true);
+                    break;
+                case Key.D0:
+                    SetResultText("0", true);
+                    break;
+                case Key.Add:
+                    SetResultText("+", false);
+                    break;
+                case Key.Subtract:
+                    SetResultText("-", false);
+                    break;
+                case Key.Multiply:
+                    SetResultText("*", false);
+                    break;
+                case Key.Divide:
+                    SetResultText("/", false);
+                    break;
+
+
+                case Key.Enter:
+                    ResultBtn_Click(this, null);
+                    break;
             }
         }
     }

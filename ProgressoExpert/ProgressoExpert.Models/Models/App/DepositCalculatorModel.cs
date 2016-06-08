@@ -29,7 +29,7 @@ namespace ProgressoExpert.Models.Models.App
             get { return _months; }
             set { SetValue(ref _months, value, "Months"); }
         }
-        private int _daysInYear = 365;
+        private int _daysInYear = 360;
         public int DaysInYear
         {
             get { return _daysInYear; }

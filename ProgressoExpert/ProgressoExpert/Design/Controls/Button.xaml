@@ -78,6 +78,10 @@
         </Setter>
     </Style>
 
+    <Style x:Key="MaterialDesignFlatGreenButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFlatButton}">
+        <Setter Property="Foreground" Value="{StaticResource Green0}"/>
+    </Style>
+
 
 
     <Style x:Key="MaterialDesignActionToggleButton" TargetType="{x:Type ToggleButton}">

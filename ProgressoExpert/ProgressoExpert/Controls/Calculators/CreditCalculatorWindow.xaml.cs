@@ -70,7 +70,6 @@ namespace ProgressoExpert.Controls.Calculators
             SumTb.BorderBrush = Brushes.Gray;
             AnnualRateTb.BorderBrush = Brushes.Gray;
             MonthsTb.BorderBrush = Brushes.Gray;
-            DaysInYearTb.BorderBrush = Brushes.Gray;
 
             var result = true;
             if (ViewModel.Sum <= 0)
@@ -86,11 +85,6 @@ namespace ProgressoExpert.Controls.Calculators
             if (ViewModel.Months <= 0)
             {
                 MonthsTb.BorderBrush = Brushes.Red;
-                result = false;
-            }
-            if (ViewModel.DaysInYear <= 0)
-            {
-                DaysInYearTb.BorderBrush = Brushes.Red;
                 result = false;
             }
 

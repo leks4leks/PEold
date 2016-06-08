@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ProgressoExpert.Controls.Calculators.CreditCalculatorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DIfCreditCalculatorWindow" Height="306.4" Width="607.2" WindowStyle="None" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MouseDown="Window_MouseDown_1" Deactivated="Window_Deactivated_1" ResizeMode="NoResize">
+        Title="DIfCreditCalculatorWindow" Height="306.4" Width="736.334" WindowStyle="None" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MouseDown="Window_MouseDown_1" Deactivated="Window_Deactivated_1" ResizeMode="NoResize">
     <Border BorderBrush="BLack" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
@@ -11,12 +11,11 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Background="{DynamicResource BlueColor2}">
-                <TextBlock Text="Кредитный калькулятор" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
+                <TextBlock Text="Кредитный калькулятор (Равными долями)" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
             </Grid>
 
             <Grid Grid.Row="1" Background="#f6f6f8">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -32,7 +31,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="Сумма депозита" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="1">
                     <TextBox Width="140" Height="25" Name="SumTb" Text="{Binding Sum, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
@@ -53,22 +52,15 @@
                 </Grid>
 
                 <Grid Grid.Row="3" Grid.Column="0">
-                    <TextBlock Text="Отсрочка по ОД" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="Отсрочка по ОД (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="1">
                     <TextBox Width="140" Height="25" Name="DelayTb" Text="{Binding Delay}"></TextBox>
                 </Grid>
 
-                <Grid Grid.Row="4" Grid.Column="0">
-                    <TextBlock Text="Кол-во дней в году" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="4" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="DaysInYearTb" Text="{Binding DaysInYear}"></TextBox>
-                </Grid>
-
                 <Rectangle Grid.Row="0" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
                 <Grid Grid.Row="0" Grid.Column="3">
-                    <TextBlock Text="Итого:" Style="{StaticResource TextBlock12BoldCenterCenter}"
+                    <TextBlock Text="Итого будет выплачено:" Style="{StaticResource TextBlock12BoldCenterCenter}"
                                Margin="0,15,0,0"/>
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="4" Margin="10,10,10,5">
@@ -76,17 +68,9 @@
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="3">
-                    <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    <TextBlock Text="Итого переплата:" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="4" Margin="10,5,10,10">
-                    <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12CenterCenter}" 
-                               Text="{Binding SumLoan, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
-                </Grid>
-
-                <Grid Grid.Row="2" Grid.Column="3">
-                    <TextBlock Text="Переплата" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="2" Grid.Column="4" Margin="10,5,10,10">
                     <TextBlock Name="ResultPercentTb1" Style="{StaticResource TextBlock12CenterCenter}" 
                                Text="{Binding Overpayment, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
@@ -94,7 +78,7 @@
 
             <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                    <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatButton}" Click="CalcBtn_Click"/>
+                    <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatGreenButton}" Click="CalcBtn_Click"/>
                     <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
                     <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
                 </StackPanel>
