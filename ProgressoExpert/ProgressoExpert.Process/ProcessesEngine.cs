@@ -499,7 +499,7 @@ namespace ProgressoExpert.Process
                     );
 
                 var tj =  mon.Sales.Sum(s => s.SalesWithoutNDS);// выручка - цена продажи
-
+                 
                 model.GrossProfitabilityDiagram.Add(((Month)mon.Date.Month).ToString(), Math.Round(gp / tj * 100, 2));
 
                 model.NetProfitabilityDiagram.Add(((Month)mon.Date.Month).ToString(),
@@ -603,7 +603,7 @@ namespace ProgressoExpert.Process
 
             var tmpDecimal = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum();
             model.DifSummSaleGoods = Math.Round(model.SummSaleGoods - tmpDecimal, 2);
-            model.DifPercentSaleGoods = Math.Round(model.SummSaleGoods / tmpDecimal * 100, 2);
+            model.DifPercentSaleGoods = Math.Round(model.DifSummSaleGoods / tmpDecimal * 100, 2);
 
             MainModel.allADDSTranz = Accessors.GetAllAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
@@ -639,7 +639,7 @@ namespace ProgressoExpert.Process
 
             tmpDecimal = rtPast.Sum(_ => _.money);
             model.DifSummPaymentBuyer = Math.Round(model.SummPaymentBuyer - tmpDecimal, 2);
-            model.DifPercentPaymentBuyer = Math.Round(model.SummPaymentBuyer / tmpDecimal * 100, 2);
+            model.DifPercentPaymentBuyer = Math.Round(model.DifSummPaymentBuyer / tmpDecimal * 100, 2);
 
             var salGrNow = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
                             group s by s.GroupCode into g
@@ -661,19 +661,19 @@ namespace ProgressoExpert.Process
             model.Goods1Info.Name = salGrNow[0].name;
             model.Goods1Info.Value = Math.Round(salGrNow[0].money, 2);
             model.Goods1Info.pastValue = Math.Round(salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money, 2);
-            model.Goods1Info.Percent = Math.Round(salGrNow[0].money / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100, 2);
+            model.Goods1Info.Percent = Math.Round(model.Goods1Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100, 2);
 
             model.Goods2Info = new FillGoodsModel();
             model.Goods2Info.Name = salGrNow[1].name;
             model.Goods2Info.Value = Math.Round(salGrNow[1].money, 2);
             model.Goods2Info.pastValue = Math.Round(salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money, 2);
-            model.Goods2Info.Percent = Math.Round(salGrNow[1].money / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
+            model.Goods2Info.Percent = Math.Round(model.Goods2Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
 
             model.Goods3Info = new FillGoodsModel();
             model.Goods3Info.Name = salGrNow[2].name;
             model.Goods3Info.Value = Math.Round(salGrNow[2].money, 2);
             model.Goods3Info.pastValue = Math.Round(salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money, 2);
-            model.Goods3Info.Percent = Math.Round(salGrNow[2].money / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);
+            model.Goods3Info.Percent = Math.Round(model.Goods3Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);
 
             var salCli = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
                           group s by s.BuyerCode into g
@@ -806,7 +806,7 @@ namespace ProgressoExpert.Process
             model.allPurchase = Math.Round(MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum(), 2);
             MainModel.CostsBA.CostsDiagram.Add("Закуп", model.allPurchase);
             var pastPur = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
-            model.difPastPeriod = Math.Round(model.allPurchase / pastPur * 100, 2);
+            model.difPastPeriod = Math.Round((model.allPurchase - pastPur) / pastPur * 100, 2);
 
             model.maxPurchaseByMonth = decimal.Zero;
             var counter = 0;
@@ -909,10 +909,10 @@ namespace ProgressoExpert.Process
             model.myCosts = MainModel.BusinessResults.CurrentDebtEnd;
 
             model.difmyMoney = model.myMoney - MainModel.GeneralBA.PastBisRes.CirculatingAssetsEnd - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd;
-            model.difmyMoneyByPercent = model.myMoney / (MainModel.GeneralBA.PastBisRes.CirculatingAssetsEnd - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd) * 100;
+            model.difmyMoneyByPercent = model.difmyMoney / (MainModel.GeneralBA.PastBisRes.CirculatingAssetsEnd - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd) * 100;
 
             model.difmyCosts = model.myCosts - MainModel.GeneralBA.PastBisRes.CurrentDebtEnd;
-            model.difmyCostsByPercent = model.myCosts / MainModel.GeneralBA.PastBisRes.CurrentDebtEnd * 100;
+            model.difmyCostsByPercent = model.difmyCosts / MainModel.GeneralBA.PastBisRes.CurrentDebtEnd * 100;
 
             model.stSokDiagram = new Dictionary<string, decimal>();
             var st = ((Month)MainModel.StartDate.Month).ToString() + "," + MainModel.StartDate.Year.ToString();
