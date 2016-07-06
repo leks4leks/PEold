@@ -41,24 +41,24 @@ namespace ProgressoExpert.Process
         }
 
 
-        public static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate)
+        public static LiveStreamModel GetLiveStream(DateTime startDate, DateTime endDate, MainModel MainModel)
         {
-            var MainModel = new MainModel();
+            //var MainModel = new MainModel();
 
-
-            MainModel.Sales = Accessors.GetSales(startDate, endDate);
+            //MainModel.Sales = Accessors.GetSales(startDate, endDate);
 
             var model = new LiveStreamModel();
 
             var tmSpan = MainAccessor.GetTimeSpan();
+
             //TODO поставить текущую дату
             var stTodayDate = new DateTime(4013, 10, 01);
             var endTodayDate = new DateTime(4014, 02, 01); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
+            
             // Сегодня
-
             var sales = Accessors.GetSales(stTodayDate, endTodayDate);
             model.SalesToday = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
             model.GrossProfitToday = Math.Round(model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
@@ -66,7 +66,7 @@ namespace ProgressoExpert.Process
                     ? (model.GrossProfitToday / model.SalesToday) * 100
                     : 0, 2);
 
-            MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
+            //MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
             MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
             model.PaymentCustomersToday = MainModel.ADDSTranz.Sum(_ => _.Money);
 
@@ -135,6 +135,9 @@ namespace ProgressoExpert.Process
             model.AveragePayment = Math.Round(model.PaymentCustomersPastMonth - model.PaymentCustomersMonth, 2);
 
             model.CountDaysToEndOfMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1;
+
+            MainModel.StartDate = startDate;
+            MainModel.EndDate = endDate;
 
             return model;
         }

@@ -43,11 +43,11 @@ namespace ProgressoExpert.DataAccess
 
                 if (isForMonth)
                 {
-                    Start.AddRange(mainModel.EndTranz.Where(_ => _.period < mainModel.StartDate).ToList());
-                    End = mainModel.EndTranz.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
+                    Start.AddRange(mainModel.EndTranz.Where(_ => _.period < mainModel.StartDate).AsParallel().ToList());
+                    End = mainModel.EndTranz.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).AsParallel().ToList();
 
-                    StartOriginal.AddRange(mainModel.EndTranzOriginal.Where(_ => _.period < mainModel.StartDate).ToList());
-                    EndOriginal = mainModel.EndTranzOriginal.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
+                    StartOriginal.AddRange(mainModel.EndTranzOriginal.Where(_ => _.period < mainModel.StartDate).AsParallel().ToList());
+                    EndOriginal = mainModel.EndTranzOriginal.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).AsParallel().ToList();
                 }
 
                 ourScr = new List<int>(); // Вытащим ID интересующих нас счетов нас счетов
@@ -728,7 +728,7 @@ namespace ProgressoExpert.DataAccess
                 string descNum = string.Empty;
                 decimal e3 = 0;
                 decimal e5 = 0;
-                foreach (var code in codeGroups)
+                Parallel.ForEach(codeGroups, code =>
                 {
                     money = res.Where(_ => _.GroupCode != null && _.GroupCode.Contains(code)).Sum(_ => Math.Abs(_.Money));
                     if (res.Any(_ => _.GroupCode.Contains(code)))
@@ -749,7 +749,7 @@ namespace ProgressoExpert.DataAccess
                             en450 = e5
                         });
                     }
-                }
+                });
                 return realres;
 
             }
@@ -1110,10 +1110,10 @@ namespace ProgressoExpert.DataAccess
                      GroupName = r.GroupName,
                      BuyerCode = r4.BuyerCode,
                      BuyerName = r4.BuyerName
-                 }).ToList();
+                 }).AsParallel().ToList();
 
             List<SalesEnt> gSeb = new List<SalesEnt>();
-            foreach (var gr in db.C_Reference78.ToList())
+            Parallel.ForEach(db.C_Reference78.ToList(), gr =>
             {
                 decimal resSebValue = decimal.Zero;
                 decimal resSebValueCount = decimal.Zero;
@@ -1166,7 +1166,7 @@ namespace ProgressoExpert.DataAccess
                             tmp -= salesForGroup[counterSales].CountSal;
                             counterSales++;
                             if (tmp > 0) // после того как мы отняли от кол-ва поставки, кол-во продажи, проверим если у нас еще из партии что то на складе
-                                         // если есть, то эту же партию мы будем продавать и в следующем месяце                                         
+                            // если есть, то эту же партию мы будем продавать и в следующем месяце                                         
                             {
                                 continue;
                             }
@@ -1180,7 +1180,7 @@ namespace ProgressoExpert.DataAccess
                             if (!WeGoCalcSeb)
                             {
                                 for (var i = counterPur; i < counterSales; i++)
-                                { gst += salesForGroup[i].CostPrise; }                                
+                                { gst += salesForGroup[i].CostPrise; }
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
@@ -1204,7 +1204,7 @@ namespace ProgressoExpert.DataAccess
                                         else
                                         {
                                             resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CostPrise;
-                                            resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CountPur;      
+                                            resSebValue += summCount * salesForGroup[counterPur - 1 - antiCounter].CountPur;
                                             pastTmp = 0;
                                             antiCounter++;
                                             continue;
@@ -1230,7 +1230,7 @@ namespace ProgressoExpert.DataAccess
                 //{ gent += salesForGroup[i].CountPur; }
                 if (resSebValue > 0 && resSebValueCount > 0)
                     gSeb.Add(new SalesEnt() { GroupCode = gr.C_Code, CostPrise = Math.Round(resSebValue / resSebValueCount, 2), CountGoodsSt = gst, CountGoodsEnd = gent });
-            }
+            });
             #endregion
             return gSeb;
         }

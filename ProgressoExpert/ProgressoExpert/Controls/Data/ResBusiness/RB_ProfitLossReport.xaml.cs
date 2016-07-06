@@ -319,7 +319,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             Grid.SetRow(rct, row);
             if (useRowSpan)
                 Grid.SetRowSpan(rct, rowSpan);
-            Grid.SetColumnSpan(rct, colSpan);
+            Grid.SetColumnSpan(rct, colSpan > 0 ? colSpan : 1);
         }
 
 
