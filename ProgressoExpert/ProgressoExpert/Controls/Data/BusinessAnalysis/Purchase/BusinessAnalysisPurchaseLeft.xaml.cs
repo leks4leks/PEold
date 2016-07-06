@@ -34,18 +34,26 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         {
             ViewModel = (PurchaseBusinessAnalysis)model;
             this.DataContext = (PurchaseBusinessAnalysis)model;
-            LoadDiagram1();
+            LoadDiagram1(ref chart1);
         }
 
-        public void LoadDiagram1()
+        public void LoadDiagram1(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart1, 0, 0, 1, 1, true, true, false, false);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart1);
+            ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, true, false, false);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseByGoodsDiagram, FormatUtils.Thousand, ref chart1);
+                ViewModel.PurchaseByGoodsDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Bar, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.salesByGoodsDiagram, FormatUtils.Thousand, ref chart1);
+                ViewModel.salesByGoodsDiagram, FormatUtils.Thousand, ref _chart);
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram1(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

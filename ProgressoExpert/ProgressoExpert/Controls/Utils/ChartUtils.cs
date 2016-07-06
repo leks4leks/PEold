@@ -11,7 +11,7 @@ namespace ProgressoExpert.Controls.Utils
     public static class ChartUtils
     {
         public static void AddSeriesAndPoints(string seriesName, SeriesChartType chartType, string legendText, System.Drawing.Color color, 
-            Dictionary<string, decimal> dataValues, string pointLabelFormat, ref Chart _chart)
+            Dictionary<string, decimal> dataValues, string pointLabelFormat, ref Chart _chart, bool showLabels = true)
         {
             if (dataValues != null && dataValues.Count > 0)
             {
@@ -26,7 +26,7 @@ namespace ProgressoExpert.Controls.Utils
                     Color = color,
                     LegendText = string.IsNullOrEmpty(legendText) ? string.Empty : legendText,
                     BorderColor = System.Drawing.Color.White,
-                    IsValueShownAsLabel = true
+                    IsValueShownAsLabel = showLabels
                 };
                 if (string.IsNullOrEmpty(legendText))
                 {
@@ -36,14 +36,17 @@ namespace ProgressoExpert.Controls.Utils
                 {
                     series.Points.AddXY(data.Key, data.Value);
                     var _point = series.Points.Last();
-                    if (_point.YValues[0] > 0)
-                    {
-                        _point.Label = string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0]);
+                    //if (_point.YValues[0] > 0)
+                    //{
+                    _point.Label = showLabels 
+                        ? string.Format(CultureInfo.CreateSpecificCulture("ru-Ru"), pointLabelFormat, _point.YValues[0])
+                        : string.Empty;
                         _point.Font = new System.Drawing.Font("Arial", 10);
                         _point.AxisLabel = _point.AxisLabel.Length > 20 
                             ? string.Format("{0}...", _point.AxisLabel.Substring(0, 20))
                             : _point.AxisLabel;
-                    }
+                        _point.IsValueShownAsLabel = showLabels;
+                    //}
                 }
                 _chart.Series.Add(series);
             }
@@ -58,7 +61,7 @@ namespace ProgressoExpert.Controls.Utils
             var series = new Series()
             {
                 Name = seriesName,
-                ChartType = chartType,
+                ChartType = chartType  
             };
             _chart.Series.Add(series);
         }
@@ -145,6 +148,17 @@ namespace ProgressoExpert.Controls.Utils
                 BackColor = System.Drawing.Color.Transparent
             };
             _chart.Legends.Add(legend);
+        }
+
+        /// <summary>
+        /// Clear all
+        /// </summary>
+        /// <param name="_chart"></param>
+        public static void ClearChart(ref Chart _chart)
+        {
+            _chart.Series.Clear();
+            _chart.Legends.Clear();
+            _chart.ChartAreas.Clear();
         }
     }
 }

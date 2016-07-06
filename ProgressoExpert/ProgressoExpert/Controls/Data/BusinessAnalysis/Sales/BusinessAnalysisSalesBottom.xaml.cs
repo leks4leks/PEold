@@ -36,9 +36,9 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
         {
             ViewModel = (SalesBusinessAnalysis)model;
             this.DataContext = (SalesBusinessAnalysis)model;
-            LoadDiagram();
-            LoadDiagram2();
-            LoadDiagram4();
+            LoadDiagram(ref chart);
+            LoadDiagram2(ref chart2);
+            LoadDiagram4(ref chart4);
             if (ViewModel.StructureGrossProfitClientInfo != null && ViewModel.StructureGrossProfitClientInfo.Count > 0)
             {
                 UpdateTable();
@@ -46,35 +46,35 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
             UpdateColors();
         }
 
-        public void LoadDiagram()
+        public void LoadDiagram(ref Chart _chart)
         {
             chart.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(string.Empty, ref chart, 0, 0, 1, 1, true, false, false, false);
+            ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, false, false, false);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.DynamicsSalesDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.DynamicsSalesDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Оплаты", System.Drawing.Color.FromArgb(147, 169, 207),
-                ViewModel.DynamicsPaymentDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.DynamicsPaymentDiagram, FormatUtils.Thousand, ref _chart);
         }
 
-        public void LoadDiagram2()
+        public void LoadDiagram2(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart2, 0, 0, 1, 1, true, false, false, false, 1, 0);
+            ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, false, false, false, 1, 0);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, ViewModel.Goods1Info.Name,
-                System.Drawing.Color.FromArgb(127, 154, 72), ViewModel.Goods1Diagram, FormatUtils.Thousand, ref chart2);
+                System.Drawing.Color.FromArgb(127, 154, 72), ViewModel.Goods1Diagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, ViewModel.Goods2Info.Name,
-                System.Drawing.Color.FromArgb(155, 187, 89), ViewModel.Goods2Diagram, FormatUtils.Thousand, ref chart2);
+                System.Drawing.Color.FromArgb(155, 187, 89), ViewModel.Goods2Diagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, ViewModel.Goods3Info.Name,
-                System.Drawing.Color.FromArgb(198, 214, 172), ViewModel.Goods3Diagram, FormatUtils.Thousand, ref chart2);
+                System.Drawing.Color.FromArgb(198, 214, 172), ViewModel.Goods3Diagram, FormatUtils.Thousand, ref _chart);
         }
 
-        public void LoadDiagram4()
+        public void LoadDiagram4(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart4);
+            ChartUtils.AddChartArea(string.Empty, ref _chart);
 
-            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
-            ChartUtils.AddLegend(StringAlignment.Center, Docking.Right, ref chart4);
+            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref _chart);
+            ChartUtils.AddLegend(StringAlignment.Center, Docking.Right, ref _chart);
 
             var index = 1;
             foreach (var item in ViewModel.StructureGrossProfitClientDiagram)
@@ -106,7 +106,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
 
                 };
                 index++;
-                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref _chart);
             }
         }
 
@@ -153,6 +153,30 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
             Goods3InfoPercentTb.Style = ViewModel.Goods3Info.Percent >= 0
                 ? (Style)FindResource("TextBlock15BoldGreen0CenterCenter")
                 : (Style)FindResource("TextBlock15BoldRed3CenterCenter");
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart4_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram4(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

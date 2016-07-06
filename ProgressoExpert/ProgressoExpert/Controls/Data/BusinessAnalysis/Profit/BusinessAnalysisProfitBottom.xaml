@@ -34,7 +34,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart" Palette="EarthTones" >
+                    <dvc:Chart x:Name="chart" Palette="EarthTones" Click="chart_Click" >
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>
@@ -55,7 +55,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart2" Palette="EarthTones" >
+                    <dvc:Chart x:Name="chart2" Palette="EarthTones" Click="chart2_Click" >
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>
@@ -72,7 +72,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart3" Palette="EarthTones" >
+                    <dvc:Chart x:Name="chart3" Palette="EarthTones" Click="chart3_Click" >
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>
@@ -142,7 +142,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart4" Palette="EarthTones" >
+                    <dvc:Chart x:Name="chart4" Palette="EarthTones" Click="chart4_Click" >
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>

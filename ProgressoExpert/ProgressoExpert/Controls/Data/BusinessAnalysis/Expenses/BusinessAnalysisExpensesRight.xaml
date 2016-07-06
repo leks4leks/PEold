@@ -17,7 +17,7 @@
         
         <Grid Grid.Row="0">
             <WindowsFormsHost>
-                <dvc:Chart x:Name="chart2">
+                <dvc:Chart x:Name="chart2" Click="chart2_Click">
                 </dvc:Chart>
             </WindowsFormsHost>
         </Grid>
@@ -62,14 +62,14 @@
             
             <Grid Grid.Column="0">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart3">
+                    <dvc:Chart x:Name="chart3" Click="chart3_Click">
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>
 
             <Grid Grid.Column="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart4">
+                    <dvc:Chart x:Name="chart4" Click="chart4_Click">
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>

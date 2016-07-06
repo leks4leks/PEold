@@ -9,7 +9,6 @@
         <ResourceDictionary Source="Controls/StackPanel.xaml" />
         <ResourceDictionary Source="Controls/TextBlock.xaml" />
         <ResourceDictionary Source="Controls/Button.xaml" />
-        <ResourceDictionary Source="Controls/TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type ToggleButton}" x:Key="MenuToggleButton">
@@ -132,7 +131,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
-    <Image x:Key="CalcImage" Source="calc.png"/>
 </ResourceDictionary>

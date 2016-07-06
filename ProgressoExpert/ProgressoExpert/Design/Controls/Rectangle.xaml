@@ -14,6 +14,10 @@
         <Setter Property="Fill" Value="{StaticResource Gray1}"/>
     </Style>
 
+    <Style x:Key="RectangleBlue" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
+        <Setter Property="Fill" Value="#FFDBEEF4"/>
+    </Style>
+
     <Style x:Key="RectangleGray3" TargetType="{x:Type Rectangle}" BasedOn="{StaticResource RectangleStyle}">
         <Setter Property="Fill" Value="{StaticResource Gray3}"/>
     </Style>

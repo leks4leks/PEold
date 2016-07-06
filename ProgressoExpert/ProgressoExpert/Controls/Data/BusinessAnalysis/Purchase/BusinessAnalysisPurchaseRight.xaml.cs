@@ -34,8 +34,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         {
             ViewModel = (PurchaseBusinessAnalysis)model;
             this.DataContext = (PurchaseBusinessAnalysis)model;
-            LoadDiagram2();
-            LoadDiagram3();
+            LoadDiagram2(ref chart2);
+            LoadDiagram3(ref chart3);
             if (ViewModel.ClientDiagramInfo != null)
             {
                 UpdateTable();
@@ -43,30 +43,30 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             UpdateColors();
         }
 
-        public void LoadDiagram2()
+        public void LoadDiagram2(ref Chart _chart)
         {
             chart2.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart2);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Оплата", System.Drawing.Color.FromArgb(49, 133, 156),
-                ViewModel.PaymentDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.PaymentDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.PurchaseDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.SalesDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.SalesDiagram, FormatUtils.Thousand, ref _chart);
         }
 
-        public void LoadDiagram3()
+        public void LoadDiagram3(ref Chart _chart)
         {
             chart3.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart3);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref chart3);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseByClientDiagram, FormatUtils.Thousand, ref chart3);
+                ViewModel.PurchaseByClientDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Оплачено", System.Drawing.Color.FromArgb(49, 133, 156),
-                ViewModel.PaymentByClientDiagram, FormatUtils.Thousand, ref chart3);
+                ViewModel.PaymentByClientDiagram, FormatUtils.Thousand, ref _chart);
         }
 
         public void UpdateTable()
@@ -95,6 +95,22 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             difSalesvsPurchasePastPeriodTb.Style = ViewModel.difSalesvsPurchasePastPeriod >= 0
                 ? (Style)FindResource("TextBlockStyle12Green0")
                 : (Style)FindResource("TextBlockStyle12Red3");
+        }
+
+        private void chart2_Click_1(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart3_Click_1(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram3(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

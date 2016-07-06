@@ -37,7 +37,7 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             this.DataContext = (LiveStreamModel)model;
             if (ViewModel.CurrentMonthDiagram != null && ViewModel.LastMonthDiagram != null)
             {
-                LoadDiagram();
+                LoadDiagram(ref chart);
             }
             UpdateColors();
         }
@@ -45,15 +45,15 @@ namespace ProgressoExpert.Controls.Data.LiveStream
         /// <summary>
         /// Текущий месяц vs Прошлый месяц
         /// </summary>
-        public void LoadDiagram()
+        public void LoadDiagram(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart, 0, 0, 0, 0, true, true, true, false);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 0, 0, true, true, true, false);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Прошлый месяц", System.Drawing.Color.FromArgb(250, 203, 180),
-                ViewModel.CurrentMonthDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.CurrentMonthDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Bar, "Текущий месяц", System.Drawing.Color.FromArgb(248, 170, 121),
-                ViewModel.LastMonthDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.LastMonthDiagram, FormatUtils.Thousand, ref _chart);
         }
 
         public void UpdateColors()
@@ -69,6 +69,14 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             AverageSalesTb.Style = ViewModel.AverageSales >= 0
                 ? (Style)FindResource("TextBlock16BoldGreen0CenterCenter")
                 : (Style)FindResource("TextBlock16BoldRed2CenterCenter");
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

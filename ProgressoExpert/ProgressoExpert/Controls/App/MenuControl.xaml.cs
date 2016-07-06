@@ -45,11 +45,11 @@ namespace ProgressoExpert.Controls.App
 
         public void CheckedOrUnchecked(object sender)
         {
-            LiveStreamBtn.IsChecked = false;
-            BusinessAnalysisBtn.IsChecked = false;
-            StressTestingBtn.IsChecked = false;
-            BusinessResultsBtn.IsChecked = false;
-            ForecastBtn.IsChecked = false;
+            LiveStreamBtn.IsChecked = 
+                BusinessAnalysisBtn.IsChecked = 
+                StressTestingBtn.IsChecked = 
+                BusinessResultsBtn.IsChecked = 
+                ForecastBtn.IsChecked = false;
 
             if ((sender as ToggleButton) == LiveStreamBtn)
             {

@@ -37,24 +37,32 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             this.DataContext = (LiveStreamModel)model;
             if (ViewModel.CycleMoneyDiagram != null)
             {
-                LoadDiagram();
+                LoadDiagram(ref chart);
             }
         }
 
         /// <summary>
         /// Диаграмма Деньги в кассе / Деньги на счетах
         /// </summary>
-        public void LoadDiagram()
+        public void LoadDiagram(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(string.Empty, ref chart);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart);
-            
-            ChartUtils.AddSeries("Series1", SeriesChartType.Doughnut, ref chart);
+            ChartUtils.AddChartArea(string.Empty, ref _chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
+
+            ChartUtils.AddSeries("Series1", SeriesChartType.Doughnut, ref _chart);
 
             ChartUtils.AddPoint("Series1", ViewModel.CycleMoneyDiagram["Деньги в кассе"], FormatUtils.Thousand, "Деньги в кассе",
-                System.Drawing.Color.FromArgb(137, 165, 78), ref chart);
+                System.Drawing.Color.FromArgb(137, 165, 78), ref _chart);
             ChartUtils.AddPoint("Series1", ViewModel.CycleMoneyDiagram["Деньги на счетах"], FormatUtils.Thousand, "Деньги на счетах",
-                System.Drawing.Color.FromArgb(185, 205, 150), ref chart);
+                System.Drawing.Color.FromArgb(185, 205, 150), ref _chart);
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

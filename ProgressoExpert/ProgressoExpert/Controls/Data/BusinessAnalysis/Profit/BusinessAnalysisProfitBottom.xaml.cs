@@ -35,10 +35,10 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
         {
             ViewModel = (ProfitBusinessAnalysis)model;
             this.DataContext = (ProfitBusinessAnalysis)model;
-            LoadDiagram();
-            LoadDiagram2();
-            LoadDiagram3();
-            LoadDiagram4();
+            LoadDiagram(ref chart);
+            LoadDiagram2(ref chart2);
+            LoadDiagram3(ref chart3);
+            LoadDiagram4(ref chart4);
             if (ViewModel.StructureGrossProfitGoodsInfo != null && ViewModel.StructureGrossProfitGoodsInfo.Count > 0)
             {
                 UpdateTable1();
@@ -49,42 +49,42 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             }
         }
 
-        public void LoadDiagram()
+        public void LoadDiagram(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref chart, 0, 0, 1);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(65, 152, 175),
-                ViewModel.GrossProfitDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.GrossProfitDiagram, FormatUtils.Thousand, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Чистая прибыль", System.Drawing.Color.FromArgb(145, 195, 213),
-                ViewModel.NetProfitDiagram, FormatUtils.Thousand, ref chart);
+                ViewModel.NetProfitDiagram, FormatUtils.Thousand, ref _chart);
         }
 
-        public void LoadDiagram2()
+        public void LoadDiagram2(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Percentage, ref chart2, 0, 0, 1);
+            ChartUtils.AddChartArea(FormatUtils.Percentage, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Spline, "Валовая рентабельность",
-                System.Drawing.Color.FromArgb(65, 152, 175), ViewModel.GrossProfitabilityDiagram, FormatUtils.Percentage, ref chart2);
+                System.Drawing.Color.FromArgb(65, 152, 175), ViewModel.GrossProfitabilityDiagram, FormatUtils.Percentage, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Spline, "Чистая рентабельность",
-                System.Drawing.Color.FromArgb(145, 195, 213), ViewModel.NetProfitabilityDiagram, FormatUtils.Percentage, ref chart2);
+                System.Drawing.Color.FromArgb(145, 195, 213), ViewModel.NetProfitabilityDiagram, FormatUtils.Percentage, ref _chart);
         }
 
-        public void LoadDiagram3()
+        public void LoadDiagram3(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart3, 0, 0, 1, 1, true, false, false, false, 1, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 1, true, false, false, false, 1, 0);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Валовая прибыль по товарам",
                 System.Drawing.Color.FromArgb(149, 179, 215), ViewModel.StructureGrossProfitGoodsDiagram, FormatUtils.Thousand,
-                ref chart3);
+                ref _chart);
         }
 
-        public void LoadDiagram4()
+        public void LoadDiagram4(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart4);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
-            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
+            ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref _chart);
 
             var index = 1;
             foreach (var item in ViewModel.StructureGrossProfitClientDiagram)
@@ -116,7 +116,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
 
                 };
                 index++;
-                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+                ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref _chart);
             }
         }
         
@@ -166,6 +166,38 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
             Table2Profitability6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Value);
             Table2Share6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Share);
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram3(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart4_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram4(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

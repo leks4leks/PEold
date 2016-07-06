@@ -111,7 +111,7 @@ namespace ProgressoExpert.Models.Models.App
             MonthlyRate = AnnualRate / 12;
 
             DataList = new List<CreditCalculatorTableModel>();
-            for(int i = 0; i < Months+Delay-1; i++)
+            for(int i = 0; i < Months-1; i++)
             {
                 var item = new CreditCalculatorTableModel();
                 item.Num = i+1;
@@ -123,21 +123,21 @@ namespace ProgressoExpert.Models.Models.App
                 }
                 else
                 {
-                    item.DebtBalance = DataList[i-1].DebtBalance - DataList[i-1].RedemptionSum;
+                    item.DebtBalance = Math.Round(DataList[i-1].DebtBalance - DataList[i-1].RedemptionSum, 0);
                 }   
 
                 // Сумма вознаграждения
-                item.RemunerationSum = item.DebtBalance * AnnualRate / 100 / DaysInYear * 30;
+                item.RemunerationSum = Math.Round(item.DebtBalance * AnnualRate / 100 / DaysInYear * 30, 0);
 
                 // Сумма погашения ОД
                 item.RedemptionSum = Delay > 0
                     ? Delay <= item.Num
-                        ? Sum / (Months - Delay)
+                        ? Math.Round(Sum / (Months - Delay), 0)
                         : 0
-                    : Sum / Months;
+                    : Math.Round(Sum / Months, 0);
 
                 // Итого взнос
-                item.TotalPayment = item.RedemptionSum + item.RemunerationSum;
+                item.TotalPayment = Math.Round(item.RedemptionSum + item.RemunerationSum, 0);
 
                 DataList.Add(item);
 

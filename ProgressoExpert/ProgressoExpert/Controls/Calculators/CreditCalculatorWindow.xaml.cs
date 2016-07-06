@@ -34,6 +34,7 @@ namespace ProgressoExpert.Controls.Calculators
             if (Validate())
             {
                 ViewModel.Calculate();
+                gridResults.ItemsSource = ViewModel.DataList;
             }
         }
 
@@ -45,6 +46,7 @@ namespace ProgressoExpert.Controls.Calculators
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.SetDefault();
+            gridResults.ItemsSource = null;
         }
 
         private void Window_Deactivated_1(object sender, EventArgs e)

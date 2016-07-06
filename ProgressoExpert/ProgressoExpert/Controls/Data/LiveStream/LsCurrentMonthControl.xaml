@@ -78,7 +78,7 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <WindowsFormsHost>
-                        <dvc:Chart x:Name="chart">
+                        <dvc:Chart x:Name="chart" Click="chart_Click">
                         </dvc:Chart>
                     </WindowsFormsHost>
                 </Grid>

@@ -34,15 +34,16 @@ namespace ProgressoExpert
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
-            ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
+            //ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
+            //ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
             //return;
 
-            ViewModel.StartDate = new DateTime(2013, 01, 01);
-            ViewModel.EndDate = new DateTime(2013, 12, 01);
+            ViewModel.StartDate = new DateTime(2012, 01, 01);
+            ViewModel.EndDate = new DateTime(2012, 06, 01);
+            //ViewModel.IsItQuarter = true;
             //алешкин код
             ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
-            //ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
+            ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate);
 
             ViewModel.InfoModel.CurrencyRateList = CurrencyRates.GetExchangeRates();
             ViewModel.InfoModel.StartTimer2();
@@ -58,28 +59,27 @@ namespace ProgressoExpert
 
         public void UpdateData()
         {
+            //ViewModel.IsItQuarter = true;
             // Результаты бизнеса
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
             ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);
             ViewModel.RatiosIndicatorsResult = ProcessesEngine.GetRatiosIndicatorsResult(ViewModel);
             ViewModel.CashFlowReport = ProcessesEngine.GetCashFlowReport(ViewModel);
+            ResBusinessControl.DataBind(ViewModel);
 
             ViewModel.EndDate = new DateTime(ViewModel.EndDate.Year, ViewModel.EndDate.Month, ViewModel.EndDate.Day);
             // Бизнес Анализ
-            //ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
-            //ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
-            //ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
-            //ViewModel.CostsBA = ProcessesEngine.GetCostsBA(ViewModel);
-            //ViewModel.PurchaseBA = ProcessesEngine.GetPurchaseBA(ViewModel);
-            //ViewModel.WorkingСapitalBA = ProcessesEngine.GetWorkingСapitalBA(ViewModel);
+            ViewModel.GeneralBA = ProcessesEngine.GetGeneralBusinessAnalysis(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
+            ViewModel.ProfitBA = ProcessesEngine.GetProfitBA(ViewModel);
+            ViewModel.SalesBA = ProcessesEngine.GetSalesBA(ViewModel);
+            ViewModel.CostsBA = ProcessesEngine.GetCostsBA(ViewModel);
+            ViewModel.PurchaseBA = ProcessesEngine.GetPurchaseBA(ViewModel);
+            ViewModel.WorkingСapitalBA = ProcessesEngine.GetWorkingСapitalBA(ViewModel);
+            BusinessAnalysisControl.DataBind(ViewModel);
 
             // Стресс-тестирование
-
-
-            // Биндинг
-            //BusinessAnalysisControl.DataBind(ViewModel);
-
-            ResBusinessControl.DataBind(ViewModel);
+            ViewModel.StressTesting = ProcessesEngine.GetStressTesting(ViewModel);
+            StressTestingControl.DataBind(ViewModel.StressTesting);
         }
 
         private void Window_Closed_1(object sender, EventArgs e)

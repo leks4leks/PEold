@@ -35,13 +35,13 @@
 
             <Grid Grid.Column="0">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBox Name="DateStartTb" Text="{Binding StartDateTemp, StringFormat=d, ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateStartTb_MouseDown"  />
+                        <TextBox Name="DateStartTb" Text="{Binding StartDateTemp, StringFormat='{}{0:MM/yyyy}', ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateStartTb_MouseDown"  />
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Column="1">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBox Name="DateEndTb" Text="{Binding EndDateTemp, StringFormat=d, ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateEndTb_MouseDown"/>
+                        <TextBox Name="DateEndTb" Text="{Binding EndDateTemp, StringFormat='{}{0:MM/yyyy}', ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateEndTb_MouseDown"/>
                 </StackPanel>
             </Grid>
         </Grid>

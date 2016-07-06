@@ -70,6 +70,7 @@
     <Compile Include="Controls\App\RightBarControl.xaml.cs">
       <DependentUpon>RightBarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\App\TextField.cs" />
     <Compile Include="Controls\Calculators\CalculatorWindow.xaml.cs">
       <DependentUpon>CalculatorWindow.xaml</DependentUpon>
     </Compile>
@@ -82,6 +83,16 @@
     <Compile Include="Controls\Calculators\AnnCreditCalculatorWindow.xaml.cs">
       <DependentUpon>AnnCreditCalculatorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Data\ChartViewWindow.xaml.cs">
+      <DependentUpon>ChartViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\StressTestingControl.xaml.cs">
+      <DependentUpon>StressTestingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\StressTesting\StressTestingGeneralControl.xaml.cs">
+      <DependentUpon>StressTestingGeneralControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Utils\DateUtils.cs" />
     <Compile Include="SelectPeriod.xaml.cs">
       <DependentUpon>SelectPeriod.xaml</DependentUpon>
     </Compile>
@@ -165,6 +176,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Data\ChartViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Data\LiveStreamControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,9 +208,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Data\StressTestingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Data\StressTesting\StressTestingGeneralControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Converters\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Design\Controls\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Design\Controls\Rectangle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Design\Controls\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Design\Images.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -362,6 +393,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Design\Controls\_Rules.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\deposit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\calc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\stress.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\doska.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\point.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

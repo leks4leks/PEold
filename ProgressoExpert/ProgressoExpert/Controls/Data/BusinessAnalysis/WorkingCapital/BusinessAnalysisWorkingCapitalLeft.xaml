@@ -87,7 +87,7 @@
 
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart" Palette="EarthTones">
+                    <dvc:Chart x:Name="chart" Palette="EarthTones" Click="chart_Click">
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>
@@ -108,7 +108,7 @@
             
             <Grid Grid.Row="1">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart2" Palette="EarthTones">
+                    <dvc:Chart x:Name="chart2" Palette="EarthTones" Click="chart2_Click">
                     </dvc:Chart>
                 </WindowsFormsHost>
             </Grid>

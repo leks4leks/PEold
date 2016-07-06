@@ -1,0 +1,14 @@
+﻿<Window x:Class="ProgressoExpert.Controls.Data.ChartViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:dvc="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        Title="ChartViewWindow" WindowStyle="None" MouseUp="Window_MouseUp_1" ResizeMode="NoResize">
+    <Grid>
+        <WindowsFormsHost>
+            <dvc:Chart x:Name="chart" Dock="Fill" MouseClick="chart_MouseClick">
+            </dvc:Chart>
+        </WindowsFormsHost>
+    </Grid>
+</Window>

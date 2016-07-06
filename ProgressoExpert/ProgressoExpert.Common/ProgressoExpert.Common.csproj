@@ -45,6 +45,7 @@
     <Compile Include="Enums\Month.cs" />
     <Compile Include="Enums\ProfitAndLossNumUI.cs" />
     <Compile Include="Enums\ProfitAndLossNumServer.cs" />
+    <Compile Include="Enums\QuarterEnum.cs" />
     <Compile Include="Enums\ScoresReportProfitAndLoss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enums\ScoresForBusinessResults.cs" />

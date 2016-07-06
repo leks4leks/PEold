@@ -22,7 +22,7 @@
             </StackPanel>
             <StackPanel Grid.Row="1" VerticalAlignment="Center">
                 <WindowsFormsHost>
-                    <dvc:Chart x:Name="chart" Palette="EarthTones" >
+                    <dvc:Chart x:Name="chart" Palette="EarthTones" MouseClick="chart_MouseClick" >
                     </dvc:Chart>
                 </WindowsFormsHost>
             </StackPanel>
@@ -42,48 +42,53 @@
                 <RowDefinition Height="*" MaxHeight="50"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource BorderWhiteGray}">
+
+            <Rectangle  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource RectangleBlue7Opacity02}"/>
+            <Rectangle  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource RectangleBlue7Opacity02}"/>
+            <Rectangle  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource RectangleBlue7Opacity02}"/>
+
+            <Border Grid.Column="0" Grid.Row="0">
                 <TextBlock Text="Виды товара" Style="{StaticResource TextBlock16BoldGray2LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="0" Grid.Row="1">
                 <TextBlock Name="ProductGroupLine1Tb" Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="0" Grid.Row="2">
                 <TextBlock Name="ProductGroupLine2Tb"  Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="3" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="0" Grid.Row="3">
                 <TextBlock Name="ProductGroupLine3Tb" Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="4" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="0" Grid.Row="4">
                 <TextBlock Name="ProductGroupLine4Tb" Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="5" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="0" Grid.Row="5">
                 <TextBlock Name="ProductGroupLine5Tb" Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
-            <Border Grid.Column="0" Grid.Row="6" Style="{StaticResource BorderWhiteGray}" BorderThickness="1,1,1,1">
+            <Border Grid.Column="0" Grid.Row="6">
                 <TextBlock Name="ProductGroupLine6Tb" Style="{StaticResource TextBlock13LeftCenter}" Margin="10, 0, 0, 0"/>
             </Border>
 
-            <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="0">
                 <TextBlock Text="Рентабельность вложенных денег за период" Style="{StaticResource TextBlock16BoldGray2CenterCenter}"
                            Margin="10, 10, 10, 10"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="1">
                 <TextBlock Name="ProductGroupValueLine1Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="2">
                 <TextBlock Name="ProductGroupValueLine2Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="3" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="3">
                 <TextBlock Name="ProductGroupValueLine3Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="4" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="4">
                 <TextBlock Name="ProductGroupValueLine4Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="5" Style="{StaticResource BorderWhiteGray}">
+            <Border Grid.Column="1" Grid.Row="5">
                 <TextBlock Name="ProductGroupValueLine5Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
-            <Border Grid.Column="1" Grid.Row="6" Style="{StaticResource BorderWhiteGray}" BorderThickness="1,1,1,1">
+            <Border Grid.Column="1" Grid.Row="6">
                 <TextBlock Name="ProductGroupValueLine6Tb" Style="{StaticResource TextBlock13BoldCenterCenter}"/>
             </Border>
         </Grid>

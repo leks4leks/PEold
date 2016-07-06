@@ -67,6 +67,7 @@
     <Compile Include="Models\BusinessResults.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\RatiosIndicatorsResult.cs" />
+    <Compile Include="Models\StressTestingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

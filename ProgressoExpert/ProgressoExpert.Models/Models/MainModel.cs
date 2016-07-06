@@ -90,6 +90,8 @@ namespace ProgressoExpert.Models.Models
         #region Info & Visibility
 
         public InfoModel InfoModel;
+
+        public bool IsItQuarter = false;
         //public VisibilityModel VisibilityModel = new VisibilityModel();
 
         public DateTime StartDate
@@ -230,11 +232,11 @@ namespace ProgressoExpert.Models.Models
 
         public void SetInvisibleAll()
         {
-            LiveStreamVisibility = false;
-            BusinessAnalysisVisibility = false;
-            StressTestingVisibility = false;
-            ResBusinessVisibility = false;
-            ForecastVisibility = false;
+            LiveStreamVisibility = 
+                BusinessAnalysisVisibility = 
+                StressTestingVisibility = 
+                ResBusinessVisibility = 
+                ForecastVisibility = false;
         }
 
         #endregion
@@ -343,6 +345,16 @@ namespace ProgressoExpert.Models.Models
             set { SetValue(ref _workingСapitalBA, value, "WorkingСapitalBA"); }
         }
         private WorkingСapitalBusinessAnalysis _workingСapitalBA;
+
+        /// <summary>
+        /// Стресс тестирование
+        /// </summary>
+        public StressTestingModel StressTesting
+        {
+            get { return _stressTesting; }
+            set { SetValue(ref _stressTesting, value, "WorkingСStressTesting"); }
+        }
+        private StressTestingModel _stressTesting;
 
         /// <summary>
         /// Коэффициенты и основные показатели

@@ -35,33 +35,32 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
         {
             ViewModel = (CostsBusinessAnalysis)model;
             this.DataContext = (CostsBusinessAnalysis)model;
-            LoadDiagram2();
-            LoadDiagram3();
-            LoadDiagram4();
+            LoadDiagram2(ref chart2);
+            LoadDiagram3(ref chart3);
+            LoadDiagram4(ref chart4);
         }
 
-        public void LoadDiagram2()
+        public void LoadDiagram2(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref chart2);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart2);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart);
+            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Расходы", System.Drawing.Color.FromArgb(170, 70, 67),
-                ViewModel.CostsByMonthDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.CostsByMonthDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(209, 147, 146),
-                ViewModel.GrosProfitDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.GrosProfitDiagram, FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.SalesDiagram, FormatUtils.Thousand, ref chart2);
+                ViewModel.SalesDiagram, FormatUtils.Thousand, ref _chart);
         }
 
-
-        public void LoadDiagram3()
+        public void LoadDiagram3(ref Chart _chart)
         {
             if (ViewModel.CostsCommingDiagram != null)
             {
-                ChartUtils.AddChartArea(string.Empty, ref chart3);
-                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart3);
+                ChartUtils.AddChartArea(string.Empty, ref _chart);
+                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
-                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart3);
+                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref _chart);
                 var index = 1;
                 foreach (var item in ViewModel.CostsCommingDiagram)
                 {
@@ -86,19 +85,19 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
                     };
                     index++;
-                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart3);
+                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref _chart);
                 }
             }
         }
 
-        public void LoadDiagram4()
+        public void LoadDiagram4(ref Chart _chart)
         {
             if (ViewModel.CostsOutDiagram != null)
             {
-                ChartUtils.AddChartArea(string.Empty, ref chart4);
-                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref chart4);
+                ChartUtils.AddChartArea(string.Empty, ref _chart);
+                ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
-                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref chart4);
+                ChartUtils.AddSeries("Series1", SeriesChartType.Pie, ref _chart);
                 var index = 1;
                 foreach (var item in ViewModel.CostsOutDiagram)
                 {
@@ -123,9 +122,33 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
 
                     };
                     index++;
-                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref chart4);
+                    ChartUtils.AddPoint("Series1", item.Value, FormatUtils.Percentage, item.Key, color, ref _chart);
                 }
             }
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram3(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
+        }
+
+        private void chart4_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            var ChartViewWindow = new ChartViewWindow(mainWindow);
+            LoadDiagram4(ref ChartViewWindow.chart);
+            ChartViewWindow.Show();
         }
     }
 }

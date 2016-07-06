@@ -432,6 +432,8 @@ namespace ProgressoExpert.DataAccess
 
 
                 #endregion
+                //model.StartDate = mainModel.StartDate.AddYears(mainModel.TimeSpan * -1);
+                //model.EndDate = mainModel.EndDate.AddYears(mainModel.TimeSpan * -1);
                 return model;
             }
         }

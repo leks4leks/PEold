@@ -4,7 +4,7 @@
         xmlns:appContols="clr-namespace:ProgressoExpert.Controls.App"
         xmlns:dataContols="clr-namespace:ProgressoExpert.Controls.Data"
         xmlns:converters="clr-namespace:ProgressoExpert.Converters"
-        Title="MainWindow" WindowStartupLocation="Manual" WindowState="Maximized"
+        Title="ProgressoExpert" WindowStartupLocation="Manual" WindowState="Maximized"
         DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=Self}}" Loaded="Window_Loaded_1" Closed="Window_Closed_1">
    
     <Window.Resources>
@@ -34,7 +34,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="0"/>
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Column="0">
@@ -44,9 +44,11 @@
                         Visibility="{Binding Path=ResBusinessVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
                     <dataContols:BusinessAnalysisControl x:Name="BusinessAnalysisControl"
                         Visibility="{Binding Path=BusinessAnalysisVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
+                    <dataContols:StressTestingControl x:Name="StressTestingControl"
+                        Visibility="{Binding Path=StressTestingVisibility, Converter={StaticResource VisibilityConverterInstance}}"/>
                 </Grid>
 
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Visibility="Hidden">
                     <appContols:RightBarControl x:Name="RightBarControl"/>
                 </Grid>
             </Grid>
