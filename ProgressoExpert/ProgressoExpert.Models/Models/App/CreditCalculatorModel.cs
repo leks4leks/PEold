@@ -123,21 +123,21 @@ namespace ProgressoExpert.Models.Models.App
                 }
                 else
                 {
-                    item.DebtBalance = Math.Round(DataList[i-1].DebtBalance - DataList[i-1].RedemptionSum, 0);
+                    item.DebtBalance = DataList[i-1].DebtBalance - DataList[i-1].RedemptionSum;
                 }   
 
                 // Сумма вознаграждения
-                item.RemunerationSum = Math.Round(item.DebtBalance * AnnualRate / 100 / DaysInYear * 30, 0);
+                item.RemunerationSum = item.DebtBalance * AnnualRate / 100 / DaysInYear * 30;
 
                 // Сумма погашения ОД
                 item.RedemptionSum = Delay > 0
                     ? Delay <= item.Num
-                        ? Math.Round(Sum / (Months - Delay), 0)
+                        ? Sum / (Months - Delay)
                         : 0
-                    : Math.Round(Sum / Months, 0);
+                    : Sum / Months;
 
                 // Итого взнос
-                item.TotalPayment = Math.Round(item.RedemptionSum + item.RemunerationSum, 0);
+                item.TotalPayment = item.RedemptionSum + item.RemunerationSum;
 
                 DataList.Add(item);
 

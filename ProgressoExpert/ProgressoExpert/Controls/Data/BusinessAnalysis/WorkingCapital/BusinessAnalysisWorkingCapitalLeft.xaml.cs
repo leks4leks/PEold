@@ -41,7 +41,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
         public void LoadDiagram(ref Chart _chart)
         {
             chart.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.StackedColumn, "СОК", System.Drawing.Color.FromArgb(96, 74, 123),
@@ -55,7 +55,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
         public void LoadDiagram2(ref Chart _chart)
         {
             chart2.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, string.Empty, System.Drawing.Color.FromArgb(79, 129, 189),

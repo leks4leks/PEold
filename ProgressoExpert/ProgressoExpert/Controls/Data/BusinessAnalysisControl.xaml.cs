@@ -38,23 +38,23 @@ namespace ProgressoExpert.Controls.Data
 
             // Прибыль
             BusinessAnalysisProfitTop.DataBind(model.ProfitBA);
-            BusinessAnalysisProfitBottom.DataBind(model.ProfitBA);
+            BusinessAnalysisProfitBottom.DataBind(model);
 
             // Продажи
             BusinessAnalysisSalesTop.DataBind(model.SalesBA);
-            BusinessAnalysisSalesBottom.DataBind(model.SalesBA);
+            BusinessAnalysisSalesBottom.DataBind(model);
 
             // Расходы
             BusinessAnalysisExpensesLeft.DataBind(model.CostsBA);
-            BusinessAnalysisExpensesRight.DataBind(model.CostsBA);
+            BusinessAnalysisExpensesRight.DataBind(model);
 
             // Закуп
             BusinessAnalysisPurchaseLeft.DataBind(model.PurchaseBA);
-            BusinessAnalysisPurchaseRight.DataBind(model.PurchaseBA);
+            BusinessAnalysisPurchaseRight.DataBind(model);
 
             // Оборотный капитал
             BusinessAnalysisWorkingCapitalLeft.DataBind(model.WorkingСapitalBA);
-            BusinessAnalysisWorkingCapitalRight.DataBind(model.WorkingСapitalBA);
+            BusinessAnalysisWorkingCapitalRight.DataBind(model);
         }
     }
 }

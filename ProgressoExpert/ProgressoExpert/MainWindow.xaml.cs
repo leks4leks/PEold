@@ -38,11 +38,10 @@ namespace ProgressoExpert
             //ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
             //return;
 
-            ViewModel.StartDate = new DateTime(2014, 01, 01);
-            ViewModel.EndDate = new DateTime(2014, 06, 01);
+            ViewModel.StartDate = new DateTime(2013, 04, 01);
+            ViewModel.EndDate = new DateTime(2013, 06, 01);
             //ViewModel.IsItQuarter = true;
             //алешкин код
-            ViewModel = ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate);
             ViewModel.LiveStreamModel = ProcessesEngine.GetLiveStream(ViewModel.StartDate, ViewModel.EndDate, ViewModel);
 
             ViewModel.InfoModel.CurrencyRateList = CurrencyRates.GetExchangeRates();
@@ -59,6 +58,8 @@ namespace ProgressoExpert
 
         public void UpdateData()
         {
+            ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate, ref ViewModel);
+
             //ViewModel.IsItQuarter = true;
             // Результаты бизнеса
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);

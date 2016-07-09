@@ -119,7 +119,7 @@ namespace ProgressoExpert.Models.Models.App
         public void Calculate()
         {
             MonthlyRate = AnnualRate / 12;
-            Annuity = Math.Round(Sum * MonthlyRate / 100 / (1-Math.Pow(1 + MonthlyRate / 100, Months * -1)), 0);
+            Annuity = Sum * MonthlyRate / 100 / (1-Math.Pow(1 + MonthlyRate / 100, Months * -1));
 
             DataList = new List<CreditCalculatorTableModel>();
             for(int i = 0; i < Months+Delay-1; i++)

@@ -50,7 +50,7 @@ namespace ProgressoExpert.Controls.Data.StressTesting
             data.Add("Факт", ViewModel.Sales);
             data.Add("Прогноз", ViewModel.SalesForecast);
 
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1, 0);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
                 data, FormatUtils.Thousand, ref _chart);
@@ -64,7 +64,7 @@ namespace ProgressoExpert.Controls.Data.StressTesting
             data.Add("Факт", ViewModel.GrossProfit);
             data.Add("Прогноз", ViewModel.GrossProfitForecast);
 
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1, 0);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(52, 148, 195),
                 data, FormatUtils.Thousand, ref _chart);
@@ -78,7 +78,7 @@ namespace ProgressoExpert.Controls.Data.StressTesting
             data.Add("Факт", ViewModel.NetProfit);
             data.Add("Прогноз", ViewModel.NetProfitForecast);
 
-            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1, 0);
+            ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Чистая прибыль", System.Drawing.Color.FromArgb(149, 55, 53),
                 data, FormatUtils.Thousand, ref _chart);

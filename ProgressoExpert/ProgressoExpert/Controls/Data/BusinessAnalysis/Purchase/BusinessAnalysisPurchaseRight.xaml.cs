@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 using ProgressoExpert.Models.Models.BusinessAnalysis;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,18 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
     public partial class BusinessAnalysisPurchaseRight : UserControl
     {
         PurchaseBusinessAnalysis ViewModel;
+        MainModel mainModel;
 
         public BusinessAnalysisPurchaseRight()
         {
             InitializeComponent();
         }
 
-        public void DataBind(PurchaseBusinessAnalysis model)
+        public void DataBind(MainModel model)
         {
-            ViewModel = (PurchaseBusinessAnalysis)model;
-            this.DataContext = (PurchaseBusinessAnalysis)model;
+            ViewModel = (PurchaseBusinessAnalysis)model.PurchaseBA;
+            this.DataContext = (PurchaseBusinessAnalysis)model.PurchaseBA;
+            mainModel = model;
             LoadDiagram2(ref chart2);
             LoadDiagram3(ref chart3);
             if (ViewModel.ClientDiagramInfo != null)
@@ -50,11 +53,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Оплата", System.Drawing.Color.FromArgb(49, 133, 156),
-                ViewModel.PaymentDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.PaymentDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Закуп", System.Drawing.Color.FromArgb(228, 108, 10),
-                ViewModel.PurchaseDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.PurchaseDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(10, 198, 28),
-                ViewModel.SalesDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.SalesDiagram, mainModel), FormatUtils.Thousand, ref _chart);
         }
 
         public void LoadDiagram3(ref Chart _chart)
@@ -72,22 +75,22 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
         public void UpdateTable()
         {
             TableName1Tb.Text = ViewModel.ClientDiagramInfo[0].Name;
-            TableShare1Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[0].Share);
+            TableShare1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[0].Share);
 
             TableName2Tb.Text = ViewModel.ClientDiagramInfo[1].Name;
-            TableShare2Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[1].Share);
+            TableShare2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[1].Share);
 
             TableName3Tb.Text = ViewModel.ClientDiagramInfo[2].Name;
-            TableShare3Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[2].Share);
+            TableShare3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[2].Share);
 
             TableName4Tb.Text = ViewModel.ClientDiagramInfo[3].Name;
-            TableShare4Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[3].Share);
+            TableShare4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[3].Share);
 
             TableName5Tb.Text = ViewModel.ClientDiagramInfo[4].Name;
-            TableShare5Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[4].Share);
+            TableShare5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[4].Share);
 
             TableName6Tb.Text = ViewModel.ClientDiagramInfo[5].Name;
-            TableShare6Tb.Text = string.Format("{0}%", ViewModel.ClientDiagramInfo[5].Share);
+            TableShare6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.ClientDiagramInfo[5].Share);
         }
 
         private void UpdateColors()

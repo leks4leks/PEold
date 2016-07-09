@@ -87,12 +87,12 @@ namespace ProgressoExpert.Models.Models.App
 
         public void Calculate(bool _isPhysSelected)
         {
-            PercentInMonth = Math.Round(Sum * AnnualRate / 100 / DaysInYear * daysInMonth, 0);
-            IncomeTax = Math.Round(_isPhysSelected ? PercentInMonth * PercentForPhys / 100 : PercentInMonth * PercentForJuric / 100, 0);
-            Profit = Math.Round(PercentInMonth - IncomeTax, 0);
+            PercentInMonth = Sum * AnnualRate / 100 / DaysInYear * daysInMonth;
+            IncomeTax = _isPhysSelected ? PercentInMonth * PercentForPhys / 100 : PercentInMonth * PercentForJuric / 100;
+            Profit = PercentInMonth - IncomeTax;
 
             SumTotal = Profit * Months;
-            PercentTotal = Math.Round(SumTotal / Sum * 100, 0);
+            PercentTotal = SumTotal / Sum * 100;
 
             //ResultSumTb.Text = string.Format(FormatUtils.Thousand2, SumTotal);
             //ResultPercentTb.Text = string.Format(FormatUtils.Percentage, PercentTotal);

@@ -15,10 +15,8 @@ namespace ProgressoExpert.Process
     public class ProcessesEngine
     {
         static int dif = 0;
-        public static MainModel InitMainModel(DateTime startDate, DateTime endDate)
+        public static MainModel InitMainModel(DateTime startDate, DateTime endDate, ref MainModel model)
         {
-            var model = new MainModel();
-
             model.TimeSpan = MainAccessor.GetTimeSpan();// и счета
 
             model.StartDate = startDate.AddYears(model.TimeSpan);
@@ -35,7 +33,7 @@ namespace ProgressoExpert.Process
 
             model.Sales = Accessors.GetSales(model.StartDate, model.EndDate);
 
-            model.DaysInPeriod = Convert.ToInt32(Math.Round((model.EndDate - model.StartDate).TotalDays, 0));
+            model.DaysInPeriod = Convert.ToInt32((model.EndDate - model.StartDate).TotalDays);
 
             return model;
         }
@@ -53,20 +51,20 @@ namespace ProgressoExpert.Process
 
             //TODO поставить текущую дату
             var stTodayDate = new DateTime(4013, 10, 01);
-            var endTodayDate = new DateTime(4014, 02, 01); //DateTime.Today.AddYears(tmSpan);
+            var endTodayDate = new DateTime(4013, 10, 01).AddHours(23).AddMinutes(59).AddSeconds(59); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
             
             // Сегодня
-            var sales = Accessors.GetSales(stTodayDate, endTodayDate);
-            model.SalesToday = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
-            model.GrossProfitToday = Math.Round(model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
-            model.ProfitabilityToday = Math.Round(model.SalesToday != 0
+            var sales = Accessors.GetSales(stTodayDate, endTodayDate, true);
+            model.SalesToday = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
+            model.GrossProfitToday = model.SalesToday - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
+            model.ProfitabilityToday = model.SalesToday != 0
                     ? (model.GrossProfitToday / model.SalesToday) * 100
-                    : 0, 2);
+                    : 0;
 
-            //MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
+            MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
             MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
             model.PaymentCustomersToday = MainModel.ADDSTranz.Sum(_ => _.Money);
 
@@ -78,31 +76,31 @@ namespace ProgressoExpert.Process
 
             MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel);
 
-            model.DebtOfCustomers = Math.Round(MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd, 2);
-            model.GoodsBalance = Math.Round(MainModel.BusinessResults.GoodsEnd, 2);
-            model.PayblesToSupplier = Math.Round(MainModel.BusinessResults.PayablesToSuppliersShortTermDebtsEnd, 2);
+            model.DebtOfCustomers = MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd;
+            model.GoodsBalance = MainModel.BusinessResults.GoodsEnd;
+            model.PayblesToSupplier = MainModel.BusinessResults.PayablesToSuppliersShortTermDebtsEnd;
 
             model.CycleMoneyDiagram = new Dictionary<string, decimal>();
-            model.CycleMoneyDiagram.Add("Деньги в кассе", Math.Round(MainModel.BusinessResults.CashInCashBoxEnd, 2));
-            model.CycleMoneyDiagram.Add("Деньги на счетах", Math.Round(MainModel.BusinessResults.MoneyInTheBankAccountsEnd, 2));
+            model.CycleMoneyDiagram.Add("Деньги в кассе", MainModel.BusinessResults.CashInCashBoxEnd);
+            model.CycleMoneyDiagram.Add("Деньги на счетах", MainModel.BusinessResults.MoneyInTheBankAccountsEnd);
 
-            model.CoveringCurrentDebtMoney = Math.Round((MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
-               + MainModel.BusinessResults.DepositsEnd) / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+            model.CoveringCurrentDebtMoney = (MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
+               + MainModel.BusinessResults.DepositsEnd) / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1) * 100;
 
-            model.CoveringCurrentDebtMoneyAndCustomerDebt = Math.Round((MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
+            model.CoveringCurrentDebtMoneyAndCustomerDebt = (MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
                 + MainModel.BusinessResults.DepositsEnd + MainModel.BusinessResults.DebtsOfCustomersAndOverpaymentsEnd)
-                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1) * 100;
 
-            model.CoveringCurrentDebtOfCurrentAssets = Math.Round(MainModel.BusinessResults.CirculatingAssetsEnd
-                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1), 2) * 100;
+            model.CoveringCurrentDebtOfCurrentAssets = MainModel.BusinessResults.CirculatingAssetsEnd
+                / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1) * 100;
 
             // Текущий месяц            
-            sales = Accessors.GetSales(MainModel.StartDate, MainModel.EndDate);
-            model.SalesMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
-            model.GrossProfitMonth = Math.Round(model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
-            model.ProfitabilityMonth = Math.Round(model.SalesMonth != 0
+            sales = Accessors.GetSales(MainModel.StartDate, MainModel.EndDate, true);
+            model.SalesMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
+            model.GrossProfitMonth = model.SalesMonth - sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
+            model.ProfitabilityMonth = model.SalesMonth != 0
                     ? (model.GrossProfitMonth / model.SalesMonth) * 100
-                    : 0, 2);
+                    : 0;
 
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
             model.PaymentCustomersMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
@@ -115,9 +113,9 @@ namespace ProgressoExpert.Process
             sales = Accessors.GetSales(MainModel.StartDate.Month != 1 ?
                                         new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
                                         new DateTime(MainModel.StartDate.Year - 1, 12, 01)
-                                        , MainModel.StartDate);
-            model.SalesPastMonth = Math.Round(sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
-            model.GrossProfitPastMonth = Math.Round(model.SalesPastMonth - sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);
+                                        , MainModel.StartDate, true);
+            model.SalesPastMonth = sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
+            model.GrossProfitPastMonth = model.SalesPastMonth - sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
 
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate.Month != 1 ?
                                                             new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
@@ -130,9 +128,9 @@ namespace ProgressoExpert.Process
             model.CurrentMonthDiagram.Add("Валовая прибыль", model.GrossProfitPastMonth);
             model.CurrentMonthDiagram.Add("Оплата покупателя", model.PaymentCustomersPastMonth);
 
-            model.AverageGrossProfit = Math.Round(model.GrossProfitPastMonth - model.GrossProfitMonth, 2);
-            model.AverageSales = Math.Round(model.SalesPastMonth - model.SalesMonth, 2);
-            model.AveragePayment = Math.Round(model.PaymentCustomersPastMonth - model.PaymentCustomersMonth, 2);
+            model.AverageGrossProfit = model.GrossProfitPastMonth - model.GrossProfitMonth;
+            model.AverageSales = model.SalesPastMonth - model.SalesMonth;
+            model.AveragePayment = model.PaymentCustomersPastMonth - model.PaymentCustomersMonth;
 
             model.CountDaysToEndOfMonth = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month) - DateTime.Today.Day + 1;
 
@@ -150,12 +148,12 @@ namespace ProgressoExpert.Process
 
             var model = new GeneralBusinessAnalysis();
 
-            model.Sales = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum(), 2);
+            model.Sales = MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum();
 
-            model.CostPrice = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum(), 2);
+            model.CostPrice = MainModel.Sales.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum();
             //TODO вроде верная дрянь но считается она не верно
-            model.GrossProfit = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum(), 2);
-            model.AveGrossProfit = Math.Round(MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.AveCostPrise)).Sum(), 2);
+            model.GrossProfit = MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
+            model.AveGrossProfit = MainModel.Sales.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.AveCostPrise)).Sum();
 
             model.Cost = MainModel.ReportProfitAndLoss.Costs.Sum();
 
@@ -168,7 +166,7 @@ namespace ProgressoExpert.Process
                 decimal tmp = decimal.Zero;
                 MainModel.newStTodayDate = stTodayDate.AddMonths(-dif);
                 MainModel.newEndTodayDate = stTodayDate.AddMonths(1);
-                model.salesFirst = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate);
+                model.salesFirst = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate, true);
 
                 MainModel tmMain = new MainModel();
                 decimal RPALF = decimal.Zero;
@@ -182,13 +180,13 @@ namespace ProgressoExpert.Process
                     tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALF = tmMain.ReportProfitAndLoss.Costs.Sum();
-                    tmp = Math.Round(RPALF / model.Cost * 100, 2);
+                    tmp = RPALF / model.Cost * 100;
                     model.CostAnFirst = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
                 MainModel.newStTodayDate = stTodayDate.AddYears(-1);
                 MainModel.newEndTodayDate = endTodayDate.AddYears(-1);
-                var salesSecond = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate);
+                var salesSecond = Accessors.GetSales(MainModel.newStTodayDate, MainModel.newEndTodayDate, true);
 
                 decimal RPALS = decimal.Zero;
                 if (model.Cost > 0)
@@ -201,34 +199,34 @@ namespace ProgressoExpert.Process
                     tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALS = tmMain.ReportProfitAndLoss.Costs.Sum();
-                    tmp = Math.Round(RPALS / model.Cost * 100, 2);
+                    tmp = RPALS / model.Cost * 100;
                     model.CostAnSecond = tmp; // (tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
                 }
 
-                tmp = Math.Round(model.salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
+                tmp = model.salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100;
                 model.SalesAnFirst = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
-                tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100, 2);
+                tmp = salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS)).Sum() / model.Sales * 100;
                 model.SalesAnSecond = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
-                tmp = Math.Round(model.salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
+                tmp = model.salesFirst.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100;
                 model.CostPriceAnFirst = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
-                tmp = Math.Round(salesSecond.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100, 2);
+                tmp = salesSecond.Select(i => i.Sales.Sum(j => j.CostPrise)).Sum() / model.CostPrice * 100;
                 model.CostPriceAnSecond = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
 
                 var GPFtmp = model.salesFirst.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
-                tmp = Math.Round(GPFtmp / model.CostPrice * 100, 2);
+                tmp = GPFtmp / model.CostPrice * 100;
                 model.GrossProfitAnFirst = tmp; //(GPFtmp > 1 ? (GPFtmp - 1).ToString() : (1 - GPFtmp).ToString()) + "%";
 
                 var GPStmp = salesSecond.Select(i => i.Sales.Sum(j => j.SalesWithoutNDS - j.CostPrise)).Sum();
-                tmp = Math.Round(GPStmp / model.CostPrice * 100, 2);
+                tmp = GPStmp / model.CostPrice * 100;
                 model.GrossProfitAnSecond = tmp; // (GPStmp > 1 ? (GPStmp - 1).ToString() : (1 - GPStmp).ToString()) + "%";
 
-                model.NetProfit = Math.Round(model.GrossProfit - model.Cost, 2);
-                tmp = Math.Round((GPFtmp - RPALF) / model.NetProfit * 100, 2);
+                model.NetProfit = model.GrossProfit - model.Cost;
+                tmp = (GPFtmp - RPALF) / model.NetProfit * 100;
                 model.NetProfitAnFirst = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
-                tmp = Math.Round((GPStmp - RPALS) / model.NetProfit * 100, 2);
+                tmp = (GPStmp - RPALS) / model.NetProfit * 100;
                 model.NetProfitAnSecond = tmp; //(tmp > 1 ? (tmp - 1).ToString() : (1 - tmp).ToString()) + "%";
             //}
             //else
@@ -247,13 +245,13 @@ namespace ProgressoExpert.Process
             #endregion
 
             model.StructureCompanyDiagram = new Dictionary<string, decimal>();
-            model.StructureCompanyDiagram.Add("Оборотные активы", Math.Round(MainModel.BusinessResults.CirculatingAssetsEnd / (MainModel.BusinessResults.CirculatingAssetsEnd + MainModel.BusinessResults.LongTermAssetsEnd) * 100, 2));
-            model.StructureCompanyDiagram.Add("Долгосрочные активы", 100 - Math.Round(MainModel.BusinessResults.CirculatingAssetsEnd / (MainModel.BusinessResults.CirculatingAssetsEnd + MainModel.BusinessResults.LongTermAssetsEnd) * 100, 2));
-            model.StructureCompanyDiagram.Add("Текущая задолженность", Math.Round(MainModel.BusinessResults.CurrentDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100, 2));
-            model.StructureCompanyDiagram.Add("Долгосрочная задолженность", Math.Round(MainModel.BusinessResults.LongTermDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100, 2));
+            model.StructureCompanyDiagram.Add("Оборотные активы", MainModel.BusinessResults.CirculatingAssetsEnd / (MainModel.BusinessResults.CirculatingAssetsEnd + MainModel.BusinessResults.LongTermAssetsEnd) * 100);
+            model.StructureCompanyDiagram.Add("Долгосрочные активы", 100 - MainModel.BusinessResults.CirculatingAssetsEnd / (MainModel.BusinessResults.CirculatingAssetsEnd + MainModel.BusinessResults.LongTermAssetsEnd) * 100);
+            model.StructureCompanyDiagram.Add("Текущая задолженность", MainModel.BusinessResults.CurrentDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100);
+            model.StructureCompanyDiagram.Add("Долгосрочная задолженность", MainModel.BusinessResults.LongTermDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100);
             model.StructureCompanyDiagram.Add("Собственный капитал", 100 -
-                Math.Round(MainModel.BusinessResults.CurrentDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100, 2)
-                - Math.Round(MainModel.BusinessResults.LongTermDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100, 2));
+                MainModel.BusinessResults.CurrentDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100
+                - MainModel.BusinessResults.LongTermDebtEnd / (MainModel.BusinessResults.CurrentDebtEnd + MainModel.BusinessResults.LongTermDebtEnd + MainModel.BusinessResults.OwnCapitalEnd) * 100);
 
             #region рентабельность
             //Для рентабельности вложенных денег нам необходимо знать сколько какого товара на начало периода
@@ -398,13 +396,13 @@ namespace ProgressoExpert.Process
             model.NetProfitAnFirst = MainModel.GeneralBA.NetProfitAnFirst;
 
             var mM = MainModel.Sales.Sum(_ => _.Sales.Sum(s => s.SalesWithoutNDS));// выручка - цена продажи
-            model.NetProfitability = Math.Round(model.NetProfit / mM * 100, 2);
-            model.AverageNetProfitByMonth = Math.Round(model.NetProfit / dif, 2);
+            model.NetProfitability = model.NetProfit / mM * 100;
+            model.AverageNetProfitByMonth = model.NetProfit / dif;
 
-            model.GrossProfitability = Math.Round(model.GrossProfit / mM * 100, 2);
-            model.AverageGrossProfitByMonth = Math.Round(model.GrossProfit / dif, 2);
+            model.GrossProfitability = model.GrossProfit / mM * 100;
+            model.AverageGrossProfitByMonth = model.GrossProfit / dif;
 
-            model.SavedProfit = Math.Round(MainModel.BusinessResults.AccumulatedProfitAndLossStart + MainModel.BusinessResults.AccumulatedProfitAndLossEnd, 2);
+            model.SavedProfit = MainModel.BusinessResults.AccumulatedProfitAndLossStart + MainModel.BusinessResults.AccumulatedProfitAndLossEnd;
 
             //Динамика валовой и чистой прибыли и рентабильность тут же
             model.GrossProfitDiagram = new Dictionary<string, decimal>();
@@ -422,10 +420,10 @@ namespace ProgressoExpert.Process
 
                 var tj =  mon.Sales.Sum(s => s.SalesWithoutNDS);// выручка - цена продажи
                  
-                model.GrossProfitabilityDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), Math.Round(gp / tj * 100, 2));
+                model.GrossProfitabilityDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), gp / tj * 100);
 
                 model.NetProfitabilityDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(),
-                    Math.Round((gp - MainModel.ReportProfitAndLoss.Costs[counter]) / tj * 100, 2));
+                    (gp - MainModel.ReportProfitAndLoss.Costs[counter]) / tj * 100);
                 counter++;
             }
 
@@ -439,13 +437,13 @@ namespace ProgressoExpert.Process
             foreach (var g in StrBestGoods)
             {
                 var ty = MainModel.GeneralBA.gSales.Where(_ => _.GroupName == g.gName).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
-                model.StructureGrossProfitGoodsDiagram.Add(g.gName, Math.Round(g.gGrow, 2));
+                model.StructureGrossProfitGoodsDiagram.Add(g.gName, g.gGrow);
                 model.StructureGrossProfitGoodsInfo.Add(new FillModel
                 {
                     Name = g.gName,
-                    Share = Math.Round(ty / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100, 2) ,
-                    Value = Math.Round(ty
-                        / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS) * 100, 2)
+                    Share = ty / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100 ,
+                    Value = ty
+                        / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS) * 100
                 });
             }
 
@@ -462,13 +460,13 @@ namespace ProgressoExpert.Process
             foreach (var g in StrBestClient)
             {
                 var tu = MainModel.GeneralBA.gSalesByClient.Where(_ => _.BuyerName == g.gName).Sum(_ => _.SalesWithoutNDS - _.CostPrise);
-                model.StructureGrossProfitClientDiagram.Add(g.gName, Math.Round(g.gGrow / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS - _.CostPrise)  
-                     * 100, 2));
+                model.StructureGrossProfitClientDiagram.Add(g.gName, g.gGrow / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS - _.CostPrise)  
+                     * 100);
                 model.StructureGrossProfitClientInfo.Add(new FillModel
                 {
                     Name = g.gName,
-                    Share = Math.Round(tu / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100, 2),
-                    Value = Math.Round(tu / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS) * 100, 2)
+                    Share = tu / MainModel.GeneralBA.gSales.Sum(_ => _.SalesWithoutNDS - _.CostPrise) * 100,
+                    Value = tu / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS) * 100
                 });
             }
             model.StructureGrossProfitClientDiagram.Add("Прочее", 100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value));
@@ -480,7 +478,7 @@ namespace ProgressoExpert.Process
             {
                 Name = "Прочие",
                 Share = 100 - model.StructureGrossProfitClientInfo.Sum(_ => _.Share),
-                Value =   Math.Round(tmOth.Sum(_ => _.gGrow) / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS) * 100, 2)
+                Value =   tmOth.Sum(_ => _.gGrow) / MainModel.GeneralBA.gSalesByClient.Sum(_ => _.SalesWithoutNDS) * 100
             });
 
             return model;
@@ -515,17 +513,17 @@ namespace ProgressoExpert.Process
 
                 if (tmp > model.maxCountSaleGoods)
                 {
-                    model.maxCountSaleGoods = Math.Round(tmp, 2);
+                    model.maxCountSaleGoods = tmp;
                     model.MonthOfMaxCountSaleGoods = MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString() + ", " + mon.Date.Year;
                 }
             }
 
-            model.SummSaleGoods = Math.Round(MainModel.Sales.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum(), 2);
-            model.maxAverageCountSaleGoods = Math.Round(model.SummSaleGoods / MainModel.Sales.Count(), 2);
+            model.SummSaleGoods = MainModel.Sales.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum();
+            model.maxAverageCountSaleGoods = model.SummSaleGoods / MainModel.Sales.Count();
 
             var tmpDecimal = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Select(_ => _.SalesWithoutNDS).Sum();
-            model.DifSummSaleGoods = Math.Round(model.SummSaleGoods - tmpDecimal, 2);
-            model.DifPercentSaleGoods = Math.Round(model.DifSummSaleGoods / tmpDecimal * 100, 2);
+            model.DifSummSaleGoods = model.SummSaleGoods - tmpDecimal;
+            model.DifPercentSaleGoods = model.DifSummSaleGoods / tmpDecimal * 100;
 
             MainModel.allADDSTranz = Accessors.GetAllAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
@@ -545,9 +543,9 @@ namespace ProgressoExpert.Process
                 MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)_.mon, _.year) : ((Month)_.mon).ToString()).ToString(), _.money));
 
             model.MonthOfMaxCountPaymentBuyer = ((Month)rt.OrderByDescending(_ => _.money).First().mon).ToString() + ", " + rt.OrderByDescending(_ => _.money).First().year;
-            model.maxAverageCountPaymentBuyer = Math.Round(rt.Sum(_ => _.money) / rt.Count(), 2);
-            model.maxCountPaymentBuyer = Math.Round(rt.OrderByDescending(_ => _.money).First().money, 2);
-            model.SummPaymentBuyer = Math.Round(rt.Sum(_ => _.money), 2);
+            model.maxAverageCountPaymentBuyer = rt.Sum(_ => _.money) / rt.Count();
+            model.maxCountPaymentBuyer = rt.OrderByDescending(_ => _.money).First().money;
+            model.SummPaymentBuyer = rt.Sum(_ => _.money);
 
             MainModel.ADDSTranzPastPeriod = Accessors.GetAllAddsTranz(MainModel.newStTodayDate, MainModel.newEndTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
@@ -562,8 +560,8 @@ namespace ProgressoExpert.Process
                           }).OrderByDescending(_ => _.year).ThenBy(_ => _.mon).ToList();
 
             tmpDecimal = rtPast.Sum(_ => _.money);
-            model.DifSummPaymentBuyer = Math.Round(model.SummPaymentBuyer - tmpDecimal, 2);
-            model.DifPercentPaymentBuyer = Math.Round(model.DifSummPaymentBuyer / tmpDecimal * 100, 2);
+            model.DifSummPaymentBuyer = model.SummPaymentBuyer - tmpDecimal;
+            model.DifPercentPaymentBuyer = model.DifSummPaymentBuyer / tmpDecimal * 100;
 
             var salGrNow = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
                             group s by s.GroupCode into g
@@ -583,21 +581,21 @@ namespace ProgressoExpert.Process
 
             model.Goods1Info = new FillGoodsModel();
             model.Goods1Info.Name = salGrNow[0].name;
-            model.Goods1Info.Value = Math.Round(salGrNow[0].money, 2);
-            model.Goods1Info.pastValue = Math.Round(salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money, 2);
-            model.Goods1Info.Percent = Math.Round(model.Goods1Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100, 2);
+            model.Goods1Info.Value = salGrNow[0].money;
+            model.Goods1Info.pastValue = salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money;
+            model.Goods1Info.Percent = model.Goods1Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100;
 
             model.Goods2Info = new FillGoodsModel();
             model.Goods2Info.Name = salGrNow[1].name;
-            model.Goods2Info.Value = Math.Round(salGrNow[1].money, 2);
-            model.Goods2Info.pastValue = Math.Round(salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money, 2);
-            model.Goods2Info.Percent = Math.Round(model.Goods2Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100, 2);
+            model.Goods2Info.Value = salGrNow[1].money;
+            model.Goods2Info.pastValue = salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money;
+            model.Goods2Info.Percent = model.Goods2Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100;
 
             model.Goods3Info = new FillGoodsModel();
             model.Goods3Info.Name = salGrNow[2].name;
-            model.Goods3Info.Value = Math.Round(salGrNow[2].money, 2);
-            model.Goods3Info.pastValue = Math.Round(salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money, 2);
-            model.Goods3Info.Percent = Math.Round(model.Goods3Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100, 2);
+            model.Goods3Info.Value = salGrNow[2].money;
+            model.Goods3Info.pastValue = salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money;
+            model.Goods3Info.Percent = model.Goods3Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100;
 
             var salCli = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
                           group s by s.BuyerCode into g
@@ -611,9 +609,9 @@ namespace ProgressoExpert.Process
             var generalSumm = salCli.Sum(_ => _.money);
             for (var i = 0; i < 5; i++)
             {
-                model.StructureGrossProfitClientDiagram.Add(salCli[i].name, Math.Round(salCli[i].money / generalSumm * 100, 2));
+                model.StructureGrossProfitClientDiagram.Add(salCli[i].name, salCli[i].money / generalSumm * 100);
             }
-            model.StructureGrossProfitClientDiagram.Add("Прочие", Math.Round(100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value), 2));
+            model.StructureGrossProfitClientDiagram.Add("Прочие", 100 - model.StructureGrossProfitClientDiagram.Sum(_ => _.Value));
 
             var tc = (from sa in MainModel.GeneralBA.gSalesByClient
                           //join addz in MainModel.ADDSTranz on sa.BuyerCode equals addz.MenCode
@@ -673,15 +671,14 @@ namespace ProgressoExpert.Process
             var stMon = MainModel.StartDate.Month;
             var stYear = MainModel.StartDate.AddYears(MainModel.TimeSpan * -1).Year;
             model.CostsByMonthDiagram = new Dictionary<string, decimal>();
-            foreach (var item in MainModel.ReportProfitAndLoss.Costs)
-            {
+            foreach (var item in MainModel.ReportProfitAndLoss.Costs.Take(MainModel.ReportProfitAndLoss.Costs.Count - 2))
+            {               
+                model.CostsByMonthDiagram.Add(((Month)stMon).ToString() + "-" + stYear.ToString(), item);//расходы
                 if (stMon != 12) stMon++;
                 else
                 {
-                    stMon = 0; stYear++;
+                    stMon = 1; stYear++;
                 }
-                
-                model.CostsByMonthDiagram.Add(((Month)stMon).ToString() + "-" + stYear.ToString(), item);//расходы
             }
             model.GrosProfitDiagram = MainModel.ProfitBA.GrossProfitDiagram;// валовую уже считали
             model.SalesDiagram = MainModel.SalesBA.DynamicsSalesDiagram;// продажи тоже
@@ -713,13 +710,13 @@ namespace ProgressoExpert.Process
 
             model.CostsOut = ty.Sum(_ => _.money);
             for (var i = 0; i < 4; i++)
-                model.CostsOutDiagram.Add(ty[i].grName, Math.Round(ty[i].money / model.CostsOut * 100, 2));
+                model.CostsOutDiagram.Add(ty[i].grName, ty[i].money / model.CostsOut * 100);
 
             model.CostsOutDiagram.Add("Прочее", 100 - model.CostsOutDiagram.Sum(_ => _.Value));
             
             model.paidTaxes = MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000037" || _.GroupCode == "000000036").Sum(_ => _.Money);
-            model.paidTaxesFromSales = Math.Round(model.paidTaxes / MainModel.GeneralBA.Sales * 100, 2);
-            model.paidTaxesFromGrosProfit = Math.Round(model.paidTaxes / MainModel.GeneralBA.GrossProfit * 100, 2);
+            model.paidTaxesFromSales = model.paidTaxes / MainModel.GeneralBA.Sales * 100;
+            model.paidTaxesFromGrosProfit = model.paidTaxes / MainModel.GeneralBA.GrossProfit * 100;
 
             return model;
         }
@@ -728,10 +725,10 @@ namespace ProgressoExpert.Process
         {
             var model = new PurchaseBusinessAnalysis();
 
-            model.allPurchase = Math.Round(MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum(), 2);
+            model.allPurchase = MainModel.Sales.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
             MainModel.CostsBA.CostsDiagram.Add("Закуп", model.allPurchase);
             var pastPur = MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
-            model.difPastPeriod = Math.Round((model.allPurchase - pastPur) / pastPur * 100, 2);
+            model.difPastPeriod = (model.allPurchase - pastPur) / pastPur * 100;
 
             model.maxPurchaseByMonth = decimal.Zero;
             var counter = 0;
@@ -743,17 +740,17 @@ namespace ProgressoExpert.Process
                 var dt = string.Empty;
                 var tmp = item.Sales.Where(_ => _.CountPur != decimal.Zero).Select(_ => _.CostPrise).Sum();
                 if (tmp > model.maxPurchaseByMonth)
-                    model.maxPurchaseByMonth = Math.Round(tmp, 2);
+                    model.maxPurchaseByMonth = tmp;
 
 
                 dt = MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)item.Date.Month, item.Date.Year) : ((Month)item.Date.Month).ToString();
-                model.PurchaseDiagram.Add(dt, Math.Round(item.Sales.Sum(_ => _.CostPrise), 2));
-                model.SalesDiagram.Add(dt, Math.Round(item.Sales.Sum(_ => _.SalesWithoutNDS), 2));
+                model.PurchaseDiagram.Add(dt, item.Sales.Sum(_ => _.CostPrise));
+                model.SalesDiagram.Add(dt, item.Sales.Sum(_ => _.SalesWithoutNDS));
                 model.PaymentDiagram.Add(dt, MainModel.ADDSTranzPastPeriod[counter].Money);
 
                 counter++;
             }
-            model.averagePurchaseByMonth = Math.Round(model.allPurchase / MainModel.Sales.Count(), 2);
+            model.averagePurchaseByMonth = model.allPurchase / MainModel.Sales.Count();
 
             var tmpPurGroup = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
                                group s by s.GroupCode into g
@@ -765,10 +762,10 @@ namespace ProgressoExpert.Process
                                }).OrderByDescending(_ => _.money).ToList();
 
             model.PurchaseByGoodsDiagram = new Dictionary<string, decimal>();
-            model.PurchaseByGoodsDiagram.Add("Прочее", Math.Round(tmpPurGroup.Skip(3).Sum(_ => _.money), 2));
-            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[2].name, Math.Round(tmpPurGroup[2].money, 2));
-            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[1].name, Math.Round(tmpPurGroup[1].money, 2));
-            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[0].name, Math.Round(tmpPurGroup[0].money, 2));
+            model.PurchaseByGoodsDiagram.Add("Прочее", tmpPurGroup.Skip(3).Sum(_ => _.money));
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[2].name, tmpPurGroup[2].money);
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[1].name, tmpPurGroup[1].money);
+            model.PurchaseByGoodsDiagram.Add(tmpPurGroup[0].name, tmpPurGroup[0].money);
 
             model.salesByGoodsDiagram = new Dictionary<string, decimal>();
             var ti = MainModel.GeneralBA.gSales.OrderByDescending(_ => _.SalesWithoutNDS).ToArray();
@@ -776,12 +773,12 @@ namespace ProgressoExpert.Process
             for (var i = 3; i > 0; i --)
                 model.salesByGoodsDiagram.Add(ti[i].GroupName, ti[i].SalesWithoutNDS);
 
-            model.SalesvsPurchase = Math.Round(MainModel.GeneralBA.Sales / model.allPurchase * 100, 2);
-            model.difSalesvsPurchasePastPeriod = Math.Round(model.SalesvsPurchase - 
-                (MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Sum(_ => _.SalesWithoutNDS) / pastPur * 100), 2);
+            model.SalesvsPurchase = MainModel.GeneralBA.Sales / model.allPurchase * 100;
+            model.difSalesvsPurchasePastPeriod = model.SalesvsPurchase - 
+                (MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Sum(_ => _.SalesWithoutNDS) / pastPur * 100);
 
-            model.PaymentvsPurchase = Math.Round(MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000001").Sum(_ => _.Money) / model.allPurchase * 100, 2);
-            model.difPaymentvsPurchasePastPeriod = Math.Round(MainModel.ADDSTranzPastPeriod.Sum(_ => _.Money) / pastPur, 2);
+            model.PaymentvsPurchase = MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000001").Sum(_ => _.Money) / model.allPurchase * 100;
+            model.difPaymentvsPurchasePastPeriod = MainModel.ADDSTranzPastPeriod.Sum(_ => _.Money) / pastPur;
 
             var pusa = Accessors.getPurMan(MainModel.StartDate, MainModel.EndDate).OrderByDescending(_ => _.CostPrise).ToList();
 
@@ -821,7 +818,7 @@ namespace ProgressoExpert.Process
             var sstmp = model.PurchaseByClientDiagram.Sum(_ => _.Value);
             model.ClientDiagramInfo = new List<FillModel>();
             foreach (var item in model.PurchaseByClientDiagram)
-                model.ClientDiagramInfo.Add(new FillModel() { Name = item.Key, Share = Math.Round(item.Value / sstmp * 100) });
+                model.ClientDiagramInfo.Add(new FillModel() { Name = item.Key, Share = item.Value / sstmp * 100 });
 
 
             return model;
@@ -869,9 +866,9 @@ namespace ProgressoExpert.Process
                       }).OrderByDescending(_ => _.val).ToList();
 
             for (var i = 0; i < 3; i++)
-                model.turnoverDiagram.Add(tr[i].name, Math.Round(tr[i].val, 0));
+                model.turnoverDiagram.Add(tr[i].name, tr[i].val);
 
-            model.turnoverDiagram.Add("Прочее", Math.Round(tr.Sum(_ => _.val) - model.turnoverDiagram.Sum(_ => _.Value), 0));
+            model.turnoverDiagram.Add("Прочее", tr.Sum(_ => _.val) - model.turnoverDiagram.Sum(_ => _.Value));
             DateTime sty = MainModel.StartDate;
             DateTime eny = MainModel.EndDate;
             BusinessResults tmpBR = new BusinessResults();
@@ -882,6 +879,7 @@ namespace ProgressoExpert.Process
             model.aveSalesDiagram = new Dictionary<string, decimal>();
             model.DZ_dzVsKzDiagram = new Dictionary<string, decimal>();
             model.KZ_dzVsKzDiagram = new Dictionary<string, decimal>();
+            var isMoreYear = (MainModel.EndDate - MainModel.StartDate).Days > 365;
             foreach (var item in MainModel.Sales)
             {
                 MainModel.StartDate = item.Date;
@@ -892,7 +890,7 @@ namespace ProgressoExpert.Process
                 tmpBR = GetBusinessResults(MainModel, true);
 
                 var mm =
-                 MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)item.Date.Month, item.Date.Year) : ((Month)item.Date.Month).ToString();
+                 MainModel.IsItQuarter || isMoreYear ? string.Format("{0}, {1}", (Month)item.Date.Month, item.Date.Year) : ((Month)item.Date.Month).ToString();
                
                 model.aveDZDiagram.Add(mm, (tmpBR.DebtsOfCustomersAndOverpaymentsStart + tmpBR.DebtsOfCustomersAndOverpaymentsEnd) / 2);
                 model.aveGoodsDiagram.Add(mm, (tmpBR.RawAndMaterialsStart + tmpBR.RawAndMaterialsEnd) / 2);
@@ -933,39 +931,39 @@ namespace ProgressoExpert.Process
 
             #region Вест сайд
 
-            model.CoveringCurrentDebtMoneyStart = Math.Round((businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart
-                + businessResults.DepositsStart) / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
-            model.CoveringCurrentDebtMoneyEnd = Math.Round((businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
-                + businessResults.DepositsEnd) / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+            model.CoveringCurrentDebtMoneyStart = (businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart
+                + businessResults.DepositsStart) / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1);
+            model.CoveringCurrentDebtMoneyEnd = (businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
+                + businessResults.DepositsEnd) / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1);
 
-            model.CoveringCurrentDebtMoneyAndCustomerDebtsStart = Math.Round((businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart
+            model.CoveringCurrentDebtMoneyAndCustomerDebtsStart = (businessResults.CashInCashBoxStart + businessResults.MoneyInTheBankAccountsStart
                 + businessResults.DepositsStart + businessResults.DebtsOfCustomersAndOverpaymentsStart)
-                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
-            model.CoveringCurrentDebtMoneyAndCustomerDebtsEnd = Math.Round((businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
+                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1);
+            model.CoveringCurrentDebtMoneyAndCustomerDebtsEnd = (businessResults.CashInCashBoxEnd + businessResults.MoneyInTheBankAccountsEnd
                 + businessResults.DepositsEnd + businessResults.DebtsOfCustomersAndOverpaymentsEnd)
-                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1);
 
-            model.CoveringCurrentDebtOfCurrentAssetsStart = Math.Round(businessResults.CirculatingAssetsStart
-                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1), 2);
-            model.CoveringCurrentDebtOfCurrentAssetsEnd = Math.Round(businessResults.CirculatingAssetsEnd
-                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1), 2);
+            model.CoveringCurrentDebtOfCurrentAssetsStart = businessResults.CirculatingAssetsStart
+                / (businessResults.CurrentDebtStart != 0 ? businessResults.CurrentDebtStart : 1);
+            model.CoveringCurrentDebtOfCurrentAssetsEnd = businessResults.CirculatingAssetsEnd
+                / (businessResults.CurrentDebtEnd != 0 ? businessResults.CurrentDebtEnd : 1);
 
             #endregion
 
             #region Ист сайд
 
-            model.DebtPartInTheCompanyAssetsStart = Math.Round((businessResults.CurrentDebtStart + businessResults.LongTermDebtStart)
-                / (businessResults.TotalLiabilitiesStart != 0 ? businessResults.TotalLiabilitiesStart : 1), 2);
-            model.DebtPartInTheCompanyAssetsEnd = Math.Round((businessResults.CurrentDebtEnd + businessResults.LongTermDebtEnd)
-                / (businessResults.TotalLiabilitiesEnd != 0 ? businessResults.TotalLiabilitiesEnd : 1), 2);
+            model.DebtPartInTheCompanyAssetsStart = (businessResults.CurrentDebtStart + businessResults.LongTermDebtStart)
+                / (businessResults.TotalLiabilitiesStart != 0 ? businessResults.TotalLiabilitiesStart : 1);
+            model.DebtPartInTheCompanyAssetsEnd = (businessResults.CurrentDebtEnd + businessResults.LongTermDebtEnd)
+                / (businessResults.TotalLiabilitiesEnd != 0 ? businessResults.TotalLiabilitiesEnd : 1);
 
-            model.PartOfEquityInTheCompanyAssetsStart = Math.Round(businessResults.OwnCapitalStart + businessResults.TotalLiabilitiesStart, 2);
-            model.PartOfEquityInTheCompanyAssetsEnd = Math.Round(businessResults.OwnCapitalEnd + businessResults.TotalLiabilitiesEnd, 2);
+            model.PartOfEquityInTheCompanyAssetsStart = businessResults.OwnCapitalStart + businessResults.TotalLiabilitiesStart;
+            model.PartOfEquityInTheCompanyAssetsEnd = businessResults.OwnCapitalEnd + businessResults.TotalLiabilitiesEnd;
 
-            model.CoveringLoansByEquityStart = Math.Round((businessResults.CreditsForOneYearStart + businessResults.CreditsForLongerThanOneYearStart)
-                / (businessResults.OwnCapitalStart != 0 ? businessResults.OwnCapitalStart : 1), 2);
-            model.CoveringLoansByEquityEnd = Math.Round((businessResults.CreditsForOneYearEnd + businessResults.CreditsForLongerThanOneYearEnd)
-                / (businessResults.OwnCapitalEnd != 0 ? businessResults.OwnCapitalEnd : 1), 2);
+            model.CoveringLoansByEquityStart = (businessResults.CreditsForOneYearStart + businessResults.CreditsForLongerThanOneYearStart)
+                / (businessResults.OwnCapitalStart != 0 ? businessResults.OwnCapitalStart : 1);
+            model.CoveringLoansByEquityEnd = (businessResults.CreditsForOneYearEnd + businessResults.CreditsForLongerThanOneYearEnd)
+                / (businessResults.OwnCapitalEnd != 0 ? businessResults.OwnCapitalEnd : 1);
 
             #endregion
 
@@ -974,16 +972,16 @@ namespace ProgressoExpert.Process
             #region Второй блок
 
             var sum = reportProfitAndLoss.TotalCostPrice.Count != 0 ? reportProfitAndLoss.TotalCostPrice.Sum() : 1;
-            model.SpeedOfTurnover = Math.Round(businessResults.GoodsEnd * MainModel.DaysInPeriod /
-                (sum != 0 ? sum : 1), 0);
+            model.SpeedOfTurnover = businessResults.GoodsEnd * MainModel.DaysInPeriod /
+                (sum != 0 ? sum : 1);
 
             sum = reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1;
-            model.TermOfCirculationOfClientsDebt = Math.Round(businessResults.DebtsOfCustomersAndOverpaymentsEnd * MainModel.DaysInPeriod /
-                (sum != 0 ? sum : 1), 0);
+            model.TermOfCirculationOfClientsDebt = businessResults.DebtsOfCustomersAndOverpaymentsEnd * MainModel.DaysInPeriod /
+                (sum != 0 ? sum : 1);
 
             sum = reportProfitAndLoss.TotalIncome.Count != 0 ? reportProfitAndLoss.TotalIncome.Sum() : 1;
-            model.TermOfCirculationOfDebtToSuppliers = Math.Round(businessResults.PayablesToSuppliersShortTermDebtsEnd * MainModel.DaysInPeriod /
-                (sum != 0 ? sum : 1), 0);
+            model.TermOfCirculationOfDebtToSuppliers = businessResults.PayablesToSuppliersShortTermDebtsEnd * MainModel.DaysInPeriod /
+                (sum != 0 ? sum : 1);
 
             #endregion
 

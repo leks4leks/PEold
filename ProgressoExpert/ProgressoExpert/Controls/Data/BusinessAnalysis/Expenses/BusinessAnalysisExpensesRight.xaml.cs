@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 using ProgressoExpert.Models.Models.BusinessAnalysis;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
     public partial class BusinessAnalysisExpensesRight : UserControl
     {
         CostsBusinessAnalysis ViewModel;
+        MainModel mainModel;
 
         
         public BusinessAnalysisExpensesRight()
@@ -31,10 +33,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             InitializeComponent();
         }
 
-        public void DataBind(CostsBusinessAnalysis model)
+        public void DataBind(MainModel model)
         {
-            ViewModel = (CostsBusinessAnalysis)model;
-            this.DataContext = (CostsBusinessAnalysis)model;
+            ViewModel = (CostsBusinessAnalysis)model.CostsBA;
+            this.DataContext = (CostsBusinessAnalysis)model.CostsBA;
+            mainModel = model;
             LoadDiagram2(ref chart2);
             LoadDiagram3(ref chart3);
             LoadDiagram4(ref chart4);
@@ -46,11 +49,11 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Right, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Расходы", System.Drawing.Color.FromArgb(170, 70, 67),
-                ViewModel.CostsByMonthDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.CostsByMonthDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(209, 147, 146),
-                ViewModel.GrosProfitDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.GrosProfitDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.SalesDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.SalesDiagram, mainModel), FormatUtils.Thousand, ref _chart);
         }
 
         public void LoadDiagram3(ref Chart _chart)

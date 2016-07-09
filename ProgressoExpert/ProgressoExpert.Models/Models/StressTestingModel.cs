@@ -364,7 +364,7 @@ namespace ProgressoExpert.Models.Models
                 + GetPercentage(SalesTopProduct, SalesTopProductPercentage)
                 + GetPercentage(SalesTop3Products, SalesTop3ProductsPercentage);
 
-            GrossProfitForecast = SalesForecast * ProfitabilityGeneral
+            GrossProfitForecast = SalesForecast * (ProfitabilityGeneral / 100)
                 + GetPercentage(ProfitabilityGeneral, ProfitabilityGeneralPercentage)
                 + GetPercentage(ProfitabilityTop3Clients, ProfitabilityTop3ClientsPercentage)
                 + GetPercentage(ProfitabilityTopProduct, ProfitabilityTopProductPercentage)

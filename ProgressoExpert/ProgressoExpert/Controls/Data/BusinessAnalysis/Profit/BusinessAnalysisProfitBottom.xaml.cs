@@ -1,4 +1,5 @@
 ﻿using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 using ProgressoExpert.Models.Models.BusinessAnalysis;
 using System;
 using System.Collections.Generic;
@@ -25,16 +26,18 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
     public partial class BusinessAnalysisProfitBottom : UserControl
     {
         ProfitBusinessAnalysis ViewModel;
+        MainModel mainModel;
 
         public BusinessAnalysisProfitBottom()
         {
             InitializeComponent();
         }
 
-        public void DataBind(ProfitBusinessAnalysis model)
+        public void DataBind(MainModel model)
         {
-            ViewModel = (ProfitBusinessAnalysis)model;
-            this.DataContext = (ProfitBusinessAnalysis)model;
+            ViewModel = (ProfitBusinessAnalysis)model.ProfitBA;
+            mainModel = model;
+            this.DataContext = (ProfitBusinessAnalysis)ViewModel;
             LoadDiagram(ref chart);
             LoadDiagram2(ref chart2);
             LoadDiagram3(ref chart3);
@@ -54,10 +57,10 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             ChartUtils.AddChartArea(FormatUtils.ThousandWithK, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Валовая прибыль", System.Drawing.Color.FromArgb(65, 152, 175),
-                ViewModel.GrossProfitDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.GrossProfitDiagram, mainModel), FormatUtils.Thousand, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Чистая прибыль", System.Drawing.Color.FromArgb(145, 195, 213),
-                ViewModel.NetProfitDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.NetProfitDiagram, mainModel), FormatUtils.Thousand, ref _chart);
         }
 
         public void LoadDiagram2(ref Chart _chart)
@@ -65,14 +68,16 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             ChartUtils.AddChartArea(FormatUtils.Percentage, ref _chart, 0, 0, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Spline, "Валовая рентабельность",
-                System.Drawing.Color.FromArgb(65, 152, 175), ViewModel.GrossProfitabilityDiagram, FormatUtils.Percentage, ref _chart);
+                System.Drawing.Color.FromArgb(65, 152, 175), DateUtils.ConvertToQuarter(ViewModel.GrossProfitabilityDiagram, mainModel), 
+                FormatUtils.Percentage, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Spline, "Чистая рентабельность",
-                System.Drawing.Color.FromArgb(145, 195, 213), ViewModel.NetProfitabilityDiagram, FormatUtils.Percentage, ref _chart);
+                System.Drawing.Color.FromArgb(145, 195, 213), DateUtils.ConvertToQuarter(ViewModel.NetProfitabilityDiagram, mainModel), 
+                FormatUtils.Percentage, ref _chart);
         }
 
         public void LoadDiagram3(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 1, true, false, false, false, 1, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 1, true, false, false, false, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, "Валовая прибыль по товарам",
                 System.Drawing.Color.FromArgb(149, 179, 215), ViewModel.StructureGrossProfitGoodsDiagram, FormatUtils.Thousand,
@@ -126,16 +131,16 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
         public void UpdateTable1()
         {
             Table1Name1Tb.Text = ViewModel.StructureGrossProfitGoodsInfo[0].Name;
-            Table1Profitability1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[0].Value);
-            Table1Share1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[0].Share);
+            Table1Profitability1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[0].Value);
+            Table1Share1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[0].Share);
 
             Table1Name2Tb.Text = ViewModel.StructureGrossProfitGoodsInfo[1].Name;
-            Table1Profitability2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[1].Value);
-            Table1Share2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[1].Share);
+            Table1Profitability2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[1].Value);
+            Table1Share2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[1].Share);
 
             Table1Name3Tb.Text = ViewModel.StructureGrossProfitGoodsInfo[2].Name;
-            Table1Profitability3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[2].Value);
-            Table1Share3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitGoodsInfo[2].Share);
+            Table1Profitability3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[2].Value);
+            Table1Share3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitGoodsInfo[2].Share);
         }
 
         /// <summary>
@@ -144,28 +149,28 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
         public void UpdateTable2()
         {
             Table2Name1Tb.Text = ViewModel.StructureGrossProfitClientInfo[0].Name;
-            Table2Profitability1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Value);
-            Table2Share1Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[0].Share);
+            Table2Profitability1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[0].Value);
+            Table2Share1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[0].Share);
 
             Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
-            Table2Profitability2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Value);
-            Table2Share2Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[1].Share);
+            Table2Profitability2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Value);
+            Table2Share2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Share);
 
             Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
-            Table2Profitability3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Value);
-            Table2Share3Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[2].Share);
+            Table2Profitability3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Value);
+            Table2Share3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Share);
 
             Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
-            Table2Profitability4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Value);
-            Table2Share4Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[3].Share);
+            Table2Profitability4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Value);
+            Table2Share4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Share);
 
             Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
-            Table2Profitability5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Value);
-            Table2Share5Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[4].Share);
+            Table2Profitability5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Value);
+            Table2Share5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Share);
 
             Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
-            Table2Profitability6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Value);
-            Table2Share6Tb.Text = string.Format("{0}%", ViewModel.StructureGrossProfitClientInfo[5].Share);
+            Table2Profitability6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Value);
+            Table2Share6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Share);
         }
 
         private void chart_Click(object sender, EventArgs e)

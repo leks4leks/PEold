@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Globalization;
 using ProgressoExpert.Models.Models.BusinessAnalysis;
 using ProgressoExpert.Controls.Utils;
+using ProgressoExpert.Models.Models;
 
 namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
 {
@@ -26,16 +27,18 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
     public partial class BusinessAnalysisSalesBottom : UserControl
     {
         SalesBusinessAnalysis ViewModel;
+        MainModel mainModel;
 
         public BusinessAnalysisSalesBottom()
         {
             InitializeComponent();
         }
 
-        public void DataBind(SalesBusinessAnalysis model)
+        public void DataBind(MainModel model)
         {
-            ViewModel = (SalesBusinessAnalysis)model;
-            this.DataContext = (SalesBusinessAnalysis)model;
+            ViewModel = (SalesBusinessAnalysis)model.SalesBA;
+            this.DataContext = (SalesBusinessAnalysis)model.SalesBA;
+            mainModel = model;
             LoadDiagram(ref chart);
             LoadDiagram2(ref chart2);
             LoadDiagram4(ref chart4);
@@ -52,21 +55,24 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
             ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, false, false, false);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
-                ViewModel.DynamicsSalesDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.DynamicsSalesDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Оплаты", System.Drawing.Color.FromArgb(147, 169, 207),
-                ViewModel.DynamicsPaymentDiagram, FormatUtils.Thousand, ref _chart);
+                DateUtils.ConvertToQuarter(ViewModel.DynamicsPaymentDiagram, mainModel), FormatUtils.Thousand, ref _chart);
         }
 
         public void LoadDiagram2(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, false, false, false, 1, 0);
+            ChartUtils.AddChartArea(string.Empty, ref _chart, 0, 0, 1, 1, true, false, false, false, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, ViewModel.Goods1Info.Name,
-                System.Drawing.Color.FromArgb(127, 154, 72), ViewModel.Goods1Diagram, FormatUtils.Thousand, ref _chart);
+                System.Drawing.Color.FromArgb(127, 154, 72), DateUtils.ConvertToQuarter(ViewModel.Goods1Diagram, mainModel), 
+                FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, ViewModel.Goods2Info.Name,
-                System.Drawing.Color.FromArgb(155, 187, 89), ViewModel.Goods2Diagram, FormatUtils.Thousand, ref _chart);
+                System.Drawing.Color.FromArgb(155, 187, 89), DateUtils.ConvertToQuarter(ViewModel.Goods2Diagram, mainModel), 
+                FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, ViewModel.Goods3Info.Name,
-                System.Drawing.Color.FromArgb(198, 214, 172), ViewModel.Goods3Diagram, FormatUtils.Thousand, ref _chart);
+                System.Drawing.Color.FromArgb(198, 214, 172), DateUtils.ConvertToQuarter(ViewModel.Goods3Diagram, mainModel), 
+                FormatUtils.Thousand, ref _chart);
         }
 
         public void LoadDiagram4(ref Chart _chart)
