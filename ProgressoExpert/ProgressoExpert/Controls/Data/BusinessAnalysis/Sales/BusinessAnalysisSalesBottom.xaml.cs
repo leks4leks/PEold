@@ -125,25 +125,40 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Sales
             Table2Sales1Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[0].Value);
             Table2Payment1Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[0].Value2);
 
-            Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
-            Table2Sales2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value);
-            Table2Payment2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value2);
 
-            Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
-            Table2Sales3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value);
-            Table2Payment3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value2);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 1)
+            {
+                Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
+                Table2Sales2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value);
+                Table2Payment2Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[1].Value2);
+            }
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 2)
+            {
+                Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
+                Table2Sales3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value);
+                Table2Payment3Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[2].Value2);
+            }
 
-            Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
-            Table2Sales4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value);
-            Table2Payment4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value2);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 3)
+            {
+                Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
+                Table2Sales4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value);
+                Table2Payment4Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[3].Value2);
+            }
 
-            Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
-            Table2Sales5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value);
-            Table2Payment5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value2);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 4)
+            {
+                Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
+                Table2Sales5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value);
+                Table2Payment5Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[4].Value2);
+            }
 
-            Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
-            Table2Sales6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value);
-            Table2Payment6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value2);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 5)
+            {
+                Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
+                Table2Sales6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value);
+                Table2Payment6Tb.Text = string.Format(FormatUtils.Thousand, ViewModel.StructureGrossProfitClientInfo[5].Value2);
+            }
         }
 
         public void UpdateColors()
