@@ -156,25 +156,40 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             Table2Profitability1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[0].Value);
             Table2Share1Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[0].Share);
 
-            Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
-            Table2Profitability2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Value);
-            Table2Share2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Share);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 1)
+            {
+                Table2Name2Tb.Text = ViewModel.StructureGrossProfitClientInfo[1].Name;
+                Table2Profitability2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Value);
+                Table2Share2Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[1].Share);
+            }
 
-            Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
-            Table2Profitability3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Value);
-            Table2Share3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Share);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 2)
+            {
+                Table2Name3Tb.Text = ViewModel.StructureGrossProfitClientInfo[2].Name;
+                Table2Profitability3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Value);
+                Table2Share3Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[2].Share);
+            }
 
-            Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
-            Table2Profitability4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Value);
-            Table2Share4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Share);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 3)
+            {
+                Table2Name4Tb.Text = ViewModel.StructureGrossProfitClientInfo[3].Name;
+                Table2Profitability4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Value);
+                Table2Share4Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[3].Share);
+            }
 
-            Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
-            Table2Profitability5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Value);
-            Table2Share5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Share);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 4)
+            {
+                Table2Name5Tb.Text = ViewModel.StructureGrossProfitClientInfo[4].Name;
+                Table2Profitability5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Value);
+                Table2Share5Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[4].Share);
+            }
 
-            Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
-            Table2Profitability6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Value);
-            Table2Share6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Share);
+            if (ViewModel.StructureGrossProfitClientInfo.Count() > 5)
+            {
+                Table2Name6Tb.Text = ViewModel.StructureGrossProfitClientInfo[5].Name;
+                Table2Profitability6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Value);
+                Table2Share6Tb.Text = string.Format(FormatUtils.Percentage, ViewModel.StructureGrossProfitClientInfo[5].Share);
+            }
         }
 
         private void chart_Click(object sender, EventArgs e)

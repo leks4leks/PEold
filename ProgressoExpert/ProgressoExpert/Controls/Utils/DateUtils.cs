@@ -20,9 +20,17 @@ namespace ProgressoExpert.Controls.Utils
 
             for (int i = 0; i < data.Count; i=i+3)
             {
+                var ttMon = mainModel.StartDate.Month;
+                while ((int)QuarterEnum.I != ttMon &&
+                    (int)QuarterEnum.II != ttMon &&
+                    (int)QuarterEnum.III != ttMon &&
+                    (int)QuarterEnum.IV != ttMon)
+                {
+                    ttMon--;
+                }
                 var quarter = string.Format("{0}, {1}", mainModel.StartDate.Month + i > 12
-                    ? ((QuarterEnum)mainModel.StartDate.Month + i - 12)
-                    : ((QuarterEnum)mainModel.StartDate.Month + i),
+                    ? ((QuarterEnum)ttMon + i - 12)
+                    : ((QuarterEnum)ttMon + i),
                     mainModel.StartDate.Year + ((i + 3) / 12));
                 result.Add(quarter, data.Skip(i).Take((data.Count - i) < 3 ? data.Count - i : 3).Sum(j => j.Value));
             }

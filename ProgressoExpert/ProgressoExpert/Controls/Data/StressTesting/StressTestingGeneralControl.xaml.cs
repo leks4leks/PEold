@@ -87,41 +87,54 @@ namespace ProgressoExpert.Controls.Data.StressTesting
 
         private void TextBox_KeyUp_1(object sender, KeyEventArgs e)
         {
-            ViewModel.SalesGeneralPercentage = tbSalesGeneralPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbSalesGeneralPercentage.Text)
-                : 0;
-            ViewModel.SalesTop3ClientsPercentage = tbSalesTop3ClientsPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbSalesTop3ClientsPercentage.Text)
-                : 0;
-            ViewModel.SalesTopProductPercentage = tbSalesTopProductPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbSalesTopProductPercentage.Text)
-                : 0;
-            ViewModel.SalesTop3ProductsPercentage = tbSalesTop3ProductsPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbSalesTop3ProductsPercentage.Text)
-                : 0;
+            try
+            {
+                int tmp = 0;
+                Int32.TryParse(tbSalesGeneralPercentage.Text, out tmp);
+                ViewModel.SalesGeneralPercentage = tmp;
 
-            ViewModel.ProfitabilityGeneralPercentage = tbProfitabilityGeneralPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbProfitabilityGeneralPercentage.Text)
-                : 0;
-            ViewModel.ProfitabilityTop3ClientsPercentage = tbProfitabilityTop3ClientsPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbProfitabilityTop3ClientsPercentage.Text)
-                : 0;
-            ViewModel.ProfitabilityTopProductPercentage = tbProfitabilityTopProductPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbProfitabilityTopProductPercentage.Text)
-                : 0;
-            ViewModel.ProfitabilityTop3ProductsPercentage = tbProfitabilityTop3ProductsPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbProfitabilityTop3ProductsPercentage.Text)
-                : 0;
+                tmp = 0;
+                Int32.TryParse(tbSalesTop3ClientsPercentage.Text, out tmp);
+                ViewModel.SalesTop3ClientsPercentage = tmp;
 
-            ViewModel.ExpensesPercentage = tbExpensesPercentage.Text != string.Empty
-                ? Convert.ToInt32(tbExpensesPercentage.Text)
-                : 0;
+                tmp = 0;
+                Int32.TryParse(tbSalesTopProductPercentage.Text, out tmp);
+                ViewModel.SalesTopProductPercentage = tmp;
 
-            ViewModel.CalculateAll();
+                tmp = 0;
+                Int32.TryParse(tbSalesTop3ProductsPercentage.Text, out tmp);
+                ViewModel.SalesTop3ProductsPercentage = tmp;
 
-            LoadDiagramm(ref chart);
-            LoadDiagramm2(ref chart2);
-            LoadDiagramm3(ref chart3);
+                tmp = 0;
+                Int32.TryParse(tbProfitabilityGeneralPercentage.Text, out tmp);
+                ViewModel.ProfitabilityGeneralPercentage = tmp;
+
+                tmp = 0;
+                Int32.TryParse(tbProfitabilityTop3ClientsPercentage.Text, out tmp);
+                ViewModel.ProfitabilityTop3ClientsPercentage = tmp;
+
+                tmp = 0;
+                Int32.TryParse(tbProfitabilityTopProductPercentage.Text, out tmp);
+                ViewModel.ProfitabilityTopProductPercentage = tmp;
+
+                tmp = 0;
+                Int32.TryParse(tbProfitabilityTop3ProductsPercentage.Text, out tmp);
+                ViewModel.ProfitabilityTop3ProductsPercentage = tmp;
+
+                tmp = 0;
+                Int32.TryParse(tbExpensesPercentage.Text, out tmp);
+                ViewModel.ExpensesPercentage = tmp;
+
+                ViewModel.CalculateAll();
+
+                LoadDiagramm(ref chart);
+                LoadDiagramm2(ref chart2);
+                LoadDiagramm3(ref chart3);
+            }
+            catch
+            {
+                MessageBox.Show("Отсутствуют данные.", "Информация");
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
