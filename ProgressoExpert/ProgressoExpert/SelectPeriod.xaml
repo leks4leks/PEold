@@ -35,7 +35,7 @@
 
             <Grid Grid.Column="0">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBox Name="DateStartTb" Text="{Binding StartDateTemp, StringFormat='{}{0:MM/yyyy}', ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateStartTb_MouseDown"  />
+                    <TextBox Name="DateStartTb" Text="{Binding StartDateTemp, StringFormat='{}{0:MM/yyyy}', ConverterCulture=ru-RU}" Width="150" TextAlignment="Center" IsReadOnly="True" PreviewMouseDown="DateStartTb_MouseDown"  />
                 </StackPanel>
             </Grid>
 

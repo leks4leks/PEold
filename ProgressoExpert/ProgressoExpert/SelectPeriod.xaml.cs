@@ -1,4 +1,5 @@
-﻿using ProgressoExpert.Models.Models;
+﻿using ProgressoExpert.Common.Enums;
+using ProgressoExpert.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,35 @@ namespace ProgressoExpert
         {
             ViewModel.StartDate = ViewModel.StartDateTemp;
             ViewModel.EndDate = ViewModel.EndDateTemp;
+            if (!ViewModel.IsItQuarter)
+            {
+                ViewModel.DateTextForButton = string.Format("{0}, {1}", (Month)ViewModel.StartDate.Month, ViewModel.StartDate.Year);
+                if ((ViewModel.StartDate.Year == ViewModel.EndDate.Year &&
+                    ViewModel.EndDate.Month - ViewModel.StartDate.Month > 3) ||
+                    (ViewModel.StartDate.Year < ViewModel.EndDate.Year &&
+                    ViewModel.EndDate.Month + 12 - ViewModel.StartDate.Month > 3))
+                {
+                    ViewModel.DateTextForButton += string.Format(" - {0}, {1}", (Month)ViewModel.EndDate.Month,
+                        ViewModel.EndDate.Year);
+                }
+            }
+            else if (ViewModel.EndDate.Year - ViewModel.StartDate.Year == 1 &&
+                ViewModel.EndDate.Month == ViewModel.StartDate.Month)
+            {
+                ViewModel.DateTextForButton = string.Format("{0} год",ViewModel.StartDate.Year);
+            }
+            else
+            {
+                ViewModel.DateTextForButton = string.Format("{0} квартал, {1}", (QuarterEnum)ViewModel.StartDate.Month, ViewModel.StartDate.Year);
+                if ((ViewModel.StartDate.Year == ViewModel.EndDate.Year &&
+                    (QuarterEnum)ViewModel.EndDate.Month - (QuarterEnum)ViewModel.StartDate.Month > 3) ||
+                    (ViewModel.StartDate.Year < ViewModel.EndDate.Year &&
+                    (QuarterEnum)ViewModel.EndDate.Month + 12 - (QuarterEnum)ViewModel.StartDate.Month > 3))
+                {
+                    ViewModel.DateTextForButton += string.Format(" - {0} квартал, {1}", (QuarterEnum)ViewModel.EndDate.Month,
+                        ViewModel.EndDate.Year);
+                }
+            }
             MainWindow.UpdateData();
             CancelBtn_Click(this, null);
         }
@@ -52,8 +82,8 @@ namespace ProgressoExpert
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.StartDateTemp = ViewModel.StartDate;
-            ViewModel.EndDateTemp = ViewModel.EndDate;
+            ViewModel.StartDateTemp = DateTime.Today;
+            ViewModel.EndDateTemp = DateTime.Today.AddMonths(1); 
             if (IsStartDateSelect)
             {
                 DateStartTb_MouseDown(this, null);
@@ -77,6 +107,7 @@ namespace ProgressoExpert
         /// <param name="e"></param>
         private void MonthSelect(object sender, RoutedEventArgs e)
         {
+            ViewModel.IsItQuarter = false;
             ToggleButton btn = sender as ToggleButton;
             if (btn.Name == "Month1Btn")
             {
@@ -136,6 +167,7 @@ namespace ProgressoExpert
         /// <param name="e"></param>
         private void QuarterSelect(object sender, RoutedEventArgs e)
         {
+            ViewModel.IsItQuarter = true;
             ToggleButton btn = sender as ToggleButton;
             if (btn.Name == "Quarter1Btn")
             {
@@ -165,6 +197,40 @@ namespace ProgressoExpert
             if (IsStartDateSelect)
             {
                 ViewModel.StartDateTemp = new DateTime(ViewModel.StartDateTemp.Year, month, 1);
+                if (ViewModel.IsItQuarter)
+                {
+                    var _year = ViewModel.StartDateTemp.Year;
+                    var _month = month;
+                    if (_month == 10)
+                    {
+                        _year++;
+                        _month = 1;
+                    }
+                    else
+                    {
+                        _month += 3;
+                    }
+                    ViewModel.EndDateTemp = new DateTime(_year, _month, 1);
+                }
+                else
+                {
+                    var _year = ViewModel.StartDateTemp.Year;
+                    var _month = month;
+                    if (_month == 12 && _year != DateTime.Today.Year)
+                    {
+                        _year++;
+                        _month = 1;
+                    }
+                    else if (_month == 12 && _year == DateTime.Today.Year)
+                    {
+                        _month = month; 
+                    }
+                    else
+                    {
+                        _month += 1;
+                    }
+                    ViewModel.EndDateTemp = new DateTime(_year, _month, 1);
+                }
             }
             else
             {
@@ -175,12 +241,17 @@ namespace ProgressoExpert
         /// <summary>
         /// Поменять год
         /// </summary>
-        /// <param name="year"></param>
+        /// <param name="_year"></param>
         private void ChangeYear(int year)
         {
+            ViewModel.IsItQuarter = false;
             if (IsStartDateSelect)
             {
                 ViewModel.StartDateTemp = new DateTime(year, ViewModel.StartDateTemp.Month, 1);
+                ViewModel.EndDateTemp = new DateTime(year < DateTime.Today.Year 
+                    ? year + 1
+                    : year, 
+                    ViewModel.StartDateTemp.Month, 1);
             }
             else
             {
@@ -219,7 +290,7 @@ namespace ProgressoExpert
         /// Конфигурация кнопок по выбранной дате
         /// </summary>
         /// <param name="month"></param>
-        /// <param name="year"></param>
+        /// <param name="_year"></param>
         private void Configure(int month, int year)
         {
             switch (month)

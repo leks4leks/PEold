@@ -35,6 +35,7 @@ namespace ProgressoExpert.Controls.App
         public void DataBind(MainModel model)
         {
             ViewModel = model;
+            this.DataContext = ViewModel;
         }
 
 

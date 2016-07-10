@@ -49,6 +49,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
+            ChartViewWindow.AddLegend();
             LoadDiagram1(ref ChartViewWindow.chart);
             ChartViewWindow.Show();
         }

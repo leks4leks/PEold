@@ -44,26 +44,28 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
 
         public void LoadDiagram(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 1, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.StackedColumn, "ДЗ Средний долг",
                 System.Drawing.Color.FromArgb(128, 100, 162), DateUtils.ConvertToQuarter(ViewModel.aveDZDiagram, mainModel),
-                FormatUtils.Thousand, ref _chart, false);
+                FormatUtils.Thousand, ref _chart, true);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.StackedColumn, "Товары средний остаток",
                 System.Drawing.Color.FromArgb(170, 186, 215), DateUtils.ConvertToQuarter(ViewModel.aveGoodsDiagram, mainModel),
-                FormatUtils.Thousand, ref _chart, false);
+                FormatUtils.Thousand, ref _chart, true);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.StackedColumn, "Деньги средний остаток",
                 System.Drawing.Color.FromArgb(186, 176, 201), DateUtils.ConvertToQuarter(ViewModel.aveMoneyDiagram, mainModel),
-                FormatUtils.Thousand, ref _chart, false);
+                FormatUtils.Thousand, ref _chart, true);
             ChartUtils.AddSeriesAndPoints("Series4", SeriesChartType.StackedColumn, "Продажи",
                 System.Drawing.Color.FromArgb(60, 103, 154), DateUtils.ConvertToQuarter(ViewModel.aveSalesDiagram, mainModel),
-                FormatUtils.Thousand, ref _chart, false);
+                FormatUtils.Thousand, ref _chart, true);
+
+            ChartUtils.UpdateAxisTitle(true, mainModel.IsItQuarter, ref _chart);
         }
 
         public void LoadDiagram2(ref Chart _chart)
         {
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 1, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Column, "КЗ Средний долг",
@@ -72,6 +74,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "ДЗ Средний долг",
                 System.Drawing.Color.FromArgb(186, 176, 201), DateUtils.ConvertToQuarter(ViewModel.DZ_dzVsKzDiagram, mainModel),
                  FormatUtils.Thousand, ref _chart);
+
+            ChartUtils.UpdateAxisTitle(true, mainModel.IsItQuarter, ref _chart);
         }
 
         private void chart_Click(object sender, EventArgs e)
@@ -79,6 +83,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -87,6 +92,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }

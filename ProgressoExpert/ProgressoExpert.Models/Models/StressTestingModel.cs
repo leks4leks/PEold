@@ -365,10 +365,10 @@ namespace ProgressoExpert.Models.Models
                 + GetPercentage(SalesTop3Products, SalesTop3ProductsPercentage);
 
             GrossProfitForecast = SalesForecast * (ProfitabilityGeneral / 100)
-                + GetPercentage(ProfitabilityGeneral, ProfitabilityGeneralPercentage)
-                + GetPercentage(ProfitabilityTop3Clients, ProfitabilityTop3ClientsPercentage)
-                + GetPercentage(ProfitabilityTopProduct, ProfitabilityTopProductPercentage)
-                + GetPercentage(ProfitabilityTop3Products, ProfitabilityTop3ProductsPercentage);
+                + ProfitabilityGeneral + GetPercentage2(ProfitabilityGeneral, ProfitabilityGeneralPercentage)
+                + ProfitabilityTop3Clients + GetPercentage2(ProfitabilityTop3Clients, ProfitabilityTop3ClientsPercentage)
+                + ProfitabilityTopProduct + GetPercentage2(ProfitabilityTopProduct, ProfitabilityTopProductPercentage)
+                + ProfitabilityTop3Products + GetPercentage2(ProfitabilityTop3Products, ProfitabilityTop3ProductsPercentage);
 
             NetProfitForecast = GrossProfitForecast - Expenses
                 + GetPercentage(Expenses, ExpensesPercentage);
@@ -397,6 +397,13 @@ namespace ProgressoExpert.Models.Models
                 NetProfitPercentageValue *= (-1);
             }
             catch { }
+
+            if (SalesGeneralPercentage == 0 && SalesTop3ClientsPercentage == 0 && SalesTopProductPercentage == 0 && SalesTop3ProductsPercentage
+                == 0 && ProfitabilityGeneralPercentage == 0 && ProfitabilityTop3ClientsPercentage == 0 && ProfitabilityTopProductPercentage
+                == 0 && ProfitabilityTop3ProductsPercentage == 0 && ExpensesPercentage == 0)
+            {
+                SalesForecast = GrossProfitForecast = NetProfitForecast = 0;
+            }
         }
 
         private decimal GetPercentage(decimal value, int percentage)
@@ -409,6 +416,20 @@ namespace ProgressoExpert.Models.Models
             else
             {
                 result =  0;
+            }
+            return result;
+        }
+
+        private decimal GetPercentage2(decimal value, int percentage)
+        {
+            decimal result = 0;
+            if (value != 0)
+            {
+                result = value / 100 * percentage;
+            }
+            else
+            {
+                result = 0;
             }
             return result;
         }

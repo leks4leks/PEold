@@ -153,12 +153,12 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
 
             // Две дополнительных колонки, которые есть всегда
-            GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            tBlock = CreateAndFillTextBlock("Итого за период", 0, 0, false, ref monthCount);
+            GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Pixel) });
+            tBlock = CreateAndFillTextBlock("Итого за период", 0, 0, false, ref monthCount, true);
             GridDataProfitLossReportGrid.Children.Add(tBlock);
 
-            GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount);
+            GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(120, GridUnitType.Pixel) });
+            tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount, true);
             //tBlock.Width = 100;
             GridDataProfitLossReportGrid.Children.Add(tBlock);
 
@@ -238,7 +238,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
             #endregion
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage, model.GrossMargin), 17, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.GrossMargin), 17, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             var border = new Border();
@@ -249,7 +249,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2);
             GridDataProfitLossReportGrid.Children.Add(border);
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage, model.NetMargin), 18, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.NetMargin), 18, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             border = new Border();
@@ -260,7 +260,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2);
             GridDataProfitLossReportGrid.Children.Add(border);
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage, model.ServiceRatioPercent), 19, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.ServiceRatioPercent), 19, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             border = new Border();
@@ -281,7 +281,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
         /// <param name="useRowColumn"></param>
         /// <param name="monthCount"></param>
         /// <returns></returns>
-        private TextBlock CreateAndFillTextBlock(string text, int row, int column, bool useRowColumn, ref int monthCount)
+        private TextBlock CreateAndFillTextBlock(string text, int row, int column, bool useRowColumn, ref int monthCount, bool bold = false)
         {
             TextBlock textBlock = new TextBlock();
             textBlock.Text = text;
@@ -293,6 +293,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             //textBlock.FontSize = 12;
             //textBlock.Foreground = Brushes.Black;
             textBlock.TextWrapping = TextWrapping.Wrap;
+            textBlock.FontWeight = bold ? System.Windows.FontWeights.Bold : System.Windows.FontWeights.Normal;
             #region Отступ
             //Thickness margin = textBox.Margin;
             //margin.Left = 2;

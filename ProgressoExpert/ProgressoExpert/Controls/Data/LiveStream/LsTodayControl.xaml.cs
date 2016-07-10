@@ -62,6 +62,7 @@ namespace ProgressoExpert.Controls.Data.LiveStream
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }

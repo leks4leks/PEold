@@ -168,7 +168,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -180,12 +179,12 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <TextBlock Text="Продажи" Style="{StaticResource TextBlock15BoldGreen0LeftCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="2" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}"
                            Name="tbSalesPercentageValue" Text="{Binding SalesPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"/>
             </Grid>
-            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <WindowsFormsHost>
                     <dvc:Chart x:Name="chart">
                     </dvc:Chart>
@@ -196,7 +195,6 @@
         <!-- Валовая прибыль -->
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
@@ -210,12 +208,12 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock15BoldBlue11LeftCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="2" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Text="{Binding GrossProfitPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}" 
                            Name="tbGrossProfitPercentageValue"/>
             </Grid>
-            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <WindowsFormsHost>
                     <dvc:Chart x:Name="chart2">
                     </dvc:Chart>
@@ -226,7 +224,6 @@
         <!-- Чистая прибыль -->
         <Grid Grid.Column="3">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
@@ -240,12 +237,12 @@
             <Grid Grid.Row="1" Grid.Column="0">
                 <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock15BoldRed1LeftCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="2" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Text="{Binding NetProfitPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}" 
                            Name="tbNetProfitPercentageValue"/>
             </Grid>
-            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <WindowsFormsHost>
                     <dvc:Chart x:Name="chart3">
                     </dvc:Chart>

@@ -362,7 +362,7 @@ namespace ProgressoExpert.Process
                 model.PastBisRes = Accessors.GetBusinessResults(mm);
                 // TODO: XYUTA
                 model.AverageWorkingCapitalDiagram.Add(
-                MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)startMonthYear[0], startMonthYear[1]) : ((Month)startMonthYear[0]).ToString(), (model.PastBisRes.CirculatingAssetsStart + model.PastBisRes.CirculatingAssetsEnd) / 2);
+                MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days >= 365 ? string.Format("{0}, {1}", (Month)startMonthYear[0], startMonthYear[1]) : ((Month)startMonthYear[0]).ToString(), (model.PastBisRes.CirculatingAssetsStart + model.PastBisRes.CirculatingAssetsEnd) / 2);
 
                 #region Cчитаем кол-во месяцев
                 if (startMonthYear[0] == 12)

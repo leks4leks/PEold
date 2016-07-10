@@ -36,12 +36,13 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             this.DataContext = (WorkingСapitalBusinessAnalysis)model;
             LoadDiagram(ref chart);
             LoadDiagram2(ref chart2);
+            UpdateColors();
         }
 
         public void LoadDiagram(ref Chart _chart)
         {
             chart.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 1, 0);
             ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.StackedColumn, "СОК", System.Drawing.Color.FromArgb(96, 74, 123),
@@ -55,11 +56,10 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
         public void LoadDiagram2(ref Chart _chart)
         {
             chart2.BackColor = System.Drawing.Color.FromArgb(242, 242, 242);
-            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 0);
-            ChartUtils.AddLegend(System.Drawing.StringAlignment.Center, Docking.Top, ref _chart);
+            ChartUtils.AddChartArea(FormatUtils.Thousand, ref _chart, 0, 0, 1, 0, true, false, false, false, 1, 1);
 
             ChartUtils.AddSeriesAndPoints("Series1", SeriesChartType.Bar, string.Empty, System.Drawing.Color.FromArgb(79, 129, 189),
-                ViewModel.turnoverDiagram, string.Empty, ref _chart);
+                ViewModel.turnoverDiagram, FormatUtils.IntNumber, ref _chart);
         }
 
         private void chart_Click(object sender, EventArgs e)
@@ -67,6 +67,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -75,7 +76,18 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.WorkingCapital
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
+        }
+
+        private void UpdateColors()
+        {
+            difmyMoneyByPercentTb.Style = ViewModel.difmyMoneyByPercent >= 0
+                ? (Style)FindResource("TextBlockStyle14Green0")
+                : (Style)FindResource("TextBlockStyle14Red3");
+            difmyCostsByPercentTb.Style = ViewModel.difmyCostsByPercent >= 0
+                ? (Style)FindResource("TextBlockStyle14Green0")
+                : (Style)FindResource("TextBlockStyle14Red3");
         }
     }
 }

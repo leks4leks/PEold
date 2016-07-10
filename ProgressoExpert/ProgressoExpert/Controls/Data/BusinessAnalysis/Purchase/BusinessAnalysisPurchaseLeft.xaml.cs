@@ -53,6 +53,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Purchase
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram1(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }

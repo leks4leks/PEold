@@ -61,6 +61,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
 
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Column, "Чистая прибыль", System.Drawing.Color.FromArgb(145, 195, 213),
                 DateUtils.ConvertToQuarter(ViewModel.NetProfitDiagram, mainModel), FormatUtils.Thousand, ref _chart);
+
+            ChartUtils.UpdateAxisTitle(true, mainModel.IsItQuarter, ref _chart);
         }
 
         public void LoadDiagram2(ref Chart _chart)
@@ -71,8 +73,10 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
                 System.Drawing.Color.FromArgb(65, 152, 175), DateUtils.ConvertToQuarter(ViewModel.GrossProfitabilityDiagram, mainModel), 
                 FormatUtils.Percentage, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series2", SeriesChartType.Spline, "Чистая рентабельность",
-                System.Drawing.Color.FromArgb(145, 195, 213), DateUtils.ConvertToQuarter(ViewModel.NetProfitabilityDiagram, mainModel), 
+                System.Drawing.Color.FromArgb(145, 195, 213), DateUtils.ConvertToQuarter(ViewModel.NetProfitabilityDiagram, mainModel),
                 FormatUtils.Percentage, ref _chart);
+
+            ChartUtils.UpdateAxisTitle(true, mainModel.IsItQuarter, ref _chart);
         }
 
         public void LoadDiagram3(ref Chart _chart)
@@ -178,6 +182,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -186,6 +191,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -194,6 +200,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram3(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -202,6 +209,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Profit
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram4(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }

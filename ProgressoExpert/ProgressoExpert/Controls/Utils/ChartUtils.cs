@@ -160,5 +160,22 @@ namespace ProgressoExpert.Controls.Utils
             _chart.Legends.Clear();
             _chart.ChartAreas.Clear();
         }
+
+        public static void UpdateAxisTitle(bool isItXAxis, bool isItQuarter, ref Chart _chart)
+        {
+            if (isItXAxis)
+            {
+                _chart.ChartAreas[0].AxisX.Title = isItQuarter
+                    ? "Квартал, год"
+                    : "Месяц, год";
+                _chart.ChartAreas[0].AxisX.TitleAlignment = System.Drawing.StringAlignment.Far;
+            }
+            else
+            {
+                _chart.ChartAreas[0].AxisY.Title = isItQuarter
+                    ? "Квартал, год"
+                    : "Месяц, год";
+            }
+        }
     }
 }

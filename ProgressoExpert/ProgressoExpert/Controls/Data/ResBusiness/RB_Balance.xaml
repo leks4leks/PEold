@@ -231,24 +231,24 @@
                     <TextBlock Text="деньгами" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 0,2" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyStart}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyEnd}" Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="деньгами и долгами клиентов" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text="0,5 - 1" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsStart}" Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsEnd}" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtMoneyAndCustomerDebtsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" >
                     <TextBlock Text="Покрытие текущей задолженности" Style="{StaticResource TextBlock12CenterCenter}"/>
                     <TextBlock Text="Оборотными активами" Style="{StaticResource TextBlock12BoldCenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsStart}" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsEnd}" Grid.Row="3" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="2" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringCurrentDebtOfCurrentAssetsEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="3" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <!--  -->
                 <TextBlock Text="Коэффициент" Grid.Row="0" Grid.Column="4" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
@@ -277,8 +277,8 @@
                     <TextBlock Text="Собственным капиталом" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text=">= 2" Grid.Row="3" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityStart}" Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityEnd}" Grid.Row="3" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityStart, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="6" Style="{StaticResource TextBlock12CenterCenter}"/>
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.CoveringLoansByEquityEnd, StringFormat={}{0:N2}, ConverterCulture=ru-RU}" Grid.Row="3" Grid.Column="7" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
             
             <Grid Name="KoefGrid" Grid.Row="2" >
@@ -310,7 +310,7 @@
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text="60" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.SpeedOfTurnover}"  Grid.Row="1" Grid.Column="2" 
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.SpeedOfTurnover, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="1" Grid.Column="2" 
                             Grid.ColumnSpan="2"  Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
@@ -319,7 +319,7 @@
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text="15" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfClientsDebt}"  Grid.Row="2" Grid.Column="2" 
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfClientsDebt, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="2" Grid.Column="2" 
                             Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
 
                 <!--  -->
@@ -329,7 +329,7 @@
                     <TextBlock Text="дни" Style="{StaticResource TextBlock12CenterCenter}" Margin="5,0,0,0"/>
                 </StackPanel>
                 <TextBlock  Text="90" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12CenterCenter}"/>
-                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfDebtToSuppliers}"  Grid.Row="1" Grid.Column="6" 
+                <TextBlock  Text="{Binding RatiosIndicatorsResult.TermOfCirculationOfDebtToSuppliers, StringFormat={}{0:N2}, ConverterCulture=ru-RU}"  Grid.Row="1" Grid.Column="6" 
                             Grid.ColumnSpan="2" Style="{StaticResource TextBlock12CenterCenter}"/>
             </Grid>
         </Grid>

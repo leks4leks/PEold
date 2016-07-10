@@ -54,6 +54,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
                 DateUtils.ConvertToQuarter(ViewModel.GrosProfitDiagram, mainModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Продажи", System.Drawing.Color.FromArgb(0, 176, 80),
                 DateUtils.ConvertToQuarter(ViewModel.SalesDiagram, mainModel), FormatUtils.Thousand, ref _chart);
+
+            ChartUtils.UpdateAxisTitle(true, mainModel.IsItQuarter, ref _chart);
         }
 
         public void LoadDiagram3(ref Chart _chart)
@@ -135,6 +137,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram2(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -143,6 +146,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram3(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
 
@@ -151,6 +155,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Expenses
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram4(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }

@@ -47,7 +47,7 @@
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding myMoney, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                            <TextBlock Text="{Binding difmyMoneyByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
+                            <TextBlock Name="difmyMoneyByPercentTb" Text="{Binding difmyMoneyByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
@@ -74,7 +74,7 @@
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding myCosts, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle12ContentBottomBold}"/>
-                            <TextBlock Text="{Binding difmyCostsByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
+                            <TextBlock Name="difmyCostsByPercentTb" Text="{Binding difmyCostsByPercent, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Style="{StaticResource TextBlockStyle14ContentCenterBold}"
                                        Margin="10,0,0,0"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">

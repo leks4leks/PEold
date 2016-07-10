@@ -243,6 +243,13 @@ namespace ProgressoExpert.Models.Models
 
         #endregion
 
+        public string DateTextForButton
+        {
+            get { return _dateTextForButton; }
+            set { SetValue(ref _dateTextForButton, value, "DateTextForButton"); }
+        }
+        private string _dateTextForButton;
+
         public LiveStreamModel LiveStreamModel;
 
         /// <summary>

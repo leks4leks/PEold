@@ -55,6 +55,8 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
                 DateUtils.ConvertToQuarter(ViewModel.GeneralBA.AverageWorkingCapitalDiagram, ViewModel), FormatUtils.Thousand, ref _chart);
             ChartUtils.AddSeriesAndPoints("Series3", SeriesChartType.Column, "Чистая прибыль", System.Drawing.Color.FromArgb(249, 181, 144),
                 DateUtils.ConvertToQuarter(ViewModel.GeneralBA.NetProfitDiagram, ViewModel), FormatUtils.Thousand, ref _chart);
+
+            ChartUtils.UpdateAxisTitle(true, ViewModel.IsItQuarter, ref _chart);
         }
 
         public void UpdateTable()
@@ -127,6 +129,7 @@ namespace ProgressoExpert.Controls.Data.BusinessAnalysis.Common
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             var ChartViewWindow = new ChartViewWindow(mainWindow);
             LoadDiagram(ref ChartViewWindow.chart);
+            ChartViewWindow.AddLegend();
             ChartViewWindow.Show();
         }
     }
