@@ -50,8 +50,8 @@ namespace ProgressoExpert.Process
             var tmSpan = MainAccessor.GetTimeSpan();
 
             //TODO поставить текущую дату
-            var stTodayDate = new DateTime(1013, 10, 01);
-            var endTodayDate = new DateTime(1013, 10, 01).AddHours(23).AddMinutes(59).AddSeconds(59); //DateTime.Today.AddYears(tmSpan);
+            var stTodayDate = new DateTime(4013, 10, 01);
+            var endTodayDate = new DateTime(4013, 10, 01).AddHours(23).AddMinutes(59).AddSeconds(59); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
@@ -350,7 +350,7 @@ namespace ProgressoExpert.Process
 
             model.NetProfitDiagram = new Dictionary<string, decimal>();
             var tmpMon = 0;
-            for (int i = 0; i <= dif; i++)
+            for (int i = 0; i < dif; i++)
             {
                 var _year = startDate;
                 if (startDate.Month + i > 12) tmpMon = i - 12;
@@ -398,7 +398,7 @@ namespace ProgressoExpert.Process
                 #endregion
 
             }
-            while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
+            while ((startMonthYear[1] < endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] < endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
             #endregion 
 
             return model;
@@ -1049,10 +1049,11 @@ namespace ProgressoExpert.Process
                 SalesTopProduct = model.SalesBA.Goods1Info.Value,
                 SalesTop3Products = model.SalesBA.Goods1Info.Value + model.SalesBA.Goods2Info.Value + model.SalesBA.Goods3Info.Value,
                 // Рентабельность
-                ProfitabilityGeneral = model.ProfitBA.GrossProfitability,
-                ProfitabilityTop3Clients = model.ProfitBA.StructureGrossProfitClientInfo.Take(3).Sum(i => i.Value),
-                ProfitabilityTopProduct = model.ProfitBA.StructureGrossProfitGoodsInfo.Take(1).Sum(i => i.Value),
-                ProfitabilityTop3Products = model.ProfitBA.StructureGrossProfitGoodsInfo.Take(3).Sum(i => i.Value),
+                ProfitabilityGeneralPerc = model.ProfitBA.GrossProfitability,
+                ProfitabilityGeneral= model.ProfitBA.GrossProfit,
+                ProfitabilityTop3Clients = model.ProfitBA.StructureGrossProfitClientDiagram.Take(3).Sum(i => i.Value),
+                ProfitabilityTopProduct = model.ProfitBA.StructureGrossProfitGoodsDiagram.Take(1).Sum(i => i.Value),
+                ProfitabilityTop3Products = model.ProfitBA.StructureGrossProfitGoodsDiagram.Take(3).Sum(i => i.Value),
                 // Расходы
                 Expenses = model.GeneralBA.Cost
 

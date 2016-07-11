@@ -809,6 +809,7 @@ namespace ProgressoExpert.DataAccess
         {
             using (dbEntities db = new dbEntities())
             {
+                endDate = endDate.AddSeconds(-1);
                 List<SalesModel> result = new List<SalesModel>();
                 int[] endMonthYear = new int[] { endDate.Month, endDate.Year };
 
@@ -1161,8 +1162,10 @@ namespace ProgressoExpert.DataAccess
                         // если мы еще не дошли до даты начала периода - перебираем месяца смотрим что подали что купили
                         // чтобы определить с какого месяца брать себестоимость для нашего периода
                         // смотрим от продаж, т.к. мы могли продать то что купили 2 года назад в этом периоде
-                        // дата поставки > даты продажи
-                        if (!WeGoCalcSeb && (salesForGroup[counterSales].Mont <= (stDate.Month - 1) && salesForGroup[counterSales].Year == stDate.Year || salesForGroup[counterSales].Year < stDate.Year))
+
+                        var dtT = new DateTime(salesForGroup[counterSales].Year, salesForGroup[counterSales].Mont, 1);
+                        var dtMt = new DateTime(stDate.Year, stDate.Month, 1);
+                        if (!WeGoCalcSeb && dtT <= dtMt)
                         {
                             tmp -= salesForGroup[counterSales].CountSal;
                             counterSales++;
@@ -1185,7 +1188,7 @@ namespace ProgressoExpert.DataAccess
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
-                            if (salesForGroup[counterSales].Mont <= (endDate.Month - 1) && salesForGroup[counterSales].Year == endDate.Year || salesForGroup[counterSales].Year < endDate.Year)
+                            if (dtT <= dtMt)
                             {
                                 counterSales++;
                                 if (pastTmp < 0)
@@ -1390,7 +1393,7 @@ namespace ProgressoExpert.DataAccess
 
             var result = res5.ToList();
             if (gSeb.Count() > 0)
-                Parallel.ForEach(result, i =>
+                foreach(var i in result)
                 {
                     if (gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode) != null)
                     {
@@ -1398,7 +1401,7 @@ namespace ProgressoExpert.DataAccess
                         i.CountGoodsSt = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsSt;
                         i.CountGoodsEnd = gSeb.FirstOrDefault(f => f.GroupCode == i.GroupCode).CountGoodsEnd;
                     }
-                });
+                }
             return result;
         }
 

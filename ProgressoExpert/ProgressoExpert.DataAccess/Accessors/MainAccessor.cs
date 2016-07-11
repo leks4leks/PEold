@@ -81,7 +81,7 @@ namespace ProgressoExpert.DataAccess
                                period = acctr.C_Period,
                                ScoreCt = accCr.C_Code,
                                ScoreDt = accDt.C_Code
-                           }).AsParallel().ToList();
+                           }).ToList();
                 }
                 if (endDate != null)
                 {
@@ -98,7 +98,7 @@ namespace ProgressoExpert.DataAccess
                                period = accRg.C_Period,
                                ScoreDt = accDt.C_Code,
                                ScoreCt = accCt.C_Code
-                           }).AsParallel().ToList();
+                           }).ToList();
                 }
 
                 return res;

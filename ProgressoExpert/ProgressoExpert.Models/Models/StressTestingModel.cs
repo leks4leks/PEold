@@ -125,6 +125,16 @@ namespace ProgressoExpert.Models.Models
         private decimal _profabilityGeneral;
 
         /// <summary>
+        /// Рентабельность Общее %
+        /// </summary>
+        public decimal ProfitabilityGeneralPerc
+        {
+            get { return _profabilityGeneralPerc; }
+            set { SetValue(ref _profabilityGeneralPerc, value, "ProfitabilityGeneralPerc"); }
+        }
+        private decimal _profabilityGeneralPerc;
+
+        /// <summary>
         /// Рентабельность 3-х клиентов
         /// </summary>
         public decimal ProfitabilityTop3Clients
@@ -364,11 +374,12 @@ namespace ProgressoExpert.Models.Models
                 + GetPercentage(SalesTopProduct, SalesTopProductPercentage)
                 + GetPercentage(SalesTop3Products, SalesTop3ProductsPercentage);
 
-            GrossProfitForecast = SalesForecast * (ProfitabilityGeneral / 100)
-                + ProfitabilityGeneral + GetPercentage2(ProfitabilityGeneral, ProfitabilityGeneralPercentage)
-                + ProfitabilityTop3Clients + GetPercentage2(ProfitabilityTop3Clients, ProfitabilityTop3ClientsPercentage)
-                + ProfitabilityTopProduct + GetPercentage2(ProfitabilityTopProduct, ProfitabilityTopProductPercentage)
-                + ProfitabilityTop3Products + GetPercentage2(ProfitabilityTop3Products, ProfitabilityTop3ProductsPercentage);
+            var cc = SalesForecast * (ProfitabilityGeneralPerc / 100);
+            GrossProfitForecast = cc
+                + GetPercentage2(SalesForecast, ProfitabilityGeneralPercentage)
+                + GetPercentage2(ProfitabilityTop3Clients, ProfitabilityTop3ClientsPercentage)
+                + GetPercentage2(ProfitabilityTopProduct, ProfitabilityTopProductPercentage)
+                + GetPercentage2(ProfitabilityTop3Products, ProfitabilityTop3ProductsPercentage);
 
             NetProfitForecast = GrossProfitForecast - Expenses
                 + GetPercentage(Expenses, ExpensesPercentage);

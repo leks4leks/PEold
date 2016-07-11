@@ -158,7 +158,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             GridDataProfitLossReportGrid.Children.Add(tBlock);
 
             GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(120, GridUnitType.Pixel) });
-            tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount, true);
+            tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount, true, 120);
             //tBlock.Width = 100;
             GridDataProfitLossReportGrid.Children.Add(tBlock);
 
@@ -281,13 +281,13 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
         /// <param name="useRowColumn"></param>
         /// <param name="monthCount"></param>
         /// <returns></returns>
-        private TextBlock CreateAndFillTextBlock(string text, int row, int column, bool useRowColumn, ref int monthCount, bool bold = false)
+        private TextBlock CreateAndFillTextBlock(string text, int row, int column, bool useRowColumn, ref int monthCount, bool bold = false, int widthSize = 80)
         {
             TextBlock textBlock = new TextBlock();
             textBlock.Text = text;
             Grid.SetColumn(textBlock, useRowColumn ? column : monthCount++);
             Grid.SetRow(textBlock, row);
-            textBlock.Width = 80;
+            textBlock.Width = widthSize;
             textBlock.TextAlignment = TextAlignment.Center;
             textBlock.HorizontalAlignment = HorizontalAlignment.Center;
             //textBlock.FontSize = 12;
