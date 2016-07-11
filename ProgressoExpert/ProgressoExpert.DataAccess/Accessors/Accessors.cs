@@ -637,7 +637,7 @@ namespace ProgressoExpert.DataAccess
                                 #endregion
                         }
                     }
-                    while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
+                    while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] < endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
                 }
 
                 // Заполним расчитываемые поля
@@ -916,6 +916,7 @@ namespace ProgressoExpert.DataAccess
                        {
                            Mont = 0,
                            Year = 0,
+                           Period = new DateTime(),
                            refId = r77.C_IDRRef,
                            ClientRefId = new byte[] { },
                            SalersRefId = new byte[] { },
@@ -939,6 +940,7 @@ namespace ProgressoExpert.DataAccess
                         {
                             Mont = 0,
                             Year = 0,
+                            Period = new DateTime(),
                             refId = g.FirstOrDefault().C_Value2_RRRef,
                             ClientRefId = new byte[] { },
                             SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
@@ -961,6 +963,7 @@ namespace ProgressoExpert.DataAccess
                         {
                             Mont = 0,
                             Year = 0,
+                            Period = new DateTime(),
                             refId = g.FirstOrDefault().C_Fld10452_RRRef,
                             ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
                             SalersRefId = new byte[] { },
@@ -984,6 +987,7 @@ namespace ProgressoExpert.DataAccess
                         {
                             Mont = 0,
                             Year = 0,
+                            Period = new DateTime(),
                             refId = new byte[] { },
                             ClientRefId = new byte[] { },
                             SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
@@ -1004,6 +1008,7 @@ namespace ProgressoExpert.DataAccess
                         {
                             Mont = 0,
                             Year = 0,
+                            Period = new DateTime(),
                             refId = new byte[] { },
                             ClientRefId = s888.C_IDRRef,
                             SalersRefId = new byte[] { },
@@ -1032,6 +1037,7 @@ namespace ProgressoExpert.DataAccess
                               {
                                   Mont = g.FirstOrDefault().C_Period.Month,
                                   Year = g.FirstOrDefault().C_Period.Year,
+                                  Period = g.FirstOrDefault().C_Period,
                                   refId = g.FirstOrDefault().C_Value2_RRRef,
                                   ClientRefId = new byte[] { },
                                   SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
@@ -1054,6 +1060,7 @@ namespace ProgressoExpert.DataAccess
                                {
                                    Mont = 0,
                                    Year = 0,
+                                   Period = new DateTime(),
                                    refId = new byte[] { },
                                    ClientRefId = new byte[] { },
                                    SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
@@ -1076,6 +1083,7 @@ namespace ProgressoExpert.DataAccess
                                {
                                    Mont = 0,
                                    Year = 0,
+                                   Period = new DateTime(),
                                    refId = g.FirstOrDefault().C_Fld10452_RRRef,
                                    ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
                                    SalersRefId = new byte[] { },
@@ -1100,6 +1108,7 @@ namespace ProgressoExpert.DataAccess
                  {
                      Mont = r1.Mont,
                      Year = r1.Year,
+                     Period = r1.Period,
                      refId = r.refId,
                      ClientRefId = r2.ClientRefId,
                      SalersRefId = r1.SalersRefId,
@@ -1129,7 +1138,7 @@ namespace ProgressoExpert.DataAccess
                 bool WeGoCalcSebReal = false;
                 bool isSoSmall = false;
                 // вытащим только нашу группу
-                var salesForGroup = resSeb.Where(_ => _.GroupCode == gr.C_Code).OrderBy(_ => _.Year).ThenBy(_ => _.Mont).ToList();
+                var salesForGroup = resSeb.Where(_ => _.GroupCode == gr.C_Code).OrderBy(_ => _.Period).ToList();
 
                 while (counterSales < salesForGroup.Count && !WeGoCalcSebReal)
                 {
@@ -1188,7 +1197,7 @@ namespace ProgressoExpert.DataAccess
                             }
                             WeGoCalcSeb = true;
                             // при расчете среднего остатка за период мы уже бежим до конца периода по продажам
-                            if (dtT <= dtMt)
+                            if (dtMt <= dtT)
                             {
                                 counterSales++;
                                 if (pastTmp < 0)

@@ -150,7 +150,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
                 }
                 #endregion
             }
-            while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
+            while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] < endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
 
             // Две дополнительных колонки, которые есть всегда
             GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Pixel) });

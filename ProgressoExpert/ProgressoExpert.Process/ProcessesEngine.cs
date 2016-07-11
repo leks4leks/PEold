@@ -807,7 +807,7 @@ namespace ProgressoExpert.Process
             model.salesByGoodsDiagram.Add("Прочее", ti.Skip(3).Sum(_ => _.SalesWithoutNDS));
             var ttv = 3;
             if (ti.Count() < 3) ttv = ti.Count();
-            for (var i = ttv; i > 0; i --)
+            for (var i = ttv-1; i >= 0; i --)
                 model.salesByGoodsDiagram.Add(ti[i].GroupName, ti[i].SalesWithoutNDS);
 
             model.SalesvsPurchase = model.allPurchase != 0 ? MainModel.GeneralBA.Sales / model.allPurchase * 100 : 0;

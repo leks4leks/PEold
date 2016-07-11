@@ -33,6 +33,16 @@ namespace ProgressoExpert.Models.Entities
         private int _year;
 
         /// <summary>
+        /// период
+        /// </summary>
+        public DateTime Period
+        {
+            get { return _period; }
+            set { SetValue(ref _period, value, "Period"); }
+        }
+        private DateTime _period;
+
+        /// <summary>
         /// 
         /// </summary>
         public byte[] refId
