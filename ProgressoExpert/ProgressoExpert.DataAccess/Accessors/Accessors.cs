@@ -1165,7 +1165,7 @@ namespace ProgressoExpert.DataAccess
 
                         var dtT = new DateTime(salesForGroup[counterSales].Year, salesForGroup[counterSales].Mont, 1);
                         var dtMt = new DateTime(stDate.Year, stDate.Month, 1);
-                        if (!WeGoCalcSeb && dtT <= dtMt)
+                        if (!WeGoCalcSeb && dtT < dtMt)
                         {
                             tmp -= salesForGroup[counterSales].CountSal;
                             counterSales++;
