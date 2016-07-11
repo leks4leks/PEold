@@ -105,6 +105,8 @@ namespace ProgressoExpert.Controls.Utils
             bool yMinorTickMarkEnabled = false, int xLineWidth = 1, int yLineWidth = 1, bool xMajorTickMarkEnabled = true,
             bool xMinorTickMarkEnabled = false)
         {
+            ClearChart(ref _chart);
+
             var chartArea = new ChartArea() { Name = "ChartArea" };
             chartArea.AxisX.MajorGrid.LineWidth = xMajorGridLineWidth;
             chartArea.AxisY.MajorGrid.LineWidth = yMajorGridLineWidth;

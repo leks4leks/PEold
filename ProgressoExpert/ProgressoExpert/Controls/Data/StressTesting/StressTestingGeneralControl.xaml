@@ -173,13 +173,13 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="Продажи" Style="{StaticResource TextBlock15BoldGreen0LeftCenter}" Margin="50,10,10,10"/>
+                <TextBlock Text="Продажи" Style="{StaticResource TextBlock15BoldGreen0RightCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}"
                            Name="tbSalesPercentageValue" Text="{Binding SalesPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}"/>
@@ -202,13 +202,13 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock15BoldBlue11LeftCenter}" Margin="50,10,10,10"/>
+                <TextBlock Text="Валовая прибыль" Style="{StaticResource TextBlock15BoldBlue11RightCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Text="{Binding GrossProfitPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}" 
                            Name="tbGrossProfitPercentageValue"/>
@@ -231,13 +231,13 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="1" Grid.Column="0">
-                <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock15BoldRed1LeftCenter}" Margin="50,10,10,10"/>
+                <TextBlock Text="Чистая прибыль" Style="{StaticResource TextBlock15BoldRed1RightCenter}" Margin="50,10,10,10"/>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,50,0">
                 <Rectangle Style="{StaticResource RectangleBlue}" Margin="5,5,5,5"/>
                 <TextBlock Text="{Binding NetProfitPercentageValue, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" Margin="10,10" Style="{StaticResource TextBlock12BoldCenterCenter}" 
                            Name="tbNetProfitPercentageValue"/>

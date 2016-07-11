@@ -413,7 +413,12 @@ namespace ProgressoExpert.Models.Models
                 == 0 && ProfitabilityGeneralPercentage == 0 && ProfitabilityTop3ClientsPercentage == 0 && ProfitabilityTopProductPercentage
                 == 0 && ProfitabilityTop3ProductsPercentage == 0 && ExpensesPercentage == 0)
             {
-                SalesForecast = GrossProfitForecast = NetProfitForecast = 0;
+                SalesForecast = 
+                    GrossProfitForecast = 
+                    NetProfitForecast =
+                    SalesPercentageValue = 
+                    GrossProfitPercentageValue =
+                    NetProfitPercentageValue = 0;
             }
         }
 
