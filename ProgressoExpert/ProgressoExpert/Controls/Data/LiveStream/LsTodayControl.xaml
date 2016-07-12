@@ -68,10 +68,20 @@
         
         <!-- Диаграмма -->
         <Grid Grid.Row="2">
-            <WindowsFormsHost>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <WindowsFormsHost Grid.Column="0">
                 <dvc:Chart x:Name="chart" Click="chart_Click" >
                 </dvc:Chart>
             </WindowsFormsHost>
+            <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,5">
+                    <TextBlock Text="Деньги итого:" TextWrapping="Wrap"  Style="{StaticResource TextBlock13Green0CenterCenter}" Margin="0,0,0,2"/>
+                    <TextBlock Text="{Binding MoneyTotal, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}" TextWrapping="Wrap" Style="{StaticResource TextBlock13BoldBlackCenterCenter}"/>
+                </StackPanel>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="3">

@@ -23,6 +23,20 @@ namespace ProgressoExpert.Models.Models
         }
         private DateTime _endDate;
 
+        public DateTime StartDateView
+        {
+            get { return _startDateView; }
+            set { SetValue(ref _startDateView, value, "StartDateView"); }
+        }
+        private DateTime _startDateView;
+
+        public DateTime EndDateView
+        {
+            get { return _endDateView; }
+            set { SetValue(ref _endDateView, value, "EndDateView"); }
+        }
+        private DateTime _endDateView;
+
         #region Оборотные активы
 
         #region Денежные средства в кассе

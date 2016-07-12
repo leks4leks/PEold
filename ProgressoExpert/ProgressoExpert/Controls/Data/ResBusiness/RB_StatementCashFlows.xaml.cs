@@ -37,6 +37,22 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
         private void CreateAndFillADDS(MainModel vm)
         {
+            //if (GridStatementCashFlowsGrid.RowDefinitions.Count > 1)
+            //{
+            //    for (int i = GridStatementCashFlowsGrid.RowDefinitions.Count; i != 1; i--)
+            //    {
+            //        GridStatementCashFlowsGrid.RowDefinitions.CL
+            //    }
+            //}
+
+            //GridStatementCashFlowsGrid.RowDefinitions.Clear();
+            //foreach (RowDefinition item in GridStatementCashFlowsGrid.RowDefinitions)
+            //{
+            //}
+
+
+            GridStatementCashFlowsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(80, GridUnitType.Pixel) });
+
             int monthCount = 0; // заглушка
             int rowNum = 0;
             

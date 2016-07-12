@@ -395,9 +395,6 @@
     <Resource Include="Design\Controls\_Rules.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Design\deposit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Design\calc.png" />
   </ItemGroup>
   <ItemGroup>
@@ -408,6 +405,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Design\point.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\percent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\deposit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Design\calc2.png" />
+    <Resource Include="Design\deposit2.png" />
+    <Resource Include="Design\percent2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

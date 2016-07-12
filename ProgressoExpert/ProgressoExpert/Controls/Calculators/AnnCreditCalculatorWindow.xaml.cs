@@ -20,20 +20,20 @@ namespace ProgressoExpert.Controls.Calculators
     /// </summary>
     public partial class AnnCreditCalculatorWindow : Window
     {
-        private AnnCreditCalculatorModel ViewModel;
+        private AnnCreditCalculatorModel ViewModel2;
 
         public AnnCreditCalculatorWindow()
         {
             InitializeComponent();
-            ViewModel = new AnnCreditCalculatorModel();
-            this.DataContext = ViewModel;
+            ViewModel2 = new AnnCreditCalculatorModel();
+            this.DataContext = ViewModel2;
         }
 
         private void CalcBtn_Click(object sender, RoutedEventArgs e)
         {
             if (Validate())
             {
-                ViewModel.Calculate();
+                ViewModel2.Calculate();
             }
         }
 
@@ -44,7 +44,7 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.SetDefault();
+            ViewModel2.SetDefault();
         }
 
         private void Window_Deactivated_1(object sender, EventArgs e)
@@ -58,33 +58,33 @@ namespace ProgressoExpert.Controls.Calculators
                 this.DragMove();
         }
 
-        private void AnnualRateTB_GotFocus(object sender, RoutedEventArgs e)
+        private void AnnualRateTB2_GotFocus(object sender, RoutedEventArgs e)
         {
-            var indexPercent = AnnualRateTb.Text.IndexOf('%');
-            AnnualRateTb.Text = AnnualRateTb.Text.Remove(indexPercent, 1);
-            AnnualRateTb.SelectAll();
+            var indexPercent = AnnualRateTb2.Text.IndexOf('%');
+            AnnualRateTb2.Text = AnnualRateTb2.Text.Remove(indexPercent, 1);
+            AnnualRateTb2.SelectAll();
         }
 
         private bool Validate()
         {
-            SumTb.BorderBrush = Brushes.Gray;
-            AnnualRateTb.BorderBrush = Brushes.Gray;
-            MonthsTb.BorderBrush = Brushes.Gray;
+            SumTb2.BorderBrush = Brushes.Gray;
+            AnnualRateTb2.BorderBrush = Brushes.Gray;
+            MonthsTb2.BorderBrush = Brushes.Gray;
 
             var result = true;
-            if (ViewModel.Sum <= 0)
+            if (ViewModel2.Sum2 <= 0)
             {
-                SumTb.BorderBrush = Brushes.Red;
+                SumTb2.BorderBrush = Brushes.Red;
                 result = false;
             }
-            if (ViewModel.AnnualRate <= 0)
+            if (ViewModel2.AnnualRate2 <= 0)
             {
-                AnnualRateTb.BorderBrush = Brushes.Red;
+                AnnualRateTb2.BorderBrush = Brushes.Red;
                 result = false;
             }
-            if (ViewModel.Months <= 0)
+            if (ViewModel2.Months2 <= 0)
             {
-                MonthsTb.BorderBrush = Brushes.Red;
+                MonthsTb2.BorderBrush = Brushes.Red;
                 result = false;
             }
 

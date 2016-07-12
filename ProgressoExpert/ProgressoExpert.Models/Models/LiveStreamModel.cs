@@ -62,6 +62,16 @@ namespace ProgressoExpert.Models.Models
         private Dictionary<string, decimal> _cycleMoneyDiagram;
 
         /// <summary>
+        /// Деньги итого
+        /// </summary>
+        public decimal MoneyTotal
+        {
+            get { return _moneyTotal; }
+            set { SetValue(ref _moneyTotal, value, "MoneyTotal"); }
+        }
+        private decimal _moneyTotal;
+
+        /// <summary>
         /// Долги клиентов
         /// </summary>
         public decimal DebtOfCustomers

@@ -31,7 +31,7 @@ namespace ProgressoExpert.Controls.Utils
                 var quarter = string.Format("{0}, {1}", mainModel.StartDate.Month + i > 12
                     ? ((QuarterEnum)ttMon + i - 12)
                     : ((QuarterEnum)ttMon + i),
-                    mainModel.StartDate.Year + ((i + 3) / 12));
+                    mainModel.StartDate.Year + ((i + 3) / 12) - mainModel.TimeSpan);
                 result.Add(quarter, data.Skip(i).Take((data.Count - i) < 3 ? data.Count - i : 3).Sum(j => j.Value));
             }
 

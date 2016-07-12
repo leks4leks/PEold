@@ -119,9 +119,6 @@
 
                 <!-- Данные -->
                 <Grid Name="GridDataProfitLossReportGrid" Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
@@ -154,7 +151,8 @@
                         </Grid.RowDefinitions>
 
                         <Rectangle Style="{StaticResource MDTRectangleWhite}" Name="WhiteSpaseForData"/>
-                        <Rectangle Style="{StaticResource RectangleGray3}" Name="GraySpaseForData"/>
+                        <Rectangle Style="{StaticResource RectangleGray1}" Name="GraySpaseForData"/>
+                        <Rectangle Style="{StaticResource RectangleGray3}" Name="GraySpaseForData2"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="SecondBlueRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="NineBlueRow"/>
                         <Rectangle Style="{StaticResource MDTRectangleBlue}" Name="ElevenBlueRow"/>

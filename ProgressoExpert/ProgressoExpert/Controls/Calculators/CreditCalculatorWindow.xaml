@@ -2,100 +2,220 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="DIfCreditCalculatorWindow" Width="736.334" WindowStyle="None" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" MouseDown="Window_MouseDown_1" Deactivated="Window_Deactivated_1" ResizeMode="NoResize"
-        Height="500">
+        Height="530">
     <Border BorderBrush="BLack" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
-                <RowDefinition Height="200" Name="RowGraph"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0" Background="{DynamicResource BlueColor2}">
-                <TextBlock Text="Кредитный калькулятор (Равными долями)" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
-            </Grid>
-
-            <Grid Grid.Row="1" Background="#f6f6f8">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="0" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="SumTb" Text="{Binding Sum, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
-                </Grid>
-
-                <Grid Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="AnnualRateTb" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB_GotFocus"></TextBox>
-                </Grid>
-
-                <Grid Grid.Row="2" Grid.Column="0">
-                    <TextBlock Text="Срок (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="MonthsTb" Text="{Binding Months}"></TextBox>
-                </Grid>
-
-                <Grid Grid.Row="3" Grid.Column="0">
-                    <TextBlock Text="Отсрочка по ОД (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="3" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="DelayTb" Text="{Binding Delay}"></TextBox>
-                </Grid>
-
-                <Rectangle Grid.Row="0" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
-                <Grid Grid.Row="0" Grid.Column="3">
-                    <TextBlock Text="Итого будет выплачено:" Style="{StaticResource TextBlock12BoldCenterCenter}"
-                               Margin="0,15,0,0"/>
-                </Grid>
-                <Grid Grid.Row="0" Grid.Column="4" Margin="10,10,10,5">
-                    <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
-                </Grid>
-
-                <Grid Grid.Row="1" Grid.Column="3">
-                    <TextBlock Text="Итого переплата:" Style="{StaticResource TextBlock12CenterCenter}"/>
-                </Grid>
-                <Grid Grid.Row="1" Grid.Column="4" Margin="10,5,10,10">
-                    <TextBlock Name="ResultPercentTb1" Style="{StaticResource TextBlock12CenterCenter}" 
-                               Text="{Binding Overpayment, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
-                </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Background="{DynamicResource BlueColor2}"  Grid.ColumnSpan="2">
+                <TextBlock Text="Кредитный калькулятор" Style="{StaticResource TextBlock15WhiteCenterCenter}"/>
             </Grid>
             
-            <DataGrid Grid.Row="2" AlternatingRowBackground="{StaticResource BlueColor6}" Height="200" Width="Auto" AutoGenerateColumns="False" Name="gridResults">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Num}" Width="100" Header="Номер взноса"/>
-                    <DataGridTextColumn Binding="{Binding DebtBalance}" Width="158" Header="Остаток задолженности"/>
-                    <DataGridTextColumn Binding="{Binding RedemptionSum}" Width="150" Header="Сумма погашения ОД"/>
-                    <DataGridTextColumn Binding="{Binding RemunerationSum}" Width="150" Header="Сумма вознаграждения"/>
-                    <DataGridTextColumn Binding="{Binding TotalPayment}" Width="150" Header="Итого взнос"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <Grid Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                    <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatGreenButton}" Click="CalcBtn_Click"/>
-                    <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
-                    <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
-                </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <ToggleButton Name="CreditCalcBtn" Content="Равными долями" Style="{StaticResource MenuToggleButton2}" Click="CreditCalcBtn_Click" IsChecked="True"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <ToggleButton Name="AnnCreditBtn" Content="Аннуитет" Style="{StaticResource MenuToggleButton2}" Click="AnnCreditBtn_Click"/>
             </Grid>
 
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Name="CreditCalcGrid" Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200" Name="RowGraph"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1" Background="#f6f6f8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Width="140" Height="25" Name="SumTb" Text="{Binding Sum, StringFormat={}{0:N0}, ConverterCulture=ru-RU}" Margin="21,12,20.6,12.6"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="AnnualRateTb" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB_GotFocus"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <TextBlock Text="Срок (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="MonthsTb" Text="{Binding Months}"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <TextBlock Text="Отсрочка по ОД (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="DelayTb" Text="{Binding Delay}"></TextBox>
+                    </Grid>
+
+                    <Rectangle Grid.Row="0" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
+                    <Grid Grid.Row="0" Grid.Column="3">
+                        <TextBlock Text="Итого будет выплачено:" Style="{StaticResource TextBlock12BoldCenterCenter}"
+                               Margin="0,15,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="4" Margin="10,10,10,5">
+                        <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <TextBlock Text="Итого переплата:" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="4" Margin="10,5,10,10">
+                        <TextBlock Name="ResultPercentTb1" Style="{StaticResource TextBlock12CenterCenter}" 
+                               Text="{Binding Overpayment, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+                </Grid>
+
+                <DataGrid Grid.Row="2" AlternatingRowBackground="{StaticResource BlueColor6}" Height="200" Width="Auto" AutoGenerateColumns="False" Name="gridResults">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Num}" Width="100" Header="Номер взноса"/>
+                        <DataGridTextColumn Binding="{Binding DebtBalance}" Width="158" Header="Остаток задолженности"/>
+                        <DataGridTextColumn Binding="{Binding RedemptionSum}" Width="150" Header="Сумма погашения ОД"/>
+                        <DataGridTextColumn Binding="{Binding RemunerationSum}" Width="150" Header="Сумма вознаграждения"/>
+                        <DataGridTextColumn Binding="{Binding TotalPayment}" Width="150" Header="Итого взнос"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
+                        <Button Name="CalcBtn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatGreenButton}" Click="CalcBtn_Click"/>
+                        <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
+                        <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Name="AnnCreditCalcGrid" Visibility="Hidden">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#f6f6f8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="SumTb2" Text="{Binding Sum2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="AnnualRateTb2" Text="{Binding AnnualRate2, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB2_GotFocus"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <TextBlock Text="Срок (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="MonthsTb2" Text="{Binding Months2}"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="0">
+                        <TextBlock Text="Отсрочка по ОД (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <TextBox Width="140" Height="25" Name="DelayTb2" Text="{Binding Delay2}"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Grid.Column="0"/>
+                    <Grid Grid.Row="4" Grid.Column="1"/>
+
+                    <Rectangle Grid.Row="0" Grid.RowSpan="4" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource RectangleWhiteGray3}" Margin="5,5,5,5"/>
+
+                    <Grid Grid.Row="0" Grid.Column="3">
+                        <TextBlock Text="Ежемесячный платеж по отсрочке:" Style="{StaticResource TextBlock12BoldCenterCenter}"
+                               Margin="0,0,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="4" Margin="10,5,10,10">
+                        <TextBlock Name="PercentInMonthTb2" Style="{StaticResource TextBlock12BoldCenterCenter}" 
+                               Text="{Binding Annuity2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <TextBlock Text="Ежемесячный платеж без отсрочки:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="4" Margin="10,5,10,10">
+                        <TextBlock Name="ResultPercentTb2" Style="{StaticResource TextBlock12BoldCenterCenter}"  
+                               Text="{Binding Annuity2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="3">
+                        <TextBlock Text="Итого будет оплачено:" Style="{StaticResource TextBlock12BoldCenterCenter}"
+                               Margin="0,0,0,0"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="4" Margin="10,10,10,5">
+                        <TextBlock Name="ResultSumTb2" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="3">
+                        <TextBlock Text="Итого переплата:" Style="{StaticResource TextBlock12CenterCenter}"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="4" Margin="10,5,10,10">
+                        <TextBlock Name="ResultPercentTb12" Style="{StaticResource TextBlock12CenterCenter}" 
+                               Text="{Binding Overpayment2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
+                        <Button Name="Calc2Btn" Content="Рассчитать" Width="100" Style="{StaticResource MaterialDesignFlatGreenButton}" Click="CalcBtn_Click"/>
+                        <Button Name="Clear2Btn" Content="Очистить" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="ClearBtn_Click"/>
+                        <Button Name="Cancel2Btn" Content="Отмена" Width="100" Margin="0,0,0,0" Style="{StaticResource MaterialDesignFlatButton}" Click="CancelBtn_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
     </Border>
 </Window>

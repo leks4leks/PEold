@@ -68,7 +68,7 @@ namespace ProgressoExpert.Controls.Utils
 
         public static void AddPoint(string seriesName, decimal dataPointData, string labelFormat, string legendText, System.Drawing.Color color, ref Chart chart)
         {
-            //var dataPointData = ViewModel.CycleMoneyDiagram["Деньги в кассе"];
+            //var dataPointData = ViewModel2.CycleMoneyDiagram["Деньги в кассе"];
             if (dataPointData > 0)
             {
                 chart.Series[seriesName].Points.Add(new DataPoint()

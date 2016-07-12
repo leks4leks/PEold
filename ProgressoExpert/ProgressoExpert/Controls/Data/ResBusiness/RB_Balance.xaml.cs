@@ -28,6 +28,8 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
         public void DataBind(MainModel vm)
         {
+            vm.BusinessResults.StartDateView = new DateTime(vm.StartDate.Year - vm.TimeSpan, vm.StartDate.Month, vm.StartDate.Day);
+            vm.BusinessResults.EndDateView = new DateTime(vm.EndDate.Year - vm.TimeSpan, vm.EndDate.Month, vm.EndDate.Day);
             DataContext = vm;
         }
     }

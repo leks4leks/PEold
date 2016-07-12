@@ -19,6 +19,21 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock13BoldBlackCenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock13Green0CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{StaticResource Green0}" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock18BoldGreen0CenterCenter" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -354,6 +369,14 @@
 
     <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock12BoldGray7LeftCenter" BasedOn="{StaticResource TextBlockStyle}">
         <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Gray7}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="TextBlock15BoldGray7LeftCenter" BasedOn="{StaticResource TextBlockStyle}">
+        <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="{StaticResource Gray7}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>

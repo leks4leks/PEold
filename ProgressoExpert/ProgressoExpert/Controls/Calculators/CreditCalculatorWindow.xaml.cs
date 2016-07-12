@@ -21,6 +21,7 @@ namespace ProgressoExpert.Controls.Calculators
     public partial class CreditCalculatorWindow : Window
     {
         private CreditCalculatorModel ViewModel;
+        private bool IsItAnn = false;
 
         public CreditCalculatorWindow()
         {
@@ -33,8 +34,15 @@ namespace ProgressoExpert.Controls.Calculators
         {
             if (Validate())
             {
-                ViewModel.Calculate();
-                gridResults.ItemsSource = ViewModel.DataList;
+                if (!IsItAnn)
+                {
+                    ViewModel.Calculate();
+                    gridResults.ItemsSource = ViewModel.DataList;
+                }
+                else
+                {
+                    ViewModel.Calculate2();
+                }
             }
         }
 
@@ -45,8 +53,15 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.SetDefault();
-            gridResults.ItemsSource = null;
+            if (!IsItAnn)
+            {
+                ViewModel.SetDefault();
+                gridResults.ItemsSource = null;
+            }
+            else
+            {
+                ViewModel.SetDefault2();
+            }
         }
 
         private void Window_Deactivated_1(object sender, EventArgs e)
@@ -62,35 +77,95 @@ namespace ProgressoExpert.Controls.Calculators
 
         private void AnnualRateTB_GotFocus(object sender, RoutedEventArgs e)
         {
-            var indexPercent = AnnualRateTb.Text.IndexOf('%');
-            AnnualRateTb.Text = AnnualRateTb.Text.Remove(indexPercent, 1);
-            AnnualRateTb.SelectAll();
+            try
+            {
+                var indexPercent = AnnualRateTb.Text.IndexOf('%');
+                AnnualRateTb.Text = AnnualRateTb.Text.Remove(indexPercent, 1);
+                AnnualRateTb.SelectAll();
+            }
+            catch { }
+        }
+
+        private void AnnualRateTB2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var indexPercent = AnnualRateTb2.Text.IndexOf('%');
+                AnnualRateTb2.Text = AnnualRateTb2.Text.Remove(indexPercent, 1);
+                AnnualRateTb2.SelectAll();
+            }
+            catch { }
         }
 
         private bool Validate()
         {
-            SumTb.BorderBrush = Brushes.Gray;
-            AnnualRateTb.BorderBrush = Brushes.Gray;
-            MonthsTb.BorderBrush = Brushes.Gray;
+            if (!IsItAnn)
+            {
+                SumTb.BorderBrush = Brushes.Gray;
+                AnnualRateTb.BorderBrush = Brushes.Gray;
+                MonthsTb.BorderBrush = Brushes.Gray;
 
-            var result = true;
-            if (ViewModel.Sum <= 0)
-            {
-                SumTb.BorderBrush = Brushes.Red;
-                result = false;
-            }
-            if (ViewModel.AnnualRate <= 0)
-            {
-                AnnualRateTb.BorderBrush = Brushes.Red;
-                result = false;
-            }
-            if (ViewModel.Months <= 0)
-            {
-                MonthsTb.BorderBrush = Brushes.Red;
-                result = false;
-            }
+                var result = true;
+                if (ViewModel.Sum <= 0)
+                {
+                    SumTb.BorderBrush = Brushes.Red;
+                    result = false;
+                }
+                if (ViewModel.AnnualRate <= 0)
+                {
+                    AnnualRateTb.BorderBrush = Brushes.Red;
+                    result = false;
+                }
+                if (ViewModel.Months <= 0)
+                {
+                    MonthsTb.BorderBrush = Brushes.Red;
+                    result = false;
+                }
 
-            return result;
+                return result;
+            }
+            else
+            {
+                SumTb2.BorderBrush = Brushes.Gray;
+                AnnualRateTb2.BorderBrush = Brushes.Gray;
+                MonthsTb2.BorderBrush = Brushes.Gray;
+
+                var result = true;
+                if (ViewModel.Sum2 <= 0)
+                {
+                    SumTb2.BorderBrush = Brushes.Red;
+                    result = false;
+                }
+                if (ViewModel.AnnualRate2 <= 0)
+                {
+                    AnnualRateTb2.BorderBrush = Brushes.Red;
+                    result = false;
+                }
+                if (ViewModel.Months2 <= 0)
+                {
+                    MonthsTb2.BorderBrush = Brushes.Red;
+                    result = false;
+                }
+
+                return result;
+            }
+        }
+
+        private void CreditCalcBtn_Click(object sender, RoutedEventArgs e)
+        {
+            IsItAnn = false;
+            CreditCalcGrid.Visibility = System.Windows.Visibility.Visible;
+            AnnCreditCalcGrid.Visibility = System.Windows.Visibility.Hidden;
+            AnnCreditBtn.IsChecked = false;
+
+        }
+
+        private void AnnCreditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            IsItAnn = true;
+            CreditCalcGrid.Visibility = System.Windows.Visibility.Hidden;
+            AnnCreditCalcGrid.Visibility = System.Windows.Visibility.Visible;
+            CreditCalcBtn.IsChecked = false;
         }
     }
 }

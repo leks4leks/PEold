@@ -34,8 +34,8 @@ namespace ProgressoExpert
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            //ViewModel.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
-            //ViewModel.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
+            //ViewModel2.StartDate = DateTime.Today; //;(DateTime)StartDate.SelectedDate;
+            //ViewModel2.EndDate = DateTime.Today; // (DateTime)endDate.SelectedDate;
             //return;
 
             ViewModel.StartDate = new DateTime(2013, 05, 01);
@@ -60,7 +60,7 @@ namespace ProgressoExpert
         {
             ProcessesEngine.InitMainModel(ViewModel.StartDate, ViewModel.EndDate, ref ViewModel);
 
-            //ViewModel.IsItQuarter = true;
+            //ViewModel2.IsItQuarter = true;
             // Результаты бизнеса
             ViewModel.BusinessResults = ProcessesEngine.GetBusinessResults(ViewModel);
             ViewModel.ReportProfitAndLoss = ProcessesEngine.GetReportProfitAndLoss(ViewModel);

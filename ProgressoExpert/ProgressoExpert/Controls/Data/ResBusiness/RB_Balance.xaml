@@ -64,8 +64,8 @@
                 <TextBlock Text="Активы" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
 
                 <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="{Binding BusinessResults.StartDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="{Binding BusinessResults.EndDate, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.StartDateView, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.EndDateView, StringFormat='dd.MM.yyyy'}"  Grid.Row="1" Grid.Column="2" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
 
                 <TextBlock Text="Оборотные активы" Grid.Row="2" Grid.Column="0" Style="{StaticResource TextBlock12WhiteLeftCenterMarginLeft5}"/>
                 <TextBlock Text="{Binding BusinessResults.CirculatingAssetsStart, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource MDTTextBlockCenterWhite}"/>
@@ -128,8 +128,8 @@
                 <TextBlock Text="Пассивы" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
 
                 <TextBlock Text="Статья баланса" Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="{Binding BusinessResults.StartDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="4" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
-                <TextBlock Text="{Binding BusinessResults.EndDate, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.StartDateView, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="4" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
+                <TextBlock Text="{Binding BusinessResults.EndDateView, StringFormat='dd.MM.yyyy'}" Grid.Row="1" Grid.Column="5" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
 
                 <TextBlock Text="Текущая задолженность" Grid.Row="2" Grid.Column="3" Style="{StaticResource TextBlock12WhiteLeftCenterMarginLeft5}"/>
                 <TextBlock Text="{Binding BusinessResults.CurrentDebtStart, StringFormat={}{0:#,##0,}, ConverterCulture=ru-RU}"  Grid.Row="2" Grid.Column="4" Style="{StaticResource MDTTextBlockCenterWhite}"/>

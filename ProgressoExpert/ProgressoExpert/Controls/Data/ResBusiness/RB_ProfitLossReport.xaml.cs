@@ -41,10 +41,10 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             //vm.StartDate = vm.StartDate.AddYears(vm.TimeSpan * -1);
             //vm.EndDate = vm.EndDate.AddYears(vm.TimeSpan * -1);
 
-            int[] endMonthYear = new int[] { vm.EndDate.Month, vm.EndDate.Year };
+            int[] endMonthYear = new int[] { vm.EndDate.Month, vm.EndDate.Year - vm.TimeSpan };
 
             int monthCount = 0;
-            int[] startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year };//будем бежать от начала до конца периода
+            int[] startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year - vm.TimeSpan };//будем бежать от начала до конца периода
             do
             {
                 #region Cчитаем кол-во месяцев
@@ -68,7 +68,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             Border brd = new Border();
             Grid.SetColumn(brd, 0);
             Grid.SetRow(brd, 0);
-            Grid.SetColumnSpan(brd, monthCount + 2); // + год и  средневзвешанная
+            Grid.SetColumnSpan(brd, monthCount + 1); // + год и  средневзвешанная
             brd.BorderBrush = Brushes.Black;
             Thickness BorderThickness = brd.BorderThickness;
             BorderThickness.Left = 0;
@@ -81,58 +81,28 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             Rectangle rct = new Rectangle();
             Grid.SetColumn(rct, 0);
             Grid.SetRow(rct, 0);
-            Grid.SetColumnSpan(rct, monthCount + 2); // + год и  средневзвешанная
+            Grid.SetColumnSpan(rct, monthCount + 1); // + год и  средневзвешанная
             rct.Fill = Brushes.LightGray;
             GridDataProfitLossReportGrid.Children.Add(rct);
             #endregion
 
-            //TextBlock tBlock = new TextBlock();
-            //monthCount = 0;
-            //startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year };
-            //do // в верхний цикл засунить не могли, иначе заливка поверх текста встает
-            //{
-            //    dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) }); // создадим новую колонку в гриде
-            //    tBlock = CreateAndFillTextBlock(((Month)startMonthYear[0]).ToString() + ", " + startMonthYear[1], 0, 0, false, ref monthCount);
-            //    dataRowProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
-            //    #region
-            //    if (startMonthYear[0] == 12)
-            //    {
-            //        startMonthYear[1]++;
-            //        startMonthYear[0] = 1;
-            //    }
-            //    else
-            //    {
-            //        startMonthYear[0]++;
-            //    }
-            //    #endregion
-            //}
-            //while ((startMonthYear[1] <= endMonthYear[1] && startMonthYear[1] != endMonthYear[1]) || (startMonthYear[0] <= endMonthYear[0] && startMonthYear[1] == endMonthYear[1]));
-
-            //// Две дополнительных колонки, которые есть всегда
-            //dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            //tBlock = CreateAndFillTextBlock("Итого за период", 0, 0, false, ref monthCount);
-            //dataRowProfitLossReportGrid.Children.Add(tBlock);
-
-            //dataRowProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Star) });
-            //tBlock = CreateAndFillTextBlock("Средняя цена за период", 0, 0, false, ref monthCount);
-            ////tBlock.Width = 100;
-            //dataRowProfitLossReportGrid.Children.Add(tBlock);
             #endregion
 
             #region Данные
 
             #region Красота, фон
             SetParamForRectangle(0, 1, 15, monthCount - 2, WhiteSpaseForData);
-            SetParamForRectangle(monthCount, 1, 15, 2, GraySpaseForData);
-            SetParamForRectangle(0, 3, 0, monthCount + 2, SecondBlueRow, false);
-            SetParamForRectangle(0, 10, 0, monthCount + 2, NineBlueRow, false);
-            SetParamForRectangle(0, 12, 0, monthCount + 2, ElevenBlueRow, false);
-            SetParamForRectangle(0, 15, 0, monthCount+2, FourteenBlueRow, false);
+            SetParamForRectangle(monthCount - 1, 1, 15, 1, GraySpaseForData);
+            SetParamForRectangle(monthCount, 1, 15, 1, GraySpaseForData2);
+            SetParamForRectangle(0, 3, 0, monthCount + 1, SecondBlueRow, false);
+            SetParamForRectangle(0, 10, 0, monthCount + 1, NineBlueRow, false);
+            SetParamForRectangle(0, 12, 0, monthCount + 1, ElevenBlueRow, false);
+            SetParamForRectangle(0, 15, 0, monthCount + 1, FourteenBlueRow, false);
             #endregion
 
             TextBlock tBlock;
             monthCount = 0;
-            startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year };
+            startMonthYear = new int[] { vm.StartDate.Month, vm.StartDate.Year - vm.TimeSpan };
             do // в верхний цикл засунить не могли, иначе заливка поверх текста встает
             {
                 GridDataProfitLossReportGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(80, GridUnitType.Pixel) }); // создадим новую колонку в гриде
@@ -238,7 +208,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
 
             #endregion
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.GrossMargin), 17, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.GrossMargin), 17, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             var border = new Border();
@@ -246,10 +216,10 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             border.BorderBrush = new SolidColorBrush(Colors.Black);
             Grid.SetColumn(border, 0);
             Grid.SetRow(border, 17);
-            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2);
+            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 1);
             GridDataProfitLossReportGrid.Children.Add(border);
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.NetMargin), 18, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.NetMargin), 18, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             border = new Border();
@@ -257,10 +227,10 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             border.BorderBrush = new SolidColorBrush(Colors.Black);
             Grid.SetColumn(border, 0);
             Grid.SetRow(border, 18);
-            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2);
+            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 1);
             GridDataProfitLossReportGrid.Children.Add(border);
 
-            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.ServiceRatioPercent), 19, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 3, true, ref monthCount);
+            tBlock = CreateAndFillTextBlock(string.Format(FormatUtils.Percentage2, model.ServiceRatioPercent), 19, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2, true, ref monthCount);
             tBlock.Style = (Style)FindResource("TextBlock12CenterCenter");
             GridDataProfitLossReportGrid.Children.Add(tBlock);// добавим получившийся блок с текстом
             border = new Border();
@@ -268,7 +238,7 @@ namespace ProgressoExpert.Controls.Data.ResBusiness
             border.BorderBrush = new SolidColorBrush(Colors.Black);
             Grid.SetColumn(border, 0);
             Grid.SetRow(border, 19);
-            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 2);
+            Grid.SetColumnSpan(border, GridDataProfitLossReportGrid.ColumnDefinitions.Count - 1);
             GridDataProfitLossReportGrid.Children.Add(border);
         }
 

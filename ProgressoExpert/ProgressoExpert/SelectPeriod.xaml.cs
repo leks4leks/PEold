@@ -50,9 +50,9 @@ namespace ProgressoExpert
             {
                 ViewModel.DateTextForButton = string.Format("{0}, {1}", (Month)ViewModel.StartDate.Month, ViewModel.StartDate.Year);
                 if ((ViewModel.StartDate.Year == ViewModel.EndDate.Year &&
-                    ViewModel.EndDate.Month - ViewModel.StartDate.Month > 3) ||
+                    ViewModel.EndDate.Month - ViewModel.StartDate.Month > 1) ||
                     (ViewModel.StartDate.Year < ViewModel.EndDate.Year &&
-                    ViewModel.EndDate.Month + 12 - ViewModel.StartDate.Month > 3))
+                    ViewModel.EndDate.Month + 12 - ViewModel.StartDate.Month > 1))
                 {
                     ViewModel.DateTextForButton += string.Format(" - {0}, {1}", (Month)ViewModel.EndDate.Month,
                         ViewModel.EndDate.Year);

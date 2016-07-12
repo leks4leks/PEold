@@ -83,6 +83,7 @@ namespace ProgressoExpert.Process
             model.CycleMoneyDiagram = new Dictionary<string, decimal>();
             model.CycleMoneyDiagram.Add("Деньги в кассе", MainModel.BusinessResults.CashInCashBoxEnd);
             model.CycleMoneyDiagram.Add("Деньги на счетах", MainModel.BusinessResults.MoneyInTheBankAccountsEnd);
+            model.MoneyTotal = MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd;
 
             model.CoveringCurrentDebtMoney = (MainModel.BusinessResults.CashInCashBoxEnd + MainModel.BusinessResults.MoneyInTheBankAccountsEnd
                + MainModel.BusinessResults.DepositsEnd) / (MainModel.BusinessResults.CurrentDebtEnd != 0 ? MainModel.BusinessResults.CurrentDebtEnd : 1) * 100;
@@ -345,7 +346,7 @@ namespace ProgressoExpert.Process
             model.SalesDiagram = new Dictionary<string, decimal>();
             foreach (var mon in MainModel.Sales)
             {
-                model.SalesDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), mon.Sales.Sum(_ => _.SalesWithoutNDS));
+                model.SalesDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year - MainModel.TimeSpan) : ((Month)mon.Date.Month).ToString(), mon.Sales.Sum(_ => _.SalesWithoutNDS));
             }
 
             model.NetProfitDiagram = new Dictionary<string, decimal>();
@@ -355,7 +356,7 @@ namespace ProgressoExpert.Process
                 var _year = startDate;
                 if (startDate.Month + i > 12) tmpMon = i - 12;
                 else tmpMon = startDate.Month + i;
-                model.NetProfitDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)tmpMon, _year.AddMonths(i).Year) : ((Month)tmpMon).ToString(), MainModel.ReportProfitAndLoss.Costs.ToArray()[i]);
+                model.NetProfitDiagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)tmpMon, _year.AddMonths(i).Year - MainModel.TimeSpan) : ((Month)tmpMon).ToString(), MainModel.ReportProfitAndLoss.Costs.ToArray()[i]);
             }
 
             var mm = new MainModel();

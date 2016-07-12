@@ -103,7 +103,7 @@
 
         <Grid Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFFFFFFF">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0">
-                <Button Name="ChangePeriodBtn" Content="Выбрать" Width="100" Click="ChangePeriodBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                <Button Name="ChangePeriodBtn" Content="Выбрать" Width="100" Click="ChangePeriodBtn_Click" Style="{StaticResource MaterialDesignFlatGreenButton}"/>
                 <Button Name="ClearBtn" Content="Очистить" Width="100" Margin="0,0,0,0" Click="ClearBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
                 <Button Name="CancelBtn" Content="Отмена" Width="100" Margin="0,0,0,0" Click="CancelBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
             </StackPanel>

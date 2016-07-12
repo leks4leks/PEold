@@ -48,6 +48,44 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style TargetType="{x:Type ToggleButton}" x:Key="MenuToggleButton2">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="TextBlock.Foreground" Value="{StaticResource BlueColor2}"/>
+        <Setter Property="TextBlock.FontSize" Value="16"/>
+        <Setter Property="TextBlock.FontFamily" Value="Arial"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Name="Border" BorderThickness="1" Background="Transparent" BorderBrush="Transparent">
+                        <ContentPresenter Name="ContentHost" Margin="8,3" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="true" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="White" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="Foreground" Value="{StaticResource BlueColor2}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource BlueColor2}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource BlueColor1}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Border" Property="Opacity" Value="0.25" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 
     <Style TargetType="{x:Type GridSplitter}" x:Key="MenuSplitter">
         <Setter Property="Height" Value="40"/>

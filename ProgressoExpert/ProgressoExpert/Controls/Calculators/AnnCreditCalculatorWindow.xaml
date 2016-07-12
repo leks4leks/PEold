@@ -34,28 +34,28 @@
                     <TextBlock Text="Сумма займа" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="SumTb" Text="{Binding Sum, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
+                    <TextBox Width="140" Height="25" Name="SumTb2" Text="{Binding Sum2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"></TextBox>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="0">
                     <TextBlock Text="Годовая ставка" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="AnnualRateTb" Text="{Binding AnnualRate, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB_GotFocus"></TextBox>
+                    <TextBox Width="140" Height="25" Name="AnnualRateTb2" Text="{Binding AnnualRate2, StringFormat={}{0:N0}%, ConverterCulture=ru-RU}" GotFocus="AnnualRateTB2_GotFocus"></TextBox>
                 </Grid>
 
                 <Grid Grid.Row="2" Grid.Column="0">
                     <TextBlock Text="Срок (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="MonthsTb" Text="{Binding Months}"></TextBox>
+                    <TextBox Width="140" Height="25" Name="MonthsTb2" Text="{Binding Months2}"></TextBox>
                 </Grid>
 
                 <Grid Grid.Row="3" Grid.Column="0">
                     <TextBlock Text="Отсрочка по ОД (мес.)" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="1">
-                    <TextBox Width="140" Height="25" Name="DelayTb" Text="{Binding Delay}"></TextBox>
+                    <TextBox Width="140" Height="25" Name="DelayTb2" Text="{Binding Delay2}"></TextBox>
                 </Grid>
 
                 <Grid Grid.Row="4" Grid.Column="0"/>
@@ -68,16 +68,16 @@
                                Margin="0,0,0,0"/>
                 </Grid>
                 <Grid Grid.Row="0" Grid.Column="4" Margin="10,5,10,10">
-                    <TextBlock Name="PercentInMonthTb" Style="{StaticResource TextBlock12BoldCenterCenter}" 
-                               Text="{Binding Annuity, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    <TextBlock Name="PercentInMonthTb2" Style="{StaticResource TextBlock12BoldCenterCenter}" 
+                               Text="{Binding Annuity2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
 
                 <Grid Grid.Row="1" Grid.Column="3">
                     <TextBlock Text="Ежемесячный платеж без отсрочки:" Style="{StaticResource TextBlock12BoldCenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="4" Margin="10,5,10,10">
-                    <TextBlock Name="ResultPercentTb" Style="{StaticResource TextBlock12BoldCenterCenter}"  
-                               Text="{Binding Annuity, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    <TextBlock Name="ResultPercentTb2" Style="{StaticResource TextBlock12BoldCenterCenter}"  
+                               Text="{Binding Annuity2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
                 
                 <Grid Grid.Row="2" Grid.Column="3">
@@ -85,15 +85,15 @@
                                Margin="0,0,0,0"/>
                 </Grid>
                 <Grid Grid.Row="2" Grid.Column="4" Margin="10,10,10,5">
-                    <TextBlock Name="ResultSumTb" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    <TextBlock Name="ResultSumTb2" Style="{StaticResource TextBlock12CenterCenter}" Text="{Binding SumTotal2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Grid.Column="3">
                     <TextBlock Text="Итого переплата:" Style="{StaticResource TextBlock12CenterCenter}"/>
                 </Grid>
                 <Grid Grid.Row="3" Grid.Column="4" Margin="10,5,10,10">
-                    <TextBlock Name="ResultPercentTb1" Style="{StaticResource TextBlock12CenterCenter}" 
-                               Text="{Binding Overpayment, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
+                    <TextBlock Name="ResultPercentTb12" Style="{StaticResource TextBlock12CenterCenter}" 
+                               Text="{Binding Overpayment2, StringFormat={}{0:N0}, ConverterCulture=ru-RU}"/>
                 </Grid>
             </Grid>
 

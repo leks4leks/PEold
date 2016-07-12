@@ -35,6 +35,8 @@ namespace ProgressoExpert.Controls.Data.StressTesting
             ViewModel = model;
             DataContext = model;
 
+            btnClear_Click(this, null);
+
             ViewModel.CalculateAll();
 
             LoadDiagramm(ref chart);
@@ -85,45 +87,34 @@ namespace ProgressoExpert.Controls.Data.StressTesting
         }
 
 
+        private int SetPercentageValue(ref TextBox textBox)
+        {
+            int result = 0;
+            try
+            {
+                result = Convert.ToInt32(textBox.Text);
+            }
+            catch
+            {
+                result = 0;
+                textBox.Text = "0";
+            }
+            return result;
+        }
+
         private void TextBox_KeyUp_1(object sender, KeyEventArgs e)
         {
             try
             {
-                int tmp = 0;
-                Int32.TryParse(tbSalesGeneralPercentage.Text, out tmp);
-                ViewModel.SalesGeneralPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbSalesTop3ClientsPercentage.Text, out tmp);
-                ViewModel.SalesTop3ClientsPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbSalesTopProductPercentage.Text, out tmp);
-                ViewModel.SalesTopProductPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbSalesTop3ProductsPercentage.Text, out tmp);
-                ViewModel.SalesTop3ProductsPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbProfitabilityGeneralPercentage.Text, out tmp);
-                ViewModel.ProfitabilityGeneralPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbProfitabilityTop3ClientsPercentage.Text, out tmp);
-                ViewModel.ProfitabilityTop3ClientsPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbProfitabilityTopProductPercentage.Text, out tmp);
-                ViewModel.ProfitabilityTopProductPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbProfitabilityTop3ProductsPercentage.Text, out tmp);
-                ViewModel.ProfitabilityTop3ProductsPercentage = tmp;
-
-                tmp = 0;
-                Int32.TryParse(tbExpensesPercentage.Text, out tmp);
-                ViewModel.ExpensesPercentage = tmp;
+                ViewModel.SalesGeneralPercentage = SetPercentageValue(ref tbSalesGeneralPercentage);
+                ViewModel.SalesTop3ClientsPercentage = SetPercentageValue(ref tbSalesTop3ClientsPercentage);
+                ViewModel.SalesTopProductPercentage = SetPercentageValue(ref tbSalesTopProductPercentage);
+                ViewModel.SalesTop3ProductsPercentage = SetPercentageValue(ref tbSalesTop3ProductsPercentage);
+                ViewModel.ProfitabilityGeneralPercentage = SetPercentageValue(ref tbProfitabilityGeneralPercentage);
+                ViewModel.ProfitabilityTop3ClientsPercentage = SetPercentageValue(ref tbProfitabilityTop3ClientsPercentage);
+                ViewModel.ProfitabilityTopProductPercentage = SetPercentageValue(ref tbProfitabilityTopProductPercentage);
+                ViewModel.ProfitabilityTop3ProductsPercentage = SetPercentageValue(ref tbProfitabilityTop3ProductsPercentage);
+                ViewModel.ExpensesPercentage = SetPercentageValue(ref tbExpensesPercentage);
 
                 ViewModel.CalculateAll();
 
@@ -149,6 +140,25 @@ namespace ProgressoExpert.Controls.Data.StressTesting
                 tbProfitabilityTop3ProductsPercentage.Text =
                 tbExpensesPercentage.Text = "0";
             TextBox_KeyUp_1(this, null);
+        }
+
+        private void tbSalesGeneralPercentage_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //var indexPercent = tbSalesGeneralPercentage.Text.IndexOf('%');
+            //if (indexPercent != -1)
+            //{
+            //    tbSalesGeneralPercentage.Text = tbSalesGeneralPercentage.Text.Remove(indexPercent, 1);
+            //}
+            //tbSalesGeneralPercentage.SelectAll();
+        }
+
+        private void tbSalesGeneralPercentage_LostFocus(object sender, RoutedEventArgs e)
+        {
+            //var indexPercent = tbSalesGeneralPercentage.Text.IndexOf('%');
+            //if (indexPercent == -1)
+            //{
+            //    tbSalesGeneralPercentage.Text += "%";
+            //}
         }
     }
 }

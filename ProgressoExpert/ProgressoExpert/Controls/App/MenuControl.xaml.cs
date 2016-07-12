@@ -1,4 +1,5 @@
-﻿using ProgressoExpert.Models.Models;
+﻿using ProgressoExpert.Controls.Calculators;
+using ProgressoExpert.Models.Models;
 using ProgressoExpert.Models.Models.App;
 using ProgressoExpert.Process;
 using System;
@@ -27,6 +28,11 @@ namespace ProgressoExpert.Controls.App
         public MainModel ViewModel;
         SelectPeriod SelectPeriodWindow;
 
+        CalculatorWindow CalculatorWindow;
+        DepositCalculatorWindow DepositCalculatorWindow;
+        AnnCreditCalculatorWindow AnnCreditCalculatorWindow;
+        CreditCalculatorWindow CreditCalculatorWindow;
+
         public MenuControl()
         {
             InitializeComponent();
@@ -50,7 +56,7 @@ namespace ProgressoExpert.Controls.App
                 BusinessAnalysisBtn.IsChecked = 
                 StressTestingBtn.IsChecked = 
                 BusinessResultsBtn.IsChecked = 
-                ForecastBtn.IsChecked = false;
+                /*ForecastBtn.IsChecked = */false;
 
             if ((sender as ToggleButton) == LiveStreamBtn)
             {
@@ -68,10 +74,10 @@ namespace ProgressoExpert.Controls.App
             {
                 BusinessResultsBtn.IsChecked = ViewModel.ResBusinessVisibility = true;
             }
-            else if ((sender as ToggleButton) == ForecastBtn)
-            {
-                ForecastBtn.IsChecked = ViewModel.ForecastVisibility = true;
-            }
+            //else if ((sender as ToggleButton) == ForecastBtn)
+            //{
+            //    ForecastBtn.IsChecked = ViewModel2.ForecastVisibility = true;
+            //}
         }
 
         private void ShowUpdatePanelBtn_Click(object sender, RoutedEventArgs e)
@@ -82,6 +88,33 @@ namespace ProgressoExpert.Controls.App
                 SelectPeriodWindow = new SelectPeriod(ViewModel, win);
             }
             SelectPeriodWindow.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (CreditCalculatorWindow == null)
+            {
+                CreditCalculatorWindow = new CreditCalculatorWindow();
+            }
+            CreditCalculatorWindow.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (CalculatorWindow == null)
+            {
+                CalculatorWindow = new CalculatorWindow();
+            }
+            CalculatorWindow.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (DepositCalculatorWindow == null)
+            {
+                DepositCalculatorWindow = new DepositCalculatorWindow();
+            }
+            DepositCalculatorWindow.Show();
         }
     }
 }
