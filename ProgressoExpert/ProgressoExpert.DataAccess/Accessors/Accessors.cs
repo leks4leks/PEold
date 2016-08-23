@@ -34,7 +34,7 @@ namespace ProgressoExpert.DataAccess
             model.StartDate = mainModel.StartDate;
             model.EndDate = mainModel.EndDate;
 
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
                 Start = mainModel.StartTranz;
                 End = mainModel.EndTranz;
@@ -46,8 +46,8 @@ namespace ProgressoExpert.DataAccess
                     Start.AddRange(mainModel.EndTranz.Where(_ => _.period < mainModel.StartDate).ToList());
                     End = mainModel.EndTranz.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
 
-                    StartOriginal.AddRange(mainModel.EndTranzOriginal.Where(_ => _.period < mainModel.StartDate).ToList());
-                    EndOriginal = mainModel.EndTranzOriginal.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
+                    //StartOriginal.AddRange(mainModel.EndTranzOriginal.Where(_ => _.period < mainModel.StartDate).ToList());
+                    //EndOriginal = mainModel.EndTranzOriginal.Where(_ => _.period >= mainModel.StartDate && _.period < mainModel.EndDate).ToList();
                 }
 
                 ourScr = new List<int>(); // Вытащим ID интересующих нас счетов нас счетов
@@ -59,7 +59,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Денежные средства в кассе
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.CashInCashBox1,
                     (int)ScoresForBusinessResults.CashInCashBox2);
                 model.CashInCashBoxStart = _outStart;
@@ -69,7 +69,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Денежные средства на рассчетном счете
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.MoneyInTheBankAccounts1,
                     (int)ScoresForBusinessResults.MoneyInTheBankAccounts2);
                 model.MoneyInTheBankAccountsStart = _outStart;
@@ -88,7 +88,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Долги клиентов и переплаты
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.DebtsOfCustomersAndOverpayments);
                 model.DebtsOfCustomersAndOverpaymentsStart = _outStart;
                 model.DebtsOfCustomersAndOverpaymentsEnd = _outEnd;
@@ -125,7 +125,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочие оборотные активы
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherCurrentAssets1,
                     (int)ScoresForBusinessResults.OtherCurrentAssets2,
                     (int)ScoresForBusinessResults.OtherCurrentAssets3,
@@ -256,7 +256,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочая задолженность по налогам
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherTaxesPayable1,
                     (int)ScoresForBusinessResults.OtherTaxesPayable2,
                     (int)ScoresForBusinessResults.OtherTaxesPayable3,
@@ -355,7 +355,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Уставной капитал
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.AuthorizedCapital1,
                     (int)ScoresForBusinessResults.AuthorizedCapital2);
                 model.AuthorizedCapitalStart = _outStart * minusOne;
@@ -365,7 +365,7 @@ namespace ProgressoExpert.DataAccess
 
                 #region Прочий капитал
 
-                CalculateOriginal(out _outStart, out _outEnd,
+                Calculate(out _outStart, out _outEnd,
                     (int)ScoresForBusinessResults.OtherCapital);
                 model.OtherCapitalStart = _outStart * minusOne;
                 model.OtherCapitalEnd = _outEnd * minusOne;
@@ -441,7 +441,7 @@ namespace ProgressoExpert.DataAccess
         public static ReportProfitAndLoss GetReportProfitAndLoss(MainModel mainModel)
         {
             ReportProfitAndLoss model = new ReportProfitAndLoss();
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
                 //var scores = mainModel.Scores;
                 List<int> ourScr = new List<int>();
@@ -705,7 +705,7 @@ namespace ProgressoExpert.DataAccess
 
         public static List<GroupsEnt> GetAllAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group, List<string> GroupsCode)
         {
-            using (dbEntities db = new dbEntities())
+            using (base2Entities db = new base2Entities())
             {
                 List<GroupsEnt> res = new List<GroupsEnt>();
                 List<string> codeGroups = new List<string>();
@@ -716,7 +716,7 @@ namespace ProgressoExpert.DataAccess
 
         public static List<GroupsEnt> GetAddsTranz(DateTime stDate, DateTime endDate, List<RefGroupsEnt> group, List<string> GroupsCode)
         {
-            using (dbEntities db = new dbEntities())
+            using (base2Entities db = new base2Entities())
             {
                 List<GroupsEnt> res = new List<GroupsEnt>();
                 List<string> codeGroups = new List<string>();
@@ -755,69 +755,70 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
-        private static void ContinGetAddzTr(DateTime stDate, DateTime endDate, List<string> GroupsCode, dbEntities db, out List<GroupsEnt> res, out List<string> codeGroups)
+        private static void ContinGetAddzTr(DateTime stDate, DateTime endDate, List<string> GroupsCode, base2Entities db, out List<GroupsEnt> res, out List<string> codeGroups)
         {
             if (GroupsCode.Count() > 0)
             {
-                res = (from accEd in db.C_AccumRg9987
-                       join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
-                       join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
-                       join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                       join men in db.C_Reference67 on accEd.C_Fld9993_RRRef equals men.C_IDRRef
+                res = (from accEd in db.C_AccumRg6542
+                       join refs in db.C_Reference91 on accEd.C_Fld6546RRef equals refs.C_IDRRef
+                       //join en302 in db.C_Enum320 on refs.C_Fld1141RRef equals en302.C_IDRRef
+                       //join en450 in db.C_Enum217 on refs.C_Fld1142RRef equals en450.C_IDRRef
+                       join men in db.C_Reference23 on accEd.C_Fld6545_RRRef equals men.C_IDRRef
                        where accEd.C_Period >= stDate && accEd.C_Period < endDate && GroupsCode.Contains(refs.C_Code)
                        select new GroupsEnt
                        {
-                           Money = accEd.C_Fld10000,
+                           Money = accEd.C_Fld6555,
                            period = accEd.C_Period,
                            GroupCode = refs.C_Code,
-                           en302 = en302.C_EnumOrder,
-                           en450 = en450.C_EnumOrder,
+                           en302 = 1,//en302.C_EnumOrder,
+                           en450 = 0, //en450.C_EnumOrder,
                            MenCode = men.C_Code,
                            MenName = men.C_Description
 
                        }).ToList();
 
-                codeGroups = (from gg in db.C_Reference113
+                codeGroups = (from gg in db.C_Reference91
                               where GroupsCode.Contains(gg.C_Code)
                               select gg.C_Code).OrderBy(_ => _).ToList();
             }
             else
             {
-                res = (from accEd in db.C_AccumRg9987
-                       join refs in db.C_Reference113 on accEd.C_Fld9991RRef equals refs.C_IDRRef
-                       join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
-                       join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                       join men in db.C_Reference67 on accEd.C_Fld9993_RRRef equals men.C_IDRRef
+                res = (from accEd in db.C_AccumRg6542
+                       join refs in db.C_Reference91 on accEd.C_Fld6546RRef equals refs.C_IDRRef
+                       //join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
+                       //join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
+                       join men in db.C_Reference23 on accEd.C_Fld6545_RRRef equals men.C_IDRRef
                        where accEd.C_Period >= stDate && accEd.C_Period < endDate
                        select new GroupsEnt
                        {
-                           Money = accEd.C_Fld10000,
+                           Money = accEd.C_Fld6555,
                            period = accEd.C_Period,
                            GroupCode = refs.C_Code,
-                           en302 = en302.C_EnumOrder,
-                           en450 = en450.C_EnumOrder,
+                           en302 = 1,//en302.C_EnumOrder,
+                           en450 = 0, //en450.C_EnumOrder,
                            MenCode = men.C_Code,
                            MenName = men.C_Description
                        }).ToList();
 
-                codeGroups = (from gg in db.C_Reference113
+                codeGroups = (from gg in db.C_Reference91
                               select gg.C_Code).OrderBy(_ => _).ToList();
             }
         }
 
         public static List<SalesModel> GetSales(DateTime stDate, DateTime endDate, bool isLoadBeginOfTheTime = false)
         {
-            using (dbEntities db = new dbEntities())
-            {
+            using (base3Entities db = new base3Entities())
+            {                
                 endDate = endDate.AddSeconds(-1);
                 List<SalesModel> result = new List<SalesModel>();
                 int[] endMonthYear = new int[] { endDate.Month, endDate.Year };
 
+                var db3 = new base2Entities();
                 int monthCount = 0;
                 int[] startMonthYear = new int[] { stDate.Month, stDate.Year };//будем бежать от начала до конца периода
                 List<SalesEnt> qSeb = new List<SalesEnt>();
                 if(!isLoadBeginOfTheTime)
-                    qSeb = Accessors.QueryForGetSalesForSeb(stDate, endDate, db);
+                    qSeb = Accessors.QueryForGetSalesForSeb(stDate, endDate, db, db3);
                 do
                 {
                     DateTime stDt = new DateTime(startMonthYear[1], startMonthYear[0], 1);
@@ -840,7 +841,7 @@ namespace ProgressoExpert.DataAccess
                     
                     SalesModel tmp = new SalesModel();
                     tmp.Date = stDt;
-                    tmp.Sales = QueryForGetSales(stDt, endDt, db, qSeb);
+                    tmp.Sales = QueryForGetSales(stDt, endDt, db, qSeb, db3);
                     if(tmp.Sales.Count != 0)
                         result.Add(tmp);
                 }
@@ -852,15 +853,16 @@ namespace ProgressoExpert.DataAccess
 
         public static List<SalesModel> GetSalesOneQuery(DateTime stDate, DateTime endDate)
         {
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
+                var db3 = new base2Entities();
                 List<SalesModel> result = new List<SalesModel>();
 
-                var qSeb = Accessors.QueryForGetSalesForSeb(stDate, endDate, db);
+                var qSeb = Accessors.QueryForGetSalesForSeb(stDate, endDate, db, db3);
                 //только инфа по группам и производителям или как их
                 SalesModel tmp = new SalesModel();
                 tmp.Date = stDate;
-                tmp.Sales = QueryForGetSales(stDate, endDate, db, qSeb);
+                tmp.Sales = QueryForGetSales(stDate, endDate, db, qSeb, db3);
                 if (tmp.Sales.Count != 0)
                     result.Add(tmp);
 
@@ -907,11 +909,11 @@ namespace ProgressoExpert.DataAccess
             }
         }
 
-        public static List<SalesEnt> QueryForGetSalesForSeb(DateTime stDate, DateTime endDate, dbEntities db)
+        public static List<SalesEnt> QueryForGetSalesForSeb(DateTime stDate, DateTime endDate, base3Entities db, base2Entities db3)
         {
             var result = new List<SalesEnt>();
-            var res = (from r77 in db.C_Reference77
-                       join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
+            var res = (from r77 in db3.C_Reference69
+                       join r78 in db3.C_Reference69 on r77.C_ParentIDRRef equals r78.C_IDRRef
                        select new SalesEnt
                        {
                            Mont = 0,
@@ -930,80 +932,10 @@ namespace ProgressoExpert.DataAccess
                            BuyerCode = string.Empty,
                            BuyerName = string.Empty
                        }
-                                        );
-
-            //Себестоимость за период + кол-во сколько поставили(в C_AccumRgTn10122) +  сам поставщик (C_Value1_RRRef)
-            var res1 = (from s888 in db.C_AccRgAT210888
-                        where s888.C_Period >= stDate && s888.C_Period < endDate
-                        group s888 by s888.C_Value2_RRRef into g
-                        select new SalesEnt
-                        {
-                            Mont = 0,
-                            Year = 0,
-                            Period = new DateTime(),
-                            refId = g.FirstOrDefault().C_Value2_RRRef,
-                            ClientRefId = new byte[] { },
-                            SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
-                            CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
-                            CountPur = decimal.Zero,
-                            SalesWithoutNDS = decimal.Zero,
-                            CountSal = decimal.Zero,
-                            DivName = string.Empty,
-                            GroupCode = string.Empty,
-                            GroupName = string.Empty,
-                            BuyerCode = string.Empty,
-                            BuyerName = string.Empty
-                        });
-
-            //Цена продажи без ндс
-            var res2 = (from r27 in db.C_AccumRgTn10472
-                        where r27.C_Period >= stDate && r27.C_Period < endDate
-                        group r27 by r27.C_Fld10452_RRRef into g
-                        select new SalesEnt
-                        {
-                            Mont = 0,
-                            Year = 0,
-                            Period = new DateTime(),
-                            refId = g.FirstOrDefault().C_Fld10452_RRRef,
-                            ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
-                            SalersRefId = new byte[] { },
-                            CostPrise = decimal.Zero,
-                            CountPur = decimal.Zero,
-                            SalesWithoutNDS = g.Sum(_ => _.C_Fld10464),
-                            CountSal = g.Sum(_ => _.C_Fld10462),
-                            DivName = string.Empty,
-                            GroupCode = string.Empty,
-                            GroupName = string.Empty,
-                            BuyerCode = string.Empty,
-                            BuyerName = string.Empty
-                        }
-                        );
-
-            // количество сколько поступило на конечную дату
-            var res3 = (from s888 in db.C_AccumRgTn10122
-                        where s888.C_Period < endDate && s888.C_Period >= stDate
-                        group s888 by s888.C_Fld10107_RRRef into g
-                        select new SalesEnt
-                        {
-                            Mont = 0,
-                            Year = 0,
-                            Period = new DateTime(),
-                            refId = new byte[] { },
-                            ClientRefId = new byte[] { },
-                            SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
-                            CostPrise = decimal.Zero,
-                            CountPur = g.Sum(_ => _.C_Fld10117),
-                            SalesWithoutNDS = decimal.Zero,
-                            CountSal = decimal.Zero,
-                            DivName = string.Empty,
-                            GroupCode = string.Empty,
-                            GroupName = string.Empty,
-                            BuyerCode = string.Empty,
-                            BuyerName = string.Empty
-                        });
+                                        );            
 
             //покупатели 
-            var res4 = (from s888 in db.C_Reference67
+            var res4 = (from s888 in db3.C_Reference62
                         select new SalesEnt
                         {
                             Mont = 0,
@@ -1030,18 +962,18 @@ namespace ProgressoExpert.DataAccess
             /// после будем циклом бежать по группам и внутри считать сколько пришло сколько ушло товара
             /// и по какой цене
             //Себестоимость считаем от начала времен +  сам поставщик (C_Value1_RRRef)
-            var resCostSeb = (from s888 in db.C_AccRgAT210888
-                              where s888.C_Period < endDate
-                              group s888 by new { s888.C_Value2_RRRef, s888.C_Period.Month, s888.C_Period.Year } into g
+            var resCostSeb = (from s888 in db3.C_AccumRg6661
+                              where s888.C_Period < endDate 
+                              group s888 by new { s888.C_Fld6662_RRRef, s888.C_Period.Month, s888.C_Period.Year } into g
                               select new SalesEnt
                               {
                                   Mont = g.FirstOrDefault().C_Period.Month,
                                   Year = g.FirstOrDefault().C_Period.Year,
                                   Period = g.FirstOrDefault().C_Period,
-                                  refId = g.FirstOrDefault().C_Value2_RRRef,
+                                  refId = g.FirstOrDefault().C_Fld6662_RRRef,
                                   ClientRefId = new byte[] { },
-                                  SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
-                                  CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                                  SalersRefId = g.FirstOrDefault().C_Fld6670RRef,
+                                  CostPrise = g.Sum(_ => _.C_Fld6673),
                                   CountPur = decimal.Zero,
                                   SalesWithoutNDS = decimal.Zero,
                                   CountSal = decimal.Zero,
@@ -1053,9 +985,9 @@ namespace ProgressoExpert.DataAccess
                               });
 
             // количество сколько поступило от начала времен
-            var resCountSeb = (from s888 in db.C_AccumRgTn10122
+            var resCountSeb = (from s888 in db3.C_AccumRgTn6677
                                where s888.C_Period < endDate
-                               group s888 by new { s888.C_Fld10107_RRRef, s888.C_Period.Month, s888.C_Period.Year } into g
+                               group s888 by new { s888.C_Fld6662_RRRef, s888.C_Period.Month, s888.C_Period.Year } into g
                                select new SalesEnt
                                {
                                    Mont = 0,
@@ -1063,9 +995,9 @@ namespace ProgressoExpert.DataAccess
                                    Period = new DateTime(),
                                    refId = new byte[] { },
                                    ClientRefId = new byte[] { },
-                                   SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
+                                   SalersRefId = g.FirstOrDefault().C_Fld6662_RRRef,
                                    CostPrise = decimal.Zero,
-                                   CountPur = g.Sum(_ => _.C_Fld10117),
+                                   CountPur = g.Sum(_ => _.C_Fld6672),
                                    SalesWithoutNDS = decimal.Zero,
                                    CountSal = decimal.Zero,
                                    DivName = string.Empty,
@@ -1074,23 +1006,22 @@ namespace ProgressoExpert.DataAccess
                                    BuyerCode = string.Empty,
                                    BuyerName = string.Empty
                                });
-
-            //Цена продажи без ндс
-            var resSalesSeb = (from r27 in db.C_AccumRgTn10472
+            
+            var resSalesSeb = (from r27 in db3.C_AccumRgTn6903
                                where r27.C_Period < endDate
-                               group r27 by new { r27.C_Fld10452_RRRef, r27.C_Period.Month, r27.C_Period.Year } into g
+                               group r27 by new { r27.C_Fld6883_RRRef, r27.C_Period.Month, r27.C_Period.Year } into g
                                select new SalesEnt
                                {
                                    Mont = 0,
                                    Year = 0,
                                    Period = new DateTime(),
-                                   refId = g.FirstOrDefault().C_Fld10452_RRRef,
-                                   ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
+                                   refId = g.FirstOrDefault().C_Fld6883_RRRef,
+                                   ClientRefId = g.FirstOrDefault().C_Fld6890RRef,
                                    SalersRefId = new byte[] { },
                                    CostPrise = decimal.Zero,
                                    CountPur = decimal.Zero,
                                    SalesWithoutNDS = decimal.Zero,
-                                   CountSal = g.Sum(_ => _.C_Fld10462),
+                                   CountSal = g.Sum(_ => _.C_Fld6893),
                                    DivName = string.Empty,
                                    GroupCode = string.Empty,
                                    GroupName = string.Empty,
@@ -1124,7 +1055,7 @@ namespace ProgressoExpert.DataAccess
                  }).ToList();
 
             List<SalesEnt> gSeb = new List<SalesEnt>();
-            foreach (var gr in db.C_Reference78.ToList())
+            foreach (var gr in db.C_Reference63.ToList())
             {
                 decimal resSebValue = decimal.Zero;
                 decimal resSebValueCount = decimal.Zero;
@@ -1248,10 +1179,10 @@ namespace ProgressoExpert.DataAccess
             return gSeb;
         }
 
-        private static List<SalesEnt> QueryForGetSales(DateTime stDate, DateTime endDate, dbEntities db, List<SalesEnt> gSeb)
+        private static List<SalesEnt> QueryForGetSales(DateTime stDate, DateTime endDate, base3Entities db, List<SalesEnt> gSeb, base2Entities db3)
         {
-            var res = (from r77 in db.C_Reference77
-                       join r78 in db.C_Reference78 on r77.C_Fld1089RRef equals r78.C_IDRRef
+            var res = (from r77 in db3.C_Reference69
+                       join r78 in db3.C_Reference69 on r77.C_ParentIDRRef equals r78.C_IDRRef
                        select new SalesEnt
                        {
                            Mont = 0,
@@ -1275,17 +1206,17 @@ namespace ProgressoExpert.DataAccess
                                         );
 
             //Себестоимость за период + кол-во сколько поставили(в C_AccumRgTn10122) +  сам поставщик (C_Value1_RRRef)
-            var res1 = (from s888 in db.C_AccRgAT210888
+            var res1 = (from s888 in db3.C_AccumRg6753
                         where s888.C_Period >= stDate && s888.C_Period < endDate
-                        group s888 by s888.C_Value2_RRRef into g
+                        group s888 by s888.C_Fld6761_RRRef into g
                         select new SalesEnt
                         {
                             Mont = 0,
                             Year = 0,
-                            refId = g.FirstOrDefault().C_Value2_RRRef,
+                            refId = g.FirstOrDefault().C_Fld6761_RRRef,
                             ClientRefId = new byte[] { },
-                            SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
-                            CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                            SalersRefId = g.FirstOrDefault().C_Fld6760RRef,
+                            CostPrise = g.Sum(_ => _.C_Fld6765),
                             CountPur = decimal.Zero,
                             SalesWithoutNDS = decimal.Zero,
                             CountSal = decimal.Zero,
@@ -1300,20 +1231,20 @@ namespace ProgressoExpert.DataAccess
                         });
             
             //Цена продажи без ндс
-            var res2 = (from r27 in db.C_AccumRgTn10472
+            var res2 = (from r27 in db3.C_AccumRgTn6677
                         where r27.C_Period >= stDate && r27.C_Period < endDate
-                        group r27 by r27.C_Fld10452_RRRef into g
+                        group r27 by r27.C_Fld6662_RRRef into g
                         select new SalesEnt
                         {
                             Mont = 0,
                             Year = 0,
-                            refId = g.FirstOrDefault().C_Fld10452_RRRef,
-                            ClientRefId = g.FirstOrDefault().C_Fld10459RRef,
+                            refId = g.FirstOrDefault().C_Fld6662_RRRef,
+                            ClientRefId = g.FirstOrDefault().C_Fld6670RRef,
                             SalersRefId = new byte[] { },
                             CostPrise = decimal.Zero,
                             CountPur = decimal.Zero,
-                            SalesWithoutNDS = g.Sum(_ => _.C_Fld10464),
-                            CountSal = g.Sum(_ => _.C_Fld10462),
+                            SalesWithoutNDS = g.Sum(_ => _.C_Fld6673),
+                            CountSal = g.Sum(_ => _.C_Fld6672),
                             DivName = string.Empty,
                             GroupCode = string.Empty,
                             GroupName = string.Empty,
@@ -1326,18 +1257,18 @@ namespace ProgressoExpert.DataAccess
                         );
 
             // количество сколько поступило на конечную дату
-            var res3 = (from s888 in db.C_AccumRgTn10122
+            var res3 = (from s888 in db3.C_AccumRgTn6903
                         where s888.C_Period < endDate && s888.C_Period >= stDate
-                        group s888 by s888.C_Fld10107_RRRef into g
+                        group s888 by s888.C_Fld6883_RRRef into g
                         select new SalesEnt
                         {
                             Mont = 0,
                             Year = 0,
                             refId = new byte[] { },
                             ClientRefId = new byte[] { },
-                            SalersRefId = g.FirstOrDefault().C_Fld10107_RRRef,
+                            SalersRefId = g.FirstOrDefault().C_Fld6883_RRRef,
                             CostPrise = decimal.Zero,
-                            CountPur = g.Sum(_ => _.C_Fld10117),
+                            CountPur = g.Sum(_ => _.C_Fld6893),
                             SalesWithoutNDS = decimal.Zero,
                             CountSal = decimal.Zero,
                             DivName = string.Empty,
@@ -1351,7 +1282,7 @@ namespace ProgressoExpert.DataAccess
                         });
 
             //покупатели 
-            var res4 = (from s888 in db.C_Reference67
+            var res4 = (from s888 in db3.C_Reference62
                         select new SalesEnt
                         {
                             Mont = 0,
@@ -1431,7 +1362,7 @@ namespace ProgressoExpert.DataAccess
             
             GetStartEndDateMoney(Start, End, list, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
             _start = ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum();
-            _end = _start + ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum();
+            _end = _start + ourDbtEnd.Select(_ => _.Money).Sum() - ourCrtEnd.Select(_ => _.Money).Sum();
         }
 
         /// <summary>
@@ -1449,7 +1380,7 @@ namespace ProgressoExpert.DataAccess
 
             GetStartEndDateMoney(StartOriginal, EndOriginal, list, out ourDbtSt, out ourDbtEnd, out ourCrtSt, out ourCrtEnd);
             _start = ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum();
-            _end = _start + ourDbtSt.Select(_ => _.Money).Sum() - ourCrtSt.Select(_ => _.Money).Sum();
+            _end = _start + ourDbtEnd.Select(_ => _.Money).Sum() - ourCrtEnd.Select(_ => _.Money).Sum();
         }
 
         /// <summary>
@@ -1521,7 +1452,7 @@ namespace ProgressoExpert.DataAccess
 
             ourDbtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value))).ToList();
 
-            ourCrtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreDt, @"\d+").Value))).ToList();            
+            ourCrtEnd = End.Where(w => ourScr.Contains(Convert.ToInt32(Regex.Match(w.ScoreCt, @"\d+").Value))).ToList();            
         }
 
          /// <summary>

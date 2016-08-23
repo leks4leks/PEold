@@ -25,7 +25,7 @@ namespace ProgressoExpert.Common.Enums
         /// <summary>
         /// Себестоимость
         /// </summary>
-        CostPrice = 7000,
+        CostPrice = 7010,
         /// <summary>
         /// Прочий доход
         /// </summary>
@@ -45,15 +45,15 @@ namespace ProgressoExpert.Common.Enums
         /// <summary>
         /// Расходы по реализации продукции и услуг
         /// </summary>
-        CostsSalesServices = 7100,
+        CostsSalesServices = 7110,
         /// <summary>
         /// Административные расходы
         /// </summary>
-        AdministrativeExpenses = 7200,
+        AdministrativeExpenses = 7210,
         /// <summary>
         /// Расходы на финансирование
         /// </summary>
-        FinancingCosts = 7300,
+        FinancingCosts = 7310,
         /// <summary>
         /// Прочие расходы
         /// </summary>

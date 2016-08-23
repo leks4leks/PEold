@@ -12,8 +12,15 @@ namespace ProgressoExpert.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class C_YearOffset
+    public partial class C_Reference91
     {
-        public int Offset { get; set; }
+        public byte[] C_IDRRef { get; set; }
+        public byte[] C_Version { get; set; }
+        public byte[] C_Marked { get; set; }
+        public byte[] C_IsMetadata { get; set; }
+        public byte[] C_ParentIDRRef { get; set; }
+        public byte[] C_Folder { get; set; }
+        public string C_Code { get; set; }
+        public string C_Description { get; set; }
     }
 }

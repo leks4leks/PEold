@@ -25,8 +25,8 @@ namespace ProgressoExpert.Process
             model.StartTranz = MainAccessor.GetAllTrans(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
             model.EndTranz = MainAccessor.GetAllTrans(model.StartDate, model.EndDate);
 
-            model.StartTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
-            model.EndTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, model.EndDate);
+            //model.StartTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, null); // Вытащим сразу все транзакции, отдельным запросом
+            //model.EndTranzOriginal = MainAccessor.GetAllTransOriginal(model.StartDate, model.EndDate);
 
             model.RegGroups = MainAccessor.GetAllGroups();// группы
             model.ADDSTranz = Accessors.GetAddsTranz(model.StartDate, model.EndDate, model.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
@@ -50,8 +50,8 @@ namespace ProgressoExpert.Process
             var tmSpan = MainAccessor.GetTimeSpan();
 
             //TODO поставить текущую дату
-            var stTodayDate = new DateTime(4013, 10, 01);
-            var endTodayDate = new DateTime(4013, 10, 01).AddHours(23).AddMinutes(59).AddSeconds(59); //DateTime.Today.AddYears(tmSpan);
+            var stTodayDate = new DateTime(4016, 02, 01);
+            var endTodayDate = new DateTime(4016, 02, 01).AddHours(23).AddMinutes(59).AddSeconds(59); //DateTime.Today.AddYears(tmSpan);
 
             MainModel.StartDate = new DateTime(stTodayDate.Year, stTodayDate.Month, 01);
             MainModel.EndDate = new DateTime(stTodayDate.Month != 12 ? stTodayDate.Year : stTodayDate.Year + 1, stTodayDate.Month != 12 ? stTodayDate.Month + 1 : 01, 01);
@@ -65,14 +65,14 @@ namespace ProgressoExpert.Process
                     : 0;
 
             MainModel.RegGroups = MainAccessor.GetAllGroups();// группы
-            MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+            MainModel.ADDSTranz = Accessors.GetAddsTranz(stTodayDate, endTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "00002" });
             model.PaymentCustomersToday = MainModel.ADDSTranz.Sum(_ => _.Money);
 
             MainModel.StartTranz = MainAccessor.GetAllTrans(stTodayDate, null); // Вытащим сразу все транзакции, отдельным запросом
             MainModel.EndTranz = MainAccessor.GetAllTrans(stTodayDate, endTodayDate);
 
-            MainModel.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
-            MainModel.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
+            //MainModel.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+            //MainModel.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
 
             MainModel.BusinessResults = Accessors.GetBusinessResults(MainModel);
 
@@ -103,7 +103,7 @@ namespace ProgressoExpert.Process
                     ? (model.GrossProfitMonth / model.SalesMonth) * 100
                     : 0;
 
-            MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+            MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "00002" });
             model.PaymentCustomersMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
             model.LastMonthDiagram = new Dictionary<string, decimal>();
             model.LastMonthDiagram.Add("Продажи", model.SalesMonth);
@@ -121,7 +121,7 @@ namespace ProgressoExpert.Process
             MainModel.ADDSTranz = Accessors.GetAddsTranz(MainModel.StartDate.Month != 1 ?
                                                             new DateTime(MainModel.StartDate.Year, MainModel.StartDate.Month - 1, 01) :
                                                             new DateTime(MainModel.StartDate.Year - 1, 12, 01)
-                                                            , MainModel.StartDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "000000002" });
+                                                            , MainModel.StartDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { "00002" });
             model.PaymentCustomersPastMonth = MainModel.ADDSTranz.Sum(_ => _.Money);
 
             model.CurrentMonthDiagram = new Dictionary<string, decimal>();
@@ -177,8 +177,8 @@ namespace ProgressoExpert.Process
                     tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null);
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
-                    tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
-                    tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
+                    //tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+                    //tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALF = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = RPALF / model.Cost * 100;
@@ -196,8 +196,8 @@ namespace ProgressoExpert.Process
                     tmMain.EndDate = MainModel.newEndTodayDate;
                     tmMain.StartTranz = MainAccessor.GetAllTrans(MainModel.StartDate, null);
                     tmMain.EndTranz = MainAccessor.GetAllTrans(MainModel.StartDate, MainModel.EndDate);
-                    tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
-                    tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
+                    //tmMain.StartTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, null);
+                    //tmMain.EndTranzOriginal = MainAccessor.GetAllTransOriginal(MainModel.StartDate, MainModel.EndDate);
                     tmMain.ReportProfitAndLoss = Accessors.GetReportProfitAndLoss(MainModel);
                     RPALS = tmMain.ReportProfitAndLoss.Costs.Sum();
                     tmp = RPALS / model.Cost * 100;
@@ -374,8 +374,8 @@ namespace ProgressoExpert.Process
                 mm.StartTranz = MainModel.StartTranz.Where(_ => _.period < mm.StartDate).ToList();
                 mm.EndTranz = MainModel.EndTranz.Where(_ => _.period < mm.EndDate).ToList();
                 
-                mm.StartTranzOriginal = MainModel.StartTranzOriginal.Where(_ => _.period < mm.StartDate).ToList();
-                mm.EndTranzOriginal = MainModel.EndTranzOriginal.Where(_ => _.period < mm.EndDate).ToList();
+                //mm.StartTranzOriginal = MainModel.StartTranzOriginal.Where(_ => _.period < mm.StartDate).ToList();
+                //mm.EndTranzOriginal = MainModel.EndTranzOriginal.Where(_ => _.period < mm.EndDate).ToList();
                 if (mm.EndTranz.Where(_ => _.period < mm.StartDate).Count() > 0)
                     mm.StartTranz.AddRange(mm.EndTranz.Where(_ => _.period < mm.StartDate).ToList());//чтобы из бд не тащить мы переложим из модельки за текущий период транзикции в прошедщий период
 
@@ -528,9 +528,12 @@ namespace ProgressoExpert.Process
                                  money = g.Sum(_ => _.SalesWithoutNDS)
                              }).OrderByDescending(_ => _.money).ToList();
 
-                model.Goods1Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[0].money);
-                model.Goods2Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[1].money);
-                model.Goods3Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[2].money);
+                if (salGr.Count > 0)
+                    model.Goods1Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[0].money);
+                if (salGr.Count > 1)
+                    model.Goods2Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[1].money);
+                if (salGr.Count > 2)
+                    model.Goods3Diagram.Add(MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)mon.Date.Month, mon.Date.Year) : ((Month)mon.Date.Month).ToString(), salGr[2].money);
 
                 if (tmp > model.maxCountSaleGoods)
                 {
@@ -550,7 +553,7 @@ namespace ProgressoExpert.Process
             MainModel.allADDSTranz = Accessors.GetAllAddsTranz(MainModel.StartDate, MainModel.EndDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
             var rt = (from tt in MainModel.allADDSTranz
-                      where tt.GroupCode == "000000002"
+                      where tt.GroupCode.Trim() == "00002"
                       group tt by new { tt.period.Month, tt.period.Year } into g
                       select new
                       {
@@ -572,7 +575,7 @@ namespace ProgressoExpert.Process
             MainModel.ADDSTranzPastPeriod = Accessors.GetAllAddsTranz(MainModel.newStTodayDate, MainModel.newEndTodayDate, MainModel.RegGroups ?? new List<RefGroupsEnt>(), new List<string> { });
 
             var rtPast = (from tt in MainModel.ADDSTranzPastPeriod
-                          where tt.GroupCode == "000000002" // только оплата покупателя, если будет долго, можно отдельный запрос написать все не тащить
+                          where tt.GroupCode.Trim() == "00002" // только оплата покупателя, если будет долго, можно отдельный запрос написать все не тащить
                           group tt by new { tt.period.Month, tt.period.Year } into g
                           select new
                           {
@@ -730,7 +733,7 @@ namespace ProgressoExpert.Process
 
             model.CostsOutDiagram = new Dictionary<string, decimal>();
             var ty = (from adz in MainModel.ADDSTranz
-                      where adz.en302 == 1 && adz.en450 == 0 && adz.GroupCode != "000000001" && adz.GroupCode != "000000029"
+                      where adz.en302 == 1 && adz.en450 == 0 && adz.GroupCode.Trim() != "00001" && adz.GroupCode.Trim() != "00029"
                       group adz by adz.GroupCode into g
                       select new
                       {
@@ -747,7 +750,7 @@ namespace ProgressoExpert.Process
 
             model.CostsOutDiagram.Add("Прочее", 100 - model.CostsOutDiagram.Sum(_ => _.Value));
             
-            model.paidTaxes = MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000037" || _.GroupCode == "000000036").Sum(_ => _.Money);
+            model.paidTaxes = MainModel.ADDSTranz.Where(_ => _.GroupCode.Trim() == "00011" || _.GroupCode.Trim() == "00036").Sum(_ => _.Money);
             model.paidTaxesFromSales = MainModel.GeneralBA.Sales != 0 ? model.paidTaxes / MainModel.GeneralBA.Sales * 100 : 0;
             model.paidTaxesFromGrosProfit = MainModel.GeneralBA.GrossProfit != 0 ? model.paidTaxes / MainModel.GeneralBA.GrossProfit * 100 : 0;
 
@@ -779,7 +782,8 @@ namespace ProgressoExpert.Process
                 dt = MainModel.IsItQuarter || (MainModel.EndDate - MainModel.StartDate).Days > 365 ? string.Format("{0}, {1}", (Month)item.Date.Month, item.Date.Year) : ((Month)item.Date.Month).ToString();
                 model.PurchaseDiagram.Add(dt, item.Sales.Sum(_ => _.CostPrise));
                 model.SalesDiagram.Add(dt, item.Sales.Sum(_ => _.SalesWithoutNDS));
-                model.PaymentDiagram.Add(dt, MainModel.ADDSTranzPastPeriod[counter].Money);
+                if(MainModel.ADDSTranzPastPeriod.Count > counter)
+                    model.PaymentDiagram.Add(dt, MainModel.ADDSTranzPastPeriod[counter].Money);
 
                 counter++;
             }
@@ -815,7 +819,7 @@ namespace ProgressoExpert.Process
             model.difSalesvsPurchasePastPeriod = pastPur != 0 ? model.SalesvsPurchase - 
                 (MainModel.GeneralBA.salesFirst.SelectMany(_ => _.Sales).Sum(_ => _.SalesWithoutNDS) / pastPur * 100) : 0;
 
-            model.PaymentvsPurchase = model.allPurchase != 0 ? MainModel.ADDSTranz.Where(_ => _.GroupCode == "000000001").Sum(_ => _.Money) / model.allPurchase * 100 : 0;
+            model.PaymentvsPurchase = model.allPurchase != 0 ? MainModel.ADDSTranz.Where(_ => _.GroupCode.Trim() == "00001").Sum(_ => _.Money) / model.allPurchase * 100 : 0;
             model.difPaymentvsPurchasePastPeriod = pastPur != 0 ? MainModel.ADDSTranzPastPeriod.Sum(_ => _.Money) / pastPur : 0;
 
             var pusa = Accessors.getPurMan(MainModel.StartDate, MainModel.EndDate).OrderByDescending(_ => _.CostPrise).ToList();

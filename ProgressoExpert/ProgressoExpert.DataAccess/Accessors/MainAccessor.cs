@@ -20,17 +20,17 @@ namespace ProgressoExpert.DataAccess
         public static List<TranzEnt> GetAllTrans(DateTime stDate, DateTime? endDate)
         {
             List<TranzEnt> res = new List<TranzEnt>();
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
                 if (endDate == null)
                 {
-                    res = (from acctr in db.C_AccRg10868 
-                              join accCr in db.C_Acc9 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
-                              join accDt in db.C_Acc9 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
+                    res = (from acctr in db.C_AccRg420
+                           join accCr in db.C_Acc18 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
+                              join accDt in db.C_Acc18 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
                               where acctr.C_Period < stDate
                               select new TranzEnt
                               {
-                                  Money = acctr.C_Fld10871,
+                                  Money = acctr.C_Fld424,
                                   period = acctr.C_Period,
                                   ScoreCt = accCr.C_Code,
                                   ScoreDt = accDt.C_Code
@@ -39,13 +39,13 @@ namespace ProgressoExpert.DataAccess
                 if (endDate != null)
                 {
                     res = (
-                           from accRg in db.C_AccRg10868 // Выгрузим все транзакции на период который мы указали
-                           join accDt in db.C_Acc9 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
-                           join accCt in db.C_Acc9 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
+                           from accRg in db.C_AccRg420 // Выгрузим все транзакции на период который мы указали
+                           join accDt in db.C_Acc18 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
+                           join accCt in db.C_Acc18 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
                            where accRg.C_Period >= stDate && accRg.C_Period < endDate
                            select new TranzEnt
                            {
-                               Money = accRg.C_Fld10871,
+                               Money = accRg.C_Fld424,
                                period = accRg.C_Period,
                                ScoreDt = accDt.C_Code,
                                ScoreCt = accCt.C_Code
@@ -67,17 +67,17 @@ namespace ProgressoExpert.DataAccess
             List<string> tmp = new List<string>();
 
             List<TranzEnt> res = new List<TranzEnt>();
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
                 if (endDate == null)
                 {
-                    res = (from acctr in db.C_AccRg10893
-                           join accCr in db.C_Acc10 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
-                           join accDt in db.C_Acc10 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
+                    res = (from acctr in db.C_AccRg420
+                           join accCr in db.C_Acc17 on acctr.C_AccountCtRRef equals accCr.C_IDRRef
+                           join accDt in db.C_Acc17 on acctr.C_AccountDtRRef equals accDt.C_IDRRef
                            where acctr.C_Period < stDate
                            select new TranzEnt
                            {
-                               Money = acctr.C_Fld10896,
+                               Money = acctr.C_Fld424,
                                period = acctr.C_Period,
                                ScoreCt = accCr.C_Code,
                                ScoreDt = accDt.C_Code
@@ -86,15 +86,15 @@ namespace ProgressoExpert.DataAccess
                 if (endDate != null)
                 {
                     res = (
-                           from accRg in db.C_AccRg10893 // Выгрузим все транзакции на период который мы указали
-                           join accDt in db.C_Acc10 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
-                           join accCt in db.C_Acc10 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
+                           from accRg in db.C_AccRg420 // Выгрузим все транзакции на период который мы указали
+                           join accDt in db.C_Acc17 on accRg.C_AccountDtRRef equals accDt.C_IDRRef
+                           join accCt in db.C_Acc17 on accRg.C_AccountCtRRef equals accCt.C_IDRRef
                            where accRg.C_Period >= stDate &&
                            (tmp.Contains(accCt.C_Code) ||
                            tmp.Contains(accDt.C_Code))
                            select new TranzEnt
                            {
-                               Money = accRg.C_Fld10896,
+                               Money = accRg.C_Fld424,
                                period = accRg.C_Period,
                                ScoreDt = accDt.C_Code,
                                ScoreCt = accCt.C_Code
@@ -107,9 +107,9 @@ namespace ProgressoExpert.DataAccess
 
         public static List<RefGroupsEnt> GetAllGroups()
         {
-            using (dbEntities db = new dbEntities())
+            using (base2Entities db = new base2Entities())
             {
-                return (from cref in db.C_Reference114 // выгрузим все, чтобы 1000 раз не лезть в БД
+                return (from cref in db.C_Reference91 // выгрузим все, чтобы 1000 раз не лезть в БД
                         select new RefGroupsEnt
                         {
                             Name = cref.C_Description,
@@ -120,7 +120,7 @@ namespace ProgressoExpert.DataAccess
 
         public static int GetTimeSpan()
         {
-            using (dbEntities db = new dbEntities())
+            using (base3Entities db = new base3Entities())
             {
                 return db.C_YearOffset.First().Offset;
             }
