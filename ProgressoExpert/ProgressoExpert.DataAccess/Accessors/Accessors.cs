@@ -872,21 +872,21 @@ namespace ProgressoExpert.DataAccess
 
         public static List<SalesEnt> getPurMan(DateTime stDate, DateTime endDate)
         {
-            using (dbEntities db = new dbEntities())
+            using (base2Entities db = new base2Entities())
             {
                 List<SalesEnt> result = new List<SalesEnt>();
 
-                var tt = (from adz in db.C_AccRgAT210888
-                          group adz by adz.C_Value1_RRRef into g
+                var tt = (from adz in db.C_AccumRg6661
+                          group adz by adz.C_Fld6662_RRRef into g
                           select new SalesEnt
                           {
-                              SalersRefId = g.FirstOrDefault().C_Value1_RRRef,
-                              CostPrise = g.Sum(_ => _.C_TurnoverCt10882 ?? 0),
+                              SalersRefId = g.FirstOrDefault().C_Fld6670RRef,
+                              CostPrise = g.Sum(_ => _.C_Fld6673),
                               SalerCode = string.Empty,
                               SalerName = string.Empty
                           });
 
-                var t1 = (from r67 in db.C_Reference67
+                var t1 = (from r67 in db.C_Reference62
                           select new SalesEnt
                           {
                               SalersRefId = r67.C_IDRRef,
