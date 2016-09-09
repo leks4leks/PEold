@@ -609,16 +609,16 @@ namespace ProgressoExpert.Process
             {
                 model.Goods1Info.Name = salGrNow[0].name;
                 model.Goods1Info.Value = salGrNow[0].money;
-                model.Goods1Info.pastValue = salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money;
-                model.Goods1Info.Percent = salGrPast.Count != 0 ? model.Goods1Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100 : 0;
+                model.Goods1Info.pastValue = salGrPast.Where(_ => _.name == salGrNow[0].name).Count() > 0 ? salGrNow[0].money - salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money : 0;
+                model.Goods1Info.Percent = salGrPast.Where(_ => _.name == salGrNow[0].name).Count() > 0 ? salGrPast.Count != 0 ? model.Goods1Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[0].name).FirstOrDefault().money * 100 : 0 : 0;
             }
             model.Goods2Info = new FillGoodsModel();
             if (salGrNow.Count > 1)
             {
                 model.Goods2Info.Name = salGrNow[1].name;
                 model.Goods2Info.Value = salGrNow[1].money;
-                model.Goods2Info.pastValue = salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money;
-                model.Goods2Info.Percent = salGrPast.Count != 0 ? model.Goods2Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100 : 0;
+                model.Goods2Info.pastValue = salGrPast.Where(_ => _.name == salGrNow[1].name).Count() > 0 ? salGrNow[1].money - salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money : 0;
+                model.Goods2Info.Percent = salGrPast.Where(_ => _.name == salGrNow[1].name).Count() > 0 ? salGrPast.Count != 0 ? model.Goods2Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[1].name).FirstOrDefault().money * 100 : 0 : 0;
             }
 
             model.Goods3Info = new FillGoodsModel();
@@ -627,8 +627,8 @@ namespace ProgressoExpert.Process
             {
                 model.Goods3Info.Name = salGrNow[2].name;
                 model.Goods3Info.Value = salGrNow[2].money;
-                model.Goods3Info.pastValue = salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money;
-                model.Goods3Info.Percent = salGrPast.Count != 0 ? model.Goods3Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100 : 0;
+                model.Goods3Info.pastValue = salGrPast.Where(_ => _.name == salGrNow[2].name).Count() > 0 ? salGrNow[2].money - salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money : 0;
+                model.Goods3Info.Percent = salGrPast.Where(_ => _.name == salGrNow[2].name).Count() > 0 ? salGrPast.Count != 0 ? model.Goods3Info.pastValue / salGrPast.Where(_ => _.name == salGrNow[2].name).FirstOrDefault().money * 100 : 0 : 0;
             }
 
             var salCli = (from s in MainModel.Sales.SelectMany(_ => _.Sales)
@@ -670,7 +670,8 @@ namespace ProgressoExpert.Process
             model.StructureGrossProfitClientInfo = new List<FillModel>();
             foreach (var item in tc.Take(5))
                 model.StructureGrossProfitClientInfo.Add(new FillModel { Name = item.name, Value = item.money,
-                    Value2 = ta.FirstOrDefault(_ => _.code == item.code) != null ? ta.FirstOrDefault(_ => _.code == item.code).money : 0});
+                                                                         Value2 = ta.FirstOrDefault(_ => _.code.Trim() == item.code.Trim()) != null ? ta.FirstOrDefault(_ => _.code.Trim() == item.code.Trim()).money : 0
+                });
 
             model.StructureGrossProfitClientInfo.Add(new FillModel
             {
