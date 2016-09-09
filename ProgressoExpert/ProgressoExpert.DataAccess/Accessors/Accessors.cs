@@ -763,7 +763,7 @@ namespace ProgressoExpert.DataAccess
                        join refs in db.C_Reference91 on accEd.C_Fld6546RRef equals refs.C_IDRRef
                        //join en302 in db.C_Enum320 on refs.C_Fld1141RRef equals en302.C_IDRRef
                        //join en450 in db.C_Enum217 on refs.C_Fld1142RRef equals en450.C_IDRRef
-                       join men in db.C_Reference62 on accEd.C_Fld6554_RRRef equals men.C_IDRRef
+                       join men in db.C_Reference62 on accEd.C_Fld6548_RRRef equals men.C_IDRRef
                        where accEd.C_Period >= stDate && accEd.C_Period < endDate && GroupsCode.Contains(refs.C_Code)
                        select new GroupsEnt
                        {
@@ -787,7 +787,7 @@ namespace ProgressoExpert.DataAccess
                        join refs in db.C_Reference91 on accEd.C_Fld6546RRef equals refs.C_IDRRef
                        //join en302 in db.C_Enum302 on refs.C_Fld1334RRef equals en302.C_IDRRef
                        //join en450 in db.C_Enum450 on refs.C_Fld1333RRef equals en450.C_IDRRef
-                       join men in db.C_Reference62 on accEd.C_Fld6554_RRRef equals men.C_IDRRef
+                       join men in db.C_Reference62 on accEd.C_Fld6548_RRRef equals men.C_IDRRef
                        where accEd.C_Period >= stDate && accEd.C_Period < endDate
                        select new GroupsEnt
                        {
